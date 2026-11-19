@@ -1,7 +1,5 @@
-/* Configuração pública (não colocar senha, JWT nem service_role aqui).
-   Preencher APENAS URL do projeto e chave publishable/anon do Supabase após habilitar RLS.
-   Manter vazio até configurar o banco privado; o site continua usando localStorage. */
+/* Configuração pública do cliente Supabase. A chave publishable é pública por definição. Nunca inserir service_role/secret nem credenciais de usuário. */
 window.CONCURSO_SYNC_CONFIG = Object.freeze({
-  url: '',
-  publishableKey: ''
+  url: 'https://wksjkelogtwmktbocdmc.supabase.co',
+  publishableKey: 'sb_publishable_7ntW-P_hRfojdXlMb0BjZw_Ph5F3Bmu'
 });
