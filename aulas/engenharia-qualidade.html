@@ -163,7 +163,7 @@ git push -u origin feature/prioridade-os</pre>
  const backupId='casan_2026_eng_qualidade_2026-11-18';
  function tell(msg){storageStatus.textContent=msg;}
  function checkStorage(){try{const k='__casan_check';localStorage.setItem(k,'ok');localStorage.removeItem(k);tell('Armazenamento local disponível. Backup JSON recomendado antes de trocar de dispositivo.');}catch(e){tell('Armazenamento local indisponível neste navegador. Use “Exportar progresso JSON” para guardar a sessão.');}}
- function state(){return {schemaVersion:2,documentId:backupId,checked:Object.fromEntries(secIds.map(k=>[k,!!seen[k]])),notes:notes.value,theme:theme,exportedAt:new Date().toISOString(),statusSemantico:'Marcado como acompanhado; não avaliado ou dominado.'};}
+ function state(){return {schemaVersion:2,documentId:backupId,checked:Object.fromEntries(secIds.map(k=>[k,!!seen[k]])),readSubsections:(()=>{try{const x=JSON.parse(safeGet('concurso_eng_qualidade_steps_v1')||'[]');return Array.isArray(x)?x:[]}catch{return []}})(),notes:notes.value,theme:theme,exportedAt:new Date().toISOString(),statusSemantico:'Marcado como acompanhado; não avaliado ou dominado.'};}
  function copyFallback(v){const ta=document.createElement('textarea');ta.value=v;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}ta.remove();return ok;}
  async function copyValue(v,msg){try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(v);tell(msg);return;}if(copyFallback(v)){tell(msg);return;}tell('Selecione e copie o texto manualmente; o navegador bloqueou o acesso à área de transferência.');window.prompt('Copie o texto para a conversa:',v);}catch(e){if(copyFallback(v))tell(msg);else{tell('Permissão de cópia negada.');window.prompt('Copie o texto para a conversa:',v)}}}
  document.querySelectorAll('[data-copy-step]').forEach(btn=>btn.addEventListener('click',()=>{
@@ -195,8 +195,10 @@ git push -u origin feature/prioridade-os</pre>
   try{if(file.size>1024*1024)throw Error('Arquivo de backup excede 1 MB.');const payload=JSON.parse(await file.text());
   if(payload.documentId!==backupId || payload.schemaVersion!==2 || typeof payload.checked!=='object'||!payload.checked)throw Error('Backup não corresponde a esta aula ou versão.');
   if(!confirm('Substituir as marcações e notas atuais pelos dados do backup JSON?'))return;
+  if(payload.readSubsections!==undefined){const permitted=new Set([...document.querySelectorAll('.step-marker')].map(el=>el.id.replace('etapa-','').replace('-','.')));if(!Array.isArray(payload.readSubsections)||payload.readSubsections.length>37||!payload.readSubsections.every(x=>permitted.has(x)))throw Error('Etapas de leitura inválidas');safeSet('concurso_eng_qualidade_steps_v1',JSON.stringify([...new Set(payload.readSubsections)]));}
   seen=Object.fromEntries(secIds.map(k=>[k,!!payload.checked[k]]));refresh();
   notes.value=String(payload.notes||'').slice(0,20000);safeSet('casan1811_notes',notes.value);setTheme(payload.theme==='light'?'light':'dark');
+  if(payload.readSubsections!==undefined){location.reload();return;}
   tell('Progresso restaurado: '+secIds.filter(k=>seen[k]).length+' capítulos acompanhados. Nenhuma avaliação de domínio foi registrada.');
   }catch(err){tell('Não foi possível importar: '+err.message)}finally{f.value='';}
  });
