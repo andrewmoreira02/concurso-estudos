@@ -91,6 +91,9 @@ function weeklyTasks(iso){
  ];
 }
 function priorityFor(iso){
+ if(iso>'2027-02-14')return {contest:'Prioridade a revisar',title:'Definir próximo concurso',
+ desc:'A data prevista da prova IMA já passou. Consulte o índice atualizado do Projeto e defina o concurso prioritário sem presumir comparecimento ou resultado.',
+ href:'progresso.html',link:'Consultar histórico',origin:'O site não atualiza sozinho o índice de concursos da Biblioteca.'};
  if(iso<='2026-11-22')return {contest:'CASAN 2026 · AOCP',title:'Até 22/11: CASAN 404 / AOCP',
  desc:'Próximo foco documentado: RLM 6.1, sem confirmação de conclusão. Depois, cobertura de Português, Legislação e revisão antes da prova.',
  href:'aulas/rlm.html#m6-s1',link:'Abrir RLM 6.1',origin:'Dados: CASAN/ESTADO_ATUAL.md e PLANO_ESTRATEGICO.md (18/11/2026).'};
@@ -321,8 +324,9 @@ function initHome(){
  if(!panel)return;
  const p=priorityFor(TODAY);
  panel.textContent=p.desc;
- const t=$('dynamicFocusTitle');if(t)t.textContent=TODAY<='2026-11-22'?'RLM · Módulo 6':'IMA-SC · início do ciclo';
+ const t=$('dynamicFocusTitle');if(t)t.textContent=TODAY<='2026-11-22'?'RLM · Módulo 6':TODAY<='2027-02-14'?'IMA-SC · início do ciclo':'Revisar prioridade';
  const b=$('dynamicFocusLink');if(b){b.textContent=p.link;b.href=p.href;}
+ const note=$('dynamicFocusNote');if(note)note.textContent=p.origin;
 }
 document.addEventListener('DOMContentLoaded',()=>{initPlanning();initProgress();initReviews();initHome();});
 })();
