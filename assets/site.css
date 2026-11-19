@@ -28,3 +28,27 @@
 .shortcut-more{color:#98ead9;font-size:12px;font-weight:850}
 @media(max-width:900px){.shortcut-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.shortcut-grid{grid-template-columns:1fr}.shortcut-card{min-height:0}.top-inner{align-items:flex-start}.primary-nav{width:100%;justify-content:flex-start;gap:2px}.primary-nav a{font-size:11px;padding:7px 8px}}
+
+
+/* Navegação e catálogo otimizados para telas pequenas (320–700 px). */
+@media(max-width:700px){
+ html{scroll-padding-top:12px}
+ body{font-size:16px;overflow-wrap:break-word}
+ .top{position:relative;top:auto}
+ .top-inner{height:auto;min-height:0;display:flex;flex-direction:column;align-items:stretch;gap:7px;padding-top:9px;padding-bottom:7px}
+ .top-inner .brand{align-self:flex-start;font-size:15px;min-height:44px}
+ .primary-nav{display:flex;width:100%;max-width:100%;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:thin;gap:4px;padding:3px 0 9px}
+ .primary-nav a{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 13px;font-size:13px;scroll-snap-align:start}
+ .shell{padding-right:14px;padding-left:14px}
+ .hero{padding-top:25px}
+ .card,.catalog-card,.hero-card,.workspace-shortcuts,.grid>*{min-width:0}
+ .btn,.filter-chip,.catalog-toolbar button,.catalog-toolbar input{min-height:44px}
+ .catalog-toolbar input{min-width:0;width:100%;font-size:16px}
+ .catalog-filters{overflow-x:auto;flex-wrap:nowrap;padding:2px 0 8px}
+ .catalog-filters .filter-chip{flex:0 0 auto}
+}
+@media(max-width:370px){
+ .shell{padding-left:12px;padding-right:12px}
+ .hero h1{font-size:clamp(29px,8vw,37px)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.shortcut-card{transition:none}}
