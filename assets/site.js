@@ -2,6 +2,7 @@
 (() => {
   'use strict';
   const STEP_KEY = 'concurso_rlm_steps_v1';
+  const NEW_STEP_KEY = 'concursos_rlm_sections_read_v3';
   const MODULE_KEY = 'rlm_shared_done_v1';
   const LEGACY_MODULE_KEY = 'casan_rlm_done_v1';
   const MAX_STEP = 71;
@@ -11,7 +12,17 @@
   const safeParse = value => { try { return JSON.parse(value); } catch { return null; } };
   const cleanSteps = value => Array.isArray(value) ? [...new Set(value.filter(v => typeof v === 'string' && STEP_RE.test(v)))].slice(0, MAX_STEP) : [];
   function readSteps() {
-    try { return cleanSteps(safeParse(localStorage.getItem(STEP_KEY))); } catch { return []; }
+    try {
+      const revised=safeParse(localStorage.getItem(NEW_STEP_KEY));
+      if(revised && Array.isArray(revised.readSections)){
+        const codes=revised.readSections.map(id=>{
+          const match=typeof id==='string'&&id.match(/^m(\d+)-s(\d+)$/);
+          return match ? Number(match[1])+'.'+Number(match[2]) : null;
+        });
+        return cleanSteps(codes);
+      }
+      return cleanSteps(safeParse(localStorage.getItem(STEP_KEY)));
+    } catch { return []; }
   }
   function readModules() {
     try {
@@ -26,7 +37,18 @@
   }
   function storeSteps(steps) {
     try {
-      localStorage.setItem(STEP_KEY, JSON.stringify(cleanSteps(steps)));
+      const codes=cleanSteps(steps);
+      localStorage.setItem(STEP_KEY,JSON.stringify(codes));
+      const before=safeParse(localStorage.getItem(NEW_STEP_KEY));
+      const previous=before&&typeof before==='object'?before:{};
+      const readSections=codes.map(code=>{const [m,n]=code.split('.');return 'm'+Number(m)+'-s'+Number(n);});
+      localStorage.setItem(NEW_STEP_KEY,JSON.stringify({
+        ...previous,format:'concursos-rlm-leitura',version:3,documentId:'rlm-aula-completa-17nov',
+        readSections,legacyModules:Array.isArray(previous.legacyModules)?previous.legacyModules:[],
+        preferences:previous.preferences||{markOnNext:false},
+        lastSection:previous.lastSection||'m6-s1',savedAt:new Date().toISOString(),
+        interpretation:'Lido registra leitura declarada, não domínio.'
+      }));
       setStatus('✓ Leitura salva neste navegador');
       return true;
     } catch {
@@ -42,7 +64,7 @@
     $('rlmFill').style.width = (n / MAX_STEP * 100).toFixed(2) + '%';
     $('rlmBar').setAttribute('aria-valuenow', String(n));
     const m = readModules().length;
-    $('rlmModules').textContent = m + ' de 11 módulos marcados como lidos (controle separado)';
+    $('rlmModules').textContent = m + ' registros legados por módulo (não equivalem a subseções lidas)';
     try { const key = '__concurso_storage_test__'; localStorage.setItem(key, '1'); localStorage.removeItem(key); setStatus('✓ Salvamento local disponível'); }
     catch { setStatus('⚠ Salvamento local indisponível', true); }
   }
@@ -296,6 +318,6 @@
     initCatalog();
     updateCatalogStats();
     addEventListener('concurso:read-change',()=>{paintDashboard();updateCatalogStats();});
-    addEventListener('storage', e=> {if([STEP_KEY,MODULE_KEY,'concurso_eng_qualidade_steps_v1'].includes(e.key)){paintLesson();paintDashboard();updateCatalogStats();}});
+    addEventListener('storage', e=> {if([STEP_KEY,NEW_STEP_KEY,MODULE_KEY,'concurso_eng_qualidade_steps_v1'].includes(e.key)){paintLesson();paintDashboard();updateCatalogStats();}});
   });
 })();
