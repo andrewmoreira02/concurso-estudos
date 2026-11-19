@@ -465,7 +465,7 @@ $('importProgressFile').addEventListener('change',async e=>{
   let sections=[],old=[],legacyOnly=false;
   if(data.format==='concursos-rlm-leitura'&&data.version===3){if(!Array.isArray(data.readSections)||!data.readSections.every(validStep))throw Error('subseções inválidas');sections=data.readSections;old=filterModules(data.legacyModules);}
   else if(['casan-rlm-progress','rlm-shared-progress'].includes(data.format)&&Array.isArray(data.markedAsStudied)){if(!data.markedAsStudied.every(validModule))throw Error('módulos inválidos');old=data.markedAsStudied;legacyOnly=true;}
-  else if(data.format==='concurso-estudos-progress'&&[1,2,3,4].includes(data.version)&&data.rlm){
+  else if(data.format==='concurso-estudos-progress'&&[1,2,3,4,5].includes(data.version)&&data.rlm){
     const values=data.rlm.readSubsections,modulesLegacy=data.rlm.readModules;
     if(!Array.isArray(values)||!Array.isArray(modulesLegacy))throw Error('RLM ausente no backup do site');
     if(!values.every(x=>typeof x==='string'&&/^(?:[1-9]|10|11)\.\d+$/.test(x)))throw Error('subseções antigas inválidas');
