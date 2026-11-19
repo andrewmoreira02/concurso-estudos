@@ -98,6 +98,16 @@ function initPlanning(){
  $('priorityContest').textContent=pr.contest;$('priorityTitle').textContent=pr.title;
  $('priorityDescription').textContent=pr.desc;$('focusSummary').textContent=pr.desc;
  $('planOrigin').textContent=pr.origin;
+ const weightSummary=$('examWeightSummary');
+ if(weightSummary){
+   clear(weightSummary);
+   for(const exam of Object.values(EXAMS)){
+     const parts=exam.subjects.map(([name,count])=>count+' '+name);
+     const p=elem('p');
+     attach(p,elem('strong',{},exam.name+': '),document.createTextNode(parts.join('; ')+'.'));
+     weightSummary.append(p);
+   }
+ }
  $('nextLessonLink').href=pr.href;$('nextLessonLink').textContent=pr.link;
  const choices=$('availabilityDays');
  const available=new Set(getAvailable());
