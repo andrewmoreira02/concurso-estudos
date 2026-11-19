@@ -99,3 +99,12 @@ Os rótulos do exemplo são **placeholder de desenvolvimento**, não uma questã
 - Aplicada migração `concurso_private_sync_rls`: tabela `public.concurso_sync_items`, RLS habilitado e quatro políticas por `auth.uid() = user_id`. Consultas verificaram acesso `anon` negado, `authenticated` permitido com RLS; advisors de segurança sem alertas na checagem.
 - `assets/sync-config.js` recebeu somente URL pública de API e chave **publishable**; nenhuma chave administrativa ou progresso pessoal foi incluído. A UI `conta.html` agora permite tentar cadastro/login; integração remota pronta para teste pelo próprio usuário.
 - Teste automatizado GitHub `44634120562` aprovado (navegação mobile e sincronização simulada). **Pendente:** confirmar criação/login por e-mail reais; definir Site URL/redirecionamentos em Authentication/URL Configuration no painel Supabase se a confirmação por e-mail exigir; verificar uso real em computador e celular, conflitos e backup. Não presumir marcações efetivamente transferidas antes de login em ambos.
+
+## 19/11/2026 — Simplificação solicitada: sem contas nem e-mail
+
+- Pedido explícito do usuário: único utilizador; remover cadastro por e-mail e confirmações. Substituído o login por **link/código privado de pareamento** entre computador e celular.
+- Backend: Supabase Edge Function `concurso-pareamento` com `verify_jwt=false` e verificação **própria obrigatória** do SHA-256 de um código aleatório de 256 bits em cabeçalho HTTPS. Chave pessoal não publicada no GitHub. Banco `public.concurso_pair_items` com RLS e zero permissões/políticas para navegador anônimo; o backend privilegiado é o único caminho de acesso.
+- Frontend: `conta.html` agora é página de vínculo sem conta. `assets/sync.js` armazena código apenas no navegador e sincroniza com a Edge Function. Link `#vincular=` é retirado da barra de endereço após abertura; botão para copiar vínculo ao segundo dispositivo.
+- Conserva leitura de RLM, Engenharia, Português; tarefas, disponibilidade, questões e revisões. Progresso legado não é reclassificado como estudado. Manual atualizado: `docs/SINCRONIZACAO_PRIVADA.md`.
+- CI dos dois navegadores simulados e layout mobile aprovado no commit `651604210212`; Pages deploy do mesmo commit concluído.
+- **Pendente de confirmação empírica:** o proprietário abrir o vínculo privado em ambos os aparelhos e confirmar status `Sincronizado`; verificar transferência real do módulo 4 e reversão. O código de pareamento deve ser mantido em segredo. Quem tiver o código consegue acesso ao progresso.
