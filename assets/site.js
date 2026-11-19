@@ -179,7 +179,7 @@
     const doc=localJSON(PORTUGUESE_KEY,null);
     const read=doc&&doc.lesson===PORTUGUESE_LESSON&&doc.read&&typeof doc.read==='object'&&!Array.isArray(doc.read)?doc.read:{};
     const cleaned={};
-    for(const [id,value] of Object.entries(read))if(/^pt19-[1-6]-[1-9]\\d*$/.test(id)&&typeof value==='boolean'&&Object.keys(cleaned).length<21)cleaned[id]=value;
+    for(const [id,value] of Object.entries(read))if(/^pt19-[1-6]-[1-9]\d*$/.test(id)&&typeof value==='boolean'&&Object.keys(cleaned).length<21)cleaned[id]=value;
     return {version:1,lesson:PORTUGUESE_LESSON,read:cleaned,legacy:doc&&Array.isArray(doc.legacy)?doc.legacy.slice(0,1000):[]};
   }
   function readPortugueseSteps(){return Object.values(readPortugueseDocument().read).filter(Boolean).length;}
@@ -243,7 +243,7 @@
             if(data.version>=3)newSiteData=validateNewData(data.site);
             if(data.version===4){
               const pt=data.portugues;
-              if(!pt||pt.lesson!==PORTUGUESE_LESSON||!pt.read||typeof pt.read!=='object'||Array.isArray(pt.read)||Object.keys(pt.read).length>21||!Object.entries(pt.read).every(([id,value])=>/^pt19-[1-6]-[1-9]\\d*$/.test(id)&&typeof value==='boolean'))throw Error('Backup de Português inválido');
+              if(!pt||pt.lesson!==PORTUGUESE_LESSON||!pt.read||typeof pt.read!=='object'||Array.isArray(pt.read)||Object.keys(pt.read).length>21||!Object.entries(pt.read).every(([id,value])=>/^pt19-[1-6]-[1-9]\d*$/.test(id)&&typeof value==='boolean'))throw Error('Backup de Português inválido');
               portugueseDoc={version:1,lesson:PORTUGUESE_LESSON,read:pt.read,legacy:Array.isArray(pt.legacy)?pt.legacy.slice(0,1000):[]};
             }
           }
