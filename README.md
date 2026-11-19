@@ -41,6 +41,14 @@ O backup do painel inicial usa o formato versionado `concurso-estudos-progress` 
 
 **Estado de verificação:** commits no GitHub não são confirmação da implantação pública pelo Pages. A página publicada deve ser conferida separadamente.
 
+## Organização dos dados variáveis e automação
+
+**Não coloque datas ou pesos dos concursos nas instruções fixas do Projeto.** O site consulta `dados/concursos.json`: nele ficam datas, provas, matrizes, janelas de prioridade e agenda sugerida. A atualização desse arquivo **não substitui** a revisão do índice privado `/Concursos/00_INDICE_E_CONTINUIDADE.md` no ChatGPT.
+
+O arquivo `assets/quiz.js` permite que futuros questionários HTML registrem automaticamente os resultados de tentativas realmente enviadas no navegador. A página `revisoes.html` usa esses resultados para gerar revisões sugeridas de +1, +3 e +7 dias; nenhum acerto é fabricado. Para usar o adaptador em uma aula, consulte [docs/CONTINUIDADE_E_AUTOMACOES.md](docs/CONTINUIDADE_E_AUTOMACOES.md).
+
+O trabalho pendente para outros agentes está na [issue #1](https://github.com/andrewmoreira02/concurso-estudos/issues/1). Essa issue **não executa um agente automaticamente**.
+
 ## Limitações e privacidade
 
 GitHub Pages fornece hospedagem **estática**: o progresso não sincroniza entre navegador, computador e celular sem configurar serviço externo e login. A limpeza de dados do navegador pode apagar o registro local. Não publique progresso, anotações privadas ou credenciais no repositório público. Os registros do site não alteram automaticamente os arquivos `.md` da Biblioteca do Projeto ChatGPT.
