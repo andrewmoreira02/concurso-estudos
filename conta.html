@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>Conta e sincronização — Concurso Estudos</title>
+<meta name="description" content="Sincronização privada de leitura, planejamento, questões e revisões entre aparelhos.">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.account-page{max-width:800px;margin:34px auto 80px}
+.account-page h1{font-size:clamp(28px,5vw,43px)}
+.account-panel{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:clamp(17px,4vw,27px);margin:18px 0}
+.account-panel form{display:grid;gap:12px}
+.account-panel label{font-weight:700;display:grid;gap:5px}
+.account-panel input{min-height:48px;border-radius:10px;border:1px solid #647c91;padding:12px;background:#0b1626;color:var(--text);width:100%;font-size:16px}
+.account-panel button{border:1px solid #6dc6bd;background:#185e64;color:#fff;border-radius:9px;min-height:46px;padding:10px 15px;font:inherit;font-weight:750}
+.account-panel button:disabled{opacity:.55;cursor:wait}
+.account-actions{display:flex;flex-wrap:wrap;gap:10px}
+.account-panel p{margin:10px 0}
+.account-note{color:var(--muted);font-size:14px}
+#syncMessage{min-height:1.6em;padding:8px 0;white-space:pre-line}
+#syncMessage[data-error="true"]{color:#ffb7a8}
+#syncMessage[data-error="false"]{color:#b8f6d4}
+@media(max-width:520px){.account-actions{display:grid}.account-actions button{width:100%}}
+</style>
+<script src="assets/sync-config.js" defer></script>
+<script src="assets/sync.js" defer></script>
+</head>
+<body>
+<header class="top"><div class="shell top-inner"><a class="brand" href="./"><span class="logo">CE</span><span>Concurso Estudos</span></a><nav class="primary-nav" aria-label="Menu principal"><a href="./">Início</a><a href="aulas.html">Aulas</a><a href="planejamento.html">Planejamento</a><a href="progresso.html">Progresso</a><a href="revisoes.html">Revisões</a><a class="active" aria-current="page" href="conta.html">Conta</a></nav></div></header>
+<main class="shell account-page">
+<div class="eyebrow">Sincronização privada</div>
+<h1>Seu progresso no computador e no celular</h1>
+<p class="lead">Com a mesma conta nos dois aparelhos, você pode manter leitura, planejamento, registros de questões e revisões sincronizados. As marcações já feitas são preservadas na primeira conexão.</p>
+<div class="account-panel" id="syncUnconfigured" hidden>
+<h2>Sincronização ainda não ativada</h2>
+<p>O site continua salvando normalmente neste navegador. Para ativar a sincronização, é necessário conectar um projeto Supabase privado, aplicar as políticas RLS e preencher <code>assets/sync-config.js</code>.</p>
+<p class="account-note">Não cole senha, chave secreta ou token pessoal no GitHub. Apenas a chave pública publishable/anon pode ficar no JavaScript, depois de validar RLS.</p>
+<a href="https://github.com/andrewmoreira02/concurso-estudos/blob/main/docs/SINCRONIZACAO_PRIVADA.md">Instruções de ativação</a>
+</div>
+<div class="account-panel" id="syncSignedOut" hidden>
+<h2>Entrar ou criar conta</h2>
+<form id="syncLoginForm">
+<label>E-mail <input type="email" name="email" autocomplete="username" required maxlength="240"></label>
+<label>Senha <input type="password" name="password" autocomplete="current-password" required minlength="8" maxlength="128"></label>
+<div class="account-actions"><button type="submit" name="action" value="login">Entrar</button><button type="button" id="syncSignup">Criar conta</button></div>
+</form>
+<p class="account-note">Cadastre-se apenas no site. A senha é enviada diretamente ao Supabase por HTTPS, não ao GitHub nem ao ChatGPT. O cadastro pode exigir confirmação por e-mail.</p>
+</div>
+<div class="account-panel" id="syncSignedIn" hidden>
+<h2>Conta conectada</h2>
+<p id="syncAccountEmail"></p>
+<div class="account-actions"><button type="button" id="syncNow">Sincronizar agora</button><button type="button" id="syncLogout">Sair da conta</button></div>
+<p id="syncLastTime" class="account-note"></p>
+</div>
+<p id="syncMessage" role="status" aria-live="polite"></p>
+<div class="account-panel">
+<h2>Como funciona</h2>
+<p>Na primeira conexão de cada aparelho, as subseções já marcadas como <strong>Lido</strong> são reunidas. Depois disso, marcar e desmarcar são sincronizados quando houver internet; alterações simultâneas conflitantes priorizam a alteração local mais recente detectada pelo aparelho.</p>
+<p>O site continua funcionando sem internet. O backup JSON permanece disponível e é recomendado antes da primeira sincronização.</p>
+<p class="account-note">Uma conta é pessoal. O progresso não é publicado no repositório; o banco usa regras de acesso por usuário. A ausência de configuração Supabase significa que a sincronização está desativada.</p>
+</div>
+</main>
+</body>
+</html>
