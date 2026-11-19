@@ -1,38 +1,23 @@
--- Concurso Estudos: progresso PRIVADO por usuário.
--- Executar no SQL Editor de um projeto Supabase privado.
--- Nunca executar desabilitando RLS nem publicar dados de usuário no repositório.
-create table if not exists public.concurso_sync_items (
-  user_id uuid not null references auth.users(id) on delete cascade,
-  item_key text not null check (char_length(item_key) between 3 and 180),
+-- Concurso Estudos — sincronização pessoal SEM CADASTRO.
+-- Projeto Supabase privado; o backend Edge Function verifica código de pareamento
+-- ANTES de acessar qualquer progresso. Nunca compartilhar código privado no GitHub.
+--
+-- Dados individuais nunca devem ser públicos nem acessíveis via cliente com
+-- a chave publishable. Usuário único: não há cadastro de e-mail no site.
+create table if not exists public.concurso_pair_items (
+  item_key text primary key check (char_length(item_key) between 3 and 180),
   payload jsonb not null check (jsonb_typeof(payload) = 'object' and payload ? 'value'),
-  updated_at timestamptz not null default now(),
-  primary key (user_id, item_key)
+  updated_at timestamptz not null default now()
 );
 
-alter table public.concurso_sync_items enable row level security;
-revoke all on public.concurso_sync_items from anon;
-grant select, insert, update, delete on public.concurso_sync_items to authenticated;
+alter table public.concurso_pair_items enable row level security;
+revoke all on public.concurso_pair_items from anon, authenticated, public;
 
-drop policy if exists "sync_select_own" on public.concurso_sync_items;
-create policy "sync_select_own" on public.concurso_sync_items
-  for select to authenticated
-  using ((select auth.uid()) = user_id);
-
-drop policy if exists "sync_insert_own" on public.concurso_sync_items;
-create policy "sync_insert_own" on public.concurso_sync_items
-  for insert to authenticated
-  with check ((select auth.uid()) = user_id);
-
-drop policy if exists "sync_update_own" on public.concurso_sync_items;
-create policy "sync_update_own" on public.concurso_sync_items
-  for update to authenticated
-  using ((select auth.uid()) = user_id)
-  with check ((select auth.uid()) = user_id);
-
-drop policy if exists "sync_delete_own" on public.concurso_sync_items;
-create policy "sync_delete_own" on public.concurso_sync_items
-  for delete to authenticated
-  using ((select auth.uid()) = user_id);
-
--- RLS aplica-se também às requisições feitas com a chave pública do frontend.
--- Nunca usar secret/service_role no navegador.
+-- Intencionalmente SEM políticas para anon/authenticated.
+-- Apenas a Edge Function "concurso-pareamento" acessa esta tabela com
+-- credenciais privilegiadas do AMBIENTE SUPABASE (jamais do navegador).
+-- A Edge Function tem verify_jwt=false porque valida obrigatoriamente
+-- um segredo pessoal de alta entropia (SHA-256) por sua própria lógica.
+--
+-- A tabela anterior "concurso_sync_items" (por auth.uid) é legado não
+-- utilizado e não deve receber dados pessoais na arquitetura atual.
