@@ -1,0 +1,39 @@
+name: Validar navegação e leitura mobile
+
+on:
+  push:
+    paths:
+      - 'aulas/**'
+      - 'assets/**'
+      - 'scripts/verificar-mobile.mjs'
+      - '.github/workflows/validar-mobile.yml'
+      - 'index.html'
+      - 'aulas.html'
+      - 'planejamento.html'
+      - 'progresso.html'
+      - 'revisoes.html'
+  pull_request:
+    paths:
+      - 'aulas/**'
+      - 'assets/**'
+      - 'scripts/verificar-mobile.mjs'
+      - '.github/workflows/validar-mobile.yml'
+      - 'index.html'
+      - 'aulas.html'
+      - 'planejamento.html'
+      - 'progresso.html'
+      - 'revisoes.html'
+
+jobs:
+  smoke-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar dependência de navegador de teste
+        run: npm install --no-save --ignore-scripts playwright-core@1.55.1
+      - name: Testar 320, 390 e 430 px
+        run: node scripts/verificar-mobile.mjs
