@@ -75,22 +75,12 @@ th{background:#20394b;color:#c5edff}td,th{border-color:#31475b}
 .step-code{display:inline-block;vertical-align:baseline;font-variant-numeric:tabular-nums;color:#9cf4e3;background:#184c4b;border:1px solid #388d82;border-radius:8px;padding:1px 8px;margin-right:4px;font-size:.88em;white-space:nowrap}
 .steps-guide{margin:18px 0 28px;background:#17283b;border:1px solid #3e6172;border-radius:14px;padding:14px 17px}
 .steps-guide>summary{cursor:pointer;color:#c4f6ec;font-size:14px;font-weight:800}
-.steps-guide>summary:focus-visible,.steps-nav a:focus-visible,.example-copy:focus-visible{outline:3px solid #f6aa49;outline-offset:3px}
+.steps-guide>summary:focus-visible,.steps-nav a:focus-visible{outline:3px solid #f6aa49;outline-offset:3px}
 .steps-explain{font-size:13px;color:#b6cbd7;line-height:1.6}
 .steps-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:7px;margin:12px 0 1px}
 .steps-nav a{font-size:12px;line-height:1.45;color:#d2edf0;border:1px solid #40586c;border-radius:8px;background:#1c3345;padding:9px 10px;text-decoration:none;transition:.12s ease-in}
 .steps-nav a:hover,.steps-nav a.active{background:#21585b;border-color:#5bc9b6;color:#f3fffb}
-.example-copy{display:inline-block;vertical-align:middle;margin:2px 0 5px 0;font-size:11px;border:1px solid #3d6370;border-radius:7px;background:#223e4e;color:#b9e8e5;padding:3px 8px;line-height:1.7}
-.example-copy:hover{background:#1f5555;color:#fff}
-.voice-ribbon{position:sticky;top:70px;z-index:25;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 15px;background:#152e3c;border:1px solid #416d74;box-shadow:0 9px 30px rgba(0,0,0,.2);border-radius:12px;margin:10px 0 7px}
-.voice-current{display:flex;flex:1;min-width:210px;flex-direction:column;gap:1px}
-.voice-overline{font-size:10px;font-weight:800;letter-spacing:.1em;color:#8ec7c5}
-.voice-current strong{font-size:13px;color:#effcf9;line-height:1.4}
-.voice-feedback{font-size:11px;color:#b9ebe0;min-width:0}
-.voice-note{font-size:12px;line-height:1.55;color:var(--muted);margin:6px 0 17px;padding:0 3px}
-.lesson-spotlight{background:#20394b!important;outline:2px solid #68d9b9;outline-offset:6px;border-radius:4px}
-@media(max-width:620px){.voice-ribbon{top:70px;padding:9px 10px;gap:6px}.voice-current{min-width:160px}.voice-current strong{font-size:12px}.steps-nav{grid-template-columns:1fr}.chapter [data-lesson-step]{scroll-margin-top:195px}}
-@media print{.voice-ribbon,.voice-note,.example-copy,.steps-guide{display:none!important}}
+@media(max-width:620px){.steps-nav{grid-template-columns:1fr}.chapter [data-lesson-step]{scroll-margin-top:195px}}
 
 /* Revisão didática de 17/11: somente módulos 6–11. Conteúdo expositivo, offline e acessível. */
 .lesson-overview{font-size:14px;line-height:1.65;margin:14px 0 18px;padding:12px 15px;border:1px solid #406377;border-radius:12px;background:#1b3043;color:#cce3ed}
@@ -472,10 +462,10 @@ $('importProgressFile').addEventListener('change',async e=>{
   if(file.size>150000)throw Error('arquivo excede 150 kB');
   const data=JSON.parse(await file.text());
   if(!data||typeof data!=='object')throw Error('estrutura inválida');
-  let sections=[],old=[];
+  let sections=[],old=[],legacyOnly=false;
   if(data.format==='concursos-rlm-leitura'&&data.version===3){if(!Array.isArray(data.readSections)||!data.readSections.every(validStep))throw Error('subseções inválidas');sections=data.readSections;old=filterModules(data.legacyModules);}
-  else if(['casan-rlm-progress','rlm-shared-progress'].includes(data.format)&&Array.isArray(data.markedAsStudied)){if(!data.markedAsStudied.every(validModule))throw Error('módulos inválidos');old=data.markedAsStudied;}
-  else if(data.format==='concurso-estudos-progress'&&data.rlm){
+  else if(['casan-rlm-progress','rlm-shared-progress'].includes(data.format)&&Array.isArray(data.markedAsStudied)){if(!data.markedAsStudied.every(validModule))throw Error('módulos inválidos');old=data.markedAsStudied;legacyOnly=true;}
+  else if(data.format==='concurso-estudos-progress'&&[1,2,3,4].includes(data.version)&&data.rlm){
     const values=data.rlm.readSubsections,modulesLegacy=data.rlm.readModules;
     if(!Array.isArray(values)||!Array.isArray(modulesLegacy))throw Error('RLM ausente no backup do site');
     if(!values.every(x=>typeof x==='string'&&/^(?:[1-9]|10|11)\.\d+$/.test(x)))throw Error('subseções antigas inválidas');
@@ -484,12 +474,14 @@ $('importProgressFile').addEventListener('change',async e=>{
     old=modulesLegacy;
   }
   else throw Error('formato de backup não reconhecido');
-  const replace=$('importMode').value==='replace';read=replace?new Set(sections):new Set([...read,...sections]);
+  const replace=$('importMode').value==='replace';
+  // Backups antigos contendo apenas módulos nunca apagam leituras por subseção.
+  read=replace&&!legacyOnly?new Set(sections):new Set([...read,...sections]);
   for(const m of old)legacyModules.add(m); // Módulos antigos: preservação, nunca conversão silenciosa.
   if(validStep(data.lastSection))lastSection=data.lastSection;
   if(data.format==='concursos-rlm-leitura'&&data.preferences?.markOnNext===true&&replace)markOnNext=true;
   if(data.format==='concursos-rlm-leitura'&&data.preferences?.markOnNext===false&&replace)markOnNext=false;
-  save();flash('Backup '+file.name+' importado ('+(replace?'substituição':'mesclagem')+'). '+(old.length?'Registros antigos preservados, sem converter em subseções.':''));
+  save();flash('Backup '+file.name+' importado ('+(legacyOnly?'somente histórico legado, sem apagar leituras':replace?'substituição':'mesclagem')+'). '+(old.length?'Registros antigos preservados, sem converter em subseções.':''));
  }catch(err){flash('Não foi possível importar: '+err.message);}finally{e.target.value='';}
 });
 $('printBtn').addEventListener('click',()=>window.print());
