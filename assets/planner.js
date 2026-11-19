@@ -171,6 +171,12 @@ function initPlanning(){
  addEventListener('storage',e=>{if(Object.values(KEY).includes(e.key))render();});
 }
 function stepsCount(key,max){
+ if(key==='concurso_rlm_steps_v1'){
+   const revised=read('concursos_rlm_sections_read_v3',null);
+   if(revised&&Array.isArray(revised.readSections)){
+     return Math.min(new Set(revised.readSections.filter(x=>typeof x==='string'&&/^m(?:[1-9]|10|11)-s\d+$/.test(x))).size,max);
+   }
+ }
  const v=read(key,[]);
  return Array.isArray(v)?Math.min(new Set(v.filter(x=>typeof x==='string')).size,max):0;
 }
