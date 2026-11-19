@@ -7,7 +7,7 @@ Site de estudos por concurso, publicado em GitHub Pages, com HTML/CSS/JavaScript
 - [Início](https://andrewmoreira02.github.io/concurso-estudos/) — painel geral.
 - [Todas as aulas](https://andrewmoreira02.github.io/concurso-estudos/aulas.html) — catálogo pesquisável com filtros.
 - [Raciocínio Lógico-Matemático](https://andrewmoreira02.github.io/concurso-estudos/aulas/rlm.html) — 11 módulos e 71 subseções numeradas.
-- [Engenharia de Software e Qualidade](https://andrewmoreira02.github.io/concurso-estudos/aulas/engenharia-qualidade.html) — 10 capítulos e 37 etapas numeradas; material preparado, sem inferir que foi estudado.
+- [Engenharia de Software e Qualidade](https://andrewmoreira02.github.io/concurso-estudos/aulas/engenharia-qualidade.html) — 10 módulos e 37 subseções com controles individuais de leitura, navegação, backup JSON e preservação de progresso; material disponível, sem inferir que foi estudado.
 
 Os links públicos dependem de o GitHub Pages estar habilitado e ter publicado a versão atual de `main`. Os arquivos estão no repositório independentemente do estado da publicação.
 
@@ -16,7 +16,7 @@ Os links públicos dependem de o GitHub Pages estar habilitado e ter publicado a
 - Cada subseção possui botão **Marcar como lido**, que também permite desfazer.
 - A barra inferior permite navegar com **Anterior** e **Lido e próxima**, este último registrando a etapa ao avançar (com opção de desativar esse comportamento).
 - Em **Opções**, a marcação por rolagem e tempo é **experimental e desativada inicialmente**. Quando ativada, exige pelo menos 25 segundos na etapa e passagem à seguinte, mas não comprova leitura efetiva nem domínio.
-- O progresso das subseções de RLM permanece em `concurso_rlm_steps_v1`; o de Engenharia, em `concurso_eng_qualidade_steps_v1`. Marcação de módulo/capítulo é mantida separadamente.
+- O progresso das subseções de RLM permanece em `concurso_rlm_steps_v1`; o de Engenharia, em `concurso_eng_qualidade_steps_v1`, sincronizado no mesmo navegador com `casan1811_subsections_v3` (notas/preferências). Marcação legada apenas por capítulo é mantida separadamente, sem converter capítulos em subseções lidas.
 - Progresso e preferências são salvos no `localStorage` quando disponível. O painel exporta/importa JSON com as duas aulas (formato v2, compatível com backups anteriores de RLM). A aula de Engenharia também inclui suas subseções no backup próprio.
 
 ## Organização
@@ -52,3 +52,7 @@ O trabalho pendente para outros agentes está na [issue #1](https://github.com/a
 ## Limitações e privacidade
 
 GitHub Pages fornece hospedagem **estática**: o progresso não sincroniza entre navegador, computador e celular sem configurar serviço externo e login. A limpeza de dados do navegador pode apagar o registro local. Não publique progresso, anotações privadas ou credenciais no repositório público. Os registros do site não alteram automaticamente os arquivos `.md` da Biblioteca do Projeto ChatGPT.
+
+## Publicação obrigatória das aulas
+
+Toda aula completa nova ou revisada deve ser publicada no repositório (em `aulas/`, preservando URL e identificadores), integrada ao catálogo `aulas.html` e acessível pelo painel `index.html`. Após o commit, verificar a URL no GitHub Pages; se a implantação ainda não tiver terminado, distinguir commit da página pública. O progresso individual nunca é publicado.
