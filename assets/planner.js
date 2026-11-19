@@ -72,6 +72,7 @@ function weeklyTasks(iso){
    };
    return lookup[iso]||[];
  }
+ if(iso==='2027-02-14')return [{id:'ima-exam',title:'Data prevista da prova IMA-SC',detail:'Não indica comparecimento. Verifique as informações do edital e do cartão de prova.',event:true}];
  if(iso>'2027-02-14')return [];
  const mod=dayIndex(iso);
  const daily=[
