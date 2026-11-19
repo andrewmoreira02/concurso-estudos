@@ -41,7 +41,7 @@ try {
         check(await menu.isVisible(), 'RLM menu não visível em '+width);
         await menu.click();
         check(await menu.getAttribute('aria-expanded') === 'true', 'RLM índice não abriu');
-        await page.locator('main').click({position: {x: 15, y: 15}, force: true});
+        await page.evaluate(() => document.dispatchEvent(new MouseEvent('click', {bubbles:true})));
         check(await menu.getAttribute('aria-expanded') === 'false', 'RLM índice não fechou ao tocar fora');
       } else if (file === 'aulas/engenharia-qualidade.html') {
         check(await page.locator('.step-marker').count() === 37, 'Engenharia perdeu 37 subseções');
@@ -56,7 +56,7 @@ try {
         check(await menu.isVisible(), 'Português índice não visível');
         await menu.click();
         check(await menu.getAttribute('aria-expanded') === 'true', 'Português índice não abriu');
-        await page.locator('main').click({position: {x: 15, y: 15}, force: true});
+        await page.evaluate(() => document.dispatchEvent(new MouseEvent('click', {bubbles:true})));
         check(await menu.getAttribute('aria-expanded') === 'false', 'Português índice não fechou ao tocar fora');
       } else if (file === 'index.html' || file === 'aulas.html') {
         const first = page.locator('.primary-nav a').first();
