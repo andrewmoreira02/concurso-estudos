@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-19",
+  "timezone": "America/Sao_Paulo",
+  "purpose": "Dados públicos do planejamento do site. Não contém registros pessoais de leitura, notas ou desempenho.",
+  "disclaimer": "Informações de editais registradas em 13–18/11/2026; conferir retificações antes de tomar decisões. Agenda é sugestão, não comprova execução.",
+  "exams": {
+    "casan": {
+      "name": "CASAN 2026 · AOCP",
+      "deadline": "2026-11-22",
+      "deadlineLabel": "22/11/2026",
+      "total": 50,
+      "source": "https://www.institutoaocp.org.br/concursos/711",
+      "subjects": [
+        [
+          "Conhecimentos Específicos (TI)",
+          25
+        ],
+        [
+          "Português",
+          10
+        ],
+        [
+          "Raciocínio Lógico-Matemático",
+          7
+        ],
+        [
+          "Legislação",
+          5
+        ],
+        [
+          "Atualidades",
+          3
+        ]
+      ]
+    },
+    "ima": {
+      "name": "IMA-SC 2027 · FURB",
+      "deadline": "2027-02-14",
+      "deadlineLabel": "14/02/2027 (prevista)",
+      "total": 60,
+      "source": "https://concursos.furb.br/informacoes/584",
+      "subjects": [
+        [
+          "Tecnologia da Informação",
+          36
+        ],
+        [
+          "Português",
+          6
+        ],
+        [
+          "Raciocínio Lógico-Matemático",
+          6
+        ],
+        [
+          "Administração Pública",
+          6
+        ],
+        [
+          "Legislação Ambiental",
+          6
+        ]
+      ]
+    }
+  },
+  "priority_windows": [
+    {
+      "from": "2026-01-01",
+      "through": "2026-11-22",
+      "exam": "casan",
+      "contest": "CASAN 2026 · AOCP",
+      "title": "Até 22/11: CASAN 404 / AOCP",
+      "desc": "Cobertura e revisão objetiva para a CASAN, conforme o planejamento registrado; confirme o próximo foco no estado do Projeto.",
+      "href": "aulas/rlm.html#m6-s1",
+      "link": "Abrir aula RLM 6.1",
+      "origin": "Plano CASAN registrado em 18/11/2026; status individual de estudo não é sincronizado com o site."
+    },
+    {
+      "from": "2026-11-23",
+      "through": "2027-02-14",
+      "exam": "ima",
+      "contest": "IMA-SC 2027 · FURB",
+      "title": "Desde 23/11: IMA · Analista de Informática",
+      "desc": "Estudar por edital FURB, diagnosticar retenção e cobrir assuntos exclusivos; não transferir domínio automaticamente entre concursos.",
+      "href": "progresso.html?concurso=ima",
+      "link": "Consultar matriz IMA",
+      "origin": "Plano IMA registrado em 18/11/2026. Dias da semana ainda não confirmados."
+    }
+  ],
+  "after_last_window": {
+    "contest": "Prioridade a revisar",
+    "title": "Definir próximo concurso",
+    "desc": "As datas registradas dos concursos passaram. Consulte o índice do Projeto e o edital mais recente antes de planejar novos blocos.",
+    "href": "progresso.html",
+    "link": "Consultar histórico",
+    "origin": "O site é estático e não altera o índice da Biblioteca do ChatGPT."
+  },
+  "calendar": {
+    "special": {
+      "2026-11-18": [
+        {
+          "id": "rlm61",
+          "title": "Análise combinatória — módulo 6.1",
+          "detail": "Bloco planejado de RLM: conceitos e exemplos resolvidos.",
+          "href": "aulas/rlm.html#m6-s1"
+        }
+      ],
+      "2026-11-19": [
+        {
+          "id": "rlm61",
+          "title": "RLM 6.1 — continuidade sugerida",
+          "detail": "Consultar o estado real antes de decidir se ainda está pendente.",
+          "href": "aulas/rlm.html#m6-s1"
+        },
+        {
+          "id": "portugues",
+          "title": "Português — interpretação e coesão",
+          "detail": "Revisão objetiva de conceitos frequentes no edital, sem presumir estudo."
+        }
+      ],
+      "2026-11-20": [
+        {
+          "id": "legis",
+          "title": "Legislação específica CASAN",
+          "detail": "Revisar os dispositivos do edital e conferir texto vigente."
+        }
+      ],
+      "2026-11-21": [
+        {
+          "id": "revision",
+          "title": "Revisão leve — TI e Atualidades",
+          "detail": "Recuperação ativa, foco nas lacunas confirmadas."
+        }
+      ],
+      "2026-11-22": [
+        {
+          "id": "exam",
+          "title": "Data da prova CASAN",
+          "detail": "Data do calendário; não comprova presença ou resultado.",
+          "event": true
+        }
+      ],
+      "2027-02-14": [
+        {
+          "id": "ima-exam",
+          "title": "Data prevista da prova IMA-SC",
+          "detail": "Confirmar edital e cartão; não comprova comparecimento.",
+          "event": true
+        }
+      ]
+    },
+    "cycles": [
+      {
+        "exam": "ima",
+        "from": "2026-11-23",
+        "through": "2027-02-13",
+        "weekdays": {
+          "0": [
+            {
+              "id": "ima-ti",
+              "title": "TI — núcleo sugerido",
+              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "href": "aulas.html"
+            },
+            {
+              "id": "ima-general",
+              "title": "Português",
+              "detail": "≈35 min sugeridos; Interpretação, coesão e itens aderentes ao edital FURB"
+            },
+            {
+              "id": "ima-review",
+              "title": "Recuperação / revisão",
+              "detail": "≈15 min sugeridos; rever erros reais",
+              "href": "revisoes.html"
+            }
+          ],
+          "1": [
+            {
+              "id": "ima-ti",
+              "title": "TI — núcleo sugerido",
+              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "href": "aulas.html"
+            },
+            {
+              "id": "ima-general",
+              "title": "Administração Pública",
+              "detail": "≈35 min sugeridos; Fundamentos previstos no edital IMA"
+            },
+            {
+              "id": "ima-review",
+              "title": "Recuperação / revisão",
+              "detail": "≈15 min sugeridos; rever erros reais",
+              "href": "revisoes.html"
+            }
+          ],
+          "2": [
+            {
+              "id": "ima-ti",
+              "title": "TI — núcleo sugerido",
+              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "href": "aulas.html"
+            },
+            {
+              "id": "ima-general",
+              "title": "RLM",
+              "detail": "≈35 min sugeridos; Diagnóstico de retenção e pontos específicos do edital"
+            },
+            {
+              "id": "ima-review",
+              "title": "Recuperação / revisão",
+              "detail": "≈15 min sugeridos; rever erros reais",
+              "href": "revisoes.html"
+            }
+          ],
+          "3": [
+            {
+              "id": "ima-ti",
+              "title": "TI — núcleo sugerido",
+              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "href": "aulas.html"
+            },
+            {
+              "id": "ima-general",
+              "title": "Legislação Ambiental",
+              "detail": "≈35 min sugeridos; Dispositivos aplicáveis ao edital e conceitos relevantes"
+            },
+            {
+              "id": "ima-review",
+              "title": "Recuperação / revisão",
+              "detail": "≈15 min sugeridos; rever erros reais",
+              "href": "revisoes.html"
+            }
+          ],
+          "4": [
+            {
+              "id": "ima-ti",
+              "title": "TI — núcleo sugerido",
+              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "href": "aulas.html"
+            },
+            {
+              "id": "ima-general",
+              "title": "Português e RLM",
+              "detail": "≈35 min sugeridos; Revisão intercalada, orientada por erros reais"
+            },
+            {
+              "id": "ima-review",
+              "title": "Recuperação / revisão",
+              "detail": "≈15 min sugeridos; rever erros reais",
+              "href": "revisoes.html"
+            }
+          ],
+          "5": [
+            {
+              "id": "ima-ti",
+              "title": "TI — núcleo sugerido",
+              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "href": "aulas.html"
+            },
+            {
+              "id": "ima-general",
+              "title": "TI + revisão",
+              "detail": "≈35 min sugeridos; Recuperação de assuntos e correção dos erros registrados"
+            },
+            {
+              "id": "ima-review",
+              "title": "Recuperação / revisão",
+              "detail": "≈15 min sugeridos; rever erros reais",
+              "href": "revisoes.html"
+            }
+          ],
+          "6": [
+            {
+              "id": "ima-ti",
+              "title": "TI — núcleo sugerido",
+              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "href": "aulas.html"
+            },
+            {
+              "id": "ima-general",
+              "title": "Revisão opcional",
+              "detail": "≈35 min sugeridos; Consolidar pontos frágeis ou descansar conforme disponibilidade"
+            },
+            {
+              "id": "ima-review",
+              "title": "Recuperação / revisão",
+              "detail": "≈15 min sugeridos; rever erros reais",
+              "href": "revisoes.html"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "review_policy": {
+    "interval_days": [
+      1,
+      3,
+      7
+    ],
+    "label": "Agenda inicial sugerida; não comprova retenção e pode ser ajustada por desempenho."
+  }
+}
