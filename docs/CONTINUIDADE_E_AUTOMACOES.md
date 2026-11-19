@@ -7,7 +7,7 @@
 - **Regras permanentes:** instruções do Projeto Concurso e `/Concursos/REGRAS_GERAIS_ESTUDO.md` na Biblioteca privada.
 - **Prioridade pedagógica individual:** `/Concursos/00_INDICE_E_CONTINUIDADE.md` e estados/planos privados do concurso. Não copiar automaticamente resultados pessoais para um repositório público.
 - **Editais, datas, distribuição de questões, calendário sugerido e janelas de prioridade exibidos no site:** `dados/concursos.json`. Alterações no JSON devem ser baseadas em edital/retificação verificados, com `updated_at` revisado.
-- **Progresso pessoal:** `localStorage` (não é sincronizado por GitHub Pages). O backup JSON v3, gerado no painel, reúne leitura, disponibilidade, plano, questões e revisões. Nenhum upload ocorre sem ação do usuário.
+- **Progresso pessoal:** `localStorage` (não é sincronizado por GitHub Pages). O backup geral JSON **v5**, gerado no painel, reúne leitura de RLM, Engenharia/Qualidade e Português, a preferência de marcar ao avançar em Português, disponibilidade, planejamento, questões e revisões. A restauração geral aceita backups v1–v4; a aula de Português aceita backup específico v1/v2 e seu trecho em backups gerais v4/v5. Nenhum upload ocorre sem ação do usuário.
 
 ## Automatização implementada
 
@@ -57,3 +57,12 @@ Os rótulos do exemplo são **placeholder de desenvolvimento**, não uma questã
 - Não tratar marcar `Lido`, tempo na tela ou atividade programada como domínio.
 - Não alterar as instruções permanentes ao mudar edital, datas, vagas, banca ou foco. Atualizar o índice privado e `dados/concursos.json` quando apropriado.
 - Não afirmar que outro agente recebeu uma tarefa automaticamente: GitHub Issues servem de backlog até uma pessoa ou agente autorizado executá-las.
+
+## 19/11/2026 — Aula de Português e compatibilidade
+
+- Aula publicada no endereço estável `aulas/portugues-casan-19-11.html`, com 6 módulos e 21 IDs de subseções preservados, e links em `aulas.html`, `index.html` e no planejamento.
+- Conteúdo aprofundado nas etapas 4.3 (funções de `que` e `se`) e 5.4 (acentuação, ortografia e formação de palavras); material autoral sem classificação de questão histórica como real.
+- `assets/planner.js` exibe leitura autodeclarada de Português em `progresso.html` sem atribuir pontuação, estudo concluído ou domínio ao CASAN ou IMA.
+- Backup geral v5 em `assets/site.js`: preferência `autoMark` de Português passa a ser exportada e restaurada, usando a chave local `concursos:casan2026:portugues:2026-11-19:subsections:v1:settings`. Backups gerais v1–v4 continuam aceitos. A aula importa o seu próprio trecho dos backups gerais v4/v5, sem sobrescrever dados de outras disciplinas.
+- A restauração sempre requer ação explícita e confirmação do usuário. Não transferir nem publicar progresso pessoal no GitHub.
+- Verificar acesso ao Pages e testes reais de navegador; validação de commit, HTML e scripts não equivale a teste interativo em todas as plataformas.
