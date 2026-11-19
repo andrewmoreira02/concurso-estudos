@@ -7,25 +7,23 @@ import { pathToFileURL } from 'node:url';
 const chrome=process.env.CHROME_BIN||['/usr/bin/google-chrome','/usr/bin/chromium'].find(existsSync);
 if(!chrome||!existsSync(chrome))throw new Error('Chromium indisponível');
 const browser=await chromium.launch({headless:true,executablePath:chrome,args:['--no-sandbox','--allow-file-access-from-files']});
-const USER_ID='10000000-0000-4000-8000-000000000001';
 const remote=new Map();
 let calls=0;
-const auth={access_token:'test-access',refresh_token:'test-refresh',expires_in:3600,user:{id:USER_ID,email:'teste@example.org'}};
+const PAIR='U'.repeat(43);
 function ok(route,body,status=200){return route.fulfill({status,contentType:'application/json',body:JSON.stringify(body)});}
 async function attach(page){
  await page.route('https://test.supabase.co/**',async route=>{
    const req=route.request(),u=new URL(req.url()),p=u.pathname,method=req.method();calls++;
-   if(p==='/auth/v1/token'&&method==='POST')return ok(route,auth);
-   if(p==='/auth/v1/user'&&method==='GET')return ok(route,auth.user);
-   if(p==='/auth/v1/signup')return ok(route,{user:auth.user});
-   if(p==='/auth/v1/logout')return ok(route,{},204);
-   if(p==='/rest/v1/concurso_sync_items'&&method==='GET')return ok(route,[...remote].map(([item_key,value])=>({item_key,payload:{value}})));
-   if(p==='/rest/v1/concurso_sync_items'&&method==='POST'){
-     const entries=JSON.parse(req.postData()||'[]');
-     for(const e of entries){if(e.user_id!==USER_ID)throw new Error('User id inválido no envio');remote.set(e.item_key,e.payload.value);}
-     return ok(route,[]);
+   if(p!=='/functions/v1/concurso-pareamento')throw Error('Endpoint inesperado: '+method+' '+p);
+   if(req.headers()['x-concurso-key']!==PAIR)return ok(route,{error:'Código inválido'},401);
+   if(method==='GET')return ok(route,{items:[...remote].map(([item_key,value])=>({item_key,payload:{value}}))});
+   if(method==='POST'){
+     const entries=JSON.parse(req.postData()||'{}').items||[];
+     for(const e of entries)remote.set(e.item_key,e.payload.value);
+     return ok(route,{ok:true,count:entries.length});
    }
-   throw Error('Endpoint inesperado: '+method+' '+p);
+   throw Error('Método inesperado: '+method);
+
  });
 }
 async function open(page,seed={}){
@@ -35,11 +33,10 @@ async function open(page,seed={}){
  },{seed});
  await page.goto(pathToFileURL(resolve('conta.html')).href,{waitUntil:'domcontentloaded'});
  await page.locator('#syncSignedOut:not([hidden])').waitFor({timeout:10000});
- await page.locator('input[name=email]').fill('teste@example.org');
- await page.locator('input[name=password]').fill('senha-superteste');
- await page.locator('#syncLoginForm button[type=submit]').click();
+ await page.locator('#syncPairCode').fill(PAIR);
+ await page.locator('#syncConnect').click();
  await page.locator('#syncSignedIn:not([hidden])').waitFor({timeout:10000});
- await page.waitForFunction(()=>!!JSON.parse(localStorage.getItem('ce_private_sync_meta_v1')||'null'),{timeout:10000});
+ await page.waitForFunction(()=>!!JSON.parse(localStorage.getItem('ce_private_sync_pair_meta_v2')||'null'),{timeout:10000});
 }
 const pt='concursos:casan2026:portugues:2026-11-19:subsections:v1';
 const rlm='concursos_rlm_sections_read_v3';
