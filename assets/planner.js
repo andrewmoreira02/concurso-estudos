@@ -5,6 +5,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const KEY={done:'ce_plan_done_v1',available:'ce_available_days_v1',logs:'ce_question_logs_v1',review:'ce_review_done_v1'};
+const PORTUGUESE_KEY='concursos:casan2026:portugues:2026-11-19:subsections:v1';
 let EXAMS=Object.create(null);
 let CONFIG=null;
 const SUBJECTS={ti:'Tecnologia da Informação',portugues:'Português',rlm:'Raciocínio Lógico',legislacao:'Legislação',adm:'Administração Pública',atualidades:'Atualidades'};
@@ -182,6 +183,17 @@ function stepsCount(key,max){
  const v=read(key,[]);
  return Array.isArray(v)?Math.min(new Set(v.filter(x=>typeof x==='string')).size,max):0;
 }
+function portugueseReadCount(){
+ const doc=read(PORTUGUESE_KEY,null);
+ if(!doc||doc.lesson!=='CASAN_2026_PT_2026_11_19'||!doc.read||typeof doc.read!=='object'||Array.isArray(doc.read))return 0;
+ const maxByModule={1:3,2:4,3:4,4:4,5:4,6:2};
+ let count=0;
+ for(const [id,checked] of Object.entries(doc.read)){
+   const match=id.match(/^pt19-([1-6])-(\d+)$/);
+   if(checked===true && match && Number(match[2])>=1 && Number(match[2])<=maxByModule[Number(match[1])])count++;
+ }
+ return Math.min(count,21);
+}
 // Nunca publicar histórico pessoal de desempenho no JavaScript do repositório.
 // Somente respostas registradas no navegador originam indicadores individuais.
 function initProgress(){
@@ -204,13 +216,15 @@ function initProgress(){
      matrix.append(item);
    }
    const read=$('readingStats');clear(read);
-   const rlmc=stepsCount('concurso_rlm_steps_v1',71),engc=stepsCount('concurso_eng_qualidade_steps_v1',37);
+   const rlmc=stepsCount('concurso_rlm_steps_v1',71),engc=stepsCount('concurso_eng_qualidade_steps_v1',37),ptc=portugueseReadCount();
    [
      {label:'RLM · material compartilhado',count:rlmc,max:71},
-     {label:'Engenharia/Qualidade · HTML',count:engc,max:37}
+     {label:'Engenharia/Qualidade · HTML',count:engc,max:37},
+     {label:'Português · aula CASAN 19/11 (leitura, não desempenho IMA)',count:ptc,max:21,href:'aulas/portugues-casan-19-11.html'}
    ].forEach(x=>{
      const entry=elem('div',{class:'evidence-item'});
      attach(entry,elem('strong',{},x.label),elem('p',{},x.count+' de '+x.max+' subseções marcadas como lidas neste navegador'),bar(x.count,x.max));
+     if(x.href)entry.append(elem('a',{href:x.href},'Abrir aula de Português'));
      read.append(entry);
    });
    const tags=$('topicEvidence');clear(tags);
@@ -243,7 +257,7 @@ function initProgress(){
    count.append(elem('p',{class:'note-small'},'Estes totais representam apenas as sessões registradas neste navegador; não constituem estimativa de domínio de todo o edital.'));
  }
  chooser.addEventListener('change',()=>{history.replaceState(null,'',location.pathname+'?concurso='+chooser.value);render();});
- addEventListener('storage',e=>{if([KEY.logs,'concurso_rlm_steps_v1','concurso_eng_qualidade_steps_v1'].includes(e.key))render();});
+ addEventListener('storage',e=>{if([KEY.logs,'concurso_rlm_steps_v1','concurso_eng_qualidade_steps_v1',PORTUGUESE_KEY].includes(e.key))render();});
  render();
 }
 const REVIEW_GUIDANCE=[
