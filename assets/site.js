@@ -26,9 +26,16 @@
   }
   function readModules() {
     try {
-      let raw = localStorage.getItem(MODULE_KEY);
-      if (raw === null) raw = localStorage.getItem(LEGACY_MODULE_KEY);
-      return Array.isArray(safeParse(raw)) ? safeParse(raw).filter(x => typeof x === 'string' && MOD_RE.test(x)) : [];
+      // Backups de módulo são históricos: não convertem em etapas lidas.
+      // Unir registros das duas chaves legadas e do formato novo evita perdas.
+      const revised=safeParse(localStorage.getItem(NEW_STEP_KEY));
+      const sources=[
+        revised&&Array.isArray(revised.legacyModules)?revised.legacyModules:[],
+        safeParse(localStorage.getItem(MODULE_KEY)),
+        safeParse(localStorage.getItem(LEGACY_MODULE_KEY))
+      ];
+      return [...new Set(sources.flatMap(x=>Array.isArray(x)?x:[])
+        .filter(x=>typeof x==='string'&&MOD_RE.test(x)))];
     } catch { return []; }
   }
   function setStatus(message, error = false) {
@@ -250,7 +257,14 @@
             }
           }
         } else if(['rlm-shared-progress','casan-rlm-progress'].includes(data.format) && Array.isArray(data.markedAsStudied)){
-          steps=readSteps(); modules=data.markedAsStudied;
+          steps=readSteps(); modules=[...new Set([...readModules(),...data.markedAsStudied])];
+        } else if(data.format==='concursos-rlm-leitura'&&data.version===3&&Array.isArray(data.readSections)){
+          // Importação do backup RLM criado dentro da aula, sem alterar disciplinas externas.
+          if(!data.readSections.every(x=>typeof x==='string'&&/^m(?:[1-9]|10|11)-s\d+$/.test(x)))throw Error('IDs de RLM inválidos');
+          const legacy=data.legacyModules===undefined?[]:data.legacyModules;
+          if(!Array.isArray(legacy))throw Error('módulos antigos inválidos');
+          steps=data.readSections.map(x=>{const m=x.match(/^m(\d+)-s(\d+)$/);return Number(m[1])+'.'+Number(m[2]);});
+          modules=[...new Set([...readModules(),...legacy])];
         } else throw Error('formato de backup não reconhecido');
         if(steps.length>MAX_STEP || !steps.every(x=>typeof x==='string' && STEP_RE.test(x))) throw Error('subseções inválidas');
         if(modules.length>11 || !modules.every(x=>typeof x==='string' && MOD_RE.test(x))) throw Error('módulos inválidos');
