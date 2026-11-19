@@ -6,6 +6,9 @@ on:
       - 'aulas/**'
       - 'assets/**'
       - 'scripts/verificar-mobile.mjs'
+      - 'scripts/verificar-sincronizacao.mjs'
+      - 'supabase/schema.sql'
+      - 'conta.html'
       - '.github/workflows/validar-mobile.yml'
       - 'index.html'
       - 'aulas.html'
@@ -17,6 +20,9 @@ on:
       - 'aulas/**'
       - 'assets/**'
       - 'scripts/verificar-mobile.mjs'
+      - 'scripts/verificar-sincronizacao.mjs'
+      - 'supabase/schema.sql'
+      - 'conta.html'
       - '.github/workflows/validar-mobile.yml'
       - 'index.html'
       - 'aulas.html'
@@ -35,5 +41,9 @@ jobs:
           node-version: '22'
       - name: Instalar dependência de navegador de teste
         run: npm install --no-save --ignore-scripts playwright-core@1.55.1
+      - name: Validar sintaxe da sincronização
+        run: node --check assets/sync.js && node --check scripts/verificar-sincronizacao.mjs
       - name: Testar 320, 390 e 430 px
         run: node scripts/verificar-mobile.mjs
+      - name: Testar sincronização simulada entre dois aparelhos
+        run: node scripts/verificar-sincronizacao.mjs
