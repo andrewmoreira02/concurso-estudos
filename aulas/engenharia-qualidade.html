@@ -74,6 +74,36 @@ a{color:var(--aqua)} button,input,textarea{font:inherit} button{cursor:pointer} 
 @media(max-width:620px){.read-btn{width:100%}.step-marker{align-items:stretch}.section-end .check-btn{width:100%}.module-counter,.module-full-status{font-size:10px}.step-navigation a{font-size:12px}.section-end .bulk-help{max-width:none}}
 @media print{.subnav,.read-btn,.step-navigation,.reading-preference,.module-counter,.module-full-status,.legacy-summary,.skip-link{display:none!important}}
 
+
+/* Leitura confortável com índice de módulo e subseção no celular. */
+@media(max-width:900px){
+ .mobile-nav{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px 9px;position:sticky;top:0;z-index:24;padding:10px;margin:10px 0 15px;box-shadow:0 7px 20px rgba(0,0,0,.15)}
+ .mobile-nav label{font-size:12px;font-weight:750;color:var(--ink)}
+ .mobile-nav select{min-width:0;width:100%;margin:0;min-height:44px;font-size:16px}
+ .section,.step-marker{scroll-margin-top:100px}
+}
+@media(max-width:700px){
+ body{font-size:17px;line-height:1.7;overflow-wrap:break-word}
+ .masthead{position:relative;z-index:1;flex-direction:column;align-items:stretch;gap:10px;padding:12px}
+ .header-actions{justify-content:flex-start;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ .header-actions .btn{min-height:44px;padding:8px 5px;font-size:12px;text-align:center}
+ .wrap{min-width:0;padding:12px 12px calc(95px + env(safe-area-inset-bottom));gap:12px}
+ .main{min-width:0;width:100%}
+ .hero{padding:25px 18px;border-radius:16px}
+ .section{min-width:0;margin:18px 0;padding:21px 16px}
+ .section h2{font-size:clamp(24px,6.4vw,29px)}
+ .section h3{font-size:19px;line-height:1.4}
+ .step-marker{gap:9px;scroll-margin-top:100px}
+ .read-btn,.step-navigation a,.section-end button,.study-buttons .btn,.mini-action{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+ .step-navigation{flex-wrap:wrap}
+ .step-navigation a{flex:1 1 120px}
+ .table-scroll,.flowline,pre,.code,.diagram{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .section img,.section svg{max-width:100%;height:auto}
+ .grid2,.grid3,.twocol,.overview,.summarymap{min-width:0}
+}
+@media(max-width:370px){.header-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:18px 13px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
 </style>
 </head>
 <body><a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
@@ -90,7 +120,7 @@ a{color:var(--aqua)} button,input,textarea{font:inherit} button{cursor:pointer} 
 <a class="side-link" href="#sec9"><span class="num">09</span>Revisão dirigida<span class="module-nav-count" data-side-count="sec9">0/3</span></a><div aria-label="Subseções do módulo 9" class="subnav" role="group"><a class="sub-link" href="#etapa-9-1"><span aria-hidden="true" class="nav-dot">○</span>9.1 — Princípios SOLID no caso de OS</a><a class="sub-link" href="#etapa-9-2"><span aria-hidden="true" class="nav-dot">○</span>9.2 — Padrões GoF em exemplos</a><a class="sub-link" href="#etapa-9-3"><span aria-hidden="true" class="nav-dot">○</span>9.3 — Scrum, Kanban, XP e cascata</a></div>
 <a class="side-link" href="#sec10"><span class="num">10</span>Mapa final + anotações<span class="module-nav-count" data-side-count="sec10">0/3</span></a><div aria-label="Subseções do módulo 10" class="subnav" role="group"><a class="sub-link" href="#etapa-10-1"><span aria-hidden="true" class="nav-dot">○</span>10.1 — Mapa mental visual</a><a class="sub-link" href="#etapa-10-2"><span aria-hidden="true" class="nav-dot">○</span>10.2 — Armadilhas conceituais</a><a class="sub-link" href="#etapa-10-3"><span aria-hidden="true" class="nav-dot">○</span>10.3 — Notas e próximos passos</a></div>
 </nav><div class="side-footer"><strong>Meu percurso</strong><p style="margin:5px 0 11px">Marque “Lido” em cada subseção após a leitura. Isso não comprova estudo ou domínio.</p><div aria-label="Proporção de subseções marcadas como lidas" class="bar"><i id="progressBar"></i></div><p id="progressText" style="margin:8px 0 0">0/37 subseções lidas · 0/10 módulos completos</p></div><div class="side-footer"><strong>Não é um simulado</strong><p style="margin:7px 0 0">Somente teoria, exemplos resolvidos e dicas de memorização. Marcação local não comprova domínio.</p></div></div></aside>
-<main class="main" id="conteudo"><div class="mobile-nav"><label for="mobileSelect">Ir para a seção</label><select id="mobileSelect"><option value="#sec1">01 · Requisitos e processos</option><option value="#sec2">02 · UML na prática</option><option value="#sec3">03 · Arquitetura de software</option><option value="#sec4">04 · Testes e qualidade</option><option value="#sec5">05 · TDD × BDD</option><option value="#sec6">06 · Git e versionamento</option><option value="#sec7">07 · CI/CD e DevOps</option><option value="#sec8">08 · SO, Docker e nuvem</option><option value="#sec9">09 · Revisão dirigida</option><option value="#sec10">10 · Mapa final</option></select></div>
+<main class="main" id="conteudo"><div class="mobile-nav"><label for="mobileSelect">Módulo</label><label for="mobileStepSelect">Subseção</label><select id="mobileSelect"><option value="#sec1">01 · Requisitos e processos</option><option value="#sec2">02 · UML na prática</option><option value="#sec3">03 · Arquitetura de software</option><option value="#sec4">04 · Testes e qualidade</option><option value="#sec5">05 · TDD × BDD</option><option value="#sec6">06 · Git e versionamento</option><option value="#sec7">07 · CI/CD e DevOps</option><option value="#sec8">08 · SO, Docker e nuvem</option><option value="#sec9">09 · Revisão dirigida</option><option value="#sec10">10 · Mapa final</option></select><select id="mobileStepSelect" aria-label="Ir para uma subseção"><option value="">Escolha uma etapa…</option></select></div>
 <section class="hero" id="inicio"><div class="eyebrow">AULA DE 18/11/2026 · VERSÃO REVISTA EM 19/11/2026</div><h1>Engenharia de <em>Software</em> e Qualidade</h1><p class="lead">Aula completa para leitura autônoma: requisitos → UML → arquitetura → testes → Git → CI/CD, com exemplos concretos de ordens de serviço, diagramas e pontos de atenção.</p><div class="chips"><span class="chip">Conhecimentos Específicos</span><span class="chip">CASAN · Analista de Sistemas</span><span class="chip">Revisão para prova</span><span class="chip">Sem questões</span></div><div class="hero-foot"><a class="btn accent" href="#sec1" style="text-decoration:none">Iniciar pelo capítulo 1</a><span class="hero-caption">Leitura independente, em ritmo próprio. Use os números das subseções para localizar exemplos.</span></div></section>
 <div class="overview"><div class="metric"><b>10 / 37</b><span>MÓDULOS / SUBSEÇÕES</span></div><div class="metric"><b>25/50</b><span>QUESTÕES CASAN SÃO ESPECÍFICOS</span></div><div class="metric"><b>22/11</b><span>DATA DA PROVA CASAN</span></div></div>
 <div class="notice before-sections"><span class="symbol">◎</span><div><b>Como usar esta aula</b><p>Leia uma subseção por vez, examine o exemplo e só então marque “Lido”. Os controles são reversíveis e não registram estudo, avaliação nem domínio. Por padrão, avançar não marca a leitura automaticamente. Os subtítulos internos pertencem à respectiva subseção principal e não são controles de leitura adicionais.</p><p>O progresso fica neste navegador quando o armazenamento permitir; exporte um backup JSON antes de trocar de aparelho. Marcações da versão antiga por capítulo são preservadas como LEGADO, sem transformar subseções em lidas.</p></div></div><div class="notice before-sections" role="note"><span class="symbol">↪</span><div><b>Prioridade atual de estudos</b><div>O arquivo de continuidade da CASAN mantém <b>RLM, módulo 6.1 — Análise Combinatória</b> como próximo foco de estudo. Esta página de Engenharia/Qualidade está <b>preparada, mas sem confirmação de aula ministrada</b>; utilize-a quando chegar a esse bloco ou mediante pedido explícito.</div></div></div><div aria-label="Controles do progresso local" class="study-tools"><div><strong>Registro de leitura (não é avaliação)</strong><p>Cada subseção pode ser marcada ou desmarcada. O resumo mostra leitura declarada, não desempenho. Dados locais não são sincronizados com a Biblioteca nem entre dispositivos.</p></div><label class="reading-preference" for="markOnNext"><input id="markOnNext" type="checkbox"/> Marcar subseção atual como “Lido” ao clicar em Próxima (opcional)</label><div class="study-buttons"><button class="btn" id="exportBackup" type="button">Exportar progresso JSON</button><button class="btn" id="importBackup" type="button">Importar progresso JSON</button><input accept="application/json,.json" hidden="" id="importFile" type="file"/><button class="btn" id="copyProgress" type="button">Copiar resumo de leitura</button></div><p aria-live="polite" class="storage-status" id="storageStatus" role="status">Carregando registro local…</p><p class="legacy-summary" id="legacyStatus" role="note">Histórico da versão anterior: não há marcação legada detectada.</p></div>
@@ -317,5 +347,20 @@ git push -u origin feature/prioridade-os</pre><nav aria-label="Navegação da su
     moduleIds.forEach(id=>io.observe($(id)));
   }
 })();
-</script></body>
+</script>
+<script>
+/* Índice de subseções: navegação sem alterar estado de leitura. */
+(()=>{'use strict';
+ const select=document.getElementById('mobileStepSelect');if(!select)return;
+ document.querySelectorAll('.step-marker[id^="etapa-"]').forEach(marker=>{
+  const option=document.createElement('option');option.value='#'+marker.id;
+  option.textContent=marker.querySelector('.step-anchor')?.textContent.trim()||marker.dataset.stepTitle||marker.id;
+  select.add(option);
+ });
+ select.addEventListener('change',()=>{if(select.value)location.hash=select.value;});
+ const sync=()=>{const hash=location.hash;select.value=[...select.options].some(o=>o.value===hash)?hash:'';};
+ window.addEventListener('hashchange',sync);sync();
+})();
+</script>
+</body>
 </html>
