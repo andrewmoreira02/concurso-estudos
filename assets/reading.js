@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if(isEng){try{const saved=JSON.parse(safeRead(progressKey)||'[]'); if(Array.isArray(saved)) engRead=new Set(saved.filter(v=>knownCodes.has(v)));}catch{}}
   const menu=document.createElement('details');
   menu.className='study-menu';
-  menu.innerHTML='<summary aria-label="Abrir menu de navegação">☰ Menu</summary><nav aria-label="Menu de aulas"><a href="../index.html">Início · Painel</a><a href="../aulas.html">Todas as aulas</a><a href="rlm.html">Raciocínio Lógico-Matemático</a><a href="engenharia-qualidade.html">Engenharia e Qualidade</a></nav>';
+  menu.innerHTML='<summary aria-label="Abrir menu de navegação">☰ Menu</summary><nav aria-label="Menu de aulas"><a href="../index.html">Início · Painel</a><a href="../aulas.html">Todas as aulas</a><a href="../planejamento.html">Planejamento semanal</a><a href="../progresso.html">Progresso por assunto</a><a href="../revisoes.html">Revisões dirigidas</a><a href="rlm.html">Raciocínio Lógico-Matemático</a><a href="engenharia-qualidade.html">Engenharia e Qualidade</a></nav>';
   const area=isRlm?document.querySelector('.topactions'):document.querySelector('.header-actions');
   if(area){
     if(isRlm){const old=area.querySelector('a[href="../index.html"]');if(old)old.remove();}
