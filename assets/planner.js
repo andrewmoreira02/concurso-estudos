@@ -125,13 +125,15 @@ function initPlanning(){
  });
  $('availabilityText').textContent=available.size?available.size+' dia(s) selecionado(s), registro local.':'Nenhum dia selecionado. Os dias de IMA são sugestões, não compromisso confirmado.';
  let week=weekStart(TODAY);
+ const calendarDates=[...Object.keys(CONFIG.calendar.special),...CONFIG.calendar.cycles.flatMap(c=>[c.from,c.through])].sort();
+ const firstScheduled=calendarDates[0],lastScheduled=calendarDates[calendarDates.length-1];
  function render(){
    $('weekLabel').textContent=localDateLabel(week)+' – '+localDateLabel(isoAdd(week,6));
    const area=$('weekDays');clear(area);
    const saved=getPlanDone();let total=0,checked=0;
    for(let i=0;i<7;i++){
       const iso=isoAdd(week,i),today=iso===TODAY,isIMADay=CONFIG.calendar.cycles.some(c=>c.exam==='ima'&&iso>=c.from&&iso<=c.through);
-      const card=elem('article',{class:'day-card'+(today?' today':'')+((iso<'2026-11-18'||iso>'2027-02-14')?' outside':'')});
+      const card=elem('article',{class:'day-card'+(today?' today':'')+((iso<firstScheduled||iso>lastScheduled)?' outside':'')});
       const head=elem('header');
       attach(head,elem('strong',{},WEEKDAYS[i]),elem('small',{},localDateLabel(iso,true)));
       card.append(head);
@@ -140,7 +142,7 @@ function initPlanning(){
         card.append(elem('small',{class:'muted-line'},'Disponibilidade não confirmada — roteiro opcional'));
       }
       const tasks=weeklyTasks(iso);
-      if(!tasks.length)card.append(elem('p',{class:'note-small'},iso>'2027-02-14'?'Após a data da prova; reavaliar concurso.':'Sem bloco programado neste registro.'));
+      if(!tasks.length)card.append(elem('p',{class:'note-small'},iso>lastScheduled?'Após as datas cadastradas; reavaliar concurso.':'Sem bloco programado neste registro.'));
       for(const task of tasks){
         const row=elem('div',{class:'day-task'});attach(row,elem('strong',{},task.title),elem('p',{class:'task-extra'},task.detail));
         if(task.href){const l=elem('a',{href:task.href},'Abrir material');row.append(l);}
@@ -340,7 +342,7 @@ function initHome(){
  if(!panel)return;
  const p=priorityFor(TODAY);
  panel.textContent=p.desc;
- const t=$('dynamicFocusTitle');if(t)t.textContent=TODAY<='2026-11-22'?'RLM · Módulo 6':TODAY<='2027-02-14'?'IMA-SC · início do ciclo':'Revisar prioridade';
+ const t=$('dynamicFocusTitle');if(t)t.textContent=p.title;
  const b=$('dynamicFocusLink');if(b){b.textContent=p.link;b.href=p.href;}
  const note=$('dynamicFocusNote');if(note)note.textContent=p.origin;
  const examSummary=$('examSummary');
