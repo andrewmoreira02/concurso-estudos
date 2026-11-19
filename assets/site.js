@@ -122,11 +122,11 @@
   }
   function validSession(x) {
     return x && typeof x==='object' && typeof x.id==='string' &&
-      /^session-\\d+-[a-z0-9]+$/.test(x.id) &&
+      /^session-\d+-[a-z0-9]+$/.test(x.id) &&
       ['casan','ima'].includes(x.exam) &&
       ['ti','portugues','rlm','legislacao','adm','atualidades'].includes(x.subject) &&
       typeof x.topic==='string' && x.topic.length>=2 && x.topic.length<=100 &&
-      typeof x.date==='string' && /^\\d{4}-\\d{2}-\\d{2}$/.test(x.date) &&
+      typeof x.date==='string' && /^\d{4}-\d{2}-\d{2}$/.test(x.date) &&
       Number.isInteger(x.valid) && x.valid>=1 && x.valid<=500 &&
       Number.isInteger(x.correct) && x.correct>=0 && x.correct<=x.valid &&
       Number.isInteger(x.annulled) && x.annulled>=0 && x.annulled<=500 &&
@@ -137,7 +137,7 @@
     if(!value||typeof value!=='object')throw Error('Dados do painel não encontrados');
     const {planDone, available, questionLogs, reviewDone}=value;
     if(!planDone||typeof planDone!=='object'||Array.isArray(planDone)||
-       !Object.entries(planDone).every(([k,v])=>/^\\d{4}-\\d{2}-\\d{2}::[a-z0-9-]{2,30}$/.test(k)&&typeof v==='boolean'))throw Error('Plano inválido');
+       !Object.entries(planDone).every(([k,v])=>/^\d{4}-\d{2}-\d{2}::[a-z0-9-]{2,30}$/.test(k)&&typeof v==='boolean'))throw Error('Plano inválido');
     if(!Array.isArray(available)||available.length>7||
       !available.every(x=>Number.isInteger(x)&&x>=0&&x<=6))throw Error('Dias disponíveis inválidos');
     if(!Array.isArray(questionLogs)||questionLogs.length>2000||
@@ -146,7 +146,7 @@
     if(ids.size!==questionLogs.length)throw Error('IDs duplicados de questões');
     if(!reviewDone||typeof reviewDone!=='object'||Array.isArray(reviewDone)||
       !Object.entries(reviewDone).every(([k,v])=>{
-        const parts=k.match(/^(session-\\d+-[a-z0-9]+)-(1|3|7)$/);
+        const parts=k.match(/^(session-\d+-[a-z0-9]+)-(1|3|7)$/);
         return parts && ids.has(parts[1]) && typeof v==='boolean';
       }))throw Error('Fila de revisões inválida');
     return value;
