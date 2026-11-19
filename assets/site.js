@@ -173,10 +173,62 @@
       finally{input.value='';}
     });
   }
+
+  // Catálogo compartilhado: usa somente marcações locais, jamais presume domínio.
+  function readEngineeringSteps(){
+    try {
+      const v=JSON.parse(localStorage.getItem('concurso_eng_qualidade_steps_v1')||'[]');
+      return Array.isArray(v) ? [...new Set(v.filter(x=>typeof x==='string' && /^(?:[1-9]|10)\.(?:[1-9]|[1-9]\d)$/.test(x)))].slice(0,37) : [];
+    }catch{return [];}
+  }
+  function readEngineeringChapters(){
+    try {
+      const v=JSON.parse(localStorage.getItem('casan1811_checked')||'{}');
+      return v && typeof v==='object' ? Object.keys(v).filter(k=>/^sec(?:[1-9]|10)$/.test(k)&&v[k]) : [];
+    }catch{return [];}
+  }
+  function updateCatalogStats(){
+    const setValue=(textId,barId,fillId,n,total)=>{
+      const label=$(textId),bar=$(barId),fill=$(fillId);
+      if(label)label.textContent=n+' de '+total;
+      if(bar)bar.setAttribute('aria-valuenow',String(n));
+      if(fill)fill.style.width=(100*n/total).toFixed(2)+'%';
+    };
+    setValue('catalogRlmRead','catalogRlmBar','catalogRlmFill',readSteps().length,71);
+    setValue('catalogEngRead','catalogEngBar','catalogEngFill',readEngineeringSteps().length,37);
+  }
+  function initCatalog(){
+    const input=$('lessonSearch'),cards=[...document.querySelectorAll('.catalog-card')];
+    if(!input)return;
+    const filters=[...document.querySelectorAll('[data-filter]')];
+    let active='todas';
+    function apply(){
+      const q=input.value.trim().toLocaleLowerCase('pt-BR');
+      let visible=0;
+      cards.forEach(card=>{
+        const text=(card.dataset.search||'')+' '+card.textContent.toLocaleLowerCase('pt-BR');
+        const show=(active==='todas'||card.dataset.category===active)&&text.includes(q);
+        card.hidden=!show;
+        if(show)visible++;
+      });
+      const empty=$('emptyCatalog');if(empty)empty.hidden=visible!==0;
+      const count=$('catalogCount');if(count)count.textContent=visible+' aula(s) encontrada(s)';
+    }
+    input.addEventListener('input',apply);
+    filters.forEach(button=>button.addEventListener('click',()=>{
+      active=button.dataset.filter;
+      filters.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+      apply();
+    }));
+    apply();
+  }
   document.addEventListener('DOMContentLoaded', () => {
     setupLesson();
     installBackup();
     paintDashboard();
-    addEventListener('storage', e=> {if([STEP_KEY,MODULE_KEY].includes(e.key)){paintLesson();paintDashboard();}});
+    initCatalog();
+    updateCatalogStats();
+    addEventListener('concurso:read-change',()=>{paintDashboard();updateCatalogStats();});
+    addEventListener('storage', e=> {if([STEP_KEY,MODULE_KEY,'concurso_eng_qualidade_steps_v1'].includes(e.key)){paintLesson();paintDashboard();updateCatalogStats();}});
   });
 })();
