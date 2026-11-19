@@ -14,7 +14,7 @@ const browser = await chromium.launch({
 const pages = [
   'aulas/rlm.html', 'aulas/engenharia-qualidade.html',
   'aulas/portugues-casan-19-11.html',
-  'index.html', 'aulas.html', 'planejamento.html', 'progresso.html', 'revisoes.html',
+  'index.html', 'aulas.html', 'planejamento.html', 'progresso.html', 'revisoes.html', 'conta.html',
 ];
 let assertions = 0;
 function check(ok, message) { assertions++; if (!ok) throw new Error(message); }
