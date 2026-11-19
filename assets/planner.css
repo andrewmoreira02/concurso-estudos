@@ -84,3 +84,18 @@
 @media(max-width:820px){.span-8,.span-6,.span-4{grid-column:span 12}.week-days{grid-template-columns:repeat(2,minmax(0,1fr))}.field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.option-days{grid-template-columns:repeat(7,minmax(0,1fr))}}
 @media(max-width:530px){.workspace{padding-top:20px}.week-days{grid-template-columns:1fr}.day-card{min-height:0}.field-grid{grid-template-columns:1fr}.field-grid .wide{grid-column:span 1}.option-days{grid-template-columns:repeat(4,minmax(0,1fr))}.panel{padding:16px}.week-nav{align-items:start;flex-direction:column}}
 @media print{.primary-nav,.button-bar,.task-done,.study-menu,.week-nav .ui-btn{display:none!important}.week-days{display:grid;grid-template-columns:repeat(3,1fr)}}
+
+
+/* Formulários e agenda: área de toque e largura segura em smartphones. */
+@media(max-width:700px){
+ .workspace{padding-top:18px;padding-bottom:45px;min-width:0}
+ .workspace-intro{margin-bottom:18px}
+ .workspace-intro h1{font-size:clamp(27px,7.5vw,36px)}
+ .week-days,.day-card,.workspace-grid,.field-grid,.table-scroller,.workspace .card{min-width:0}
+ .table-scroller{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .button-bar{display:flex;flex-wrap:wrap;gap:8px}
+ .ui-btn,.week-nav button,.button-bar button,.workspace select,.workspace input:not([type="checkbox"]):not([type="radio"]),.workspace textarea{min-height:44px}
+ .workspace select,.workspace input:not([type="checkbox"]):not([type="radio"]),.workspace textarea{max-width:100%;font-size:16px}
+ .day-card{padding:14px}
+}
+@media(max-width:370px){.workspace-intro h1{font-size:27px}}
