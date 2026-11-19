@@ -145,7 +145,7 @@
   function validSession(x) {
     return x && typeof x==='object' && typeof x.id==='string' &&
       /^session-\d+-[a-z0-9]+$/.test(x.id) &&
-      ['casan','ima'].includes(x.exam) &&
+      typeof x.exam==='string' && /^[a-z][a-z0-9_-]{1,39}$/.test(x.exam) &&
       ['ti','portugues','rlm','legislacao','adm','atualidades'].includes(x.subject) &&
       typeof x.topic==='string' && x.topic.length>=2 && x.topic.length<=100 &&
       typeof x.date==='string' && /^\d{4}-\d{2}-\d{2}$/.test(x.date) &&
