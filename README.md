@@ -1,31 +1,34 @@
 # Concurso Estudos
 
-Site de leitura para concursos, hospedável no **GitHub Pages**. Interface em português e tema escuro.
+Site de estudos por concurso, publicado em GitHub Pages, com HTML/CSS/JavaScript responsivos e progresso local de leitura.
 
-## Abrir
+## Navegação
 
-Após ativar **Settings → Pages → Deploy from a branch → main / (root)**:
+- [Início](https://andrewmoreira02.github.io/concurso-estudos/) — painel geral.
+- [Todas as aulas](https://andrewmoreira02.github.io/concurso-estudos/aulas.html) — catálogo pesquisável com filtros.
+- [Raciocínio Lógico-Matemático](https://andrewmoreira02.github.io/concurso-estudos/aulas/rlm.html) — 11 módulos e 71 subseções numeradas.
+- [Engenharia de Software e Qualidade](https://andrewmoreira02.github.io/concurso-estudos/aulas/engenharia-qualidade.html) — 10 capítulos e 37 etapas numeradas; material preparado, sem inferir que foi estudado.
 
-- Página inicial: https://andrewmoreira02.github.io/concurso-estudos/
-- Raciocínio Lógico-Matemático: https://andrewmoreira02.github.io/concurso-estudos/aulas/rlm.html
+Os links públicos dependem de o GitHub Pages estar habilitado e ter publicado a versão atual de `main`. Os arquivos estão no repositório independentemente do estado da publicação.
 
-> O endereço só estará disponível quando o GitHub Pages for ativado e a publicação terminar.
+## Leitura interativa
 
-## Como funciona
+- Cada subseção possui botão **Marcar como lido**, que também permite desfazer.
+- A barra inferior permite navegar com **Anterior** e **Lido e próxima**, este último registrando a etapa ao avançar (com opção de desativar esse comportamento).
+- Em **Opções**, a marcação por rolagem e tempo é **experimental e desativada inicialmente**. Quando ativada, exige pelo menos 25 segundos na etapa e passagem à seguinte, mas não comprova leitura efetiva nem domínio.
+- O progresso das subseções de RLM permanece em `concurso_rlm_steps_v1`; o de Engenharia, em `concurso_eng_qualidade_steps_v1`. Marcação de módulo/capítulo é mantida separadamente.
+- Progresso e preferências são salvos no `localStorage` quando disponível. O painel exporta/importa JSON com as duas aulas (formato v2, compatível com backups anteriores de RLM). A aula de Engenharia também inclui suas subseções no backup próprio.
 
-- `index.html`: painel com acesso aos materiais e progresso de RLM.
-- `aulas/rlm.html`: aula completa compartilhada, 11 módulos e 71 subseções.
-- `assets/site.css`: estilos do painel.
-- `assets/site.js`: marcação **Lido** independente por subseção, progresso, backup e restauração.
+## Organização
 
-Ao marcar uma subseção, o progresso é salvo no `localStorage` sob a chave `concurso_rlm_steps_v1`. A marcação dos módulos usa a chave `rlm_shared_done_v1` do material anterior, mantendo a leitura do legado `casan_rlm_done_v1`.
+- `index.html` — página inicial e progresso.
+- `aulas.html` — catálogo pesquisável; registrar aqui links somente quando o material estiver de fato publicado.
+- `aulas/*.html` — materiais didáticos.
+- `assets/site.css` e `assets/site.js` — estrutura do painel, catálogo, progresso e backup.
+- `assets/reading.css` e `assets/reading.js` — menu, controles por etapa e navegação assistida.
 
-**Importante:** GitHub Pages é hospedagem estática. Não há login nem sincronização de progresso entre navegadores ou aparelhos. O salvamento local pode ser apagado com os dados do navegador. Utilize o backup JSON caso pretenda trocar de dispositivo. A marcação de leitura não indica domínio avaliado e não atualiza a Biblioteca do Projeto ChatGPT.
+Mantenha identificadores de aula e subseção estáveis ao publicar versões novas, para preservar o histórico local.
 
-## Atualizar materiais
+## Limitações e privacidade
 
-Alterações enviadas à branch `main` serão disponibilizadas pelo GitHub Pages quando o serviço estiver ativo. Para modificar o conteúdo da aula, preserve os identificadores `data-lesson-step="6.1"` e assim por diante: eles permitem manter as marcações de leitura depois de uma atualização.
-
-## Privacidade
-
-**Não publique dados pessoais ou documentos sensíveis** no repositório público. O progresso salvo no navegador não é automaticamente publicado no GitHub.
+GitHub Pages fornece hospedagem **estática**: o progresso não sincroniza entre navegador, computador e celular sem configurar serviço externo e login. A limpeza de dados do navegador pode apagar o registro local. Não publique progresso, anotações privadas ou credenciais no repositório público. Os registros do site não alteram automaticamente os arquivos `.md` da Biblioteca do Projeto ChatGPT.
