@@ -118,9 +118,10 @@
   function backup() {
     return {
       format:'concurso-estudos-progress',
-      version:1,
+      version:2,
       savedAt:new Date().toISOString(),
       rlm:{readSubsections:readSteps(),readModules:readModules()},
+      engenharia:{readSubsections:readEngineeringSteps(),readChapters:readEngineeringChapters()},
       interpretation:'As marcações são de leitura, não evidência de domínio.'
     };
   }
@@ -154,19 +155,31 @@
         if (file.size>120000) throw Error('arquivo acima de 120 KB');
         const data=safeParse(await file.text());
         if (!data || typeof data !== 'object') throw Error('JSON inválido');
-        let steps, modules;
-        if(data.format==='concurso-estudos-progress' && data.version===1 && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
+        let steps, modules, engSteps=null, engChapters=null;
+        if(data.format==='concurso-estudos-progress' && [1,2].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
           steps=data.rlm.readSubsections;modules=data.rlm.readModules;
+          if(data.version===2){
+            if(!data.engenharia || !Array.isArray(data.engenharia.readSubsections) || !Array.isArray(data.engenharia.readChapters))throw Error('Backup de Engenharia incompleto');
+            engSteps=data.engenharia.readSubsections;engChapters=data.engenharia.readChapters;
+          }
         } else if(['rlm-shared-progress','casan-rlm-progress'].includes(data.format) && Array.isArray(data.markedAsStudied)){
           steps=readSteps(); modules=data.markedAsStudied;
         } else throw Error('formato de backup não reconhecido');
         if(steps.length>MAX_STEP || !steps.every(x=>typeof x==='string' && STEP_RE.test(x))) throw Error('subseções inválidas');
         if(modules.length>11 || !modules.every(x=>typeof x==='string' && MOD_RE.test(x))) throw Error('módulos inválidos');
+        if(engSteps!==null && (engSteps.length>37 || !engSteps.every(x=>typeof x==='string' && /^(?:[1-9]|10)\.(?:[1-9]|[1-9]\d)$/.test(x))))throw Error('subseções de Engenharia inválidas');
+        if(engChapters!==null && (engChapters.length>10 || !engChapters.every(x=>typeof x==='string' && /^sec(?:[1-9]|10)$/.test(x))))throw Error('capítulos de Engenharia inválidos');
         const validSteps = document.querySelectorAll('[data-lesson-step]').length
           ? new Set([...document.querySelectorAll('[data-lesson-step]')].map(n=>n.getAttribute('data-lesson-step'))) : null;
         if(validSteps && !steps.every(x=>validSteps.has(x))) throw Error('subseção não presente nesta aula');
         if(!storeSteps(steps)) throw Error('armazenamento indisponível');
-        try{localStorage.setItem(MODULE_KEY,JSON.stringify([...new Set(modules)]));} catch {throw Error('não foi possível salvar módulos');}
+        try {
+          localStorage.setItem(MODULE_KEY,JSON.stringify([...new Set(modules)]));
+          if(engSteps!==null){
+            localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify([...new Set(engSteps)]));
+            localStorage.setItem('casan1811_checked',JSON.stringify(Object.fromEntries(engChapters.map(k=>[k,true]))));
+          }
+        } catch {throw Error('não foi possível salvar progresso');}
         setStatus('✓ Progresso restaurado. Atualizando…');
         location.reload();
       } catch(e) {setStatus('⚠ Não foi possível restaurar: '+e.message,true);}
