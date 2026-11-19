@@ -180,7 +180,8 @@
     const read=doc&&doc.lesson===PORTUGUESE_LESSON&&doc.read&&typeof doc.read==='object'&&!Array.isArray(doc.read)?doc.read:{};
     const cleaned={};
     for(const [id,value] of Object.entries(read))if(/^pt19-[1-6]-[1-9]\d*$/.test(id)&&typeof value==='boolean'&&Object.keys(cleaned).length<21)cleaned[id]=value;
-    return {version:1,lesson:PORTUGUESE_LESSON,read:cleaned,legacy:doc&&Array.isArray(doc.legacy)?doc.legacy.slice(0,1000):[]};
+    const preferences=localJSON(PORTUGUESE_KEY+':settings',{});
+    return {version:1,lesson:PORTUGUESE_LESSON,read:cleaned,settings:{autoMark:preferences&&preferences.autoMark===true},legacy:doc&&Array.isArray(doc.legacy)?doc.legacy.slice(0,1000):[]};
   }
   function readPortugueseSteps(){return Object.values(readPortugueseDocument().read).filter(Boolean).length;}
   function backup() {
@@ -190,7 +191,7 @@
     const reviewDone=localJSON('ce_review_done_v1',{});
     return {
       format:'concurso-estudos-progress',
-      version:4,
+      version:5,
       savedAt:new Date().toISOString(),
       rlm:{readSubsections:readSteps(),readModules:readModules()},
       engenharia:{readSubsections:readEngineeringSteps(),readChapters:readEngineeringChapters()},
@@ -235,16 +236,17 @@
         const data=safeParse(await file.text());
         if (!data || typeof data !== 'object') throw Error('JSON inválido');
         let steps, modules, engSteps=null, engChapters=null, newSiteData=null, portugueseDoc=null;
-        if(data.format==='concurso-estudos-progress' && [1,2,3,4].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
+        if(data.format==='concurso-estudos-progress' && [1,2,3,4,5].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
           steps=data.rlm.readSubsections;modules=data.rlm.readModules;
-          if([2,3,4].includes(data.version)){
+          if([2,3,4,5].includes(data.version)){
             if(!data.engenharia || !Array.isArray(data.engenharia.readSubsections) || !Array.isArray(data.engenharia.readChapters))throw Error('Backup de Engenharia incompleto');
             engSteps=data.engenharia.readSubsections;engChapters=data.engenharia.readChapters;
             if(data.version>=3)newSiteData=validateNewData(data.site);
-            if(data.version===4){
+            if(data.version>=4){
               const pt=data.portugues;
               if(!pt||pt.lesson!==PORTUGUESE_LESSON||!pt.read||typeof pt.read!=='object'||Array.isArray(pt.read)||Object.keys(pt.read).length>21||!Object.entries(pt.read).every(([id,value])=>/^pt19-[1-6]-[1-9]\d*$/.test(id)&&typeof value==='boolean'))throw Error('Backup de Português inválido');
-              portugueseDoc={version:1,lesson:PORTUGUESE_LESSON,read:pt.read,legacy:Array.isArray(pt.legacy)?pt.legacy.slice(0,1000):[]};
+              if(data.version===5 && (!pt.settings||typeof pt.settings!=='object'||Array.isArray(pt.settings)||typeof pt.settings.autoMark!=='boolean'))throw Error('Preferência de Português inválida');
+              portugueseDoc={version:1,lesson:PORTUGUESE_LESSON,read:pt.read,legacy:Array.isArray(pt.legacy)?pt.legacy.slice(0,1000):[],settings:data.version===5?{autoMark:pt.settings.autoMark}:null};
             }
           }
         } else if(['rlm-shared-progress','casan-rlm-progress'].includes(data.format) && Array.isArray(data.markedAsStudied)){
@@ -265,7 +267,11 @@
             localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify([...new Set(engSteps)]));
             localStorage.setItem('casan1811_checked',JSON.stringify(Object.fromEntries(engChapters.map(k=>[k,true]))));
           }
-          if(portugueseDoc){localStorage.setItem(PORTUGUESE_KEY,JSON.stringify(portugueseDoc));}
+          if(portugueseDoc){
+            const {settings,...readOnly}=portugueseDoc;
+            localStorage.setItem(PORTUGUESE_KEY,JSON.stringify(readOnly));
+            if(settings)localStorage.setItem(PORTUGUESE_KEY+':settings',JSON.stringify(settings));
+          }
           if(newSiteData){
             localStorage.setItem('ce_plan_done_v1',JSON.stringify(newSiteData.planDone));
             localStorage.setItem('ce_available_days_v1',JSON.stringify(newSiteData.available));
