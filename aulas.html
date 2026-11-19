@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0b1220">
-<meta name="description" content="Catálogo de aulas interativas para concursos: raciocínio lógico, engenharia de software e qualidade, com progresso de leitura local.">
+<meta name="description" content="Catálogo de aulas interativas para concursos: raciocínio lógico, Português e engenharia de software, com progresso de leitura local.">
 <title>Biblioteca de Aulas — Concurso Estudos</title>
 <link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script>
 </head>
@@ -11,12 +11,17 @@
 <header class="top"><div class="shell top-inner"><a class="brand" href="./"><span class="logo">CE</span><span>Concurso Estudos</span></a><nav class="primary-nav" aria-label="Menu principal"><a href="./">Início</a><a href="aulas.html" class="active" aria-current="page">Aulas</a><a href="planejamento.html">Planejamento</a><a href="progresso.html">Progresso</a><a href="revisoes.html">Revisões</a></nav></div></header>
 <main class="shell">
 <div class="section-head" style="margin-top:43px"><div><div class="eyebrow">Biblioteca de estudos</div><h1 style="font-size:clamp(29px,4vw,44px);margin:10px 0">Todas as <em>aulas disponíveis</em></h1><p class="lead">Abra qualquer matéria, navegue por seus capítulos e acompanhe a leitura das subseções. As aulas são editáveis no GitHub sem precisar baixar novos arquivos.</p></div></div>
-<div class="catalog-toolbar"><label for="lessonSearch" class="visually-hidden">Pesquisar aulas</label><input id="lessonSearch" type="search" placeholder="Pesquisar por matéria, conteúdo ou concurso…" autocomplete="off"><div class="catalog-filters" aria-label="Filtrar aulas"><button class="filter-chip" type="button" data-filter="todas" aria-pressed="true">Todas</button><button class="filter-chip" type="button" data-filter="rlm" aria-pressed="false">RLM</button><button class="filter-chip" type="button" data-filter="tecnologia" aria-pressed="false">Tecnologia</button></div></div>
+<div class="catalog-toolbar"><label for="lessonSearch" class="visually-hidden">Pesquisar aulas</label><input id="lessonSearch" type="search" placeholder="Pesquisar por matéria, conteúdo ou concurso…" autocomplete="off"><div class="catalog-filters" aria-label="Filtrar aulas"><button class="filter-chip" type="button" data-filter="todas" aria-pressed="true">Todas</button><button class="filter-chip" type="button" data-filter="rlm" aria-pressed="false">RLM</button><button class="filter-chip" type="button" data-filter="tecnologia" aria-pressed="false">Tecnologia</button><button class="filter-chip" type="button" data-filter="portugues" aria-pressed="false">Português</button></div></div>
 <div class="grid" id="lessonCatalog">
 <article class="card course catalog-card" data-category="rlm" data-search="raciocinio lógico matemático rlm frações porcentagem combinatória probabilidade estatística pa pg gráficos casan 17/11/2026 aula revisada">
 <div class="course-head"><div><div class="eyebrow">CASAN · aula revisada em 17/11/2026 · reutilizável no IMA</div><h3><a href="aulas/rlm.html">RLM — Aula de 17/11 revisada</a></h3></div><span class="tag">11 módulos</span></div>
 <p class="muted">Raciocínio Lógico-Matemático: módulos 1–5 para consulta e revisão aprofundada dos módulos 6–11 (combinatória, probabilidade, estatística, PA/PG e gráficos), com 71 subseções e marcações independentes de leitura.</p><div class="metric"><span>Subseções lidas</span><strong id="catalogRlmRead">0 de 71</strong></div><div class="bar" role="progressbar" aria-label="Leitura de Raciocínio Lógico" aria-valuemax="71" aria-valuemin="0" aria-valuenow="0" id="catalogRlmBar"><div id="catalogRlmFill"></div></div>
 <div class="btnline"><a class="btn" href="aulas/rlm.html">Abrir aula</a><a class="btn alt" href="aulas/rlm.html#m6-s1">Ir para 6.1</a></div>
+</article>
+<article class="card course catalog-card" data-category="portugues" data-search="portugues português língua portuguesa interpretação de texto coesão reescrita conectivos gramática sintaxe concordância regência crase casan 19/11/2026">
+<div class="course-head"><div><div class="eyebrow">CASAN 2026 · Aula de 19/11 · disponível</div><h3><a href="aulas/portugues-casan-19-11.html">Português — Interpretação, Coesão e Gramática</a></h3></div><span class="tag">6 módulos</span></div>
+<p class="muted">Interpretação, inferências, causa × consequência, concessão × condição, coesão, reescrita, sintaxe e gramática. 21 subseções com exemplos resolvidos e marcação de leitura independente. Material disponível; estudo não confirmado.</p><div class="metric"><span>Subseções lidas</span><strong id="catalogPtRead">0 de 21</strong></div><div class="bar" role="progressbar" aria-label="Leitura de Português CASAN" aria-valuemax="21" aria-valuemin="0" aria-valuenow="0" id="catalogPtBar"><div id="catalogPtFill"></div></div>
+<div class="btnline"><a class="btn" href="aulas/portugues-casan-19-11.html">Abrir aula</a><a class="btn alt" href="aulas/portugues-casan-19-11.html#pt19-2-1">Rever conectivos</a></div>
 </article>
 <article class="card course catalog-card" data-category="tecnologia" data-search="engenharia software qualidade requisitos uml arquitetura testes tdd bdd git ci cd devops docker casan">
 <div class="course-head"><div><div class="eyebrow">CASAN 2026 · Aula revisada e disponível</div><h3><a href="aulas/engenharia-qualidade.html">Engenharia de Software e Qualidade</a></h3></div><span class="tag">10 módulos</span></div>
@@ -25,7 +30,7 @@
 </article>
 </div>
 <p id="emptyCatalog" class="catalog-nothing" hidden>Nenhuma aula corresponde à pesquisa. Tente outro termo ou o filtro “Todas”.</p>
-<p class="catalog-footer" id="catalogCount" aria-live="polite">2 aulas disponíveis</p>
+<p class="catalog-footer" id="catalogCount" aria-live="polite">3 aulas disponíveis</p>
 <div class="callout"><strong>Registro de leitura:</strong> marcar manualmente ou avançar pela navegação registra apenas o percurso. O site não comprova aprendizagem. O progresso continua local ao navegador enquanto não houver sincronização por conta.</div>
 <footer class="foot"><a href="./">Voltar ao painel</a> · A Biblioteca receberá novos links à medida que as aulas forem publicadas.</footer>
 </main></body></html>
