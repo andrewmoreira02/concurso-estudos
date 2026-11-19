@@ -29,6 +29,18 @@ Os links públicos dependem de o GitHub Pages estar habilitado e ter publicado a
 
 Mantenha identificadores de aula e subseção estáveis ao publicar versões novas, para preservar o histórico local.
 
+## Planejamento, progresso e revisões
+
+- [Planejamento semanal](https://andrewmoreira02.github.io/concurso-estudos/planejamento.html): agenda baseada nos planos registrados da CASAN até 22/11/2026 e do IMA a partir de 23/11/2026. Apresenta 2h-base e extensão opcional para o IMA. Os dias disponíveis **não** são presumidos: cada um deve ser marcado pelo usuário.
+- [Progresso por assunto](https://andrewmoreira02.github.io/concurso-estudos/progresso.html): compara os pesos de questões dos editais com a leitura real registrada no navegador e o histórico pedagógico, sem inventar percentual global de domínio.
+- [Revisões dirigidas](https://andrewmoreira02.github.io/concurso-estudos/revisoes.html): registra sessões reais de questões por concurso, disciplina e tópico, acertos, válidas, anuladas e tipo de erro. Quando há erros, gera sugestões de recuperação após +1, +3 e +7 dias, reversíveis e sem notificações automáticas.
+
+As alterações feitas diretamente no site salvam no `localStorage` (chaves `ce_plan_done_v1`, `ce_available_days_v1`, `ce_question_logs_v1`, `ce_review_done_v1`). Não sincronizam com a Biblioteca do ChatGPT ou outros navegadores.
+
+O backup do painel inicial usa o formato versionado `concurso-estudos-progress` **v3** para preservar leituras RLM/Engenharia, planejamento, disponibilidade, sessões e revisões. Versões v1/v2 continuam importáveis. Não há questões de demonstração pré-registradas; resultados históricos CASAN são apresentados somente como evidência de referência, sem inserir sessões falsas na fila IMA.
+
+**Estado de verificação:** commits no GitHub não são confirmação da implantação pública pelo Pages. A página publicada deve ser conferida separadamente.
+
 ## Limitações e privacidade
 
 GitHub Pages fornece hospedagem **estática**: o progresso não sincroniza entre navegador, computador e celular sem configurar serviço externo e login. A limpeza de dados do navegador pode apagar o registro local. Não publique progresso, anotações privadas ou credenciais no repositório público. Os registros do site não alteram automaticamente os arquivos `.md` da Biblioteca do Projeto ChatGPT.
