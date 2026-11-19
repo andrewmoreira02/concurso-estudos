@@ -173,6 +173,16 @@
       }))throw Error('Fila de revisões inválida');
     return value;
   }
+  const PORTUGUESE_KEY = 'concursos:casan2026:portugues:2026-11-19:subsections:v1';
+  const PORTUGUESE_LESSON = 'CASAN_2026_PT_2026_11_19';
+  function readPortugueseDocument(){
+    const doc=localJSON(PORTUGUESE_KEY,null);
+    const read=doc&&doc.lesson===PORTUGUESE_LESSON&&doc.read&&typeof doc.read==='object'&&!Array.isArray(doc.read)?doc.read:{};
+    const cleaned={};
+    for(const [id,value] of Object.entries(read))if(/^pt19-[1-6]-[1-9]\\d*$/.test(id)&&typeof value==='boolean'&&Object.keys(cleaned).length<21)cleaned[id]=value;
+    return {version:1,lesson:PORTUGUESE_LESSON,read:cleaned,legacy:doc&&Array.isArray(doc.legacy)?doc.legacy.slice(0,1000):[]};
+  }
+  function readPortugueseSteps(){return Object.values(readPortugueseDocument().read).filter(Boolean).length;}
   function backup() {
     const planDone=localJSON('ce_plan_done_v1',{});
     const available=localJSON('ce_available_days_v1',[]);
@@ -180,10 +190,11 @@
     const reviewDone=localJSON('ce_review_done_v1',{});
     return {
       format:'concurso-estudos-progress',
-      version:3,
+      version:4,
       savedAt:new Date().toISOString(),
       rlm:{readSubsections:readSteps(),readModules:readModules()},
       engenharia:{readSubsections:readEngineeringSteps(),readChapters:readEngineeringChapters()},
+      portugues:readPortugueseDocument(),
       site:{
         planDone:planDone && typeof planDone==='object'&&!Array.isArray(planDone)?planDone:{},
         available:Array.isArray(available)?available:[],
@@ -223,13 +234,18 @@
         if (file.size>2097152) throw Error('arquivo acima de 2 MB');
         const data=safeParse(await file.text());
         if (!data || typeof data !== 'object') throw Error('JSON inválido');
-        let steps, modules, engSteps=null, engChapters=null, newSiteData=null;
-        if(data.format==='concurso-estudos-progress' && [1,2,3].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
+        let steps, modules, engSteps=null, engChapters=null, newSiteData=null, portugueseDoc=null;
+        if(data.format==='concurso-estudos-progress' && [1,2,3,4].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
           steps=data.rlm.readSubsections;modules=data.rlm.readModules;
-          if(data.version===2 || data.version===3){
+          if([2,3,4].includes(data.version)){
             if(!data.engenharia || !Array.isArray(data.engenharia.readSubsections) || !Array.isArray(data.engenharia.readChapters))throw Error('Backup de Engenharia incompleto');
             engSteps=data.engenharia.readSubsections;engChapters=data.engenharia.readChapters;
-            if(data.version===3)newSiteData=validateNewData(data.site);
+            if(data.version>=3)newSiteData=validateNewData(data.site);
+            if(data.version===4){
+              const pt=data.portugues;
+              if(!pt||pt.lesson!==PORTUGUESE_LESSON||!pt.read||typeof pt.read!=='object'||Array.isArray(pt.read)||Object.keys(pt.read).length>21||!Object.entries(pt.read).every(([id,value])=>/^pt19-[1-6]-[1-9]\\d*$/.test(id)&&typeof value==='boolean'))throw Error('Backup de Português inválido');
+              portugueseDoc={version:1,lesson:PORTUGUESE_LESSON,read:pt.read,legacy:Array.isArray(pt.legacy)?pt.legacy.slice(0,1000):[]};
+            }
           }
         } else if(['rlm-shared-progress','casan-rlm-progress'].includes(data.format) && Array.isArray(data.markedAsStudied)){
           steps=readSteps(); modules=data.markedAsStudied;
@@ -249,6 +265,7 @@
             localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify([...new Set(engSteps)]));
             localStorage.setItem('casan1811_checked',JSON.stringify(Object.fromEntries(engChapters.map(k=>[k,true]))));
           }
+          if(portugueseDoc){localStorage.setItem(PORTUGUESE_KEY,JSON.stringify(portugueseDoc));}
           if(newSiteData){
             localStorage.setItem('ce_plan_done_v1',JSON.stringify(newSiteData.planDone));
             localStorage.setItem('ce_available_days_v1',JSON.stringify(newSiteData.available));
@@ -285,6 +302,7 @@
     };
     setValue('catalogRlmRead','catalogRlmBar','catalogRlmFill',readSteps().length,71);
     setValue('catalogEngRead','catalogEngBar','catalogEngFill',readEngineeringSteps().length,37);
+    setValue('catalogPtRead','catalogPtBar','catalogPtFill',readPortugueseSteps(),21);
   }
   function initCatalog(){
     const input=$('lessonSearch'),cards=[...document.querySelectorAll('.catalog-card')];
@@ -318,6 +336,6 @@
     initCatalog();
     updateCatalogStats();
     addEventListener('concurso:read-change',()=>{paintDashboard();updateCatalogStats();});
-    addEventListener('storage', e=> {if([STEP_KEY,NEW_STEP_KEY,MODULE_KEY,'concurso_eng_qualidade_steps_v1'].includes(e.key)){paintLesson();paintDashboard();updateCatalogStats();}});
+    addEventListener('storage', e=> {if([STEP_KEY,NEW_STEP_KEY,MODULE_KEY,'concurso_eng_qualidade_steps_v1',PORTUGUESE_KEY].includes(e.key)){paintLesson();paintDashboard();updateCatalogStats();}});
   });
 })();
