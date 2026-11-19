@@ -1,0 +1,24 @@
+name: Validar conteúdo didático RLM
+on:
+  push:
+    paths:
+      - 'aulas/rlm.html'
+      - 'scripts/verificar-conteudo-rlm.mjs'
+      - '.github/workflows/validar-conteudo-rlm.yml'
+  pull_request:
+    paths:
+      - 'aulas/rlm.html'
+      - 'scripts/verificar-conteudo-rlm.mjs'
+      - '.github/workflows/validar-conteudo-rlm.yml'
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exigir conteúdo em todas as subseções RLM
+        run: node scripts/verificar-conteudo-rlm.mjs
