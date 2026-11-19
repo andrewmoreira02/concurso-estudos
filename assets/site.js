@@ -115,14 +115,60 @@
     document.head.appendChild(style);
     paintLesson();
   }
+  // Cópia inclui plano e prática: nenhuma marcação é enviada ao GitHub.
+  function localJSON(key, fallback) {
+    try { const v=JSON.parse(localStorage.getItem(key)); return v===null?fallback:v; }
+    catch { return fallback; }
+  }
+  function validSession(x) {
+    return x && typeof x==='object' && typeof x.id==='string' &&
+      /^session-\\d+-[a-z0-9]+$/.test(x.id) &&
+      ['casan','ima'].includes(x.exam) &&
+      ['ti','portugues','rlm','legislacao','adm','atualidades'].includes(x.subject) &&
+      typeof x.topic==='string' && x.topic.length>=2 && x.topic.length<=100 &&
+      typeof x.date==='string' && /^\\d{4}-\\d{2}-\\d{2}$/.test(x.date) &&
+      Number.isInteger(x.valid) && x.valid>=1 && x.valid<=500 &&
+      Number.isInteger(x.correct) && x.correct>=0 && x.correct<=x.valid &&
+      Number.isInteger(x.annulled) && x.annulled>=0 && x.annulled<=500 &&
+      typeof x.kind==='string' && x.kind.length<=40 &&
+      typeof x.source==='string' && x.source.length<=240;
+  }
+  function validateNewData(value) {
+    if(!value||typeof value!=='object')throw Error('Dados do painel não encontrados');
+    const {planDone, available, questionLogs, reviewDone}=value;
+    if(!planDone||typeof planDone!=='object'||Array.isArray(planDone)||
+       !Object.entries(planDone).every(([k,v])=>/^\\d{4}-\\d{2}-\\d{2}::[a-z0-9-]{2,30}$/.test(k)&&typeof v==='boolean'))throw Error('Plano inválido');
+    if(!Array.isArray(available)||available.length>7||
+      !available.every(x=>Number.isInteger(x)&&x>=0&&x<=6))throw Error('Dias disponíveis inválidos');
+    if(!Array.isArray(questionLogs)||questionLogs.length>2000||
+      !questionLogs.every(validSession))throw Error('Registro de questões inválido');
+    const ids=new Set(questionLogs.map(x=>x.id));
+    if(ids.size!==questionLogs.length)throw Error('IDs duplicados de questões');
+    if(!reviewDone||typeof reviewDone!=='object'||Array.isArray(reviewDone)||
+      !Object.entries(reviewDone).every(([k,v])=>{
+        const parts=k.match(/^(session-\\d+-[a-z0-9]+)-(1|3|7)$/);
+        return parts && ids.has(parts[1]) && typeof v==='boolean';
+      }))throw Error('Fila de revisões inválida');
+    return value;
+  }
   function backup() {
+    const planDone=localJSON('ce_plan_done_v1',{});
+    const available=localJSON('ce_available_days_v1',[]);
+    const questionLogs=localJSON('ce_question_logs_v1',[]);
+    const reviewDone=localJSON('ce_review_done_v1',{});
     return {
       format:'concurso-estudos-progress',
-      version:2,
+      version:3,
       savedAt:new Date().toISOString(),
       rlm:{readSubsections:readSteps(),readModules:readModules()},
       engenharia:{readSubsections:readEngineeringSteps(),readChapters:readEngineeringChapters()},
-      interpretation:'As marcações são de leitura, não evidência de domínio.'
+      site:{
+        planDone:planDone && typeof planDone==='object'&&!Array.isArray(planDone)?planDone:{},
+        available:Array.isArray(available)?available:[],
+        questionLogs:Array.isArray(questionLogs)?questionLogs:[],
+        reviewDone:reviewDone&&typeof reviewDone==='object'&&!Array.isArray(reviewDone)?reviewDone:{}
+      },
+      interpretation:'Leitura, plano marcado e prática autorreportada são evidências diferentes; não equivalem a domínio.'
     };
   }
   function downloadBackup() {
@@ -152,15 +198,16 @@
     input.addEventListener('change', async () => {
       const file=input.files?.[0]; if (!file) return;
       try {
-        if (file.size>120000) throw Error('arquivo acima de 120 KB');
+        if (file.size>2097152) throw Error('arquivo acima de 2 MB');
         const data=safeParse(await file.text());
         if (!data || typeof data !== 'object') throw Error('JSON inválido');
-        let steps, modules, engSteps=null, engChapters=null;
-        if(data.format==='concurso-estudos-progress' && [1,2].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
+        let steps, modules, engSteps=null, engChapters=null, newSiteData=null;
+        if(data.format==='concurso-estudos-progress' && [1,2,3].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
           steps=data.rlm.readSubsections;modules=data.rlm.readModules;
-          if(data.version===2){
+          if(data.version===2 || data.version===3){
             if(!data.engenharia || !Array.isArray(data.engenharia.readSubsections) || !Array.isArray(data.engenharia.readChapters))throw Error('Backup de Engenharia incompleto');
             engSteps=data.engenharia.readSubsections;engChapters=data.engenharia.readChapters;
+            if(data.version===3)newSiteData=validateNewData(data.site);
           }
         } else if(['rlm-shared-progress','casan-rlm-progress'].includes(data.format) && Array.isArray(data.markedAsStudied)){
           steps=readSteps(); modules=data.markedAsStudied;
@@ -172,12 +219,19 @@
         const validSteps = document.querySelectorAll('[data-lesson-step]').length
           ? new Set([...document.querySelectorAll('[data-lesson-step]')].map(n=>n.getAttribute('data-lesson-step'))) : null;
         if(validSteps && !steps.every(x=>validSteps.has(x))) throw Error('subseção não presente nesta aula');
+        if(!confirm('Restaurar o backup e substituir o progresso atual deste navegador?'))return;
         if(!storeSteps(steps)) throw Error('armazenamento indisponível');
         try {
           localStorage.setItem(MODULE_KEY,JSON.stringify([...new Set(modules)]));
           if(engSteps!==null){
             localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify([...new Set(engSteps)]));
             localStorage.setItem('casan1811_checked',JSON.stringify(Object.fromEntries(engChapters.map(k=>[k,true]))));
+          }
+          if(newSiteData){
+            localStorage.setItem('ce_plan_done_v1',JSON.stringify(newSiteData.planDone));
+            localStorage.setItem('ce_available_days_v1',JSON.stringify(newSiteData.available));
+            localStorage.setItem('ce_question_logs_v1',JSON.stringify(newSiteData.questionLogs));
+            localStorage.setItem('ce_review_done_v1',JSON.stringify(newSiteData.reviewDone));
           }
         } catch {throw Error('não foi possível salvar progresso');}
         setStatus('✓ Progresso restaurado. Atualizando…');
