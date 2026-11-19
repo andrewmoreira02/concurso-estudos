@@ -241,8 +241,9 @@ async function sync(options={}){
          result[k]=r?remote[k]:local;
        }
      }else{
-       const localChanged=!same(local,baseline);
-       const remoteChanged=r&&!same(remote[k],baseline);
+       const hadBase=Object.prototype.hasOwnProperty.call(base,k);
+       const localChanged=hadBase?!same(local,baseline):l;
+       const remoteChanged=r&&(!hadBase||!same(remote[k],baseline));
        if(localChanged){
          if(remoteChanged&&!same(local,remote[k]))conflicts++;
          result[k]=local;
