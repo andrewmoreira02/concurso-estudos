@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function select(i,nav=false){
     if(i<0||i>=steps.length)return;
     current=i;entered=performance.now();renderCurrent();
+    if(isEng && document.body.classList.contains('focus')){document.querySelectorAll('.section[id^="sec"]').forEach(section=>section.classList.toggle('current',section.contains(steps[i].node)));}
     if(nav){
       skipScrollUntil=performance.now()+1100;
       const s=steps[i];
