@@ -278,7 +278,7 @@ async function sync(options={}){
 function renderAccount(){
  const un=document.getElementById('syncUnconfigured'),out=document.getElementById('syncSignedOut'),inside=document.getElementById('syncSignedIn');
  if(!un||!out||!inside)return;
- un.hidden=configured;out.hidden=!configured||!user;inside.hidden=!configured||!!user;
+ un.hidden=configured;out.hidden=!configured||!!user;inside.hidden=!configured||!user;
  if(user){
    const label=document.getElementById('syncAccountEmail');
    if(label)label.textContent=user.email||'Conta autenticada';
