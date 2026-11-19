@@ -195,6 +195,41 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
  .chapter h3{font-size:19px}
 }
 @media print{.step-toolbar,.reading-options,.side-subtopics,.lesson-cta,.backup-mode,.legacy-note{display:none!important}.module-count{color:#143244!important;background:#fff!important;border-color:#bbcbd2!important}}
+
+/* Leitura em celulares: preserva a navegação e os IDs de progresso. */
+@media(max-width:700px){
+ html{scroll-padding-top:12px}
+ body{font-size:17px;line-height:1.7;overflow-wrap:break-word}
+ .topbar{position:relative;z-index:1;height:auto;min-height:0;padding:12px;gap:10px}
+ .topbar .brand{white-space:normal;font-size:12px;flex-basis:100%;width:100%;line-height:1.35}
+ .topactions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;width:100%;max-width:100%}
+ .topactions .tiny-btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;white-space:normal;text-align:center;padding:7px 5px;font-size:12px}
+ .topactions .pill.exam,.topactions #copyProgress,.topactions #printBtn{display:none!important}
+ .layout{min-height:0;grid-template-columns:minmax(0,1fr)}
+ main{min-width:0;max-width:100%;padding:14px 12px 85px}
+ .hero{min-height:0;padding:25px 19px}
+ .hero h1{font-size:clamp(29px,8vw,37px)}
+ .chapter{min-width:0;padding:22px 16px;margin-top:18px;border-radius:15px}
+ .chapter h2{font-size:clamp(24px,6.5vw,30px)}
+ .chapter h3{font-size:20px;line-height:1.4}
+ .chapter [data-lesson-step],.chapter{scroll-margin-top:14px}
+ .chapter .step-navigation a,.chapter .step-read,.chapter button,.chapter select,.lesson-cta a{min-height:44px}
+ .steps-nav a,.side-subtopics nav a{min-height:42px;display:flex;align-items:center}
+ .tablewrap,.teaching-figure,.diagram,pre{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .chapter img,.chapter svg{max-width:100%;height:auto}
+ .grid2,.grid3,.controls,.mini{min-width:0}
+ aside{top:0;height:100vh;height:100dvh;max-height:100dvh;z-index:82;width:min(330px,88vw);overscroll-behavior:contain;padding-bottom:calc(25px + env(safe-area-inset-bottom))}
+}
+@media(max-width:950px){
+ body:has(#sidebar.open)::before{content:"";position:fixed;inset:0;z-index:60;background:rgba(7,17,28,.65)}
+ body:has(#sidebar.open){overflow:hidden}
+}
+@media(max-width:370px){
+ .topactions{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .chapter{padding:18px 13px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}aside{transition:none!important}}
+
 </style>
 </head>
 <body><a class="skip-link" href="#m6-s1">Ir direto à aula, subseção 6.1</a>
@@ -511,5 +546,14 @@ $('chartAbsolute').addEventListener('click',()=>{graphMode='absolute';prodChart(
  if(repeat&&repeatResult&&repeatCodes){const upd=()=>{const allow=repeat.value==='yes';const all=[];for(const a of ['A','B','C'])for(const b of ['A','B','C'])if(allow||a!==b)all.push(a+b);repeatResult.textContent=allow?'3 × 3 = 9 códigos':'3 × 2 = 6 códigos';repeatCodes.replaceChildren(...all.map(code=>{const span=document.createElement('span');span.textContent=code;return span}));};repeat.addEventListener('change',upd);upd();}
  const urn=document.getElementById('urnMode'),urnResult=document.getElementById('urnResult');if(urn&&urnResult){const upd=()=>urnResult.textContent=urn.value==='no'?'3/5 × 2/4 = 3/10 = 30%':'3/5 × 3/5 = 9/25 = 36%';urn.addEventListener('change',upd);upd();}
 })();
-</script></body>
+</script>
+<script>
+/* Fecha o índice móvel ao tocar fora dele, sem interferir no progresso. */
+(()=>{'use strict';const side=document.getElementById('sidebar'),button=document.getElementById('mobileMenu');
+ if(!side||!button)return;
+ document.addEventListener('click',e=>{if(side.classList.contains('open')&&!side.contains(e.target)&&!button.contains(e.target)){
+ side.classList.remove('open');button.setAttribute('aria-expanded','false');}});
+})();
+</script>
+</body>
 </html>
