@@ -312,6 +312,7 @@ function initHome(){
  if(!panel)return;
  const p=priorityFor(TODAY);
  panel.textContent=p.desc;
+ const t=$('dynamicFocusTitle');if(t)t.textContent=TODAY<='2026-11-22'?'RLM · Módulo 6':'IMA-SC · início do ciclo';
  const b=$('dynamicFocusLink');if(b){b.textContent=p.link;b.href=p.href;}
 }
 document.addEventListener('DOMContentLoaded',()=>{initPlanning();initProgress();initReviews();initHome();});
