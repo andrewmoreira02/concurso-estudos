@@ -44,7 +44,7 @@ function recordQuiz(form){
    const passed=selected.value===answer;
    if(cancelled)annulled++;else{valid++;if(passed)correct++;}
    const explanation=item.querySelector('[data-ce-explanation]')?.textContent?.trim()||'';
-   feedback.push({id,annulled,passed,correctAnswer:answer,explanation});
+   feedback.push({id,annulled:cancelled,passed,correctAnswer:answer,explanation});
  }
  if(valid===0){report(form,'Todas as questões foram anuladas; não há avaliação válida a registrar.',true);return;}
  if(form.dataset.ceSubmitted==='true'){report(form,'Esta tentativa já foi registrada. Para uma nova tentativa, recarregue a página.',true);return;}
