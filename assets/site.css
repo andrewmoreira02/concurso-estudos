@@ -15,3 +15,16 @@
 .catalog-nothing{padding:22px;border:1px dashed #4b6579;border-radius:15px;color:var(--muted)}
 .catalog-footer{font-size:13px;color:var(--muted);margin:14px 0}
 @media(max-width:520px){.brand{font-size:13px}.top-inner{gap:8px}.primary-nav a{font-size:12px;padding:6px 7px}.catalog-toolbar{align-items:stretch}.catalog-filters{width:100%}}
+
+/* Navegação global para painel, biblioteca, planejamento e revisões */
+.top-inner{min-height:74px;height:auto;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}
+.primary-nav{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.primary-nav a{white-space:nowrap}
+.shortcut-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.shortcut-card{display:flex;flex-direction:column;gap:10px;text-decoration:none;min-height:208px;transition:transform .16s,border-color .16s}
+.shortcut-card:hover{transform:translateY(-3px);border-color:#55b3a3;color:var(--text)}
+.shortcut-card h3{margin:3px 0;font-size:19px;color:#eafaff}
+.shortcut-card p{font-size:13px;color:var(--muted);margin:0;flex:1}
+.shortcut-more{color:#98ead9;font-size:12px;font-weight:850}
+@media(max-width:900px){.shortcut-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.shortcut-grid{grid-template-columns:1fr}.shortcut-card{min-height:0}.top-inner{align-items:flex-start}.primary-nav{width:100%;justify-content:flex-start;gap:2px}.primary-nav a{font-size:11px;padding:7px 8px}}
