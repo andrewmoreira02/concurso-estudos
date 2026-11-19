@@ -32,7 +32,16 @@ function read(key,fallback){try{const value=JSON.parse(localStorage.getItem(key)
 function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true;}catch{return false;}}
 function getPlanDone(){const v=read(KEY.done,{});return v&&typeof v==='object'&&!Array.isArray(v)?v:{};}
 function getAvailable(){const v=read(KEY.available,[]);return Array.isArray(v)?v.filter(n=>Number.isInteger(n)&&n>=0&&n<7):[];}
-function getLogs(){const v=read(KEY.logs,[]);return Array.isArray(v)?v.filter(x=>x && typeof x==='object' && (x.exam==='casan'||x.exam==='ima') && typeof x.topic==='string'&&DATE_RE.test(x.date)):[];}
+function validLog(x){
+ return x&&typeof x==='object'&&typeof x.id==='string'&&x.id.startsWith('session-')&&
+ (x.exam==='casan'||x.exam==='ima')&&SUBJECTS[x.subject]&&
+ typeof x.topic==='string'&&x.topic.trim().length>=2&&x.topic.length<=100&&
+ DATE_RE.test(x.date)&&!Number.isNaN(utcDate(x.date).getTime())&&x.date<=TODAY&&
+ Number.isInteger(x.valid)&&x.valid>=1&&x.valid<=500&&
+ Number.isInteger(x.correct)&&x.correct>=0&&x.correct<=x.valid&&
+ Number.isInteger(x.annulled)&&x.annulled>=0&&x.annulled<=500;
+}
+function getLogs(){const v=read(KEY.logs,[]);return Array.isArray(v)?v.filter(validLog):[];}
 function getReviewDone(){const v=read(KEY.review,{});return v&&typeof v==='object'&&!Array.isArray(v)?v:{};}
 function elem(tag,attrs,text){
   const x=document.createElement(tag);
