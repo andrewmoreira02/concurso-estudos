@@ -149,6 +149,7 @@ th{background:#20394b;color:#c5edff}td,th{border-color:#31475b}
 @media print{.keybox{print-color-adjust:exact}.legend{break-inside:avoid}}
 
 </style>
+<link rel="stylesheet" href="../assets/reading.css">
 </head>
 <body>
 <header class="topbar"><a class="brand" href="#inicio"><span class="mark">RLM</span><span>CONCURSOS <span style="color:#0b9287">/</span> RACIOCÍNIO LÓGICO-MATEMÁTICO</span></a><div class="topactions"><span class="pill exam">Material compartilhado entre editais</span><button aria-controls="sidebar" aria-expanded="false" class="tiny-btn mobilemenu" id="mobileMenu">☰ Sumário</button><button class="tiny-btn" id="copyProgress" title="Copiar estado atual para colar no ChatGPT">⧉ Copiar progresso</button><button class="tiny-btn" id="exportProgress" title="Baixar backup JSON do progresso">↓ Backup</button><button class="tiny-btn" id="importProgress" title="Importar progresso de backup">↑ Restaurar</button><input accept="application/json,.json" hidden="" id="importProgressFile" type="file"/><button class="tiny-btn" id="printBtn" title="Imprimir ou salvar como PDF">⎙ Imprimir</button></div></header>
@@ -350,6 +351,6 @@ $('chartAbsolute').addEventListener('click',()=>{graphMode='absolute';prodChart(
  if(repeat&&repeatResult&&repeatCodes){const upd=()=>{const allow=repeat.value==='yes';const all=[];for(const a of ['A','B','C'])for(const b of ['A','B','C'])if(allow||a!==b)all.push(a+b);repeatResult.textContent=allow?'3 × 3 = 9 códigos':'3 × 2 = 6 códigos';repeatCodes.replaceChildren(...all.map(code=>{const span=document.createElement('span');span.textContent=code;return span}));};repeat.addEventListener('change',upd);upd();}
  const urn=document.getElementById('urnMode'),urnResult=document.getElementById('urnResult');if(urn&&urnResult){const upd=()=>urnResult.textContent=urn.value==='no'?'3/5 × 2/4 = 3/10 = 30%':'3/5 × 3/5 = 9/25 = 36%';urn.addEventListener('change',upd);upd();}
 })();
-</script><script src="../assets/site.js" defer></script>
+</script><script src="../assets/site.js" defer></script><script src="../assets/reading.js" defer></script>
 </body>
 </html>
