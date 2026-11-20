@@ -64,6 +64,16 @@ try{
    localStorage.setItem('ce_question_logs_v1',JSON.stringify([{id:'session-1000-casan1',date:'2026-11-19',exam:'casan',subject:'ti',topic:'Teste CASAN sintético',valid:2,correct:0,wrongQuestionIds:['x','y']}]));
   });
   await page.reload({waitUntil:'domcontentloaded'});
+  await page.waitForTimeout(600);
+  const snapshot=await page.evaluate(()=>({
+   address:location.href,
+   hasHost:!!document.getElementById('ce-ima-study-cycle'),
+   hasDiagnostic:!!document.getElementById('ce-ima-diagnostico'),
+   diagnostic:document.getElementById('ce-ima-diagnostico')?.textContent?.slice(0,220),
+   logs:localStorage.getItem('ce_question_logs_v1')?.slice(0,220),
+   ready:document.readyState
+  }));
+  console.log('Diagnóstico IMA após recarga (dados sintéticos):',JSON.stringify(snapshot),'Erros:',errors.join(' | '));
   await page.waitForFunction(()=>document.getElementById('ce-ima-diagnostico')?.textContent.includes('Ainda não há avaliações IMA'));
   const noCross=await page.locator('#ce-ima-diagnostico').textContent();
   assert(noCross.includes('CASAN')&&!noCross.includes('2/2 questões'),'Contaminação CASAN → IMA');
