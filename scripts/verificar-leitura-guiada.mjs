@@ -28,7 +28,7 @@ try{
    await page.locator('.ce-reader-bottom').waitFor({timeout:10000});
    const state=await page.evaluate(id=>({
      barVisible:getComputedStyle(document.querySelector('.ce-reader-bottom')).display!=='none',
-     groupCount:document.querySelectorAll('.ce-module-collapse').length,
+     groupCount:document.querySelectorAll('.ce-module-collapse,.side-subtopics').length,
      left:document.documentElement.scrollWidth,
      firstLink:document.querySelector('.ce-reader-bottom a')?.textContent,
      nextLink:document.querySelector('.ce-reader-bottom a:last-of-type')?.textContent,
