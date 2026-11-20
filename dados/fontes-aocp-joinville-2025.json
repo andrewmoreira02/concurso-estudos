@@ -30,352 +30,572 @@
       "question_number": 1,
       "final_answer": null,
       "status": "anulada",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "anulada_nao_utilizar",
+      "publicar_texto_original": false,
+      "topic": "Interpretação de texto: fatores de risco e inferências",
+      "book_page": 2,
+      "alignment_group": "portugues",
+      "review_status": "descartada_anulacao"
     },
     {
       "question_number": 2,
       "final_answer": "B",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Função sintática do pronome relativo que",
+      "book_page": 2,
+      "alignment_group": "portugues",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/portugues-casan-19-11.html#pt19-4-3"
     },
     {
       "question_number": 3,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Colocação pronominal na reescrita",
+      "book_page": 2,
+      "alignment_group": "portugues",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/portugues-casan-19-11.html#pt19-3-1"
     },
     {
       "question_number": 4,
       "final_answer": "B",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Sentido adversativo do conectivo enquanto",
+      "book_page": 3,
+      "alignment_group": "portugues",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/portugues-casan-19-11.html#pt19-2-2"
     },
     {
       "question_number": 5,
       "final_answer": null,
       "status": "anulada",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "anulada_nao_utilizar",
+      "publicar_texto_original": false,
+      "topic": "Formação de palavras e classificação morfológica",
+      "book_page": 3,
+      "alignment_group": "portugues",
+      "review_status": "descartada_anulacao"
     },
     {
       "question_number": 6,
       "final_answer": "B",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Média aritmética ponderada de grupos",
+      "book_page": 3,
+      "alignment_group": "rlm",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/rlm.html#m8-s1"
     },
     {
       "question_number": 7,
       "final_answer": null,
       "status": "anulada",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "anulada_nao_utilizar",
+      "publicar_texto_original": false,
+      "topic": "Equações e relações entre raízes quadráticas",
+      "book_page": 3,
+      "alignment_group": "rlm",
+      "review_status": "descartada_anulacao"
     },
     {
       "question_number": 8,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Análise combinatória: formação de comissão",
+      "book_page": 3,
+      "alignment_group": "rlm",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/rlm.html#m6-s1"
     },
     {
       "question_number": 9,
       "final_answer": "D",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "exige_conferencia_especifica_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Geometria plana: triângulo equilátero inscrito na circunferência",
+      "book_page": 4,
+      "alignment_group": "rlm",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 10,
       "final_answer": "C",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Razão e proporção entre dois grupos",
+      "book_page": 4,
+      "alignment_group": "rlm",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/rlm.html#m3-s1"
     },
     {
       "question_number": 11,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "exige_conferencia_especifica_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Windows 11: atalho para pesquisa de rede",
+      "book_page": 4,
+      "alignment_group": "informatica_basica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 12,
       "final_answer": "D",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "exige_conferencia_especifica_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Memória volátil e não volátil",
+      "book_page": 4,
+      "alignment_group": "informatica_basica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 13,
       "final_answer": "C",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "exige_conferencia_especifica_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Periféricos de entrada, saída e armazenamento",
+      "book_page": 5,
+      "alignment_group": "informatica_basica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 14,
       "final_answer": "D",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "exige_conferencia_especifica_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Chrome: configuração de JavaScript",
+      "book_page": 5,
+      "alignment_group": "informatica_basica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 15,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "exige_conferencia_especifica_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Windows 11: categorias do Painel de Controle",
+      "book_page": 5,
+      "alignment_group": "informatica_basica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 16,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "exige_conferencia_especifica_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Software de comunicação instantânea",
+      "book_page": 5,
+      "alignment_group": "informatica_basica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 17,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "exige_conferencia_especifica_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Motores de busca na web",
+      "book_page": 5,
+      "alignment_group": "informatica_basica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 18,
       "final_answer": "D",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Escalonamento de processos: Round Robin e quantum",
+      "book_page": 6,
+      "alignment_group": "informatica_basica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 19,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "exige_conferencia_especifica_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Excel 365: estatísticas da pasta de trabalho",
+      "book_page": 6,
+      "alignment_group": "informatica_basica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 20,
       "final_answer": "B",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Engenharia social: phishing",
+      "book_page": 6,
+      "alignment_group": "informatica_basica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/seguranca.html#seg-1-1"
     },
     {
       "question_number": 21,
       "final_answer": "B",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "municipal_joinville_nao_usar_como_legislacao_casan",
+      "publicar_texto_original": false,
+      "topic": "Cessão de servidor segundo legislação municipal de Joinville",
+      "book_page": 6,
+      "alignment_group": "legislacao_municipal_joinville",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 22,
       "final_answer": null,
       "status": "anulada",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "anulada_nao_utilizar",
+      "publicar_texto_original": false,
+      "topic": "Direitos de cidadão naturalizado — questão anulada",
+      "book_page": 7,
+      "alignment_group": "legislacao_municipal_joinville",
+      "review_status": "descartada_anulacao"
     },
     {
       "question_number": 23,
       "final_answer": "D",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "municipal_joinville_nao_usar_como_legislacao_casan",
+      "publicar_texto_original": false,
+      "topic": "Faltas injustificadas sob estatuto municipal",
+      "book_page": 7,
+      "alignment_group": "legislacao_municipal_joinville",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 24,
       "final_answer": "B",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "municipal_joinville_nao_usar_como_legislacao_casan",
+      "publicar_texto_original": false,
+      "topic": "Código de Posturas municipal: guardador de veículos",
+      "book_page": 7,
+      "alignment_group": "legislacao_municipal_joinville",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 25,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "municipal_joinville_nao_usar_como_legislacao_casan",
+      "publicar_texto_original": false,
+      "topic": "Princípios da educação na Lei Orgânica municipal",
+      "book_page": 8,
+      "alignment_group": "legislacao_municipal_joinville",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 26,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "municipal_joinville_nao_usar_como_legislacao_casan",
+      "publicar_texto_original": false,
+      "topic": "Assistência social na Lei Orgânica municipal",
+      "book_page": 8,
+      "alignment_group": "legislacao_municipal_joinville",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 27,
       "final_answer": "D",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "municipal_joinville_nao_usar_como_legislacao_casan",
+      "publicar_texto_original": false,
+      "topic": "Desporto na Lei Orgânica municipal",
+      "book_page": 8,
+      "alignment_group": "legislacao_municipal_joinville",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 28,
       "final_answer": "B",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "municipal_joinville_nao_usar_como_legislacao_casan",
+      "publicar_texto_original": false,
+      "topic": "Impedimentos de vereadores na Lei Orgânica municipal",
+      "book_page": 8,
+      "alignment_group": "legislacao_municipal_joinville",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 29,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "municipal_joinville_nao_usar_como_legislacao_casan",
+      "publicar_texto_original": false,
+      "topic": "Processo legislativo conforme Lei Orgânica de Joinville",
+      "book_page": 9,
+      "alignment_group": "legislacao_municipal_joinville",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 30,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "municipal_joinville_nao_usar_como_legislacao_casan",
+      "publicar_texto_original": false,
+      "topic": "Gratificação natalina de servidores municipais",
+      "book_page": 9,
+      "alignment_group": "legislacao_municipal_joinville",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 31,
       "final_answer": "C",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Modelo ER: entidade fraca",
+      "book_page": 9,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/banco-dados.html#bd-1-1"
     },
     {
       "question_number": 32,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Elicitação de requisitos por storytelling",
+      "book_page": 9,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/engenharia-qualidade.html#etapa-1-3"
     },
     {
       "question_number": 33,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "GoF: padrão criacional Builder",
+      "book_page": 10,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/engenharia-qualidade.html#etapa-9-2"
     },
     {
       "question_number": 34,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Complexidade de algoritmos: Omega, Theta e Big O",
+      "book_page": 10,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/algoritmos-oo.html#alg-1-1"
     },
     {
       "question_number": 35,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Banco de dados NoSQL de família de colunas",
+      "book_page": 10,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/banco-dados.html#bd-1-2"
     },
     {
       "question_number": 36,
       "final_answer": "D",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Scrum: eventos e distinção de artefatos",
+      "book_page": 10,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/engenharia-qualidade.html#etapa-9-3"
     },
     {
       "question_number": 37,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Serviços de rede: função do DNS",
+      "book_page": 11,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 38,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Modelo TCP/IP: camada de aplicação",
+      "book_page": 11,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 39,
       "final_answer": "D",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Agrupamento de dados: DBSCAN",
+      "book_page": 11,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 40,
       "final_answer": "B",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Normalização de bancos relacionais: 3FN",
+      "book_page": 11,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/banco-dados.html#bd-1-2"
     },
     {
       "question_number": 41,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Hiperautomação: plataformas low-code",
+      "book_page": 12,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 42,
       "final_answer": "D",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Estruturas de dados: pilha LIFO",
+      "book_page": 12,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/algoritmos-oo.html#alg-1-1"
     },
     {
       "question_number": 43,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Análise OLAP: operação slice",
+      "book_page": 12,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 44,
       "final_answer": "B",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Gerenciamento de serviços: dimensões e princípios ITIL 4",
+      "book_page": 12,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 45,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "BPMN: pool e participantes",
+      "book_page": 12,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 46,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Git: fetch sem integração automática",
+      "book_page": 12,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/engenharia-qualidade.html#etapa-6-2"
     },
     {
       "question_number": 47,
       "final_answer": "C",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "HTML5: elemento de linha de tabela",
+      "book_page": 13,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 48,
       "final_answer": "A",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Criptografia: distinção entre cifra e assinatura digital",
+      "book_page": 13,
+      "alignment_group": "ti_especifica",
+      "review_status": "gabarito_oficial_confirmado_pendencia_conceitual_DSA_assinatura_nao_cifragem",
+      "related_lesson": "aulas/seguranca.html#seg-1-1"
     },
     {
       "question_number": 49,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "Segurança da informação: análise de tráfego sniffer",
+      "book_page": 13,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno"
     },
     {
       "question_number": 50,
       "final_answer": "E",
       "status": "valida",
-      "topic_alignment": "pendente_conferencia_no_caderno",
-      "publicar_texto_original": false
+      "topic_alignment": "candidato_tematico_conferir_edital_casan",
+      "publicar_texto_original": false,
+      "topic": "LGPD: bases legais para tratamento de dados",
+      "book_page": 13,
+      "alignment_group": "ti_especifica",
+      "review_status": "tema_conferido_em_texto_extraido_caderno",
+      "related_lesson": "aulas/seguranca.html#seg-1-1"
     }
   ],
-  "verification": "Gabarito definitivo impresso com endereço do visualizador AOCP e cópia de espelho pública. Pendente conferir, por número, conteúdo específico e correlação com o cargo CASAN antes de usar em quiz."
+  "verification": "Gabarito definitivo impresso com endereço do visualizador AOCP e cópia de espelho pública. Pendente conferir, por número, conteúdo específico e correlação com o cargo CASAN antes de usar em quiz.",
+  "mapping_notes": "Tópicos identificados individualmente no caderno AOCP (texto extraído, páginas 2 a 13); a correspondência ao cargo CASAN é triagem temática, NÃO validação final da identidade do conteúdo programático. Revisão de páginas com diagrama e licença de reprodução pendente. Reproduzir somente tema e link, nunca enunciado/alternativas.",
+  "screen_check": "Captura visual do gabarito realizada; captura do caderno devolveu falha de cache na consulta e permanece pendente para itens com figuras."
 }
