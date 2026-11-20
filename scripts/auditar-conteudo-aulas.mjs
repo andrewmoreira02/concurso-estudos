@@ -17,7 +17,8 @@ const configs=[
  {file:'aulas/seguranca.html',label:'Segurança',selector:'article.nl-section',expected:9},
  {file:'aulas/algoritmos-oo.html',label:'Algoritmos e OO',selector:'article.nl-section',expected:9},
  {file:'aulas/administracao-publica-ima.html',label:'Administração IMA',selector:'article.nl-section',expected:9},
- {file:'aulas/legislacao-ambiental-ima.html',label:'Legislação IMA',selector:'article.nl-section',expected:9}
+ {file:'aulas/legislacao-ambiental-ima.html',label:'Legislação IMA',selector:'article.nl-section',expected:9},
+ {file:'aulas/legislacao-casan-20-11.html',label:'Legislação CASAN',selector:'article.nl-section',expected:15}
 ];
 let empty=0,shallow=0;
 try{
