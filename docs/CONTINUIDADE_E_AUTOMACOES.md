@@ -9,14 +9,15 @@
 - **Editais, datas, distribuição de questões, calendário sugerido e janelas de prioridade exibidos no site:** `dados/concursos.json`. Alterações no JSON devem ser baseadas em edital/retificação verificados, com `updated_at` revisado.
 - **Progresso pessoal:** `localStorage` por navegador, com opção de sincronização privada por pareamento Supabase via `assets/sync.js` (GitHub Pages sozinho não sincroniza). O backup geral JSON **v5**, gerado no painel, reúne leitura de RLM, Engenharia/Qualidade e Português, a preferência de marcar ao avançar em Português, disponibilidade, planejamento, questões e revisões. A restauração geral aceita backups v1–v4; a aula de Português aceita backup específico v1/v2 e seu trecho em backups gerais v4/v5. Nenhum upload ocorre sem ação do usuário.
 
-## Automatização implementada
+## Automatização implementada — estado vigente em 20/11/2026
 
-1. `assets/planner.js` carrega `dados/concursos.json` no navegador; se falhar, informa indisponibilidade em vez de inventar datas.
-2. A prioridade exibida varia conforme as janelas de datas cadastradas e, quando encerradas, pede reavaliação. A mudança não edita os arquivos privados.
-3. A agenda mostra atividades sugeridas, com marcação **manual** de realização e reversão.
-4. A página de revisão gera automaticamente datas +1, +3 e +7 dias (intervalos configuráveis no JSON) a partir de **erros efetivamente registrados**; datas vencidas são exibidas ao abrir o site. Marcar a revisão como realizada continua sendo escolha do usuário.
-5. `assets/quiz.js` fornece ligação **opt-in** para futuros questionários HTML: após correção de respostas completas, grava sessão em `ce_question_logs_v1`, que alimenta a página `revisoes.html`. Não categoriza a natureza do erro automaticamente. Atribuir autoria/fonte e gabarito é responsabilidade de quem prepara as questões.
-6. `progresso.html` exibe pesos públicos de cada edital, leitura local e somente resultados privados que estiverem no navegador. Não importa nem inventa pontuações do histórico do ChatGPT.
+1. `assets/planner.js` usa `dados/concursos.json` para edital, datas e planejamento público. Atividades sugeridas não são marcadas como executadas automaticamente.
+2. `assets/adaptive.js` atualiza os links de próximo foco já existentes no painel e no planejamento, sem criar caixas de recomendações dentro das aulas ou novas abas.
+3. `progresso.html` é somente um redirecionamento legado para `aulas.html`; não recriar uma página independente de Progresso. A leitura por subseção é exibida nas aulas e no catálogo, e o backup geral opcional fica em `conta.html`.
+4. `assets/quiz.js` registra `ce_question_logs_v1` **somente quando um quiz completo é enviado**. Erros geram revisões +1/+3/+7 dias, conforme configuração pública; abrir a página, rolar ou conferir sem enviar não produz avaliação.
+5. `assets/practice-auto.js` monta simulados e prática em `revisoes.html`; uma revisão só é registrada como praticada após envio de **novo quiz**, nunca por data ou formulário manual de acertos.
+6. O progresso individual permanece privado no navegador/Supabase; nenhuma marcação pessoal, inscrição, código de pareamento ou resultado deve ser incluído em commits, HTML ou JSON públicos.
+7. As oito aulas utilizam `assets/lesson-unified.css` e `assets/lesson-unified.js`; os testes de regressão pertinentes são `scripts/verificar-padrao-aulas.mjs`, `scripts/verificar-avanco-lido.mjs` e `scripts/verificar-pratica-automatica.mjs`.
 
 ## Integração de questionários — contrato de implementação
 
