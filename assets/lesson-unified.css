@@ -365,3 +365,10 @@
  .ce-lesson-page .ce-reader-bottom{pointer-events:none}
  .ce-lesson-page .ce-reader-bottom a{pointer-events:auto}
 }
+
+/* Leitura independente e contadores por módulo nas aulas do novo padrão. */
+.ce-lesson-page .ce-module-reading{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding:10px 12px;background:#132e39;border:1px solid #436879;border-radius:10px}
+.ce-lesson-page .ce-module-reading strong{font-size:.87rem;color:#c9f4eb}
+.ce-lesson-page .ce-module-reading button{min-height:44px;padding:8px 12px;border:1px solid #72b9bd;background:#264d5b;border-radius:8px;color:#f1ffff;cursor:pointer;font-weight:700}
+.ce-lesson-page .ce-module-reading button:hover{background:#335e6d}
+@media(max-width:620px){.ce-lesson-page .ce-module-reading button{width:100%}}
