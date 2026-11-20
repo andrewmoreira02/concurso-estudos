@@ -245,9 +245,12 @@ git push -u origin feature/prioridade-os</pre><nav aria-label="Navegação da su
   $('markOnNext').checked=state.preferences.markOnNext;
   function tell(message){storageStatus.textContent=message}
   function persist(){
+    const before=safeGet(siteStepsKey);
+    const next=JSON.stringify(stepIds.filter(id=>state.subsections[id]===true).map(toStepCode));
     const ok=safeSet(storageKey,JSON.stringify(state));
     // O catálogo / progresso geral já utilizam essa chave: continuar a publicar a lista sem inventar estudo.
-    const sharedOk=safeSet(siteStepsKey,JSON.stringify(stepIds.filter(id=>state.subsections[id]===true).map(toStepCode)));
+    const sharedOk=safeSet(siteStepsKey,next);
+    if(ok&&sharedOk&&before!==next)window.dispatchEvent(new CustomEvent('concurso:read-change'));
     return ok && sharedOk;
   }
   function isRead(id){return state.subsections[id]===true}
