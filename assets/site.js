@@ -191,6 +191,21 @@
     return {version:1,lesson:PORTUGUESE_LESSON,read:cleaned,settings:{autoMark:preferences&&preferences.autoMark===true},legacy:doc&&Array.isArray(doc.legacy)?doc.legacy.slice(0,1000):[]};
   }
   function readPortugueseSteps(){return Object.values(readPortugueseDocument().read).filter(Boolean).length;}
+  function readNewLessonBackups(){
+    const out={};
+    try{
+      for(let i=0;i<localStorage.length;i++){
+        const key=localStorage.key(i);
+        if(!key?.startsWith('ce_lesson_read_v1:'))continue;
+        const slug=key.slice('ce_lesson_read_v1:'.length);
+        if(!/^[a-z][a-z0-9-]{2,40}$/.test(slug))continue;
+        const doc=safeParse(localStorage.getItem(key));
+        if(doc?.lesson!==slug||!Array.isArray(doc.read))continue;
+        out[slug]=[...new Set(doc.read.filter(id=>typeof id==='string'&&/^[a-z][a-z0-9-]{1,18}-[1-9]\d?-[1-9]\d?$/.test(id)))].slice(0,100);
+      }
+    }catch{}
+    return out;
+  }
   function backup() {
     const planDone=localJSON('ce_plan_done_v1',{});
     const available=localJSON('ce_available_days_v1',[]);
@@ -198,11 +213,13 @@
     const reviewDone=localJSON('ce_review_done_v1',{});
     return {
       format:'concurso-estudos-progress',
-      version:5,
+      version:6,
       savedAt:new Date().toISOString(),
       rlm:{readSubsections:readSteps(),readModules:readModules()},
       engenharia:{readSubsections:readEngineeringSteps(),readChapters:readEngineeringChapters()},
       portugues:readPortugueseDocument(),
+      newLessons:readNewLessonBackups(),
+      registration:{ima:localJSON('ce_registration_v1',{})?.ima===true},
       site:{
         planDone:planDone && typeof planDone==='object'&&!Array.isArray(planDone)?planDone:{},
         available:Array.isArray(available)?available:[],
@@ -242,18 +259,29 @@
         if (file.size>2097152) throw Error('arquivo acima de 2 MB');
         const data=safeParse(await file.text());
         if (!data || typeof data !== 'object') throw Error('JSON inválido');
-        let steps, modules, engSteps=null, engChapters=null, newSiteData=null, portugueseDoc=null;
-        if(data.format==='concurso-estudos-progress' && [1,2,3,4,5].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
+        let steps, modules, engSteps=null, engChapters=null, newSiteData=null, portugueseDoc=null, extraLessons=null, registered=null;
+        if(data.format==='concurso-estudos-progress' && [1,2,3,4,5,6].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
           steps=data.rlm.readSubsections;modules=data.rlm.readModules;
-          if([2,3,4,5].includes(data.version)){
+          if([2,3,4,5,6].includes(data.version)){
             if(!data.engenharia || !Array.isArray(data.engenharia.readSubsections) || !Array.isArray(data.engenharia.readChapters))throw Error('Backup de Engenharia incompleto');
             engSteps=data.engenharia.readSubsections;engChapters=data.engenharia.readChapters;
             if(data.version>=3)newSiteData=validateNewData(data.site);
             if(data.version>=4){
               const pt=data.portugues;
               if(!pt||pt.lesson!==PORTUGUESE_LESSON||!pt.read||typeof pt.read!=='object'||Array.isArray(pt.read)||Object.keys(pt.read).length>21||!Object.entries(pt.read).every(([id,value])=>/^pt19-[1-6]-[1-9]\d*$/.test(id)&&typeof value==='boolean'))throw Error('Backup de Português inválido');
-              if(data.version===5 && (!pt.settings||typeof pt.settings!=='object'||Array.isArray(pt.settings)||typeof pt.settings.autoMark!=='boolean'))throw Error('Preferência de Português inválida');
-              portugueseDoc={version:1,lesson:PORTUGUESE_LESSON,read:pt.read,legacy:Array.isArray(pt.legacy)?pt.legacy.slice(0,1000):[],settings:data.version===5?{autoMark:pt.settings.autoMark}:null};
+              if(data.version>=5 && (!pt.settings||typeof pt.settings!=='object'||Array.isArray(pt.settings)||typeof pt.settings.autoMark!=='boolean'))throw Error('Preferência de Português inválida');
+              portugueseDoc={version:1,lesson:PORTUGUESE_LESSON,read:pt.read,legacy:Array.isArray(pt.legacy)?pt.legacy.slice(0,1000):[],settings:data.version>=5?{autoMark:pt.settings.autoMark}:null};
+            }
+            if(data.version>=6){
+              if(!data.newLessons||typeof data.newLessons!=='object'||Array.isArray(data.newLessons)||Object.keys(data.newLessons).length>100)throw Error('Aulas novas inválidas');
+              extraLessons={};
+              for(const [slug,list] of Object.entries(data.newLessons)){
+                if(!/^[a-z][a-z0-9-]{2,40}$/.test(slug)||!Array.isArray(list)||list.length>100||
+                   !list.every(id=>typeof id==='string'&&/^[a-z][a-z0-9-]{1,18}-[1-9]\d?-[1-9]\d?$/.test(id)))throw Error('Leituras novas inválidas');
+                extraLessons[slug]=[...new Set(list)];
+              }
+              if(!data.registration||typeof data.registration.ima!=='boolean')throw Error('Situação de inscrição inválida');
+              registered=data.registration.ima;
             }
           }
         } else if(['rlm-shared-progress','casan-rlm-progress'].includes(data.format) && Array.isArray(data.markedAsStudied)){
@@ -286,6 +314,11 @@
             localStorage.setItem(PORTUGUESE_KEY,JSON.stringify(readOnly));
             if(settings)localStorage.setItem(PORTUGUESE_KEY+':settings',JSON.stringify(settings));
           }
+          if(extraLessons)for(const [slug,read] of Object.entries(extraLessons)){
+            const key='ce_lesson_read_v1:'+slug,previous=safeParse(localStorage.getItem(key))||{};
+            localStorage.setItem(key,JSON.stringify({...previous,version:1,lesson:slug,read}));
+          }
+          if(typeof registered==='boolean')localStorage.setItem('ce_registration_v1',JSON.stringify({ima:registered}));
           if(newSiteData){
             localStorage.setItem('ce_plan_done_v1',JSON.stringify(newSiteData.planDone));
             localStorage.setItem('ce_available_days_v1',JSON.stringify(newSiteData.available));
