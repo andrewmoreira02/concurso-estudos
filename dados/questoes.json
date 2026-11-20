@@ -1,0 +1,622 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-19",
+  "source_note": "Todos os itens são AUTORAIS. Não são transcrições nem adaptações verificadas de provas anteriores. Tópicos escolhidos conforme disciplinas do cargo CASAN 404 e conteúdos compartilhados de TI, Português e RLM.",
+  "saturday": {
+    "date": "2026-11-21",
+    "exam": "casan",
+    "title": "Revisão de véspera CASAN 404",
+    "duration_minutes": 35
+  },
+  "questions": [
+    {
+      "id": "ti-req-01",
+      "subject": "ti",
+      "tag": "engenharia",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Uma especificação determina que o sistema deve permitir ao atendente cadastrar uma ordem de serviço. Trata-se de:",
+      "options": {
+        "a": "Requisito funcional",
+        "b": "Requisito de desempenho",
+        "c": "Restrição exclusivamente tecnológica",
+        "d": "Requisito de disponibilidade"
+      },
+      "correct": "a",
+      "explanation": "O comportamento que o sistema deve oferecer ao usuário é um requisito funcional.",
+      "whyWrong": "Desempenho e disponibilidade são atributos de qualidade; tecnologia é restrição, não o comportamento pedido.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-uml-02",
+      "subject": "ti",
+      "tag": "engenharia",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "É necessário descrever, em ordem temporal, as mensagens entre usuário, serviço e banco de dados durante a abertura de uma solicitação. Qual diagrama UML é mais direto?",
+      "options": {
+        "a": "Diagrama de classes",
+        "b": "Diagrama de componentes",
+        "c": "Diagrama de sequência",
+        "d": "Diagrama de implantação"
+      },
+      "correct": "c",
+      "explanation": "O diagrama de sequência mostra linhas de vida e a ordem temporal de mensagens.",
+      "whyWrong": "Classes modelam estrutura; componentes mostram unidades; implantação mostra nós físicos/lógicos.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-sql-03",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Uma consulta deve mostrar TODOS os clientes e, quando existir, a ordem de serviço associada. Clientes sem ordem também devem aparecer. Qual junção atende?",
+      "options": {
+        "a": "INNER JOIN iniciando em ordens",
+        "b": "LEFT JOIN iniciando em clientes",
+        "c": "CROSS JOIN",
+        "d": "NATURAL JOIN obrigatória"
+      },
+      "correct": "b",
+      "explanation": "LEFT JOIN preserva todas as linhas da tabela à esquerda (clientes), mesmo sem correspondência.",
+      "whyWrong": "INNER remove clientes sem ordens; CROSS multiplica combinações; NATURAL não garante o requisito.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-acid-04",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Uma transferência registra débito e crédito. Se a segunda atualização falhar, o sistema deve desfazer a primeira. A propriedade ACID central é:",
+      "options": {
+        "a": "Isolamento",
+        "b": "Durabilidade",
+        "c": "Atomicidade",
+        "d": "Consistência eventual"
+      },
+      "correct": "c",
+      "explanation": "Atomicidade exige que todas as operações da transação ocorram ou nenhuma produza efeito.",
+      "whyWrong": "Isolamento separa transações concorrentes; durabilidade protege commit; consistência eventual é outro conceito.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-auth-05",
+      "subject": "ti",
+      "tag": "seguranca",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Um usuário fez login, mas tenta ler a ficha de outro cliente alterando o identificador na URL. A defesa mais direta é:",
+      "options": {
+        "a": "Validar autorização de acesso ao objeto consultado",
+        "b": "Exigir somente senha mais longa",
+        "c": "Codificar a URL em Base64",
+        "d": "Aumentar tempo de expiração da sessão"
+      },
+      "correct": "a",
+      "explanation": "Autenticação identifica o usuário; autorização verifica o direito sobre CADA objeto. A falha é típica de controle de acesso por objeto.",
+      "whyWrong": "Senha, Base64 e expiração não substituem verificação de permissões para o recurso solicitado.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-solid-06",
+      "subject": "ti",
+      "tag": "algoritmos",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Uma classe mistura regras de cobrança, geração de PDF e envio de e-mail. Que princípio SOLID recomenda separar responsabilidades independentes?",
+      "options": {
+        "a": "Open/Closed",
+        "b": "Dependency Inversion",
+        "c": "Single Responsibility",
+        "d": "Interface Segregation"
+      },
+      "correct": "c",
+      "explanation": "Responsabilidade Única recomenda uma razão principal de mudança por componente, evitando misturar cobrança, apresentação e envio.",
+      "whyWrong": "Os demais princípios tratam de extensão, dependências e interfaces específicas.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-cicd-07",
+      "subject": "ti",
+      "tag": "engenharia",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Após cada alteração, uma pipeline compila o projeto e executa testes automatizados antes de publicar uma versão. O principal benefício desse processo é:",
+      "options": {
+        "a": "Eliminar a necessidade de revisar código",
+        "b": "Detectar regressões cedo e tornar entregas reproduzíveis",
+        "c": "Garantir zero vulnerabilidades sem outras medidas",
+        "d": "Impedir falhas de requisitos"
+      },
+      "correct": "b",
+      "explanation": "CI automatiza integração, compilação e testes frequentes; CD padroniza entrega, reduzindo variação operacional.",
+      "whyWrong": "Pipeline não dispensa revisão, análise de segurança nem validação dos requisitos.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-bigO-08",
+      "subject": "ti",
+      "tag": "algoritmos",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Para encontrar um elemento por varredura em um vetor não ordenado com n posições, no pior caso é necessário verificar n elementos. Qual a complexidade?",
+      "options": {
+        "a": "O(1)",
+        "b": "O(log n)",
+        "c": "O(n)",
+        "d": "O(n²)"
+      },
+      "correct": "c",
+      "explanation": "Na busca linear no pior caso há até n comparações; por isso o crescimento é O(n).",
+      "whyWrong": "O(1) independe de n; O(log n) é típico da busca binária em conjunto ordenado; O(n²) é quadrático.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-sqli-09",
+      "subject": "ti",
+      "tag": "seguranca",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Qual medida evita que dados digitados pelo usuário sejam interpretados como comandos SQL?",
+      "options": {
+        "a": "Concatenar SQL e escapar somente espaços",
+        "b": "Utilizar consultas parametrizadas/preparadas",
+        "c": "Ocultar o código JavaScript da página",
+        "d": "Substituir SELECT por GET"
+      },
+      "correct": "b",
+      "explanation": "Parâmetros vinculados mantêm dados separados da estrutura do comando SQL.",
+      "whyWrong": "Concatenar continua arriscado; ofuscação e GET não alteram a segurança do banco.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-pkce-10",
+      "subject": "ti",
+      "tag": "seguranca",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Em OAuth 2.0, qual é a finalidade principal do PKCE no fluxo Authorization Code?",
+      "options": {
+        "a": "Impedir que a API tenha autorização de recursos",
+        "b": "Trocar TLS por token simétrico",
+        "c": "Vincular o código de autorização ao cliente que iniciou o fluxo",
+        "d": "Transformar Access Token em ID Token"
+      },
+      "correct": "c",
+      "explanation": "PKCE usa code_verifier e code_challenge para reduzir a possibilidade de troca indevida de um código interceptado.",
+      "whyWrong": "Não substitui TLS nem a autorização de recursos; ID Token é conceito de OIDC.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-delphi-11",
+      "subject": "ti",
+      "tag": "algoritmos",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Em uma aplicação orientada a eventos, um componente visual Delphi executa código quando o usuário clica no botão. Isso caracteriza:",
+      "options": {
+        "a": "Tratamento de evento",
+        "b": "Execução de SQL DDL",
+        "c": "Polimorfismo por sobrecarga obrigatório",
+        "d": "Herança múltipla"
+      },
+      "correct": "a",
+      "explanation": "O clique dispara um evento associado a um manipulador (handler), característica da programação orientada a eventos.",
+      "whyWrong": "DDL atua no banco; sobrecarga/herança não são implicadas por um clique.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-queue-12",
+      "subject": "ti",
+      "tag": "algoritmos",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Chamadas de atendimento são processadas estritamente na ordem de chegada. Qual estrutura conceitual representa essa política?",
+      "options": {
+        "a": "Pilha (LIFO)",
+        "b": "Fila (FIFO)",
+        "c": "Árvore de busca binária obrigatória",
+        "d": "Tabela hash obrigatória"
+      },
+      "correct": "b",
+      "explanation": "Uma fila segue FIFO: o primeiro a entrar é o primeiro a sair.",
+      "whyWrong": "Pilha é LIFO; árvore e hash não impõem por si só a ordem cronológica de atendimento.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "ti-test-13",
+      "subject": "ti",
+      "tag": "engenharia",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Um teste executa apenas uma função de cálculo isolada, com dependências simuladas. A classificação mais adequada é:",
+      "options": {
+        "a": "Teste de aceitação final de usuário",
+        "b": "Teste de integração ponta a ponta",
+        "c": "Teste unitário",
+        "d": "Teste de carga"
+      },
+      "correct": "c",
+      "explanation": "Teste unitário exercita uma unidade isolada, verificando seu comportamento com dependências controladas.",
+      "whyWrong": "Aceitação valida requisitos; integração envolve componentes reais; carga mede comportamento sob volume.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "pt-concessao-01",
+      "subject": "portugues",
+      "tag": "portugues",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Assinale a alternativa que expressa CONCESSÃO: “___ estivesse chovendo, a equipe concluiu o serviço.”",
+      "options": {
+        "a": "Se",
+        "b": "Porque",
+        "c": "Embora",
+        "d": "Caso"
+      },
+      "correct": "c",
+      "explanation": "Embora introduz uma circunstância contrária à expectativa que NÃO impediu o resultado.",
+      "whyWrong": "Se e caso exprimem condição; porque indica causa.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "pt-referencia-02",
+      "subject": "portugues",
+      "tag": "portugues",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Em “O supervisor revisou o relatório e o encaminhou ao setor”, o pronome “o” retoma:",
+      "options": {
+        "a": "O supervisor",
+        "b": "O relatório",
+        "c": "O setor",
+        "d": "O verbo revisar"
+      },
+      "correct": "b",
+      "explanation": "O pronome oblíquo 'o' substitui o objeto direto masculino singular 'o relatório'.",
+      "whyWrong": "O sujeito é supervisor; setor aparece depois da preposição; verbo não é referente nominal.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "pt-pontuacao-03",
+      "subject": "portugues",
+      "tag": "portugues",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Em “Após concluir o teste, a equipe registrou o resultado”, a vírgula serve principalmente para:",
+      "options": {
+        "a": "Separar sujeito e predicado",
+        "b": "Isolar oração subordinada adverbial temporal anteposta",
+        "c": "Separar verbo e complemento obrigatório",
+        "d": "Indicar supressão de verbo"
+      },
+      "correct": "b",
+      "explanation": "A oração adverbial temporal 'Após concluir o teste' está anteposta à oração principal.",
+      "whyWrong": "A vírgula não separa diretamente sujeito/predicado nem verbo/complemento aqui.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "pt-condicao-04",
+      "subject": "portugues",
+      "tag": "portugues",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Em “Se a conexão falhar, o sistema exibirá um aviso”, a relação de sentido é:",
+      "options": {
+        "a": "Concessão",
+        "b": "Consequência sem condição",
+        "c": "Condição",
+        "d": "Comparação"
+      },
+      "correct": "c",
+      "explanation": "A oração introduzida por 'Se' estabelece condição para a ação posterior.",
+      "whyWrong": "Não expressa fato contrário à expectativa, comparação nem causa incondicional.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "pt-inferencia-05",
+      "subject": "portugues",
+      "tag": "portugues",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Texto: “A atualização foi programada para a madrugada, mas precisou ser adiada por falta de homologação.” Qual conclusão é autorizada?",
+      "options": {
+        "a": "A atualização foi homologada e executada",
+        "b": "A atualização não foi realizada no horário previsto",
+        "c": "Houve falha irreversível no sistema",
+        "d": "A equipe desconhecia o planejamento"
+      },
+      "correct": "b",
+      "explanation": "O texto informa expressamente o adiamento; não informa execução, falha irreversível nem conhecimento da equipe.",
+      "whyWrong": "As demais alternativas acrescentam fatos que não constam do texto.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "rlm-pg-01",
+      "subject": "rlm",
+      "tag": "rlm",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Uma PG tem primeiro termo 2 e razão 3. Qual a SOMA dos quatro primeiros termos?",
+      "options": {
+        "a": "40",
+        "b": "54",
+        "c": "80",
+        "d": "162"
+      },
+      "correct": "c",
+      "explanation": "Os termos são 2, 6, 18 e 54; a soma é 80. Pela fórmula: S₄ = 2 × (3⁴ − 1)/(3 − 1) = 80.",
+      "whyWrong": "As outras somas não correspondem à sequência dos quatro termos.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "rlm-prob-02",
+      "subject": "rlm",
+      "tag": "rlm",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Uma urna contém 3 bolas vermelhas e 2 azuis. Retiram-se duas bolas SEM reposição. Qual a probabilidade de ambas serem vermelhas?",
+      "options": {
+        "a": "3/5",
+        "b": "3/10",
+        "c": "9/25",
+        "d": "1/2"
+      },
+      "correct": "b",
+      "explanation": "P(vermelha e vermelha)=3/5 × 2/4 = 6/20 = 3/10.",
+      "whyWrong": "9/25 ignora a falta de reposição; 3/5 é só a primeira retirada; 1/2 não decorre do espaço amostral.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "rlm-pa-03",
+      "subject": "rlm",
+      "tag": "rlm",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Uma PA começa em 5 e tem razão 4. Qual é o décimo termo?",
+      "options": {
+        "a": "36",
+        "b": "41",
+        "c": "45",
+        "d": "50"
+      },
+      "correct": "b",
+      "explanation": "a₁₀ = a₁ + (10−1)r = 5 + 9×4 = 41.",
+      "whyWrong": "É necessário usar n−1 intervalos, não n; os demais valores são incompatíveis.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "rlm-perc-04",
+      "subject": "rlm",
+      "tag": "rlm",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Um valor aumenta 20% e depois diminui 20% sobre o novo valor. O resultado, comparado ao valor original, é:",
+      "options": {
+        "a": "4% menor",
+        "b": "Igual",
+        "c": "4% maior",
+        "d": "40% menor"
+      },
+      "correct": "a",
+      "explanation": "Os fatores sucessivos são 1,20×0,80=0,96; o resultado é 96% do original, queda de 4%.",
+      "whyWrong": "Percentuais sucessivos têm bases diferentes; não se anulam.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "rlm-media-05",
+      "subject": "rlm",
+      "tag": "rlm",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Os tempos 10, 12, 12, 14 e 52 minutos têm mediana igual a:",
+      "options": {
+        "a": "10",
+        "b": "12",
+        "c": "20",
+        "d": "52"
+      },
+      "correct": "b",
+      "explanation": "A mediana é o terceiro elemento depois de ordenar os cinco valores: 12.",
+      "whyWrong": "20 é a média, afetada pelo valor extremo 52; não é a mediana.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "leg-integridade-01",
+      "subject": "legislacao",
+      "tag": "legislacao",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Um empregado responsável por contratar serviços identifica um potencial conflito entre interesse privado e decisão profissional. Qual atitude é compatível com integridade e governança corporativa?",
+      "options": {
+        "a": "Omitir a relação para evitar atraso",
+        "b": "Declarar o conflito e seguir o procedimento institucional de impedimento/avaliação",
+        "c": "Favorecer a proposta conhecida se for mais rápida",
+        "d": "Transferir informalmente a decisão sem registro"
+      },
+      "correct": "b",
+      "explanation": "Transparência sobre conflitos e observância dos procedimentos formais protegem a impessoalidade e a integridade da decisão. Item conceitual, não transcrição de regra específica da CASAN.",
+      "whyWrong": "Omissão e favorecimento comprometem a imparcialidade; a transferência sem registro não substitui o procedimento.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "leg-normas-02",
+      "subject": "legislacao",
+      "tag": "legislacao",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Uma norma interna estabelece que alterações de documentos institucionais exigem autorização formal e registro. Qual conduta respeita o enunciado da norma?",
+      "options": {
+        "a": "Alterar sem registrar porque o resultado é bom",
+        "b": "Pedir autorização e registrar a mudança",
+        "c": "Enviar apenas mensagem informal ao colega",
+        "d": "Aguardar auditoria para justificar o ato"
+      },
+      "correct": "b",
+      "explanation": "O próprio enunciado traz as duas condições: autorização formal e registro. Trata-se de interpretação de regra hipotética, não de artigo real.",
+      "whyWrong": "As demais alternativas omitem ao menos um requisito expresso.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "leg-direito-03",
+      "subject": "legislacao",
+      "tag": "legislacao",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Em um procedimento interno hipotético, a divulgação de dados pessoais é restrita às pessoas autorizadas. Qual conduta está alinhada ao texto?",
+      "options": {
+        "a": "Divulgar a todos por transparência irrestrita",
+        "b": "Limitar acesso segundo a autorização prevista",
+        "c": "Enviar dados a aplicativos pessoais",
+        "d": "Publicar os dados para evitar atrasos"
+      },
+      "correct": "b",
+      "explanation": "Uma norma que restringe acesso exige controle de autorização; transparência não é autorização irrestrita para dados pessoais.",
+      "whyWrong": "As demais alternativas desrespeitam a restrição explícita do enunciado.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "atu-sustentabilidade-01",
+      "subject": "atualidades",
+      "tag": "atualidades",
+      "saturday": true,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Uma cidade enfrenta chuvas mais intensas e risco de contaminação de mananciais. Qual política combina adaptação climática com proteção da água?",
+      "options": {
+        "a": "Reduzir monitoramento da qualidade",
+        "b": "Reforçar drenagem, proteção de áreas de captação e monitoramento",
+        "c": "Eliminar planejamento de uso do solo",
+        "d": "Substituir toda prevenção por ação após desastres"
+      },
+      "correct": "b",
+      "explanation": "Infraestrutura preventiva, proteção de bacias e monitoramento reduzem vulnerabilidade socioambiental. Item temático, não notícia factual específica.",
+      "whyWrong": "Reduzir controle, ignorar solo ou agir só depois do desastre fragiliza a adaptação.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "atu-desenvolvimento-02",
+      "subject": "atualidades",
+      "tag": "atualidades",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Qual afirmação melhor expressa a ideia de desenvolvimento sustentável?",
+      "options": {
+        "a": "Crescimento econômico sem medir custos sociais",
+        "b": "Atender necessidades atuais sem comprometer a capacidade das gerações futuras",
+        "c": "Proibir toda atividade econômica",
+        "d": "Priorizar apenas um setor sem avaliar impactos"
+      },
+      "correct": "b",
+      "explanation": "O conceito integra dimensões ambiental, econômica e social e preserva possibilidades das próximas gerações.",
+      "whyWrong": "As demais propostas ignoram alguma dimensão relevante ou caricaturam o conceito.",
+      "source": "Questão autoral; não transcrita de concurso"
+    },
+    {
+      "id": "atu-governanca-03",
+      "subject": "atualidades",
+      "tag": "atualidades",
+      "saturday": false,
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "prompt": "Em serviços de saneamento, qual indicador é mais adequado para avaliar continuamente a qualidade da água distribuída?",
+      "options": {
+        "a": "Número de anúncios publicitários",
+        "b": "Acompanhamento periódico de parâmetros de potabilidade",
+        "c": "Quantidade de seguidores na rede social",
+        "d": "Número de prédios administrativos"
+      },
+      "correct": "b",
+      "explanation": "O monitoramento técnico periódico de parâmetros de potabilidade fornece evidência objetiva de qualidade da água.",
+      "whyWrong": "Publicidade e métricas institucionais não substituem análises de qualidade.",
+      "source": "Questão autoral; não transcrita de concurso"
+    }
+  ]
+}
