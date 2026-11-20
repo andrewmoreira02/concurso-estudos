@@ -100,7 +100,7 @@ try{
  let studyState=await page.evaluate(()=>window.ConcursoAdaptive.model());
  assert(studyState.lessons.find(l=>l.id==='engenharia').studiedCount===1,'Clique Estudado não alterou cobertura');
  assert(studyState.lessons.find(l=>l.id==='engenharia').read===0,'Estudado não deve alterar Lido');
- assert(!localStorage.getItem('ce_study_confirmed_v1:ima'),'CASAN não deve marcar IMA automaticamente');
+ assert(!(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('ce_study_confirmed_v1')||'{}').confirmed||{}).some(k=>k.startsWith('ima:')))),'CASAN não deve marcar IMA automaticamente');
  await studyCard.locator('input[type=checkbox]').first().uncheck();
  await page.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_study_confirmed_v1')||'{}').confirmed?.['casan:engenharia:1']===false,{timeout:15000});
  assert(await page.locator('#ceStudyStatus').innerText(),'Ausência de confirmação da operação');
