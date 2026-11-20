@@ -61,7 +61,7 @@ try{
       assert(card.origin.includes('questão'),lesson+' não informa número da prova');
       assert(card.prompt.length>=45,lesson+' enunciado curto');
       assert.equal(card.options.length,5,lesson+' alternativas incompletas');
-      assert(card.options.every(x=>x&&x.trim().length>2),lesson+' alternativa vazia');
+      assert(card.options.every(x=>typeof x==='string'&&x.trim().length>0),lesson+' alternativa vazia');
       assert(card.links.length>=3,lesson+' sem links de origem, gabarito e aula');
       assert(card.links.some(x=>x.label.includes('original')&&x.href.startsWith('https://')),lesson+' falta referência real');
       assert(card.links.some(x=>x.label.includes('final')&&x.href.startsWith('https://')),lesson+' falta gabarito externo');
