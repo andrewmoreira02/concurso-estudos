@@ -43,6 +43,10 @@
   function atEndEngineering(){
     let n=0;
     for(const marker of document.querySelectorAll('.step-marker[id^="etapa-"]')){
+      // Na versão revista de Engenharia, o botão já vem no rodapé do HTML.
+      // Contá-lo como válido sem duplicar nem mover o controle novamente.
+      const present=document.querySelector('.ce-end-reading .read-btn[data-read="'+marker.id+'"]');
+      if(present){n++;continue;}
       const button=marker.querySelector('.read-btn[data-read]'),parent=marker.parentElement;
       if(!button||!parent)continue;
       const footer=labelFooter(marker.id);
