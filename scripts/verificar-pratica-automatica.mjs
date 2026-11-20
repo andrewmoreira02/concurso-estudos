@@ -12,7 +12,7 @@ const chrome=process.env.CHROME_BIN||['/usr/bin/google-chrome','/usr/bin/chromiu
 if(!chrome||!existsSync(chrome))throw Error('Chromium indisponível.');
 function assert(ok,text){if(!ok)throw Error(text);}
 const data=JSON.parse(await readFile(resolve(root,'dados/concursos.json'),'utf8'));
-assert(data.calendar.special['2026-11-21'].some(t=>t.href==='aulas/questoes-casan-21-11.html'), 'Sábado não contém questões no plano');
+assert(data.calendar.special['2026-11-21'].some(t=>t.href.startsWith('aulas/questoes-casan-21-11.html?de=1&ate=10')), 'Sábado não contém questões no plano');
 assert(Object.values(data.calendar.cycles[0].weekdays).filter(a=>a.some(t=>t.id==='ima-questions')).length>=2,'IMA não possui blocos semanais de questões');
 const server=createServer(async(req,res)=>{
  try{
@@ -135,20 +135,26 @@ try{
  console.log('OK: treino futuro IMA, 12 questões e separação de avaliações entre editais.');
 
  await goto('aulas/banco-dados.html');
- await page.waitForFunction(()=>document.querySelectorAll('form[data-ce-quiz]:not(.ce-cobranca-form) [data-ce-question]').length===3,{timeout:15000});
- await page.evaluate(()=>document.querySelectorAll('form[data-ce-quiz].ce-cobranca-form').forEach(f=>f.removeAttribute('data-ce-quiz')));
+ assert(await page.locator('form[data-ce-quiz]').count()===0,'Aula de Banco de Dados não pode incluir avaliação');
+ await goto('aulas/questoes-banco-dados-casan.html?de=1&ate=3');
+ await ready(3);
  await answerQuiz(1);
  state=await inspect();
- assert(state.logs.length===10&&state.logs.at(-1).topic.includes('Banco de Dados'),'Integração com quiz já publicado falhou');
- assert(state.logs.at(-1).correct===2&&state.logs.at(-1).valid===3,'Quiz antigo registrou escore errado');
- console.log('OK: compatibilidade com quiz de aula publicada.');
+ assert(state.logs.length===10&&state.logs.at(-1).topic.includes('Banco de Dados'),'Bloco separado não registrou avaliação');
+ assert(state.logs.at(-1).correct===2&&state.logs.at(-1).valid===3,'Bloco separado de 3 questões corrigiu errado');
+ console.log('OK: aulas sem quiz; página de Banco de Dados exibiu somente questões 1–3 e corrigiu.');
 
  await goto('index.html');
- await page.waitForFunction(()=>window.ConcursoAdaptive?.model()?.picks?.[0]?.type==='quiz',{timeout:20000});
+ await page.waitForFunction(()=>window.ConcursoAdaptive?.model()?.picks?.length>0,{timeout:20000});
+ const model=await page.evaluate(()=>window.ConcursoAdaptive.model());
  const link=await page.locator('#dynamicFocusLink').getAttribute('href');
- assert(link.includes('questoes-casan-21-11.html'),'Painel de sábado não destaca questões');
+ assert(model.daysRemaining===1,'Prazo CASAN do sábado deve ser 1 dia');
+ assert(model.picks[0].type==='lesson','Reta final exige priorizar conteúdo ainda pendente antes de simulado');
+ assert(link.includes('aulas/')&&!link.includes('questoes-'),'Link inicial não prioriza teoria');
+ assert(model.picks.some(x=>x.type==='quiz'&&x.href.includes('questoes-casan-21-11.html?de=1&ate=10')),
+  'Deve manter bloco opcional exato 1–10 para sábado');
  assert(errors.length===0,'Erros JS: '+errors.join('; '));
- console.log('SUCESSO: planejamento, sábado, IMA, revisão automática e compatibilidade.');
+ console.log('SUCESSO: foco na teoria com prazo curto, faixas de questões e registros separados.');
 }catch(e){failed=true;console.error(e);}
 finally{await context.close();await browser.close();server.closeAllConnections?.();await new Promise(ok=>server.close(ok));}
 if(failed)process.exitCode=1;
