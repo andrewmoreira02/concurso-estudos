@@ -40,7 +40,7 @@ try{
      const s=getComputedStyle(document.body);
      const overflow=Math.max(document.documentElement.scrollWidth,document.body.scrollWidth);
      return {count,admin:!!admin,adminOpen:admin?.open,panel:!!panel,
-        hasHeader:!!header,hasIndex:!!document.querySelector('#sidebar,.nl-sidebar'),
+        hasHeader:!!header,hasIndex:!!document.querySelector('#sidebar,.nl-sidebar,aside.sidebar'),
         hasHero:!!hero,heroImage:hero?getComputedStyle(hero).backgroundImage:'',
         dark:s.backgroundColor,overflow,height,
         visibleText:document.body.innerText.includes('Sugestões locais')||document.body.innerText.includes('Registro de leitura (não é avaliação)')
