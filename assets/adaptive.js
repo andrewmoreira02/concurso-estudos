@@ -172,12 +172,41 @@ function createPanel(){
  panel.append(head,status,details);
  main.prepend(panel);
 }
+function orderCatalog(data){
+ const catalog=$('lessonCatalog');
+ if(!catalog)return;
+ const byId={rlm:'rlm',engenharia:'tecnologia',portugues:'portugues'};
+ const cards=[...catalog.querySelectorAll('.catalog-card[data-category]')];
+ const lessonScore=new Map(data.lessons.map(x=>[x.id,x.score]));
+ const priority=data.picks.filter(x=>x.type==='lesson').map(x=>{
+   const match=data.lessons.find(l=>x.href.startsWith(l.url));
+   return match?.id||'';
+ });
+ const rank=new Map(priority.map((id,i)=>[byId[id],i]));
+ cards.sort((a,b)=>{
+   const ra=rank.has(a.dataset.category)?rank.get(a.dataset.category):100;
+   const rb=rank.has(b.dataset.category)?rank.get(b.dataset.category):100;
+   if(ra!==rb)return ra-rb;
+   const nameA=Object.keys(byId).find(k=>byId[k]===a.dataset.category);
+   const nameB=Object.keys(byId).find(k=>byId[k]===b.dataset.category);
+   return (lessonScore.get(nameB)||0)-(lessonScore.get(nameA)||0);
+ });
+ for(const card of cards)catalog.append(card);
+ for(const course of data.lessons){
+   const links={rlm:'catalogRlmContinue',engenharia:'catalogEngContinue',portugues:'catalogPtContinue'};
+   const link=$(links[course.id]);
+   if(!link)continue;
+   link.href=localHref(course.first?course.url+'#'+course.first.id:'revisoes.html');
+   link.textContent=course.first?'Retomar '+course.first.module+'.'+course.first.step:'Ver revisões';
+ }
+}
 function render(data){
  if(!details)return;
  const signature=JSON.stringify({
    exam:data.exam,head:data.picks,lesson:data.active?.id,lessonNext:data.active?.first,
    evidence:data.lessons.map(l=>[l.id,l.read,l.total]),due:data.due.length,agenda:data.agenda
  });
+ orderCatalog(data);
  if(signature!==renderedSignature){
    renderedSignature=signature;
    details.replaceChildren();
