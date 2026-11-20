@@ -27,6 +27,8 @@ on:
       - 'scripts/verificar-leitura-guiada.mjs'
       - 'scripts/verificar-avanco-lido.mjs'
       - 'scripts/verificar-pratica-automatica.mjs'
+      - 'scripts/verificar-caderno-pdf.mjs'
+      - 'cadernos/**'
       - 'supabase/schema.sql'
       - 'conta.html'
       - '.github/workflows/validar-mobile.yml'
@@ -61,6 +63,8 @@ on:
       - 'scripts/verificar-leitura-guiada.mjs'
       - 'scripts/verificar-avanco-lido.mjs'
       - 'scripts/verificar-pratica-automatica.mjs'
+      - 'scripts/verificar-caderno-pdf.mjs'
+      - 'cadernos/**'
       - 'supabase/schema.sql'
       - 'conta.html'
       - '.github/workflows/validar-mobile.yml'
@@ -120,6 +124,8 @@ jobs:
         run: npm install --no-save --ignore-scripts playwright-core@1.55.1
       - name: Validar sintaxe do motor adaptativo
         run: node --check assets/ima-study-cycle.js && node --check assets/cobertura-ima.js && node --check assets/practice-auto.js && node --check assets/adaptive.js && node --check scripts/verificar-adaptacao.mjs
+      - name: Validar caderno PDF de 13 questões AOCP selecionadas
+        run: node scripts/verificar-caderno-pdf.mjs
       - name: Testar matriz IMA, simulado FURB e diagnóstico privado nas telas mobile
         run: timeout 125s node scripts/verificar-ima-ciclo.mjs
       - name: Verificar cobertura oficial CASAN 404 e links para as aulas
