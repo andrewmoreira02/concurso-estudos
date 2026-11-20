@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-20",
+  "purpose": "Reformulações próprias dos assuntos de questões identificadas em caderno e gabarito oficial FURB 2023. Enunciados e alternativas desta versão NÃO são transcrições, e o gabarito desta adaptação foi calculado independentemente.",
+  "copyright_note": "Ler e responder a adaptação sem abrir caderno externo. O caderno original continua vinculado apenas para consulta da fonte. Não apresentar o gabarito da adaptação como gabarito oficial da questão original.",
+  "questions": [
+    {
+      "id": "furb2023-as-q1-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q1",
+      "subject": "portugues",
+      "tag": "portugues",
+      "prompt": "Um relatório informa: “A prefeitura iniciou um projeto-piloto de ônibus movidos a combustível renovável, mas ainda não divulgou resultados comparativos de emissões.” Qual afirmação é sustentada pelo texto?",
+      "options": {
+        "a": "O projeto já comprovou redução de 50% nas emissões.",
+        "b": "A iniciativa foi iniciada, mas a comparação de emissões ainda não foi divulgada.",
+        "c": "Todos os ônibus da cidade foram convertidos.",
+        "d": "A comparação final demonstra superioridade da alternativa adotada.",
+        "e": "O programa foi cancelado antes de iniciar."
+      },
+      "correct": "b",
+      "explanation": "A única conclusão autorizada é que o piloto começou e a comparação ainda não foi divulgada.",
+      "whyWrong": "As alternativas A, C, D e E acrescentam resultados, abrangência ou cancelamento não informados."
+    },
+    {
+      "id": "furb2023-as-q3-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q3",
+      "subject": "portugues",
+      "tag": "portugues",
+      "prompt": "Leia: “A equipe examinou os relatórios e encaminhou esses documentos à direção. Ela solicitou nova revisão.” Na segunda frase, considerando a concordância e o contexto, “Ela” retoma:",
+      "options": {
+        "a": "A direção.",
+        "b": "Os relatórios.",
+        "c": "A equipe.",
+        "d": "Esses documentos.",
+        "e": "A revisão."
+      },
+      "correct": "c",
+      "explanation": "O pronome feminino singular retoma “a equipe”, núcleo feminino singular que realizou as ações.",
+      "whyWrong": "Direção também é feminino singular, mas não é sujeito das ações antes da retomada; os demais referentes não correspondem ao agente descrito."
+    },
+    {
+      "id": "furb2023-as-q4-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q4",
+      "subject": "portugues",
+      "tag": "portugues",
+      "prompt": "Na frase “Os profissionais assistiram os pacientes durante o atendimento”, o verbo “assistir” apresenta o sentido de:",
+      "options": {
+        "a": "Presenciar um espetáculo.",
+        "b": "Morar em determinado lugar.",
+        "c": "Ter preferência por algo.",
+        "d": "Prestar auxílio a alguém.",
+        "e": "Pertencer a um grupo."
+      },
+      "correct": "d",
+      "explanation": "No sentido de ajudar/prestar assistência, “assistir” admite objeto direto: assistiram os pacientes.",
+      "whyWrong": "Presenciar costuma usar a preposição “a” na norma formal; os demais sentidos não correspondem ao contexto."
+    },
+    {
+      "id": "furb2023-as-q6-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q6",
+      "subject": "rlm",
+      "tag": "rlm",
+      "prompt": "Um veículo percorre 180 km e rende 15 km por litro. Se o litro custa R$ 6,00, qual é o gasto de combustível para esse trajeto?",
+      "options": {
+        "a": "R$ 60,00",
+        "b": "R$ 72,00",
+        "c": "R$ 90,00",
+        "d": "R$ 108,00",
+        "e": "R$ 180,00"
+      },
+      "correct": "b",
+      "explanation": "Consumo: 180 ÷ 15 = 12 L. Custo: 12 × R$ 6,00 = R$ 72,00.",
+      "whyWrong": "Os demais valores decorrem de confundir km, litros e custo unitário."
+    },
+    {
+      "id": "furb2023-as-q7-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q7",
+      "subject": "rlm",
+      "tag": "rlm",
+      "prompt": "Um produto vendido a R$ 25,00 por quilograma é comprado em uma embalagem de 80 gramas. Qual deve ser o preço proporcional dessa quantidade?",
+      "options": {
+        "a": "R$ 0,20",
+        "b": "R$ 0,80",
+        "c": "R$ 1,25",
+        "d": "R$ 2,00",
+        "e": "R$ 3,20"
+      },
+      "correct": "d",
+      "explanation": "80 g correspondem a 0,08 kg; 25 × 0,08 = R$ 2,00.",
+      "whyWrong": "As outras opções não convertem corretamente gramas em quilogramas ou aplicam proporção incorreta."
+    },
+    {
+      "id": "furb2023-as-q8-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q8",
+      "subject": "rlm",
+      "tag": "rlm",
+      "prompt": "Após um desconto de 15%, determinado item passou a custar R$ 170,00. Qual era seu preço antes do desconto?",
+      "options": {
+        "a": "R$ 180,00",
+        "b": "R$ 185,00",
+        "c": "R$ 195,50",
+        "d": "R$ 200,00",
+        "e": "R$ 210,00"
+      },
+      "correct": "d",
+      "explanation": "O preço com desconto é 85% do original: 170 ÷ 0,85 = R$ 200,00.",
+      "whyWrong": "Não basta somar 15% ao preço final: a porcentagem é aplicada ao valor original."
+    },
+    {
+      "id": "furb2023-as-q9-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q9",
+      "subject": "rlm",
+      "tag": "rlm",
+      "prompt": "Um reservatório tem 1.800 litros. Nos primeiros 30 minutos saem 10 L/min. Depois a vazão aumenta para 15 L/min até esvaziar. Qual o tempo TOTAL de esvaziamento?",
+      "options": {
+        "a": "1 h 40 min",
+        "b": "2 h",
+        "c": "2 h 10 min",
+        "d": "2 h 30 min",
+        "e": "3 h 20 min"
+      },
+      "correct": "c",
+      "explanation": "Saem 300 L nos 30 min iniciais; restam 1500 L. A 15 L/min: 100 min. Total: 130 min = 2 h 10 min.",
+      "whyWrong": "É necessário somar os dois períodos; usar uma única vazão em todo o processo gera resultado errado."
+    },
+    {
+      "id": "furb2023-as-q10-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q10",
+      "subject": "rlm",
+      "tag": "rlm",
+      "prompt": "Uma equipe tem N pessoas. Sabe-se que um quinto da equipe, acrescido de 3 pessoas, corresponde a um quarto da equipe. Qual o valor de N?",
+      "options": {
+        "a": "12",
+        "b": "15",
+        "c": "20",
+        "d": "48",
+        "e": "60"
+      },
+      "correct": "e",
+      "explanation": "N/5 + 3 = N/4 ⇒ 3 = N/20 ⇒ N = 60.",
+      "whyWrong": "Deve-se isolar N usando a diferença entre um quarto e um quinto."
+    },
+    {
+      "id": "furb2023-as-q11-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q11",
+      "subject": "ti",
+      "tag": "engenharia",
+      "prompt": "Em Java, considere `interface Auditavel { void auditar(); }`. Qual declaração implementa corretamente essa interface?",
+      "options": {
+        "a": "`class Registro implements Auditavel { public void auditar() {} }`",
+        "b": "`class Registro extends Auditavel { public void auditar() {} }`",
+        "c": "`interface Registro implements Auditavel {}`",
+        "d": "`class Registro implements Auditavel {}`",
+        "e": "`class Registro extends interface Auditavel {}`"
+      },
+      "correct": "a",
+      "explanation": "Uma classe declara que implementa uma interface usando `implements` e deve implementar seus métodos abstratos, salvo se for abstrata.",
+      "whyWrong": "`extends` em classe não substitui `implements`; a classe concreta da opção D omite o método exigido."
+    },
+    {
+      "id": "furb2023-as-q12-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q12",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "prompt": "Uma transação bancária foi confirmada com COMMIT. Mesmo após uma falha de energia, o banco deve preservar esse resultado. Qual propriedade ACID é ilustrada?",
+      "options": {
+        "a": "Atomicidade",
+        "b": "Consistência",
+        "c": "Isolamento",
+        "d": "Durabilidade",
+        "e": "Integridade referencial"
+      },
+      "correct": "d",
+      "explanation": "Durabilidade significa que, após o commit, os efeitos de uma transação confirmada persistem.",
+      "whyWrong": "Atomicidade trata tudo-ou-nada; isolamento trata concorrência; consistência preserva regras; integridade referencial não substitui durabilidade."
+    },
+    {
+      "id": "furb2023-as-q16-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q16",
+      "subject": "ti",
+      "tag": "engenharia",
+      "prompt": "Uma equipe deseja representar a troca de mensagens entre objetos e, principalmente, sua organização espacial e vínculos, sem focar numa linha temporal vertical. Qual diagrama UML é indicado?",
+      "options": {
+        "a": "Atividades",
+        "b": "Comunicação",
+        "c": "Casos de uso",
+        "d": "Implantação",
+        "e": "Pacotes"
+      },
+      "correct": "b",
+      "explanation": "O diagrama de comunicação representa a interação com ênfase nas ligações entre participantes e mensagens numeradas.",
+      "whyWrong": "Atividades descrevem fluxo de ações; casos de uso descrevem funcionalidades; implantação e pacotes tratam outras estruturas."
+    },
+    {
+      "id": "furb2023-as-q18-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q18",
+      "subject": "ti",
+      "tag": "algoritmos",
+      "prompt": "Em Java, qual expressão usa corretamente o operador condicional ternário para atribuir a `maior` o maior valor entre `a` e `b`?",
+      "options": {
+        "a": "`maior = (a > b) ? a;`",
+        "b": "`maior = if (a > b) a else b;`",
+        "c": "`maior = (a > b) : a ? b;`",
+        "d": "`maior = (a > b) ? a : b;`",
+        "e": "`maior = (a > b) ?? a : b;`"
+      },
+      "correct": "d",
+      "explanation": "A sintaxe é `condição ? expressão_se_verdadeira : expressão_se_falsa`.",
+      "whyWrong": "A expressão ternária exige ambas as alternativas e a ordem correta dos operadores `?` e `:`."
+    },
+    {
+      "id": "furb2023-as-q20-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q20",
+      "subject": "ti",
+      "tag": "engenharia",
+      "prompt": "Sobre mensageria JMS e aplicações Java, qual afirmação é correta?",
+      "options": {
+        "a": "Mensagens JMS precisam obrigatoriamente ser documentos JSON.",
+        "b": "JMS é exclusivo de comunicação por HTTP.",
+        "c": "JMS permite diferentes formatos de mensagem e não exige JSON como formato único.",
+        "d": "Qualquer mensagem JMS realiza automaticamente um COMMIT em todas as bases.",
+        "e": "O uso de JMS dispensa tratamento de erro e confirmação."
+      },
+      "correct": "c",
+      "explanation": "JMS define uma API de mensageria com diferentes tipos de mensagem; JSON não é obrigatório.",
+      "whyWrong": "JMS não é limitado a HTTP e não elimina controle transacional, tratamento de erros ou confirmação."
+    },
+    {
+      "id": "furb2023-as-q22-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q22",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "prompt": "Em PL/SQL, que recurso permite sinalizar um erro de aplicação com número e mensagem personalizados ao chamador?",
+      "options": {
+        "a": "`DBMS_OUTPUT.PUT_LINE`",
+        "b": "`COMMIT`",
+        "c": "`SQL%ROWCOUNT`",
+        "d": "`SAVEPOINT`",
+        "e": "`RAISE_APPLICATION_ERROR`"
+      },
+      "correct": "e",
+      "explanation": "`RAISE_APPLICATION_ERROR` permite lançar erros de aplicação na faixa de números reservada pela Oracle.",
+      "whyWrong": "DBMS_OUTPUT apenas escreve saída; COMMIT e SAVEPOINT gerenciam transações; SQL%ROWCOUNT informa linhas afetadas."
+    },
+    {
+      "id": "furb2023-as-q26-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q26",
+      "subject": "ti",
+      "tag": "algoritmos",
+      "prompt": "Considere `interface Forma { double area(); }` e classes `Circulo` e `Retangulo` que implementam `Forma`. Uma referência do tipo `Forma` chama `area()` sobre um objeto `Circulo`. Que implementação será executada?",
+      "options": {
+        "a": "Sempre a de `Retangulo`, por ordem alfabética.",
+        "b": "A do objeto real `Circulo`, por despacho dinâmico.",
+        "c": "Nenhuma: interfaces não podem declarar métodos.",
+        "d": "A implementação escolhida durante compilação independentemente do objeto.",
+        "e": "O método só pode ser chamado após cast para `Object`."
+      },
+      "correct": "b",
+      "explanation": "Polimorfismo permite usar uma referência de interface; a implementação executada depende do objeto concreto em tempo de execução.",
+      "whyWrong": "A chamada não se resolve por ordem alfabética nem ignora o tipo real do objeto."
+    },
+    {
+      "id": "furb2023-as-q30-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q30",
+      "subject": "ti",
+      "tag": "algoritmos",
+      "prompt": "Em Java Streams, considere `lista.stream().filter(x -> x > 0).map(x -> x * 2).count()`. Qual afirmação é correta?",
+      "options": {
+        "a": "`filter` e `map` são operações intermediárias, e `count` é terminal.",
+        "b": "`filter` encerra obrigatoriamente o fluxo.",
+        "c": "`map` altera o conteúdo da lista original em todos os casos.",
+        "d": "`count` é operação intermediária sem produzir resultado.",
+        "e": "Uma Stream só pode executar operações dentro de laços `for`."
+      },
+      "correct": "a",
+      "explanation": "`filter` e `map` descrevem transformações intermediárias; `count` é operação terminal que dispara a avaliação necessária.",
+      "whyWrong": "O pipeline de Streams é declarativo e pode ser usado sem laço explícito; operações intermediárias não implicam mutação da fonte."
+    },
+    {
+      "id": "furb2023-as-q31-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "furb2023-as-q31",
+      "subject": "ti",
+      "tag": "engenharia",
+      "prompt": "Um sistema publica eventos em um tópico para que diferentes assinantes interessados recebam notificações. Qual padrão de entrega é mais apropriado?",
+      "options": {
+        "a": "Pilha LIFO",
+        "b": "Consulta SQL com lock exclusivo",
+        "c": "Uma fila ponto a ponto compartilhada sem assinaturas",
+        "d": "Publicação/assinatura por tópico (publish/subscribe)",
+        "e": "Requisições síncronas obrigatórias para cada assinante"
+      },
+      "correct": "d",
+      "explanation": "O modelo publish/subscribe permite distribuir eventos para assinantes de um tópico conforme as regras de assinatura.",
+      "whyWrong": "Filas ponto a ponto são usadas em outro padrão de entrega; pilha, SQL e chamadas síncronas não representam o tópico pub/sub."
+    }
+  ]
+}
