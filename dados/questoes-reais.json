@@ -32,7 +32,7 @@
         "casan",
         "ima"
       ],
-      "saturday": false
+      "saturday": true
     },
     {
       "id": "furb2023-as-q3",
