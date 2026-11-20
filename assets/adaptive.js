@@ -182,30 +182,32 @@ function createPanel(){
 function orderCatalog(data){
  const catalog=$('lessonCatalog');
  if(!catalog)return;
- const byId={rlm:'rlm',engenharia:'tecnologia',portugues:'portugues'};
- const cards=[...catalog.querySelectorAll('.catalog-card[data-category]')];
+ const cards=[...catalog.querySelectorAll('.catalog-card[data-lesson-id]')];
  const lessonScore=new Map(data.lessons.map(x=>[x.id,x.score]));
  const priority=data.picks.filter(x=>x.type==='lesson').map(x=>{
-   const match=data.lessons.find(l=>x.href.startsWith(l.url));
-   return match?.id||'';
+   const course=data.lessons.find(l=>x.href.startsWith(l.url));
+   return course?.id||'';
  });
- const rank=new Map(priority.map((id,i)=>[byId[id],i]));
+ const rank=new Map(priority.map((id,i)=>[id,i]));
  cards.sort((a,b)=>{
-   const ra=rank.has(a.dataset.category)?rank.get(a.dataset.category):100;
-   const rb=rank.has(b.dataset.category)?rank.get(b.dataset.category):100;
+   const ida=a.dataset.lessonId,idb=b.dataset.lessonId;
+   const ra=rank.has(ida)?rank.get(ida):100,rb=rank.has(idb)?rank.get(idb):100;
    if(ra!==rb)return ra-rb;
-   const nameA=Object.keys(byId).find(k=>byId[k]===a.dataset.category);
-   const nameB=Object.keys(byId).find(k=>byId[k]===b.dataset.category);
-   return (lessonScore.get(nameB)||0)-(lessonScore.get(nameA)||0);
+   const scoreDiff=(lessonScore.get(idb)||0)-(lessonScore.get(ida)||0);
+   return scoreDiff||ida.localeCompare(idb,'pt-BR');
  });
  for(const card of cards)catalog.append(card);
  for(const course of data.lessons){
-   const links={rlm:'catalogRlmContinue',engenharia:'catalogEngContinue',portugues:'catalogPtContinue'};
-   const link=$(links[course.id]);
-   if(!link)continue;
-   link.href=localHref(course.first?course.url+'#'+course.first.id:'revisoes.html');
-   link.textContent=course.first?'Retomar '+course.first.module+'.'+course.first.step:'Ver revisões';
+   const oldLinks={rlm:'catalogRlmContinue',engenharia:'catalogEngContinue',portugues:'catalogPtContinue'};
+   const links=[document.getElementById(oldLinks[course.id]),...catalog.querySelectorAll('[data-ce-course-resume="'+course.id+'"]')].filter(Boolean);
+   for(const link of links){
+     link.href=localHref(course.first?course.url+'#'+course.first.id:'revisoes.html');
+     link.textContent=course.first?'Retomar '+course.first.module+'.'+course.first.step:'Ver revisões';
+   }
+   for(const label of catalog.querySelectorAll('[data-ce-course-count="'+course.id+'"]'))label.textContent=course.read+' de '+course.total;
  }
+ const count=$('catalogCount');
+ if(count)count.textContent=cards.filter(card=>!card.hidden).length+' aula(s) disponíveis no catálogo; ordenadas por prioridade e progresso de leitura.';
 }
 function render(data){
  if(!details)return;
