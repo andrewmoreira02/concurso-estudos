@@ -15,7 +15,9 @@ const configs=[
  {file:'aulas/portugues-casan-19-11.html',label:'Português',selector:'article.subsection[id^="pt19-"]',expected:21},
  {file:'aulas/banco-dados.html',label:'Banco de Dados',selector:'article.nl-section',expected:9},
  {file:'aulas/seguranca.html',label:'Segurança',selector:'article.nl-section',expected:9},
- {file:'aulas/algoritmos-oo.html',label:'Algoritmos e OO',selector:'article.nl-section',expected:9}
+ {file:'aulas/algoritmos-oo.html',label:'Algoritmos e OO',selector:'article.nl-section',expected:9},
+ {file:'aulas/administracao-publica-ima.html',label:'Administração IMA',selector:'article.nl-section',expected:9},
+ {file:'aulas/legislacao-ambiental-ima.html',label:'Legislação IMA',selector:'article.nl-section',expected:9}
 ];
 let empty=0,shallow=0;
 try{
