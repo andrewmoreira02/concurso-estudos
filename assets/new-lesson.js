@@ -8,7 +8,7 @@ const $$=s=>[...document.querySelectorAll(s)],$=s=>document.querySelector(s);
 const ids=$$('input[data-ce-read]').map(x=>x.dataset.ceRead);
 const allowed=new Set(ids);
 const parse=()=>{try{const x=JSON.parse(localStorage.getItem(KEY)||'{}');return Array.isArray(x.read)?x:{};}catch{return {};}};
-const current=()=>new Set(parse().read.filter(x=>allowed.has(x)));
+const current=()=>{const read=parse().read;return new Set(Array.isArray(read)?read.filter(x=>allowed.has(x)):[]);};
 function status(text){const node=$('#nl-status');if(node)node.textContent=text;}
 function save(idsToSave){
  const doc=parse(),read=[...idsToSave].filter(x=>allowed.has(x)).sort((a,b)=>ids.indexOf(a)-ids.indexOf(b));
