@@ -52,3 +52,11 @@
  .hero h1{font-size:clamp(29px,8vw,37px)}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.shortcut-card{transition:none}}
+
+/* Evita expansão do viewport no catálogo em telefones estreitos. */
+@media(max-width:700px){
+ .catalog-toolbar,.catalog-filters,.catalog-card{min-width:0;max-width:100%}
+ .catalog-card .course-head{min-width:0;max-width:100%;flex-wrap:wrap}
+ .catalog-card .course-head h3{min-width:0;overflow-wrap:anywhere}
+ .catalog-card .tag{max-width:100%;white-space:normal;overflow-wrap:break-word}
+}
