@@ -124,16 +124,16 @@
         {
           "id": "legis",
           "title": "Legislação CASAN — aula completa de 20/11",
-          "detail": "15 subseções: Lei 9.984/2000, Estatuto da Igualdade Racial, decretos, regimento e políticas CASAN. Leitura não comprova estudo. Quiz autoral ao final.",
+          "detail": "15 subseções de teoria da CASAN: Lei 9.984/2000, Estatuto da Igualdade Racial, decretos, regimento e políticas CASAN. Aulas sem quiz; questões em página separada. Estudo não confirmado por leitura.",
           "href": "aulas/legislacao-casan-20-11.html"
         }
       ],
       "2026-11-21": [
         {
           "id": "questions-reta-final",
-          "title": "Questões CASAN — 13 adaptações AOCP 2025 + 2 autorais",
-          "detail": "Treino com 13 adaptações de itens de mesma banca AOCP (Prefeitura de Joinville 2025, Analista de TI), enunciados/alternativas nesta página e fontes originais vinculadas; 2 autorais em Legislação/Atualidades. Gabaritos próprios das adaptações.",
-          "href": "aulas/questoes-casan-21-11.html"
+          "title": "Questões CASAN 1–10 (opcionais, depois do conteúdo prioritário)",
+          "detail": "Bloco reduzido de dez questões da prova adaptada AOCP e complementos autorais. Acesso apenas aos itens 1–10; o simulado completo permanece disponível. Não antecipar questões se ainda existirem lacunas essenciais de teoria.",
+          "href": "aulas/questoes-casan-21-11.html?de=1&ate=10"
         },
         {
           "id": "revision",
@@ -586,5 +586,16 @@
       "status_source": "Confirmação manual em armazenamento privado; não presume inscrição até o usuário marcar."
     }
   },
-  "ima_focus_version": "2026-11-20"
+  "ima_focus_version": "2026-11-20",
+  "practice_policy": {
+    "schema_version": 1,
+    "exam": "casan",
+    "deadline": "2026-11-22",
+    "minimum_ready_pages": 5,
+    "question_blocks_path": "dados/blocos-questoes-casan.json",
+    "separate_from_lessons": true,
+    "range_query": "de / ate",
+    "deadline_strategy": "Até 2 dias da prova, priorizar lacunas essenciais de conteúdo. Questões opcionalmente em faixas curtas após confirmação de estudo; no dia da prova, só revisão leve.",
+    "note": "Disponibilidade de páginas não comprova execução; questões autorais são complementares e rotuladas."
+  }
 }
