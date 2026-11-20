@@ -213,6 +213,36 @@ try{
  assert(await page.locator('#exportButton').count()===1,'Backup geral não foi preservado na Sincronização');
  assert(await page.locator('#importButton').count()===1,'Restauração geral não foi preservada na Sincronização');
  console.log('OK: páginas sem Sugestões locais/Progresso, URL antiga redirecionada, backups preservados.');
+ // Estado registrado no site: 71/71 Lido RLM, 11/11 Estudado RLM,
+ // 5/37 Lido Engenharia, zero módulos Eng. A sugestão deve iniciar no módulo 2.
+ await page.goto(base+'/index.html',{waitUntil:'domcontentloaded'});
+ await loaded();
+ await page.evaluate(()=>{
+  const counts=[4,7,9,6,3,7,5,8,5,7,10],steps=[];
+  counts.forEach((n,m)=>{for(let k=1;k<=n;k++)steps.push('m'+(m+1)+'-s'+k);});
+  localStorage.setItem('concursos_rlm_sections_read_v3',JSON.stringify({version:3,readSections:steps}));
+  localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify(['1.1','1.2','1.3','1.4','1.5']));
+  localStorage.setItem('ce_study_confirmed_v1',JSON.stringify({version:1,confirmed:Object.fromEntries(Array.from({length:11},(_,i)=>['casan:rlm:'+(i+1),true]))}));
+  localStorage.removeItem('ce_question_logs_v1');
+  dispatchEvent(new CustomEvent('concurso:progress-change'));
+ });
+ await page.waitForFunction(()=>{
+  const m=window.ConcursoAdaptive?.model();
+  return m?.lessons.find(l=>l.id==='rlm')?.read===71 &&
+   m?.lessons.find(l=>l.id==='engenharia')?.read===5 &&
+   m?.picks?.[0]?.href==='aulas/engenharia-qualidade.html#sec2';
+ },{timeout:16000});
+ data=await page.evaluate(()=>window.ConcursoAdaptive.model());
+ assert(data.lessons.find(l=>l.id==='rlm').studiedCount===11,'RLM confirmado 11/11 não entrou no modelo');
+ assert(data.lessons.find(l=>l.id==='engenharia').studiedCount===0,'Engenharia apareceu falsamente como estudada');
+ assert(data.picks[0].title.includes('Engenharia')&&data.picks[0].href.endsWith('#sec2'),
+  'Recomendação não abriu a apresentação de Engenharia 2 antes de 2.1');
+ await page.goto(base+'/aulas.html',{waitUntil:'domcontentloaded'});
+ await loaded();
+ assert((await page.locator('#catalogEngContinue').getAttribute('href')).includes('#sec2'),
+  'Catálogo pulou apresentação do módulo 2 de Engenharia');
+ console.log('OK: 71 Lido RLM, 11 Estudado RLM, 5 Lido Engenharia => Engenharia módulo 2 desde a introdução.');
+
  assert(errors.length===0,'Erros JS: '+errors.join('; '));
  console.log('SUCESSO: recomendações apenas no painel e plano, aulas sem banner, revisão e mobile, sem dados privados.');
 }catch(e){failed=true;console.error(e);}
