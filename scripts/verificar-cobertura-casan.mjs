@@ -28,4 +28,26 @@ const cases=JSON.parse(casesText.split('window.ConcursoCobrancaData=')[1].trim()
 assert.equal(cases.sources.FLORAM.key.includes('concursos/350/'),true,'Gabarito FLORAM não é o oficial do cargo');
 assert(cases.cases['administracao-publica-ima'].some(x=>x.src==='FURB25'&&x.n===79&&x.origKey==='B'));
 assert(cases.cases['legislacao-ambiental-ima'].some(x=>x.src==='BRUSQUE'&&x.n===36&&x.origKey==='B'));
+
+const realFurb=JSON.parse(await readFile('dados/questoes-reais.json','utf8'));
+const realAocp=JSON.parse(await readFile('dados/fontes-aocp-joinville-2025.json','utf8'));
+const bankKeys={FURB25:{74:'A',75:'D',76:'D',77:'B',79:'B'},FLORAM:{64:'A',65:'C'},BRUSQUE:{36:'B'}};
+let examples=0;
+for(const [slug,items] of Object.entries(cases.cases)){
+ assert(items.length>=1&&items.length<=5,slug+' precisa de 1 a 5 exemplos');
+ for(const item of items){
+   examples++;
+   let real=null;
+   if(item.src==='AOCP')real=realAocp.questions.find(x=>x.question_number===item.n)?.final_answer;
+   else if(item.src==='FURB23')real=realFurb.questions.find(x=>x.source.question_number===item.n)?.correct;
+   else real=bankKeys[item.src]?.[item.n];
+   assert(real&&real.toUpperCase()===item.origKey.toUpperCase(),slug+' referência/gabarito divergente '+item.src+' questão '+item.n);
+   assert(item.mode==='adaptada'&&item.prompt?.length>45&&item.options?.length===5,'Adaptação incompleta: '+slug+' '+item.n);
+   assert(item.answer>=0&&item.answer<5&&item.explain?.length>=75,'Gabarito e correção próprios inválidos '+slug+' '+item.n);
+   const html=await readFile('aulas/'+(slug==='engenharia'?'engenharia-qualidade':slug==='portugues'?'portugues-casan-19-11':slug)+'.html','utf8');
+   assert(html.includes('id="'+item.section+'"'),'Exemplo sem âncora curricular: '+slug+' '+item.section);
+ }
+}
+assert.equal(examples,37);
+
 console.log('SUCESSO: 26 itens TI, 4 disciplinas gerais, 30 tópicos com links válidos, lacunas transparentes e três fontes históricas corrigidas.');
