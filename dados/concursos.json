@@ -130,8 +130,8 @@
       "2026-11-21": [
         {
           "id": "questions-reta-final",
-          "title": "Questões de concursos — sábado CASAN: 13 reais + 2 autorais",
-          "detail": "15 questões: 13 questões ORIGINAIS da FURB 2023 (Analista de Sistemas), com gabarito final verificado; 2 autorais de reserva em Legislação/Atualidades. Priorizar AOCP assim que caderno+gabarito final forem verificados. Abrir PDF por questão e responder A-E registra resultado.",
+          "title": "Questões de concursos — sábado CASAN: 13 adaptadas + 2 autorais",
+          "detail": "15 questões: 13 questões ADAPTADAS de temas identificados na prova FURB 2023 (Analista de Sistemas), com enunciado e alternativas completos na página; 2 autorais de reserva em Legislação/Atualidades. O gabarito das adaptações é próprio; o PDF de origem é referência opcional. Priorizar AOCP após verificar caderno e gabarito final.",
           "href": "aulas/questoes-casan-21-11.html"
         },
         {
@@ -161,7 +161,7 @@
         {
           "id": "ima-questions-eve",
           "title": "Questões de provas anteriores FURB — véspera IMA",
-          "detail": "Treino opcional com 12 questões reais de FURB 2023, banca e cargo de TI compatíveis, corrigidas pelo gabarito final; revisar lacunas sem presumir desempenho transferível.",
+          "detail": "Treino opcional com 12 questões adaptadas de temas da FURB 2023, com gabarito próprio validado e referência opcional à prova; revisar lacunas sem presumir desempenho transferível.",
           "href": "aulas/questoes-ima.html"
         },
         {
@@ -237,7 +237,7 @@
             {
               "id": "ima-questions",
               "title": "Questões reais FURB 2023 — treino IMA",
-              "detail": "12 questões ORIGINAIS FURB Analista de Sistemas, com caderno e gabarito final; TI 8, Português 2, RLM 2. Não cobre ainda Administração Pública e Legislação Ambiental.",
+              "detail": "12 questões ADAPTADAS de temas da FURB 2023, com enunciados e alternativas completos na página e gabarito próprio; TI 8, Português 2, RLM 2. Não cobre ainda Administração Pública e Legislação Ambiental.",
               "href": "aulas/questoes-ima.html"
             }
           ],
@@ -300,7 +300,7 @@
             {
               "id": "ima-questions",
               "title": "Questões reais FURB 2023 — treino IMA",
-              "detail": "12 questões ORIGINAIS FURB Analista de Sistemas, com caderno e gabarito final; TI 8, Português 2, RLM 2. Não cobre ainda Administração Pública e Legislação Ambiental.",
+              "detail": "12 questões ADAPTADAS de temas da FURB 2023, com enunciados e alternativas completos na página e gabarito próprio; TI 8, Português 2, RLM 2. Não cobre ainda Administração Pública e Legislação Ambiental.",
               "href": "aulas/questoes-ima.html"
             }
           ],
