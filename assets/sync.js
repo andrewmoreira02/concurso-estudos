@@ -18,13 +18,14 @@ const VALID={
  readRlm:/^read:rlm:m(?:[1-9]|10|11)-s\d{1,2}$/,
  readEng:/^read:eng:etapa-(?:[1-9]|10)-\d{1,2}$/,
  readPt:/^read:pt:pt19-[1-6]-\d{1,2}$/,
+ readNew:/^read:new:[a-z][a-z0-9-]{2,40}:[a-z][a-z0-9-]{1,18}-[1-9]\d?-[1-9]\d?$/,
  plan:/^plan:\d{4}-\d{2}-\d{2}::[a-z0-9-]{2,30}$/,
  available:/^available:[0-6]$/,
  review:/^review:session-\d+-[a-z0-9]+-\d{1,2}$/,
  log:/^log:session-\d+-[a-z0-9]+$/,
  pref:/^pref:pt:autoMark$/
 };
-const booleanKey=k=>VALID.readRlm.test(k)||VALID.readEng.test(k)||VALID.readPt.test(k)||VALID.plan.test(k)||VALID.available.test(k)||VALID.review.test(k)||VALID.pref.test(k);
+const booleanKey=k=>VALID.readRlm.test(k)||VALID.readEng.test(k)||VALID.readPt.test(k)||VALID.readNew.test(k)||VALID.plan.test(k)||VALID.available.test(k)||VALID.review.test(k)||VALID.pref.test(k);
 const allowed=k=>typeof k==='string'&&k.length<=180&&(booleanKey(k)||VALID.log.test(k));
 const valueOK=(k,v)=>booleanKey(k)?typeof v==='boolean':VALID.log.test(k)?v===null||(v&&typeof v==='object'&&!Array.isArray(v)&&v.id===k.slice(4)&&JSON.stringify(v).length<3000):false;
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
@@ -51,17 +52,30 @@ function snapshot(){
  for(const [id,done] of Object.entries(json(REVIEW,{})||{}))mark('review:'+id,done);
  const logs=json(LOGS,[]);
  if(Array.isArray(logs))for(const log of logs)if(log&&typeof log.id==='string')mark('log:'+log.id,log);
+ // Novas aulas preservam IDs estáveis e compartilham a leitura entre aparelhos.
+ try{for(let i=0;i<localStorage.length;i++){
+   const key=localStorage.key(i);
+   if(!key?.startsWith('ce_lesson_read_v1:'))continue;
+   const slug=key.slice('ce_lesson_read_v1:'.length),doc=json(key,{});
+   if(!/^[a-z][a-z0-9-]{2,40}$/.test(slug)||!Array.isArray(doc?.read))continue;
+   for(const section of doc.read)mark('read:new:'+slug+':'+section,true);
+ }}catch{}
  const settings=json(PT+':settings');
  if(settings&&typeof settings.autoMark==='boolean')mark('pref:pt:autoMark',settings.autoMark);
  return out;
 }
 function apply(items){
- const groups={rlm:[],eng:[],pt:[],plan:[],available:[],review:[],logs:[],pref:[]};
+ const groups={rlm:[],eng:[],pt:[],newLessons:new Map(),plan:[],available:[],review:[],logs:[],pref:[]};
  for(const [key,value] of Object.entries(items)){
    if(!allowed(key)||!valueOK(key,value))continue;
    if(VALID.readRlm.test(key))groups.rlm.push([key.slice(9),value]);
    else if(VALID.readEng.test(key))groups.eng.push([key.slice(9),value]);
    else if(VALID.readPt.test(key))groups.pt.push([key.slice(8),value]);
+   else if(VALID.readNew.test(key)){
+     const [, ,slug,...rest]=key.split(':');
+     if(!groups.newLessons.has(slug))groups.newLessons.set(slug,[]);
+     groups.newLessons.get(slug).push([rest.join(':'),value]);
+   }
    else if(VALID.plan.test(key))groups.plan.push([key.slice(5),value]);
    else if(VALID.available.test(key))groups.available.push([Number(key.slice(10)),value]);
    else if(VALID.review.test(key))groups.review.push([key.slice(7),value]);
@@ -90,6 +104,13 @@ function apply(items){
    const codes=[...saved].sort((a,b)=>{const x=a.split('.').map(Number),y=b.split('.').map(Number);return x[0]-y[0]||x[1]-y[1];});
    changed=store(ENG,{...doc,schemaVersion:3,subsections:sections})||changed;
    changed=store(ENG_SITE,codes)||changed;
+ }
+ for(const [slug,group] of groups.newLessons){
+   const key='ce_lesson_read_v1:'+slug,doc=json(key,{});
+   const values=new Set(Array.isArray(doc.read)?doc.read:[]);
+   for(const [id,yes] of group){if(yes)values.add(id);else values.delete(id);}
+   const read=[...values].filter(id=>typeof id==='string').sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+   changed=store(key,{...doc,version:1,lesson:slug,read})||changed;
  }
  if(groups.pt.length){
    const doc=json(PT,{});
@@ -339,6 +360,7 @@ function init(){
  }
  addEventListener('concurso:read-change',onProgressChange);
  addEventListener('concurso:progress-change',onProgressChange);
+ addEventListener('ce:practice-recorded',onProgressChange);
 }
 window.ConcursoSync={configured:configuredState,sync,connect,getStatus:()=>lastStatus};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
