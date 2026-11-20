@@ -190,3 +190,23 @@
  .ce-lesson-page .ce-standard-header nav a{flex:1 1 auto;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){.ce-lesson-page *{scroll-behavior:auto!important}}
+
+
+/* Navegação compartilhada: ao avançar, a própria subseção é registrada como Lido. */
+.ce-lesson-page .ce-step-navigation{
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;
+  margin:18px 0 0;padding-top:14px;border-top:1px dashed #66849a;
+}
+.ce-lesson-page .ce-step-navigation a{
+  display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  border-radius:9px;padding:9px 14px;text-decoration:none;font-weight:800;
+  background:#274459;color:#eaffff;border:1px solid #688a9f;
+}
+.ce-lesson-page .ce-step-navigation .ce-step-next{
+  margin-left:auto;background:#205d60;border-color:#8ce0d2;color:#f3fffb;
+}
+.ce-lesson-page .ce-step-navigation a:hover{background:#35627a}
+.ce-lesson-page #ce-next-reading-preference input{width:18px;height:18px;accent-color:#7ed7c8}
+@media(max-width:600px){
+ .ce-lesson-page .ce-step-navigation a{flex:1 1 120px}
+}
