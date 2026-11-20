@@ -289,14 +289,73 @@ function orderCatalog(data){
    for(const label of catalog.querySelectorAll('[data-ce-course-count="'+course.id+'"]'))label.textContent=course.read+' de '+course.total;
  }
  const count=$('catalogCount');
- if(count)count.textContent=cards.filter(card=>!card.hidden).length+' aula(s) disponíveis no catálogo; ordenadas por prioridade e progresso de leitura.';
+ if(count)count.textContent=cards.filter(card=>!card.hidden).length+' aula(s) disponíveis; ordenadas por peso, estudo confirmado, evidências de questões e leitura para continuidade.';
+}
+function renderStudyPriority(data){
+ const summary=$('cePrioritySubjects'),modulesHost=$('ceStudyModules');
+ if(!summary||!modulesHost)return;
+ summary.replaceChildren();
+ if(!data.exam){
+  summary.append(el('p','note-small','Não há concurso ativo no intervalo cadastrado; consulte os editais.'));
+  modulesHost.replaceChildren();return;
+ }
+ const table=el('table','ce-priority-table');
+ const caption=el('caption','','Ordem das disciplinas — '+config.exams[data.exam].name);
+ table.append(caption);
+ const head=document.createElement('thead'),row=document.createElement('tr');
+ for(const title of ['Ordem / disciplina','Peso no edital','Módulos estudados','Leitura declarada','Questões enviadas']){
+  const th=el('th','',title);th.scope='col';row.append(th);
+ }
+ head.append(row);table.append(head);
+ const body=document.createElement('tbody');
+ for(const [i,subject] of data.subjects.entries()){
+  const tr=document.createElement('tr');
+  const name=el('th','',String(i+1)+'. '+subject.name);name.scope='row';tr.append(name);
+  for(const field of [
+   subject.weight+' de '+config.exams[data.exam].total,
+   subject.modules?subject.confirmed+' de '+subject.modules+' confirmados':'Sem aula catalogada',
+   subject.totalSections?subject.totalRead+' de '+subject.totalSections+' Lido':'Sem material',
+   subject.valid?subject.correct+' acertos / '+subject.valid+' válidas':'Sem respostas registradas'
+  ])tr.append(el('td','',field));
+  body.append(tr);
+ }
+ table.append(body);summary.append(table);
+ summary.append(el('p','note-small','Critério: questões da disciplina × proporção de módulos sem estudo confirmado, com acréscimo limitado por erros efetivamente registrados. Aulas de uma mesma disciplina não multiplicam seu peso. Prazos de revisões e simulado agendado podem antecipar questões. Acerto em amostra pequena não equivale a domínio.'));
+ const previous=new Set([...modulesHost.querySelectorAll('details[data-study-lesson][open]')].map(n=>n.dataset.studyLesson));
+ modulesHost.replaceChildren();
+ const bySubjects=data.subjects.flatMap(x=>data.lessons.filter(l=>l.subject===x.name));
+ for(const lesson of bySubjects){
+  const details=document.createElement('details');details.dataset.studyLesson=lesson.id;
+  details.className='ce-study-lesson';details.open=previous.has(lesson.id);
+  const heading=el('summary','',lesson.title+' · '+lesson.studiedCount+'/'+lesson.sections_per_module.length+' módulos com estudo confirmado');
+  details.append(heading);
+  const options=el('div','ce-study-options');
+  for(let m=1;m<=lesson.sections_per_module.length;m++){
+   const label=el('label','ce-study-check');
+   const check=document.createElement('input');check.type='checkbox';
+   check.checked=studiedModules(data.exam,lesson).has(m);
+   check.setAttribute('aria-label','Estudei o módulo '+m+' de '+lesson.title+' para '+config.exams[data.exam].name);
+   check.addEventListener('change',()=>{
+    const ok=setStudyModule(data.exam,lesson,m,check.checked);
+    const status=$('ceStudyStatus');
+    if(status)status.textContent=ok?
+     'Confirmação de estudo atualizada. O próximo foco e a ordem foram recalculados, sem alterar Lido ou notas.':
+     'Não foi possível gravar a confirmação de estudo.';
+    if(!ok)check.checked=!check.checked;
+   });
+   label.append(check,document.createTextNode('Módulo '+m+' · '+(lesson.module_titles?.[m-1]||'Conteúdo do módulo')));
+   options.append(label);
+  }
+  details.append(options);modulesHost.append(details);
+ }
 }
 function render(data){
  const signature=JSON.stringify({
    exam:data.exam,head:data.picks,lesson:data.active?.id,lessonNext:data.active?.first,
-   evidence:data.lessons.map(l=>[l.id,l.read,l.total]),due:data.due.length,agenda:data.agenda,available:data.unreadEquivalents
+   evidence:data.lessons.map(l=>[l.id,l.read,l.total,l.studiedCount]),subjects:data.subjects.map(x=>[x.name,x.priority,x.valid,x.correct]),due:data.due.length,agenda:data.agenda,available:data.unreadEquivalents
  });
  orderCatalog(data);
+ renderStudyPriority(data);
  if(signature!==renderedSignature&&details){
    renderedSignature=signature;
    details.replaceChildren();
@@ -330,7 +389,7 @@ function render(data){
    if(data.agenda.length&&document.body.dataset.workspace==='planning'){
      details.append(el('p','ce-adaptive-agenda','Agenda prevista para hoje (não comprova execução): '+data.agenda.join(' · ')+'.'));
    }
-   details.append(el('p','ce-adaptive-disclaimer','Recomendação baseada em leitura declarada, prazos do edital e erros realmente registrados. Não marca como Estudado, Avaliado, Revisado ou Dominado; não altera tarefas realizadas.'));
+   details.append(el('p','ce-adaptive-disclaimer','Recomendação baseada no peso do edital, estudo explicitamente confirmado por módulo, prazos e erros realmente registrados. Lido é separado; não presume domínio nem marca atividades realizadas.'));
  }
  const primary=data.picks[0];
  for(const id of ['dynamicFocusLink','nextLessonLink']){
