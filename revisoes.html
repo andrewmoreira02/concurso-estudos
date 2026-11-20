@@ -1,22 +1,41 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1220"><meta name="description" content="Registro de questões e revisões espaçadas derivadas de erros de fato informados."><title>Revisões dirigidas · Concurso Estudos</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/planner.css"><script src="assets/planner.js" defer></script><script src="assets/sync-config.js" defer></script>
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<meta name="description" content="Revisões automáticas por erros reais registrados nos quizzes de concursos; sem preenchimento manual de data ou resultados.">
+<title>Revisões automáticas — Concurso Estudos</title>
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/planner.css">
+<link rel="stylesheet" href="assets/practice-auto.css">
+<script src="assets/sync-config.js" defer></script>
 <script src="assets/sync.js" defer></script>
-<link rel="stylesheet" href="assets/adaptive.css">
-<script src="assets/adaptive.js?v=20261119b" defer></script>
-</head><body data-workspace="reviews"><header class="top"><div class="shell top-inner"><a class="brand" href="./"><span class="logo">CE</span><span>Concurso Estudos</span></a><nav class="primary-nav" aria-label="Navegação principal"><a href="./">Início</a><a href="aulas.html">Aulas</a><a href="planejamento.html">Planejamento</a><a class="active" aria-current="page" href="revisoes.html">Revisões</a></nav></div></header><main class="shell workspace">
-<header class="workspace-intro"><div class="eyebrow">Prática, diagnóstico e retenção</div><h1>Revisões <em>pelos erros</em></h1><p class="lead">Registre sessões reais de questões. Quando houver erros, o site propõe revisões em 1, 3 e 7 dias; você marca cada revisão como realizada. Prazos são sugestão ajustável, não garantia de domínio.</p></header>
-<div class="workspace-grid"><section class="panel span-6"><span class="panel-label">Registrar evidência nova</span><h2>Resultado de uma sessão</h2><form id="practiceForm"><div class="field-grid">
-<label class="field-group">Data da resolução<input class="date-field" required id="practiceDate" name="date" type="date"></label>
-<label class="field-group">Concurso<select class="select-field" required id="practiceExam" name="exam"></select></label>
-<label class="field-group">Disciplina<select class="select-field" required id="practiceSubject" name="subject"><option value="ti">Tecnologia da Informação</option><option value="portugues">Português</option><option value="rlm">Raciocínio Lógico</option><option value="legislacao">Legislação / Ambiental</option><option value="adm">Administração Pública</option><option value="atualidades">Atualidades</option></select></label>
-<label class="field-group wide">Assunto específico<input class="text-field" id="practiceTopic" maxlength="100" name="topic" placeholder="Ex.: despacho dinâmico, combinatória, PKCE" required></label>
-<label class="field-group">Questões válidas<input class="number-field" type="number" id="practiceValid" name="valid" min="1" max="500" required placeholder="Ex.: 10"><small>Exclui as anuladas</small></label>
-<label class="field-group">Acertos<input class="number-field" type="number" id="practiceCorrect" name="correct" min="0" max="500" required placeholder="Ex.: 7"></label>
-<label class="field-group">Anuladas<input class="number-field" type="number" id="practiceAnnulled" name="annulled" min="0" max="500" required value="0"><small>Contagem à parte</small></label>
-<label class="field-group">Tipo principal de erro<select class="select-field" name="kind" id="practiceKind"><option value="nao-classificado">Não classificado</option><option value="conceitual">Conceitual</option><option value="atencao">Atenção</option><option value="leitura">Interpretação/leitura</option><option value="digitacao">Digitação</option></select></label>
-<label class="field-group wide">Fonte / observação (opcional)<input class="text-field" type="text" id="practiceSource" name="source" maxlength="240" placeholder="Prova, caderno, link ou anotação"></label></div>
-<div class="button-bar"><button class="ui-btn primary" type="submit">Salvar resultado e gerar revisões</button><span id="practiceStatus" role="status" class="statusline"></span></div>
-</form><p class="note-small">Informar a fonte não faz uma questão se tornar “real/verificada”. As avaliações históricas não são reaplicadas automaticamente ao IMA.</p></section>
-<section class="panel span-6"><span class="panel-label">Recomendações documentadas</span><h2>Como usar a revisão</h2><div id="historicalSignals" class="evidence-panel"></div><p class="note-small">Os resultados permanecem privados e podem ser sincronizados entre aparelhos vinculados. Dicas gerais não criam registros pessoais nem datas de revisão. Para gerar datas, registre uma sessão efetivamente realizada.</p></section>
-<section class="panel span-12"><div class="week-nav"><div><span class="panel-label">Fila pessoal</span><h2>Revisões programadas</h2><p class="note-small" id="queueSummary">Somente erros registrados geram lembretes locais nesta página.</p></div><div class="button-bar"><label class="field-group" for="queueFilter">Mostrar<select class="select-field" id="queueFilter"><option value="all">Todas</option><option value="open">Pendentes</option><option value="done">Realizadas</option></select></label></div></div><div id="reviewQueue" class="review-queue" aria-live="polite"></div></section>
-<section class="panel span-12"><span class="panel-label">Histórico deste navegador</span><h2>Sessões de questões registradas</h2><div id="practiceHistory" class="history-list"></div><p class="note-small">É possível excluir um registro criado por engano. Os backups do painel devem ser preservados antes de limpar os dados do navegador.</p></section></div>
-<footer class="foot">Dados de planejamento derivados dos registros do Projeto Concurso, consultados em 19/11/2026. O progresso pode sincronizar entre seus aparelhos vinculados; a Biblioteca privada do ChatGPT não é atualizada automaticamente. Sugestões de navegação locais são calculadas ao abrir e após novas marcações. A revisão e publicação editorial do conteúdo são responsabilidade da tarefa agendada do ChatGPT. <a href="aulas.html">Biblioteca de aulas</a>.</footer></main></body></html>
+<script src="assets/quiz.js?v=20261119quiz" defer></script>
+<script src="assets/practice-auto.js?v=20261119quiz" defer></script>
+</head>
+<body data-workspace="reviews">
+<header class="top"><div class="shell top-inner">
+<a class="brand" href="./"><span class="logo">CE</span><span>Concurso Estudos</span></a>
+<nav class="primary-nav" aria-label="Menu principal"><a href="./">Início</a><a href="aulas.html">Aulas</a><a href="planejamento.html">Planejamento</a><a class="active" aria-current="page" href="revisoes.html">Revisões</a></nav>
+</div></header>
+<main class="shell workspace">
+<header class="workspace-intro">
+<div class="eyebrow">Recuperação ativa com evidências</div>
+<h1>Revisões <em>automáticas</em></h1>
+<p class="lead">Sem cadastro manual de acertos. O resultado das questões enviadas nas aulas alimenta a fila: somente erros realmente registrados geram revisões. Ao responder uma revisão, ela é marcada como praticada automaticamente.</p>
+</header>
+<section class="panel">
+<span class="panel-label">Primeiro passo</span>
+<h2>Responder questões, não preencher planilhas</h2>
+<p>Comece pelo <a href="aulas/questoes-casan-21-11.html">bloco de questões de sábado (CASAN)</a> ou pelo <a href="aulas/questoes-ima.html">treino de questões IMA</a>. Os quizzes das aulas de Engenharia, Banco de Dados, Segurança e Algoritmos/OO também enviam os resultados automaticamente.</p>
+<p class="note-small">O sistema registra concurso, disciplina, data, número de questões válidas, acertos, erros e anuladas a partir das respostas efetivamente enviadas. Erros geram revisões nos intervalos configurados de 1, 3 e 7 dias; não classifica automaticamente a causa cognitiva do erro nem presume domínio.</p>
+</section>
+<section class="panel" aria-labelledby="automatic-review-heading">
+<div class="week-nav"><div><span class="panel-label">Fila calculada automaticamente</span><h2 id="automatic-review-heading">Revisões indicadas por erros</h2><p id="reviewAutoCount" class="note-small" role="status" aria-live="polite">Carregando histórico privado de respostas…</p></div></div>
+<div class="ce-auto-review-list" id="reviewAutoList" aria-live="polite"><p>Carregando sessões já registradas…</p></div>
+</section>
+<section class="panel ce-review-practice" id="reviewAutoPractice" aria-live="polite"></section>
+<footer class="foot">
+A revisão é considerada praticada somente após envio das respostas do novo quiz. Uma revisão com erros pode gerar outra rodada; nenhuma revisão é marcada por rolagem, abertura de página ou tempo. Os registros são armazenados no navegador e podem ser sincronizados privadamente entre seus aparelhos vinculados. <a href="conta.html">Sincronização e backup</a>.
+</footer>
+</main>
+</body></html>
