@@ -238,3 +238,9 @@ Fontes candidatas ainda sujeitas à validação individual: FURB Analista de Sis
 - Incluída `aulas/administracao-publica-ima.html` nos testes existentes `scripts/verificar-padrao-aulas.mjs` (320/390/430/1280 px, índice, hero, backup recolhido, ausência de painel interno e erros JavaScript) e `scripts/verificar-avanco-lido.mjs` (marcação da origem ao avançar, reversão e preferência desligável). Antes, os dois scripts verificavam apenas seis aulas, deixando a aula IMA recém-criada sem cobertura.
 - Alteração limitada aos scripts de teste: nenhum HTML, progresso, quiz ou dado privado foi alterado. A execução automatizada em Chromium e a confirmação do Pages permanecem pendentes enquanto não houver ambiente de navegador com acesso ao repositório; não declarar testes aprovados apenas pela alteração do código.
 - Próximo foco: executar os dois scripts no CI, corrigir eventuais regressões, validar visualmente a sétima aula e conferir implantação no Pages antes de considerá-la disponível para o cálculo definitivo de reserva.
+
+
+## 20/11/2026 — Manutenção de regressão das sete aulas
+- Workflow `.github/workflows/validar-mobile.yml`: eliminada entrada duplicada de `dados/questoes-reais.json` nos filtros de push/PR e corrigidos os nomes dos testes de padrão visual e avanço `Lido` de seis para **sete** aulas, refletindo a inclusão de Administração Pública IMA. Nenhuma alteração de lógica de estudo ou progresso.
+- A execução de navegador, a conclusão do CI e o deploy do Pages precisam ser verificados separadamente; a existência dos testes ou o commit não comprova sucesso de execução.
+- Próximo foco: conferir logs das regressões e disponibilidade pública; auditar visualmente Engenharia, preservar IDs e priorizar conteúdo de edital e questões verificadas sem repetir trabalho editorial sem evidência.
