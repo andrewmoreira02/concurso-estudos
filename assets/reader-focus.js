@@ -63,7 +63,7 @@ function init(){
   next.classList.remove('ce-reader-inactive');next.setAttribute('aria-disabled','false');
   prev.href=index>0?'#'+sections[index-1].id:'#'+module.id;
   next.href='#'+sections[index].id;
-  $('.ce-index-current').forEach(a=>{a.classList.remove('ce-index-current');a.removeAttribute('aria-current');});
+  $$('.ce-index-current').forEach(a=>{a.classList.remove('ce-index-current');a.removeAttribute('aria-current');});
  }
  function focus(i){
   introFor=-1;
