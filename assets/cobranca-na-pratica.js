@@ -49,8 +49,10 @@ function makeCard(slug,item,source,index,total){
  card.append(el('p','ce-cobranca-asked','Como o tema foi cobrado: '+item.what));
  const links=el('div','ce-cobranca-links');
  const topicLink=el('a','ce-cobranca-topic-link','Rever explicação deste tópico');topicLink.href='#'+item.section;links.append(topicLink);
- link(links,source.pdf,'Caderno histórico (opcional)');
+ link(links,source.pdf,'Prova completa '+source.bank+' '+source.year+' (opcional)');
  link(links,source.key,'Gabarito oficial da prova anterior');
+ if(slug==='engenharia'&&source.bank==='FURB')link(links,'../cadernos/engenharia-furb-2023-4-questoes-selecionadas.pdf','PDF filtrado FURB: quatro questões e gabarito');
+ if(slug==='engenharia'&&source.bank==='Instituto AOCP')link(links,'../cadernos/casan-404-13-questoes-selecionadas-aocp-2025.pdf','PDF filtrado AOCP: seleção CASAN e gabarito');
  card.append(links);
  card.append(el('p','ce-cobranca-kind','ADAPTADA · enunciado e alternativas originais desta adaptação'));
  // A pergunta é respondida independentemente de revelar a solução.
