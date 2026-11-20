@@ -46,7 +46,7 @@ function validAdapted(q){
 }
 function validAocp(q){
  return validAdapted(q)&&q.source?.bank==='Instituto AOCP'&&q.source?.year===2025&&
-  /^[a-e]$/.test(q.source.original_correct||'')&&Array.isArray(q.exams)&&q.exams.includes('casan')&&
+  /^[A-E]$/.test(q.source.original_correct||'')&&Array.isArray(q.exams)&&q.exams.includes('casan')&&
   Number.isInteger(q.source.question_number)&&q.source.question_number>=1&&q.source.question_number<=50&&
   typeof q.source.paper_url==='string'&&q.source.paper_url.startsWith('https://arquivos.qconcursos.com/prova/')&&
   typeof q.source.answer_key_url==='string'&&q.source.answer_key_url.startsWith('https://arquivos.qconcursos.com/prova/');
