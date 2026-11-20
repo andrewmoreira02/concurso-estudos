@@ -18,6 +18,17 @@ A tarefa agendada do ChatGPT **Manutenção horária Concursos**, habilitada em 
 8. Atualizar `aulas.html`, `index.html`, `planejamento.html`, `dados/concursos.json` (se mudar matriz pública com fonte comprovada), este registro e `docs/CONTINUIDADE_E_AUTOMACOES.md`; evitar duplicatas e preservar links estáveis.
 9. Reportar de modo conciso o que foi **realmente alterado/testado**, o que ficou pendente e qual é o próximo foco. Sem atualização substantiva, não criar commit desnecessário.
 
+## Identidade visual única — obrigatória em TODAS as aulas
+
+**Referência de organização:** a aula RLM. Todas as páginas de aula (RLM, Engenharia e Qualidade, Português, Banco de Dados, Segurança de APIs, Algoritmos/OO e novas publicações) devem compartilhar o padrão: cabeçalho consistente com o site, índice lateral por módulo e subseção, progresso de leitura no índice, hero com título e contexto do edital, módulos organizados, teoria e exemplos, controles individuais Lido no fim de cada subseção, navegação entre etapas.
+
+- **CSS compartilhado:** incluir `../assets/lesson-unified.css` no final do `head`, depois dos estilos particulares, para padronizar cores, tipografia, hierarquia, cartões, índice, contraste, responsividade e quadros. Manter HTML e exemplos específicos de cada assunto.
+- **Comportamento compartilhado:** incluir `../assets/lesson-unified.js` com `defer` e declarar `class="ce-lesson-page ce-rlm"`, `ce-eng`, `ce-pt` ou `ce-new` no `body`. Ajustar a classe quando criar nova arquitetura de aula.
+- **Sem painéis administrativos no corpo das aulas:** não carregar `assets/adaptive.js` ou `assets/registration.js` nas páginas de aula; recomendações e inscrições aparecem no painel/planejamento, nunca como banner de "Sugestões locais" antes da teoria. Não exibir `Registro de leitura (não é avaliação)`, `Como usar esta aula`, `Prioridade atual de estudos` nem outros recados internos na entrada das aulas.
+- **Configurações sem poluição visual:** manter controles opcionais de marcação ao avançar e backup/restauração/exportação em `<details>` inicialmente fechado intitulado **Configurações e backup da aula**, colocado após o conteúdo. O progresso continua sempre visível no índice. Controles e identificadores são preservados; evitar redesenhar mecanismos de persistência.
+- **Conteúdo pedagógico continua acima de tudo:** não remover exemplos, fórmulas, diagramas, índices nem questões ao normalizar o visual. Quadro de fórmula com legenda em bloco visual; botão Lido ao fim; as novas aulas seguem o mesmo padrão inclusive no celular.
+- **Teste obrigatório:** `scripts/verificar-padrao-aulas.mjs` valida as seis páginas em 320, 390, 430 e 1280 px, presença de cabeçalho/sumário/hero, ausência dos banners locais, controles de backup acessíveis em detalhes, erro JS e rolagem horizontal. Executar também `scripts/verificar-lido-final.mjs`, `scripts/verificar-mobile.mjs` e teste de sincronização, além do deploy GitHub Pages.
+
 ## Layout das subseções
 
 Cada subseção numerada deve apresentar: título único/estável, ideia central, quando aplicar e hipóteses, exemplo completo resolvido e conferido, macete, armadilha quando pertinente, e o controle **Lido** individual e reversível **ao final da subseção**, DEPOIS de todo o conteúdo. Não posicionar Lido ao lado do título. Navegação Anterior/Próxima continua acessível.
@@ -63,6 +74,6 @@ A meta é `F >= 5`. Por exemplo, cinco aulas com 60% já lidas somam apenas 2 au
 
 Não publicar `F` do aluno no repositório: calcular no navegador/relatório privado ou via ferramenta autenticada ao Supabase. Conservar o status **Lido** como leitura, jamais prova automática de estudo ou domínio.
 
-Em aulas novas usar `assets/new-lesson.css` e `assets/new-lesson.js` com botão Lido nativo no FINAL de cada `article.nl-section`; usar `assets/quiz.js` para questões autorais verificadas no material ou reais somente com caderno/gabarito/citação. O usuário considera textos didáticos genéricos, rótulos meta e avisos de foco estáticos dentro de aulas como erros: preferir recomendações dinâmicas no painel. Os avisos de inscrição ficam até confirmação explícita e são reversíveis.
+Em aulas novas usar `assets/new-lesson.css`, `assets/new-lesson.js`, `assets/lesson-unified.css` e `assets/lesson-unified.js` com botão Lido nativo no FINAL de cada `article.nl-section`; usar `assets/quiz.js` para questões autorais verificadas no material ou reais somente com caderno/gabarito/citação. O usuário considera textos didáticos genéricos, rótulos meta e avisos de foco estáticos dentro de aulas como erros: preferir recomendações dinâmicas no painel. Os avisos de inscrição ficam até confirmação explícita e são reversíveis.
 
 **Aulas novas da primeira passagem:** `aulas/banco-dados.html`, `aulas/seguranca.html`, `aulas/algoritmos-oo.html`. As três anteriores continuam acessíveis: RLM 71 seções, Engenharia 37, Português 21. Total do catálogo atual: 6 aulas e 156 subseções.
