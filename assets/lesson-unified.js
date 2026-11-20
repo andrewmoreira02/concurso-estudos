@@ -68,11 +68,10 @@ function compactNew(main,tools){
  const own=main.querySelector('.nl-tools');
  if(own){
    const parent=own.parentElement;
-   if(parent?.classList.contains('nl-chapter')){
-     tools.append(own);
-     const s=parent.querySelector('#nl-status');if(s)tools.append(s);
-     if(!parent.querySelector('.nl-section,.nl-quiz'))parent.remove();
-   }else tools.append(own);
+   tools.append(own);
+   const status=document.getElementById('nl-status');
+   if(status)tools.append(status);
+   if(parent?.classList.contains('nl-chapter')&&!parent.querySelector('.nl-section,.nl-quiz'))parent.remove();
  }
 }
 function portugueseHeader(){
