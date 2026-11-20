@@ -1,4 +1,4 @@
-/* Questões completas adaptadas dos temas de FURB 2023, com link de origem opcional.
+/* Questões completas diretamente no site, com procedência da banca e ano por item.
  * O banco autoral é reserva para lacunas; resultados ficam locais/privados.
  * Não presumir que ver a pergunta, clicar em Revisar ou abrir a página realizou a revisão.
  */
@@ -82,11 +82,7 @@ function questionElement(q,index){
  if(adapted){
    const source=el('div','','ce-original-source');
    source.append(el('strong','Adaptação de tema de prova '+q.source.bank+' '+q.source.year+' · '+(q.source.role||'Analista de Sistemas')+' · questão '+q.source.question_number));
-   source.append(el('p','Enunciado e alternativas desta versão foram reescritos; a resposta correta desta adaptação foi conferida separadamente. Não é transcrição da prova.'));
-   const link=el('a','Consultar caderno de origem (opcional)');
-   link.href=q.source.paper_url+(Number.isInteger(q.source.printed_page)?'#page='+q.source.printed_page:'');
-   link.target='_blank';link.rel='noopener noreferrer';
-   source.append(link);
+   source.append(el('p','Questão adaptada, com enunciado e todas as alternativas nesta página. O gabarito desta versão foi conferido separadamente e não é a letra obrigatoriamente igual à prova histórica.'));
    f.append(source);
  }else f.append(el('p','Questão autoral de reserva, com enunciado e alternativas completos.'));
  for(const k of adapted?['a','b','c','d','e']:['a','b','c','d']){
@@ -182,7 +178,7 @@ async function renderPractice(){
  label=type==='saturday'
   ?items.length+' questões: 13 adaptações de itens AOCP 2025 (Joinville, Analista de TI) e 2 autorais de Legislação/Atualidades.'
   :items.length+' questões: '+nAdapted+' adaptação(ões) com referência FURB '+(type==='ima-especificas'?'2023/2024/2025':'2023')+(nAuthor?' e '+nAuthor+' autoral(is) de reserva':'')+'.';
- stage.replaceChildren(el('p',label+' Leia enunciados e alternativas diretamente aqui. O PDF de origem é opcional, apenas para conferir a referência da prova. As respostas destas versões adaptadas têm gabaritos próprios.'),
+ stage.replaceChildren(el('p',label+' Leia e responda todas as questões diretamente aqui. A banca, o ano e a questão histórica de referência aparecem em cada exercício; a correção utiliza o gabarito desta adaptação.'),
    buildForm(items,exam,topic,type==='saturday'?'13 adaptações de itens AOCP 2025, Joinville/SC, Analista de TI; 2 autorais; gabaritos próprios':type==='ima-especificas'?'Exercícios adaptados de FURB 2023/2024/2025, gabaritos próprios, Administração/L. Ambiental/TI':'Adaptações de temas FURB 2023 com gabaritos próprios; reserva autoral identificada.'));
  const count=document.getElementById('practiceCount');
  if(count)count.textContent=items.length+' questões';
