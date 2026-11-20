@@ -12,7 +12,10 @@ const browser=await chromium.launch({headless:true,executablePath:chrome,args:['
 const configs=[
  {file:'aulas/rlm.html',label:'RLM',selector:'h3[data-lesson-step],h4[data-lesson-step]',expected:71},
  {file:'aulas/engenharia-qualidade.html',label:'Engenharia/Qualidade',selector:'.step-marker[id^="etapa-"]',expected:37},
- {file:'aulas/portugues-casan-19-11.html',label:'Português',selector:'article.subsection[id^="pt19-"]',expected:21}
+ {file:'aulas/portugues-casan-19-11.html',label:'Português',selector:'article.subsection[id^="pt19-"]',expected:21},
+ {file:'aulas/banco-dados.html',label:'Banco de Dados',selector:'article.nl-section',expected:9},
+ {file:'aulas/seguranca.html',label:'Segurança',selector:'article.nl-section',expected:9},
+ {file:'aulas/algoritmos-oo.html',label:'Algoritmos e OO',selector:'article.nl-section',expected:9}
 ];
 let empty=0,shallow=0;
 try{
@@ -25,9 +28,9 @@ try{
       for(let i=0;i<sections.length;i++){
         const current=sections[i],next=sections[i+1];
         let html='',text='';
-        if(label==='Português'){
+        if(label==='Português'||current.matches('article.nl-section')){
           const copy=current.cloneNode(true);
-          copy.querySelectorAll('label.read-control,.ce-end-reading,.subhead').forEach(n=>n.remove());
+          copy.querySelectorAll('label.read-control,.ce-end-reading,.subhead,.nl-end-read,.nl-next,h3').forEach(n=>n.remove());
           text=copy.textContent||'';html=copy.innerHTML;
         }else{
           const range=document.createRange();
