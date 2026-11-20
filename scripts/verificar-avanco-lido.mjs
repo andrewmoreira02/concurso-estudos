@@ -76,6 +76,7 @@ async function one(path,kind){
    await page.locator('#'+first+' input[data-ce-read]').uncheck();
    const remained=await page.evaluate(slug=>JSON.parse(localStorage.getItem('ce_lesson_read_v1:'+slug)||'{}').read||[],kind);
    check(!remained.includes(first),'Desmarcar não reverteu na nova aula');
+   await page.locator('#ferramentas-da-aula > summary').click();
    await pref.uncheck();
    const countBefore=await page.evaluate(slug=>JSON.parse(localStorage.getItem('ce_lesson_read_v1:'+slug)||'{}').read?.length||0,kind);
    await page.locator('#'+second+' a.ce-step-next').click();
