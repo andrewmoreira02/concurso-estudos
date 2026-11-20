@@ -13,7 +13,7 @@ const PAIR_KEY='ce_private_sync_pair_v1',META_KEY='ce_private_sync_pair_meta_v2'
 const RLM='concursos_rlm_sections_read_v3', RLM_SITE='concurso_rlm_steps_v1';
 const ENG='casan1811_subsections_v3', ENG_SITE='concurso_eng_qualidade_steps_v1';
 const PT='concursos:casan2026:portugues:2026-11-19:subsections:v1';
-const PLAN='ce_plan_done_v1', AVAILABLE='ce_available_days_v1', LOGS='ce_question_logs_v1', REVIEW='ce_review_done_v1';
+const PLAN='ce_plan_done_v1', AVAILABLE='ce_available_days_v1', LOGS='ce_question_logs_v1', REVIEW='ce_review_done_v1', REGISTRATION='ce_registration_v1';
 const VALID={
  readRlm:/^read:rlm:m(?:[1-9]|10|11)-s\d{1,2}$/,
  readEng:/^read:eng:etapa-(?:[1-9]|10)-\d{1,2}$/,
@@ -23,9 +23,10 @@ const VALID={
  available:/^available:[0-6]$/,
  review:/^review:session-\d+-[a-z0-9]+-\d{1,2}$/,
  log:/^log:session-\d+-[a-z0-9]+$/,
- pref:/^pref:pt:autoMark$/
+ pref:/^pref:pt:autoMark$/,
+ registration:/^registration:ima$/
 };
-const booleanKey=k=>VALID.readRlm.test(k)||VALID.readEng.test(k)||VALID.readPt.test(k)||VALID.readNew.test(k)||VALID.plan.test(k)||VALID.available.test(k)||VALID.review.test(k)||VALID.pref.test(k);
+const booleanKey=k=>VALID.readRlm.test(k)||VALID.readEng.test(k)||VALID.readPt.test(k)||VALID.readNew.test(k)||VALID.plan.test(k)||VALID.available.test(k)||VALID.review.test(k)||VALID.pref.test(k)||VALID.registration.test(k);
 const allowed=k=>typeof k==='string'&&k.length<=180&&(booleanKey(k)||VALID.log.test(k));
 const valueOK=(k,v)=>booleanKey(k)?typeof v==='boolean':VALID.log.test(k)?v===null||(v&&typeof v==='object'&&!Array.isArray(v)&&v.id===k.slice(4)&&JSON.stringify(v).length<3000):false;
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
@@ -60,12 +61,13 @@ function snapshot(){
    if(!/^[a-z][a-z0-9-]{2,40}$/.test(slug)||!Array.isArray(doc?.read))continue;
    for(const section of doc.read)mark('read:new:'+slug+':'+section,true);
  }}catch{}
+ const registration=json(REGISTRATION,{});if(typeof registration?.ima==='boolean')mark('registration:ima',registration.ima);
  const settings=json(PT+':settings');
  if(settings&&typeof settings.autoMark==='boolean')mark('pref:pt:autoMark',settings.autoMark);
  return out;
 }
 function apply(items){
- const groups={rlm:[],eng:[],pt:[],newLessons:new Map(),plan:[],available:[],review:[],logs:[],pref:[]};
+ const groups={rlm:[],eng:[],pt:[],newLessons:new Map(),plan:[],available:[],review:[],logs:[],pref:[],registration:[]};
  for(const [key,value] of Object.entries(items)){
    if(!allowed(key)||!valueOK(key,value))continue;
    if(VALID.readRlm.test(key))groups.rlm.push([key.slice(9),value]);
@@ -81,6 +83,7 @@ function apply(items){
    else if(VALID.review.test(key))groups.review.push([key.slice(7),value]);
    else if(VALID.log.test(key))groups.logs.push([key.slice(4),value]);
    else if(VALID.pref.test(key))groups.pref.push([key,value]);
+   else if(VALID.registration.test(key))groups.registration.push([key,value]);
  }
  let changed=false;
  if(groups.rlm.length){
@@ -133,6 +136,10 @@ function apply(items){
    const logs=json(LOGS,[]);const byId=new Map((Array.isArray(logs)?logs:[]).filter(x=>x&&typeof x.id==='string').map(x=>[x.id,x]));
    for(const [id,value] of groups.logs){if(value===null)byId.delete(id);else byId.set(id,value);}
    changed=store(LOGS,[...byId.values()].sort((a,b)=>a.id.localeCompare(b.id)))||changed;
+ }
+ if(groups.registration.length){
+   const doc=json(REGISTRATION,{})||{};
+   changed=store(REGISTRATION,{...doc,ima:groups.registration[0][1]})||changed;
  }
  if(groups.pref.length){
    const prefs={...(json(PT+':settings',{})||{})};
