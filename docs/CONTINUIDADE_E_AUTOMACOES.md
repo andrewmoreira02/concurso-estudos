@@ -20,6 +20,14 @@
 - Informação histórica presente apenas nos .md da Biblioteca privada não é copiada automaticamente para o site nem publicada no GitHub. O usuário pode confirmar o que já estudou no planejamento. Nunca inferir estudo novo de leitura, notas de outro edital ou calendário.
 - Testes: scripts/verificar-adaptacao.mjs cobre ordem por peso e confirmação, e scripts/verificar-sincronizacao.mjs cobre revogação e isolamento entre concursos.
 
+## Padrão de explicação visual — 20/11/2026
+
+- Em conteúdos cujo reconhecimento depende da **forma gráfica** (como relações UML, casos de uso, atividades, máquinas de estados, BPMN, fluxogramas, modelos entidade-relacionamento e redes), não depender apenas de descrição textual ou tabelas: mostrar **o símbolo/diagrama desenhado corretamente**, preferencialmente com SVG HTML acessível.
+- Ao lado do desenho, fornecer **nome, significado, onde a seta/losango/ícone aponta, exemplo concreto e como distingui-lo de símbolos semelhantes em questões**. A legenda deve esclarecer o significado da notação, sem simplificações que troquem símbolos padronizados.
+- Manter textos acessíveis e a leitura independente mesmo sem gráficos, com `aria-label`/descrições e alto contraste nos temas claro/escuro. Em telas pequenas, os cartões devem empilhar e diagramas complexos devem permitir rolagem horizontal em vez de texto minúsculo.
+- Preservar IDs de subseções, controles Lido, links, estado local e backups. Melhorias gráficas não equivalem a estudo realizado.
+- **Aplicação inicial:** `aulas/engenharia-qualidade.html`, módulo 2: símbolos desenhados para seis relações UML, exemplos de casos de uso/atividades/componentes/implantação e máquina de estados em notação visual.
+
 ## Automatização implementada — estado vigente em 20/11/2026
 
 1. `assets/planner.js` usa `dados/concursos.json` para edital, datas e planejamento público. Atividades sugeridas não são marcadas como executadas automaticamente.
