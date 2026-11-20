@@ -70,8 +70,7 @@ try {
         check(await page.locator('input[data-ce-read]').count() === expected, file+' perdeu controles Lido');
         check(await page.locator('article.nl-section .nl-end-read input[data-ce-read]').count() === expected, file+' Lido saiu do final');
         check(await page.locator('[data-ce-module-count]').count() === expected/3, file+' contadores por módulo ausentes');
-        if (['aulas/banco-dados.html','aulas/seguranca.html','aulas/algoritmos-oo.html'].includes(file))
-          check(await page.locator('form[data-ce-quiz]:not(.ce-cobranca-form) [data-ce-question]').count() === 3, file+' quiz incompleto');
+        check(await page.locator('form[data-ce-quiz]').count() === 0,file+' a teoria deve ficar sem quizzes');
         const first=page.locator('input[data-ce-read]').first();
         await first.check();
         check(await first.isChecked(), file+' Lido não marcou');
