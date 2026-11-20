@@ -16,6 +16,8 @@ on:
       - 'dados/questoes.json'
       - 'dados/questoes-adaptadas.json'
       - 'dados/questoes-reais.json'
+      - 'dados/fontes-aocp-joinville-2025.json'
+      - 'scripts/verificar-curadoria-aocp.mjs'
       - 'scripts/verificar-avanco-lido.mjs'
       - 'scripts/verificar-pratica-automatica.mjs'
       - 'supabase/schema.sql'
@@ -41,6 +43,8 @@ on:
       - 'dados/questoes.json'
       - 'dados/questoes-adaptadas.json'
       - 'dados/questoes-reais.json'
+      - 'dados/fontes-aocp-joinville-2025.json'
+      - 'scripts/verificar-curadoria-aocp.mjs'
       - 'scripts/verificar-avanco-lido.mjs'
       - 'scripts/verificar-pratica-automatica.mjs'
       - 'supabase/schema.sql'
@@ -69,9 +73,9 @@ jobs:
         run: node scripts/verificar-mobile.mjs
       - name: Verificar Lido ao final e fórmulas PA/PG em quadro
         run: timeout 75s node scripts/verificar-lido-final.mjs
-      - name: Validar padrão único das sete aulas
+      - name: Validar padrão único das oito aulas
         run: timeout 100s node scripts/verificar-padrao-aulas.mjs
-      - name: Auditar subseções vazias nas três aulas
+      - name: Auditar subseções das oito aulas
         run: timeout 75s node scripts/auditar-conteudo-aulas.mjs
       - name: Capturar renderização de Engenharia em 320, 390 e 430 px
         run: timeout 60s node scripts/capturar-engenharia.mjs
@@ -98,9 +102,11 @@ jobs:
         run: npm install --no-save --ignore-scripts playwright-core@1.55.1
       - name: Validar sintaxe do motor adaptativo
         run: node --check assets/adaptive.js && node --check scripts/verificar-adaptacao.mjs
+      - name: Verificar 50 questões AOCP e 25 subseções aprimoradas
+        run: node scripts/verificar-curadoria-aocp.mjs
       - name: Testar recomendações e atualização por hora
         run: timeout 90s node scripts/verificar-adaptacao.mjs
       - name: Testar sábado e revisões automáticas sem registro manual
         run: timeout 100s node scripts/verificar-pratica-automatica.mjs
-      - name: Testar Próxima e marcação Lido nas sete aulas
+      - name: Testar Próxima e marcação Lido nas oito aulas
         run: timeout 100s node scripts/verificar-avanco-lido.mjs
