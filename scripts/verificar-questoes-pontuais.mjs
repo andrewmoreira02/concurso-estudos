@@ -1,74 +1,59 @@
-/* Regressão editorial: sem cadernos históricos inteiros dentro das aulas.
- * Lê somente arquivos públicos do repositório, sem dados pessoais. */
-import {readFileSync,existsSync} from 'node:fs';
+/* Auditoria: teoria sem quizzes, banco de no mínimo cinco páginas CASAN,
+ * cada faixa de questões isolada e sem acesso a dados pessoais. */
 import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
 const read=p=>readFileSync(p,'utf8');
-const paths=['rlm.html','engenharia-qualidade.html','portugues-casan-19-11.html',
-'banco-dados.html','seguranca.html','algoritmos-oo.html',
-'administracao-publica-ima.html','legislacao-ambiental-ima.html',
-'legislacao-casan-20-11.html','questoes-casan-21-11.html',
-'questoes-ima.html','questoes-ima-especificas.html'].map(x=>'aulas/'+x);
-for(const path of paths){
- const html=read(path);
- assert(!/href=["'][^"']*(?:cadernos\/[^"']+\.pdf|arquivos\.qconcursos\.com\/prova\/arquivo_prova\/[^"']+\.pdf)/i.test(html),
-  path+': não apresentar caderno da prova ou PDF inteiro dentro de uma aula');
-}
-// Este ciclo é exclusivamente CASAN: nenhuma menção, link ou seletor IMA/FURB nas aulas.
 const casanLessons=['rlm.html','engenharia-qualidade.html','portugues-casan-19-11.html',
-'banco-dados.html','seguranca.html','algoritmos-oo.html','legislacao-casan-20-11.html',
-'questoes-casan-21-11.html'];
-for(const filename of casanLessons){
- const html=read('aulas/'+filename);
- assert(!/\b(?:FURB|IMA(?:-SC)?)\b/i.test(html),
-  filename+': referência a IMA/FURB encontrada dentro de uma aula CASAN');
- assert(!/value=["']ima["']/.test(html),
-  filename+': opção de registrar para IMA em aula CASAN');
+ 'banco-dados.html','seguranca.html','algoritmos-oo.html','legislacao-casan-20-11.html'];
+const imaLessons=['administracao-publica-ima.html','legislacao-ambiental-ima.html'];
+for(const name of [...casanLessons,...imaLessons]){
+ const html=read('aulas/'+name);
+ assert(!html.includes('data-ce-quiz'),'Questão avaliativa dentro da aula: '+name);
+ assert(!html.includes('cobranca-na-pratica.js'),'Injeção de questões dentro da teoria: '+name);
+ assert(!/href=["'][^"']*(?:cadernos\/|arquivo_prova\/)[^"']*\.pdf/i.test(html),
+  'Prova histórica completa na aula: '+name);
+ if(casanLessons.includes(name)){
+  assert(!/\b(?:FURB|IMA(?:-SC)?)\b/i.test(html),'Material IMA/FURB aparece na aula CASAN: '+name);
+  assert(!/value=["']ima["']/.test(html),'Alternância de concurso indevida: '+name);
+ }
 }
-const inlineScript=read('assets/cobranca-na-pratica.js');
-assert(inlineScript.includes("bankMatches(slug,data.sources[item.src])"),
- 'Injeção de questões não filtra pela banca do concurso');
-assert(inlineScript.includes("form.dataset.exam=exam"),
- 'Registro de avaliação não é fixado no concurso da aula');
+const data=JSON.parse(read('dados/blocos-questoes-casan.json'));
+const ao=JSON.parse(read('dados/questoes-casan-aocp.json'));
+const au=JSON.parse(read('dados/questoes.json'));
+const bank=new Map([...ao.questions,...au.questions].map(q=>[q.id,q]));
+assert.equal(data.exam,'casan');
+assert(data.min_ready_pages>=5&&data.sets.length>=data.min_ready_pages,'Reserva mínima de cinco páginas indisponível');
+const used=new Set();
+for(const s of data.sets){
+ assert(s.question_ids.length>=3&&s.href.startsWith('aulas/questoes-')&&s.href.endsWith('-casan.html'),'Conjunto de questões não íntegro: '+s.id);
+ assert(existsSync(s.href),'Página ainda não publicada no repositório: '+s.href);
+ const html=read(s.href);
+ assert(html.includes('data-ce-practice="topic"')&&html.includes('data-ce-topic-set="'+s.id+'"'),
+  'Página deve carregar somente o conjunto nomeado: '+s.id);
+ assert(html.includes('assets/practice-auto.js')&&html.includes('assets/quiz.js'),
+  'Correção e registro ausentes no bloco: '+s.id);
+ assert(!html.includes('data-ce-lesson=')&&!html.includes('data-ce-read'),
+  'Página de questões não pode declarar leitura como aula: '+s.id);
+ for(const id of s.question_ids){
+  const q=bank.get(id);
+  assert(q&&q.exams.includes('casan'),'Questão não elegível para CASAN: '+id);
+  assert(q.kind!=='adaptada'||q.source.bank==='Instituto AOCP',
+   'Adaptação de banca diferente da AOCP no bloco CASAN: '+id);
+  assert(!used.has(id),'Questão duplicada em mais de um conjunto de assuntos: '+id);
+  used.add(id);
+ }
+}
+const script=read('assets/practice-auto.js');
+assert(script.includes("type==='topic'")&&script.includes("items=items.slice(from-1,to)"),
+ 'Conjunto não limita o formulário à faixa de questões solicitada');
+assert(script.includes("if(!Number.isSafeInteger(from)")&&script.includes("to>items.length"),
+ 'Faixa inválida deve ser recusada, não expandida ao banco todo');
+const adaptive=read('assets/adaptive.js');
+assert(adaptive.includes('daysRemaining')&&adaptive.includes("set.href+'?de='"),
+ 'Recomendação precisa usar prazo da prova e links de intervalos exatos');
 const catalog=read('aulas.html');
-assert(catalog.includes('data-filter="casan"')&&catalog.includes('CASAN · foco atual'),
- 'Catálogo não prioriza as aulas CASAN no ciclo atual');
-const eng=read('aulas/engenharia-qualidade.html');
-for(const [id,step] of [['eng-1','etapa-1-1'],['eng-2','etapa-4-4'],['eng-3','etapa-7-2']]){
- assert(eng.split('data-ce-question="'+id+'"').length===2,'Questão autoral duplicada ou ausente '+id);
- const marker=eng.indexOf('id="'+step+'"');
- const next=eng.indexOf('<div class="step-marker"',marker+12);
- const practice=eng.indexOf('data-topic-question="'+id+'"',marker);
- const readBtn=eng.indexOf('data-read="'+step+'"',marker);
- assert(marker>=0&&practice>marker&&readBtn>practice&&(next<0||practice<next),
-  'Questão '+id+' deve estar no tópico '+step+' antes de Lido');
-}
-const end=eng.slice(eng.indexOf('<section class="section" id="questoes-engenharia"'));
-assert(!/data-ce-question="eng-[123]"/.test(end),
- 'Não concentrar os três exercícios autorais no fim da aula de Engenharia');
-const dataJS=read('assets/cobranca-dados.js');
-const prefix='window.ConcursoCobrancaData=';
-const data=JSON.parse(dataJS.slice(dataJS.indexOf(prefix)+prefix.length).trim().replace(/;$/,''));
-const engineering=data.cases.engenharia;
-assert(engineering.length>=7,'Pelo menos 7 questões pontuais de Engenharia devem existir');
-for(const n of [16,20,31])assert(engineering.some(q=>q.src==='FURB23'&&q.n===n),
-  'Falta exercício pontual FURB '+n);
-for(const n of [32,33,36,46])assert(engineering.some(q=>q.src==='AOCP'&&q.n===n),
-  'Falta exercício pontual AOCP '+n);
-assert(engineering.filter(q=>q.section==='etapa-3-3').length===2,
- 'Questões de mensageria e eventos devem estar na subseção Arquitetura 3.3');
-const engine=read('assets/cobranca-na-pratica.js');
-assert(engine.includes('question.dataset.ceQuestion')&&engine.includes('card.append(form,solution,feedback)'),
- 'Questões de cada tópico devem ter formulário e correção dentro da aula');
-assert(!engine.includes('source.pdf')&&!engine.includes('Caderno histórico (opcional)'),
- 'Não remeter o estudante para a prova completa no cartão do tópico');
-const practice=read('assets/practice-auto.js');
-assert(!practice.includes('Consultar caderno de origem (opcional)')&&practice.includes('questionElement'),
- 'Treinos e revisões também precisam ter questões completas no site');
-const casan=read('aulas/questoes-casan-21-11.html');
-assert(casan.includes('data-ce-practice="saturday"')&&!casan.includes('cadernos/'),
- 'O simulado específico deve continuar no site, sem PDF obrigatório');
-for(const path of [
- 'cadernos/casan-404-13-questoes-selecionadas-aocp-2025.pdf',
- 'cadernos/engenharia-furb-2023-4-questoes-selecionadas.pdf'
-])assert(!existsSync(path),'PDF de questões antigo permanece publicado: '+path);
-console.log('OK: exercícios pontuais no site, 3 autorais nos tópicos, 7 referências de Engenharia, sem cadernos PDF publicados.');
+for(const set of data.sets)assert(catalog.includes('href="'+set.href+'"'),
+ 'Conjunto não catalogado: '+set.href);
+for(const path of ['cadernos/casan-404-13-questoes-selecionadas-aocp-2025.pdf','cadernos/engenharia-furb-2023-4-questoes-selecionadas.pdf'])
+ assert(!existsSync(path),'PDF de questões antigo ainda presente');
+console.log('SUCESSO: '+data.sets.length+' páginas separadas CASAN, '+used.size+' questões únicas, faixas exatas e teoria sem quizzes.');
