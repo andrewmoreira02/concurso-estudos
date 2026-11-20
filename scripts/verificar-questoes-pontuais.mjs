@@ -13,6 +13,25 @@ for(const path of paths){
  assert(!/href=["'][^"']*(?:cadernos\/[^"']+\.pdf|arquivos\.qconcursos\.com\/prova\/arquivo_prova\/[^"']+\.pdf)/i.test(html),
   path+': não apresentar caderno da prova ou PDF inteiro dentro de uma aula');
 }
+// Este ciclo é exclusivamente CASAN: nenhuma menção, link ou seletor IMA/FURB nas aulas.
+const casanLessons=['rlm.html','engenharia-qualidade.html','portugues-casan-19-11.html',
+'banco-dados.html','seguranca.html','algoritmos-oo.html','legislacao-casan-20-11.html',
+'questoes-casan-21-11.html'];
+for(const filename of casanLessons){
+ const html=read('aulas/'+filename);
+ assert(!/\b(?:FURB|IMA(?:-SC)?)\b/i.test(html),
+  filename+': referência a IMA/FURB encontrada dentro de uma aula CASAN');
+ assert(!/value=["']ima["']/.test(html),
+  filename+': opção de registrar para IMA em aula CASAN');
+}
+const inlineScript=read('assets/cobranca-na-pratica.js');
+assert(inlineScript.includes("bankMatches(slug,data.sources[item.src])"),
+ 'Injeção de questões não filtra pela banca do concurso');
+assert(inlineScript.includes("form.dataset.exam=exam"),
+ 'Registro de avaliação não é fixado no concurso da aula');
+const catalog=read('aulas.html');
+assert(catalog.includes('data-filter="casan"')&&catalog.includes('CASAN · foco atual'),
+ 'Catálogo não prioriza as aulas CASAN no ciclo atual');
 const eng=read('aulas/engenharia-qualidade.html');
 for(const [id,step] of [['eng-1','etapa-1-1'],['eng-2','etapa-4-4'],['eng-3','etapa-7-2']]){
  assert(eng.split('data-ce-question="'+id+'"').length===2,'Questão autoral duplicada ou ausente '+id);
