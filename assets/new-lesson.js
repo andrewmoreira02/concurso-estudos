@@ -116,8 +116,10 @@ function installNextNavigation(){
    const questions=document.getElementById('questoes');
    const forward=document.createElement('a');
    forward.className='ce-step-next';
-   forward.textContent=next?'Próxima →':questions?'Concluir e ir às questões →':'Concluir e voltar às aulas →';
-   forward.href=next?'#'+next.id:questions?'#questoes':'../aulas.html';
+   const nextModule=next?.closest('section.nl-chapter[id]'),currentModule=section.closest('section.nl-chapter[id]');
+   const moduleBoundary=!!nextModule&&!!currentModule&&nextModule!==currentModule;
+   forward.textContent=next?(moduleBoundary?'Próximo módulo →':'Próxima →'):questions?'Concluir e ir às questões →':'Concluir e voltar às aulas →';
+   forward.href=next?'#'+(moduleBoundary?nextModule.id:next.id):questions?'#questoes':'../aulas.html';
    forward.dataset.ceNext=section.id;
    forward.addEventListener('click',()=>{
      if(!advanceReads)return;
