@@ -311,3 +311,47 @@
  .ce-lesson-page .ce-cobranca-links{flex-direction:column;align-items:stretch}
  .ce-lesson-page .ce-cobranca-links a{width:100%}
 }
+
+/* CONTEXTO de prova por subseção — controls de acessibilidade e mobile. */
+.ce-lesson-page .ce-cobranca-inline{margin:1.3rem 0 1.8rem;padding:clamp(13px,2vw,22px);scroll-margin-top:90px}
+.ce-lesson-page .ce-cobranca-inline .ce-cobranca-title{font-size:1.16rem}
+.ce-lesson-page .ce-cobranca-inline .ce-cobranca-lead{font-size:.87rem;margin-bottom:.8rem}
+.ce-lesson-page .ce-cobranca-item{border:1px solid #3b6377;border-radius:12px;margin:.6rem 0;background:#102333;overflow:hidden}
+.ce-lesson-page .ce-cobranca-item>summary{cursor:pointer;min-height:46px;display:list-item;padding:10px 15px;color:#e4fbfc;font-weight:750;line-height:1.5}
+.ce-lesson-page .ce-cobranca-item[open]>summary{border-bottom:1px solid #3b6377}
+.ce-lesson-page .ce-cobranca-item>.ce-cobranca-card{border:0;border-radius:0;box-shadow:none;margin:0}
+.ce-lesson-page .ce-cobranca-question{min-width:0;border:0;padding:0;margin:0}
+.ce-lesson-page .ce-cobranca-prompt{font-size:1rem;font-weight:650;color:#f3f9fe;line-height:1.7;padding:0 0 .75rem}
+.ce-lesson-page .ce-cobranca-options{padding-left:0;list-style:none;display:grid;gap:9px}
+.ce-lesson-page .ce-cobranca-choice{display:flex;align-items:start;gap:12px;cursor:pointer;border:1px solid #31516a;background:#172b3c;border-radius:10px;padding:10px;min-height:48px;color:#e8f2fa;line-height:1.55}
+.ce-lesson-page .ce-cobranca-choice:has(input:checked){border-color:#a1efdf;background:#1b4b50}
+.ce-lesson-page .ce-cobranca-choice:focus-within{outline:2px solid #9ee7ee;outline-offset:2px}
+.ce-lesson-page .ce-cobranca-choice input{flex:none;accent-color:#7bded6;width:20px;height:20px;margin:2px 0}
+.ce-lesson-page .ce-cobranca-choice span{flex:1;min-width:0}
+.ce-lesson-page .ce-cobranca-actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.ce-lesson-page .ce-cobranca-actions button{flex:1 1 190px;min-height:46px;border-radius:9px;padding:10px 12px;font:inherit;font-size:.9rem;font-weight:750;cursor:pointer;overflow-wrap:anywhere}
+.ce-lesson-page .ce-cobranca-reveal{color:#e8f4fc;background:#254358;border:1px solid #88a9b9}
+.ce-lesson-page .ce-cobranca-submit{color:#092124;background:#9ae6d6;border:1px solid #9ae6d6}
+.ce-lesson-page .ce-cobranca-actions button:disabled{opacity:.52;cursor:not-allowed}
+.ce-lesson-page .ce-cobranca-choose{display:block;color:#cedeea;font-size:.84rem;margin-bottom:11px}
+.ce-lesson-page .ce-cobranca-exam{background:#213b4d;border:1px solid #6c91a7;border-radius:7px;padding:7px;color:#f2fbfd;font:inherit;margin-left:6px;max-width:100%}
+.ce-lesson-page .ce-cobranca-feedback{color:#b8e9dc;font-size:.89rem}
+.ce-lesson-page .ce-cobranca-form [data-ce-feedback]{border:1px solid #628778;background:#14372d;border-radius:9px;padding:10px;margin:10px 0;color:#f1fff5;max-width:100%}
+.ce-lesson-page .ce-cobranca-form .quiz-error{border-color:#dca48e;background:#3a2a31}
+.ce-lesson-page .ce-cobranca-form .ce-quiz-feedback-list{padding-left:1.5rem}
+.ce-lesson-page .ce-cobranca-inline .ce-cobranca-card{min-width:0}
+.ce-lesson-page .ce-cobranca-inline .ce-cobranca-options li{list-style:none}
+.ce-lesson-page .ce-index-current{background:#184b53!important;border-left:3px solid #91eadd!important;color:#efffff!important;font-weight:800}
+.ce-lesson-page .ce-module-collapse>summary{min-height:38px;cursor:pointer;color:#d9e9f2;padding:7px 9px;font-weight:750}
+.ce-lesson-page .ce-module-collapse[open]>summary{color:#9ff0db}
+.ce-lesson-page .ce-reader-bottom{display:none}
+@media(max-width:700px){
+ .ce-lesson-page{padding-bottom:78px!important}
+ .ce-lesson-page .ce-reader-bottom{position:fixed;z-index:99;bottom:0;left:0;right:0;display:flex;align-items:center;gap:8px;padding:8px max(12px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-right));background:rgba(10,26,40,.97);border-top:1px solid #466679;box-shadow:0 -8px 20px #0007}
+ .ce-lesson-page .ce-reader-bottom a{min-height:42px;display:flex;justify-content:center;align-items:center;padding:7px 10px;border:1px solid #4f8991;background:#194c50;border-radius:9px;color:#ebfffe;text-decoration:none;font-weight:750;white-space:nowrap;font-size:.82rem;max-width:38%;overflow:hidden;text-overflow:ellipsis}
+ .ce-lesson-page .ce-reader-bottom .ce-reader-step{flex:1;min-width:0;text-align:center;line-height:1.35;color:#c7dfed;font-size:.75rem}
+ .ce-lesson-page .ce-reader-bottom .ce-reader-inactive{opacity:.48;pointer-events:none}
+ .ce-lesson-page .ce-cobranca-actions{flex-direction:column}
+ .ce-lesson-page .ce-cobranca-actions button{width:100%;flex:0 0 auto}
+ .ce-lesson-page .ce-cobranca-inline{padding:12px}
+}
