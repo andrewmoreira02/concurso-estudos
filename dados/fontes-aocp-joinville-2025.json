@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-20",
+  "purpose": "Referência de prova anterior de banca AOCP, não conteúdo de quiz. Questões reais somente após conferir a aderência ao edital CASAN e sem reproduzir conteúdo protegido sem licença.",
+  "source": {
+    "banca": "Instituto AOCP",
+    "orgao": "Prefeitura de Joinville/SC",
+    "edital": "005/2025",
+    "cargo": "Analista de Tecnologia da Informação",
+    "ano": 2025,
+    "caderno": "Prova 01, tarde",
+    "question_book_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+    "final_answer_key_mirror": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+    "original_answer_viewer": "https://link.institutoaocp.org.br/visualizar-prova-gabarito-definitivo-public/index.jsp",
+    "source_printed_at": "2025-12-23 17:51",
+    "legal_notice": "O acesso público ao caderno não autoriza reproduzir enunciados ou alternativas em GitHub Pages. Sem confirmação da licença, apenas referenciar ou criar adaptação completa com gabarito recalculado."
+  },
+  "stats": {
+    "total_questions": 50,
+    "annulled": [
+      1,
+      5,
+      7,
+      22
+    ],
+    "non_annulled": 46
+  },
+  "questions": [
+    {
+      "question_number": 1,
+      "final_answer": null,
+      "status": "anulada",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 2,
+      "final_answer": "B",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 3,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 4,
+      "final_answer": "B",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 5,
+      "final_answer": null,
+      "status": "anulada",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 6,
+      "final_answer": "B",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 7,
+      "final_answer": null,
+      "status": "anulada",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 8,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 9,
+      "final_answer": "D",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 10,
+      "final_answer": "C",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 11,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 12,
+      "final_answer": "D",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 13,
+      "final_answer": "C",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 14,
+      "final_answer": "D",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 15,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 16,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 17,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 18,
+      "final_answer": "D",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 19,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 20,
+      "final_answer": "B",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 21,
+      "final_answer": "B",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 22,
+      "final_answer": null,
+      "status": "anulada",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 23,
+      "final_answer": "D",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 24,
+      "final_answer": "B",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 25,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 26,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 27,
+      "final_answer": "D",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 28,
+      "final_answer": "B",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 29,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 30,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 31,
+      "final_answer": "C",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 32,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 33,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 34,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 35,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 36,
+      "final_answer": "D",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 37,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 38,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 39,
+      "final_answer": "D",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 40,
+      "final_answer": "B",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 41,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 42,
+      "final_answer": "D",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 43,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 44,
+      "final_answer": "B",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 45,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 46,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 47,
+      "final_answer": "C",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 48,
+      "final_answer": "A",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 49,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    },
+    {
+      "question_number": 50,
+      "final_answer": "E",
+      "status": "valida",
+      "topic_alignment": "pendente_conferencia_no_caderno",
+      "publicar_texto_original": false
+    }
+  ],
+  "verification": "Gabarito definitivo impresso com endereço do visualizador AOCP e cópia de espelho pública. Pendente conferir, por número, conteúdo específico e correlação com o cargo CASAN antes de usar em quiz."
+}
