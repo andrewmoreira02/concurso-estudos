@@ -116,7 +116,7 @@ const LESSON_ID='CASAN_2026_PT_2026_11_19';
 const sections=[...document.querySelectorAll('.subsection[data-id]')];
 const modules=[...document.querySelectorAll('.module[data-module]')];
 const known=new Set(sections.map(s=>s.dataset.id));
-const readState={};let legacyRecords=[];let storageOK=true;let currentIndex=0;
+const readState={};let legacyRecords=[];let storageOK=true;let currentIndex=0,introPending=-1;
 const status=document.querySelector('#storage-status');
 const save=()=>{
  try{
@@ -140,8 +140,28 @@ for(const m of modules){const ss=[...m.querySelectorAll('.subsection')];const co
 const percent=Math.round(total/sections.length*100);document.querySelector('#overall-count').textContent=total+'/'+sections.length+' lidas';document.querySelector('#overall-percent').textContent=percent+'% de leitura declarada';document.querySelector('#sidebar-count').textContent=total+' de '+sections.length+' subseções lidas';for(const id of ['overall-progress','sidebar-progress'])document.getElementById(id).style.width=percent+'%';document.querySelector('#legacy-status').textContent=legacyRecords.length?legacyRecords.length+' registro(s) legado(s) preservado(s) no backup, sem conversão automática em subseções lidas.':'';
 }
 function makeNav(){const nav=document.querySelector('#menu');for(const m of modules){const a=document.createElement('a');a.href='#'+m.id;a.className='module-link';a.dataset.navFor=m.dataset.module;const name=document.createElement('span');name.textContent=m.querySelector('h2').textContent;const c=document.createElement('span');c.className='nav-status';a.append(name,c);nav.append(a);for(const s of m.querySelectorAll('.subsection')){const a=document.createElement('a');a.href='#'+s.id;a.dataset.navFor=s.dataset.id;a.className='nav-sub';const t=document.createElement('span');t.textContent=s.querySelector('h3').textContent.trim();const x=document.createElement('span');x.className='nav-status';a.append(t,x);nav.append(a);}}}
-function goto(index){const previous=sections[currentIndex];const previousIndex=currentIndex;currentIndex=Math.max(0,Math.min(sections.length-1,index));const s=sections[currentIndex];document.querySelector('#current-section').textContent=s.querySelector('h3').textContent.trim();document.querySelector('#prev-section').disabled=currentIndex===0;document.querySelector('#next-section').disabled=currentIndex===sections.length-1;const originModule=previous?.closest('section.module'),targetModule=s.closest('section.module');const enteringNextModule=currentIndex>previousIndex&&originModule&&targetModule&&originModule!==targetModule;const destination=enteringNextModule?targetModule:s;destination.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});try{history.replaceState(null,'','#'+(enteringNextModule?targetModule.id:s.id));}catch(e){} }
-function getCurrentFromHash(){const id=decodeURIComponent(location.hash.slice(1));const found=sections.findIndex(s=>s.id===id);if(found>=0){currentIndex=found;document.querySelector('#current-section').textContent=sections[found].querySelector('h3').textContent.trim();document.querySelector('#prev-section').disabled=found===0;document.querySelector('#next-section').disabled=found===sections.length-1;}}
+function goto(index){const previous=sections[currentIndex];const previousIndex=currentIndex;currentIndex=Math.max(0,Math.min(sections.length-1,index));const s=sections[currentIndex];document.querySelector('#prev-section').disabled=currentIndex===0;document.querySelector('#next-section').disabled=currentIndex===sections.length-1;const originModule=previous?.closest('section.module'),targetModule=s.closest('section.module');const enteringNextModule=currentIndex>previousIndex&&originModule&&targetModule&&originModule!==targetModule;introPending=enteringNextModule?currentIndex:-1;document.querySelector('#current-section').textContent=enteringNextModule?'Módulo '+targetModule.id.replace('m','')+' · Apresentação':s.querySelector('h3').textContent.trim();const destination=enteringNextModule?targetModule:s;destination.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});try{history.replaceState(null,'','#'+(enteringNextModule?targetModule.id:s.id));}catch(e){} }
+function getCurrentFromHash(){
+ const id=decodeURIComponent(location.hash.slice(1));
+ const found=sections.findIndex(s=>s.id===id);
+ if(found>=0){
+  introPending=-1;currentIndex=found;
+  document.querySelector('#current-section').textContent=sections[found].querySelector('h3').textContent.trim();
+  document.querySelector('#prev-section').disabled=found===0;
+  document.querySelector('#next-section').disabled=found===sections.length-1;
+  return;
+ }
+ const module=modules.find(x=>x.id===id);
+ if(module){
+  const index=sections.findIndex(x=>x.closest('.module')===module);
+  if(index>=0){
+   currentIndex=index;introPending=index;
+   document.querySelector('#current-section').textContent='Módulo '+module.id.replace('m','')+' · Apresentação';
+   document.querySelector('#prev-section').disabled=index===0;
+   document.querySelector('#next-section').disabled=false;
+  }
+ }
+}
 function exportData(){const data={format:'concursos.reading-progress',version:2,lesson:LESSON_ID,exportedAt:new Date().toISOString(),read:Object.fromEntries([...known].map(k=>[k,readState[k]===true])),settings:{autoMark:document.querySelector('#auto-mark').checked===true},legacy:legacyRecords,notes:'Lido indica leitura declarada, não domínio.'};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='CASAN_2026_Portugues_19-11_progresso.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);message('Backup JSON gerado. Guarde-o para recuperar suas marcações.');}
 function importData(obj){
 if(!obj||typeof obj!=='object'||Array.isArray(obj))throw Error('Objeto JSON inválido.');
@@ -170,7 +190,17 @@ async function copySummary(){const lines=['CASAN 2026 — Português — 19/11/2
 load();makeNav();update();
 sections.forEach((s,i)=>s.querySelector('.mark-sub').addEventListener('change',e=>{readState[s.dataset.id]=e.target.checked;save();update();}));
 modules.forEach(m=>m.querySelector('.mark-module').addEventListener('click',()=>{const ss=[...m.querySelectorAll('.subsection')];const mark=!ss.every(s=>readState[s.dataset.id]===true);for(const s of ss)readState[s.dataset.id]=mark;save();update();message(mark?'Subseções do módulo marcadas individualmente por ação explícita de lote.':'Todas as subseções deste módulo foram desmarcadas.');}));
-document.querySelector('#prev-section').addEventListener('click',()=>goto(currentIndex-1));document.querySelector('#next-section').addEventListener('click',()=>{if(document.querySelector('#auto-mark').checked){readState[sections[currentIndex].dataset.id]=true;save();update();}goto(currentIndex+1);});document.querySelector('#auto-mark').addEventListener('change',e=>{try{localStorage.setItem(PREFERENCE_KEY,JSON.stringify({autoMark:e.target.checked}));}catch(err){}message(e.target.checked?'Avanço automático ativado: “Próxima” marcará a subseção atual como lida.':'Avanço automático desativado.');});
+document.querySelector('#prev-section').addEventListener('click',()=>goto(currentIndex-1));document.querySelector('#next-section').addEventListener('click',()=>{
+ if(introPending>=0){
+  const dest=sections[introPending];introPending=-1;
+  dest.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  try{history.replaceState(null,'','#'+dest.id);}catch(e){}
+  getCurrentFromHash();
+  return; // Não marcar 3.1 como Lido apenas por entrar nela.
+ }
+ if(document.querySelector('#auto-mark').checked){readState[sections[currentIndex].dataset.id]=true;save();update();}
+ goto(currentIndex+1);
+});document.querySelector('#auto-mark').addEventListener('change',e=>{try{localStorage.setItem(PREFERENCE_KEY,JSON.stringify({autoMark:e.target.checked}));}catch(err){}message(e.target.checked?'Avanço automático ativado: “Próxima” marcará a subseção atual como lida.':'Avanço automático desativado.');});
 document.querySelector('#export-json').addEventListener('click',exportData);document.querySelector('#import-json').addEventListener('click',()=>document.querySelector('#import-file').click());document.querySelector('#import-file').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const data=JSON.parse(await file.text());importData(data);}catch(err){message('Falha na importação: '+err.message);}e.target.value='';});document.querySelector('#copy-summary').addEventListener('click',copySummary);document.querySelector('#clear-progress').addEventListener('click',()=>{if(confirm('Desmarcar todas as subseções desta aula? A ação não apaga seus backups JSON.')){for(const k of known)readState[k]=false;save();update();message('Leitura desmarcada em todas as subseções.');}});
 const toggle=document.querySelector('#menu-toggle'),side=document.querySelector('#sidebar');toggle.addEventListener('click',()=>{const open=side.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'✕ Fechar':'☰ Índice';});document.querySelector('#menu').addEventListener('click',e=>{if(e.target.closest('a')){side.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰ Índice';}});window.addEventListener('hashchange',getCurrentFromHash);getCurrentFromHash();if(!storageOK)message('Progresso temporário: exporte o JSON antes de fechar a página.');
 })();
