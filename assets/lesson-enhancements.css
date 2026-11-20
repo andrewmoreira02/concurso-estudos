@@ -22,3 +22,11 @@
 .ce-frac > span:first-child{display:block;border-bottom:1.5px solid currentColor;padding:0 6px 4px}
 .ce-frac > span:last-child{display:block;padding-top:4px}
 .ce-formula-card .ce-when{font-size:.9rem;color:#ded2fa;line-height:1.45;margin:9px 0 0!important}
+
+/* Texto de apoio aos diagramas para impedir subseções que sejam apenas ilustrações. */
+.ce-explanation{margin:14px 0 16px;padding:14px 16px;border-left:4px solid #60b9d8;border-radius:10px;background:#153044;color:#ecf4ff;line-height:1.65}
+.ce-explanation strong{color:#a9e9fb}
+.ce-explanation p{margin:7px 0!important;color:#e4f2fa}
+.ce-explanation ol{padding-left:23px;margin:10px 0!important}
+.ce-explanation li{margin:7px 0;color:#e4f2fa}
+.ce-explanation .ce-warning{color:#ffd6ab}
