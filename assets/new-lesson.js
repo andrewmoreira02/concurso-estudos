@@ -54,6 +54,60 @@ if(select&&form){
  form.dataset.exam=select.value;
  select.addEventListener('change',()=>{form.dataset.exam=select.value;});
 }
+// Navegação comum: o botão Próxima marca a seção QUE FOI LIDA, nunca a destino.
+// Preferência ativada por padrão e reversível nas configurações da aula.
+function installNextNavigation(){
+ const sections=$('article.nl-section[data-ce-topic]');
+ if(!sections.length)return;
+ const preferenceKey='ce_next_read_v1:'+slug;
+ let advanceReads=true;
+ try{advanceReads=localStorage.getItem(preferenceKey)!=='false';}catch{}
+ const tools=$('#ferramentas-da-aula .ce-lesson-tools-content');
+ if(tools&&!$('#ce-next-reading-preference')){
+   const label=document.createElement('label');
+   label.id='ce-next-reading-preference';
+   label.style.cssText='display:flex;gap:9px;align-items:center;flex-wrap:wrap';
+   const preference=document.createElement('input');
+   preference.type='checkbox';preference.checked=advanceReads;
+   preference.setAttribute('aria-label','Marcar a subseção atual como Lido ao clicar em Próxima');
+   label.append(preference,document.createTextNode('Marcar Lido ao clicar em Próxima (ativado por padrão)'));
+   tools.prepend(label);
+   preference.addEventListener('change',()=>{
+     advanceReads=preference.checked;
+     try{localStorage.setItem(preferenceKey,String(advanceReads));}
+     catch{status('Não foi possível salvar a preferência neste navegador.');}
+   });
+ }
+ const lessonSteps=sections.filter(node=>allowed.has(node.id));
+ for(const [i,section] of lessonSteps.entries()){
+   if(section.querySelector('.ce-step-navigation'))continue;
+   const nav=document.createElement('nav');
+   nav.className='ce-step-navigation';
+   nav.setAttribute('aria-label','Navegação da subseção '+(i+1));
+   if(i){
+     const back=document.createElement('a');back.textContent='← Anterior';
+     back.href='#'+lessonSteps[i-1].id;nav.append(back);
+   }
+   const next=lessonSteps[i+1];
+   const questions=document.getElementById('questoes');
+   const forward=document.createElement('a');
+   forward.className='ce-step-next';
+   forward.textContent=next?'Próxima →':questions?'Concluir e ir às questões →':'Concluir e voltar às aulas →';
+   forward.href=next?'#'+next.id:questions?'#questoes':'../aulas.html';
+   forward.dataset.ceNext=section.id;
+   forward.addEventListener('click',()=>{
+     if(!advanceReads)return;
+     const state=current();
+     if(state.has(section.id))return;
+     state.add(section.id);
+     if(save(state))status('Etapa '+section.id+' marcada como Lido ao avançar. Para desmarcar, use o controle no fim da seção.');
+   });
+   nav.append(forward);
+   section.append(nav);
+ }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',installNextNavigation,{once:true});
+else installNextNavigation();
 addEventListener('concurso:sync-status',e=>{if(e.detail?.message?.startsWith('Sincronizado')){draw();status('Leitura sincronizada com seu banco privado.');}});
 addEventListener('storage',e=>{if(e.key===KEY)draw();});
 draw();
