@@ -9,6 +9,7 @@ on:
       - 'scripts/verificar-sincronizacao.mjs'
       - 'scripts/verificar-adaptacao.mjs'
       - 'scripts/verificar-lido-final.mjs'
+      - 'scripts/verificar-padrao-aulas.mjs'
       - 'scripts/auditar-conteudo-aulas.mjs'
       - 'dados/concursos.json'
       - 'supabase/schema.sql'
@@ -27,6 +28,7 @@ on:
       - 'scripts/verificar-sincronizacao.mjs'
       - 'scripts/verificar-adaptacao.mjs'
       - 'scripts/verificar-lido-final.mjs'
+      - 'scripts/verificar-padrao-aulas.mjs'
       - 'scripts/auditar-conteudo-aulas.mjs'
       - 'dados/concursos.json'
       - 'supabase/schema.sql'
@@ -55,6 +57,8 @@ jobs:
         run: node scripts/verificar-mobile.mjs
       - name: Verificar Lido ao final e fórmulas PA/PG em quadro
         run: timeout 75s node scripts/verificar-lido-final.mjs
+      - name: Validar padrão único das seis aulas
+        run: timeout 100s node scripts/verificar-padrao-aulas.mjs
       - name: Auditar subseções vazias nas três aulas
         run: timeout 75s node scripts/auditar-conteudo-aulas.mjs
       - name: Testar sincronização simulada entre dois aparelhos
