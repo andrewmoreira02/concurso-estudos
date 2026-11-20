@@ -104,6 +104,12 @@ async function one(path,kind){
   await page.locator(b.native).click({force:true});
   await page.waitForFunction(module=>location.hash==='#'+module,b.module,{timeout:15000});
   await page.waitForFunction(()=>document.querySelector('.ce-reader-step')?.textContent.includes('Apresentação'),{timeout:12000});
+  // O Português anima a rolagem; verificar somente após a apresentação aparecer na tela.
+  await page.waitForFunction(module=>{
+   const h=document.getElementById(module)?.querySelector('h2');
+   const r=h?.getBoundingClientRect();
+   return !!r&&r.top>=-60&&r.top<innerHeight*.9;
+  },b.module,{timeout:8000});
   const viewport=await page.evaluate(({module,first})=>{
    const h=document.getElementById(module)?.querySelector('h2'),f=document.getElementById(first);
    return {header:h?.getBoundingClientRect().top,first:f?.getBoundingClientRect().top};
