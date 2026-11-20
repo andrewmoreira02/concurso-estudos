@@ -272,7 +272,7 @@ function renderTasks(){
  if(stats)stats.textContent=due.length+' vencida(s)/para hoje · '+future.length+' futura(s) · '+finished.length+' realizada(s) com respostas enviadas';
  mount.replaceChildren();
  if(!tasks.length){
-   const info=el('div','Nenhum erro registrado nos quizzes deste site. Responda às questões nas aulas ou no simulado de sábado; quando houver erros, a fila de revisões aparecerá automaticamente.','nl-notice');
+   const info=el('div','Nenhum erro registrado nos quizzes deste site. Responda às questões nas páginas de exercícios por assunto ou no simulado geral; quando houver erros enviados, a fila de revisões aparecerá automaticamente.','nl-notice');
    mount.append(info);return;
  }
  for(const task of tasks.slice(0,120)){
