@@ -16,7 +16,8 @@ const plans=[
  {p:'aulas/seguranca.html',selector:'article.nl-section',id:'seg-1-1',next:'seg-1-2'},
  {p:'aulas/algoritmos-oo.html',selector:'article.nl-section',id:'alg-1-1',next:'alg-1-2'},
  {p:'aulas/administracao-publica-ima.html',selector:'article.nl-section',id:'adm-1-1',next:'adm-1-2'},
- {p:'aulas/legislacao-ambiental-ima.html',selector:'article.nl-section',id:'la-1-1',next:'la-1-2'}
+ {p:'aulas/legislacao-ambiental-ima.html',selector:'article.nl-section',id:'la-1-1',next:'la-1-2'},
+ {p:'aulas/legislacao-casan-20-11.html',selector:'article.nl-section',id:'leg-1-1',next:'leg-1-2'}
 ];
 try{
  for(const width of [320,390,430]){
@@ -45,4 +46,4 @@ try{
   await ctx.close();
  }
 }finally{await browser.close();}
-console.log('SUCESSO: navegação acessível por módulos e anterior/próxima nas oito aulas, três tamanhos.');
+console.log('SUCESSO: navegação acessível por módulos e anterior/próxima nas nove aulas, três tamanhos.');
