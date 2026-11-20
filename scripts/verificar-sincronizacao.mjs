@@ -61,6 +61,14 @@ async function open(page,seed={}){
  await page.locator('#syncSignedIn:not([hidden])').waitFor({timeout:10000});
  await page.waitForFunction(()=>!!JSON.parse(localStorage.getItem('ce_private_sync_pair_meta_v2')||'null'),{timeout:10000});
 }
+async function syncPage(page){
+ try{await page.evaluate(()=>window.ConcursoSync.sync());}
+ catch(e){
+   // A aplicação recarrega a aula para recompor controles quando chegam marcações remotas.
+   if(!/Execution context was destroyed|navigation|Cannot find context/i.test(String(e)))throw e;
+ }
+ await page.waitForLoadState('domcontentloaded',{timeout:15000});
+}
 const pt='concursos:casan2026:portugues:2026-11-19:subsections:v1';
 const rlm='concursos_rlm_sections_read_v3';
 const eng='concurso_eng_qualidade_steps_v1';
@@ -89,22 +97,25 @@ try{
  await phone.evaluate(key=>{
    const data=JSON.parse(localStorage.getItem(key));data.readSections=data.readSections.filter(x=>x!=='m4-s1');localStorage.setItem(key,JSON.stringify(data));
  },rlm);
- await phone.evaluate(()=>window.ConcursoSync.sync());
+ await syncPage(phone);
  assert(remote.get('read:rlm:m4-s1')===false,'Desmarcação não foi enviada ao banco');
- await pc.evaluate(()=>window.ConcursoSync.sync());
- const pcAfter=await pc.evaluate(key=>JSON.parse(localStorage.getItem(key)).readSections,rlm);
- assert(!pcAfter.includes('m4-s1')&&pcAfter.includes('m4-s2'),'Desmarcação não chegou ao computador');
+ await syncPage(pc);
+ await pc.waitForFunction(key=>{
+   const v=JSON.parse(localStorage.getItem(key)||'{}').readSections||[];
+   return !v.includes('m4-s1')&&v.includes('m4-s2');
+ },rlm,{timeout:15000});
  const log={id:'session-123456-abc123',date:'2026-11-19',exam:'casan',subject:'rlm',topic:'Estatística',valid:3,correct:2,annulled:0,kind:'nao-classificado',source:''};
  await pc.evaluate(log=>localStorage.setItem('ce_question_logs_v1',JSON.stringify([log])),log);
- await pc.evaluate(()=>window.ConcursoSync.sync());
- await phone.evaluate(()=>window.ConcursoSync.sync());
- const phoneLogs=await phone.evaluate(()=>JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]'));
- assert(phoneLogs.length===1&&phoneLogs[0].id===log.id,'Sessão de questões não sincronizada');
+ await syncPage(pc);
+ await syncPage(phone);
+ await phone.waitForFunction(id=>{
+   const arr=JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]');
+   return arr.length===1&&arr[0].id===id;
+ },log.id,{timeout:15000});
  await phone.evaluate(()=>localStorage.setItem('ce_question_logs_v1','[]'));
- await phone.evaluate(()=>window.ConcursoSync.sync());
- await pc.evaluate(()=>window.ConcursoSync.sync());
- const afterDelete=await pc.evaluate(()=>JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]'));
- assert(afterDelete.length===0,'Exclusão de sessão não sincronizada');
+ await syncPage(phone);
+ await syncPage(pc);
+ await pc.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]').length===0,null,{timeout:15000});
  assert(calls>=12,'Fluxo de API não executado');
  console.log('OK: migração conservadora, 2 aparelhos, leitura, reversão, Engenharia, Português, sessões e exclusão; '+calls+' requisições simuladas');
 }finally{await a.close();await b.close();server.closeAllConnections?.();await new Promise(done=>server.close(done));}
