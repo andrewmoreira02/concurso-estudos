@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-19",
+  "purpose": "Questões originais identificadas por caderno e número, corrigidas com gabarito final publicado pela banca. O enunciado e as alternativas originais NÃO são reproduzidos no site: abrir caderno vinculado e responder A–E.",
+  "copyright_note": "Links para cadernos originais; o PDF do caderno é um espelho da prova FURB no Qconcursos, e o gabarito é arquivo oficial do portal FURB.",
+  "selection_note": "Para CASAN/AOCP: FURB é fonte subsidiária, enquanto questões AOCP verificadas devem ter preferência. Para IMA/FURB: mesma banca e área, prioridade alta. Questões 14 e 32 do caderno anuladas e não incluídas.",
+  "questions": [
+    {
+      "id": "furb2023-as-q1",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 1,
+        "printed_page": 2,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "portugues",
+      "topic": "Interpretação de texto sobre hidrogênio e etanol",
+      "prompt": "Questão original 1 — Interpretação de texto sobre hidrogênio e etanol. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "b",
+      "explanation": "O item exige inferência vinculada ao texto-base, sem acrescentar afirmações universais não autorizadas.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": false
+    },
+    {
+      "id": "furb2023-as-q3",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 3,
+        "printed_page": 3,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "portugues",
+      "topic": "Referências anafóricas e coesão textual",
+      "prompt": "Questão original 3 — Referências anafóricas e coesão textual. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "a",
+      "explanation": "A sequência oficial é F, F, V, V. Conferir as expressões destacadas no texto original e os respectivos referentes.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q4",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 4,
+        "printed_page": 3,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "portugues",
+      "topic": "Regência verbal no contexto",
+      "prompt": "Questão original 4 — Regência verbal no contexto. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "b",
+      "explanation": "No sentido de prestar auxílio, o verbo assistir admite objeto direto; conferir as demais construções no caderno.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q6",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 6,
+        "printed_page": 4,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "rlm",
+      "topic": "Distância, consumo de combustível e proporcionalidade",
+      "prompt": "Questão original 6 — Distância, consumo de combustível e proporcionalidade. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "c",
+      "explanation": "150/12 = 12,5 litros; 12,5 × 5,80 = R$ 72,50.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": false
+    },
+    {
+      "id": "furb2023-as-q7",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 7,
+        "printed_page": 4,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "rlm",
+      "topic": "Conversão de unidades e proporcionalidade",
+      "prompt": "Questão original 7 — Conversão de unidades e proporcionalidade. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "d",
+      "explanation": "50 gramas são 1/20 de quilograma: R$ 12,80/20 = R$ 0,64.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q8",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 8,
+        "printed_page": 4,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "rlm",
+      "topic": "Percentual de desconto e valor original",
+      "prompt": "Questão original 8 — Percentual de desconto e valor original. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "d",
+      "explanation": "R$ 186 equivalem a 80% do preço original; preço sem desconto R$ 232,50; diferença R$ 46,50.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q9",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 9,
+        "printed_page": 4,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "rlm",
+      "topic": "Vazão em litros por minuto",
+      "prompt": "Questão original 9 — Vazão em litros por minuto. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "e",
+      "explanation": "2 m³ = 2000 L. Após 50 min a 10 L/min restam 1500 L; a 18 L/min são 83 min e 20 s; total 2 h 13 min 20 s.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": false
+    },
+    {
+      "id": "furb2023-as-q10",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 10,
+        "printed_page": 4,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "rlm",
+      "topic": "Frações de uma equipe e proporções",
+      "prompt": "Questão original 10 — Frações de uma equipe e proporções. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "d",
+      "explanation": "Se N/4 + 1 = N/3, resulta N/12=1 e N=12.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": false
+    },
+    {
+      "id": "furb2023-as-q11",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 11,
+        "printed_page": 5,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "ti",
+      "topic": "Java — implementação de classes e interfaces",
+      "prompt": "Questão original 11 — Java — implementação de classes e interfaces. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "d",
+      "explanation": "Em Java, implements aceita interfaces (B e D), não classes concretas ou classes abstratas.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q12",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 12,
+        "printed_page": 5,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "ti",
+      "topic": "ACID, READ COMMITTED e SAVEPOINT",
+      "prompt": "Questão original 12 — ACID, READ COMMITTED e SAVEPOINT. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "b",
+      "explanation": "Durabilidade preserva transação confirmada; READ COMMITTED não permite leitura suja; SAVEPOINT não confirma automaticamente uma transação.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q16",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 16,
+        "printed_page": 6,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "ti",
+      "topic": "UML — diagrama de tempo, comunicação e generalização",
+      "prompt": "Questão original 16 — UML — diagrama de tempo, comunicação e generalização. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "b",
+      "explanation": "Segundo o gabarito da banca, somente a afirmação II é correta. Diferencie diagramas de interação e diagramas de atividade.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q18",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 18,
+        "printed_page": 6,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "ti",
+      "topic": "Java — operador condicional ternário",
+      "prompt": "Questão original 18 — Java — operador condicional ternário. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "b",
+      "explanation": "O operador ternário exige condição e duas expressões de resultado; a atribuição sem alternativa falsa não compila.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q20",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 20,
+        "printed_page": 7,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "ti",
+      "topic": "Java EE — escopos CDI, qualifiers e JMS",
+      "prompt": "Questão original 20 — Java EE — escopos CDI, qualifiers e JMS. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "c",
+      "explanation": "Os escopos e qualifiers descritos são válidos; JMS não impõe JSON como formato obrigatório.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q22",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 22,
+        "printed_page": 7,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "ti",
+      "topic": "PL/SQL — exceções e RAISE",
+      "prompt": "Questão original 22 — PL/SQL — exceções e RAISE. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "a",
+      "explanation": "RAISE_APPLICATION_ERROR permite mensagem e código na faixa específica; RAISE lança exceções; a cláusula EXCEPTION não se limita a exceções predefinidas.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q26",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 26,
+        "printed_page": 8,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "ti",
+      "topic": "Polimorfismo em Java e despacho dinâmico",
+      "prompt": "Questão original 26 — Polimorfismo em Java e despacho dinâmico. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "b",
+      "explanation": "Polimorfismo admite tratamento por supertipo/interface; apenas declarar subclasses não demonstra sobrescrita; métodos polimórficos podem lançar exceções.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q30",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 30,
+        "printed_page": 9,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "ti",
+      "topic": "Java Streams — operações paralelas e stateless",
+      "prompt": "Questão original 30 — Java Streams — operações paralelas e stateless. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "e",
+      "explanation": "parallelStream suporta processamento paralelo; map e filter são operações intermediárias sem estado; Streams não se resumem a laços.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": true
+    },
+    {
+      "id": "furb2023-as-q31",
+      "kind": "real-original-pdf",
+      "source": {
+        "bank": "FURB",
+        "organizer": "FURB",
+        "agency": "FURB - Universidade Regional de Blumenau",
+        "contest": "Concurso Público Técnico-Administrativo, Edital 002/2023",
+        "role": "Analista de Sistemas",
+        "year": 2023,
+        "question_number": 31,
+        "printed_page": 10,
+        "exam_url": "https://concursos.furb.br/informacoes/282/",
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/97697/furb-2023-furb-sc-analista-de-sistemas-prova.pdf",
+        "answer_key_url": "https://anexos.cdn.selecao.net.br/uploads/342/concursos/282/anexos/EJyjPmlrUv3kWaqnwJwxPvqDnf1sK2KHAhYVKK6L.pdf",
+        "answer_key_status": "final oficial de 05/10/2023"
+      },
+      "subject": "ti",
+      "topic": "JMS — tópicos, filas e consumidores",
+      "prompt": "Questão original 31 — JMS — tópicos, filas e consumidores. Consulte o caderno oficial pelo link para ler o enunciado e as alternativas A–E.",
+      "correct": "b",
+      "explanation": "Diferencie publish/subscribe com tópicos de processamento em fila e a função do produtor JMS.",
+      "whyWrong": "Confronte cada alternativa com o enunciado original. A correção usa exclusivamente o gabarito oficial; não houve mudança nas alternativas.",
+      "exams": [
+        "casan",
+        "ima"
+      ],
+      "saturday": false
+    }
+  ]
+}
