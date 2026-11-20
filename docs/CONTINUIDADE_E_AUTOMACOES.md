@@ -250,3 +250,8 @@ Fontes candidatas ainda sujeitas à validação individual: FURB Analista de Sis
 - `aulas.html`: contador textual corrigido de seis para sete aulas catalogadas; as chamadas dos dois simulados foram corrigidas para **13 questões adaptadas + 2 autorais** (CASAN) e **12 adaptadas** (IMA). Retiradas alegações incorretas de reprodução integral de questões reais e de gabarito oficial como resposta das adaptações. Referência à prova de origem permanece opcional.
 - A correção é editorial e pública, sem dados de leitura, resultados ou pareamento. **Não altera** `dados/questoes*.json`, gabaritos, respostas ou registros privados.
 - Próxima verificação: confirmar Pages para o commit do catálogo, executar regressões de navegador 320/390/430 px, auditar Engenharia visualmente e conferir se outras telas ainda chamam adaptações de originais. Não tratar commit como prova de deploy.
+
+## 20/11/2026 — Correção de regressão de navegação IMA
+- A execução de GitHub Actions `44731152031` identificou falha concreta em `scripts/verificar-avanco-lido.mjs`: a aula `aulas/administracao-publica-ima.html` não continha o contêiner final `#ferramentas-da-aula .ce-lesson-tools-content`, necessário para a preferência reversível de marcar Lido ao avançar.
+- Correção no HTML: configurações e backup transferidos para `<details>` fechado por padrão, **depois dos módulos**, mantendo IDs e chaves existentes; o motor `assets/new-lesson.js` pode inserir a preferência nesse contêiner. Nenhuma marcação de leitura foi criada ou alterada no repositório.
+- Próxima verificação: conferir o resultado da regressão e do deploy do commit de correção; executar inspeção visual do conteúdo de Engenharia e das sete aulas em dispositivos reais. Não considerar publicação confirmada apenas pelo commit.
