@@ -79,7 +79,7 @@ function portugueseHeader(){
  const header=document.createElement('header');header.className='ce-standard-header';
  const brand=document.createElement('strong');brand.textContent='CE · CONCURSOS / PORTUGUÊS';
  const nav=document.createElement('nav');nav.setAttribute('aria-label','Navegação do site');
- for(const [label,url] of [['Painel','../index.html'],['Aulas','../aulas.html'],['Planejamento','../planejamento.html'],['Progresso','../progresso.html']]){
+ for(const [label,url] of [['Painel','../index.html'],['Aulas','../aulas.html'],['Planejamento','../planejamento.html']]){
    const a=document.createElement('a');a.href=url;a.textContent=label;nav.append(a);
  }
  header.append(brand,nav);
