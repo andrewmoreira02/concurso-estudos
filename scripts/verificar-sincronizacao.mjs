@@ -1,12 +1,30 @@
 // Integração sem dados pessoais / sem Supabase real: login falso e API PostgREST simulada.
 import { chromium } from 'playwright-core';
 import { existsSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { readFile } from 'node:fs/promises';
+import { resolve, sep, extname } from 'node:path';
+import { createServer } from 'node:http';
+import { once } from 'node:events';
 
 const chrome=process.env.CHROME_BIN||['/usr/bin/google-chrome','/usr/bin/chromium'].find(existsSync);
 if(!chrome||!existsSync(chrome))throw new Error('Chromium indisponível');
-const browser=await chromium.launch({headless:true,executablePath:chrome,args:['--no-sandbox','--allow-file-access-from-files']});
+// Usar mesma origem HTTP para todas as páginas: file:// isola localStorage por arquivo.
+const root=resolve('.');
+const server=createServer(async(req,res)=>{
+ try{
+  const name=decodeURIComponent(new URL(req.url,'http://localhost').pathname);
+  const file=resolve(root,'.'+name);
+  if(!file.startsWith(root+sep)){res.writeHead(403);res.end();return;}
+  const data=await readFile(file);
+  const mime=extname(file)==='.js'?'text/javascript':extname(file)==='.css'?'text/css':extname(file)==='.json'?'application/json':'text/html';
+  res.writeHead(200,{'Content-Type':mime+'; charset=utf-8','Cache-Control':'no-store'});
+  res.end(data);
+ }catch{res.writeHead(404);res.end('Not found');}
+});
+server.listen(0,'127.0.0.1');
+await once(server,'listening');
+const base='http://127.0.0.1:'+server.address().port;
+const browser=await chromium.launch({headless:true,executablePath:chrome,args:['--no-sandbox']});
 const remote=new Map();
 let calls=0;
 const PAIR='U'.repeat(43);
@@ -34,7 +52,7 @@ async function open(page,seed={}){
      localStorage.setItem('__sync_test_seeded__','1');
    }
  },{seed});
- await page.goto(pathToFileURL(resolve('conta.html')).href,{waitUntil:'domcontentloaded'});
+ await page.goto(base+'/conta.html',{waitUntil:'domcontentloaded'});
  await page.locator('#syncSignedOut:not([hidden])').waitFor({timeout:10000});
  await page.locator('#syncPairCode').fill(PAIR);
  await page.locator('#syncConnect').click();
@@ -54,7 +72,7 @@ try{
  await open(pc,{[rlm]:{format:'concursos-rlm-leitura',version:3,readSections:keys},[eng]:['1.1','2.1'],[pt]:{version:1,lesson:'CASAN_2026_PT_2026_11_19',read:{'pt19-1-1':true}},ce_plan_done_v1:{'2026-11-20::revisao':true}});
  for(const k of keys)assert(remote.get('read:rlm:'+k)===true,'Primeiro aparelho não enviou '+k);
  // Teste crítico: clicar no botão real da aula deve disparar envio sem aguardar 15 segundos.
- await pc.goto(pathToFileURL(resolve('aulas/rlm.html')).href,{waitUntil:'domcontentloaded'});
+ await pc.goto(base+'/aulas/rlm.html',{waitUntil:'domcontentloaded'});
  await pc.locator('[data-step-read="m5-s1"]').click({force:true,timeout:10000});
  await pc.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_private_sync_pair_meta_v2')||'{}').synced?.['read:rlm:m5-s1']===true,{timeout:10000});
  assert(remote.get('read:rlm:m5-s1')===true,'Botão Lido da aula RLM não sincronizou imediatamente');
@@ -87,4 +105,4 @@ try{
  assert(afterDelete.length===0,'Exclusão de sessão não sincronizada');
  assert(calls>=12,'Fluxo de API não executado');
  console.log('OK: migração conservadora, 2 aparelhos, leitura, reversão, Engenharia, Português, sessões e exclusão; '+calls+' requisições simuladas');
-}finally{await a.close();await b.close();await browser.close();}
+}finally{await a.close();await b.close();await new Promise(done=>server.close(done));}
