@@ -35,6 +35,8 @@ try{
        explanation:card.querySelector('.ce-cobranca-answer p:not(.ce-cobranca-correct):not(.ce-cobranca-comparison)')?.textContent,
        kind:card.querySelector('.ce-cobranca-kind')?.textContent,
        form:!!card.querySelector('form[data-ce-quiz]'),
+       exam:card.querySelector('form[data-ce-quiz]')?.dataset.exam,
+       unwantedChoice:!!card.querySelector('select.ce-cobranca-exam'),
        closed:!card.querySelector('.ce-cobranca-answer')?.open
       })),
       groups:panels.map(p=>({id:p.dataset.forSection,items:p.querySelectorAll('.ce-cobranca-item').length,open:p.querySelectorAll('.ce-cobranca-item[open]').length,
@@ -49,7 +51,9 @@ try{
       logs:JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]').length
     };
    });
-   const exp=dbtext&&json.cases[slug].length;
+   const expectedExam=slug.endsWith('-ima')?'ima':'casan';
+   const expectedBank=expectedExam==='casan'?'Instituto AOCP':'FURB';
+   const exp=dbtext&&json.cases[slug].filter(q=>json.sources[q.src]?.bank===expectedBank).length;
    assert.equal(info.cards,exp,path+' número de exercícios');
    assert(info.panels>=1&&info.panels<=exp,path+' grupos 1 a 5');
    assert(info.width<=width+3,path+' overflow em '+width+'px: '+info.width);
@@ -59,6 +63,9 @@ try{
     assert(card.links.length===1&&card.links[0].startsWith('#'),path+' deve permitir revisar a teoria sem encaminhar para PDF');
     assert(/^Resposta da adaptação: [A-E]$/.test(card.correct)&&card.explanation?.length>=75,path+' correção própria ausente');
     assert(card.form&&card.closed,path+' formulário ou solução inicial inválidos');
+    assert.equal(card.exam,expectedExam,path+' avaliação registrada para concurso errado');
+    assert(card.origin.startsWith(expectedBank+' ·'),path+' questão de banca incorreta para '+expectedExam);
+    assert(!card.unwantedChoice,path+' não deve oferecer seleção de outro concurso nesta aula');
    }
    const card=page.locator('.ce-cobranca-card').first();
    // Algumas aulas mantêm capítulos de teoria recolhidos; abrir o capítulo
@@ -111,7 +118,7 @@ try{
     assert.equal(n,saved.logs.length+3,'Questões pontuais não geraram três sessões realmente enviadas');
     console.log('OK Engenharia: 3 autorais nas subseções 1.1/4.4/7.2, avaliação separada por envio.');
    }
-   count++;console.log('OK '+width+'px '+path+' · '+exp+' adaptações inline, conferir sem registro e envio com registro');
+   count++;console.log('OK '+width+'px '+path+' · '+exp+' questões '+expectedBank+' inline, avaliação exclusiva para '+expectedExam);
    await page.close();
   }
   await context.close();
