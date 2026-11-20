@@ -99,3 +99,28 @@
  .day-card{padding:14px}
 }
 @media(max-width:370px){.workspace-intro h1{font-size:27px}}
+
+/* Matriz CASAN 404 — conteúdo do edital, não desempenho pessoal. */
+#ce-cobertura-casan{margin:34px 0;padding:clamp(15px,3vw,28px);border:1px solid #4b697c;border-radius:18px;background:linear-gradient(130deg,#14283a,#182c3f);color:#e7f2fc;scroll-margin-top:90px}
+#ce-cobertura-casan h2{font-size:clamp(1.35rem,3vw,1.8rem);color:#f4faff}
+#ce-cobertura-casan h3{font-size:1.1rem;color:#e2f7fd;margin:24px 0 12px}
+#ce-cobertura-casan p{color:#d1e1ed}
+.ce-coverage-eyebrow{font-size:.83rem;font-weight:800;letter-spacing:.06em;color:#91e8d9!important}
+.ce-coverage-sources a{color:#abeafb;overflow-wrap:anywhere}
+.ce-coverage-controls{margin:15px 0 24px}
+.ce-coverage-controls label{display:inline-flex;flex-wrap:wrap;align-items:center;gap:12px}
+.ce-coverage-controls select{padding:10px;border-radius:9px;background:#223f54;border:1px solid #76a6b4;color:#f2faff;font:inherit;min-height:44px}
+.ce-coverage-area{min-width:0}
+.ce-coverage-overflow{overflow-x:auto;max-width:100%;border:1px solid #3c5870;border-radius:11px}
+.ce-coverage-table{border-collapse:collapse;width:100%;min-width:550px;font-size:.91rem;line-height:1.55}
+.ce-coverage-table :is(td,th){padding:11px 12px;text-align:left;vertical-align:top;border-bottom:1px solid #3b5266;color:#f0f5fa}
+.ce-coverage-table thead th{background:#29445a;color:#f5fdfe}
+.ce-coverage-table tbody tr:nth-child(even){background:#1a3449}
+.ce-coverage-table tbody tr:hover{background:#24495d}
+.ce-coverage-table tbody tr[hidden]{display:none}
+.ce-coverage-topic{min-width:200px;max-width:370px}
+.ce-coverage-links a{display:inline-block;margin:2px 8px 5px 0;color:#a6f3ed;text-decoration:underline}
+.ce-coverage-links small{display:block;color:#ccdce8;line-height:1.5}
+.ce-coverage-state{display:inline-block;font-size:.78rem;border-radius:99px;border:1px solid currentColor;padding:3px 8px;text-transform:capitalize;white-space:nowrap}
+.ce-state-lacuna{color:#ffcdac}.ce-state-parcial{color:#f9e39c}.ce-state-desenvolvido{color:#a3f0cb}
+@media(max-width:630px){.ce-coverage-table{min-width:0;display:block}.ce-coverage-table thead{display:none}.ce-coverage-table tbody{display:grid}.ce-coverage-table tr{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:10px 12px;border-bottom:1px solid #567188}.ce-coverage-table tr>:is(td,th){padding:3px 0;border:0;max-width:none}.ce-coverage-topic{font-weight:780;min-width:0}.ce-coverage-table tbody tr[hidden]{display:none}}
