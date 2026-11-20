@@ -1,0 +1,109 @@
+/* Navegação sem avaliações presumidas: índice por módulo, etapa atual e retomar.
+ * Ao clicar Próxima no rodapé móvel, delega ao controle ORIGINAL para preservar
+ * exatamente a regra Lido na subseção de ORIGEM e a preferência reversível. */
+(()=>{'use strict';
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const slug=document.body.dataset.ceLesson||((p)=>p.includes('rlm')?'rlm':p.includes('engenharia')?'engenharia':p.includes('portugues')?'portugues':'')(location.pathname);
+const secSel=slug==='rlm'?'[data-lesson-step]':slug==='engenharia'?'.step-marker[id^="etapa-"]':slug==='portugues'?'article.subsection[id^="pt19-"]':'article.nl-section[data-ce-topic]';
+function groupIndex(){
+ const nav=$('.nl-sidebar nav,#sidebar nav,.sidebar #sidenav');
+ if(!nav)return;
+ if(slug==='rlm')return; // O índice RLM já possui <details> reversíveis por módulo.
+ if(slug==='engenharia'){
+  $$('.sidebar #sidenav .subnav').forEach((group,i)=>{
+   if(group.closest('details'))return;
+   const wrap=document.createElement('details');wrap.className='ce-module-collapse';
+   const title=document.createElement('summary');title.textContent='Subseções do módulo '+(i+1);
+   group.parentNode.insertBefore(wrap,group);wrap.append(title,group);
+  });
+ } else if(slug==='portugues'){
+  const parents=$$('#menu .module-link');
+  parents.forEach((module,i)=>{
+    let next=module.nextElementSibling;
+    if(!next||next.matches('.module-link'))return;
+    const wrap=document.createElement('details');wrap.className='ce-module-collapse';
+    const title=document.createElement('summary');title.textContent='Subseções do módulo '+(i+1);
+    module.parentNode.insertBefore(wrap,next);wrap.append(title);
+    while(next&&!next.matches('.module-link')){
+      const candidate=next.nextElementSibling;wrap.append(next);next=candidate;
+    }
+  });
+ } else {
+  // Cada aula nova contém 3 módulos com IDs estáveis no índice.
+  const links=$$('[data-ce-nav]',nav),groups=new Map();
+  links.forEach(a=>{const m=a.dataset.ceNav?.match(/-(\d+)-\d+$/)?.[1];if(!m)return;const arr=groups.get(m)||[];arr.push(a);groups.set(m,arr);});
+  for(const [m,anchors] of groups){
+   const wrap=document.createElement('details');wrap.className='ce-module-collapse';
+   const summary=document.createElement('summary');summary.textContent='Módulo '+m+' · '+anchors.length+' subseções';
+   anchors[0].parentElement.insertBefore(wrap,anchors[0]);wrap.append(summary,...anchors);
+  }
+ }
+}
+function init(){
+ const sections=$$(secSel);
+ if(!sections.length)return;
+ groupIndex();
+ const bar=document.createElement('nav');bar.className='ce-reader-bottom';bar.setAttribute('aria-label','Navegação móvel da aula');
+ const prev=document.createElement('a');prev.href='#';prev.textContent='← Anterior';
+ const cur=document.createElement('span');cur.className='ce-reader-step';
+ const next=document.createElement('a');next.href='#';next.textContent='Próxima →';
+ bar.append(prev,cur,next);document.body.append(bar);
+ let active=0,scheduled=false;
+ function focus(i){
+  if(i<0||i>=sections.length)return;
+  active=i;const node=sections[i],name=node.id||node.dataset.lessonStep;
+  const label=node.dataset.lessonStep||name?.replace(/^etapa-(\d+)-(\d+)$/,'$1.$2').replace(/^[a-z]+-(\d+)-(\d+)$/,'$1.$2');
+  cur.textContent='Etapa '+label+' · '+(i+1)+'/'+sections.length;
+  prev.classList.toggle('ce-reader-inactive',i===0);prev.setAttribute('aria-disabled',i===0?'true':'false');
+  next.classList.toggle('ce-reader-inactive',i===sections.length-1);next.setAttribute('aria-disabled',i===sections.length-1?'true':'false');
+  prev.href=i>0?'#'+sections[i-1].id:'#'+name;next.href=i<sections.length-1?'#'+sections[i+1].id:'#'+name;
+  $$('.ce-index-current').forEach(a=>{a.classList.remove('ce-index-current');a.removeAttribute('aria-current');});
+  const href='#'+name;
+  const navLinks=$$('.nl-sidebar nav a,#sidebar nav a,.sidebar #sidenav a');
+  const link=navLinks.find(a=>a.getAttribute('href')===href);
+  if(link){
+   link.classList.add('ce-index-current');link.setAttribute('aria-current','location');
+   const details=link.closest('details');if(details)details.open=true;
+  }
+ }
+ function update(){
+  scheduled=false;
+  const hash=decodeURIComponent(location.hash.slice(1));
+  if(hash){
+   const i=sections.findIndex(x=>x.id===hash);
+   if(i>=0){const r=sections[i].getBoundingClientRect();if(r.top<innerHeight*0.78&&r.bottom>-50){focus(i);return;}}
+  }
+  let best=0,bestDiff=Infinity;
+  for(let i=0;i<sections.length;i++){
+   const top=sections[i].getBoundingClientRect().top;
+   const diff=Math.abs(top-155)+(top>innerHeight*.7?800:0);
+   if(diff<bestDiff){best=i;bestDiff=diff;}
+  }
+  focus(best);
+ }
+ function request(){if(!scheduled){scheduled=true;requestAnimationFrame(update);}}
+ function originalNext(node){
+  const id=node.id;
+  if(slug==='rlm')return $$(`a[data-next-of="${id}"]`)[0];
+  if(slug==='engenharia')return $$(`a[data-next-step="${id}"]`)[0];
+  if(slug==='portugues')return $('#next-section');
+  return $$(`a.ce-step-next[data-ce-next="${id}"]`)[0];
+ }
+ next.addEventListener('click',e=>{
+  e.preventDefault();if(active>=sections.length-1)return;
+  const original=originalNext(sections[active]);
+  if(original){original.click();}
+  else return; // nunca ignorar a preferência Lido usando navegação independente
+  setTimeout(()=>focus(Math.min(active+1,sections.length-1)),120);
+ });
+ prev.addEventListener('click',e=>{
+  e.preventDefault();if(active===0)return;
+  const dest=sections[active-1];dest.scrollIntoView({behavior:'smooth',block:'start'});
+  history.replaceState(null,'','#'+dest.id);focus(active-1);
+ });
+ addEventListener('hashchange',request);addEventListener('scroll',request,{passive:true});
+ setTimeout(request,200);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(init,80),{once:true});
+else setTimeout(init,80);
+})();
