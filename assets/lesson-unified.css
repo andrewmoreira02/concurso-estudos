@@ -355,3 +355,13 @@
  .ce-lesson-page .ce-cobranca-actions button{width:100%;flex:0 0 auto}
  .ce-lesson-page .ce-cobranca-inline{padding:12px}
 }
+
+/* Espaço seguro para controles originais na presença da barra de navegação fixa. */
+@media(max-width:700px){
+ html:has(.ce-lesson-page){scroll-padding-bottom:130px}
+ .ce-lesson-page :is(#next-section,#prev-section,.ce-step-navigation,.step-navigation,.ce-end-reading,.nl-end-read,.ce-cobranca-form,.ce-cobranca-choice){
+   scroll-margin-bottom:130px;
+ }
+ .ce-lesson-page .ce-reader-bottom{pointer-events:none}
+ .ce-lesson-page .ce-reader-bottom a{pointer-events:auto}
+}
