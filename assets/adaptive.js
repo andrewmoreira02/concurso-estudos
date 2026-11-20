@@ -99,6 +99,15 @@ function subjectEvidence(exam,lessons){
    topics:relevant.map(l=>l.id)};
  }).sort((a,b)=>b.priority-a.priority||b.weight-a.weight||a.name.localeCompare(b.name,'pt-BR'));
 }
+// Ao retomar na primeira subseção de um novo módulo, abrir antes a apresentação.
+function continueHref(course){
+ if(!course.first)return 'revisoes.html';
+ const {module,step,id}=course.first;
+ if(step!==1||module===1)return course.url+'#'+id;
+ const header=course.id==='engenharia'?'sec'+module:
+  (course.id==='rlm'||course.id==='portugues')?'m'+module:'cap-'+module;
+ return course.url+'#'+header;
+}
 function courseState(lesson,exam){
  const seen=readSet(lesson.id),studied=studiedModules(exam,lesson);
  const modules=lesson.sections_per_module,count=modules.reduce((sum,n)=>sum+n,0);
@@ -221,7 +230,7 @@ function model(){
   const stats=subjects.find(x=>x.name===c.subject);
   const isRead=readSet(c.id).has(c.first.id);
   picks.push({type:'lesson',title:c.title+' · '+(c.module_titles?.[c.first.module-1]||'Módulo '+c.first.module)+' · etapa '+c.first.module+'.'+c.first.step,
-   href:c.url+'#'+c.first.id,
+   href:continueHref(c),
    description:c.subject+': '+c.weight+'/'+c.totalQuestions+' questões no edital. '+
     (stats?stats.confirmed+'/'+stats.modules+' módulos com estudo confirmado na disciplina. ':'')+
     c.studiedCount+'/'+c.sections_per_module.length+' módulos confirmados nesta aula, '+
@@ -283,7 +292,7 @@ function orderCatalog(data){
    const oldLinks={rlm:'catalogRlmContinue',engenharia:'catalogEngContinue',portugues:'catalogPtContinue'};
    const links=[document.getElementById(oldLinks[course.id]),...catalog.querySelectorAll('[data-ce-course-resume="'+course.id+'"]')].filter(Boolean);
    for(const link of links){
-     link.href=localHref(course.first?course.url+'#'+course.first.id:'revisoes.html');
+     link.href=localHref(continueHref(course));
      link.textContent=course.first?'Retomar '+course.first.module+'.'+course.first.step:'Ver revisões';
    }
    for(const label of catalog.querySelectorAll('[data-ce-course-count="'+course.id+'"]'))label.textContent=course.read+' de '+course.total;
@@ -373,7 +382,7 @@ function render(data){
      const title=namedLesson.first?'Nesta aula: continue na etapa '+namedLesson.first.module+'.'+namedLesson.first.step+' — '+(namedLesson.module_titles?.[namedLesson.first.module-1]||'Módulo '+namedLesson.first.module):'Nesta aula: todas as subseções estão marcadas como Lido';
      current.append(el('strong','',title));
      current.append(el('p','',namedLesson.first?'Leitura registrada: '+namedLesson.read+'/'+namedLesson.total+'. Continue sem repetir etapas já marcadas.':'Próximo passo sugerido: recuperação ativa e questões, sem presumir domínio.'));
-     current.append(anchor(namedLesson.first?namedLesson.url+'#'+namedLesson.first.id:'revisoes.html',namedLesson.first?'Abrir próxima subseção':'Ver revisões',true));
+     current.append(anchor(continueHref(namedLesson),namedLesson.first?'Abrir próxima subseção':'Ver revisões',true));
      details.append(current);
    }
    const recommendationList=el('div','ce-adaptive-list');
@@ -403,7 +412,7 @@ function render(data){
  for(const [id,target] of resumeLinks){
    const course=data.lessons.find(l=>l.id===id),a=$(target);
    if(!course||!a)continue;
-   a.href=localHref(course.first?course.url+'#'+course.first.id:'revisoes.html');
+   a.href=localHref(continueHref(course));
    a.textContent=course.first?'Retomar etapa '+course.first.module+'.'+course.first.step:'Ver revisões';
  }
  const focus=$('dynamicFocus');
