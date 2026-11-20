@@ -11,7 +11,7 @@ const prefix = location.pathname.includes('/aulas/') ? '../' : '';
 const rlmKey='concursos_rlm_sections_read_v3';
 const engKey='concurso_eng_qualidade_steps_v1';
 const ptKey='concursos:casan2026:portugues:2026-11-19:subsections:v1';
-const logsKey='ce_question_logs_v1', reviewKey='ce_review_done_v1',planKey='ce_plan_done_v1';
+const logsKey='ce_question_logs_v1', reviewKey='ce_review_done_v1',planKey='ce_plan_done_v1',studyKey='ce_study_confirmed_v1';
 let config=null,panel=null,details=null,status=null,button=null,refreshing=false,nextRefresh=false,renderedSignature='';
 const parse=(key,fallback)=>{try{const text=localStorage.getItem(key);const value=text===null?null:JSON.parse(text);return value===null?fallback:value;}catch{return fallback;}};
 const isRecord=x=>!!x&&typeof x==='object'&&!Array.isArray(x);
@@ -51,31 +51,86 @@ function readSet(id){
  }
  return out;
 }
+// Estudo é declaração explícita por módulo e por edital. Nunca deriva de Lido.
+function studyRecord(){
+ const doc=parse(studyKey,{});
+ return isRecord(doc?.confirmed)?doc.confirmed:{};
+}
+function studiedModules(exam,lesson){
+ const entries=studyRecord(),out=new Set();
+ if(!exam)return out;
+ for(let i=1;i<=lesson.sections_per_module.length;i++){
+  if(entries[exam+':'+lesson.id+':'+i]===true)out.add(i);
+ }
+ return out;
+}
+function setStudyModule(exam,lesson,module,studied){
+ if(!config?.exams?.[exam]||!lesson.subjects?.[exam]||!Number.isInteger(module)||module<1||module>lesson.sections_per_module.length)return false;
+ const doc=parse(studyKey,{}),values={...(isRecord(doc?.confirmed)?doc.confirmed:{})};
+ values[exam+':'+lesson.id+':'+module]=studied===true;
+ try{
+  localStorage.setItem(studyKey,JSON.stringify({version:1,confirmed:values,updatedAt:new Date().toISOString()}));
+  dispatchEvent(new CustomEvent('concurso:progress-change'));
+  return true;
+ }catch{return false;}
+}
+const SUBJECT_CODE={
+ 'Conhecimentos Específicos (TI)':'ti','Tecnologia da Informação':'ti',
+ 'Português':'portugues','Raciocínio Lógico-Matemático':'rlm',
+ 'Legislação':'legislacao','Legislação Ambiental':'legislacao',
+ 'Administração Pública':'adm','Atualidades':'atualidades'
+};
+function subjectEvidence(exam,lessons){
+ const matrix=config.exams?.[exam]?.subjects||[],logs=getSessionLogs().filter(x=>x.exam===exam);
+ return matrix.map(([name,weight])=>{
+  const relevant=lessons.filter(x=>x.subject===name);
+  const modules=relevant.reduce((n,l)=>n+l.sections_per_module.length,0);
+  const confirmed=relevant.reduce((n,l)=>n+l.studiedCount,0);
+  const totalRead=relevant.reduce((n,l)=>n+l.read,0),totalSections=relevant.reduce((n,l)=>n+l.total,0);
+  const assessment=logs.filter(x=>x.subject===SUBJECT_CODE[name]);
+  const valid=assessment.reduce((n,x)=>n+x.valid,0),correct=assessment.reduce((n,x)=>n+x.correct,0);
+  const gap=modules?1-confirmed/modules:1;
+  // Erros corrigidos em questões realmente enviadas aumentam a prioridade,
+  // mas nem acertos nem Lido autorizam percentual de domínio.
+  const errorBoost=valid?Math.min(0.25,(valid-correct)/valid*0.25*Math.min(1,valid/6)):0;
+  const priority=weight*(gap+errorBoost);
+  return {name,weight,modules,confirmed,totalRead,totalSections,valid,correct,
+   errors:valid-correct,gap,priority,
+   topics:relevant.map(l=>l.id)};
+ }).sort((a,b)=>b.priority-a.priority||b.weight-a.weight||a.name.localeCompare(b.name,'pt-BR'));
+}
 function courseState(lesson,exam){
- const seen=readSet(lesson.id);
- const modules=lesson.sections_per_module;
- const count=modules.reduce((sum,n)=>sum+n,0);
- let read=0,first=null,completed=0,lastFinished=0;
+ const seen=readSet(lesson.id),studied=studiedModules(exam,lesson);
+ const modules=lesson.sections_per_module,count=modules.reduce((sum,n)=>sum+n,0);
+ let read=0,firstUnread=null,firstNotStudied=null,completed=0,lastFinished=0;
  for(let m=1;m<=modules.length;m++){
-   let countThis=0;
-   for(let s=1;s<=modules[m-1];s++){
-     const id=sectionId(lesson,m,s);
-     if(seen.has(id)){read++;countThis++;}
-     else if(!first)first={module:m,step:s,id};
-   }
-   if(countThis===modules[m-1]){completed++;lastFinished=m;}
+  let countThis=0;
+  if(!studied.has(m)&&!firstNotStudied)firstNotStudied={module:m,step:1,id:sectionId(lesson,m,1)};
+  for(let step=1;step<=modules[m-1];step++){
+   const id=sectionId(lesson,m,step);
+   if(seen.has(id)){read++;countThis++;}
+   else if(!firstUnread&&!studied.has(m))firstUnread={module:m,step,id};
+  }
+  if(countThis===modules[m-1]){completed++;lastFinished=m;}
  }
  const subject=lesson.subjects?.[exam]||'';
- const matrix=config.exams?.[exam]?.subjects||[];
- const weight=matrix.find(pair=>pair[0]===subject)?.[1]||0;
+ const weight=(config.exams?.[exam]?.subjects||[]).find(pair=>pair[0]===subject)?.[1]||0;
  const totalQuestions=config.exams?.[exam]?.total||0;
- const ratio=count?read/count:0;
- // Manter continuidade de aulas parcialmente lidas sem confundir Lido com domínio.
- // O bônus é relativo ao peso do edital e desaparece após a última subseção.
- const inProgress=read>0&&read<count;
- const score=first?weight*(inProgress?1.35+0.1*ratio:1):0;
- return {...lesson,read,total:count,completed,first,lastFinished,weight,totalQuestions,subject,ratio,inProgress,score};
+ const ratio=count?read/count:0,studiedCount=studied.size,studyRatio=modules.length?studiedCount/modules.length:0;
+ // Quando já há estudo confirmado, priorizar o primeiro módulo ainda sem confirmação,
+ // inclusive se suas etapas foram marcadas como Lido. Sem confirmação, preservar a
+ // primeira subseção não lida para não reiniciar conteúdo automaticamente.
+ const first=studiedCount>0?(firstNotStudied?(
+  (()=>{for(let step=1;step<=modules[firstNotStudied.module-1];step++){
+   const id=sectionId(lesson,firstNotStudied.module,step);
+   if(!seen.has(id))return {module:firstNotStudied.module,step,id};
+  }return firstNotStudied;})()
+ ):null):(firstUnread||firstNotStudied);
+ const inProgress=(read>0&&read<count)||(studiedCount>0&&studiedCount<modules.length);
+ return {...lesson,read,total:count,completed,first,lastFinished,weight,totalQuestions,subject,ratio,
+  studiedCount,studyRatio,inProgress,score:0};
 }
+
 function getSessionLogs(){
  const data=parse(logsKey,[]);
  if(!Array.isArray(data))return [];
@@ -124,51 +179,76 @@ function model(){
  const windowRule=config.priority_windows.find(w=>w.from<=today&&today<=w.through)||config.after_last_window;
  const exam=windowRule?.exam&&config.exams?.[windowRule.exam]?windowRule.exam:null;
  const lessons=(config.adaptive_study?.lessons||[]).map(l=>courseState(l,exam));
- // Continuidade explícita: entre matérias de igual peso, retomar a já iniciada.
- // Revisões de erros enviados e simulados de véspera permanecem acima na fila.
- const sorted=lessons.filter(c=>c.first&&c.weight>0).sort((a,b)=>{
-   if(a.weight!==b.weight)return b.weight-a.weight;
-   if(a.inProgress!==b.inProgress)return Number(b.inProgress)-Number(a.inProgress);
-   return b.score-a.score; // empate preserva ordem editorial do catálogo (Engenharia primeiro)
+ const subjects=subjectEvidence(exam,lessons);
+ const rank=new Map(subjects.map((x,i)=>[x.name,i]));
+ const scoreBySubject=new Map(subjects.map(x=>[x.name,x.priority]));
+ for(const lesson of lessons)lesson.score=(scoreBySubject.get(lesson.subject)||0)*(1-lesson.studyRatio);
+ // Uma única trilha inicial por disciplina impede que os 25 itens de TI
+ // sejam contabilizados quatro vezes só porque há quatro aulas publicadas.
+ const perSubject=new Map();
+ const candidates=lessons.filter(c=>c.first&&c.weight>0);
+ for(const c of candidates){
+  const group=perSubject.get(c.subject)||[];group.push(c);perSubject.set(c.subject,group);
+ }
+ for(const group of perSubject.values())group.sort((a,b)=>{
+  if(a.inProgress!==b.inProgress)return Number(b.inProgress)-Number(a.inProgress);
+  if(a.studyRatio!==b.studyRatio)return a.studyRatio-b.studyRatio;
+  return candidates.indexOf(a)-candidates.indexOf(b);
  });
+ const sorted=[...perSubject.entries()].sort((a,b)=>{
+  const delta=(scoreBySubject.get(b[0])||0)-(scoreBySubject.get(a[0])||0);
+  return delta||((rank.get(a[0])||0)-(rank.get(b[0])||0));
+ }).flatMap(([_,items])=>items);
  const due=nextDue(exam,today);
  const picks=[];
- // Os blocos práticos constam no calendário; não simulam uma prova já realizada.
  const assigned=config.calendar.special?.[today]||[];
  const scheduledQuiz=assigned.find(t=>t.id==='questions-reta-final'||t.id==='ima-questions-eve');
- if(scheduledQuiz&&exam===(''+(scheduledQuiz.id==='questions-reta-final'?'casan':'ima'))){
-   picks.push({type:'quiz',title:scheduledQuiz.title,href:scheduledQuiz.href,
-     description:scheduledQuiz.detail+' Os resultados serão registrados somente após envio real das respostas.'});
+ if(scheduledQuiz&&exam===(scheduledQuiz.id==='questions-reta-final'?'casan':'ima')){
+  picks.push({type:'quiz',title:scheduledQuiz.title,href:scheduledQuiz.href,
+   description:scheduledQuiz.detail+' Resultados são registrados somente após envio das respostas.'});
  }
  if(due.length){
-   const d=due[0];
-   picks.push({type:'review',title:'Revisar: '+d.topic,href:'revisoes.html',
-     description:due.length+' revisão(ões) com prazo até hoje, gerada(s) por erros efetivamente registrados. '+d.errors+' erro(s) na sessão desta prioridade.'});
+  const d=due[0];
+  picks.push({type:'review',title:'Revisar: '+d.topic,href:'revisoes.html',
+   description:due.length+' revisão(ões) com prazo até hoje, gerada(s) por erros realmente registrados. '+d.errors+' erro(s) na sessão desta prioridade.'});
  }
- for(const c of sorted.slice(0,due.length?2:3)){
-   picks.push({type:'lesson',title:c.title+' · '+(c.module_titles?.[c.first.module-1]||'Módulo '+c.first.module)+' · etapa '+c.first.module+'.'+c.first.step,
-     href:c.url+'#'+c.first.id,
-     description:(c.inProgress?'Retomar aula iniciada na subseção exata; não trocar só porque outra está zerada. ':'Aula ainda não iniciada. ')+c.subject+': '+c.weight+'/'+c.totalQuestions+' questões no edital '+config.exams[exam].name+'. '+c.read+'/'+c.total+' subseções marcadas como Lido. Leitura não comprova domínio; revisões vencidas e simulado agendado têm precedência.'});
+ // Primeiro uma aula por disciplina, na ordem do peso ainda sem estudo confirmado;
+ // se restarem vagas, continuar outras aulas dos mesmos temas.
+ const chosen=[],seenSubject=new Set();
+ for(const l of sorted)if(!seenSubject.has(l.subject)){chosen.push(l);seenSubject.add(l.subject);}
+ for(const l of sorted)if(!chosen.includes(l))chosen.push(l);
+ for(const c of chosen.slice(0,due.length?2:3)){
+  const stats=subjects.find(x=>x.name===c.subject);
+  const isRead=readSet(c.id).has(c.first.id);
+  picks.push({type:'lesson',title:c.title+' · '+(c.module_titles?.[c.first.module-1]||'Módulo '+c.first.module)+' · etapa '+c.first.module+'.'+c.first.step,
+   href:c.url+'#'+c.first.id,
+   description:c.subject+': '+c.weight+'/'+c.totalQuestions+' questões no edital. '+
+    (stats?stats.confirmed+'/'+stats.modules+' módulos com estudo confirmado na disciplina. ':'')+
+    c.studiedCount+'/'+c.sections_per_module.length+' módulos confirmados nesta aula, '+
+    c.read+'/'+c.total+' subseções Lido.'+
+    (stats?.valid?' Questões enviadas na disciplina: '+stats.correct+'/'+stats.valid+' acertos.':' Sem avaliação registrada nesta disciplina.')+
+    (isRead?' A etapa já tem Lido, mas o módulo não tem estudo confirmado.':' Priorizar a próxima etapa não lida.')+
+    ' Leitura e acertos isolados não são domínio.'});
  }
  if(!picks.length){
-   if(!exam)picks.push({type:'plan',title:'Revisar a prioridade do concurso',href:'planejamento.html',
-     description:'As janelas de prova cadastradas terminaram. Evite seguir automaticamente editais antigos.'});
-   else picks.push({type:'review',title:'Verificar retenção com questões',href:'revisoes.html',
-     description:'O material disponível está integralmente marcado como Lido. Isso não comprova retenção: responda os quizzes para registrar resultados reais automaticamente.'});
+  if(!exam)picks.push({type:'plan',title:'Revisar a prioridade do concurso',href:'planejamento.html',
+   description:'As janelas cadastradas terminaram; não seguir concursos antigos automaticamente.'});
+  else picks.push({type:'review',title:'Verificar retenção com questões',href:'revisoes.html',
+   description:'Os módulos com materiais foram confirmados como estudados; confirmar estudo não comprova domínio. Responda quizzes para registrar avaliação.'});
  }
  const path=location.pathname;
  const active=lessons.find(l=>path.endsWith('/'+l.url)||path.endsWith(l.url));
- // Reserva de aulas: concursos ainda ativos (inclusive a próxima prova IMA), não só o foco diário.
- // Não contam materiais sem aderência a edital vigente nem páginas sem cadastro completo.
  const ongoing=Object.entries(config.exams||{}).filter(([key,details])=>details.deadline>=today).map(([key])=>key);
  const relevant=lessons.filter(l=>ongoing.some(key=>{
-   const subject=l.subjects?.[key],matrix=config.exams[key]?.subjects||[];
-   return !!subject&&matrix.some(pair=>pair[0]===subject&&pair[1]>0);
+  const subject=l.subjects?.[key],matrix=config.exams[key]?.subjects||[];
+  return !!subject&&matrix.some(pair=>pair[0]===subject&&pair[1]>0);
  }));
  const unreadEquivalents=relevant.reduce((sum,l)=>sum+(l.total-l.read)/l.total,0);
  const minEquivalents=Math.max(1,Math.min(10,config.adaptive_study?.minimum_unread_equivalents||5));
- return {today,exam,windowRule,lessons,picks,due,agenda:agenda(today),active,unreadEquivalents,minEquivalents};
+ return {today,exam,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
+  unreadEquivalents,minEquivalents};
 }
+
 function el(tag,className,text){
  const node=document.createElement(tag);
  if(className)node.className=className;
