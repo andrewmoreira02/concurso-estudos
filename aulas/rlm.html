@@ -426,8 +426,15 @@ function save(){
   readSections:[...read].sort((a,b)=>ids.indexOf(a)-ids.indexOf(b)),legacyModules:[...legacyModules].sort(),
   preferences:{markOnNext},lastSection,savedAt:new Date().toISOString(),
   interpretation:'Lido é declaração de leitura, sem validação de aprendizagem ou domínio'};
- try{localStorage.setItem(KEY,JSON.stringify(obj));storageOK=true;}catch(e){storageOK=false;}
- render();return obj;
+ let leituraMudou=false;
+ try{
+  const anterior=JSON.parse(localStorage.getItem(KEY)||'null');
+  leituraMudou=JSON.stringify(anterior?.readSections||[])!==JSON.stringify(obj.readSections);
+  localStorage.setItem(KEY,JSON.stringify(obj));storageOK=true;
+ }catch(e){storageOK=false;}
+ render();
+ if(storageOK&&leituraMudou)window.dispatchEvent(new CustomEvent('concurso:read-change'));
+ return obj;
 }
 function summary(){
  let t='CASAN 404 — RLM | Aula revisada de 17/11/2026\n';
