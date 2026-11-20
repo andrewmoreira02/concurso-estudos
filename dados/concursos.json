@@ -301,5 +301,75 @@
       7
     ],
     "label": "Agenda inicial sugerida; não comprova retenção e pode ser ajustada por desempenho."
+  },
+  "adaptive_study": {
+    "schema_version": 1,
+    "refresh_minutes": 60,
+    "evidence_rule": "Lido mede leitura declarada. Agenda planejada não prova execução. Resultados de questões são avaliados somente para o concurso em que foram registrados.",
+    "lessons": [
+      {
+        "id": "engenharia",
+        "title": "Engenharia de Software e Qualidade",
+        "url": "aulas/engenharia-qualidade.html",
+        "section_prefix": "etapa",
+        "sections_per_module": [
+          5,
+          6,
+          4,
+          5,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3
+        ],
+        "subjects": {
+          "casan": "Conhecimentos Específicos (TI)",
+          "ima": "Tecnologia da Informação"
+        }
+      },
+      {
+        "id": "portugues",
+        "title": "Português: interpretação, coesão e gramática",
+        "url": "aulas/portugues-casan-19-11.html",
+        "section_prefix": "pt19",
+        "sections_per_module": [
+          3,
+          4,
+          4,
+          4,
+          4,
+          2
+        ],
+        "subjects": {
+          "casan": "Português"
+        },
+        "reuse_ima": "Material CASAN pode servir de revisão; não transfere avaliação ou domínio para o IMA."
+      },
+      {
+        "id": "rlm",
+        "title": "Raciocínio Lógico-Matemático",
+        "url": "aulas/rlm.html",
+        "section_prefix": "m",
+        "sections_per_module": [
+          4,
+          7,
+          9,
+          6,
+          3,
+          7,
+          5,
+          8,
+          5,
+          7,
+          10
+        ],
+        "subjects": {
+          "casan": "Raciocínio Lógico-Matemático",
+          "ima": "Raciocínio Lógico-Matemático"
+        }
+      }
+    ]
   }
 }
