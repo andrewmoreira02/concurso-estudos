@@ -29,10 +29,11 @@ browser.on('disconnected',()=>{});
 const remote=new Map();
 let calls=0;
 const PAIR='U'.repeat(43);
-function ok(route,body,status=200){return route.fulfill({status,contentType:'application/json',body:JSON.stringify(body)});}
+function ok(route,body,status=200){return route.fulfill({status,contentType:'application/json',headers:{'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'content-type,apikey,x-concurso-key','Access-Control-Allow-Methods':'GET,POST,OPTIONS'},body:JSON.stringify(body)});}
 async function attach(page){
  await page.route('https://test.supabase.co/**',async route=>{
    const req=route.request(),u=new URL(req.url()),p=u.pathname,method=req.method();calls++;
+   if(method==='OPTIONS')return ok(route,{},204);
    if(p!=='/functions/v1/concurso-pareamento')throw Error('Endpoint inesperado: '+method+' '+p);
    if(req.headers()['x-concurso-key']!==PAIR)return ok(route,{error:'Código inválido'},401);
    if(method==='GET')return ok(route,{items:[...remote].map(([item_key,value])=>({item_key,payload:{value}}))});
@@ -106,4 +107,4 @@ try{
  assert(afterDelete.length===0,'Exclusão de sessão não sincronizada');
  assert(calls>=12,'Fluxo de API não executado');
  console.log('OK: migração conservadora, 2 aparelhos, leitura, reversão, Engenharia, Português, sessões e exclusão; '+calls+' requisições simuladas');
-}finally{await a.close();await b.close();await new Promise(done=>server.close(done));}
+}finally{await a.close();await b.close();server.closeAllConnections?.();await new Promise(done=>server.close(done));}
