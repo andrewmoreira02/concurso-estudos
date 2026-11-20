@@ -15,7 +15,9 @@ try{
  {path:'aulas/portugues-casan-19-11.html',name:'Português',expected:21,heading:'article.subsection[id^="pt19-"]',first:'pt19-1-1',selector:'.read-control'},
  {path:'aulas/banco-dados.html',name:'Nova Banco',expected:9,heading:'article.nl-section',first:'bd-1-1',selector:'.nl-end-read'},
  {path:'aulas/seguranca.html',name:'Nova Segurança',expected:9,heading:'article.nl-section',first:'seg-1-1',selector:'.nl-end-read'},
- {path:'aulas/algoritmos-oo.html',name:'Nova Algoritmos',expected:9,heading:'article.nl-section',first:'alg-1-1',selector:'.nl-end-read'}
+ {path:'aulas/algoritmos-oo.html',name:'Nova Algoritmos',expected:9,heading:'article.nl-section',first:'alg-1-1',selector:'.nl-end-read'},
+ {path:'aulas/administracao-publica-ima.html',name:'Nova Administração',expected:9,heading:'article.nl-section',first:'adm-1-1',selector:'.nl-end-read'},
+ {path:'aulas/legislacao-ambiental-ima.html',name:'Nova Legislação',expected:9,heading:'article.nl-section',first:'la-1-1',selector:'.nl-end-read'}
  ]){
   const page=await browser.newPage({viewport:{width:390,height:780},isMobile:true,hasTouch:true});
   await page.goto(pathToFileURL(resolve(test.path)).href,{waitUntil:'domcontentloaded'});
