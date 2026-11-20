@@ -25,7 +25,7 @@ function validQuestion(q){
  typeof q.explanation==='string'&&q.explanation.length>10&&Array.isArray(q.exams);
 }
 function validReal(q){
- return q&&q.kind==='adaptada'&&/^[a-z0-9-]{3,60}$/.test(q.id||'')&&
+ return q&&q.kind==='real-original-pdf'&&/^[a-z0-9-]{3,60}$/.test(q.id||'')&&
  ['ti','portugues','rlm','legislacao','atualidades','adm'].includes(q.subject)&&
  /^[a-e]$/.test(q.correct||'')&&typeof q.prompt==='string'&&q.prompt.length>10&&
  typeof q.explanation==='string'&&q.explanation.length>15&&Array.isArray(q.exams)&&
