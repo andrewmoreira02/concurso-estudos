@@ -29,7 +29,10 @@ async function attach(page){
 async function open(page,seed={}){
  await page.addInitScript(({seed})=>{
    Object.defineProperty(window,'CONCURSO_SYNC_CONFIG',{configurable:false,writable:false,value:{url:'https://test.supabase.co',publishableKey:'sb_publishable_test_123456789012345'}});
-   for(const [key,value] of Object.entries(seed))localStorage.setItem(key,JSON.stringify(value));
+   if(localStorage.getItem('__sync_test_seeded__')!=='1'){
+     for(const [key,value] of Object.entries(seed))localStorage.setItem(key,JSON.stringify(value));
+     localStorage.setItem('__sync_test_seeded__','1');
+   }
  },{seed});
  await page.goto(pathToFileURL(resolve('conta.html')).href,{waitUntil:'domcontentloaded'});
  await page.locator('#syncSignedOut:not([hidden])').waitFor({timeout:10000});
@@ -50,6 +53,12 @@ try{
  await attach(pc);await attach(phone);
  await open(pc,{[rlm]:{format:'concursos-rlm-leitura',version:3,readSections:keys},[eng]:['1.1','2.1'],[pt]:{version:1,lesson:'CASAN_2026_PT_2026_11_19',read:{'pt19-1-1':true}},ce_plan_done_v1:{'2026-11-20::revisao':true}});
  for(const k of keys)assert(remote.get('read:rlm:'+k)===true,'Primeiro aparelho não enviou '+k);
+ // Teste crítico: clicar no botão real da aula deve disparar envio sem aguardar 15 segundos.
+ await pc.goto(pathToFileURL(resolve('aulas/rlm.html')).href,{waitUntil:'domcontentloaded'});
+ await pc.locator('[data-step-read="m5-s1"]').click({force:true,timeout:10000});
+ await pc.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_private_sync_pair_meta_v2')||'{}').synced?.['read:rlm:m5-s1']===true,{timeout:10000});
+ assert(remote.get('read:rlm:m5-s1')===true,'Botão Lido da aula RLM não sincronizou imediatamente');
+ console.log('OK botão real Lido da RLM enviou m5-s1 automaticamente');
  await open(phone,{[rlm]:{format:'concursos-rlm-leitura',version:3,readSections:[]}});
  const merged=await phone.evaluate(key=>JSON.parse(localStorage.getItem(key)).readSections,rlm);
  for(const k of keys)assert(merged.includes(k),'Celular não recebeu '+k);
