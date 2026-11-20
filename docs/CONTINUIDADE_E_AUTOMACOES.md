@@ -170,3 +170,9 @@ Os rótulos do exemplo são **placeholder de desenvolvimento**, não uma questã
 - Corrigido `assets/new-lesson.js` para tratar aulas sem leitura anteriormente salva (não acessar `.read.filter` de registro inexistente).
 - Adicionado `scripts/verificar-padrao-aulas.mjs` ao workflow para validar seis aulas em 320/390/430/1280px, topo/índice/hero, ausência dos banners administrativos, backups em detalhes, fluxo e erros JS. Corrigido teste `scripts/verificar-adaptacao.mjs` para exigir sugestões somente no painel/planejamento.
 - Testes GitHub Actions **aprovados** em `44656792190` no commit `5945c2d9afef`, incluindo 156 controles Lido finais e sincronização simulada. Implantação Pages desse commit também **aprovada** em `44656791476`. A norma permanente foi atualizada em `docs/PADRAO_AULAS_E_ROTEIRO.md` e a automação horária existente também recebeu requisito de identidade única. Nenhum progresso pessoal foi publicado no repositório.
+
+## 19/11/2026 — Painel inicial sem Sugestões locais redundantes
+
+- A pedido do usuário, a página inicial **não** apresenta mais a caixa automática `Sugestões locais`; mantém seu próprio card de próximo foco, atalho dinâmico, progresso e acesso ao planejamento.
+- `assets/adaptive.js`: `createPanel()` não injeta seção redundante em `index.html`, mas `render()` continua atualizando `dynamicFocus`, `dynamicFocusLink` e os atalhos de retomada mesmo sem criar a caixa. No planejamento, o nome visível passa a ser **Continuidade do plano de estudos**; a recomendação útil permanece.
+- `scripts/verificar-adaptacao.mjs` cobre ausência de caixa na home, atualização de foco dinâmico, painel no planejamento e ausência de sugestões intrusivas dentro das aulas. Isso não interfere na tarefa horária editorial do GPT nem na sincronização Supabase.
