@@ -13,7 +13,7 @@ const PAIR_KEY='ce_private_sync_pair_v1',META_KEY='ce_private_sync_pair_meta_v2'
 const RLM='concursos_rlm_sections_read_v3', RLM_SITE='concurso_rlm_steps_v1';
 const ENG='casan1811_subsections_v3', ENG_SITE='concurso_eng_qualidade_steps_v1';
 const PT='concursos:casan2026:portugues:2026-11-19:subsections:v1';
-const PLAN='ce_plan_done_v1', AVAILABLE='ce_available_days_v1', LOGS='ce_question_logs_v1', REVIEW='ce_review_done_v1', REGISTRATION='ce_registration_v1';
+const PLAN='ce_plan_done_v1', AVAILABLE='ce_available_days_v1', LOGS='ce_question_logs_v1', REVIEW='ce_review_done_v1', REGISTRATION='ce_registration_v1', STUDY='ce_study_confirmed_v1';
 const VALID={
  readRlm:/^read:rlm:m(?:[1-9]|10|11)-s\d{1,2}$/,
  readEng:/^read:eng:etapa-(?:[1-9]|10)-\d{1,2}$/,
@@ -24,9 +24,10 @@ const VALID={
  review:/^review:session-\d+-[a-z0-9]+-\d{1,2}$/,
  log:/^log:session-\d+-[a-z0-9]+$/,
  pref:/^pref:pt:autoMark$/,
- registration:/^registration:ima$/
+ registration:/^registration:ima$/,
+ study:/^study:(?:casan|ima):[a-z][a-z0-9-]{2,40}:(?:[1-9]|1\d|20)$/
 };
-const booleanKey=k=>VALID.readRlm.test(k)||VALID.readEng.test(k)||VALID.readPt.test(k)||VALID.readNew.test(k)||VALID.plan.test(k)||VALID.available.test(k)||VALID.review.test(k)||VALID.pref.test(k)||VALID.registration.test(k);
+const booleanKey=k=>VALID.readRlm.test(k)||VALID.readEng.test(k)||VALID.readPt.test(k)||VALID.readNew.test(k)||VALID.plan.test(k)||VALID.available.test(k)||VALID.review.test(k)||VALID.pref.test(k)||VALID.registration.test(k)||VALID.study.test(k);
 const allowed=k=>typeof k==='string'&&k.length<=180&&(booleanKey(k)||VALID.log.test(k));
 const valueOK=(k,v)=>booleanKey(k)?typeof v==='boolean':VALID.log.test(k)?v===null||(v&&typeof v==='object'&&!Array.isArray(v)&&v.id===k.slice(4)&&JSON.stringify(v).length<3000):false;
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
@@ -48,6 +49,9 @@ function snapshot(){
  const pt=json(PT,{});
  for(const [id,yes] of Object.entries(pt?.read&&typeof pt.read==='object'?pt.read:{}))if(yes===true)mark('read:pt:'+id,true);
  for(const [id,done] of Object.entries(json(PLAN,{})||{}))mark('plan:'+id,done);
+ const study=json(STUDY,{});
+ if(study?.version===1&&study.confirmed&&typeof study.confirmed==='object'&&!Array.isArray(study.confirmed))
+  for(const [id,value] of Object.entries(study.confirmed))mark('study:'+id,value);
  const available=json(AVAILABLE,[]);
  if(Array.isArray(available))for(const day of available)mark('available:'+day,true);
  for(const [id,done] of Object.entries(json(REVIEW,{})||{}))mark('review:'+id,done);
@@ -67,7 +71,7 @@ function snapshot(){
  return out;
 }
 function apply(items){
- const groups={rlm:[],eng:[],pt:[],newLessons:new Map(),plan:[],available:[],review:[],logs:[],pref:[],registration:[]};
+ const groups={rlm:[],eng:[],pt:[],newLessons:new Map(),plan:[],available:[],review:[],logs:[],pref:[],registration:[],study:[]};
  for(const [key,value] of Object.entries(items)){
    if(!allowed(key)||!valueOK(key,value))continue;
    if(VALID.readRlm.test(key))groups.rlm.push([key.slice(9),value]);
@@ -79,6 +83,7 @@ function apply(items){
      groups.newLessons.get(slug).push([rest.join(':'),value]);
    }
    else if(VALID.plan.test(key))groups.plan.push([key.slice(5),value]);
+   else if(VALID.study.test(key))groups.study.push([key.slice(6),value]);
    else if(VALID.available.test(key))groups.available.push([Number(key.slice(10)),value]);
    else if(VALID.review.test(key))groups.review.push([key.slice(7),value]);
    else if(VALID.log.test(key))groups.logs.push([key.slice(4),value]);
@@ -120,6 +125,11 @@ function apply(items){
    const read={...(doc.read||{})};
    for(const [id,yes] of groups.pt)read[id]=yes;
    changed=store(PT,{...doc,version:1,lesson:'CASAN_2026_PT_2026_11_19',read})||changed;
+ }
+ if(groups.study.length){
+  const doc=json(STUDY,{}),confirmed={...(doc?.confirmed&&typeof doc.confirmed==='object'&&!Array.isArray(doc.confirmed)?doc.confirmed:{})};
+  for(const [id,yes] of groups.study)confirmed[id]=yes;
+  changed=store(STUDY,{...doc,version:1,confirmed})||changed;
  }
  for(const [storageKey,group] of [[PLAN,groups.plan],[REVIEW,groups.review]]){
    if(!group.length)continue;
@@ -194,7 +204,7 @@ async function pushRows(entries){
    if(response?.ok!==true)throw Error('Alterações não confirmadas pelo banco.');
  }
 }
-function isPositive(k){return /^(read:|plan:|available:|review:)/.test(k);}
+function isPositive(k){return /^(read:|plan:|available:|review:|study:)/.test(k);}
 function tombstone(k){return VALID.log.test(k)?null:false;}
 function cleanMap(map){
  const out={};
