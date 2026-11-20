@@ -1,0 +1,472 @@
+{
+  "schema": 1,
+  "updated": "2026-11-20",
+  "exam": "CASAN 2026 — 404 Analista de Sistemas / Desenvolvimento",
+  "date": "2026-11-22",
+  "title": "Cobertura documental do edital CASAN 404",
+  "source": {
+    "official": "https://www.institutoaocp.org.br/concursos/711",
+    "secondary": "https://www.acertaquestoes.com.br/edital/6871-casan-companhia-catarinense-aguas-saneamento-concurso-publico-n-003-2026",
+    "scope": "Anexo III — Conhecimentos Específicos cargo Analista de Sistemas Desenvolvimento; texto público secundário transcrito, conferir retificações na AOCP"
+  },
+  "grades": {
+    "desenvolvido": "Existe teoria substancial e exemplos; não comprova domínio nem suficiência na prova",
+    "parcial": "Há conteúdo relevante, mas resta aprofundamento em subtópicos",
+    "lacuna": "Não existe aula específica/catalogada suficientemente aderente"
+  },
+  "areas": [
+    {
+      "code": "ti",
+      "label": "Conhecimentos Específicos (TI)",
+      "questions": 25,
+      "topics": [
+        {
+          "id": "1.1",
+          "title": "Sistemas operacionais, memória, arquivos, virtualização e nuvem",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-8-1",
+              "label": "Processos e threads"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-8-2",
+              "label": "VM × containers"
+            }
+          ],
+          "note": "Exemplos disponíveis; falta detalhamento de gerência de memória e arquivos"
+        },
+        {
+          "id": "1.2",
+          "title": "Estruturas de dados, busca, ordenação e complexidade",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/algoritmos-oo.html#alg-1-1",
+              "label": "Complexidade"
+            },
+            {
+              "href": "aulas/algoritmos-oo.html#alg-1-2",
+              "label": "Pilhas, filas e coleções"
+            }
+          ],
+          "note": "Exemplos históricos AOCP; cobrir árvores, hashing, busca e ordenação em profundidade"
+        },
+        {
+          "id": "1.3",
+          "title": "COBIT, ITIL 4, PMBOK, Scrum e Kanban",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-9-3",
+              "label": "Scrum e métodos ágeis"
+            }
+          ],
+          "note": "ITIL, COBIT e PMBOK ainda não recebem aula aprofundada"
+        },
+        {
+          "id": "1.4",
+          "title": "Segurança da informação, privilégios, LGPD e OWASP",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-1-1",
+              "label": "Ameaças"
+            },
+            {
+              "href": "aulas/seguranca.html#seg-3-1",
+              "label": "Segurança operacional"
+            }
+          ],
+          "note": "Conceitos e questões contextuais, sem cobrir cada domínio normativo"
+        },
+        {
+          "id": "1.5",
+          "title": "Criptografia, hashing, assinaturas, certificados e acesso",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-2-1",
+              "label": "Identidade"
+            },
+            {
+              "href": "aulas/seguranca.html#seg-1-2",
+              "label": "Defesas"
+            }
+          ],
+          "note": "Verificar diferenciação de cifra × assinatura e PKI"
+        },
+        {
+          "id": "2.1",
+          "title": "Ciclos de vida e modelos de processo",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-1-2",
+              "label": "Fluxo de requisitos"
+            }
+          ],
+          "note": "Não há comparação profunda de cascata/iterativo/incremental"
+        },
+        {
+          "id": "2.2",
+          "title": "Scrum, Kanban, XP, DevOps e CI/CD",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-9-3",
+              "label": "Scrum"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-7-1",
+              "label": "CI/CD"
+            }
+          ],
+          "note": "Exemplos sobre eventos e integração; XP incompleto"
+        },
+        {
+          "id": "2.3",
+          "title": "Engenharia de requisitos, histórias e usabilidade",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-1-1",
+              "label": "Tipos de requisitos"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-1-3",
+              "label": "Elicitação, mudanças"
+            }
+          ],
+          "note": "Aula longa com casos resolvidos; usar questões antes da prova"
+        },
+        {
+          "id": "2.4",
+          "title": "UML, SOLID, GRASP, padrões, antipadrões e MVC",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-2-1",
+              "label": "Diagramas UML"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-9-2",
+              "label": "Padrões GoF"
+            },
+            {
+              "href": "aulas/algoritmos-oo.html#alg-2-1",
+              "label": "Objetos"
+            }
+          ],
+          "note": "GRASP, anti-padrões e MVC ainda sem tratamento sistemático"
+        },
+        {
+          "id": "2.5",
+          "title": "Testes, qualidade, TDD, BDD e inspeções",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-4-1",
+              "label": "Níveis de testes"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-5-2",
+              "label": "TDD × BDD"
+            }
+          ],
+          "note": "Exemplos numéricos e técnicos; praticar novas questões"
+        },
+        {
+          "id": "2.6",
+          "title": "Versionamento, configuração, mudanças e CI",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-6-2",
+              "label": "Git"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-7-1",
+              "label": "CI/CD"
+            }
+          ],
+          "note": "Retomada e questões Git disponíveis"
+        },
+        {
+          "id": "2.7",
+          "title": "Métricas e APF/IFPUG",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Pontos de função não cobertos em aula específica; revisão objetiva de definições recomendada"
+        },
+        {
+          "id": "3.1",
+          "title": "Lógica, estruturas, eventos, regex, XML e JSON",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/algoritmos-oo.html#alg-1-1",
+              "label": "Algoritmos"
+            }
+          ],
+          "note": "Regex, XML/JSON e programação por eventos pouco tratados"
+        },
+        {
+          "id": "3.2",
+          "title": "OO, herança, polimorfismo, interfaces e exceções",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/algoritmos-oo.html#alg-2-1",
+              "label": "OO"
+            },
+            {
+              "href": "aulas/algoritmos-oo.html#alg-2-2",
+              "label": "Polimorfismo"
+            }
+          ],
+          "note": "Questões adaptadas FURB e teoria aplicada"
+        },
+        {
+          "id": "3.3",
+          "title": "Delphi/Object Pascal, VCL, datasets, eventos e legado",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Tecnologia específica do cargo CASAN; exige revisão direcionada imediata"
+        },
+        {
+          "id": "3.4",
+          "title": "Java EE/Spring, .NET, PHP, Python, JS, PL/SQL e shell",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/algoritmos-oo.html#alg-2-1",
+              "label": "Conceitos OO"
+            },
+            {
+              "href": "aulas/banco-dados.html#bd-3-1",
+              "label": "Transações"
+            }
+          ],
+          "note": "Não equivale a estudar APIs e sintaxe de todas as linguagens"
+        },
+        {
+          "id": "3.5",
+          "title": "APIs REST/GraphQL/SOAP, OpenAPI e mensageria",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-3-1",
+              "label": "Arquiteturas"
+            },
+            {
+              "href": "aulas/seguranca.html#seg-3-1",
+              "label": "APIs seguras"
+            }
+          ],
+          "note": "Faltam diferenças práticas SOAP/WSDL/UDDI/XSLT e GraphQL"
+        },
+        {
+          "id": "3.6",
+          "title": "Front-end, SPA/PWA, frameworks e WCAG/eMAG",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Conteúdo específico de front-end sem aula completa catalogada"
+        },
+        {
+          "id": "3.7",
+          "title": "Git/SVN, colaboração e revisão de código",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-6-2",
+              "label": "Comandos Git"
+            }
+          ],
+          "note": "Exemplos de prova e guia de comandos; SVN é parcial"
+        },
+        {
+          "id": "3.8",
+          "title": "BPMN, low-code e GED",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Não confundir com UML; conteúdo não coberto em profundidade"
+        },
+        {
+          "id": "4.1",
+          "title": "ER, SQL, JOIN, índices, PL/SQL e otimização",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/banco-dados.html#bd-1-1",
+              "label": "DER"
+            },
+            {
+              "href": "aulas/banco-dados.html#bd-2-2",
+              "label": "JOIN"
+            },
+            {
+              "href": "aulas/banco-dados.html#bd-3-2",
+              "label": "Índices"
+            }
+          ],
+          "note": "Procedures, functions, triggers e views PL/SQL precisam aprofundamento"
+        },
+        {
+          "id": "4.2",
+          "title": "ACID, concorrência, deadlock, Oracle, NoSQL e cache",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/banco-dados.html#bd-3-1",
+              "label": "ACID"
+            },
+            {
+              "href": "aulas/banco-dados.html#bd-1-2",
+              "label": "Integridade"
+            }
+          ],
+          "note": "Deadlock, engines específicos e Redis incompletos"
+        },
+        {
+          "id": "4.3",
+          "title": "ORM, transações e migrações de esquema",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/banco-dados.html#bd-3-1",
+              "label": "Transações"
+            }
+          ],
+          "note": "ORM e migrações não tratados de forma dedicada"
+        },
+        {
+          "id": "5.1",
+          "title": "Cliente-servidor, 3 camadas, SOA e microsserviços",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-3-1",
+              "label": "Camadas"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-3-2",
+              "label": "Estilos de arquitetura"
+            }
+          ],
+          "note": "Conteúdo e exemplos distribuídos na aula"
+        },
+        {
+          "id": "5.2",
+          "title": "Apache/Nginx, servidores de aplicação, Docker, Kubernetes",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-8-2",
+              "label": "Máquinas virtuais e containers"
+            }
+          ],
+          "note": "Falta fluxo de deployment Kubernetes e servidores web/aplicação"
+        },
+        {
+          "id": "5.3",
+          "title": "DevSecOps, OWASP, OAuth2/OIDC, JWT e privacy by design",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-2-1",
+              "label": "Identidade"
+            },
+            {
+              "href": "aulas/seguranca.html#seg-3-1",
+              "label": "Segurança de aplicações"
+            }
+          ],
+          "note": "Treinar escopos, tokens, clientes e ameaças; LGPD apenas parcial"
+        }
+      ]
+    },
+    {
+      "code": "portugues",
+      "label": "Língua Portuguesa",
+      "questions": 10,
+      "topics": [
+        {
+          "id": "G1",
+          "title": "Português — interpretação, texto, sintaxe e coesão",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-1-1",
+              "label": "Interpretação"
+            },
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-2-2",
+              "label": "Conectivos"
+            },
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-4-3",
+              "label": "Sintaxe"
+            }
+          ],
+          "note": "Há aula 21 seções; ortografia, acentuação e toda a morfologia não estão exaustivas"
+        }
+      ]
+    },
+    {
+      "code": "rlm",
+      "label": "RLM",
+      "questions": 7,
+      "topics": [
+        {
+          "id": "G2",
+          "title": "RLM — aritmética, combinatória, probabilidade, álgebra e geometria",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/rlm.html#m6-s1",
+              "label": "Análise combinatória"
+            },
+            {
+              "href": "aulas/rlm.html#m9-s1",
+              "label": "Progressões"
+            },
+            {
+              "href": "aulas/rlm.html#m8-s1",
+              "label": "Estatística"
+            }
+          ],
+          "note": "Aula 71 etapas; geometria/trigonometria e equações log/exp não estão integralmente contempladas"
+        }
+      ]
+    },
+    {
+      "code": "legislacao",
+      "label": "Legislação específica CASAN",
+      "questions": 5,
+      "topics": [
+        {
+          "id": "G3",
+          "title": "Legislação CASAN — 9.984/2000, 12.288/2010 e atos institucionais",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Não confundir leis ambientais IMA com regras CASAN; legislação e códigos da CASAN precisam consulta oficial"
+        }
+      ]
+    },
+    {
+      "code": "atualidades",
+      "label": "Atualidades",
+      "questions": 3,
+      "topics": [
+        {
+          "id": "G4",
+          "title": "Atualidades — SC, Brasil, ambiente, economia, ética e cidadania",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Ainda não existe aula catalogada de atualidades; priorizar revisão curta e fontes oficiais"
+        }
+      ]
+    }
+  ]
+}
