@@ -498,8 +498,7 @@
       "tag": "legislacao",
       "saturday": true,
       "exams": [
-        "casan",
-        "ima"
+        "casan"
       ],
       "prompt": "Um empregado responsável por contratar serviços identifica um potencial conflito entre interesse privado e decisão profissional. Qual atitude é compatível com integridade e governança corporativa?",
       "options": {
@@ -519,8 +518,7 @@
       "tag": "legislacao",
       "saturday": false,
       "exams": [
-        "casan",
-        "ima"
+        "casan"
       ],
       "prompt": "Uma norma interna estabelece que alterações de documentos institucionais exigem autorização formal e registro. Qual conduta respeita o enunciado da norma?",
       "options": {
@@ -540,8 +538,7 @@
       "tag": "legislacao",
       "saturday": false,
       "exams": [
-        "casan",
-        "ima"
+        "casan"
       ],
       "prompt": "Em um procedimento interno hipotético, a divulgação de dados pessoais é restrita às pessoas autorizadas. Qual conduta está alinhada ao texto?",
       "options": {
@@ -561,8 +558,7 @@
       "tag": "atualidades",
       "saturday": true,
       "exams": [
-        "casan",
-        "ima"
+        "casan"
       ],
       "prompt": "Uma cidade enfrenta chuvas mais intensas e risco de contaminação de mananciais. Qual política combina adaptação climática com proteção da água?",
       "options": {
@@ -582,8 +578,7 @@
       "tag": "atualidades",
       "saturday": false,
       "exams": [
-        "casan",
-        "ima"
+        "casan"
       ],
       "prompt": "Qual afirmação melhor expressa a ideia de desenvolvimento sustentável?",
       "options": {
@@ -603,8 +598,7 @@
       "tag": "atualidades",
       "saturday": false,
       "exams": [
-        "casan",
-        "ima"
+        "casan"
       ],
       "prompt": "Em serviços de saneamento, qual indicador é mais adequado para avaliar continuamente a qualidade da água distribuída?",
       "options": {
