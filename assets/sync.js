@@ -121,7 +121,7 @@ function apply(items){
  return changed;
 }
 
-let pair=null,syncPromise=null,lastStatus='';
+let pair=null,syncPromise=null,lastStatus='',syncAgain=false;
 const configuredState=()=>configured;
 function report(msg,error=false){
  lastStatus=String(msg);
@@ -176,7 +176,7 @@ function cleanMap(map){
 async function sync(){
  if(!configured)throw Error('Sincronização não configurada.');
  if(!pair)throw Error('Este aparelho ainda não foi vinculado.');
- if(syncPromise)return syncPromise;
+ if(syncPromise){syncAgain=true;return syncPromise;}
  syncPromise=(async()=>{
    const saved=meta();
    const remote=await fetchRows();
@@ -222,7 +222,7 @@ async function sync(){
    }
    renderAccount();
    return msg;
- })().catch(e=>{report('Sincronização: '+e.message,true);throw e;}).finally(()=>{syncPromise=null;});
+ })().catch(e=>{report('Sincronização: '+e.message,true);throw e;}).finally(()=>{syncPromise=null;if(syncAgain){syncAgain=false;setTimeout(()=>{if(pair)void sync().catch(()=>{});},100);}});
  return syncPromise;
 }
 async function connect(value){
@@ -251,6 +251,22 @@ function renderAccount(){
  un.hidden=configured;out.hidden=!configured||!!pair;inside.hidden=!configured||!pair;
  const time=document.getElementById('syncLastTime'),m=meta();
  if(time&&pair)time.textContent=m?.last_sync?'Última sincronização: '+new Date(m.last_sync).toLocaleString('pt-BR'):'Ainda sem sincronização confirmada.';
+}
+function installInlineStatus(){
+ const area=document.querySelector('.topactions');
+ if(!area||document.getElementById('syncInlineStatus'))return;
+ const indicator=document.createElement('a');
+ indicator.id='syncInlineStatus';
+ indicator.className='tiny-btn';
+ indicator.href='../conta.html';
+ indicator.setAttribute('role','status');
+ indicator.textContent=pair?'Sincronização conectada':'Vincular sincronização';
+ area.append(indicator);
+ addEventListener('concurso:sync-status',e=>{
+   const d=e.detail||{};
+   indicator.textContent=d.error?'⚠ Falha ao sincronizar':String(d.message||'').startsWith('Sincronizado')?'✓ Sincronizado':'Sincronizando…';
+   indicator.title=String(d.message||'').slice(0,250);
+ });
 }
 function menu(){
  const filename=location.pathname.split('/').pop()||'index.html';
@@ -285,7 +301,7 @@ function init(){
    const code=fragment[1];history.replaceState(null,'',location.pathname+location.search);
    void connect(code);
  }else pair=readPair();
- renderAccount();
+ renderAccount();installInlineStatus();
  const form=document.getElementById('syncPairForm');
  form?.addEventListener('submit',e=>{
    e.preventDefault();const code=document.getElementById('syncPairCode')?.value||'';
@@ -307,7 +323,14 @@ function init(){
  addEventListener('storage',e=>{
    if(e.key===PAIR_KEY){pair=readPair();renderAccount();if(pair)void sync().catch(()=>{});}
  });
- addEventListener('concurso:read-change',()=>{if(pair)setTimeout(()=>{void sync().catch(()=>{});},400);});
+ function onProgressChange(){
+   if(!pair)return;
+   report('Enviando alterações…');
+   if(syncPromise){syncAgain=true;return;}
+   void sync().catch(()=>{});
+ }
+ addEventListener('concurso:read-change',onProgressChange);
+ addEventListener('concurso:progress-change',onProgressChange);
 }
 window.ConcursoSync={configured:configuredState,sync,connect,getStatus:()=>lastStatus};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
