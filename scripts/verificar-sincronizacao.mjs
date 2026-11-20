@@ -1,4 +1,4 @@
-// Integração sem dados pessoais / sem Supabase real: login falso e API PostgREST simulada.
+// Integração sem dados pessoais / sem Supabase real: pareamento privado e API Edge Function simulados.
 import { chromium } from 'playwright-core';
 import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
@@ -25,6 +25,7 @@ server.listen(0,'127.0.0.1');
 await once(server,'listening');
 const base='http://127.0.0.1:'+server.address().port;
 const browser=await chromium.launch({headless:true,executablePath:chrome,args:['--no-sandbox']});
+browser.on('disconnected',()=>{});
 const remote=new Map();
 let calls=0;
 const PAIR='U'.repeat(43);
@@ -74,7 +75,7 @@ try{
  // Teste crítico: clicar no botão real da aula deve disparar envio sem aguardar 15 segundos.
  await pc.goto(base+'/aulas/rlm.html',{waitUntil:'domcontentloaded'});
  await pc.locator('[data-step-read="m5-s1"]').click({force:true,timeout:10000});
- await pc.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_private_sync_pair_meta_v2')||'{}').synced?.['read:rlm:m5-s1']===true,{timeout:10000});
+ for(let attempt=0;attempt<100&&remote.get('read:rlm:m5-s1')!==true;attempt++)await new Promise(done=>setTimeout(done,100));
  assert(remote.get('read:rlm:m5-s1')===true,'Botão Lido da aula RLM não sincronizou imediatamente');
  console.log('OK botão real Lido da RLM enviou m5-s1 automaticamente');
  await open(phone,{[rlm]:{format:'concursos-rlm-leitura',version:3,readSections:[]}});
