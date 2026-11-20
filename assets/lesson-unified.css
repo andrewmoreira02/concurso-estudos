@@ -223,6 +223,7 @@
    display:flex;justify-content:center;align-items:center;width:100%;
    white-space:nowrap;overflow-wrap:normal;word-break:normal;text-align:center;
  }
+ .ce-lesson-page.ce-eng .masthead .header-actions .print{display:none!important}
  .ce-lesson-page.ce-eng #etapa-4-4 + .table-scroll .data-table{
    width:100%;min-width:0;table-layout:fixed;
  }
