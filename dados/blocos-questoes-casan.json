@@ -17,13 +17,22 @@
       "lesson_href": "engenharia-qualidade.html#sec1",
       "question_ids": [
         "aocp2025-joinville-q32-ad-v1",
-        "aocp2025-joinville-q33-ad-v1",
         "ti-req-01",
         "ti-uml-02",
+        "ti-test-13",
         "ti-cicd-07",
-        "ti-test-13"
+        "aocp2025-joinville-q33-ad-v1"
       ],
-      "subject": "ti"
+      "subject": "ti",
+      "module_by_question": {
+        "aocp2025-joinville-q32-ad-v1": 1,
+        "ti-req-01": 1,
+        "ti-uml-02": 2,
+        "ti-test-13": 4,
+        "ti-cicd-07": 7,
+        "aocp2025-joinville-q33-ad-v1": 9
+      },
+      "selection_policy": "Após módulo Estudado confirmado, recomendar apenas questões cujo módulo está confirmado; manter a faixa exata e não recomendar conteúdo futuro."
     },
     {
       "id": "banco-dados",
@@ -37,7 +46,14 @@
         "ti-sql-03",
         "ti-acid-04"
       ],
-      "subject": "ti"
+      "subject": "ti",
+      "module_by_question": {
+        "aocp2025-joinville-q31-ad-v1": 1,
+        "aocp2025-joinville-q40-ad-v1": 1,
+        "ti-sql-03": 2,
+        "ti-acid-04": 3
+      },
+      "selection_policy": "Após módulo Estudado confirmado, recomendar apenas questões cujo módulo está confirmado; manter a faixa exata e não recomendar conteúdo futuro."
     },
     {
       "id": "seguranca",
@@ -47,12 +63,20 @@
       "lesson_href": "seguranca.html#cap-1",
       "question_ids": [
         "aocp2025-joinville-q20-ad-v1",
+        "ti-sqli-09",
         "aocp2025-joinville-q48-ad-v1",
         "ti-auth-05",
-        "ti-sqli-09",
         "ti-pkce-10"
       ],
-      "subject": "ti"
+      "subject": "ti",
+      "module_by_question": {
+        "aocp2025-joinville-q20-ad-v1": 1,
+        "ti-sqli-09": 1,
+        "aocp2025-joinville-q48-ad-v1": 2,
+        "ti-auth-05": 2,
+        "ti-pkce-10": 2
+      },
+      "selection_policy": "Após módulo Estudado confirmado, recomendar apenas questões cujo módulo está confirmado; manter a faixa exata e não recomendar conteúdo futuro."
     },
     {
       "id": "algoritmos",
@@ -63,12 +87,21 @@
       "question_ids": [
         "aocp2025-joinville-q34-ad-v1",
         "aocp2025-joinville-q42-ad-v1",
-        "ti-solid-06",
         "ti-bigo-08",
-        "ti-delphi-11",
-        "ti-queue-12"
+        "ti-queue-12",
+        "ti-solid-06",
+        "ti-delphi-11"
       ],
-      "subject": "ti"
+      "subject": "ti",
+      "module_by_question": {
+        "aocp2025-joinville-q34-ad-v1": 1,
+        "aocp2025-joinville-q42-ad-v1": 1,
+        "ti-bigo-08": 1,
+        "ti-queue-12": 1,
+        "ti-solid-06": 2,
+        "ti-delphi-11": 2
+      },
+      "selection_policy": "Após módulo Estudado confirmado, recomendar apenas questões cujo módulo está confirmado; manter a faixa exata e não recomendar conteúdo futuro."
     },
     {
       "id": "portugues",
@@ -77,16 +110,27 @@
       "href": "aulas/questoes-portugues-casan.html",
       "lesson_href": "portugues-casan-19-11.html#m1",
       "question_ids": [
-        "aocp2025-joinville-q2-ad-v1",
+        "pt-inferencia-05",
         "aocp2025-joinville-q4-ad-v1",
-        "aocp2025-joinville-q3-ad-v1",
         "pt-concessao-01",
-        "pt-referencia-02",
-        "pt-pontuacao-03",
         "pt-condicao-04",
-        "pt-inferencia-05"
+        "pt-referencia-02",
+        "aocp2025-joinville-q2-ad-v1",
+        "aocp2025-joinville-q3-ad-v1",
+        "pt-pontuacao-03"
       ],
-      "subject": "portugues"
+      "subject": "portugues",
+      "module_by_question": {
+        "pt-inferencia-05": 1,
+        "aocp2025-joinville-q4-ad-v1": 2,
+        "pt-concessao-01": 2,
+        "pt-condicao-04": 2,
+        "pt-referencia-02": 3,
+        "aocp2025-joinville-q2-ad-v1": 4,
+        "aocp2025-joinville-q3-ad-v1": 4,
+        "pt-pontuacao-03": 6
+      },
+      "selection_policy": "Após módulo Estudado confirmado, recomendar apenas questões cujo módulo está confirmado; manter a faixa exata e não recomendar conteúdo futuro."
     },
     {
       "id": "rlm",
@@ -95,15 +139,25 @@
       "href": "aulas/questoes-rlm-casan.html",
       "lesson_href": "rlm.html#m6",
       "question_ids": [
-        "aocp2025-joinville-q6-ad-v1",
-        "aocp2025-joinville-q8-ad-v1",
-        "rlm-pg-01",
-        "rlm-prob-02",
-        "rlm-pa-03",
         "rlm-perc-04",
-        "rlm-media-05"
+        "aocp2025-joinville-q8-ad-v1",
+        "rlm-prob-02",
+        "aocp2025-joinville-q6-ad-v1",
+        "rlm-media-05",
+        "rlm-pg-01",
+        "rlm-pa-03"
       ],
-      "subject": "rlm"
+      "subject": "rlm",
+      "module_by_question": {
+        "rlm-perc-04": 2,
+        "aocp2025-joinville-q8-ad-v1": 6,
+        "rlm-prob-02": 7,
+        "aocp2025-joinville-q6-ad-v1": 8,
+        "rlm-media-05": 8,
+        "rlm-pg-01": 10,
+        "rlm-pa-03": 10
+      },
+      "selection_policy": "Após módulo Estudado confirmado, recomendar apenas questões cujo módulo está confirmado; manter a faixa exata e não recomendar conteúdo futuro."
     },
     {
       "id": "legislacao-atualidades",
@@ -112,14 +166,23 @@
       "href": "aulas/questoes-legislacao-atualidades-casan.html",
       "lesson_href": "legislacao-casan-20-11.html#cap-1",
       "question_ids": [
+        "leg-direito-03",
         "leg-integridade-01",
         "leg-normas-02",
-        "leg-direito-03",
         "atu-sustentabilidade-01",
         "atu-desenvolvimento-02",
         "atu-governanca-03"
       ],
-      "subject": "mixed"
+      "subject": "mixed",
+      "module_by_question": {
+        "leg-direito-03": 3,
+        "leg-integridade-01": 4,
+        "leg-normas-02": 5,
+        "atu-sustentabilidade-01": 5,
+        "atu-desenvolvimento-02": 5,
+        "atu-governanca-03": 5
+      },
+      "selection_policy": "Após módulo Estudado confirmado, recomendar apenas questões cujo módulo está confirmado; manter a faixa exata e não recomendar conteúdo futuro."
     }
   ]
 }
