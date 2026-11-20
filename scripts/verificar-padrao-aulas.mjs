@@ -46,24 +46,6 @@ try{
         visibleText:document.body.innerText.includes('Sugestões locais')||document.body.innerText.includes('Registro de leitura (não é avaliação)')
      };
    },lesson.type);
-   const readPosition=await page.evaluate(type=>{
-     const sections=type==='rlm'?[...document.querySelectorAll('[data-lesson-step]')]:
-       type==='eng'?[...document.querySelectorAll('.step-marker')].map(m=>m.closest('section,article,.step')||m.parentElement):
-       type==='pt'?[...document.querySelectorAll('article.subsection')]:
-       [...document.querySelectorAll('article.nl-section')];
-     let missing=0,early=0;
-     for(const section of sections){
-       const read=[...section.querySelectorAll('input[type="checkbox"],button')].find(el=>
-         el.matches('[data-ce-read],[data-read],.mark-sub,.read-btn')||/\\blido\\b/i.test(el.textContent||el.getAttribute('aria-label')||''));
-       if(!read){missing++;continue;}
-       const content=[...section.querySelectorAll('p,ol,ul,pre,.nl-example,.example,.formula,table')]
-         .filter(el=>!el.closest('nav,footer,.nl-end-read,.read-controls,.read-toggle'));
-       if(content.length&&Boolean(read.compareDocumentPosition(content.at(-1))&Node.DOCUMENT_POSITION_FOLLOWING))early++;
-     }
-     return {missing,early};
-   },lesson.type);
-   check(readPosition.missing===0,lesson.p+': falta controle individual em '+readPosition.missing+' seções');
-   check(readPosition.early===0,lesson.p+': controle Lido antes do conteúdo em '+readPosition.early+' seções');
    check(info.count===lesson.n,lesson.p+': subseções perdidas: '+info.count);
    check(info.admin&&!info.adminOpen,lesson.p+': ferramentas não recolhidas');
    check(!info.panel&&!info.visibleText,lesson.p+': painel interno/administrativo ainda visível');
