@@ -1,0 +1,908 @@
+{
+  "schema": 1,
+  "updated": "2026-11-20",
+  "exam": "IMA-SC 2027 — Analista de Informática",
+  "date": "2027-02-14",
+  "title": "Matriz por tópicos do Anexo V IMA/SC 001/2026 — Analista de Informática (ANA)",
+  "source": {
+    "official": "https://concursos.furb.br/informacoes/584",
+    "pdf": "https://www.ima.sc.gov.br/wp-content/uploads/2026/11/c09b6e63-9d97-4f7a-a1c4-292a9c962bad.pdf",
+    "reference": "Anexo V nível superior: Língua Portuguesa/RLM/Administração páginas 56–57; Legislação Ambiental (ANA) página 58; Analista de Informática páginas 58–59.",
+    "rights": "Matriz própria que resume tópicos oficiais. Não reproduce integralmente prova anterior."
+  },
+  "grading_note": "Desenvolvido indica material existente, não comprova domínio. Parcial indica cobertura de alguns subitens; lacuna exige nova aula. As questões são avaliadas separadamente por edital. Matriz não comprova retenção.",
+  "practice": {
+    "shared": "aulas/questoes-ima.html",
+    "specific": "aulas/questoes-ima-especificas.html"
+  },
+  "areas": [
+    {
+      "code": "ti",
+      "label": "Tecnologia da Informação",
+      "questions": 36,
+      "topics": [
+        {
+          "id": "TI-01",
+          "title": "Hardware, software; Windows e Linux: processos, memória e arquivos",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-8-1",
+              "label": "SO e processos"
+            }
+          ],
+          "note": "Exemplo de SO disponível; gerenciamento de memória, arquivos e ferramentas Linux/Windows não cobertos integralmente.",
+          "practice": null
+        },
+        {
+          "id": "TI-02",
+          "title": "Cliente-servidor, SOA e arquiteturas distribuídas",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-3-1",
+              "label": "Camadas"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-3-2",
+              "label": "SOA e microsserviços"
+            }
+          ],
+          "note": "A arquitetura é apresentada, mas requer contratos, falhas de rede e casos aplicados.",
+          "practice": null
+        },
+        {
+          "id": "TI-03",
+          "title": "Nuvem IaaS/PaaS/SaaS, pública/privada/híbrida/multicloud e AWS/Azure/GCP",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-8-3",
+              "label": "Nuvem"
+            }
+          ],
+          "note": "Modelos básicos estudáveis; serviços específicos AWS/Azure/GCP não aprofundados.",
+          "practice": null
+        },
+        {
+          "id": "TI-04",
+          "title": "Virtualização Hyper-V/KVM, Docker e orquestração básica",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-8-2",
+              "label": "VM × contêineres"
+            }
+          ],
+          "note": "Docker e VM explicados; diferenças práticas Hyper-V/KVM e orquestração pendentes.",
+          "practice": null
+        },
+        {
+          "id": "TI-05",
+          "title": "Redes TCP/IP, roteamento, sub-redes, NAT, DNS e DHCP",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Sem aula completa sobre cálculo CIDR/sub-redes e funcionamento dos protocolos; conteúdo novo prioritário.",
+          "practice": null
+        },
+        {
+          "id": "TI-06",
+          "title": "HTTP/1.1, HTTP/2, HTTP/3, TLS/SSL, FTP/SFTP, SSH e NTP",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-3-1",
+              "label": "APIs e segurança"
+            }
+          ],
+          "note": "HTTPS/REST aparecem, porém HTTP/3, SFTP, SSH, NTP e comparação de versões carecem de estudo.",
+          "practice": null
+        },
+        {
+          "id": "TI-07",
+          "title": "VLAN, firewall, WAF, proxy, VPN IPSec/OpenVPN e monitoramento ICMP/Wireshark/tcpdump",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-1-2",
+              "label": "Defesas de rede"
+            }
+          ],
+          "note": "Conceitos de defesa presentes, mas configuração e diagnóstico não tratados de modo sistemático.",
+          "practice": null
+        },
+        {
+          "id": "TI-08",
+          "title": "Confidencialidade, integridade, disponibilidade, autenticidade e não repúdio",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-1-1",
+              "label": "Ameaças e proteção"
+            }
+          ],
+          "note": "Exemplos de risco disponíveis; incluir escolha de controles e propriedades em questões FURB.",
+          "practice": null
+        },
+        {
+          "id": "TI-09",
+          "title": "AES/RSA/ECC, SHA-256/BCrypt, assinatura, certificados e ICP-Brasil",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-1-2",
+              "label": "Criptografia e controles"
+            }
+          ],
+          "note": "Diferenças cifra/hash/assinatura introduzidas; PKI, ECC e ICP-Brasil requerem aprofundamento.",
+          "practice": null
+        },
+        {
+          "id": "TI-10",
+          "title": "IAM, MFA, SSO, RBAC, ABAC, OAuth2 e OpenID Connect",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-2-1",
+              "label": "Identidade/autorização"
+            },
+            {
+              "href": "aulas/seguranca.html#seg-2-2",
+              "label": "Tokens"
+            }
+          ],
+          "note": "Aula de OAuth/REST disponível; esquemas de autorização e OIDC ainda precisam ampliar.",
+          "practice": null
+        },
+        {
+          "id": "TI-11",
+          "title": "OWASP Top 10, SAST/DAST/SCA, DevSecOps e código seguro",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-3-1",
+              "label": "Ameaças de APIs"
+            },
+            {
+              "href": "aulas/seguranca.html#seg-3-2",
+              "label": "Proteções"
+            }
+          ],
+          "note": "OWASP tratado; ferramentas SAST, DAST e SCA não aprofundadas.",
+          "practice": null
+        },
+        {
+          "id": "TI-12",
+          "title": "Phishing, ransomware, DDoS, NGFW, IDS/IPS, SIEM, EDR, resposta a incidentes, backup 3-2-1 e Zero Trust",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-1-1",
+              "label": "Engenharia social"
+            }
+          ],
+          "note": "Há base de ameaças, mas operações SOC, ferramentas e continuidade/DRP exigem aula própria.",
+          "practice": null
+        },
+        {
+          "id": "TI-13",
+          "title": "Governança e ITIL 4: SVS, quatro dimensões, incidentes, problemas, mudanças, SLA/OLA e Service Desk",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Sem aula completa de ITIL 4, SVS e gestão de serviços; tópico específico da FURB prioritário.",
+          "practice": null
+        },
+        {
+          "id": "TI-14",
+          "title": "Modelagem ER, cardinalidades, normalização 1FN–3FN, PostgreSQL e MySQL",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/banco-dados.html#bd-1-1",
+              "label": "Modelagem ER"
+            },
+            {
+              "href": "aulas/banco-dados.html#bd-1-3",
+              "label": "Normalização"
+            }
+          ],
+          "note": "Teoria e exemplos disponíveis; particularidades de PostgreSQL/MySQL requerem complemento.",
+          "practice": null
+        },
+        {
+          "id": "TI-15",
+          "title": "SQL DDL/DML/DCL, joins, views, triggers, procedures, índices e ACID",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/banco-dados.html#bd-2-2",
+              "label": "JOIN"
+            },
+            {
+              "href": "aulas/banco-dados.html#bd-3-1",
+              "label": "ACID"
+            },
+            {
+              "href": "aulas/banco-dados.html#bd-3-2",
+              "label": "Índices"
+            }
+          ],
+          "note": "JOIN e ACID desenvolvidos; DCL, triggers/stored procedures e controle de concorrência são lacunas.",
+          "practice": null
+        },
+        {
+          "id": "TI-16",
+          "title": "Bancos NoSQL, Redis e MongoDB",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Aula atual trata principalmente modelo relacional; falta comparação aprofundada Redis × MongoDB.",
+          "practice": null
+        },
+        {
+          "id": "TI-17",
+          "title": "Ciclo de vida, requisitos, critérios de aceitação, histórias de usuário, métodos tradicionais/ágeis",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-1-1",
+              "label": "Requisitos"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-1-3",
+              "label": "Elicitação"
+            }
+          ],
+          "note": "Material aprofundado já publicado; verificar retenção em questões específicas IMA.",
+          "practice": null
+        },
+        {
+          "id": "TI-18",
+          "title": "BPMN 2.0, UML 2.x, OO, GoF e SOLID",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-2-1",
+              "label": "UML"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-9-2",
+              "label": "Padrões GoF"
+            },
+            {
+              "href": "aulas/algoritmos-oo.html#alg-2-1",
+              "label": "OO"
+            }
+          ],
+          "note": "UML e GoF desenvolvidos; BPMN ainda sem aula dedicada.",
+          "practice": null
+        },
+        {
+          "id": "TI-19",
+          "title": "MVC, arquitetura hexagonal, DDD, microsserviços, SOA",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-3-1",
+              "label": "Arquitetura em camadas"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-3-2",
+              "label": "Microsserviços"
+            }
+          ],
+          "note": "MVC, hexagonal e DDD necessitam demonstrações adicionais.",
+          "practice": null
+        },
+        {
+          "id": "TI-20",
+          "title": "RESTful, GraphQL, gRPC, eventos e mensageria",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/seguranca.html#seg-3-1",
+              "label": "APIs"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-3-2",
+              "label": "Integrações"
+            }
+          ],
+          "note": "Foco anterior em REST; diferenças GraphQL/gRPC e garantias de mensageria pendentes.",
+          "practice": null
+        },
+        {
+          "id": "TI-21",
+          "title": "Testes, TDD/BDD, Git, Gitflow e Trunk-Based",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-4-1",
+              "label": "Testes"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-5-2",
+              "label": "TDD/BDD"
+            },
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-6-2",
+              "label": "Git"
+            }
+          ],
+          "note": "Conteúdo com casos; Gitflow e Trunk-Based requerem comparativos de prova.",
+          "practice": null
+        },
+        {
+          "id": "TI-22",
+          "title": "HTML5, CSS3, JavaScript, TypeScript e SPA",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Não existe aula HTML completa e catalogada especificamente sobre front-end/SPA e TypeScript.",
+          "practice": null
+        },
+        {
+          "id": "TI-23",
+          "title": "Java 11+, concorrência, Streams, Spring Boot/Data JPA/Security, Hibernate, Maven, Gradle, JUnit e Mockito",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/algoritmos-oo.html#alg-2-1",
+              "label": "Java e OO"
+            },
+            {
+              "href": "aulas/algoritmos-oo.html#alg-2-2",
+              "label": "Polimorfismo"
+            }
+          ],
+          "note": "Java OO parcialmente coberto; frameworks, testes e concorrência não aprofundados.",
+          "practice": null
+        },
+        {
+          "id": "TI-24",
+          "title": "Python 3: estruturas, decoradores, geradores, FastAPI, Django, SQLAlchemy e Pytest",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Conteúdo Python exigido pelo edital ainda sem aula pública específica com exemplos completos.",
+          "practice": null
+        },
+        {
+          "id": "TI-25",
+          "title": "PHP 8+: Laravel, Eloquent, Blade, Artisan, migrations, middlewares, Composer, PHPUnit/Pest",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Sem aula completa de PHP/Laravel e ferramentas; iniciar por ciclo request, MVC e ORM.",
+          "practice": null
+        },
+        {
+          "id": "TI-26",
+          "title": "IA generativa e LLMs, prompts zero/few-shot, chain-of-thought, JSON, prompt injection e LGPD",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Tópico novo do edital: requer conteúdo crítico de segurança, avaliação de respostas e privacidade.",
+          "practice": null
+        },
+        {
+          "id": "TI-27",
+          "title": "DevOps CAMS, GitLab CI, GitHub Actions, Terraform, Ansible, Blue-Green e Canary",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-7-1",
+              "label": "Pipelines CI/CD"
+            }
+          ],
+          "note": "CI/CD iniciado; IaC, strategies Blue-Green/Canary e GitLab precisam aula prática.",
+          "practice": null
+        },
+        {
+          "id": "TI-28",
+          "title": "Observabilidade: logs, métricas, traces, Prometheus, Grafana, ELK e LGTM",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Ausência de aula sobre sinais de observabilidade e stack de monitoramento.",
+          "practice": null
+        },
+        {
+          "id": "TI-29",
+          "title": "Engenharia de dados: BI, DW Star/Snowflake, Lakehouse/Parquet, ETL/ELT, Airflow, Spark, Kafka, Qlik Sense",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Tópico extenso específico do IMA; sem aula estruturada, merece sequência própria.",
+          "practice": null
+        },
+        {
+          "id": "TI-30",
+          "title": "Gestão do conhecimento: tácito/explicito, SECI, taxonomias, ontologias, metadados e portais",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Nenhum módulo específico publicado; exige exemplos de captura, compartilhamento e classificação.",
+          "practice": null
+        },
+        {
+          "id": "TI-31",
+          "title": "Gestão de projetos, stakeholders, Scrum, Kanban, WIP, lead time e cycle time",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/engenharia-qualidade.html#etapa-9-3",
+              "label": "Scrum"
+            }
+          ],
+          "note": "Scrum desenvolvido; Kanban, métricas de fluxo e custos requerem aprofundamento.",
+          "practice": null
+        },
+        {
+          "id": "TI-32",
+          "title": "Relações humanas e ética profissional na atuação do IMA",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Tema transversal do edital sem módulo específico de ética profissional de TI.",
+          "practice": null
+        }
+      ]
+    },
+    {
+      "code": "portugues",
+      "label": "Português",
+      "questions": 6,
+      "topics": [
+        {
+          "id": "PT-01",
+          "title": "Compreensão, interpretação, implícitos, inferências e gêneros",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-1-1",
+              "label": "Interpretação"
+            }
+          ],
+          "note": "Exposição disponível; treino FURB com novos textos ajuda a testar.",
+          "practice": null
+        },
+        {
+          "id": "PT-02",
+          "title": "Funções da linguagem e figuras de linguagem",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Aula CASAN não desenvolve sistematicamente funções e figuras.",
+          "practice": null
+        },
+        {
+          "id": "PT-03",
+          "title": "Coesão, coerência, referenciação, elipse, conectivos e progressão",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-2-2",
+              "label": "Relações de sentido"
+            },
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-3-1",
+              "label": "Coesão"
+            }
+          ],
+          "note": "Teoria disponível, diagnóstico IMA requer questões FURB.",
+          "practice": null
+        },
+        {
+          "id": "PT-04",
+          "title": "Ortografia oficial, acentuação e usos dos porquês",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-5-1",
+              "label": "Gramática"
+            }
+          ],
+          "note": "Aula não exaure regras de acentuação e porquês.",
+          "practice": null
+        },
+        {
+          "id": "PT-05",
+          "title": "Morfologia, classes de palavras e tempos/modos verbais",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-5-2",
+              "label": "Morfologia aplicada"
+            }
+          ],
+          "note": "Morfologia parcial; reforçar conjugação e valores de sentido.",
+          "practice": null
+        },
+        {
+          "id": "PT-06",
+          "title": "Sintaxe do período, concordância, regência, crase, colocação e pontuação",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-4-3",
+              "label": "Sintaxe"
+            },
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-5-1",
+              "label": "Regência"
+            }
+          ],
+          "note": "Cobertura pontual; falta aprofundar colocação pronominal.",
+          "practice": null
+        },
+        {
+          "id": "PT-07",
+          "title": "Semântica, polissemia, ambiguidade, conotação, hiponímia",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-2-2",
+              "label": "Conectivos"
+            }
+          ],
+          "note": "Há semântica contextual, não todos os processos lexicais.",
+          "practice": null
+        },
+        {
+          "id": "PT-08",
+          "title": "Reescrita textual: equivalência de sentido, correção e contexto",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/portugues-casan-19-11.html#pt19-3-3",
+              "label": "Reescrita"
+            }
+          ],
+          "note": "Verificar equivalência com alternativas reais da banca.",
+          "practice": null
+        },
+        {
+          "id": "PT-09",
+          "title": "Variação linguística, norma-padrão e adequação",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Sem módulo exclusivo e aprofundado sobre adequação e variantes.",
+          "practice": null
+        }
+      ]
+    },
+    {
+      "code": "rlm",
+      "label": "Raciocínio Lógico-Matemático",
+      "questions": 6,
+      "topics": [
+        {
+          "id": "RLM-01",
+          "title": "Estruturas lógicas, dedução e relações hipotéticas",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/rlm.html#m5-s1",
+              "label": "Conjuntos"
+            }
+          ],
+          "note": "Raciocínio dedutivo não totalmente coberto pela aula matemática.",
+          "practice": null
+        },
+        {
+          "id": "RLM-02",
+          "title": "Números racionais, operações e potenciação",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/rlm.html#m1-s1",
+              "label": "Frações"
+            }
+          ],
+          "note": "Material completo de frações e operações.",
+          "practice": null
+        },
+        {
+          "id": "RLM-03",
+          "title": "Proporções, divisão proporcional, regra de três e porcentagem",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/rlm.html#m3-s1",
+              "label": "Proporção"
+            },
+            {
+              "href": "aulas/rlm.html#m2-s1",
+              "label": "Percentual"
+            }
+          ],
+          "note": "Exemplos completos e retomada disponível.",
+          "practice": null
+        },
+        {
+          "id": "RLM-04",
+          "title": "Contagem, análise combinatória, probabilidade e conjuntos",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/rlm.html#m6-s1",
+              "label": "Combinatória"
+            },
+            {
+              "href": "aulas/rlm.html#m7-s1",
+              "label": "Probabilidade"
+            }
+          ],
+          "note": "RLM aprofundado disponível; avaliação por questões é independente.",
+          "practice": null
+        },
+        {
+          "id": "RLM-05",
+          "title": "Problemas aritméticos, geométricos e raciocínio espacial/temporal",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/rlm.html#m11-s2",
+              "label": "Resolução"
+            }
+          ],
+          "note": "Geometria e raciocínio espacial exigem complemento.",
+          "practice": null
+        },
+        {
+          "id": "RLM-06",
+          "title": "Sistema métrico: tempo, comprimento, área e volume",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Conversões e geometria métrica sem aula específica.",
+          "practice": null
+        },
+        {
+          "id": "RLM-07",
+          "title": "Gráficos, tabelas, média simples e ponderada",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/rlm.html#m8-s1",
+              "label": "Estatística"
+            },
+            {
+              "href": "aulas/rlm.html#m10-s1",
+              "label": "Gráficos"
+            }
+          ],
+          "note": "Aula completa em interpretação e cálculo.",
+          "practice": null
+        },
+        {
+          "id": "RLM-08",
+          "title": "Sequências, padrões e regularidades",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/rlm.html#m9-s1",
+              "label": "PA/PG"
+            }
+          ],
+          "note": "PA/PG abordadas, padrões não numéricos exigem exercícios.",
+          "practice": null
+        },
+        {
+          "id": "RLM-09",
+          "title": "Proposições, negações, equivalências, inferências, classificação e conceitos",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/rlm.html#m5-s1",
+              "label": "Conjuntos"
+            }
+          ],
+          "note": "Proposições formais necessitam seção própria.",
+          "practice": null
+        }
+      ]
+    },
+    {
+      "code": "adm",
+      "label": "Noções de Administração Pública",
+      "questions": 6,
+      "topics": [
+        {
+          "id": "ADM-01",
+          "title": "CF/88: princípios, garantias individuais/coletivas e direitos sociais",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/administracao-publica-ima.html#adm-1-1",
+              "label": "Princípios"
+            }
+          ],
+          "note": "Direitos fundamentais e direitos sociais demandam aprofundamento.",
+          "practice": null
+        },
+        {
+          "id": "ADM-02",
+          "title": "Conceito de Administração Pública, regime jurídico, supremacia/indisponibilidade",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/administracao-publica-ima.html#adm-1-1",
+              "label": "Fundamentos"
+            }
+          ],
+          "note": "Exemplos disponíveis.",
+          "practice": null
+        },
+        {
+          "id": "ADM-03",
+          "title": "Organização direta/indireta, centralização/descentralização, autarquias, fundações, empresas",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/administracao-publica-ima.html#adm-1-2",
+              "label": "Organização administrativa"
+            }
+          ],
+          "note": "Revisar entes e personalidade.",
+          "practice": null
+        },
+        {
+          "id": "ADM-04",
+          "title": "Atos administrativos: elementos, atributos, validade, extinção, anulação e revogação",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/administracao-publica-ima.html#adm-2-2",
+              "label": "Atos e autotutela"
+            }
+          ],
+          "note": "Questões FURB adaptadas publicadas.",
+          "practice": null
+        },
+        {
+          "id": "ADM-05",
+          "title": "Processo administrativo e Lei 9.784/1999: direitos, motivação, recursos, impedimentos",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/administracao-publica-ima.html#adm-2-3",
+              "label": "Processo"
+            }
+          ],
+          "note": "Lei 9.784/99 precisa leitura artigo a artigo em tópicos do edital.",
+          "practice": null
+        },
+        {
+          "id": "ADM-06",
+          "title": "Orçamento público, ciclo, PPA/LDO/LOA",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/administracao-publica-ima.html#adm-3-1",
+              "label": "Finanças públicas"
+            }
+          ],
+          "note": "Requer exercícios com sequência PPA→LDO→LOA e princípios orçamentários.",
+          "practice": null
+        },
+        {
+          "id": "ADM-07",
+          "title": "Transparência, accountability e Lei 12.527/2011 (LAI)",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/administracao-publica-ima.html#adm-3-3",
+              "label": "Controle"
+            }
+          ],
+          "note": "Material introdutório; exceções e prazos da LAI pendentes.",
+          "practice": null
+        },
+        {
+          "id": "ADM-08",
+          "title": "Ética, moral, integridade e conflito de interesses",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Sem estudo específico com casos do serviço público.",
+          "practice": null
+        },
+        {
+          "id": "ADM-09",
+          "title": "Improbidade administrativa, Lei 8.429/1992 atualizada",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Requer tipicidade, dolo e sanções conforme legislação vigente.",
+          "practice": null
+        },
+        {
+          "id": "ADM-10",
+          "title": "IA/automação no setor público: vieses, explicabilidade, supervisão",
+          "depth": "lacuna",
+          "lessons": [],
+          "note": "Tema específico de 2026 ainda sem aula.",
+          "practice": null
+        },
+        {
+          "id": "ADM-11",
+          "title": "LGPD no setor público, compartilhamento, bases legais e direitos",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/administracao-publica-ima.html#adm-3-3",
+              "label": "Controle e informação"
+            },
+            {
+              "href": "aulas/seguranca.html#seg-3-1",
+              "label": "Proteção de dados"
+            }
+          ],
+          "note": "Aspectos LGPD são reutilizáveis, mas poder público deve ser aprofundado.",
+          "practice": null
+        }
+      ]
+    },
+    {
+      "code": "legislacao",
+      "label": "Legislação Ambiental Aplicada (ANA)",
+      "questions": 6,
+      "topics": [
+        {
+          "id": "AMB-01",
+          "title": "Constituição Federal art. 225 — tutela do meio ambiente",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/legislacao-ambiental-ima.html#la-1-1",
+              "label": "Constituição e proteção"
+            }
+          ],
+          "note": "Conteúdo introdutório com exemplos.",
+          "practice": null
+        },
+        {
+          "id": "AMB-02",
+          "title": "LC 140/2011 — cooperação e competências administrativas comuns",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/legislacao-ambiental-ima.html#la-1-2",
+              "label": "Competências federativas"
+            }
+          ],
+          "note": "Questões úteis para diferenciar atribuições e fiscalização.",
+          "practice": null
+        },
+        {
+          "id": "AMB-03",
+          "title": "Lei 6.938/1981 — PNMA, SISNAMA, instrumentos e política ambiental",
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/legislacao-ambiental-ima.html#la-2-1",
+              "label": "PNMA e SISNAMA"
+            }
+          ],
+          "note": "Conceitos centrais publicados.",
+          "practice": null
+        },
+        {
+          "id": "AMB-04",
+          "title": "Lei SC 14.675/2009 — Título I e II (disposições gerais e Política Estadual)",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/legislacao-ambiental-ima.html#la-3-2",
+              "label": "Código estadual"
+            }
+          ],
+          "note": "A prova ANA deve seguir especificamente o recorte de títulos do edital, não todo o programa ANF.",
+          "practice": null
+        },
+        {
+          "id": "AMB-05",
+          "title": "Lei SC 17.354/2017 — criação, natureza, competências e estrutura do IMA",
+          "depth": "parcial",
+          "lessons": [
+            {
+              "href": "aulas/legislacao-ambiental-ima.html#la-3-3",
+              "label": "Instituto do Meio Ambiente"
+            }
+          ],
+          "note": "Há fundamento; conferir redação consolidada e atribuições.",
+          "practice": null
+        }
+      ]
+    }
+  ]
+}
