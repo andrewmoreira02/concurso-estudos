@@ -6,7 +6,10 @@ const legacy={'rlm.html':'rlm','engenharia-qualidade.html':'engenharia','portugu
 const $=(s,root=document)=>root.querySelector(s);
 const $$=(s,root=document)=>[...root.querySelectorAll(s)];
 const el=(tag,cls,txt)=>{const v=document.createElement(tag);if(cls)v.className=cls;if(txt!==undefined)v.textContent=String(txt);return v;};
-const dateBR=()=>{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());return ['year','month','day'].map(x=>p.find(y=>y.type===x)?.value).join('-');};
+// O edital de origem da aula é fixo: não migrar questões da CASAN para o IMA por data.
+const IMA_LESSONS=new Set(['administracao-publica-ima','legislacao-ambiental-ima']);
+const examFor=slug=>IMA_LESSONS.has(slug)?'ima':'casan';
+const bankMatches=(slug,source)=>source?.bank===(examFor(slug)==='casan'?'Instituto AOCP':'FURB');
 function findPlace(slug,id){
  const anchor=document.getElementById(id);if(!anchor)return null;
  if(anchor.matches('article.nl-section,article.subsection')){
@@ -58,18 +61,10 @@ function makeCard(slug,item,source,index,total){
  // A pergunta é respondida independentemente de revelar a solução.
  const form=el('form','ce-cobranca-form');
  form.dataset.ceQuiz='';form.dataset.subject=slug==='rlm'?'rlm':slug==='portugues'?'portugues':slug==='administracao-publica-ima'?'adm':slug==='legislacao-ambiental-ima'?'legislacao':'ti';
- const defaultExam=['administracao-publica-ima','legislacao-ambiental-ima'].includes(slug)?'ima':dateBR()<='2026-11-22'?'casan':'ima';
- form.dataset.exam=defaultExam;form.dataset.topic=(item.originTopic||item.what||'Tema da questão').slice(0,90);
+ const exam=examFor(slug);
+ form.dataset.exam=exam;form.dataset.topic=(item.originTopic||item.what||'Tema da questão').slice(0,90);
  form.dataset.source=('Adaptação própria | '+source.bank+' '+source.year+' '+source.exam+' questão '+item.n).slice(0,240);
- if(!['administracao-publica-ima','legislacao-ambiental-ima'].includes(slug)){
-  const choose=el('label','ce-cobranca-choose','Registrar resultado para: ');
-  const select=el('select','ce-cobranca-exam');
-  for(const [key,text] of [['casan','CASAN 2026'],['ima','IMA-SC 2027']]){
-   const option=el('option','',text);option.value=key;select.append(option);
-  }
-  select.value=defaultExam;select.addEventListener('change',()=>{form.dataset.exam=select.value;});
-  choose.append(select);form.append(choose);
- }
+ form.append(el('p','ce-cobranca-exam','Avaliação exclusiva: '+(exam==='casan'?'CASAN 2026 (Instituto AOCP)':'IMA-SC 2027 (FURB)')));
  const id=('cob-'+slug+'-'+item.src+'-'+item.n).replace(/[^a-zA-Z0-9_-]/g,'-').slice(0,58);
  const question=el('fieldset','ce-cobranca-question');question.dataset.ceQuestion=id;question.dataset.correct='abcde'[item.answer];
  const legend=el('legend','ce-cobranca-prompt',item.prompt);question.append(legend);
@@ -108,9 +103,15 @@ function makeCard(slug,item,source,index,total){
 function init(){
  const data=window.ConcursoCobrancaData;const slug=document.body.dataset.ceLesson||legacy[location.pathname.split('/').pop()];
  const records=data?.cases?.[slug];if(!Array.isArray(records)||!records.length)return;
+ // Nunca inserir prova FURB em aula CASAN, nem prova AOCP em aula exclusiva IMA.
+ // O filtro é aplicado antes da criação dos cartões e antes de registrar qualquer resultado.
+ const filtered=records.filter(item=>bankMatches(slug,data.sources[item.src]));
+ if(!filtered.length)return;
  const grouped=new Map();
- const priority=(a,b)=>{const rank=v=>slug.endsWith('-ima')?v.src.startsWith('FURB')||['FLORAM','BRUSQUE'].includes(v.src)?0:1:v.src==='AOCP'?0:1;return rank(a)-rank(b);};
- records.forEach(item=>{if(!document.getElementById(item.section))return;const list=grouped.get(item.section)||[];list.push(item);grouped.set(item.section,list);});
+ filtered.forEach(item=>{
+  if(!document.getElementById(item.section))return;
+  const list=grouped.get(item.section)||[];list.push(item);grouped.set(item.section,list);
+ });
  let first=true;
  for(const [id,items] of grouped){
   const place=findPlace(slug,id);if(!place)continue;
@@ -122,7 +123,7 @@ function init(){
   panel.append(el('h4','ce-cobranca-title','Cobrado assim na prova'));
   panel.append(el('p','ce-cobranca-lead','Questões pontuais dentro do assunto, com enunciado, alternativas e correção nesta página. Questões adaptadas de provas anteriores identificadas pela banca, ano e número. Apenas Enviar resultado registra a tentativa.'));
   const cards=el('div','ce-cobranca-grid');
-  const sorted=items.slice().sort(priority).slice(0,5);
+  const sorted=items.slice(0,5);
   sorted.forEach((item,i)=>{
    const source=data.sources[item.src];if(!source)return;
    const wrap=el('details','ce-cobranca-item');
