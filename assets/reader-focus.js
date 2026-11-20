@@ -68,6 +68,11 @@ function init(){
  }
  function update(){
   scheduled=false;
+  // A barra fixa não deve cobrir o botão original de navegação.
+  // Ao alcançar o controle legado do Português, este permanece clicável.
+  const originalFooter=slug==='portugues'?document.getElementById('next-section'):null;
+  if(originalFooter){const r=originalFooter.getBoundingClientRect();bar.style.display=r.bottom>0&&r.top<innerHeight?'none':'';}
+
   const hash=decodeURIComponent(location.hash.slice(1));
   if(hash){
    const i=sections.findIndex(x=>x.id===hash);
