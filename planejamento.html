@@ -1,7 +1,7 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1220"><meta name="description" content="Plano adaptável por data, banca e disponibilidade, com checklists manuais."><title>Planejamento semanal · Concurso Estudos</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/planner.css"><script src="assets/planner.js" defer></script><script src="assets/cobertura-casan.js?v=20261120six" defer></script><script src="assets/cobertura-ima.js?v=20261120ima" defer></script><script src="assets/ima-study-cycle.js?v=20261120ima" defer></script><script src="assets/sync-config.js" defer></script>
 <script src="assets/sync.js?v=20261120study7" defer></script>
 <link rel="stylesheet" href="assets/adaptive.css?v=20261120study7">
-<script src="assets/adaptive.js?v=20261120modintro" defer></script>
+<script src="assets/adaptive.js?v=20261120separado1" defer></script>
 <link rel="stylesheet" href="assets/registration.css">
 <script src="assets/registration.js" defer></script>
 </head><body data-workspace="planning"><header class="top"><div class="shell top-inner"><a class="brand" href="./"><span class="logo">CE</span><span>Concurso Estudos</span></a><nav class="primary-nav" aria-label="Navegação principal"><a href="./">Início</a><a href="aulas.html">Aulas</a><a class="active" aria-current="page" href="planejamento.html">Planejamento</a><a href="revisoes.html">Revisões</a></nav></div></header><main class="shell workspace">
@@ -19,6 +19,21 @@
   <div id="ceStudyModules"></div>
   <p role="status" id="ceStudyStatus" class="note-small" aria-live="polite"></p>
  </details>
+</section>
+<section class="panel" id="ceQuestionInventory" aria-labelledby="ceQuestionInventoryTitle">
+<span class="panel-label">Questões em páginas independentes · sem PDF</span>
+<h2 id="ceQuestionInventoryTitle">Banco CASAN: 7 conjuntos por assunto já preparados</h2>
+<p class="note-small">Disponibilizar questões não significa que devam ser feitas agora. Até 22/11, a recomendação privilegia conteúdos essenciais ainda não estudados e usa exercícios curtos, opcionais, depois de um módulo confirmado como estudado. A página abre somente a faixa indicada, nunca o banco inteiro.</p>
+<div id="ceQuizRecommended" aria-live="polite"><p class="note-small">Verificando estudo confirmado e o tempo restante para a prova…</p></div>
+<details><summary>Ver todos os 7 blocos de questões disponíveis</summary>
+<div class="button-bar" style="margin-top:12px"><a class="ui-btn" href="aulas/questoes-engenharia-casan.html">Engenharia de Software e Qualidade · 6 questões</a>
+<a class="ui-btn" href="aulas/questoes-banco-dados-casan.html">Banco de Dados e SQL · 4 questões</a>
+<a class="ui-btn" href="aulas/questoes-seguranca-casan.html">Segurança de Aplicações e APIs · 5 questões</a>
+<a class="ui-btn" href="aulas/questoes-algoritmos-casan.html">Algoritmos e Orientação a Objetos · 6 questões</a>
+<a class="ui-btn" href="aulas/questoes-portugues-casan.html">Português · 8 questões</a>
+<a class="ui-btn" href="aulas/questoes-rlm-casan.html">Raciocínio Lógico-Matemático · 7 questões</a>
+<a class="ui-btn" href="aulas/questoes-legislacao-atualidades-casan.html">Legislação e Atualidades · 6 questões</a></div>
+<p class="note-small">O simulado completo continua disponível em <a href="aulas/questoes-casan-21-11.html">questões de véspera (15 itens)</a>. O recorte de exemplo <a href="aulas/questoes-casan-21-11.html?de=1&amp;ate=10">questões 1–10</a> mostra apenas dez questões.</p></details>
 </section>
 <section class="panel"><div class="week-nav"><div><span class="panel-label">Agenda</span><h2 id="weekLabel">Semana de estudos</h2><p class="note-small" id="weekCaption">Agenda de ciclos registrados. Datas anteriores não significam atividades realizadas.</p></div><div class="button-bar"><button class="ui-btn" id="weekPrev" type="button">← Anterior</button><button class="ui-btn" id="weekToday" type="button">Semana atual</button><button class="ui-btn" id="weekNext" type="button">Próxima →</button></div></div><div id="weekDays" class="week-days" aria-live="polite"></div></section>
 <div class="workspace-grid"><section class="panel span-6"><span class="panel-label">Disponibilidade · ciclo IMA</span><h2>Quais dias você pode estudar?</h2><p>O Projeto registra <strong>2–4 horas por dia</strong> para o IMA, mas os dias da semana ainda não foram confirmados. Selecione-os aqui; nenhum dia é presumido automaticamente.</p><div id="availabilityDays" class="option-days" role="group" aria-label="Dias disponíveis para estudar"></div><div id="availabilityText" class="statusline" role="status">Nenhum dia selecionado.</div><p class="note-small">Os roteiros de IMA são sugestões de 2h para dias disponíveis, com até 2h opcionais. Selecionar um dia não confirma estudo.</p></section><section class="panel span-6"><span class="panel-label">Como o roteiro foi feito</span><h2>Estratégia sem números inventados</h2><div id="examWeightSummary"><p>Distribuições dos concursos serão carregadas de dados/concursos.json.</p></div><div class="soft-notice warn">A cada mudança de concurso, o site apresenta sugestões. Não transfere desempenho entre editais nem declara inscrição ou comparecimento.</div></section></div>
