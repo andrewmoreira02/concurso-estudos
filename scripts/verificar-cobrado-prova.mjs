@@ -64,7 +64,9 @@ try{
    // Algumas aulas mantêm capítulos de teoria recolhidos; abrir o capítulo
    // antes de simular a resposta, como um estudante faria no navegador.
    await card.evaluate(el=>{for(let a=el.parentElement;a;a=a.parentElement)if(a.tagName==='DETAILS')a.open=true;});
-   await card.locator('.ce-cobranca-choice input').first().check();
+   // A rolagem suave da aula não pode tornar o clique do robô uma corrida de animações.
+   await page.addStyleTag({content:'html,body{scroll-behavior:auto!important}'});
+   await card.locator('.ce-cobranca-choice input').first().check({timeout:7000});
    await card.locator('.ce-cobranca-reveal').click();
    const step=await page.evaluate(()=>({
     readings:Object.keys(localStorage).filter(k=>/lido|read|steps/.test(k)).map(k=>k+'='+localStorage.getItem(k)).sort(),
