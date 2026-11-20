@@ -249,17 +249,25 @@ function model(){
  let nextBlock=null;
  for(const c of eligible){
   const set=questionSets.find(x=>x.id===topicMap[c.id]);if(!set)continue;
-  const from=set.question_ids.findIndex(id=>!attempted.has(id));
+  // Um módulo estudado não libera questões de tópicos ainda não estudados.
+  const confirmed=studiedModules(exam,c);
+  const belongsToStudied=id=>confirmed.has(set.module_by_question?.[id]);
+  const from=set.question_ids.findIndex(id=>!attempted.has(id)&&belongsToStudied(id));
   if(from<0)continue;
-  const length=Math.min(lastDays?3:5,set.question_ids.length-from);
-  nextBlock={c,set,from:from+1,to:from+length};break;
+  const limit=lastDays?3:5;
+  let end=from;
+  while(end<set.question_ids.length&&end-from<limit&&
+    !attempted.has(set.question_ids[end])&&belongsToStudied(set.question_ids[end]))end++;
+  if(end===from)continue;
+  const questionModules=[...new Set(set.question_ids.slice(from,end).map(id=>set.module_by_question[id]))];
+  nextBlock={c,set,from:from+1,to:end,questionModules};break;
  }
  if(nextBlock&&!examDue){
-  const {set,c,from,to}=nextBlock;
+  const {set,c,from,to,questionModules}=nextBlock;
   picks.push({type:'quiz',title:'Questões '+from+'–'+to+' · '+set.title+' (opcional após estudo confirmado)',
    href:set.href+'?de='+from+'&ate='+to,
    description:'Somente '+(to-from+1)+' questão(ões) do assunto, em página separada. '+
-    'Sugeridas porque há '+c.studiedCount+' módulo(s) com estudo confirmado; não é obrigatório interromper lacunas de teoria.'});
+    'Ligadas apenas ao(s) módulo(s) '+questionModules.join(', ')+' com estudo confirmado, sem antecipar temas de módulos não estudados. Questões opcionais na reta final.'});
  }
  if(due.length){
   const d=due[0];
