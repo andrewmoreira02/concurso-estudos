@@ -129,7 +129,7 @@ function model(){
  const sorted=lessons.filter(c=>c.first&&c.weight>0).sort((a,b)=>{
    if(a.weight!==b.weight)return b.weight-a.weight;
    if(a.inProgress!==b.inProgress)return Number(b.inProgress)-Number(a.inProgress);
-   return b.score-a.score||a.title.localeCompare(b.title,'pt-BR');
+   return b.score-a.score; // empate preserva ordem editorial do catálogo (Engenharia primeiro)
  });
  const due=nextDue(exam,today);
  const picks=[];
