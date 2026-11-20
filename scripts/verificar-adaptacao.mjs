@@ -64,10 +64,11 @@ try{
  assert(!JSON.stringify(data).includes('"studied":true'),'Não inferir Estudado de Lido');
  const text=await page.locator('#adaptiveRecommendations').innerText();
  assert(text.includes('41/71 Lido'),'Painel não apresenta leitura declarada');
- assert(await page.evaluate(()=>window.__adaptiveIntervals.includes(3600000)),'Atualização horária não agendada');
+ assert(!(await page.evaluate(()=>window.__adaptiveIntervals.includes(3600000))),'A manutenção editorial horária pertence à tarefa do GPT, não ao navegador');
+ assert(await page.locator('#adaptiveRecommendations button.ce-adaptive-refresh').count()===1,'Atualização manual local ausente');
  const width=await page.evaluate(()=>document.documentElement.scrollWidth);
  assert(width<=390+2,'Painel adaptativo não é responsivo');
- console.log('OK: painel, pesos do edital, atualização horária e 41/71 RLM.');
+ console.log('OK: painel, pesos do edital, atualização local e 41/71 RLM.');
  
  await page.goto(base+'/planejamento.html',{waitUntil:'domcontentloaded'});
  await loaded();
