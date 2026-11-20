@@ -16,6 +16,10 @@ const pages = [
   'aulas/portugues-casan-19-11.html',
   'aulas/banco-dados.html', 'aulas/seguranca.html', 'aulas/algoritmos-oo.html',
   'aulas/administracao-publica-ima.html', 'aulas/legislacao-ambiental-ima.html', 'aulas/legislacao-casan-20-11.html',
+  'aulas/questoes-engenharia-casan.html','aulas/questoes-banco-dados-casan.html',
+  'aulas/questoes-seguranca-casan.html','aulas/questoes-algoritmos-casan.html',
+  'aulas/questoes-portugues-casan.html','aulas/questoes-rlm-casan.html',
+  'aulas/questoes-legislacao-atualidades-casan.html',
   'index.html', 'aulas.html', 'planejamento.html', 'progresso.html', 'revisoes.html', 'conta.html',
 ];
 let assertions = 0;
