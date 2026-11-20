@@ -74,8 +74,8 @@ try{
  console.log('OK: painel, pesos do edital, atualização local e 41/71 RLM.');
  
  await page.goto(base+'/planejamento.html',{waitUntil:'domcontentloaded'});
- await loaded(true);
- assert(!(await page.locator('#adaptiveRecommendations').innerText()).includes('Sugestões locais'),'Planejamento ainda exibe rótulo interno Sugestões locais');
+ await loaded();
+ assert(await page.locator('#adaptiveRecommendations').count()===0,'Planejamento não deve exibir sugestões locais redundantes');
  await page.waitForFunction(()=>document.getElementById('nextLessonLink')?.href.includes('engenharia-qualidade'),{timeout:15000});
  assert((await page.locator('#nextLessonLink').getAttribute('href')).includes('engenharia-qualidade.html'),'Plano não mudou link para sugestão adaptativa');
  const planned=await page.evaluate(()=>localStorage.getItem('ce_plan_done_v1'));
@@ -116,6 +116,21 @@ try{
  data=await page.evaluate(()=>window.ConcursoAdaptive.model());
  assert(data.lessons.find(l=>l.id==='engenharia').first.module===1,'Painel perdeu próxima seção de Engenharia');
  assert(data.lessons.find(l=>l.id==='portugues').first.module===1,'Painel perdeu próxima seção de Português');
+ // A aba Progresso foi removida sem apagar evidências: URLs antigas redirecionam.
+ await page.goto(base+'/progresso.html',{waitUntil:'domcontentloaded'});
+ await page.waitForURL('**/aulas.html',{timeout:15000});
+ assert((await page.url()).endsWith('/aulas.html'),'O endereço antigo de Progresso não redirecionou para Aulas');
+ for(const name of ['index.html','aulas.html','planejamento.html','revisoes.html','conta.html']){
+   await page.goto(base+'/'+name,{waitUntil:'domcontentloaded'});
+   await page.waitForFunction(()=>document.readyState==='complete',{timeout:15000});
+   assert(await page.locator('.primary-nav a[href="progresso.html"]').count()===0,name+': menu ainda mostra Progresso');
+   assert(await page.locator('#adaptiveRecommendations').count()===0,name+': caixa de Sugestões locais ainda está presente');
+ }
+ await page.goto(base+'/conta.html',{waitUntil:'domcontentloaded'});
+ await page.locator('#backup summary').click();
+ assert(await page.locator('#exportButton').count()===1,'Backup geral não foi preservado na Sincronização');
+ assert(await page.locator('#importButton').count()===1,'Restauração geral não foi preservada na Sincronização');
+ console.log('OK: páginas sem Sugestões locais/Progresso, URL antiga redirecionada, backups preservados.');
  assert(errors.length===0,'Erros JS: '+errors.join('; '));
  console.log('SUCESSO: recomendações apenas no painel e plano, aulas sem banner, revisão e mobile, sem dados privados.');
 }catch(e){failed=true;console.error(e);}
