@@ -33,3 +33,9 @@
 .ce-quiz-note{background:#193648;padding:14px 16px;border-left:4px solid #73cfde;border-radius:9px}
 .ce-quiz-note p{margin:5px 0}
 @media(max-width:570px){.ce-practice-form fieldset{padding:12px 10px}.ce-practice-form label{padding:10px 7px}.ce-auto-review-list{grid-template-columns:1fr}}
+
+/* Fonte e instruções para responder questões ORIGINAIS no caderno externo. */
+.ce-original-source{background:#143a43;border:1px solid #62a8a4;border-left:4px solid #76d7cf;padding:12px 15px;border-radius:9px;margin:10px 0 14px;display:grid;gap:8px;color:#ecfcff}
+.ce-original-source strong{color:#d7fff7;line-height:1.4}
+.ce-original-source a{color:#d7faff;text-decoration:underline;font-weight:800}
+.ce-original-source p{margin:0;line-height:1.5;font-size:.9rem;color:#d9eaf1}
