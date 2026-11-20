@@ -52,3 +52,17 @@ No site, reutilizar `ce-formula-card`, `ce-formula-equation`, `ce-legend`, `ce-e
 - `scripts/verificar-sincronizacao.mjs` e `scripts/verificar-adaptacao.mjs`: mantêm compatibilidade de dados e recomendações. CI deve passar antes da publicação.
 
 **Pendências editoriais identificadas após a correção das seções críticas:** 13 trechos concisos em RLM (m1-s2, m2-s6, m3-s1, m3-s3, m10-s3, m10-s4, m10-s5, m11-s2 a m11-s7) e 11 em Engenharia/Qualidade (etapa-1-3, etapa-1-4, etapa-2-1, etapa-3-1, etapa-3-2, etapa-4-3, etapa-5-2, etapa-6-2, etapa-8-1, etapa-8-2, etapa-9-2). Eles têm algum conteúdo e NÃO devem ser rotulados como vazios: avaliar e aprofundar segundo a necessidade pedagógica em próximas rodadas. Português: nenhum trecho conciso sinalizado na auditoria.
+
+## Fila obrigatória de leitura — meta de cinco aulas equivalentes
+
+A cada execução da tarefa horária, calcular sobre aulas COMPLETAS, PUBLICADAS e pertinentes ao concurso ativo:
+
+`F = soma((subseções_totais - subseções_Lido) / subseções_totais)`.
+
+A meta é `F >= 5`. Por exemplo, cinco aulas com 60% já lidas somam apenas 2 aulas equivalentes ainda não lidas; é necessário acrescentar 3 aulas completas (sem repetir tópicos) para a reserva voltar a 5. Se `F < 5`, publicar novas aulas suficientes, com conteúdo completo, exercícios, navegação, backup/sincronização e revisão editorial; rascunhos, listas de temas e HTMLs vazios não contam. Se `F >= 5`, não criar material sem necessidade: reabrir as seis aulas e revisar primeiro exatidão do edital, legibilidade, exemplos, fórmulas, índice, conceitos, questões de prova verificáveis e lacunas sinalizadas.
+
+Não publicar `F` do aluno no repositório: calcular no navegador/relatório privado ou via ferramenta autenticada ao Supabase. Conservar o status **Lido** como leitura, jamais prova automática de estudo ou domínio.
+
+Em aulas novas usar `assets/new-lesson.css` e `assets/new-lesson.js` com botão Lido nativo no FINAL de cada `article.nl-section`; usar `assets/quiz.js` para questões autorais verificadas no material ou reais somente com caderno/gabarito/citação. O usuário considera textos didáticos genéricos, rótulos meta e avisos de foco estáticos dentro de aulas como erros: preferir recomendações dinâmicas no painel. Os avisos de inscrição ficam até confirmação explícita e são reversíveis.
+
+**Aulas novas da primeira passagem:** `aulas/banco-dados.html`, `aulas/seguranca.html`, `aulas/algoritmos-oo.html`. As três anteriores continuam acessíveis: RLM 71 seções, Engenharia 37, Português 21. Total do catálogo atual: 6 aulas e 156 subseções.
