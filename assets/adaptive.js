@@ -127,7 +127,7 @@ function model(){
      description:due.length+' revisão(ões) com prazo até hoje, gerada(s) por erros efetivamente registrados. '+d.errors+' erro(s) na sessão desta prioridade.'});
  }
  for(const c of sorted.slice(0,due.length?2:3)){
-   picks.push({type:'lesson',title:c.title+' · etapa '+c.first.module+'.'+c.first.step,
+   picks.push({type:'lesson',title:c.title+' · '+(c.module_titles?.[c.first.module-1]||'Módulo '+c.first.module)+' · etapa '+c.first.module+'.'+c.first.step,
      href:c.url+'#'+c.first.id,
      description:c.subject+': '+c.weight+'/'+c.totalQuestions+' questões no edital '+config.exams[exam].name+'. '+c.read+'/'+c.total+' subseções marcadas como Lido. A etapa sugerida ainda não foi marcada.'});
  }
@@ -187,7 +187,7 @@ function render(data){
    const namedLesson=data.active;
    if(namedLesson){
      const current=el('div','ce-adaptive-current');
-     const title=namedLesson.first?'Nesta aula: continue na etapa '+namedLesson.first.module+'.'+namedLesson.first.step:'Nesta aula: todas as subseções estão marcadas como Lido';
+     const title=namedLesson.first?'Nesta aula: continue na etapa '+namedLesson.first.module+'.'+namedLesson.first.step+' — '+(namedLesson.module_titles?.[namedLesson.first.module-1]||'Módulo '+namedLesson.first.module):'Nesta aula: todas as subseções estão marcadas como Lido';
      current.append(el('strong','',title));
      current.append(el('p','',namedLesson.first?'Leitura registrada: '+namedLesson.read+'/'+namedLesson.total+'. Continue sem repetir etapas já marcadas.':'Próximo passo sugerido: recuperação ativa e questões, sem presumir domínio.'));
      current.append(anchor(namedLesson.first?namedLesson.url+'#'+namedLesson.first.id:'revisoes.html',namedLesson.first?'Abrir próxima subseção':'Ver revisões',true));
@@ -250,7 +250,8 @@ async function refresh(forceSync=false){
  if(button)button.disabled=true;
  let message='';
  try{
-   if(forceSync&&window.ConcursoSync?.configured?.()){
+   const pair=(()=>{try{return /^[a-zA-Z0-9_-]{43}$/.test(localStorage.getItem('ce_private_sync_pair_v1')||'');}catch{return false;}})();
+   if(forceSync&&pair&&window.ConcursoSync?.configured?.()){
      try{await window.ConcursoSync.sync();}catch{message='Não foi possível confirmar o servidor; exibindo apenas as marcações locais.';}
    }
    if(!config||forceSync){
