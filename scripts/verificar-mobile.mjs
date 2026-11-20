@@ -14,6 +14,7 @@ const browser = await chromium.launch({
 const pages = [
   'aulas/rlm.html', 'aulas/engenharia-qualidade.html',
   'aulas/portugues-casan-19-11.html',
+  'aulas/banco-dados.html', 'aulas/seguranca.html', 'aulas/algoritmos-oo.html',
   'index.html', 'aulas.html', 'planejamento.html', 'progresso.html', 'revisoes.html', 'conta.html',
 ];
 let assertions = 0;
@@ -58,6 +59,16 @@ try {
         check(await menu.getAttribute('aria-expanded') === 'true', 'Português índice não abriu');
         await page.evaluate(() => document.dispatchEvent(new MouseEvent('click', {bubbles:true})));
         check(await menu.getAttribute('aria-expanded') === 'false', 'Português índice não fechou ao tocar fora');
+      } else if (['aulas/banco-dados.html','aulas/seguranca.html','aulas/algoritmos-oo.html'].includes(file)) {
+        check(await page.locator('article.nl-section').count() === 9, file+' perdeu subseções');
+        check(await page.locator('input[data-ce-read]').count() === 9, file+' perdeu controles Lido');
+        check(await page.locator('article.nl-section .nl-end-read input[data-ce-read]').count() === 9, file+' Lido saiu do final');
+        check(await page.locator('[data-ce-question]').count() === 3, file+' quiz incompleto');
+        const first=page.locator('input[data-ce-read]').first();
+        await first.check();
+        check(await first.isChecked(), file+' Lido não marcou');
+        await first.uncheck();
+        check(!(await first.isChecked()), file+' Lido não desmarcou');
       } else if (file === 'index.html' || file === 'aulas.html') {
         const first = page.locator('.primary-nav a').first();
         const height = await first.evaluate(el => el.getBoundingClientRect().height);
