@@ -65,7 +65,7 @@ try {
         check(await page.locator('input[data-ce-read]').count() === 9, file+' perdeu controles Lido');
         check(await page.locator('article.nl-section .nl-end-read input[data-ce-read]').count() === 9, file+' Lido saiu do final');
         if (['aulas/banco-dados.html','aulas/seguranca.html','aulas/algoritmos-oo.html'].includes(file))
-          check(await page.locator('[data-ce-question]').count() === 3, file+' quiz incompleto');
+          check(await page.locator('form[data-ce-quiz]:not(.ce-cobranca-form) [data-ce-question]').count() === 3, file+' quiz incompleto');
         const first=page.locator('input[data-ce-read]').first();
         await first.check();
         check(await first.isChecked(), file+' Lido não marcou');
