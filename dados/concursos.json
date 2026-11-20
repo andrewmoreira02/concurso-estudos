@@ -183,12 +183,13 @@
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
               "detail": "≈70 min: teoria e exercícios de TI conforme necessidade; não impor proporção fixa.",
-              "href": "aulas.html"
+              "href": "aulas/banco-dados.html"
             },
             {
               "id": "ima-general",
               "title": "Português",
-              "detail": "≈35 min sugeridos; Interpretação, coesão e itens aderentes ao edital FURB"
+              "detail": "≈35 min sugeridos; Interpretação, coesão e itens aderentes ao edital FURB",
+              "href": "aulas/portugues-casan-19-11.html"
             },
             {
               "id": "ima-review",
@@ -202,12 +203,13 @@
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
               "detail": "≈70 min: teoria e exercícios de TI conforme necessidade; não impor proporção fixa.",
-              "href": "aulas.html"
+              "href": "aulas/engenharia-qualidade.html"
             },
             {
               "id": "ima-general",
               "title": "Administração Pública",
-              "detail": "≈35 min sugeridos; Fundamentos previstos no edital IMA"
+              "detail": "≈35 min sugeridos; Fundamentos previstos no edital IMA",
+              "href": "aulas/administracao-publica-ima.html"
             },
             {
               "id": "ima-review",
@@ -221,12 +223,13 @@
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
               "detail": "≈50 min: teoria ou prática de TI, adaptadas à leitura e aos erros reais.",
-              "href": "aulas.html"
+              "href": "planejamento.html#ce-cobertura-ima"
             },
             {
               "id": "ima-general",
               "title": "RLM",
-              "detail": "≈35 min sugeridos; Diagnóstico de retenção e pontos específicos do edital"
+              "detail": "≈35 min sugeridos; Diagnóstico de retenção e pontos específicos do edital",
+              "href": "aulas/rlm.html"
             },
             {
               "id": "ima-review",
@@ -246,7 +249,7 @@
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
               "detail": "≈70 min: teoria e exercícios de TI conforme necessidade; não impor proporção fixa.",
-              "href": "aulas.html"
+              "href": "aulas/seguranca.html"
             },
             {
               "id": "ima-general",
@@ -266,12 +269,13 @@
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
               "detail": "≈70 min: teoria e exercícios de TI conforme necessidade; não impor proporção fixa.",
-              "href": "aulas.html"
+              "href": "planejamento.html#ce-cobertura-ima"
             },
             {
               "id": "ima-general",
               "title": "Português e RLM",
-              "detail": "≈35 min sugeridos; Revisão intercalada, orientada por erros reais"
+              "detail": "≈35 min sugeridos; Revisão intercalada, orientada por erros reais",
+              "href": "aulas/portugues-casan-19-11.html"
             },
             {
               "id": "ima-review",
@@ -285,12 +289,13 @@
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
               "detail": "≈50 min: teoria ou prática de TI, adaptadas à leitura e aos erros reais.",
-              "href": "aulas.html"
+              "href": "planejamento.html#ce-cobertura-ima"
             },
             {
               "id": "ima-general",
               "title": "TI + revisão",
-              "detail": "≈35 min sugeridos; Recuperação de assuntos e correção dos erros registrados"
+              "detail": "≈35 min sugeridos; Recuperação de assuntos e correção dos erros registrados",
+              "href": "aulas/administracao-publica-ima.html"
             },
             {
               "id": "ima-review",
@@ -300,9 +305,9 @@
             },
             {
               "id": "ima-questions",
-              "title": "Questões adaptadas de prova FURB 2023 — treino IMA",
-              "detail": "12 questões ADAPTADAS de temas da FURB 2023, com enunciados e alternativas completos na página e gabarito próprio; TI 8, Português 2, RLM 2. Não cobre ainda Administração Pública e Legislação Ambiental.",
-              "href": "aulas/questoes-ima.html"
+              "title": "Questões específicas do IMA — Administração, Ambiental e TI (FURB)",
+              "detail": "9 questões adaptadas de temas FURB 2023/2024/2025 (1 TI, 5 Administração Pública, 3 Ambiental); enunciados/alternativas completos, gabaritos próprios, avaliação e revisão apenas após envio.",
+              "href": "aulas/questoes-ima-especificas.html"
             }
           ],
           "6": [
@@ -310,12 +315,13 @@
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
               "detail": "≈70 min: teoria e exercícios de TI conforme necessidade; não impor proporção fixa.",
-              "href": "aulas.html"
+              "href": "planejamento.html#ce-cobertura-ima"
             },
             {
               "id": "ima-general",
               "title": "Revisão opcional",
-              "detail": "≈35 min sugeridos; Consolidar pontos frágeis ou descansar conforme disponibilidade"
+              "detail": "≈35 min sugeridos; Consolidar pontos frágeis ou descansar conforme disponibilidade",
+              "href": "revisoes.html"
             },
             {
               "id": "ima-review",
@@ -324,7 +330,9 @@
               "href": "revisoes.html"
             }
           ]
-        }
+        },
+        "goal": "120 minutos para cada dia efetivamente disponível, com extensão opcional de até mais 120 min. Dias não confirmados; não marcar realização automática.",
+        "optional_extension": "45 min TI (lacuna do edital) + 35 min Administração ou Ambiental + 25 min questões FURB + 15 min análise de erros realmente enviados. Total adicional 120 min."
       }
     ]
   },
@@ -552,5 +560,6 @@
       "url": "https://concursos.furb.br/informacoes/584",
       "status_source": "Confirmação manual em armazenamento privado; não presume inscrição até o usuário marcar."
     }
-  }
+  },
+  "ima_focus_version": "2026-11-20"
 }
