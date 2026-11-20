@@ -96,7 +96,13 @@ try{
  assert(state.done[reviewId]===true,'Revisão não marcada após envio real de respostas');
  assert(state.logs.length===6,'Quiz de revisão não gerou novo registro de avaliação');
  assert(state.logs.at(-1).reviewOf===reviewId,'Faltou relação com revisão original');
- console.log('OK: revisão gerada por erro, corrigida e marcada somente após novo quiz.');
+ await page.waitForFunction(id=>!!document.querySelector('[data-undo-review="'+id+'"]'),reviewId,{timeout:10000});
+ page.once('dialog',dialog=>{void dialog.accept();});
+ await page.locator('[data-undo-review="'+reviewId+'"]').click();
+ state=await inspect();
+ assert(state.done[reviewId]===false,'Não foi possível desfazer status da revisão');
+ assert(state.logs.length===6,'Desfazer revisão apagou respostas realmente enviadas');
+ console.log('OK: revisão gerada, respondida e reversível sem apagar avaliação.');
 
  await goto('aulas/questoes-ima.html');
  await ready(12);
