@@ -114,7 +114,15 @@ const modules=[...document.querySelectorAll('.module[data-module]')];
 const known=new Set(sections.map(s=>s.dataset.id));
 const readState={};let legacyRecords=[];let storageOK=true;let currentIndex=0;
 const status=document.querySelector('#storage-status');
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify({version:1,lesson:'CASAN_2026_PT_2026_11_19',read:readState,legacy:legacyRecords,updatedAt:new Date().toISOString()}));storageOK=true;}catch(e){storageOK=false;status.textContent='Armazenamento local indisponível. Exporte um JSON antes de fechar a página.';}};
+const save=()=>{
+ try{
+  const previous=JSON.parse(localStorage.getItem(KEY)||'null');
+  const changed=JSON.stringify(previous?.read||{})!==JSON.stringify(readState);
+  localStorage.setItem(KEY,JSON.stringify({version:1,lesson:'CASAN_2026_PT_2026_11_19',read:readState,legacy:legacyRecords,updatedAt:new Date().toISOString()}));
+  storageOK=true;
+  if(changed)window.dispatchEvent(new CustomEvent('concurso:read-change'));
+ }catch(e){storageOK=false;status.textContent='Armazenamento local indisponível. Exporte um JSON antes de fechar a página.';}
+};
 const message=t=>{status.textContent=t;};
 function load(){try{const raw=localStorage.getItem(KEY);if(raw){const obj=JSON.parse(raw);const src=obj.read||{};for(const k of known)readState[k]=src[k]===true;legacyRecords=Array.isArray(obj.legacy)?obj.legacy:[];}else for(const k of known)readState[k]=false;const set=JSON.parse(localStorage.getItem(PREFERENCE_KEY)||'{}');document.querySelector('#auto-mark').checked=set.autoMark===true;}catch(e){for(const k of known)readState[k]=false;storageOK=false;message('Progresso apenas nesta sessão; armazenamento local indisponível. Faça backup JSON.');}}
 function update(){let total=0;for(const s of sections){const yes=readState[s.dataset.id]===true;total+=Number(yes);s.classList.toggle('is-read',yes);s.querySelector('.mark-sub').checked=yes;const nav=document.querySelector('[data-nav-for="'+s.dataset.id+'"]');if(nav){nav.querySelector('.nav-status').textContent=yes?'✓':'○';nav.setAttribute('aria-label',s.querySelector('h3').textContent.trim()+(yes?' — lida':' — não lida'));}}
