@@ -21,3 +21,19 @@ assert(html.includes('../'+pdfPath),'Falta link de download no simulado');
 const base=JSON.parse(readFileSync('dados/questoes-casan-aocp.json','utf8'));
 assert.equal(base.questions.length,13,'Banco AOCP original alterado: atualizar caderno');
 console.log('OK: PDF CASAN, '+pages+' páginas, 13 questões AOCP selecionadas e link de download no simulado.');
+
+const furbPath='cadernos/engenharia-furb-2023-4-questoes-selecionadas.pdf';
+const furb=readFileSync(furbPath);
+const furbText=furb.toString('latin1');
+assert(furbText.startsWith('%PDF-1.4'),'PDF FURB inválido');
+assert(furbText.endsWith('%%EOF\n'),'PDF FURB sem terminação');
+assert(furbText.includes('GABARITO E JUSTIFICATIVAS'),'Gabarito FURB incompleto');
+for(const n of [11,16,20,31])assert(furbText.includes('FURB Q'+n),'Falta referência FURB Q'+n);
+for(const n of [14,32])assert(!furbText.includes('FURB Q'+n),'Questão anulada FURB no caderno');
+const engHtml=readFileSync('aulas/engenharia-qualidade.html','utf8');
+assert(engHtml.includes('../'+furbPath),'Aula de Engenharia sem PDF FURB filtrado');
+assert(engHtml.includes('CASAN 2026 - Instituto AOCP (prioridade atual)'),'Aula de Engenharia sem prioridade AOCP CASAN');
+const cobranca=readFileSync('assets/cobranca-na-pratica.js','utf8');
+assert(cobranca.includes('PDF filtrado FURB'),'Caderno histórico da FURB sem acesso filtrado');
+console.log('OK: PDF FURB, quatro itens selecionados, sem itens anulados, na Engenharia.');
+
