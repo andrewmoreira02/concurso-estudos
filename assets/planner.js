@@ -368,5 +368,6 @@ document.addEventListener('DOMContentLoaded',async()=>{
  try{await loadConfig();}
  catch(error){configError(error.message||'falha desconhecida');return;}
  initPlanning();initProgress();initReviews();initHome();
+ window.dispatchEvent(new Event('concurso:planner-ready'));
 });
 })();
