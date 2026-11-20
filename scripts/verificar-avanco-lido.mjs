@@ -30,7 +30,7 @@ async function one(path,kind){
  const check=(value,message)=>{if(!value)throw Error(path+': '+message);};
  try{
   if(kind==='eng'){
-   await page.locator('#markOnNext').waitFor();
+   await page.locator('#markOnNext').waitFor({state:'attached'});
    check(await page.locator('#markOnNext').isChecked(),'A opção Próxima → Lido deve começar ligada');
    const forward=page.locator('a[data-next-step="etapa-1-1"]');
    await forward.click();
@@ -40,7 +40,7 @@ async function one(path,kind){
    await page.locator('[data-read="etapa-1-1"]').click();
    check(!(await page.evaluate(()=>JSON.parse(localStorage.getItem('concurso_eng_qualidade_steps_v1')||'[]').includes('1.1'))),'desmarcar não reverteu');
   }else if(kind==='rlm'){
-   await page.locator('#markOnNext').waitFor();
+   await page.locator('#markOnNext').waitFor({state:'attached'});
    check(await page.locator('#markOnNext').isChecked(),'Preferência de avanço deve iniciar ligada');
    await page.locator('[data-next-of="m1-s1"]').click();
    await page.waitForFunction(()=>JSON.parse(localStorage.getItem('concursos_rlm_sections_read_v3')||'{}').readSections?.includes('m1-s1'));
@@ -49,7 +49,7 @@ async function one(path,kind){
    await page.locator('[data-step-read="m1-s1"]').click();
    check(!(await page.evaluate(()=>JSON.parse(localStorage.getItem('concursos_rlm_sections_read_v3')||'{}').readSections.includes('m1-s1'))),'RLM não desmarcou');
   }else if(kind==='pt'){
-   await page.locator('#auto-mark').waitFor();
+   await page.locator('#auto-mark').waitFor({state:'attached'});
    check(await page.locator('#auto-mark').isChecked(),'Português deve iniciar com marcação por Próxima');
    await page.locator('#next-section').click();
    await page.waitForFunction(()=>JSON.parse(localStorage.getItem('concursos:casan2026:portugues:2026-11-19:subsections:v1')||'{}').read?.['pt19-1-1']===true);
