@@ -66,6 +66,14 @@ try{
    await card.evaluate(el=>{for(let a=el.parentElement;a;a=a.parentElement)if(a.tagName==='DETAILS')a.open=true;});
    // A rolagem suave da aula não pode tornar o clique do robô uma corrida de animações.
    await page.addStyleTag({content:'html,body{scroll-behavior:auto!important}'});
+   if(path==='rlm.html'&&width===320){
+     const geo=await card.locator('.ce-cobranca-choice input').first().evaluate(el=>{
+       el.scrollIntoView({block:'center',behavior:'instant'});
+       return {bounds:el.getBoundingClientRect().toJSON(),scrollY:window.scrollY,height:innerHeight,doc:document.documentElement.scrollHeight,
+         ancestors:[...function*(n){while(n){yield n;n=n.parentElement}}(el)].filter(n=>['auto','scroll','hidden','clip'].includes(getComputedStyle(n).overflowY)).slice(0,7).map(n=>({tag:n.tagName,cls:n.className,overflow:getComputedStyle(n).overflowY,scrollHeight:n.scrollHeight,clientHeight:n.clientHeight}))};
+     });
+     console.log('DIAGNOSTICO SCROLL RLM',JSON.stringify(geo));
+   }
    await card.locator('.ce-cobranca-choice input').first().check({timeout:7000});
    await card.locator('.ce-cobranca-reveal').click();
    const step=await page.evaluate(()=>({
