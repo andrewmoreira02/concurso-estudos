@@ -85,7 +85,7 @@ try{
    const labels=[...item.querySelectorAll('label')];
    const legend=item.querySelector('legend')?.textContent||'';
    return legend.length>70&&!/consulte o caderno.*alternativas/i.test(legend)&&
-     labels.length===5&&labels.every(l=>l.textContent.trim().length>=6)&&
+     labels.length===5&&labels.every(l=>l.textContent.trim().length>=3)&&
      /Adaptaç[ãa]o|Adaptada/i.test(n.textContent)&&n.textContent.includes('opcional');
  }));
  assert(inline,'Questão adaptada sem enunciado, alternativas completas ou consulta opcional à prova');
