@@ -67,5 +67,5 @@ try{
   }
   await context.close();
  }
- console.log('SUCESSO '+count+' verificações do padrão único nas sete aulas');
+ console.log('SUCESSO '+count+' verificações do padrão único nas oito aulas');
 }finally{await browser.close();}
