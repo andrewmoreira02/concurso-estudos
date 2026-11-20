@@ -253,8 +253,10 @@ async function refresh(forceSync=false){
    if(forceSync&&window.ConcursoSync?.configured?.()){
      try{await window.ConcursoSync.sync();}catch{message='Não foi possível confirmar o servidor; exibindo apenas as marcações locais.';}
    }
-   try{await getConfig();}
-   catch(e){if(!config)throw e;message+=' O edital não pôde ser atualizado agora; usando a configuração anterior.';}
+   if(!config||forceSync){
+     try{await getConfig();}
+     catch(e){if(!config)throw e;message+=' O edital não pôde ser atualizado agora; usando a configuração anterior.';}
+   }
    render(model());
    updateTime=Date.now();
    if(status)status.textContent=statusText(new Date(),message);
