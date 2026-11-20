@@ -17,6 +17,21 @@ try{
   const page=await ctx.newPage();
   await page.goto(url,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.querySelectorAll('.step-marker').length===37);
+  const layout=await page.evaluate(()=>{
+   const table=document.querySelector('#etapa-4-4 + .table-scroll .data-table');
+   const wrapper=table?.closest('.table-scroll');
+   const print=document.querySelector('.masthead .header-actions .print');
+   const sync=[...document.querySelectorAll('.masthead .header-actions a')].find(a=>a.textContent.trim()==='Sincronização');
+   const range=document.createRange();
+   if(sync)range.selectNodeContents(sync);
+   return {tableWidth:table?.getBoundingClientRect().width??Infinity,
+     wrapperWidth:wrapper?.getBoundingClientRect().width??0,
+     printHidden:!print||getComputedStyle(print).display==='none',
+     syncLines:sync?range.getClientRects().length:0};
+  });
+  if(layout.tableWidth>layout.wrapperWidth+2)throw Error('Tabela 4.4 ainda corta coluna em '+width+' px');
+  if(!layout.printHidden)throw Error('Imprimir voltou ao cabeçalho móvel em '+width+' px');
+  if(layout.syncLines!==1)throw Error('Sincronização aparece quebrada em '+width+' px');
   for(const [label,index] of [['top',null],['inicio',0],['meio',18],['final',36]]){
    if(index!==null)await page.locator('.step-marker').nth(index).scrollIntoViewIfNeeded();
    await page.screenshot({path:`${dir}/engenharia-${width}-${label}.png`});
