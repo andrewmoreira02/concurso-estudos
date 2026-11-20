@@ -83,8 +83,8 @@
       "contest": "IMA-SC 2027 · FURB",
       "title": "Desde 23/11: IMA · Analista de Informática",
       "desc": "Estudar por edital FURB, diagnosticar retenção e cobrir assuntos exclusivos; não transferir domínio automaticamente entre concursos.",
-      "href": "progresso.html?concurso=ima",
-      "link": "Consultar matriz IMA",
+      "href": "aulas/questoes-ima.html",
+      "link": "Abrir treino dirigido IMA",
       "origin": "Plano IMA registrado em 18/11/2026. Dias da semana ainda não confirmados."
     }
   ],
@@ -92,8 +92,8 @@
     "contest": "Prioridade a revisar",
     "title": "Definir próximo concurso",
     "desc": "As datas registradas dos concursos passaram. Consulte o índice do Projeto e o edital mais recente antes de planejar novos blocos.",
-    "href": "progresso.html",
-    "link": "Consultar histórico",
+    "href": "aulas.html",
+    "link": "Abrir biblioteca de aulas",
     "origin": "O site é estático e não altera o índice da Biblioteca do ChatGPT."
   },
   "calendar": {
@@ -129,9 +129,16 @@
       ],
       "2026-11-21": [
         {
+          "id": "questions-reta-final",
+          "title": "Questões de véspera CASAN — 15 itens autorais",
+          "detail": "Bloco leve de cerca de 35 min: TI (8), Português (3), RLM (2), Legislação (1) e Atualidades (1). Enviar respostas registra automaticamente acertos e erros por disciplina; não é prova anterior da AOCP.",
+          "href": "aulas/questoes-casan-21-11.html"
+        },
+        {
           "id": "revision",
-          "title": "Revisão leve — TI e Atualidades",
-          "detail": "Recuperação ativa, foco nas lacunas confirmadas."
+          "title": "Revisões dirigidas geradas automaticamente",
+          "detail": "Revisar apenas assuntos com erros realmente registrados nas questões; responder um novo quiz marca a revisão praticada, sem precisar digitar acertos.",
+          "href": "revisoes.html"
         }
       ],
       "2026-11-22": [
@@ -149,6 +156,20 @@
           "detail": "Confirmar edital e cartão; não comprova comparecimento.",
           "event": true
         }
+      ],
+      "2027-02-13": [
+        {
+          "id": "ima-questions-eve",
+          "title": "Questões leves de véspera IMA — conteúdos compartilhados",
+          "detail": "Treino curto e opcional sobre TI, Português e RLM. Não é simulado integral da FURB; evitar assunto pesado novo.",
+          "href": "aulas/questoes-ima.html"
+        },
+        {
+          "id": "ima-review-eve",
+          "title": "Revisões automáticas por erros (se houver)",
+          "detail": "Revisar respostas efetivamente registradas, sem preencher planilha e sem presumir domínio.",
+          "href": "revisoes.html"
+        }
       ]
     },
     "cycles": [
@@ -161,7 +182,7 @@
             {
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
-              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "detail": "≈70 min: teoria e exercícios de TI conforme necessidade; não impor proporção fixa.",
               "href": "aulas.html"
             },
             {
@@ -171,8 +192,8 @@
             },
             {
               "id": "ima-review",
-              "title": "Recuperação / revisão",
-              "detail": "≈15 min sugeridos; rever erros reais",
+              "title": "Revisões automáticas por erros",
+              "detail": "≈15 min sugeridos: resolver questões de recuperação de assuntos com erros enviados; sem preencher formulário, conclusão só após respostas.",
               "href": "revisoes.html"
             }
           ],
@@ -180,7 +201,7 @@
             {
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
-              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "detail": "≈70 min: teoria e exercícios de TI conforme necessidade; não impor proporção fixa.",
               "href": "aulas.html"
             },
             {
@@ -190,8 +211,8 @@
             },
             {
               "id": "ima-review",
-              "title": "Recuperação / revisão",
-              "detail": "≈15 min sugeridos; rever erros reais",
+              "title": "Revisões automáticas por erros",
+              "detail": "≈15 min sugeridos: resolver questões de recuperação de assuntos com erros enviados; sem preencher formulário, conclusão só após respostas.",
               "href": "revisoes.html"
             }
           ],
@@ -199,7 +220,7 @@
             {
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
-              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "detail": "≈50 min: teoria ou prática de TI, adaptadas à leitura e aos erros reais.",
               "href": "aulas.html"
             },
             {
@@ -209,16 +230,22 @@
             },
             {
               "id": "ima-review",
-              "title": "Recuperação / revisão",
-              "detail": "≈15 min sugeridos; rever erros reais",
+              "title": "Revisões automáticas por erros",
+              "detail": "≈15 min sugeridos: resolver questões de recuperação de assuntos com erros enviados; sem preencher formulário, conclusão só após respostas.",
               "href": "revisoes.html"
+            },
+            {
+              "id": "ima-questions",
+              "title": "Questões de TI, Português e RLM — treino IMA",
+              "detail": "≈20 min do núcleo de 2 h: questões autorais com correção e registro automáticos. Treino compartilhado, ainda não cobre Administração Pública e Legislação Ambiental.",
+              "href": "aulas/questoes-ima.html"
             }
           ],
           "3": [
             {
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
-              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "detail": "≈70 min: teoria e exercícios de TI conforme necessidade; não impor proporção fixa.",
               "href": "aulas.html"
             },
             {
@@ -228,8 +255,8 @@
             },
             {
               "id": "ima-review",
-              "title": "Recuperação / revisão",
-              "detail": "≈15 min sugeridos; rever erros reais",
+              "title": "Revisões automáticas por erros",
+              "detail": "≈15 min sugeridos: resolver questões de recuperação de assuntos com erros enviados; sem preencher formulário, conclusão só após respostas.",
               "href": "revisoes.html"
             }
           ],
@@ -237,7 +264,7 @@
             {
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
-              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "detail": "≈70 min: teoria e exercícios de TI conforme necessidade; não impor proporção fixa.",
               "href": "aulas.html"
             },
             {
@@ -247,8 +274,8 @@
             },
             {
               "id": "ima-review",
-              "title": "Recuperação / revisão",
-              "detail": "≈15 min sugeridos; rever erros reais",
+              "title": "Revisões automáticas por erros",
+              "detail": "≈15 min sugeridos: resolver questões de recuperação de assuntos com erros enviados; sem preencher formulário, conclusão só após respostas.",
               "href": "revisoes.html"
             }
           ],
@@ -256,7 +283,7 @@
             {
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
-              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "detail": "≈50 min: teoria ou prática de TI, adaptadas à leitura e aos erros reais.",
               "href": "aulas.html"
             },
             {
@@ -266,16 +293,22 @@
             },
             {
               "id": "ima-review",
-              "title": "Recuperação / revisão",
-              "detail": "≈15 min sugeridos; rever erros reais",
+              "title": "Revisões automáticas por erros",
+              "detail": "≈15 min sugeridos: resolver questões de recuperação de assuntos com erros enviados; sem preencher formulário, conclusão só após respostas.",
               "href": "revisoes.html"
+            },
+            {
+              "id": "ima-questions",
+              "title": "Questões de TI, Português e RLM — treino IMA",
+              "detail": "≈20 min do núcleo de 2 h: questões autorais com correção e registro automáticos. Treino compartilhado, ainda não cobre Administração Pública e Legislação Ambiental.",
+              "href": "aulas/questoes-ima.html"
             }
           ],
           "6": [
             {
               "id": "ima-ti",
               "title": "TI — núcleo sugerido",
-              "detail": "≈70 min sugeridos; tópicos do edital e retenção",
+              "detail": "≈70 min: teoria e exercícios de TI conforme necessidade; não impor proporção fixa.",
               "href": "aulas.html"
             },
             {
@@ -285,8 +318,8 @@
             },
             {
               "id": "ima-review",
-              "title": "Recuperação / revisão",
-              "detail": "≈15 min sugeridos; rever erros reais",
+              "title": "Revisões automáticas por erros",
+              "detail": "≈15 min sugeridos: resolver questões de recuperação de assuntos com erros enviados; sem preencher formulário, conclusão só após respostas.",
               "href": "revisoes.html"
             }
           ]
@@ -300,7 +333,7 @@
       3,
       7
     ],
-    "label": "Agenda inicial sugerida; não comprova retenção e pode ser ajustada por desempenho."
+    "label": "Revisões são criadas automaticamente a partir dos erros nos quizzes realmente enviados. O novo quiz de revisão, quando enviado, registra sua realização; não exige formulário manual nem presume domínio."
   },
   "adaptive_study": {
     "schema_version": 1,
