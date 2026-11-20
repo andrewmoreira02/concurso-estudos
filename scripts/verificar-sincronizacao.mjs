@@ -116,6 +116,21 @@ try{
  await syncPage(phone);
  await syncPage(pc);
  await pc.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]').length===0,null,{timeout:15000});
+ // Leitura de novas aulas e confirmação de inscrição também devem cruzar aparelhos.
+ await pc.evaluate(()=>{
+   localStorage.setItem('ce_lesson_read_v1:banco-dados',JSON.stringify({version:1,lesson:'banco-dados',read:['bd-1-1']}));
+   localStorage.setItem('ce_registration_v1',JSON.stringify({ima:true}));
+ });
+ await syncPage(pc);
+ assert(remote.get('read:new:banco-dados:bd-1-1')===true,'Leitura da aula nova não foi enviada');
+ assert(remote.get('registration:ima')===true,'Inscrição confirmada não foi enviada');
+ await syncPage(phone);
+ await phone.waitForFunction(()=>{
+   const doc=JSON.parse(localStorage.getItem('ce_lesson_read_v1:banco-dados')||'{}');
+   const reg=JSON.parse(localStorage.getItem('ce_registration_v1')||'{}');
+   return doc.read?.includes('bd-1-1')&&reg.ima===true;
+ },null,{timeout:15000});
+ console.log('OK: nova aula e confirmação de inscrição sincronizadas entre aparelhos.');
  assert(calls>=12,'Fluxo de API não executado');
  console.log('OK: migração conservadora, 2 aparelhos, leitura, reversão, Engenharia, Português, sessões e exclusão; '+calls+' requisições simuladas');
 }finally{await a.close();await b.close();await browser.close();server.closeAllConnections?.();await new Promise(done=>server.close(done));}
