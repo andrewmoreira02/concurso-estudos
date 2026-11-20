@@ -70,8 +70,11 @@ function courseState(lesson,exam){
  const weight=matrix.find(pair=>pair[0]===subject)?.[1]||0;
  const totalQuestions=config.exams?.[exam]?.total||0;
  const ratio=count?read/count:0;
- const score=first?weight*(0.32+0.68*(1-ratio)):0;
- return {...lesson,read,total:count,completed,first,lastFinished,weight,totalQuestions,subject,ratio,score};
+ // Manter continuidade de aulas parcialmente lidas sem confundir Lido com domínio.
+ // O bônus é relativo ao peso do edital e desaparece após a última subseção.
+ const inProgress=read>0&&read<count;
+ const score=first?weight*(inProgress?1.35+0.1*ratio:1):0;
+ return {...lesson,read,total:count,completed,first,lastFinished,weight,totalQuestions,subject,ratio,inProgress,score};
 }
 function getSessionLogs(){
  const data=parse(logsKey,[]);
