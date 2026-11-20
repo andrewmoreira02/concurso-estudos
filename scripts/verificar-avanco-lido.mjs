@@ -65,7 +65,9 @@ async function one(path,kind){
    const pref=page.locator('#ce-next-reading-preference input');
    check(await pref.count()===1,'Preferência de avanço deve estar nas ferramentas finais');
    check(await pref.isChecked(),'Avanço deve começar ligado');
-   check(await page.locator('.ce-step-next').count()===9,'Cada uma das 9 subseções deve ter navegação');
+   const expected=kind==='legislacao-casan'?15:9;
+   check(await page.locator('.ce-step-next').count()===expected,'Cada uma das '+expected+' subseções deve ter navegação');
+   check(await page.locator('[data-ce-module-count]').count()===expected/3,'Contadores de módulo indisponíveis');
    await section.locator('a.ce-step-next').click();
    await page.waitForFunction(slug=>{
      const key='ce_lesson_read_v1:'+slug,doc=JSON.parse(localStorage.getItem(key)||'{}');
@@ -92,7 +94,8 @@ try{
  await one('aulas/rlm.html','rlm');
  await one('aulas/portugues-casan-19-11.html','pt');
  for(const slug of ['banco-dados','seguranca','algoritmos-oo','administracao-publica-ima','legislacao-ambiental-ima'])await one('aulas/'+slug+'.html',slug);
- console.log('SUCESSO: oito aulas com Próxima => Lido e sem progresso presumido ao abrir.');
+ await one('aulas/legislacao-casan-20-11.html','legislacao-casan');
+ console.log('SUCESSO: nove aulas com Próxima => Lido e sem progresso presumido ao abrir.');
 }catch(e){failed=true;console.error(e);}
 finally{await browser.close();server.closeAllConnections?.();await new Promise(done=>server.close(done));}
 if(failed)process.exitCode=1;
