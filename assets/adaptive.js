@@ -152,7 +152,13 @@ function model(){
  }
  const path=location.pathname;
  const active=lessons.find(l=>path.endsWith('/'+l.url)||path.endsWith(l.url));
- const relevant=lessons.filter(l=>l.weight>0);
+ // Reserva de aulas: concursos ainda ativos (inclusive a próxima prova IMA), não só o foco diário.
+ // Não contam materiais sem aderência a edital vigente nem páginas sem cadastro completo.
+ const ongoing=Object.entries(config.exams||{}).filter(([key,details])=>details.deadline>=today).map(([key])=>key);
+ const relevant=lessons.filter(l=>ongoing.some(key=>{
+   const subject=l.subjects?.[key],matrix=config.exams[key]?.subjects||[];
+   return !!subject&&matrix.some(pair=>pair[0]===subject&&pair[1]>0);
+ }));
  const unreadEquivalents=relevant.reduce((sum,l)=>sum+(l.total-l.read)/l.total,0);
  const minEquivalents=Math.max(1,Math.min(10,config.adaptive_study?.minimum_unread_equivalents||5));
  return {today,exam,windowRule,lessons,picks,due,agenda:agenda(today),active,unreadEquivalents,minEquivalents};
