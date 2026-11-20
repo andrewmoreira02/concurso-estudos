@@ -355,7 +355,8 @@
           2
         ],
         "subjects": {
-          "casan": "Português"
+          "casan": "Português",
+          "ima": "Português"
         },
         "reuse_ima": "Material CASAN pode servir de revisão; não transfere avaliação ou domínio para o IMA.",
         "module_titles": [
@@ -402,7 +403,80 @@
           "Como interpretar gráficos e tabelas",
           "Mapa de fórmulas e leitura de enunciados"
         ]
+      },
+      {
+        "id": "banco-dados",
+        "title": "Banco de Dados e SQL — Modelagem, Consultas e Transações",
+        "url": "aulas/banco-dados.html",
+        "section_prefix": "bd",
+        "sections_per_module": [
+          3,
+          3,
+          3
+        ],
+        "module_titles": [
+          "Modelagem relacional e integridade",
+          "Consultas SQL e raciocínio com resultados",
+          "Transações, desempenho e segurança"
+        ],
+        "subjects": {
+          "casan": "Conhecimentos Específicos (TI)",
+          "ima": "Tecnologia da Informação"
+        },
+        "status": "disponivel"
+      },
+      {
+        "id": "seguranca",
+        "title": "Segurança de Aplicações e APIs — OWASP, OAuth e REST",
+        "url": "aulas/seguranca.html",
+        "section_prefix": "seg",
+        "sections_per_module": [
+          3,
+          3,
+          3
+        ],
+        "module_titles": [
+          "Fundamentos de ameaças e defesas",
+          "Identidade, autorização e tokens",
+          "HTTP, APIs e segurança operacional"
+        ],
+        "subjects": {
+          "casan": "Conhecimentos Específicos (TI)",
+          "ima": "Tecnologia da Informação"
+        },
+        "status": "disponivel"
+      },
+      {
+        "id": "algoritmos-oo",
+        "title": "Algoritmos, Estruturas de Dados e Orientação a Objetos",
+        "url": "aulas/algoritmos-oo.html",
+        "section_prefix": "alg",
+        "sections_per_module": [
+          3,
+          3,
+          3
+        ],
+        "module_titles": [
+          "Algoritmos e estruturas de dados",
+          "Orientação a Objetos e SOLID",
+          "Padrões e testes de software"
+        ],
+        "subjects": {
+          "casan": "Conhecimentos Específicos (TI)",
+          "ima": "Tecnologia da Informação"
+        },
+        "status": "disponivel"
       }
-    ]
+    ],
+    "minimum_unread_equivalents": 5,
+    "count_rule": "Aula equivalente a ler = (subseções totais - subseções marcadas Lido)/subseções totais. Somente material completo publicado e compatível com o edital ativo conta. Não equivale a domínio."
+  },
+  "registration": {
+    "ima": {
+      "opens": "2026-11-13",
+      "closes": "2026-12-14",
+      "url": "https://concursos.furb.br/informacoes/584",
+      "status_source": "Confirmação manual em armazenamento privado; não presume inscrição até o usuário marcar."
+    }
   }
 }
