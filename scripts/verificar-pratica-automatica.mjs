@@ -136,7 +136,7 @@ try{
 
  await goto('aulas/banco-dados.html');
  await page.waitForFunction(()=>document.querySelectorAll('form[data-ce-quiz]:not(.ce-cobranca-form) [data-ce-question]').length===3,{timeout:15000});
- await page.evaluate(()=>document.querySelectorAll('form[data-ce-quiz].ce-cobranca-form').forEach(f=>f.dataset.ceQuiz='temporarily-disabled'));
+ await page.evaluate(()=>document.querySelectorAll('form[data-ce-quiz].ce-cobranca-form').forEach(f=>f.removeAttribute('data-ce-quiz')));
  await answerQuiz(1);
  state=await inspect();
  assert(state.logs.length===10&&state.logs.at(-1).topic.includes('Banco de Dados'),'Integração com quiz já publicado falhou');
