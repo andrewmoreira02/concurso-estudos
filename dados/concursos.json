@@ -251,7 +251,8 @@
             {
               "id": "ima-general",
               "title": "Legislação Ambiental",
-              "detail": "≈35 min sugeridos; Dispositivos aplicáveis ao edital e conceitos relevantes"
+              "detail": "≈35 min sugeridos; aula completa do cargo de Analista de Informática: art. 225, LC 140/2011, Lei 6.938/1981, leis catarinenses 14.675/2009 e 17.354/2017. Estudo não confirmado.",
+              "href": "aulas/legislacao-ambiental-ima.html"
             },
             {
               "id": "ima-review",
@@ -505,7 +506,11 @@
         "title": "Administração Pública — IMA-SC",
         "url": "aulas/administracao-publica-ima.html",
         "section_prefix": "adm",
-        "sections_per_module": [3, 3, 3],
+        "sections_per_module": [
+          3,
+          3,
+          3
+        ],
         "module_titles": [
           "Fundamentos e organização administrativa",
           "Atos e garantias processuais",
@@ -513,6 +518,26 @@
         ],
         "subjects": {
           "ima": "Administração Pública"
+        },
+        "status": "disponivel"
+      },
+      {
+        "id": "legislacao-ambiental-ima",
+        "title": "Legislação Ambiental Aplicada — IMA-SC",
+        "url": "aulas/legislacao-ambiental-ima.html",
+        "section_prefix": "la",
+        "sections_per_module": [
+          3,
+          3,
+          3
+        ],
+        "module_titles": [
+          "Fundamentos constitucionais e repartição de competências",
+          "Política Nacional do Meio Ambiente",
+          "Legislação catarinense e competências do IMA"
+        ],
+        "subjects": {
+          "ima": "Legislação Ambiental"
         },
         "status": "disponivel"
       }
