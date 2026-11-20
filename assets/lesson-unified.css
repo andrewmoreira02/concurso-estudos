@@ -231,3 +231,17 @@
    padding:9px 8px;overflow-wrap:break-word;word-break:normal;
  }
 }
+
+
+/* Exemplos de provas: neutros, legíveis no celular, sem estado de avaliação. */
+.ce-exam-examples{margin:1.4rem 0;padding:1rem;border:1px solid var(--ce-line,#345168);border-radius:14px;background:var(--ce-panel,#142436);color:var(--ce-ink,#ecf4fd);max-width:100%;overflow-wrap:anywhere}
+.ce-exam-examples h4{font-size:1.12rem;margin:0 0 .5rem;color:var(--ce-aqua,#82e3e1)}
+.ce-exam-examples p{margin:.55rem 0}
+.ce-exam-item{margin:.7rem 0;padding:.7rem;border:1px solid var(--ce-line,#345168);border-radius:10px;background:var(--ce-soft,#1b3146)}
+.ce-exam-item summary{cursor:pointer;font-weight:650;line-height:1.5}
+.ce-exam-options{padding-left:1.6rem;list-style-type:upper-alpha}
+.ce-exam-options li{padding:.18rem .25rem;line-height:1.6}
+.ce-exam-answer{margin-top:.7rem;border-left:3px solid var(--ce-green,#a2e9c0);padding:.45rem .8rem;background:rgba(35,90,70,.2)}
+.ce-exam-answer summary{color:var(--ce-green,#a2e9c0)}
+.ce-exam-examples a{overflow-wrap:anywhere}
+@media(max-width:430px){.ce-exam-examples{padding:.7rem}.ce-exam-item{padding:.6rem}.ce-exam-options{padding-left:1.35rem}}
