@@ -72,7 +72,7 @@ function questionElement(q,index){
  f.append(legend);
  if(adapted){
    const source=el('div','','ce-original-source');
-   source.append(el('strong','ADAPTADA de tema de prova FURB '+q.source.year+' · '+(q.source.role||'Analista de Sistemas')+' · questão '+q.source.question_number));
+   source.append(el('strong','Adaptada de tema de prova FURB '+q.source.year+' · '+(q.source.role||'Analista de Sistemas')+' · questão '+q.source.question_number));
    source.append(el('p','Enunciado e alternativas desta versão foram reescritos; a resposta correta desta adaptação foi conferida separadamente. Não é transcrição da prova.'));
    const link=el('a','Consultar caderno de origem (opcional)');
    link.href=q.source.paper_url+(Number.isInteger(q.source.printed_page)?'#page='+q.source.printed_page:'');
