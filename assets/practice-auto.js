@@ -134,6 +134,24 @@ function renderTasks(){
      button.type='button';button.dataset.reviewTask=task.id;
      button.addEventListener('click',()=>openReview(task));
      card.append(button);
+   }else{
+     // Reversão explícita: apenas o estado "revisada" é desmarcado; sessões enviadas ficam preservadas.
+     const undo=el('button','Desfazer marcação de revisão');
+     undo.type='button';undo.dataset.undoReview=task.id;
+     undo.setAttribute('aria-label','Desfazer marcação de revisão para '+task.session.topic);
+     undo.addEventListener('click',()=>{
+       if(!confirm('Desmarcar esta revisão? As respostas já enviadas permanecem registradas.'))return;
+       try{
+         const value=parse(DONE_KEY,{}),done=value&&typeof value==='object'&&!Array.isArray(value)?value:{};
+         localStorage.setItem(DONE_KEY,JSON.stringify({...done,[task.id]:false}));
+         dispatchEvent(new CustomEvent('concurso:progress-change'));
+         renderTasks();
+       }catch{
+         const count=document.getElementById('reviewAutoCount');
+         if(count)count.textContent='Não foi possível desfazer a marcação; o progresso não foi apagado.';
+       }
+     });
+     card.append(undo);
    }
    mount.append(card);
  }
