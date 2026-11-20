@@ -100,6 +100,8 @@ try{
  let studyState=await page.evaluate(()=>window.ConcursoAdaptive.model());
  assert(studyState.lessons.find(l=>l.id==='engenharia').studiedCount===1,'Clique Estudado não alterou cobertura');
  assert(studyState.lessons.find(l=>l.id==='engenharia').read===0,'Estudado não deve alterar Lido');
+ const moduleQuiz=studyState.picks.find(x=>x.type==='quiz'&&x.href.includes('questoes-engenharia-casan.html?'));
+ assert(moduleQuiz?.href.includes('?de=1&ate=2'),'Após estudar só módulo 1, sugerir apenas questões 1–2 de Requisitos, não Builder do módulo 9');
  assert(!(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('ce_study_confirmed_v1')||'{}').confirmed||{}).some(k=>k.startsWith('ima:')))),'CASAN não deve marcar IMA automaticamente');
  await studyCard.locator('input[type=checkbox]').first().uncheck();
  await page.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_study_confirmed_v1')||'{}').confirmed?.['casan:engenharia:1']===false,{timeout:15000});
