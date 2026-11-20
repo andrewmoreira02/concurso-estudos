@@ -14,7 +14,8 @@ const lessons=[
  {p:'aulas/seguranca.html',n:9,type:'new',backup:'nl-export',read:'input[data-ce-read]'},
  {p:'aulas/algoritmos-oo.html',n:9,type:'new',backup:'nl-export',read:'input[data-ce-read]'},
  {p:'aulas/administracao-publica-ima.html',n:9,type:'new',backup:'nl-export',read:'input[data-ce-read]'},
- {p:'aulas/legislacao-ambiental-ima.html',n:9,type:'new',backup:'nl-export',read:'input[data-ce-read]'}
+ {p:'aulas/legislacao-ambiental-ima.html',n:9,type:'new',backup:'nl-export',read:'input[data-ce-read]'},
+ {p:'aulas/legislacao-casan-20-11.html',n:15,type:'new',backup:'nl-export',read:'input[data-ce-read]'}
 ];
 let count=0;
 function check(ok,desc){count++;if(!ok)throw Error(desc);}
@@ -67,5 +68,5 @@ try{
   }
   await context.close();
  }
- console.log('SUCESSO '+count+' verificações do padrão único nas oito aulas');
+ console.log('SUCESSO '+count+' verificações do padrão único nas nove aulas');
 }finally{await browser.close();}
