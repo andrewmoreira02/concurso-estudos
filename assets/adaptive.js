@@ -158,31 +158,7 @@ function anchor(href,label,primary=false){
  a.href=localHref(href);
  return a;
 }
-function createPanel(){
- // O painel inicial já apresenta o próximo foco e os atalhos.
- // Evita uma caixa redundante de sugestões na página principal.
- const page=location.pathname.split('/').pop()||'index.html';
- if(page==='index.html')return;
- const main=document.querySelector('main');
- if(!main)return;
- panel=el('section','ce-adaptive');
- panel.id='adaptiveRecommendations';
- panel.setAttribute('aria-labelledby','adaptiveTitle');
- const head=el('div','ce-adaptive-head');
- const titleGroup=el('div','ce-adaptive-title');
- titleGroup.append(el('span','ce-adaptive-eyebrow','Continuidade do plano de estudos'));
- const title=el('h2','','Próximos passos sugeridos');title.id='adaptiveTitle';titleGroup.append(title);
- head.append(titleGroup);
- button=el('button','ce-adaptive-refresh','Atualizar agora');
- button.type='button';
- button.addEventListener('click',()=>{void refresh(true);});
- head.append(button);
- status=el('p','ce-adaptive-status','Lendo o progresso salvo…');
- status.setAttribute('role','status');status.setAttribute('aria-live','polite');
- details=el('div','ce-adaptive-body');
- panel.append(head,status,details);
- main.prepend(panel);
-}
+function createPanel(){ /* Sem painel redundante: o foco aparece nos cartões existentes. */ }
 function orderCatalog(data){
  const catalog=$('lessonCatalog');
  if(!catalog)return;
@@ -275,7 +251,7 @@ function render(data){
 function statusText(now,message=''){
  const sync= parse('ce_private_sync_pair_meta_v2',null);
  const pair=(()=>{try{return !!localStorage.getItem('ce_private_sync_pair_v1');}catch{return false;}})();
- let base='Sugestões calculadas no navegador em '+formatTime(now)+'. A manutenção editorial de aulas e planos é feita separadamente pela tarefa agendada do ChatGPT.';
+ let base='Atualização de leitura calculada em '+formatTime(now)+'. A manutenção editorial de aulas e planos é feita separadamente pela tarefa agendada do ChatGPT.';
  if(pair&&sync?.last_sync){
    const when=new Date(sync.last_sync);
    base+=' Última sincronização remota confirmada: '+(Number.isFinite(when.valueOf())?formatTime(when):'não identificada')+'.';
