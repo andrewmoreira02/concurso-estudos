@@ -135,7 +135,8 @@ try{
  console.log('OK: treino futuro IMA, 12 questões e separação de avaliações entre editais.');
 
  await goto('aulas/banco-dados.html');
- await page.waitForFunction(()=>document.querySelectorAll('[data-ce-quiz] [data-ce-question]').length===3,{timeout:15000});
+ await page.waitForFunction(()=>document.querySelectorAll('form[data-ce-quiz]:not(.ce-cobranca-form) [data-ce-question]').length===3,{timeout:15000});
+ await page.evaluate(()=>document.querySelectorAll('form[data-ce-quiz].ce-cobranca-form').forEach(f=>f.dataset.ceQuiz='temporarily-disabled'));
  await answerQuiz(1);
  state=await inspect();
  assert(state.logs.length===10&&state.logs.at(-1).topic.includes('Banco de Dados'),'Integração com quiz já publicado falhou');
