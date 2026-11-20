@@ -66,6 +66,12 @@ try{
  assert(data.lessons.find(l=>l.id==='rlm').read===41,'Progresso 41/71 incorreto');
  assert(data.lessons.find(l=>l.id==='rlm').first.id==='m8-s1','Próxima seção de RLM deveria ser 8.1');
  assert(data.picks[0].title.startsWith('Engenharia'),'Edital TI 25/50 deveria priorizar Engenharia');
+ assert(data.subjects[0].weight===25&&data.subjects[0].name==='Conhecimentos Específicos (TI)',
+   'Peso TI 25/50 não foi considerado como disciplina única');
+ assert(data.lessons.find(l=>l.id==='rlm').studiedCount===0,
+   '41 etapas Lido foram convertidas indevidamente em Estudado');
+ assert(data.subjects.find(x=>x.name==='Raciocínio Lógico-Matemático').confirmed===0,
+   'Leitura RLM não é confirmação de estudo');
  assert(data.picks[0].description.includes('25/50'),'Justificativa deve usar peso oficial do edital');
  assert(!JSON.stringify(data).includes('"studied":true'),'Não inferir Estudado de Lido');
  assert(await page.locator('#adaptiveRecommendations').count()===0,'Página inicial não deve mostrar caixa redundante Sugestões locais');
@@ -84,7 +90,21 @@ try{
  assert((await page.locator('#nextLessonLink').getAttribute('href')).includes('engenharia-qualidade.html'),'Plano não mudou link para sugestão adaptativa');
  const planned=await page.evaluate(()=>localStorage.getItem('ce_plan_done_v1'));
  assert(planned===null,'Recomendação marcou atividade como executada');
- console.log('OK: planejamento adaptado, sem marcar atividades realizadas.');
+ assert(await page.locator('#ceStudyPriority').count()===1,'Falta painel de ordem por peso e estudo');
+ assert(await page.locator('#cePrioritySubjects table tbody tr').count()===5,'Matriz de cinco disciplinas não exibida');
+ await page.locator('.ce-study-confirm > summary').click();
+ const studyCard=page.locator('.ce-study-lesson[data-study-lesson="engenharia"]');
+ await studyCard.locator('summary').click();
+ await studyCard.locator('input[type=checkbox]').first().check();
+ await page.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_study_confirmed_v1')||'{}').confirmed?.['casan:engenharia:1']===true,{timeout:15000});
+ let studyState=await page.evaluate(()=>window.ConcursoAdaptive.model());
+ assert(studyState.lessons.find(l=>l.id==='engenharia').studiedCount===1,'Clique Estudado não alterou cobertura');
+ assert(studyState.lessons.find(l=>l.id==='engenharia').read===0,'Estudado não deve alterar Lido');
+ assert(!localStorage.getItem('ce_study_confirmed_v1:ima'),'CASAN não deve marcar IMA automaticamente');
+ await studyCard.locator('input[type=checkbox]').first().uncheck();
+ await page.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_study_confirmed_v1')||'{}').confirmed?.['casan:engenharia:1']===false,{timeout:15000});
+ assert(await page.locator('#ceStudyStatus').innerText(),'Ausência de confirmação da operação');
+ console.log('OK: matriz edital, estudo confirmado/desmarcado por módulo e avaliação separada de Lido.');
 
  // Regressão: começar Engenharia não deve trocar automaticamente para Banco de Dados zerado.
  await page.evaluate(()=>{
@@ -100,24 +120,50 @@ try{
  await loaded();
  assert((await page.locator('#lessonCatalog .catalog-card').first().getAttribute('data-lesson-id'))==='engenharia','Catálogo não preservou Engenharia como aula prioritária');
  assert((await page.locator('#catalogEngContinue').getAttribute('href')).includes('#etapa-1-4'),'Link de retomada perdeu etapa 1.4');
- // Aula integralmente lida sai da fila, sem alterar ou apagar o histórico de avaliações.
+ // Marcar a aula inteira como Lido não deve convertê-la em Estudado nem suprimir a prioridade.
  await page.evaluate(()=>{
    const counts=[5,6,4,5,3,3,2,3,3,3],full=[];
    counts.forEach((n,m)=>{for(let step=1;step<=n;step++)full.push((m+1)+'.'+step);});
    localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify(full));
    dispatchEvent(new CustomEvent('concurso:progress-change'));
  });
+ await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.read===37,{timeout:15000});
+ data=await page.evaluate(()=>window.ConcursoAdaptive.model());
+ assert(data.lessons.find(l=>l.id==='engenharia').studiedCount===0,'37/37 Lido criou Estudado indevidamente');
+ assert(data.lessons.find(l=>l.id==='engenharia').first!==null,'37/37 Lido deve sugerir confirmação/recuperação, não domínio');
+ // Somente declaração de estudo por módulo deixa a aula fora da fila de teoria;
+ // para o mesmo edital, outras aulas TI permanecem em aberto.
+ await page.evaluate(()=>{
+   const confirmed={};
+   for(let m=1;m<=10;m++)confirmed['casan:engenharia:'+m]=true;
+   localStorage.setItem('ce_study_confirmed_v1',JSON.stringify({version:1,confirmed}));
+   dispatchEvent(new CustomEvent('concurso:progress-change'));
+ });
  await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.first===null,{timeout:15000});
  data=await page.evaluate(()=>window.ConcursoAdaptive.model());
- assert(!data.picks.some(p=>p.type==='lesson'&&p.href.includes('engenharia-qualidade.html')),'Aula 100% Lido deve sair da fila de leitura');
+ assert(!data.picks.some(p=>p.type==='lesson'&&p.href.includes('engenharia-qualidade.html')),'Estudo confirmado 10/10 deveria tirar Engenharia da fila de teoria');
+ assert(data.lessons.find(l=>l.id==='engenharia').read===37,'Marcar Estudado não pode apagar marcações de leitura');
+ // Prioridade cai quando TI é realmente confirmado estudado como um todo.
  await page.evaluate(()=>{
+   const raw=JSON.parse(localStorage.getItem('ce_study_confirmed_v1'));
+   const groups={'banco-dados':3,'seguranca':3,'algoritmos-oo':3};
+   for(const [id,n] of Object.entries(groups))for(let m=1;m<=n;m++)raw.confirmed['casan:'+id+':'+m]=true;
+   localStorage.setItem('ce_study_confirmed_v1',JSON.stringify(raw));
+   dispatchEvent(new CustomEvent('concurso:progress-change'));
+ });
+ await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.subjects.find(x=>x.name==='Conhecimentos Específicos (TI)')?.confirmed===19,{timeout:15000});
+ data=await page.evaluate(()=>window.ConcursoAdaptive.model());
+ assert(data.subjects[0].name==='Português'&&data.subjects[0].weight===10,'Português com 10 questões deve subir quando TI tiver 19 módulos confirmados');
+ assert(data.subjects.find(x=>x.name==='Conhecimentos Específicos (TI)').priority===0,'TI sem erros não deve manter prioridade de teoria quando 100% dos módulos estiverem confirmados');
+ assert(data.lessons.find(l=>l.id==='engenharia').subject==='Conhecimentos Específicos (TI)','Aula foi movida indevidamente entre concursos');
+ await page.evaluate(()=>{
+   localStorage.removeItem('ce_study_confirmed_v1');
    localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify(['1.1','1.2','1.3']));
    dispatchEvent(new CustomEvent('concurso:progress-change'));
  });
- await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.read===3,{timeout:15000});
+ await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.read===3&&window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.studiedCount===0,{timeout:15000});
  assert((await page.locator('#catalogEngContinue').getAttribute('href')).includes('#etapa-1-4'),'Retomada perdeu marcações existentes');
- console.log('OK: Engenharia 3/37 continua recomendada; 37/37 sai da fila; retomada preservada no catálogo e plano.');
-
+ console.log('OK: leitura completa não vira estudo; 19 módulos TI confirmados mudam prioridade para Português; estado reversível.');
  // O conteúdo da aula não apresenta o painel de sugestões: ele pertence ao painel e ao plano.
  await page.goto(base+'/aulas/rlm.html',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>!!document.querySelector('#ferramentas-da-aula'),{timeout:15000});
