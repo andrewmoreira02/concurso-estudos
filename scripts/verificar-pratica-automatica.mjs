@@ -72,6 +72,15 @@ try{
  });
  assert(distribution.ti===8&&distribution.portugues===3&&distribution.rlm===2&&distribution.legislacao===1&&distribution.atualidades===1,
    'Distribuição da reta final incorreta: '+JSON.stringify(distribution));
+ const originalCount=await page.locator('.ce-original-source').count();
+ assert(originalCount===13,'O simulado da CASAN deve ter 13 questões reais e 2 autorais, encontrado '+originalCount);
+ const urls=await page.locator('.ce-original-source a').evaluateAll(anchors=>anchors.map(a=>a.href));
+ assert(urls.every(url=>url.includes('qconcursos.com/prova/arquivo_prova/97697/')&&/#page=\d+$/.test(url)),
+   'Questão real sem URL do caderno e página identificada');
+ assert(await page.locator('input[type="radio"][value="e"]').count()===13,
+   'Cada questão REAL deve manter a alternativa E do caderno original');
+ console.log('OK: sábado prioriza 13 questões FURB com número, página e gabarito final; 2 autorais de reserva.');
+
  await page.locator('form[data-ce-quiz] button[type="submit"]').click();
  assert((await inspect()).logs.length===0,'Envio incompleto criou resultado inventado');
  await answerQuiz(2);
@@ -106,6 +115,9 @@ try{
 
  await goto('aulas/questoes-ima.html');
  await ready(12);
+ assert(await page.locator('.ce-original-source').count()===12,
+   'Treino IMA deve usar 12 questões originais da mesma banca FURB.');
+
  await answerQuiz(0);
  state=await inspect();
  assert(state.logs.length===9,'Treino IMA deveria gerar 3 sessões de disciplinas');
