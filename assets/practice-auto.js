@@ -72,10 +72,10 @@ function questionElement(q,index){
  f.append(legend);
  if(adapted){
    const source=el('div','','ce-original-source');
-   source.append(el('strong','Adaptada de conteúdo cobrado na prova FURB '+q.source.year+' · Analista de Sistemas · questão '+q.source.question_number));
+   source.append(el('strong','ADAPTADA de tema de prova FURB '+q.source.year+' · '+(q.source.role||'Analista de Sistemas')+' · questão '+q.source.question_number));
    source.append(el('p','Enunciado e alternativas desta versão foram reescritos; a resposta correta desta adaptação foi conferida separadamente. Não é transcrição da prova.'));
    const link=el('a','Consultar caderno de origem (opcional)');
-   link.href=q.source.paper_url+'#page='+q.source.printed_page;
+   link.href=q.source.paper_url+(Number.isInteger(q.source.printed_page)?'#page='+q.source.printed_page:'');
    link.target='_blank';link.rel='noopener noreferrer';
    source.append(link);
    f.append(source);
@@ -104,6 +104,44 @@ function buildForm(items,exam,topic,source,reviewId=null){
  const feedback=el('div');feedback.dataset.ceFeedback='';feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');form.append(feedback);
  return form;
 }
+// Os itens específicos FURB ficam separados do simulado IMA compartilhado.
+// Preservam a procedência original e têm gabaritos PRÓPRIOS de adaptação.
+function imaSpecificItems(){
+ const raw=window.ConcursoCobrancaData;
+ if(!raw||!raw.sources||!raw.cases)throw Error('Questões FURB específicas indisponíveis.');
+ const items=[];
+ const uniqueTi=bank.questions.find(q=>q.id==='furb2023-as-q31-ad-v1');
+ if(!uniqueTi)throw Error('FURB 2023 questão 31 não catalogada.');
+ items.push(uniqueTi);
+ for(const [lesson,subject] of [['administracao-publica-ima','adm'],['legislacao-ambiental-ima','legislacao']]){
+  for(const row of raw.cases[lesson]||[]){
+   const source=raw.sources[row.src];
+   if(!source||source.bank!=='FURB'||!row.origKey||row.options?.length!==5||!(row.answer>=0&&row.answer<5))
+    throw Error('Referência FURB incompleta: '+row.src+' '+row.n);
+   const id=('ima-esp-'+row.src+'-'+row.n+'-'+subject).toLowerCase();
+   items.push({
+    id,kind:'adaptada',subject,tag:subject,exams:['ima'],
+    prompt:row.prompt,
+    options:Object.fromEntries(row.options.map((t,i)=>['abcde'[i],t])),
+    correct:'abcde'[row.answer],
+    explanation:row.explain,
+    whyWrong:'Confira os distratores com os fundamentos da resolução; a letra original do caderno ('+row.origKey+') é independente do gabarito desta adaptação.',
+    source:{
+      bank:'FURB',year:source.year,role:source.exam,question_number:row.n,
+      paper_url:source.pdf,answer_key_url:source.key,
+      original_final_answer:row.origKey
+    }
+   });
+  }
+ }
+ if(items.length!==9||new Set(items.map(x=>x.id)).size!==9||
+    items.filter(x=>x.subject==='ti').length!==1||
+    items.filter(x=>x.subject==='adm').length!==5||
+    items.filter(x=>x.subject==='legislacao').length!==3)
+  throw Error('Banco IMA específico incompleto (esperado 1 TI, 5 Administração e 3 Ambiental).');
+ return items;
+}
+
 async function renderPractice(){
  const stage=document.querySelector('[data-ce-practice]');
  if(!stage)return;
@@ -124,13 +162,16 @@ async function renderPractice(){
    for(const [subject,count] of Object.entries(quotas))
      items.push(...bank.questions.filter(q=>q.kind==='adaptada'&&q.exams.includes('ima')&&q.subject===subject).slice(0,count));
    topic='Treino IMA — conteúdos compartilhados';
+ }else if(type==='ima-especificas'){
+   exam='ima';items=imaSpecificItems();
+   topic='Treino IMA — Administração Pública, Legislação Ambiental e TI';
  }else return;
  if(items.length<3)throw Error('Questões insuficientes para montar o treino.');
  const nAdapted=items.filter(q=>q.kind==='adaptada').length;
  const nAuthor=items.length-nAdapted;
- label=items.length+' questões: '+nAdapted+' adaptação(ões) de temas de FURB 2023'+(nAuthor?' e '+nAuthor+' autoral(is) de reserva':'')+'.';
+ label=items.length+' questões: '+nAdapted+' adaptação(ões) com referência FURB '+(type==='ima-especificas'?'2023/2024/2025':'2023')+(nAuthor?' e '+nAuthor+' autoral(is) de reserva':'')+'.';
  stage.replaceChildren(el('p',label+' Leia enunciados e alternativas diretamente aqui. O PDF de origem é opcional, apenas para conferir a referência da prova. As respostas destas versões adaptadas têm gabaritos próprios.'),
-   buildForm(items,exam,topic,'Adaptações de temas FURB 2023 com gabaritos próprios; reserva autoral identificada.'));
+   buildForm(items,exam,topic,type==='ima-especificas'?'Exercícios adaptados de FURB 2023/2024/2025, gabaritos próprios, Administração/L. Ambiental/TI':'Adaptações de temas FURB 2023 com gabaritos próprios; reserva autoral identificada.'));
  const count=document.getElementById('practiceCount');
  if(count)count.textContent=items.length+' questões';
 }
