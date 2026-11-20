@@ -36,7 +36,7 @@ try{
       if(!comesAfter(content,footer))errors.push('Controle não aparece após conteúdo: '+heading.id);
       if(test.name==='Português'&&footer!==heading.lastElementChild)errors.push('Português Lido não é o último filho: '+heading.id);
       if(test.name.startsWith('Nova ')){
-        const nextNav=heading.querySelector('.nl-next');
+        const nextNav=heading.querySelector('.ce-step-navigation,.nl-next');
         if(!nextNav||nextNav.previousElementSibling!==footer)errors.push('Lido não aparece após a teoria antes da navegação: '+heading.id);
         if(!footer.querySelector('input[data-ce-read="'+heading.id+'"]'))errors.push('Lido e seção divergentes: '+heading.id);
       }
