@@ -92,6 +92,25 @@ try{
    assert.equal(saved.logs.length,step.logs+1,path+' envio explícito não gravou sessão');
    assert.equal(saved.logs.at(-1).subject,slug==='rlm'?'rlm':slug==='portugues'?'portugues':slug==='administracao-publica-ima'?'adm':slug==='legislacao-ambiental-ima'?'legislacao':'ti');
    assert.equal(errors.length,0,path+' erros no navegador: '+errors.join(' | '));
+
+   if(path==='engenharia-qualidade.html'&&width===390){
+    const steps=[['eng-1','etapa-1-1','b'],['eng-2','etapa-4-4','c'],['eng-3','etapa-7-2','a']];
+    let n=saved.logs.length;
+    for(const [id,step,answer] of steps){
+     const form=page.locator('.ce-topic-practice[data-topic-question="'+id+'"] form[data-ce-quiz]');
+     assert.equal(await form.count(),1,'Questão pontual ausente: '+id);
+     assert(await form.evaluate((node,step)=>Boolean(node.closest('.section')?.querySelector('#'+step)),step),
+      id+' fora do módulo adequado');
+     const item=form.locator('[data-ce-question="'+id+'"]');
+     assert.equal(await item.getAttribute('data-correct'),answer,'Gabarito da questão autoral alterado');
+     await form.locator('input[type="radio"][value="'+answer+'"]').check({force:true});
+     await form.locator('button[type="submit"]').click({force:true});
+     await page.waitForFunction(n=>JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]').length===n+1,n,{timeout:7000});
+     n++;
+    }
+    assert.equal(n,saved.logs.length+3,'Questões pontuais não geraram três sessões realmente enviadas');
+    console.log('OK Engenharia: 3 autorais nas subseções 1.1/4.4/7.2, avaliação separada por envio.');
+   }
    count++;console.log('OK '+width+'px '+path+' · '+exp+' adaptações inline, conferir sem registro e envio com registro');
    await page.close();
   }
