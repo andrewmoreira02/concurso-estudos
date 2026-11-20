@@ -398,6 +398,20 @@ function render(data){
  });
  orderCatalog(data);
  renderStudyPriority(data);
+ const practiceSection=$('ceQuestionInventory'),practiceHint=$('ceQuizRecommended');
+ if(practiceSection)practiceSection.hidden=data.exam!=='casan';
+ if(practiceHint&&data.exam==='casan'){
+  practiceHint.replaceChildren();
+  const specific=data.picks.find(x=>x.type==='quiz'&&/questoes-[a-z-]+-casan\.html\?de=\d+&ate=\d+/.test(x.href));
+  if(data.daysRemaining===0){
+   practiceHint.append(el('p','note-small','Hoje é o dia da prova: não há bateria obrigatória de questões. Priorize orientações oficiais e revisão leve.'));
+  }else if(specific){
+   practiceHint.append(el('p','note-small','Estudo de módulo confirmado: '+specific.description));
+   practiceHint.append(anchor(specific.href,'Abrir apenas '+specific.title,true));
+  }else{
+   practiceHint.append(el('p','note-small','Ainda não há bloco individual recomendado por estudo confirmado. A prioridade é avançar nos tópicos de maior retorno. Os sete conjuntos preparados permanecem disponíveis abaixo, de modo opcional.'));
+  }
+ }
  if(signature!==renderedSignature&&details){
    renderedSignature=signature;
    details.replaceChildren();
