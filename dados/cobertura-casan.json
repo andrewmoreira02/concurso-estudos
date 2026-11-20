@@ -448,9 +448,14 @@
         {
           "id": "G3",
           "title": "Legislação CASAN — 9.984/2000, 12.288/2010 e atos institucionais",
-          "depth": "lacuna",
-          "lessons": [],
-          "note": "Não confundir leis ambientais IMA com regras CASAN; legislação e códigos da CASAN precisam consulta oficial"
+          "depth": "desenvolvido",
+          "lessons": [
+            {
+              "href": "aulas/legislacao-casan-20-11.html#leg-1-1",
+              "label": "Legislação CASAN — 15 etapas / 5 módulos"
+            }
+          ],
+          "note": "Material didático criado com referências normativas e 5 questões diagnósticas, sem confirmação de estudo. Verificar referência expressa do edital à Res. 002/2022 diante da Res. 021/2026 publicada no portal CASAN."
         }
       ]
     },
