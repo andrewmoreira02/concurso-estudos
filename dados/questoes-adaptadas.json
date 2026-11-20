@@ -28,7 +28,7 @@
       "origin_id": "furb2023-as-q3",
       "subject": "portugues",
       "tag": "portugues",
-      "prompt": "Leia: “A equipe examinou os relatórios e encaminhou esses documentos à direção. Ela solicitou nova revisão.” Na segunda frase, considerando a concordância e o contexto, “Ela” retoma:",
+      "prompt": "Leia: “A equipe examinou os relatórios e encaminhou esses documentos ao diretor. Ela solicitou nova revisão.” Na segunda frase, considerando a concordância e o contexto, “Ela” retoma:",
       "options": {
         "a": "A direção.",
         "b": "Os relatórios.",
@@ -38,7 +38,7 @@
       },
       "correct": "c",
       "explanation": "O pronome feminino singular retoma “a equipe”, núcleo feminino singular que realizou as ações.",
-      "whyWrong": "Direção também é feminino singular, mas não é sujeito das ações antes da retomada; os demais referentes não correspondem ao agente descrito."
+      "whyWrong": "O diretor é masculino, relatórios/documentos são plurais, e revisão ainda não é o agente do período."
     },
     {
       "id": "furb2023-as-q4-ad-v1",
