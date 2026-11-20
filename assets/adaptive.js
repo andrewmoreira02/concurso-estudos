@@ -240,6 +240,7 @@ function model(){
  // Recomendar uma faixa exata somente após confirmação EXPLÍCITA de estudo em módulo.
  // O link inclui os limites; o quiz não carrega outros itens do banco.
  const attempted=new Set(getSessionLogs().filter(l=>l.exam===exam).flatMap(l=>Array.isArray(l.questionIds)?l.questionIds:[]));
+ const availableQuestionSets=exam==='casan'?questionSets.filter(set=>set.question_ids.some(id=>!attempted.has(id))).length:0;
  const topicMap={'engenharia':'engenharia','banco-dados':'banco-dados','seguranca':'seguranca',
   'algoritmos-oo':'algoritmos','portugues':'portugues','rlm':'rlm',
   'legislacao-casan':'legislacao-atualidades'};
@@ -287,7 +288,7 @@ function model(){
  }));
  const unreadEquivalents=relevant.reduce((sum,l)=>sum+(l.total-l.read)/l.total,0);
  const minEquivalents=Math.max(1,Math.min(10,config.adaptive_study?.minimum_unread_equivalents||5));
- return {today,exam,daysRemaining,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
+ return {today,exam,daysRemaining,availableQuestionSets,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
   unreadEquivalents,minEquivalents};
 }
 
@@ -393,7 +394,7 @@ function renderStudyPriority(data){
 }
 function render(data){
  const signature=JSON.stringify({
-   exam:data.exam,daysRemaining:data.daysRemaining,head:data.picks,lesson:data.active?.id,lessonNext:data.active?.first,
+   exam:data.exam,daysRemaining:data.daysRemaining,readyQuestionSets:data.availableQuestionSets,head:data.picks,lesson:data.active?.id,lessonNext:data.active?.first,
    evidence:data.lessons.map(l=>[l.id,l.read,l.total,l.studiedCount]),subjects:data.subjects.map(x=>[x.name,x.priority,x.valid,x.correct]),due:data.due.length,agenda:data.agenda,available:data.unreadEquivalents
  });
  orderCatalog(data);
@@ -402,6 +403,9 @@ function render(data){
  if(practiceSection)practiceSection.hidden=data.exam!=='casan';
  if(practiceHint&&data.exam==='casan'){
   practiceHint.replaceChildren();
+  const available=data.availableQuestionSets;
+  practiceHint.append(el('p','note-small','Conjuntos com ao menos uma questão não respondida: '+available+' de '+questionSets.length+'. '+
+    (available<5?'Reserva personalizada abaixo do mínimo de cinco; a manutenção recorrente deve procurar questões novas de fonte verificável, sem reutilizar respostas como inéditas.':'Reserva pessoal acima do mínimo de cinco.')));
   const specific=data.picks.find(x=>x.type==='quiz'&&/questoes-[a-z-]+-casan\.html\?de=\d+&ate=\d+/.test(x.href));
   if(data.daysRemaining===0){
    practiceHint.append(el('p','note-small','Hoje é o dia da prova: não há bateria obrigatória de questões. Priorize orientações oficiais e revisão leve.'));
