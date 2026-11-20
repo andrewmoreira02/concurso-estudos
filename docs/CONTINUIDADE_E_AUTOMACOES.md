@@ -220,3 +220,9 @@ Fontes candidatas ainda sujeitas à validação individual: FURB Analista de Sis
 - `dados/concursos.json`: descrições do treino CASAN de 21/11 e das sessões IMA corrigidas para **questões adaptadas** (13 CASAN, 12 IMA), com enunciado e alternativas na página, gabarito próprio da adaptação e PDF da prova original como referência opcional. As 2 questões autorais da CASAN permanecem identificadas. Não rotular adaptações como questões originais da banca nem aplicar automaticamente a letra do gabarito original à adaptação.
 - Próxima manutenção prioritária: ampliar a reserva de aulas completas elegíveis quando a fração não lida cair abaixo de 5, sem expor contagens privadas em commits; conferir publicação no Pages, execução de `scripts/verificar-avanco-lido.mjs`, `scripts/verificar-pratica-automatica.mjs` e inspeção renderizada em 320/390/430 px.
 - Esta correção não altera gabaritos, questões, marcações de leitura, avaliações ou revisões e não representa confirmação de deploy.
+
+
+## 20/11/2026 — Correção editorial do planejamento IMA
+- Em `dados/concursos.json`, duas entradas do calendário IMA foram corrigidas de «Questões reais FURB 2023» para «Questões adaptadas de prova FURB 2023». A descrição já informava corretamente que os itens eram adaptados, com gabarito próprio. Nenhuma questão, resposta ou registro individual foi alterado.
+- **Pendente prioritário:** desenvolver e publicar aula integral adicional pertinente aos editais vigentes, com catálogo e testes, para garantir margem de reserva de leitura. Não usar números privados de leitura neste documento público.
+- **Pendente técnico:** confirmar deploy do commit de correção e regressões de 320/390/430 px; commit no repositório não é prova de implantação no Pages.
