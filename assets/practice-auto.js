@@ -5,7 +5,7 @@
 (() => {
 'use strict';
 const root=location.pathname.includes('/aulas/')?'../':'';
-const BANK=root+'dados/questoes.json',REAL=root+'dados/questoes-reais.json',ADAPTED=root+'dados/questoes-adaptadas.json',CONFIG=root+'dados/concursos.json';
+const BANK=root+'dados/questoes.json',REAL=root+'dados/questoes-reais.json',ADAPTED=root+'dados/questoes-adaptadas.json',AOCP=root+'dados/questoes-casan-aocp.json',CONFIG=root+'dados/concursos.json';
 const LOG_KEY='ce_question_logs_v1',DONE_KEY='ce_review_done_v1';
 const subjects={ti:'Conhecimentos Específicos (TI)',portugues:'Português',rlm:'Raciocínio Lógico-Matemático',legislacao:'Legislação',atualidades:'Atualidades',adm:'Administração Pública'};
 const addDays=(iso,n)=>{const date=new Date(iso+'T12:00:00Z');date.setUTCDate(date.getUTCDate()+n);return date.toISOString().slice(0,10);};
@@ -44,25 +44,34 @@ function validAdapted(q){
  typeof q.prompt==='string'&&q.prompt.length>=35&&typeof q.explanation==='string'&&q.explanation.length>15&&
  typeof q.whyWrong==='string'&&q.whyWrong.length>15;
 }
+function validAocp(q){
+ return validAdapted(q)&&q.source?.bank==='Instituto AOCP'&&q.source?.year===2025&&
+  /^[a-e]$/.test(q.source.original_correct||'')&&Array.isArray(q.exams)&&q.exams.includes('casan')&&
+  Number.isInteger(q.source.question_number)&&q.source.question_number>=1&&q.source.question_number<=50&&
+  typeof q.source.paper_url==='string'&&q.source.paper_url.startsWith('https://arquivos.qconcursos.com/prova/')&&
+  typeof q.source.answer_key_url==='string'&&q.source.answer_key_url.startsWith('https://arquivos.qconcursos.com/prova/');
+}
 async function load(){
- const [r1,r2,r3,r4]=await Promise.all([
+ const [r1,r2,r3,r4,r5]=await Promise.all([
    fetch(BANK,{cache:'no-store'}),fetch(REAL,{cache:'no-store'}),
-   fetch(ADAPTED,{cache:'no-store'}),fetch(CONFIG,{cache:'no-store'})
+   fetch(ADAPTED,{cache:'no-store'}),fetch(CONFIG,{cache:'no-store'}),fetch(AOCP,{cache:'no-store'})
  ]);
- if(!r1.ok||!r2.ok||!r3.ok||!r4.ok)throw Error('Banco de questões, adaptações ou calendário indisponível.');
- const reserve=await r1.json(),original=await r2.json(),adapted=await r3.json(),calendar=await r4.json();
+ if(!r1.ok||!r2.ok||!r3.ok||!r4.ok||!r5.ok)throw Error('Banco de questões, adaptações AOCP ou calendário indisponível.');
+ const reserve=await r1.json(),original=await r2.json(),adapted=await r3.json(),calendar=await r4.json(),aocp=await r5.json();
  if(reserve.schema_version!==1||!Array.isArray(reserve.questions)||!reserve.questions.every(validQuestion))throw Error('Banco de reserva inválido.');
  if(original.schema_version!==1||!Array.isArray(original.questions)||!original.questions.every(validReal))throw Error('Referências de provas reais inválidas.');
  if(adapted.schema_version!==1||!Array.isArray(adapted.questions)||!adapted.questions.every(validAdapted))throw Error('Questões adaptadas incompletas ou sem alternativas.');
+ if(aocp.schema_version!==1||!Array.isArray(aocp.questions)||aocp.questions.length!==13||!aocp.questions.every(validAocp))throw Error('Questões AOCP incompletas ou sem alternativas/fontes.');
  const origins=new Map(original.questions.map(q=>[q.id,q]));
  const adaptations=adapted.questions.map(q=>{
    const orig=origins.get(q.origin_id);
    if(!orig||orig.subject!==q.subject)throw Error('Questão adaptada sem fonte identificada: '+q.id);
    return {...q,source:orig.source,exams:orig.exams,saturday:orig.saturday};
  });
- const ids=[...adaptations,...reserve.questions].map(q=>q.id);
+ const all=[...aocp.questions,...adaptations,...reserve.questions];
+ const ids=all.map(q=>q.id);
  if(ids.length!==new Set(ids).size)throw Error('IDs repetidos nos exercícios.');
- bank={...reserve,questions:[...adaptations,...reserve.questions]};
+ bank={...reserve,questions:all};
  config=calendar;return bank;
 }
 function questionElement(q,index){
@@ -72,7 +81,7 @@ function questionElement(q,index){
  f.append(legend);
  if(adapted){
    const source=el('div','','ce-original-source');
-   source.append(el('strong','Adaptada de tema de prova FURB '+q.source.year+' · '+(q.source.role||'Analista de Sistemas')+' · questão '+q.source.question_number));
+   source.append(el('strong','Adaptação de tema de prova '+q.source.bank+' '+q.source.year+' · '+(q.source.role||'Analista de Sistemas')+' · questão '+q.source.question_number));
    source.append(el('p','Enunciado e alternativas desta versão foram reescritos; a resposta correta desta adaptação foi conferida separadamente. Não é transcrição da prova.'));
    const link=el('a','Consultar caderno de origem (opcional)');
    link.href=q.source.paper_url+(Number.isInteger(q.source.printed_page)?'#page='+q.source.printed_page:'');
@@ -149,12 +158,13 @@ async function renderPractice(){
  let items=[],topic='',label='',exam='casan';
  if(type==='saturday'){
    exam='casan';
-   // Apenas duas questões sem equivalente real disponível neste caderno: Legislação e Atualidades.
-   items=bank.questions.filter(q=>q.kind==='adaptada'&&q.saturday===true&&q.exams.includes('casan'));
+   // 13 adaptações de itens AOCP 2025 + 2 autorais em áreas não cobertas nesta prova de TI.
+   items=bank.questions.filter(q=>q.kind==='adaptada'&&q.source?.bank==='Instituto AOCP'&&q.saturday===true&&q.exams.includes('casan'));
    for(const subject of ['legislacao','atualidades']){
      const reserve=bank.questions.find(q=>q.kind!=='adaptada'&&q.saturday===true&&q.subject===subject&&q.exams.includes('casan'));
      if(reserve)items.push(reserve);
    }
+   if(items.length!==15||items.filter(q=>q.kind==='adaptada').length!==13)throw Error('Simulado CASAN: esperadas 13 adaptações AOCP e 2 questões autorais.');
    topic='Simulado CASAN 21/11';
  }else if(type==='ima'){
    exam='ima';
@@ -169,9 +179,11 @@ async function renderPractice(){
  if(items.length<3)throw Error('Questões insuficientes para montar o treino.');
  const nAdapted=items.filter(q=>q.kind==='adaptada').length;
  const nAuthor=items.length-nAdapted;
- label=items.length+' questões: '+nAdapted+' adaptação(ões) com referência FURB '+(type==='ima-especificas'?'2023/2024/2025':'2023')+(nAuthor?' e '+nAuthor+' autoral(is) de reserva':'')+'.';
+ label=type==='saturday'
+  ?items.length+' questões: 13 adaptações de itens AOCP 2025 (Joinville, Analista de TI) e 2 autorais de Legislação/Atualidades.'
+  :items.length+' questões: '+nAdapted+' adaptação(ões) com referência FURB '+(type==='ima-especificas'?'2023/2024/2025':'2023')+(nAuthor?' e '+nAuthor+' autoral(is) de reserva':'')+'.';
  stage.replaceChildren(el('p',label+' Leia enunciados e alternativas diretamente aqui. O PDF de origem é opcional, apenas para conferir a referência da prova. As respostas destas versões adaptadas têm gabaritos próprios.'),
-   buildForm(items,exam,topic,type==='ima-especificas'?'Exercícios adaptados de FURB 2023/2024/2025, gabaritos próprios, Administração/L. Ambiental/TI':'Adaptações de temas FURB 2023 com gabaritos próprios; reserva autoral identificada.'));
+   buildForm(items,exam,topic,type==='saturday'?'13 adaptações de itens AOCP 2025, Joinville/SC, Analista de TI; 2 autorais; gabaritos próprios':type==='ima-especificas'?'Exercícios adaptados de FURB 2023/2024/2025, gabaritos próprios, Administração/L. Ambiental/TI':'Adaptações de temas FURB 2023 com gabaritos próprios; reserva autoral identificada.'));
  const count=document.getElementById('practiceCount');
  if(count)count.textContent=items.length+' questões';
 }
@@ -196,8 +208,9 @@ function getTasks(){
  return tasks.sort((a,b)=>a.finished-b.finished||a.date.localeCompare(b.date)||b.session.valid-b.session.correct);
 }
 function pickFor(task){
- const s=task.session;const all=bank.questions.filter(q=>q.exams.includes(s.exam)&&q.subject===s.subject)
- .sort((a,b)=>(a.kind==='adaptada'?0:1)-(b.kind==='adaptada'?0:1));
+ const s=task.session;const rank=q=>q.kind!=='adaptada'?3:s.exam==='casan'?(q.source?.bank==='Instituto AOCP'?0:1):(q.source?.bank==='FURB'?0:1);
+ const all=bank.questions.filter(q=>q.exams.includes(s.exam)&&q.subject===s.subject)
+ .sort((a,b)=>rank(a)-rank(b));
  const topic=norm(s.topic);
  const tokens={engenharia:['engenharia','qualidade','requisitos','uml','ci/cd','teste'],seguranca:['seguranca','api','autenticacao','autorizacao','oauth','jwt','pkce'],algoritmos:['algoritmo','objeto','solid','estrutura','orientacao'], 'banco-dados':['banco','sql','join','normalizacao','acid'],portugues:['portugues','interpretacao','gramatica','coesao'],rlm:['raciocinio','rlm','combinatoria','pg','pa','probabilidade'],legislacao:['legislacao','etica','governanca'],atualidades:['atualidades','ambiente','sustentabilidade']};
  let tag='';
@@ -269,7 +282,7 @@ function openReview(task){
    stage.append(el('p','Ainda não há questões cadastradas para este assunto. O registro permanece pendente; a tarefa editorial deve acrescentar questões compatíveis.'));return;
  }
  const h=el('h2','Revisão dirigida: '+task.session.topic);h.id='quiz-atual';stage.append(h);
- stage.append(el('p','Questões de recuperação ativa, prioritariamente adaptadas de temas de provas anteriores verificadas. Ao enviar suas respostas, a revisão será registrada como praticada; novos erros gerarão novas datas. Questões autorais de reserva são identificadas.'));
+ stage.append(el('p','Questões de recuperação ativa, priorizando AOCP na CASAN e FURB no IMA. Ao enviar respostas, a revisão é registrada como praticada; novos erros geram novas datas. Adaptações e autorais são identificadas.'));
  const quiz=buildForm(selected,task.session.exam,'Revisão: '+task.session.topic,'Revisão automática — questões adaptadas de FURB e autorais identificadas',task.id);
  stage.append(quiz);
  stage.scrollIntoView({behavior:'smooth',block:'start'});
