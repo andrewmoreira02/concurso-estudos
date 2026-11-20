@@ -33,7 +33,7 @@ function ok(route,body,status=200){return route.fulfill({status,contentType:'app
 async function attach(page){
  await page.route('https://test.supabase.co/**',async route=>{
    const req=route.request(),u=new URL(req.url()),p=u.pathname,method=req.method();calls++;
-   if(method==='OPTIONS')return ok(route,{},204);
+   if(method==='OPTIONS')return ok(route,{},200);
    if(p!=='/functions/v1/concurso-pareamento')throw Error('Endpoint inesperado: '+method+' '+p);
    if(req.headers()['x-concurso-key']!==PAIR)return ok(route,{error:'Código inválido'},401);
    if(method==='GET')return ok(route,{items:[...remote].map(([item_key,value])=>({item_key,payload:{value}}))});
