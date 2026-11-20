@@ -142,7 +142,7 @@ function exportData(){const data={format:'concursos.reading-progress',version:2,
 function importData(obj){
 if(!obj||typeof obj!=='object'||Array.isArray(obj))throw Error('Objeto JSON inválido.');
 let src=null,settings=null,incomingLegacy=null,fromGeneral=false;
-if(obj.format==='concurso-estudos-progress'&&[4,5].includes(obj.version)){
+if(obj.format==='concurso-estudos-progress'&&[4,5,6].includes(obj.version)){
  const pt=obj.portugues;
  if(!pt||pt.lesson!==LESSON_ID||!pt.read||typeof pt.read!=='object'||Array.isArray(pt.read))throw Error('Backup geral sem registro válido de Português.');
  src=pt.read;settings=pt.settings||null;incomingLegacy=pt.legacy;fromGeneral=true;
