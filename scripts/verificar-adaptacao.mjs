@@ -48,8 +48,8 @@ await context.addInitScript(()=>{
   }
 });
 function assert(ok,msg){if(!ok)throw Error(msg);}
-async function loaded(){
- await page.locator('#adaptiveRecommendations').waitFor({timeout:16000});
+async function loaded(expectPanel=false){
+ if(expectPanel)await page.locator('#adaptiveRecommendations').waitFor({timeout:16000});
  await page.waitForFunction(()=>window.ConcursoAdaptive?.model()?.lessons?.length===6,{timeout:15000});
 }
 try{
@@ -64,16 +64,18 @@ try{
  assert(data.picks[0].title.startsWith('Engenharia'),'Edital TI 25/50 deveria priorizar Engenharia');
  assert(data.picks[0].description.includes('25/50'),'Justificativa deve usar peso oficial do edital');
  assert(!JSON.stringify(data).includes('"studied":true'),'Não inferir Estudado de Lido');
- const text=await page.locator('#adaptiveRecommendations').innerText();
- assert(text.includes('41/71 Lido'),'Painel não apresenta leitura declarada');
+ assert(await page.locator('#adaptiveRecommendations').count()===0,'Página inicial não deve mostrar caixa redundante Sugestões locais');
+ assert((await page.locator('#dynamicFocus').innerText()).includes('Engenharia'),'Próximo foco do painel não foi atualizado');
+ assert((await page.locator('#dynamicFocusLink').getAttribute('href')).includes('engenharia-qualidade.html'),'Link do foco no painel não foi atualizado');
  assert(!(await page.evaluate(()=>window.__adaptiveIntervals.includes(3600000))),'A manutenção editorial horária pertence à tarefa do GPT, não ao navegador');
- assert(await page.locator('#adaptiveRecommendations button.ce-adaptive-refresh').count()===1,'Atualização manual local ausente');
+ assert(await page.locator('#adaptiveRecommendations').count()===0,'Bloco redundante continua na página inicial');
  const width=await page.evaluate(()=>document.documentElement.scrollWidth);
  assert(width<=390+2,'Painel adaptativo não é responsivo');
  console.log('OK: painel, pesos do edital, atualização local e 41/71 RLM.');
  
  await page.goto(base+'/planejamento.html',{waitUntil:'domcontentloaded'});
- await loaded();
+ await loaded(true);
+ assert(!(await page.locator('#adaptiveRecommendations').innerText()).includes('Sugestões locais'),'Planejamento ainda exibe rótulo interno Sugestões locais');
  await page.waitForFunction(()=>document.getElementById('nextLessonLink')?.href.includes('engenharia-qualidade'),{timeout:15000});
  assert((await page.locator('#nextLessonLink').getAttribute('href')).includes('engenharia-qualidade.html'),'Plano não mudou link para sugestão adaptativa');
  const planned=await page.evaluate(()=>localStorage.getItem('ce_plan_done_v1'));
