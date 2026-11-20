@@ -371,13 +371,22 @@
     const input=$('lessonSearch'),cards=[...document.querySelectorAll('.catalog-card')];
     if(!input)return;
     const filters=[...document.querySelectorAll('[data-filter]')];
-    let active='todas';
+    const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+    const date=type=>parts.find(p=>p.type===type)?.value||'';
+    const localDay=date('year')+'-'+date('month')+'-'+date('day');
+    // O ciclo em foco é CASAN até 22/11; aulas IMA ficam acessíveis por filtro explícito.
+    const priority=localDay<='2026-11-22'?'casan':'ima';
+    let active=priority;
+    filters.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===active)));
     function apply(){
       const q=input.value.trim().toLocaleLowerCase('pt-BR');
       let visible=0;
       cards.forEach(card=>{
         const text=(card.dataset.search||'')+' '+card.textContent.toLocaleLowerCase('pt-BR');
-        const show=(active==='todas'||card.dataset.category===active)&&text.includes(q);
+        const isIma=card.dataset.lessonId?.endsWith('-ima')===true;
+        const matchExam=active==='casan'?!isIma:active==='ima'?isIma:active==='todas'?true:(priority==='casan'?!isIma:isIma);
+        const matchSubject=['todas','casan','ima'].includes(active)||card.dataset.category===active;
+        const show=matchExam&&matchSubject&&text.includes(q);
         card.hidden=!show;
         if(show)visible++;
       });
