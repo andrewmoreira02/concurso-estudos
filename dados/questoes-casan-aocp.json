@@ -1,0 +1,476 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-20",
+  "purpose": "13 adaptações didáticas para CASAN 404, vinculadas a itens verificáveis da prova AOCP Joinville 2025; não são transcrições e possuem gabaritos próprios.",
+  "selection_note": "AOCP primeiro (mesma banca e cargo equivalente); conteúdo selecionado por afinidade com o edital CASAN. Questões 1,5,7,22 anuladas foram excluídas. Fonte de cada questão contém caderno e gabarito definitivo.",
+  "questions": [
+    {
+      "id": "aocp2025-joinville-q32-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q32",
+      "subject": "ti",
+      "tag": "engenharia",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Uma equipe entrevista operadores e descreve episódios reais em que cidadãos abrem chamados, detalhando personagens, objetivos e contexto. Essa técnica de elicitação é:",
+      "options": {
+        "a": "Particionamento horizontal de banco",
+        "b": "Refatoração de código",
+        "c": "Storytelling de requisitos",
+        "d": "Encriptação de dados",
+        "e": "Teste de carga"
+      },
+      "correct": "c",
+      "explanation": "Storytelling facilita expor o contexto e as necessidades dos envolvidos por meio de histórias. Não substitui a validação dos requisitos e a definição posterior de critérios de aceitação mensuráveis.",
+      "whyWrong": "Particionar banco de dados, refatorar código, cifrar dados e testar carga não são técnicas de elicitação narrativa de requisitos.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 32,
+        "printed_page": 9,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "E"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q33-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q33",
+      "subject": "ti",
+      "tag": "engenharia",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Qual padrão é indicado para construir um objeto complexo em etapas, permitindo representações diferentes sem um construtor gigantesco?",
+      "options": {
+        "a": "Observer",
+        "b": "Strategy",
+        "c": "Adapter",
+        "d": "Singleton",
+        "e": "Builder"
+      },
+      "correct": "e",
+      "explanation": "Builder separa a sequência de construção da representação final de um objeto complexo. Observer trata notificações; Strategy troca algoritmos; Adapter compatibiliza interfaces.",
+      "whyWrong": "Observer notifica; Strategy intercambia algoritmos; Adapter adapta interfaces; Singleton controla instâncias. Apenas Builder descreve construção em etapas.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 33,
+        "printed_page": 10,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "E"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q31-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q31",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Um item de pedido não possui identificação própria fora do pedido e é identificado por (número do pedido, posição do item). No modelo ER, isso caracteriza:",
+      "options": {
+        "a": "Uma tabela sem atributos",
+        "b": "Uma entidade forte independente",
+        "c": "Uma entidade fraca com chave vinculada ao proprietário",
+        "d": "Uma relação unária sem dependência",
+        "e": "Um atributo multivalorado sem entidade"
+      },
+      "correct": "c",
+      "explanation": "A entidade fraca depende da entidade proprietária para sua identificação; a combinação do identificador do pedido com o discriminador do item pode identificá-la. Não se deve confundir existência física de uma linha com independência de chave.",
+      "whyWrong": "Uma entidade fraca possui atributos e depende de uma entidade identificadora. Não é relação unária nem atributo multivalorado.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 31,
+        "printed_page": 9,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "C"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q40-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q40",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Uma tabela Funcionário(id, setor_id, setor_nome) tem id → setor_id e setor_id → setor_nome. Que alteração reduz a dependência transitiva para atender à 3FN?",
+      "options": {
+        "a": "Repetir setor_nome em todas as linhas",
+        "b": "Separar a entidade Setor(setor_id, setor_nome) e referenciá-la",
+        "c": "Remover a chave primária de Funcionário",
+        "d": "Converter todas as colunas para texto",
+        "e": "Eliminar setor_id e guardar só setor_nome"
+      },
+      "correct": "b",
+      "explanation": "setor_nome depende de setor_id e este depende do identificador de funcionário. A tabela Setor retém sua própria chave; Funcionário passa a referenciá-la por chave estrangeira.",
+      "whyWrong": "Repetir setor_nome mantém dependência transitiva. Excluir chaves ou trocar tipos de coluna não resolve a normalização.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 40,
+        "printed_page": 11,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "B"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q20-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q20",
+      "subject": "ti",
+      "tag": "seguranca",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Um e-mail que imita o banco pede senha e código MFA em uma página de domínio diferente do oficial. Qual ameaça melhor descreve o caso?",
+      "options": {
+        "a": "Phishing",
+        "b": "Compressão de dados",
+        "c": "Balanceamento de carga",
+        "d": "Firewall stateful",
+        "e": "Assinatura digital"
+      },
+      "correct": "a",
+      "explanation": "O atacante explora identidade falsa e urgência para obter segredos. Não informe credenciais nem código MFA; valide o canal pela aplicação oficial, não pelo link da mensagem.",
+      "whyWrong": "Compressão, balanceamento, firewall e assinatura digital não descrevem a fraude de identidade para obtenção de credenciais.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 20,
+        "printed_page": 6,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "B"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q48-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q48",
+      "subject": "ti",
+      "tag": "seguranca",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Qual afirmação sobre assinatura digital com DSA é tecnicamente correta?",
+      "options": {
+        "a": "A assinatura cifra o arquivo para assegurar sigilo",
+        "b": "A verificação da assinatura sempre exige revelar a chave privada",
+        "c": "Assina-se com chave privada e verifica-se com chave pública, sem proporcionar sigilo por si só",
+        "d": "A assinatura substitui a necessidade de proteger chaves",
+        "e": "O DSA é algoritmo de compressão sem uso criptográfico"
+      },
+      "correct": "c",
+      "explanation": "DSA é usado para assinatura, não para cifrar dados. A assinatura pode oferecer verificação de autenticidade e integridade no modelo adequado; confidencialidade requer mecanismo próprio de criptografia.",
+      "whyWrong": "Assinatura não é cifragem, não depende de expor chave privada para verificar, não dispensa proteção de chaves e não é compressão.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 48,
+        "printed_page": 13,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "A"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q34-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q34",
+      "subject": "ti",
+      "tag": "algoritmos",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Para um algoritmo cujo tempo é 3n² + 4n + 8, qual afirmação assintótica é correta?",
+      "options": {
+        "a": "O crescimento é Θ(n)",
+        "b": "O crescimento é O(1)",
+        "c": "O crescimento é Ω(n³)",
+        "d": "O crescimento é Θ(n²)",
+        "e": "O crescimento depende apenas do termo constante 8"
+      },
+      "correct": "d",
+      "explanation": "Para n grande, domina o termo quadrático. O(n²) é limite superior, Ω(n²) é limite inferior e Θ(n²) descreve limite justo; termos de menor ordem e constantes são omitidos na notação assintótica.",
+      "whyWrong": "O termo 3n² domina o crescimento; crescimento linear, constante, cúbico inferior ou apenas constante contradizem a análise assintótica.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 34,
+        "printed_page": 10,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "A"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q42-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q42",
+      "subject": "ti",
+      "tag": "algoritmos",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Após push(A), push(B), push(C), qual sequência de três pop() é produzida por uma pilha tradicional?",
+      "options": {
+        "a": "C, B, A",
+        "b": "A, B, C",
+        "c": "B, C, A",
+        "d": "A, C, B",
+        "e": "C, A, B"
+      },
+      "correct": "a",
+      "explanation": "Pilha usa LIFO: o último a entrar é o primeiro a sair. C foi inserido por último, depois B e A.",
+      "whyWrong": "Uma pilha é LIFO. Sequências que removem A ou B antes de C não correspondem ao último elemento inserido.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 42,
+        "printed_page": 12,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "D"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q2-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q2",
+      "subject": "portugues",
+      "tag": "portugues",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Na frase “Os técnicos que analisaram os documentos emitiram o parecer”, o termo “que” exerce qual função na oração subordinada?",
+      "options": {
+        "a": "Sujeito de “analisaram”",
+        "b": "Objeto indireto de “emitiram”",
+        "c": "Adjunto adverbial de tempo",
+        "d": "Conjunção integrante sem função sintática",
+        "e": "Predicativo do sujeito"
+      },
+      "correct": "a",
+      "explanation": "O pronome relativo retoma “os técnicos”. Na oração “que analisaram os documentos”, são os técnicos que analisaram; portanto, “que” é sujeito de “analisaram”, enquanto “os documentos” é objeto direto.",
+      "whyWrong": "O pronome relativo substitui 'os técnicos' como sujeito de 'analisaram'. As outras opções trocam a função sintática ou negam a natureza do pronome.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 2,
+        "printed_page": 2,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "B"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q4-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q4",
+      "subject": "portugues",
+      "tag": "portugues",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Em “A equipe de segurança revisou os acessos, enquanto a de operações priorizou os backups”, a conjunção estabelece principalmente:",
+      "options": {
+        "a": "Conclusão lógica",
+        "b": "Causa exclusiva",
+        "c": "Contraste entre atuações",
+        "d": "Finalidade obrigatória",
+        "e": "Condição hipotética"
+      },
+      "correct": "c",
+      "explanation": "As duas equipes realizaram atividades diferentes, colocadas em contraste. “Enquanto” também pode ser temporal em outros contextos: o sentido precisa ser decidido pelo conjunto da frase.",
+      "whyWrong": "'Enquanto' exprime contraste neste período. Não há conclusão, causalidade, finalidade nem hipótese condicional.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 4,
+        "printed_page": 3,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "B"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q3-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q3",
+      "subject": "portugues",
+      "tag": "portugues",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Considere a frase: “Os técnicos não divulgaram os relatórios.” Qual reescrita substitui corretamente “os relatórios” por pronome oblíquo, preservando o sentido e a colocação pronominal?",
+      "options": {
+        "a": "Os técnicos não divulgaram-os.",
+        "b": "Os técnicos não os divulgaram.",
+        "c": "Os técnicos divulgaram-lhes não.",
+        "d": "Os técnicos não lhes divulgaram.",
+        "e": "Os técnicos não divulgaram lhes."
+      },
+      "correct": "b",
+      "explanation": "'Os relatórios' é objeto direto masculino plural e pode ser retomado por 'os'. A palavra negativa 'não' atrai o pronome átono: 'não os divulgaram'.",
+      "whyWrong": "A e E infringem a próclise após 'não'; C tem ordem inadequada; D usa 'lhes', pronome típico de objeto indireto, sem preservar o objeto direto original.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 3,
+        "printed_page": 2,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "A"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q6-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q6",
+      "subject": "rlm",
+      "tag": "rlm",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Uma turma de 10 alunos teve média 8,0, enquanto outra de 5 alunos teve média 6,0. Qual é a média conjunta?",
+      "options": {
+        "a": "6,0",
+        "b": "7,33 aproximadamente",
+        "c": "7,0",
+        "d": "8,0",
+        "e": "9,0"
+      },
+      "correct": "b",
+      "explanation": "Multiplique médias pelos tamanhos: 10×8 + 5×6 = 110 pontos; a turma total reúne 15 pessoas. 110÷15 = 7,333… Não calcule (8+6)÷2, pois os grupos têm tamanhos diferentes.",
+      "whyWrong": "Média de grupos com tamanhos diferentes deve ponderar quantidades: 10×8 + 5×6 = 110, depois 110÷15.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 6,
+        "printed_page": 3,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "B"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q8-ad-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q8",
+      "subject": "rlm",
+      "tag": "rlm",
+      "saturday": true,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Entre seis pessoas, quantas comissões distintas de três integrantes podem ser formadas, sem cargos definidos?",
+      "options": {
+        "a": "6",
+        "b": "12",
+        "c": "18",
+        "d": "20",
+        "e": "120"
+      },
+      "correct": "d",
+      "explanation": "A ordem não importa. C(6,3)=6!/(3!×3!)=720/36=20. Contar 6×5×4=120 sem dividir por 3! repetiria cada comissão seis vezes.",
+      "whyWrong": "A ordem dos três integrantes não importa. O resultado é uma combinação C(6,3)=20, não um arranjo 6×5×4.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 8,
+        "printed_page": 3,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "E"
+      }
+    }
+  ]
+}
