@@ -86,18 +86,18 @@ try{
 
  // Regressão: começar Engenharia não deve trocar automaticamente para Banco de Dados zerado.
  await page.evaluate(()=>{
-   localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify(['1.1','1.2']));
+   localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify(['1.1','1.2','1.3']));
    dispatchEvent(new CustomEvent('concurso:progress-change'));
  });
- await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.read===2 && document.getElementById('nextLessonLink')?.href.includes('#etapa-1-3'),{timeout:15000});
+ await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.read===3 && document.getElementById('nextLessonLink')?.href.includes('#etapa-1-4'),{timeout:15000});
  data=await page.evaluate(()=>window.ConcursoAdaptive.model());
- assert(data.picks[0].href.includes('engenharia-qualidade.html#etapa-1-3'),'Engenharia parcialmente lida perdeu prioridade para aula zerada');
+ assert(data.picks[0].href.includes('engenharia-qualidade.html#etapa-1-4'),'Engenharia parcialmente lida perdeu prioridade para aula zerada');
  assert(data.lessons.find(l=>l.id==='engenharia').inProgress===true,'Aula iniciada não foi identificada');
  assert(data.picks.find(p=>p.href.includes('banco-dados.html'))?.href !== data.picks[0].href,'Banco de Dados zerado não deve substituir Engenharia em curso');
  await page.goto(base+'/aulas.html',{waitUntil:'domcontentloaded'});
  await loaded();
  assert((await page.locator('#lessonCatalog .catalog-card').first().getAttribute('data-lesson-id'))==='engenharia','Catálogo não preservou Engenharia como aula prioritária');
- assert((await page.locator('#catalogEngContinue').getAttribute('href')).includes('#etapa-1-3'),'Link de retomada perdeu etapa 1.3');
+ assert((await page.locator('#catalogEngContinue').getAttribute('href')).includes('#etapa-1-4'),'Link de retomada perdeu etapa 1.4');
  // Aula integralmente lida sai da fila, sem alterar ou apagar o histórico de avaliações.
  await page.evaluate(()=>{
    const counts=[5,6,4,5,3,3,2,3,3,3],full=[];
@@ -109,12 +109,12 @@ try{
  data=await page.evaluate(()=>window.ConcursoAdaptive.model());
  assert(!data.picks.some(p=>p.type==='lesson'&&p.href.includes('engenharia-qualidade.html')),'Aula 100% Lido deve sair da fila de leitura');
  await page.evaluate(()=>{
-   localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify(['1.1','1.2']));
+   localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify(['1.1','1.2','1.3']));
    dispatchEvent(new CustomEvent('concurso:progress-change'));
  });
- await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.read===2,{timeout:15000});
- assert((await page.locator('#catalogEngContinue').getAttribute('href')).includes('#etapa-1-3'),'Retomada perdeu marcações existentes');
- console.log('OK: Engenharia 2/37 continua recomendada; 37/37 sai da fila; retomada preservada no catálogo e plano.');
+ await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.read===3,{timeout:15000});
+ assert((await page.locator('#catalogEngContinue').getAttribute('href')).includes('#etapa-1-4'),'Retomada perdeu marcações existentes');
+ console.log('OK: Engenharia 3/37 continua recomendada; 37/37 sai da fila; retomada preservada no catálogo e plano.');
 
  // O conteúdo da aula não apresenta o painel de sugestões: ele pertence ao painel e ao plano.
  await page.goto(base+'/aulas/rlm.html',{waitUntil:'domcontentloaded'});
