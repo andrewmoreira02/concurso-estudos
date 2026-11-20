@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-19",
+  "updated_at": "2026-11-20",
   "timezone": "America/Sao_Paulo",
   "purpose": "Dados públicos do planejamento do site. Não contém registros pessoais de leitura, notas ou desempenho.",
   "disclaimer": "Informações de editais registradas em 13–18/11/2026; conferir retificações antes de tomar decisões. Agenda é sugestão, não comprova execução.",
@@ -82,9 +82,9 @@
       "exam": "ima",
       "contest": "IMA-SC 2027 · FURB",
       "title": "Desde 23/11: IMA · Analista de Informática",
-      "desc": "Estudar por edital FURB, diagnosticar retenção e cobrir assuntos exclusivos; não transferir domínio automaticamente entre concursos.",
-      "href": "aulas/questoes-ima.html",
-      "link": "Abrir treino dirigido IMA",
+      "desc": "Iniciar cobertura dos assuntos específicos de Administração Pública do IMA, com leitura e diagnóstico sem transferir domínio da CASAN.",
+      "href": "aulas/administracao-publica-ima.html",
+      "link": "Abrir Administração Pública",
       "origin": "Plano IMA registrado em 18/11/2026. Dias da semana ainda não confirmados."
     }
   ],
