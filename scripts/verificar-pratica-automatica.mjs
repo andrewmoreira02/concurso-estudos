@@ -73,13 +73,22 @@ try{
  assert(distribution.ti===8&&distribution.portugues===3&&distribution.rlm===2&&distribution.legislacao===1&&distribution.atualidades===1,
    'Distribuição da reta final incorreta: '+JSON.stringify(distribution));
  const originalCount=await page.locator('.ce-original-source').count();
- assert(originalCount===13,'O simulado da CASAN deve ter 13 questões reais e 2 autorais, encontrado '+originalCount);
+ assert(originalCount===13,'O simulado da CASAN deve ter 13 questões adaptadas de fontes reais e 2 autorais, encontrado '+originalCount);
  const urls=await page.locator('.ce-original-source a').evaluateAll(anchors=>anchors.map(a=>a.href));
  assert(urls.every(url=>url.includes('qconcursos.com/prova/arquivo_prova/97697/')&&/#page=\d+$/.test(url)),
-   'Questão real sem URL do caderno e página identificada');
+   'Questão adaptada sem URL opcional do caderno e página identificada');
  assert(await page.locator('input[type="radio"][value="e"]').count()===13,
-   'Cada questão REAL deve manter a alternativa E do caderno original');
- console.log('OK: sábado prioriza 13 questões FURB com número, página e gabarito final; 2 autorais de reserva.');
+   'Cada questão adaptada deve exibir cinco alternativas completas A–E');
+ const inline=await page.locator('.ce-original-source').evaluateAll(nodes=>nodes.every(n=>{
+   const item=n.closest('fieldset');
+   const labels=[...item.querySelectorAll('label')];
+   const legend=item.querySelector('legend')?.textContent||'';
+   return legend.length>70&&!/consulte o caderno.*alternativas/i.test(legend)&&
+     labels.length===5&&labels.every(l=>l.textContent.trim().length>=6)&&
+     n.textContent.includes('Adaptada')&&n.textContent.includes('opcional');
+ }));
+ assert(inline,'Questão adaptada sem enunciado, alternativas completas ou consulta opcional à prova');
+ console.log('OK: sábado exibe 13 adaptações completas de temas FURB e 2 autorais.');
 
  await page.locator('form[data-ce-quiz] button[type="submit"]').click();
  assert((await inspect()).logs.length===0,'Envio incompleto criou resultado inventado');
@@ -116,7 +125,8 @@ try{
  await goto('aulas/questoes-ima.html');
  await ready(12);
  assert(await page.locator('.ce-original-source').count()===12,
-   'Treino IMA deve usar 12 questões originais da mesma banca FURB.');
+   'Treino IMA deve usar 12 questões adaptadas de temas da banca FURB.');
+ assert(await page.locator('form[data-ce-quiz] fieldset label').count()===60,'Treino IMA deve exibir 12 × 5 alternativas completas');
 
  await answerQuiz(0);
  state=await inspect();
