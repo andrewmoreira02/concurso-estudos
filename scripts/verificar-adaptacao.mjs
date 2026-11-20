@@ -50,14 +50,14 @@ await context.addInitScript(()=>{
 function assert(ok,msg){if(!ok)throw Error(msg);}
 async function loaded(expectPanel=false){
  if(expectPanel)await page.locator('#adaptiveRecommendations').waitFor({timeout:16000});
- await page.waitForFunction(()=>window.ConcursoAdaptive?.model()?.lessons?.length===8,{timeout:15000});
+ await page.waitForFunction(()=>window.ConcursoAdaptive?.model()?.lessons?.length===9,{timeout:15000});
 }
 try{
  await page.goto(base+'/index.html',{waitUntil:'domcontentloaded'});
  await loaded();
  let data=await page.evaluate(()=>window.ConcursoAdaptive.model());
  assert(data.exam==='casan','A prioridade de CASAN 20/11 não foi aplicada');
- assert(Math.abs(data.unreadEquivalents-(8-41/71))<0.01,'Aulas equivalentes não lidas incorretas');
+ assert(Math.abs(data.unreadEquivalents-(9-41/71))<0.01,'Aulas equivalentes não lidas incorretas');
  assert(data.minEquivalents===5,'Meta de 5 aulas equivalentes ausente');
  assert(data.lessons.find(l=>l.id==='administracao-publica-ima')?.total===9,'Administração IMA não está no modelo adaptativo');
  assert(data.lessons.find(l=>l.id==='legislacao-ambiental-ima')?.total===9,'Legislação IMA não foi incluída na fila');
