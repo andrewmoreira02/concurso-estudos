@@ -61,6 +61,9 @@ try{
     assert(card.form&&card.closed,path+' formulário ou solução inicial inválidos');
    }
    const card=page.locator('.ce-cobranca-card').first();
+   // Algumas aulas mantêm capítulos de teoria recolhidos; abrir o capítulo
+   // antes de simular a resposta, como um estudante faria no navegador.
+   await card.evaluate(el=>{for(let a=el.parentElement;a;a=a.parentElement)if(a.tagName==='DETAILS')a.open=true;});
    await card.locator('.ce-cobranca-choice input').first().check();
    await card.locator('.ce-cobranca-reveal').click();
    const step=await page.evaluate(()=>({
