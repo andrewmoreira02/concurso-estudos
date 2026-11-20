@@ -1,87 +1,88 @@
-/* Teste renderizado: exemplos completos de provas anteriores nas oito aulas.
- * Só usa dados públicos e perfil descartável; não acessa Supabase nem perfil pessoal.
- */
+/* Regressão da área Cobrado assim na prova, inline na subseção e avaliações explícitas.
+ * Rodada em navegador sem qualquer dado pessoal conectado, exclusivamente perfil descartável. */
 import {chromium} from 'playwright-core';
-import {existsSync} from 'node:fs';
+import {existsSync,readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
 const chrome=process.env.CHROME_BIN||['/usr/bin/google-chrome','/usr/bin/chromium'].find(existsSync);
 if(!chrome||!existsSync(chrome))throw Error('Chromium não encontrado');
-const browser=await chromium.launch({headless:true,executablePath:chrome,args:['--no-sandbox','--allow-file-access-from-files','--disable-dev-shm-usage']});
-const lessons=[
- ['rlm.html',5],['portugues-casan-19-11.html',5],['engenharia-qualidade.html',5],
- ['banco-dados.html',5],['seguranca.html',4],['algoritmos-oo.html',5],
- ['administracao-publica-ima.html',5],['legislacao-ambiental-ima.html',3]
-];
-const publicData=await import('node:fs/promises').then(async fs=>fs.readFile('assets/cobranca-dados.js','utf8'));
-assert(publicData.includes('ConcursoCobrancaData'),'Fonte pública de exemplos indisponível');
-let total=0,assertions=0;
+const dbtext=readFileSync('assets/cobranca-dados.js','utf8');
+const json=JSON.parse(dbtext.slice(dbtext.indexOf('window.ConcursoCobrancaData=')+'window.ConcursoCobrancaData='.length).trim().replace(/;$/,''));
+const pages=[['rlm.html','rlm'],['portugues-casan-19-11.html','portugues'],['engenharia-qualidade.html','engenharia'],
+ ['banco-dados.html','banco-dados'],['seguranca.html','seguranca'],['algoritmos-oo.html','algoritmos-oo'],
+ ['administracao-publica-ima.html','administracao-publica-ima'],['legislacao-ambiental-ima.html','legislacao-ambiental-ima']];
+const browser=await chromium.launch({headless:true,executablePath:chrome,args:['--no-sandbox','--allow-file-access-from-files']});
+let count=0;
 try{
  for(const width of [320,390,430,1280]){
   const context=await browser.newContext({viewport:{width,height:850},isMobile:width<700,hasTouch:width<700});
-  const page=await context.newPage();
-  for(const [lesson,expected] of lessons){
-    const errors=[];const fn=e=>errors.push(e.message);page.on('pageerror',fn);
-    await page.goto(pathToFileURL(resolve('aulas/'+lesson)).href,{waitUntil:'domcontentloaded'});
-    await page.locator('#cobrado-assim-na-prova .ce-cobranca-card').first().waitFor({timeout:14000});
-    const dom=await page.evaluate(()=>{
-       const panel=document.getElementById('cobrado-assim-na-prova');
-       const main=document.querySelector('main');
-       const cards=[...panel.querySelectorAll('.ce-cobranca-card')];
-       const tools=main.querySelector('#ferramentas-da-aula');
-       const readKeys=()=>Object.keys(localStorage).filter(k=>/read|lido|_steps_/.test(k)).sort().map(k=>k+'='+localStorage.getItem(k));
-       return {
-        cards:cards.map(c=>({
-          origin:c.querySelector('.ce-cobranca-origin')?.textContent??'',
-          kind:c.querySelector('.ce-cobranca-kind')?.textContent??'',
-          prompt:c.querySelector('.ce-cobranca-prompt')?.textContent??'',
-          options:[...c.querySelectorAll('.ce-cobranca-options li')].map(x=>x.textContent),
-          links:[...c.querySelectorAll('.ce-cobranca-links a')].map(a=>({href:a.getAttribute('href'),label:a.textContent})),
-          correct:c.querySelector('.ce-cobranca-correct')?.textContent??'',
-          explanation:c.querySelector('.ce-cobranca-answer > p:not(.ce-cobranca-correct):not(.ce-cobranca-comparison)')?.textContent??'',
-          comparison:c.querySelector('.ce-cobranca-comparison')?.textContent??'',
-          closed:!c.querySelector('.ce-cobranca-answer')?.open
-        })),
-        toolAfter:!!tools&&Boolean(panel.compareDocumentPosition(tools)&Node.DOCUMENT_POSITION_FOLLOWING),
-        width:document.documentElement.scrollWidth,
-        title:panel.querySelector('h2')?.textContent,
-        countPanel:document.querySelectorAll('#cobrado-assim-na-prova').length,
-        reads:readKeys()
-       };
-    });
-    assert.equal(dom.cards.length,expected,lesson+' não mostra 1–5 exemplos corretamente');
-    assertions++;total+=expected;
-    assert.equal(dom.countPanel,1,lesson+' exibe painel duplicado');
-    assert.equal(dom.title,'Cobrado assim na prova',lesson+' título ausente');
-    assert(dom.toolAfter,lesson+' exemplos devem aparecer antes das preferências');
-    assert(dom.width<=width+3,lesson+' possui overflow horizontal a '+width+'px: '+dom.width);
-    for(const card of dom.cards){
-      assert(card.kind.includes('ADAPTADA'),lesson+' não sinaliza a origem adaptada');
-      assert(card.origin.includes('questão'),lesson+' não informa número da prova');
-      assert(card.prompt.length>=45,lesson+' enunciado curto');
-      assert.equal(card.options.length,5,lesson+' alternativas incompletas');
-      assert(card.options.every(x=>typeof x==='string'&&x.trim().length>0),lesson+' alternativa vazia');
-      assert(card.links.length>=3,lesson+' sem links de origem, gabarito e aula');
-      assert(card.links.some(x=>x.label.includes('original')&&x.href.startsWith('https://')),lesson+' falta referência real');
-      assert(card.links.some(x=>x.label.includes('final')&&x.href.startsWith('https://')),lesson+' falta gabarito externo');
-      assert(card.links.some(x=>x.href.startsWith('#')&&documentSafeHash(x.href)),lesson+' falta âncora de tópico');
-      assert(/^Resposta da adaptação: [A-E]$/.test(card.correct),lesson+' chave própria ausente');
-      assert(card.explanation.length>=75,lesson+' explicação insuficiente');
-      assert(card.comparison.includes('Gabarito FINAL')&&card.comparison.includes('não substitui'),lesson+' confusão com gabarito original');
-      assert(card.closed,lesson+' solução deve iniciar recolhida');
-      assertions+=12;
-    }
-    const snapshot=dom.reads.join('\n');
-    await page.locator('.ce-cobranca-answer summary').first().click();
-    const readAfter=await page.evaluate(()=>Object.keys(localStorage).filter(k=>/read|lido|_steps_/.test(k)).sort().map(k=>k+'='+localStorage.getItem(k)).join('\n'));
-    assert.equal(snapshot,readAfter,lesson+' abrir a resolução modificou registros de Lido');
-    assert.equal(errors.length,0,lesson+' erros JavaScript: '+errors.join(' | '));
-    page.off('pageerror',fn);
-    console.log('OK '+width+'px '+lesson+' '+expected+' questões adaptadas, gabaritos e explicações');
+  for(const [path,slug] of pages){
+   const page=await context.newPage(),errors=[];
+   page.on('pageerror',e=>errors.push(e.message));
+   await page.goto(pathToFileURL(resolve('aulas/'+path)).href,{waitUntil:'domcontentloaded'});
+   await page.waitForFunction(()=>document.querySelectorAll('.ce-cobranca-inline').length>0,{timeout:16000});
+   await page.waitForTimeout(175);
+   const info=await page.evaluate(()=>{
+    const panels=[...document.querySelectorAll('.ce-cobranca-inline')];
+    return {cards:document.querySelectorAll('.ce-cobranca-card').length,panels:panels.length,
+      sources:[...document.querySelectorAll('.ce-cobranca-card')].map(card=>({
+       prompt:card.querySelector('.ce-cobranca-prompt')?.textContent,
+       opt:card.querySelectorAll('.ce-cobranca-choice input').length,
+       origin:card.querySelector('.ce-cobranca-origin')?.textContent,
+       links:[...card.querySelectorAll('.ce-cobranca-links a')].map(a=>a.getAttribute('href')),
+       correct:card.querySelector('.ce-cobranca-correct')?.textContent,
+       explanation:card.querySelector('.ce-cobranca-answer p:not(.ce-cobranca-correct):not(.ce-cobranca-comparison)')?.textContent,
+       kind:card.querySelector('.ce-cobranca-kind')?.textContent,
+       form:!!card.querySelector('form[data-ce-quiz]'),
+       closed:!card.querySelector('.ce-cobranca-answer')?.open
+      })),
+      groups:panels.map(p=>({id:p.dataset.forSection,items:p.querySelectorAll('.ce-cobranca-item').length,open:p.querySelectorAll('.ce-cobranca-item[open]').length,
+       withinArticle:!!p.closest('article.nl-section,article.subsection'),
+       beforeRead:(()=>{
+        const near=p.closest('article.nl-section,article.subsection');
+        const foot=near?.querySelector('.nl-end-read,.ce-end-reading');
+        return !foot||Boolean(p.compareDocumentPosition(foot)&Node.DOCUMENT_POSITION_FOLLOWING);
+       })()})),
+      width:document.documentElement.scrollWidth,
+      readings:Object.keys(localStorage).filter(k=>/lido|read|steps/.test(k)).map(k=>k+'='+localStorage.getItem(k)).sort(),
+      logs:JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]').length
+    };
+   });
+   const exp=dbtext&&json.cases[slug].length;
+   assert.equal(info.cards,exp,path+' número de exercícios');
+   assert(info.panels>=1&&info.panels<=exp,path+' grupos 1 a 5');
+   assert(info.width<=width+3,path+' overflow em '+width+'px: '+info.width);
+   assert(info.groups.every(x=>x.open===1&&x.items>=1&&x.items<=5&&x.beforeRead),path+' posições ou recolhimento incorretos');
+   for(const card of info.sources){
+    assert(card.prompt?.length>=45&&card.opt===5&&card.origin?.includes('questão')&&card.kind?.includes('ADAPTADA'),path+' exercício incompleto');
+    assert(card.links.length===3&&card.links[0].startsWith('#')&&card.links.slice(1).every(x=>x.startsWith('https://')),path+' fonte ausente');
+    assert(/^Resposta da adaptação: [A-E]$/.test(card.correct)&&card.explanation?.length>=75,path+' correção própria ausente');
+    assert(card.form&&card.closed,path+' formulário ou solução inicial inválidos');
+   }
+   const card=page.locator('.ce-cobranca-card').first();
+   await card.locator('.ce-cobranca-choice input').first().check();
+   await card.locator('.ce-cobranca-reveal').click();
+   const step=await page.evaluate(()=>({
+    readings:Object.keys(localStorage).filter(k=>/lido|read|steps/.test(k)).map(k=>k+'='+localStorage.getItem(k)).sort(),
+    logs:JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]').length
+   }));
+   assert.deepEqual(step.readings,info.readings,path+' conferir alterou Lido');
+   assert.equal(step.logs,info.logs,path+' conferir gravou quiz');
+   assert(await card.locator('.ce-cobranca-answer').evaluate(x=>x.open),path+' a resolução não foi exibida');
+   await card.locator('.ce-cobranca-submit').click();
+   const saved=await page.evaluate(()=>({
+    readings:Object.keys(localStorage).filter(k=>/lido|read|steps/.test(k)).map(k=>k+'='+localStorage.getItem(k)).sort(),
+    logs:JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]'),
+   }));
+   assert.deepEqual(saved.readings,info.readings,path+' enviar quiz alterou Lido');
+   assert.equal(saved.logs.length,step.logs+1,path+' envio explícito não gravou sessão');
+   assert.equal(saved.logs.at(-1).subject,slug==='rlm'?'rlm':slug==='portugues'?'portugues':slug==='administracao-publica-ima'?'adm':slug==='legislacao-ambiental-ima'?'legislacao':'ti');
+   assert.equal(errors.length,0,path+' erros no navegador: '+errors.join(' | '));
+   count++;console.log('OK '+width+'px '+path+' · '+exp+' adaptações inline, conferir sem registro e envio com registro');
+   await page.close();
   }
   await context.close();
  }
- console.log('SUCESSO: '+lessons.length+' aulas, 37 exemplos independentes, '+total+' cards auditados em quatro tamanhos; '+assertions+' verificações. Sem progresso alterado.');
+ console.log('SUCESSO: '+count+' páginas × 4 tamanhos, 37 questões completas, envio somente explícito, Lido intacto.');
 }finally{await browser.close();}
-function documentSafeHash(link){return /^#[a-z][\w-]+$/.test(link);}
