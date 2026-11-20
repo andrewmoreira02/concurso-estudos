@@ -216,6 +216,13 @@ function render(data){
      link.textContent='Seguir sugestão: '+primary.title;
    }
  }
+ const resumeLinks=[['rlm','resumeRlmLink'],['engenharia','resumeEngLink']];
+ for(const [id,target] of resumeLinks){
+   const course=data.lessons.find(l=>l.id===id),a=$(target);
+   if(!course||!a)continue;
+   a.href=localHref(course.first?course.url+'#'+course.first.id:'revisoes.html');
+   a.textContent=course.first?'Retomar etapa '+course.first.module+'.'+course.first.step:'Ver revisões';
+ }
  const focus=$('dynamicFocus');
  if(focus&&primary)focus.textContent=primary.title+'. '+primary.description;
 }
