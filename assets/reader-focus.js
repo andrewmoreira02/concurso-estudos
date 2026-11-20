@@ -48,8 +48,25 @@ function init(){
  const cur=document.createElement('span');cur.className='ce-reader-step';
  const next=document.createElement('a');next.href='#';next.textContent='Próxima →';
  bar.append(prev,cur,next);document.body.append(bar);
- let active=0,scheduled=false;
+ const moduleSelector='section.chapter,section.section,section.module,section.nl-chapter';
+ const moduleOf=node=>node?.closest(moduleSelector)||null;
+ let active=0,scheduled=false,introFor=-1;
+ function focusIntro(index){
+  if(index<0||index>=sections.length)return;
+  const module=moduleOf(sections[index]);
+  if(!module)return;
+  introFor=index;active=Math.max(0,index-1);
+  const number=module.id.match(/(\d+)$/)?.[1]||'';
+  cur.textContent='Módulo '+number+' · Apresentação';
+  prev.classList.toggle('ce-reader-inactive',index===0);
+  prev.setAttribute('aria-disabled',index===0?'true':'false');
+  next.classList.remove('ce-reader-inactive');next.setAttribute('aria-disabled','false');
+  prev.href=index>0?'#'+sections[index-1].id:'#'+module.id;
+  next.href='#'+sections[index].id;
+  $('.ce-index-current').forEach(a=>{a.classList.remove('ce-index-current');a.removeAttribute('aria-current');});
+ }
  function focus(i){
+  introFor=-1;
   if(i<0||i>=sections.length)return;
   active=i;const node=sections[i],name=node.id||node.dataset.lessonStep;
   const label=node.dataset.lessonStep||name?.replace(/^etapa-(\d+)-(\d+)$/,'$1.$2').replace(/^[a-z]+-(\d+)-(\d+)$/,'$1.$2');
@@ -75,6 +92,13 @@ function init(){
 
   const hash=decodeURIComponent(location.hash.slice(1));
   if(hash){
+   const module=document.getElementById(hash);
+   if(module?.matches(moduleSelector)){
+    const i=sections.findIndex(node=>moduleOf(node)===module);
+    if(i>=0&&sections[i].getBoundingClientRect().top>65){
+     focusIntro(i);return;
+    }
+   }
    const i=sections.findIndex(x=>x.id===hash);
    if(i>=0){const r=sections[i].getBoundingClientRect();if(r.top<innerHeight*0.78&&r.bottom>-50){focus(i);return;}}
   }
@@ -95,7 +119,19 @@ function init(){
   return $$(`a.ce-step-next[data-ce-next="${id}"]`)[0];
  }
  next.addEventListener('click',e=>{
-  e.preventDefault();if(active>=sections.length-1)return;
+  e.preventDefault();
+  // A apresentação é uma etapa de navegação real entre os módulos.
+  // O segundo toque em Próxima entra na 3.1, sem avançar inadvertidamente à 3.2.
+  if(introFor>=0){
+   const i=introFor,dest=sections[i];
+   dest.scrollIntoView({behavior:'auto',block:'start'});
+   history.pushState(null,'','#'+dest.id);
+   if(slug==='portugues')dispatchEvent(new Event('hashchange'));
+   focus(i);return;
+  }
+  if(active>=sections.length-1)return;
+  const following=sections[active+1];
+  const boundary=!!following&&moduleOf(following)!==moduleOf(sections[active]);
   const original=originalNext(sections[active]);
   if(slug==='portugues'){
    // A navegação portuguesa usa índice interno; alinhar o índice à seção visível
@@ -105,12 +141,18 @@ function init(){
   }
   if(original){original.click();}
   else return; // nunca ignorar a preferência Lido usando navegação independente
-  setTimeout(()=>focus(Math.min(active+1,sections.length-1)),120);
+  const nextIndex=Math.min(active+1,sections.length-1);
+  if(boundary)focusIntro(nextIndex);else focus(nextIndex);
+  setTimeout(()=>{if(boundary&&location.hash==='#'+moduleOf(sections[nextIndex])?.id)focusIntro(nextIndex);else focus(nextIndex);},120);
  });
  prev.addEventListener('click',e=>{
-  e.preventDefault();if(active===0)return;
-  const dest=sections[active-1];dest.scrollIntoView({behavior:'smooth',block:'start'});
-  history.replaceState(null,'','#'+dest.id);focus(active-1);
+  e.preventDefault();
+  const index=introFor>=0?introFor-1:active-1;
+  if(index<0)return;
+  const dest=sections[index];dest.scrollIntoView({behavior:'smooth',block:'start'});
+  history.replaceState(null,'','#'+dest.id);
+  if(slug==='portugues')dispatchEvent(new Event('hashchange'));
+  focus(index);
  });
  addEventListener('hashchange',request);addEventListener('scroll',request,{passive:true});
  setTimeout(request,200);
