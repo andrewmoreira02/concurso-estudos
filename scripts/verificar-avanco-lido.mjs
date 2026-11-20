@@ -100,7 +100,7 @@ async function one(path,kind){
   };
   if(!b.native)b.native='a.ce-step-next[data-ce-next="'+b.last+'"]';
   await page.goto(url+'/'+path+'#'+b.last,{waitUntil:'domcontentloaded'});
-  await page.locator('.ce-reader-bottom').waitFor({timeout:15000});
+  await page.locator('.ce-reader-bottom').waitFor({state:'attached',timeout:15000});
   await page.locator(b.native).click({force:true});
   await page.waitForFunction(module=>location.hash==='#'+module,b.module,{timeout:15000});
   await page.waitForFunction(()=>document.querySelector('.ce-reader-step')?.textContent.includes('Apresentação'),{timeout:12000});
