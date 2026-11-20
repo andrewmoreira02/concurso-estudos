@@ -124,7 +124,7 @@ function init(){
   // O segundo toque em Próxima entra na 3.1, sem avançar inadvertidamente à 3.2.
   if(introFor>=0){
    const i=introFor,dest=sections[i];
-   dest.scrollIntoView({behavior:'auto',block:'start'});
+   dest.scrollIntoView({behavior:'instant',block:'start'});
    history.pushState(null,'','#'+dest.id);
    if(slug==='portugues')dispatchEvent(new Event('hashchange'));
    focus(i);return;
