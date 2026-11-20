@@ -206,19 +206,27 @@
     }catch{}
     return out;
   }
+  function cleanStudy(doc){
+    if(!doc||doc.version!==1||!doc.confirmed||typeof doc.confirmed!=='object'||Array.isArray(doc.confirmed)||Object.keys(doc.confirmed).length>350)throw Error('Confirmações de estudo inválidas');
+    if(!Object.entries(doc.confirmed).every(([id,yes])=>/^(?:casan|ima):[a-z][a-z0-9-]{2,40}:(?:[1-9]|1\d|20)$/.test(id)&&typeof yes==='boolean'))throw Error('Módulos confirmados inválidos');
+    return {version:1,confirmed:{...doc.confirmed}};
+  }
   function backup() {
     const planDone=localJSON('ce_plan_done_v1',{});
     const available=localJSON('ce_available_days_v1',[]);
     const questionLogs=localJSON('ce_question_logs_v1',[]);
     const reviewDone=localJSON('ce_review_done_v1',{});
+    let studyConfirmed={version:1,confirmed:{}};
+    try{studyConfirmed=cleanStudy(localJSON('ce_study_confirmed_v1',studyConfirmed));}catch{}
     return {
       format:'concurso-estudos-progress',
-      version:6,
+      version:7,
       savedAt:new Date().toISOString(),
       rlm:{readSubsections:readSteps(),readModules:readModules()},
       engenharia:{readSubsections:readEngineeringSteps(),readChapters:readEngineeringChapters()},
       portugues:readPortugueseDocument(),
       newLessons:readNewLessonBackups(),
+      studyConfirmed,
       registration:{ima:localJSON('ce_registration_v1',{})?.ima===true},
       site:{
         planDone:planDone && typeof planDone==='object'&&!Array.isArray(planDone)?planDone:{},
@@ -226,7 +234,7 @@
         questionLogs:Array.isArray(questionLogs)?questionLogs:[],
         reviewDone:reviewDone&&typeof reviewDone==='object'&&!Array.isArray(reviewDone)?reviewDone:{}
       },
-      interpretation:'Leitura, plano marcado e prática autorreportada são evidências diferentes; não equivalem a domínio.'
+      interpretation:'Lido, estudo confirmado por módulo e avaliações corrigidas são evidências separadas. Nenhum desses registros isoladamente comprova domínio.'
     };
   }
   function downloadBackup() {
@@ -259,10 +267,10 @@
         if (file.size>2097152) throw Error('arquivo acima de 2 MB');
         const data=safeParse(await file.text());
         if (!data || typeof data !== 'object') throw Error('JSON inválido');
-        let steps, modules, engSteps=null, engChapters=null, newSiteData=null, portugueseDoc=null, extraLessons=null, registered=null;
-        if(data.format==='concurso-estudos-progress' && [1,2,3,4,5,6].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
+        let steps, modules, engSteps=null, engChapters=null, newSiteData=null, portugueseDoc=null, extraLessons=null, registered=null, studyConfirmed=null;
+        if(data.format==='concurso-estudos-progress' && [1,2,3,4,5,6,7].includes(data.version) && data.rlm && Array.isArray(data.rlm.readSubsections) && Array.isArray(data.rlm.readModules)){
           steps=data.rlm.readSubsections;modules=data.rlm.readModules;
-          if([2,3,4,5,6].includes(data.version)){
+          if([2,3,4,5,6,7].includes(data.version)){
             if(!data.engenharia || !Array.isArray(data.engenharia.readSubsections) || !Array.isArray(data.engenharia.readChapters))throw Error('Backup de Engenharia incompleto');
             engSteps=data.engenharia.readSubsections;engChapters=data.engenharia.readChapters;
             if(data.version>=3)newSiteData=validateNewData(data.site);
@@ -283,6 +291,7 @@
               if(!data.registration||typeof data.registration.ima!=='boolean')throw Error('Situação de inscrição inválida');
               registered=data.registration.ima;
             }
+            if(data.version>=7)studyConfirmed=cleanStudy(data.studyConfirmed);
           }
         } else if(['rlm-shared-progress','casan-rlm-progress'].includes(data.format) && Array.isArray(data.markedAsStudied)){
           steps=readSteps(); modules=[...new Set([...readModules(),...data.markedAsStudied])];
@@ -319,6 +328,7 @@
             localStorage.setItem(key,JSON.stringify({...previous,version:1,lesson:slug,read}));
           }
           if(typeof registered==='boolean')localStorage.setItem('ce_registration_v1',JSON.stringify({ima:registered}));
+          if(studyConfirmed)localStorage.setItem('ce_study_confirmed_v1',JSON.stringify(studyConfirmed));
           if(newSiteData){
             localStorage.setItem('ce_plan_done_v1',JSON.stringify(newSiteData.planDone));
             localStorage.setItem('ce_available_days_v1',JSON.stringify(newSiteData.available));
