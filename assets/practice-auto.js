@@ -20,7 +20,7 @@ let bank=null,config=null;
 function validQuestion(q){
  return q&&typeof q.id==='string'&&/^[a-z0-9-]{3,60}$/.test(q.id)&&
  ['ti','portugues','rlm','legislacao','atualidades','adm'].includes(q.subject)&&
- q.options&&['a','b','c','d'].every(k=>typeof q.options[k]==='string'&&q.options[k].length>3)&&
+ q.options&&['a','b','c','d'].every(k=>typeof q.options[k]==='string'&&q.options[k].length>=1)&&
  ['a','b','c','d'].includes(q.correct)&&typeof q.prompt==='string'&&q.prompt.length>10&&
  typeof q.explanation==='string'&&q.explanation.length>10&&Array.isArray(q.exams);
 }
