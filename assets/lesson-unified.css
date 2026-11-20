@@ -164,6 +164,16 @@
   max-width:100%;
 }
 .ce-lesson-page .ce-standard-lesson-note{font-size:.87rem;color:var(--ce-muted)!important}
+/* Português: o índice móvel deve permanecer acima do cabeçalho comum. */
+.ce-lesson-page.ce-pt .ce-standard-header{position:relative;z-index:1}
+.ce-lesson-page.ce-pt #menu-toggle{z-index:120!important}
+.ce-lesson-page.ce-eng .main>.study-tools{display:none}
+.ce-lesson-page.ce-pt .hero .intro{display:none}
+.ce-lesson-page.ce-rlm main>.notice{display:none}
+@media(max-width:950px){
+ .ce-lesson-page.ce-pt .ce-standard-header{padding-right:112px!important}
+ .ce-lesson-page.ce-pt #menu-toggle{position:fixed;top:10px;right:10px;z-index:120!important}
+}
 @media(max-width:970px){
  .ce-lesson-page :is(.layout,.wrap,.nl-layout){display:block!important}
  .ce-lesson-page :is(main,.main,.nl-main){padding:16px 14px 90px}
