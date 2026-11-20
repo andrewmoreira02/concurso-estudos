@@ -173,6 +173,7 @@ function cleanMap(map){
  for(const [k,v] of Object.entries(map||{}))if(allowed(k)&&valueOK(k,v))out[k]=v;
  return out;
 }
+function sameMap(a,b){const keys=new Set([...Object.keys(a),...Object.keys(b)]);return [...keys].every(k=>same(a[k],b[k]));}
 async function sync(){
  if(!configured)throw Error('Sincronização não configurada.');
  if(!pair)throw Error('Este aparelho ainda não foi vinculado.');
@@ -208,11 +209,18 @@ async function sync(){
      else if(!r||!same(remote[k],result[k]))upload.push([k,result[k]]);
    }
    if(upload.length)await pushRows(upload);
+   // Não sobrescrever marcações realizadas durante a requisição assíncrona.
+   if(!sameMap(current,cleanMap(snapshot()))){
+     syncAgain=true;
+     report('Nova marcação detectada. Enviando progresso atualizado…');
+     return 'Atualizando';
+   }
    const changed=apply(result);
+   const visibleChanged=!sameMap(current,cleanMap(snapshot()));
    store(META_KEY,{version:2,owner:OWNER_ID,synced:cleanMap(result),last_sync:new Date().toISOString()});
    const msg='Sincronizado'+(upload.length?' · '+upload.length+' alteração(ões) enviada(s)':'')+(conflicts?' · '+conflicts+' conflito(s) priorizando este aparelho':'')+'.';
    report(msg);
-   if(changed&&location.pathname.split('/').pop()!=='conta.html'){
+   if(changed&&visibleChanged&&location.pathname.split('/').pop()!=='conta.html'){
      const active=document.activeElement;
      const editing=active&&/^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName)&&!active.readOnly&&!active.disabled;
      if(!editing){
