@@ -1,0 +1,297 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R] /Count 6 >>
+endobj
+4 0 obj
+<< /Length 4327 >>
+stream
+BT /F2 21 Tf 0.08 0.31 0.44 rg 1 0 0 1 51 791.00 Tm (CADERNO SELETIVO DE QUESTOES) Tj ET
+BT /F2 12 Tf 0.13 0.32 0.40 rg 1 0 0 1 51 761.00 Tm (CASAN 2026 | Analista de Sistemas \(cargo 404\)) Tj ET
+BT /F1 10 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 737.00 Tm (13 questoes selecionadas para a revisao da CASAN, baseadas em itens da prova Instituto AOCP 2025) Tj ET
+BT /F1 10 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 722.00 Tm (- Prefeitura de Joinville/SC, Analista de Tecnologia da Informacao.) Tj ET
+BT /F1 9.4 Tf 0.36 0.27 0.21 rg 1 0 0 1 51 700.00 Tm (IMPORTANTE: sao adaptacoes didaticas, NAO transcricoes literais do caderno historico. Alternativas e) Tj ET
+BT /F1 9.4 Tf 0.36 0.27 0.21 rg 1 0 0 1 51 686.00 Tm (gabaritos desta versao sao proprios. Foram selecionados somente itens relacionados as areas TI, Portugues) Tj ET
+BT /F1 9.4 Tf 0.36 0.27 0.21 rg 1 0 0 1 51 672.00 Tm (e Raciocinio Logico da preparacao CASAN.) Tj ET
+BT /F1 9.4 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 646.00 Tm (Distribuicao: 8 de TI, 3 de Portugues e 2 de RLM. A numeracao original AOCP e indicada como referencia.) Tj ET
+BT /F1 9.4 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 632.00 Tm (Questões de Legislação e Atualidades não constam deste caderno histórico selecionado.) Tj ET
+0.77 0.82 0.86 RG 0.5 w 51 608.00 m 544 608.00 l S
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 586.00 Tm (QUESTAO 1 | Conhecimentos Especificos \(TI\)) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 565.00 Tm (Uma equipe entrevista operadores e descreve episódios reais em que cidadãos abrem chamados,) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 551.00 Tm (detalhando personagens, objetivos e contexto. Essa técnica de elicitação é:) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 529.00 Tm (A\) Particionamento horizontal de banco) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 513.00 Tm (B\) Refatoração de código) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 497.00 Tm (C\) Storytelling de requisitos) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 481.00 Tm (D\) Encriptação de dados) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 465.00 Tm (E\) Teste de carga) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 444.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 32 \(p. 9\). Adaptada.) Tj ET
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 420.00 Tm (QUESTAO 2 | Conhecimentos Especificos \(TI\)) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 399.00 Tm (Qual padrão é indicado para construir um objeto complexo em etapas, permitindo representações) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 385.00 Tm (diferentes sem um construtor gigantesco?) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 363.00 Tm (A\) Observer) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 347.00 Tm (B\) Strategy) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 331.00 Tm (C\) Adapter) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 315.00 Tm (D\) Singleton) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 299.00 Tm (E\) Builder) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 278.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 33 \(p. 10\). Adaptada.) Tj ET
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 254.00 Tm (QUESTAO 3 | Conhecimentos Especificos \(TI\)) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 233.00 Tm (Um item de pedido não possui identificação própria fora do pedido e é identificado por \(número do) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 219.00 Tm (pedido, posição do item\). No modelo ER, isso caracteriza:) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 197.00 Tm (A\) Uma tabela sem atributos) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 181.00 Tm (B\) Uma entidade forte independente) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 165.00 Tm (C\) Uma entidade fraca com chave vinculada ao proprietário) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 149.00 Tm (D\) Uma relação unária sem dependência) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 133.00 Tm (E\) Um atributo multivalorado sem entidade) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 112.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 31 \(p. 9\). Adaptada.) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 51 37.00 Tm (Concurso Estudos | CASAN 404 | Caderno seletivo AOCP 2025) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 528 37.00 Tm (1) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 4199 >>
+stream
+BT /F2 9 Tf 0.16 0.30 0.40 rg 1 0 0 1 51 804.00 Tm (Caderno de questoes selecionadas | CASAN 404) Tj ET
+0.77 0.82 0.86 RG 0.5 w 51 793.00 m 544 793.00 l S
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 765.00 Tm (QUESTAO 4 | Conhecimentos Especificos \(TI\)) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 744.00 Tm (Uma tabela Funcionário\(id, setor_id, setor_nome\) tem id -> setor_id e setor_id -> setor_nome. Que) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 730.00 Tm (alteração reduz a dependência transitiva para atender à 3FN?) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 708.00 Tm (A\) Repetir setor_nome em todas as linhas) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 692.00 Tm (B\) Separar a entidade Setor\(setor_id, setor_nome\) e referenciá-la) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 676.00 Tm (C\) Remover a chave primária de Funcionário) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 660.00 Tm (D\) Converter todas as colunas para texto) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 644.00 Tm (E\) Eliminar setor_id e guardar só setor_nome) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 623.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 40 \(p. 11\). Adaptada.) Tj ET
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 599.00 Tm (QUESTAO 5 | Conhecimentos Especificos \(TI\)) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 578.00 Tm (Um e-mail que imita o banco pede senha e código MFA em uma página de domínio diferente do oficial.) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 564.00 Tm (Qual ameaça melhor descreve o caso?) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 542.00 Tm (A\) Phishing) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 526.00 Tm (B\) Compressão de dados) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 510.00 Tm (C\) Balanceamento de carga) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 494.00 Tm (D\) Firewall stateful) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 478.00 Tm (E\) Assinatura digital) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 457.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 20 \(p. 6\). Adaptada.) Tj ET
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 433.00 Tm (QUESTAO 6 | Conhecimentos Especificos \(TI\)) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 412.00 Tm (Qual afirmação sobre assinatura digital com DSA é tecnicamente correta?) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 390.00 Tm (A\) A assinatura cifra o arquivo para assegurar sigilo) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 374.00 Tm (B\) A verificação da assinatura sempre exige revelar a chave privada) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 358.00 Tm (C\) Assina-se com chave privada e verifica-se com chave pública, sem proporcionar sigilo por si só) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 342.00 Tm (D\) A assinatura substitui a necessidade de proteger chaves) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 326.00 Tm (E\) O DSA é algoritmo de compressão sem uso criptográfico) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 305.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 48 \(p. 13\). Adaptada.) Tj ET
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 281.00 Tm (QUESTAO 7 | Conhecimentos Especificos \(TI\)) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 260.00 Tm (Para um algoritmo cujo tempo é 3n² + 4n + 8, qual afirmação assintótica é correta?) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 238.00 Tm (A\) O crescimento é Theta\(n\)) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 222.00 Tm (B\) O crescimento é O\(1\)) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 206.00 Tm (C\) O crescimento é Omega\(n³\)) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 190.00 Tm (D\) O crescimento é Theta\(n²\)) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 174.00 Tm (E\) O crescimento depende apenas do termo constante 8) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 153.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 34 \(p. 10\). Adaptada.) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 51 37.00 Tm (Concurso Estudos | CASAN 404 | Caderno seletivo AOCP 2025) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 528 37.00 Tm (2) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 3951 >>
+stream
+BT /F2 9 Tf 0.16 0.30 0.40 rg 1 0 0 1 51 804.00 Tm (Caderno de questoes selecionadas | CASAN 404) Tj ET
+0.77 0.82 0.86 RG 0.5 w 51 793.00 m 544 793.00 l S
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 765.00 Tm (QUESTAO 8 | Conhecimentos Especificos \(TI\)) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 744.00 Tm (Após push\(A\), push\(B\), push\(C\), qual sequência de três pop\(\) é produzida por uma pilha tradicional?) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 722.00 Tm (A\) C, B, A) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 706.00 Tm (B\) A, B, C) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 690.00 Tm (C\) B, C, A) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 674.00 Tm (D\) A, C, B) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 658.00 Tm (E\) C, A, B) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 637.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 42 \(p. 12\). Adaptada.) Tj ET
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 613.00 Tm (QUESTAO 9 | Portugues) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 592.00 Tm (Na frase "Os técnicos que analisaram os documentos emitiram o parecer", o termo "que" exerce qual) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 578.00 Tm (função na oração subordinada?) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 556.00 Tm (A\) Sujeito de "analisaram") Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 540.00 Tm (B\) Objeto indireto de "emitiram") Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 524.00 Tm (C\) Adjunto adverbial de tempo) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 508.00 Tm (D\) Conjunção integrante sem função sintática) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 492.00 Tm (E\) Predicativo do sujeito) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 471.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 2 \(p. 2\). Adaptada.) Tj ET
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 447.00 Tm (QUESTAO 10 | Portugues) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 426.00 Tm (Em "A equipe de segurança revisou os acessos, enquanto a de operações priorizou os backups", a) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 412.00 Tm (conjunção estabelece principalmente:) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 390.00 Tm (A\) Conclusão lógica) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 374.00 Tm (B\) Causa exclusiva) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 358.00 Tm (C\) Contraste entre atuações) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 342.00 Tm (D\) Finalidade obrigatória) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 326.00 Tm (E\) Condição hipotética) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 305.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 4 \(p. 3\). Adaptada.) Tj ET
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 281.00 Tm (QUESTAO 11 | Portugues) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 260.00 Tm (Considere a frase: "Os técnicos não divulgaram os relatórios." Qual reescrita substitui) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 246.00 Tm (corretamente "os relatórios" por pronome oblíquo, preservando o sentido e a colocação pronominal?) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 224.00 Tm (A\) Os técnicos não divulgaram-os.) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 208.00 Tm (B\) Os técnicos não os divulgaram.) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 192.00 Tm (C\) Os técnicos divulgaram-lhes não.) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 176.00 Tm (D\) Os técnicos não lhes divulgaram.) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 160.00 Tm (E\) Os técnicos não divulgaram lhes.) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 139.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 3 \(p. 2\). Adaptada.) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 51 37.00 Tm (Concurso Estudos | CASAN 404 | Caderno seletivo AOCP 2025) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 528 37.00 Tm (3) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 1967 >>
+stream
+BT /F2 9 Tf 0.16 0.30 0.40 rg 1 0 0 1 51 804.00 Tm (Caderno de questoes selecionadas | CASAN 404) Tj ET
+0.77 0.82 0.86 RG 0.5 w 51 793.00 m 544 793.00 l S
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 765.00 Tm (QUESTAO 12 | Raciocinio Logico-Matematico) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 744.00 Tm (Uma turma de 10 alunos teve média 8,0, enquanto outra de 5 alunos teve média 6,0. Qual é a média) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 730.00 Tm (conjunta?) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 708.00 Tm (A\) 6,0) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 692.00 Tm (B\) 7,33 aproximadamente) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 676.00 Tm (C\) 7,0) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 660.00 Tm (D\) 8,0) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 644.00 Tm (E\) 9,0) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 623.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 6 \(p. 3\). Adaptada.) Tj ET
+BT /F2 11 Tf 0.10 0.31 0.45 rg 1 0 0 1 51 599.00 Tm (QUESTAO 13 | Raciocinio Logico-Matematico) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 578.00 Tm (Entre seis pessoas, quantas comissões distintas de três integrantes podem ser formadas, sem) Tj ET
+BT /F1 10.2 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 564.00 Tm (cargos definidos?) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 542.00 Tm (A\) 6) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 526.00 Tm (B\) 12) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 510.00 Tm (C\) 18) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 494.00 Tm (D\) 20) Tj ET
+BT /F1 9.9 Tf 0.16 0.23 0.30 rg 1 0 0 1 64 478.00 Tm (E\) 120) Tj ET
+BT /F1 8.3 Tf 0.39 0.44 0.49 rg 1 0 0 1 51 457.00 Tm (Origem tematica: AOCP Joinville/SC 2025, questao 8 \(p. 3\). Adaptada.) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 51 37.00 Tm (Concurso Estudos | CASAN 404 | Caderno seletivo AOCP 2025) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 528 37.00 Tm (4) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 4356 >>
+stream
+BT /F2 9 Tf 0.16 0.30 0.40 rg 1 0 0 1 51 804.00 Tm (Caderno de questoes selecionadas | CASAN 404) Tj ET
+0.77 0.82 0.86 RG 0.5 w 51 793.00 m 544 793.00 l S
+BT /F2 17 Tf 0.07 0.32 0.44 rg 1 0 0 1 51 765.00 Tm (GABARITO DAS ADAPTACOES) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 735.00 Tm (Confira as respostas somente depois de resolver as questoes. Letras e explicacoes referem-se a este) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 721.00 Tm (caderno adaptado, nao ao gabarito literal da prova historica.) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 55 689.00 Tm (01: C) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 178 689.00 Tm (02: E) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 301 689.00 Tm (03: C) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 424 689.00 Tm (04: B) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 55 667.00 Tm (05: A) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 178 667.00 Tm (06: C) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 301 667.00 Tm (07: D) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 424 667.00 Tm (08: A) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 55 645.00 Tm (09: A) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 178 645.00 Tm (10: C) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 301 645.00 Tm (11: B) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 424 645.00 Tm (12: B) Tj ET
+BT /F2 11 Tf 0.09 0.40 0.35 rg 1 0 0 1 55 623.00 Tm (13: D) Tj ET
+BT /F2 12 Tf 0.09 0.37 0.49 rg 1 0 0 1 51 567.00 Tm (JUSTIFICATIVAS E REFERENCIAS) Tj ET
+0.77 0.82 0.86 RG 0.5 w 51 556.00 m 544 556.00 l S
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 534.00 Tm (Questao 1 - alternativa C - AOCP 2025 Q32) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 516.00 Tm (Storytelling facilita expor o contexto e as necessidades dos envolvidos por meio de histórias. Não substitui) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 503.00 Tm (a validação dos requisitos e a definição posterior de critérios de aceitação mensuráveis.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 473.00 Tm (Questao 2 - alternativa E - AOCP 2025 Q33) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 455.00 Tm (Builder separa a sequência de construção da representação final de um objeto complexo. Observer trata) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 442.00 Tm (notificações; Strategy troca algoritmos; Adapter compatibiliza interfaces.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 412.00 Tm (Questao 3 - alternativa C - AOCP 2025 Q31) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 394.00 Tm (A entidade fraca depende da entidade proprietária para sua identificação; a combinação do identificador do) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 381.00 Tm (pedido com o discriminador do item pode identificá-la. Não se deve confundir existência física de uma linha) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 368.00 Tm (com independência de chave.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 338.00 Tm (Questao 4 - alternativa B - AOCP 2025 Q40) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 320.00 Tm (setor_nome depende de setor_id e este depende do identificador de funcionário. A tabela Setor retém sua) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 307.00 Tm (própria chave; Funcionário passa a referenciá-la por chave estrangeira.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 277.00 Tm (Questao 5 - alternativa A - AOCP 2025 Q20) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 259.00 Tm (O atacante explora identidade falsa e urgência para obter segredos. Não informe credenciais nem código) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 246.00 Tm (MFA; valide o canal pela aplicação oficial, não pelo link da mensagem.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 216.00 Tm (Questao 6 - alternativa C - AOCP 2025 Q48) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 198.00 Tm (DSA é usado para assinatura, não para cifrar dados. A assinatura pode oferecer verificação de) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 185.00 Tm (autenticidade e integridade no modelo adequado; confidencialidade requer mecanismo próprio de) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 172.00 Tm (criptografia.) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 51 37.00 Tm (Concurso Estudos | CASAN 404 | Caderno seletivo AOCP 2025) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 528 37.00 Tm (5) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 3805 >>
+stream
+BT /F2 9 Tf 0.16 0.30 0.40 rg 1 0 0 1 51 804.00 Tm (Caderno de questoes selecionadas | CASAN 404) Tj ET
+0.77 0.82 0.86 RG 0.5 w 51 793.00 m 544 793.00 l S
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 765.00 Tm (Questao 7 - alternativa D - AOCP 2025 Q34) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 747.00 Tm (Para n grande, domina o termo quadrático. O\(n²\) é limite superior, Omega\(n²\) é limite inferior e Theta\(n²\)) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 734.00 Tm (descreve limite justo; termos de menor ordem e constantes são omitidos na notação assintótica.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 704.00 Tm (Questao 8 - alternativa A - AOCP 2025 Q42) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 686.00 Tm (Pilha usa LIFO: o último a entrar é o primeiro a sair. C foi inserido por último, depois B e A.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 656.00 Tm (Questao 9 - alternativa A - AOCP 2025 Q2) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 638.00 Tm (O pronome relativo retoma "os técnicos". Na oração "que analisaram os documentos", são os técnicos que) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 625.00 Tm (analisaram; portanto, "que" é sujeito de "analisaram", enquanto "os documentos" é objeto direto.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 595.00 Tm (Questao 10 - alternativa C - AOCP 2025 Q4) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 577.00 Tm (As duas equipes realizaram atividades diferentes, colocadas em contraste. "Enquanto" também pode ser) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 564.00 Tm (temporal em outros contextos: o sentido precisa ser decidido pelo conjunto da frase.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 534.00 Tm (Questao 11 - alternativa B - AOCP 2025 Q3) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 516.00 Tm ('Os relatórios' é objeto direto masculino plural e pode ser retomado por 'os'. A palavra negativa 'não' atrai) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 503.00 Tm (o pronome átono: 'não os divulgaram'.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 473.00 Tm (Questao 12 - alternativa B - AOCP 2025 Q6) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 455.00 Tm (Multiplique médias pelos tamanhos: 10 x 8 + 5 x 6 = 110 pontos; a turma total reúne 15 pessoas. 110÷15 =) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 442.00 Tm (7,333... Não calcule \(8+6\)÷2, pois os grupos têm tamanhos diferentes.) Tj ET
+BT /F2 10.5 Tf 0.13 0.34 0.46 rg 1 0 0 1 51 412.00 Tm (Questao 13 - alternativa D - AOCP 2025 Q8) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 394.00 Tm (A ordem não importa. C\(6,3\)=6!/\(3! x 3!\)=720/36=20. Contar 6 x 5 x 4=120 sem dividir por 3! repetiria cada) Tj ET
+BT /F1 9.5 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 381.00 Tm (comissão seis vezes.) Tj ET
+BT /F2 12 Tf 0.09 0.37 0.49 rg 1 0 0 1 51 343.00 Tm (FONTES E LIMITES) Tj ET
+0.77 0.82 0.86 RG 0.5 w 51 332.00 m 544 332.00 l S
+BT /F1 9.4 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 310.00 Tm (Prova historica: Instituto AOCP, Concurso Prefeitura de Joinville/SC 2025, Analista de Tecnologia da) Tj ET
+BT /F1 9.4 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 297.00 Tm (Informacao. Itens selecionados por afinidade com o edital CASAN 404. Questões anuladas pela banca não) Tj ET
+BT /F1 9.4 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 284.00 Tm (foram incluídas nesta curadoria.) Tj ET
+BT /F1 9.3 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 264.00 Tm (Os enunciados e as alternativas deste PDF foram reescritos. O PDF nao comprova aproveitamento nem) Tj ET
+BT /F1 9.3 Tf 0.16 0.23 0.30 rg 1 0 0 1 51 251.00 Tm (substitui o caderno original da banca.) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 51 37.00 Tm (Concurso Estudos | CASAN 404 | Caderno seletivo AOCP 2025) Tj ET
+BT /F1 8 Tf 0.39 0.45 0.50 rg 1 0 0 1 528 37.00 Tm (6) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000000015 00000 n 
+0000000112 00000 n 
+0000000214 00000 n 
+0000000304 00000 n 
+0000004682 00000 n 
+0000004818 00000 n 
+0000009068 00000 n 
+0000009204 00000 n 
+0000013206 00000 n 
+0000013342 00000 n 
+0000015361 00000 n 
+0000015499 00000 n 
+0000019907 00000 n 
+0000020045 00000 n 
+0000023902 00000 n 
+0000024040 00000 n 
+trailer
+<< /Size 17 /Root 16 0 R >>
+startxref
+24090
+%%EOF
