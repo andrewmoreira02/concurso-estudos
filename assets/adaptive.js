@@ -124,6 +124,13 @@ function model(){
  const sorted=lessons.filter(c=>c.first&&c.weight>0).sort((a,b)=>b.score-a.score||b.weight-a.weight);
  const due=nextDue(exam,today);
  const picks=[];
+ // Os blocos práticos constam no calendário; não simulam uma prova já realizada.
+ const assigned=config.calendar.special?.[today]||[];
+ const scheduledQuiz=assigned.find(t=>t.id==='questions-reta-final'||t.id==='ima-questions-eve');
+ if(scheduledQuiz&&exam===(''+(scheduledQuiz.id==='questions-reta-final'?'casan':'ima'))){
+   picks.push({type:'quiz',title:scheduledQuiz.title,href:scheduledQuiz.href,
+     description:scheduledQuiz.detail+' Os resultados serão registrados somente após envio real das respostas.'});
+ }
  if(due.length){
    const d=due[0];
    picks.push({type:'review',title:'Revisar: '+d.topic,href:'revisoes.html',
@@ -138,7 +145,7 @@ function model(){
    if(!exam)picks.push({type:'plan',title:'Revisar a prioridade do concurso',href:'planejamento.html',
      description:'As janelas de prova cadastradas terminaram. Evite seguir automaticamente editais antigos.'});
    else picks.push({type:'review',title:'Verificar retenção com questões',href:'revisoes.html',
-     description:'O material disponível está integralmente marcado como Lido. Isso não comprova retenção: registre diagnóstico e erros reais.'});
+     description:'O material disponível está integralmente marcado como Lido. Isso não comprova retenção: responda os quizzes para registrar resultados reais automaticamente.'});
  }
  const path=location.pathname;
  const active=lessons.find(l=>path.endsWith('/'+l.url)||path.endsWith(l.url));
