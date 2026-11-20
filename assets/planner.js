@@ -17,6 +17,7 @@ function saoPauloToday(){
   return get('year')+'-'+get('month')+'-'+get('day');
 }
 const TODAY=saoPauloToday();
+addEventListener('concurso:adaptive-update',e=>{if(e.detail?.today&&e.detail.today!==TODAY)location.reload();});
 const DATE_RE=/^\d{4}-\d{2}-\d{2}$/;
 function utcDate(iso){return new Date(iso+'T12:00:00Z');}
 function isoAdd(iso,d){const o=utcDate(iso);o.setUTCDate(o.getUTCDate()+d);return o.toISOString().slice(0,10);}
