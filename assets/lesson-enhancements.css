@@ -1,0 +1,24 @@
+/* Padrão pedagógico: a confirmação Lido aparece APÓS a teoria da subseção. */
+.ce-end-reading{clear:both;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;min-width:0;padding:14px 16px;margin:20px 0 24px;border:1px solid #6c9386;border-left:4px solid #39a685;border-radius:12px;background:#132b2a;color:#eef7f6}
+.ce-end-reading-label{font-size:.91rem;font-weight:650;line-height:1.5;color:#c8ece0;flex:1 1 190px}
+.ce-end-reading .ce-step-toolbar-end{width:100%;margin:0!important;padding:0!important;border:0!important;background:transparent!important}
+.ce-end-reading .step-action,.ce-end-reading .read-control{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ce-end-reading .step-read,.ce-end-reading .read-btn,.ce-end-reading .read-control{min-height:44px;cursor:pointer}
+.ce-end-reading .read-btn{margin:0}
+.ce-end-reading .read-control input{min-width:18px;min-height:18px}
+.ce-end-reading .step-navigation{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;margin-top:10px}
+@media(max-width:540px){.ce-end-reading{padding:12px;margin:16px 0}.ce-end-reading-label{flex-basis:100%}.ce-end-reading .step-read,.ce-end-reading .read-btn{min-height:44px}}
+/* Fórmulas em quadros autônomos com legenda e exemplo; sintaxe matemática como texto real. */
+.ce-formula-card{min-width:0;padding:clamp(14px,2.8vw,22px);margin:16px 0 19px;border:1px solid #9e86db;border-left:5px solid #b395ec;border-radius:14px;background:#241d3c;color:#f4edff;overflow-wrap:anywhere}
+.ce-formula-card h4,.ce-formula-card h5{color:#f4edff!important;font-size:1.07rem;line-height:1.35;margin:0 0 9px!important}
+.ce-formula-card .ce-formula-equation{display:block;max-width:100%;padding:14px 10px;margin:12px 0;border:1px solid #8377ad;border-radius:9px;background:#18142b;color:#fff;text-align:center;font-size:clamp(1.14rem,4.4vw,1.75rem);font-weight:780;line-height:1.8;white-space:normal;overflow-wrap:anywhere}
+.ce-formula-card .ce-formula-equation sup,.ce-formula-card .ce-formula-equation sub{font-size:.65em}
+.ce-formula-card .ce-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:7px 12px;margin:12px 0 10px}
+.ce-formula-card .ce-legend div{display:flex;align-items:baseline;gap:9px;padding:6px 0;border-bottom:1px solid #524671;min-width:0}
+.ce-formula-card .ce-legend dt{font-size:1.1rem;font-weight:850;flex:none;color:#e0cdfb}
+.ce-formula-card .ce-legend dd{margin:0;line-height:1.45;font-size:.91rem;color:#eee5fa}
+.ce-formula-card .ce-example{margin:12px 0 0!important;border-top:1px solid #524671;padding-top:11px;line-height:1.65;color:#f0eafb}
+.ce-frac{display:inline-flex;vertical-align:middle;flex-direction:column;align-items:center;line-height:1.15;white-space:nowrap;max-width:100%;font-size:.9em}
+.ce-frac > span:first-child{display:block;border-bottom:1.5px solid currentColor;padding:0 6px 4px}
+.ce-frac > span:last-child{display:block;padding-top:4px}
+.ce-formula-card .ce-when{font-size:.9rem;color:#ded2fa;line-height:1.45;margin:9px 0 0!important}
