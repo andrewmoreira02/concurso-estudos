@@ -56,7 +56,7 @@ try{
    assert(info.groups.every(x=>x.open===1&&x.items>=1&&x.items<=5&&x.beforeRead),path+' posições ou recolhimento incorretos');
    for(const card of info.sources){
     assert(card.prompt?.length>=45&&card.opt===5&&card.origin?.includes('questão')&&card.kind?.includes('ADAPTADA'),path+' exercício incompleto');
-    assert(card.links.length===3&&card.links[0].startsWith('#')&&card.links.slice(1).every(x=>x.startsWith('https://')),path+' fonte ausente');
+    assert(card.links.length===1&&card.links[0].startsWith('#'),path+' deve permitir revisar a teoria sem encaminhar para PDF');
     assert(/^Resposta da adaptação: [A-E]$/.test(card.correct)&&card.explanation?.length>=75,path+' correção própria ausente');
     assert(card.form&&card.closed,path+' formulário ou solução inicial inválidos');
    }
@@ -97,5 +97,5 @@ try{
   }
   await context.close();
  }
- console.log('SUCESSO: '+count+' páginas × 4 tamanhos, 37 questões completas, envio somente explícito, Lido intacto.');
+ console.log('SUCESSO: '+count+' verificações (8 páginas × 4 tamanhos), questões completas no tópico, sem links de cadernos; envio somente explícito, Lido intacto.');
 }finally{await browser.close();}
