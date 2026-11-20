@@ -16,7 +16,6 @@ on:
       - 'dados/questoes-adaptadas.json'
       - 'dados/questoes-reais.json'
       - 'scripts/verificar-avanco-lido.mjs'
-      - 'dados/questoes-reais.json'
       - 'scripts/verificar-pratica-automatica.mjs'
       - 'supabase/schema.sql'
       - 'conta.html'
@@ -41,7 +40,6 @@ on:
       - 'dados/questoes-adaptadas.json'
       - 'dados/questoes-reais.json'
       - 'scripts/verificar-avanco-lido.mjs'
-      - 'dados/questoes-reais.json'
       - 'scripts/verificar-pratica-automatica.mjs'
       - 'supabase/schema.sql'
       - 'conta.html'
@@ -69,7 +67,7 @@ jobs:
         run: node scripts/verificar-mobile.mjs
       - name: Verificar Lido ao final e fórmulas PA/PG em quadro
         run: timeout 75s node scripts/verificar-lido-final.mjs
-      - name: Validar padrão único das seis aulas
+      - name: Validar padrão único das sete aulas
         run: timeout 100s node scripts/verificar-padrao-aulas.mjs
       - name: Auditar subseções vazias nas três aulas
         run: timeout 75s node scripts/auditar-conteudo-aulas.mjs
@@ -92,5 +90,5 @@ jobs:
         run: timeout 90s node scripts/verificar-adaptacao.mjs
       - name: Testar sábado e revisões automáticas sem registro manual
         run: timeout 100s node scripts/verificar-pratica-automatica.mjs
-      - name: Testar Próxima e marcação Lido nas seis aulas
+      - name: Testar Próxima e marcação Lido nas sete aulas
         run: timeout 100s node scripts/verificar-avanco-lido.mjs
