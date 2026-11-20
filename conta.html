@@ -6,6 +6,7 @@
 <title>Sincronização entre aparelhos — Concurso Estudos</title>
 <meta name="description" content="Sincronize leitura, planejamento e revisões entre celular e computador, sem cadastro e sem e-mail.">
 <link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
 <style>
 .account-page{max-width:800px;margin:34px auto 80px}
 .account-page h1{font-size:clamp(28px,5vw,43px)}
@@ -27,7 +28,7 @@
 <script src="assets/sync.js" defer></script>
 </head>
 <body>
-<header class="top"><div class="shell top-inner"><a class="brand" href="./"><span class="logo">CE</span><span>Concurso Estudos</span></a><nav class="primary-nav" aria-label="Menu principal"><a href="./">Início</a><a href="aulas.html">Aulas</a><a href="planejamento.html">Planejamento</a><a href="progresso.html">Progresso</a><a href="revisoes.html">Revisões</a><a class="active" aria-current="page" href="conta.html">Sincronização</a></nav></div></header>
+<header class="top"><div class="shell top-inner"><a class="brand" href="./"><span class="logo">CE</span><span>Concurso Estudos</span></a><nav class="primary-nav" aria-label="Menu principal"><a href="./">Início</a><a href="aulas.html">Aulas</a><a href="planejamento.html">Planejamento</a><a href="revisoes.html">Revisões</a><a class="active" aria-current="page" href="conta.html">Sincronização</a></nav></div></header>
 <main class="shell account-page">
 <div class="eyebrow">Seus dois dispositivos</div>
 <h1>Sincronizar sem criar conta</h1>
@@ -44,7 +45,7 @@
 <input type="text" id="syncPairCode" name="pairCode" autocomplete="off" autocapitalize="off" spellcheck="false" required minlength="43" maxlength="43" placeholder="Cole aqui seu código privado"></label>
 <div class="account-actions"><button type="submit" id="syncConnect">Vincular e sincronizar</button></div>
 </form>
-<p class="account-note">Mantenha esse código privado: qualquer pessoa com ele poderia acessar seu progresso. Faça antes um backup JSON no painel caso exista algum dado importante neste dispositivo.</p>
+<p class="account-note">Mantenha esse código privado: qualquer pessoa com ele poderia acessar seu progresso. Faça um backup JSON nesta página antes do primeiro vínculo se já houver marcações.</p>
 </section>
 <section class="account-panel" id="syncSignedIn" hidden>
 <h2>Dispositivo vinculado</h2>
@@ -63,6 +64,12 @@
 <p>Se você desmarcar uma subseção depois do pareamento, a alteração também será sincronizada. O site segue funcionando sem internet e tenta enviar alterações quando a conexão voltar.</p>
 <p class="account-note">Seu progresso não é publicado no GitHub. Guarde o código ou link de pareamento em local seguro: se perdê-lo em todos os aparelhos, será necessário recuperar ou gerar outro código. Faça backups JSON periódicos.</p>
 </section>
+<details class="account-panel" id="backup">
+<summary style="cursor:pointer;font-weight:750;min-height:35px">Backup JSON (opcional)</summary>
+<p>Seus registros são sincronizados automaticamente entre aparelhos vinculados. O backup permite recuperar dados caso a chave ou o armazenamento sejam perdidos.</p>
+<div class="account-actions"><button type="button" id="exportButton">Exportar backup JSON</button><button type="button" id="importButton">Restaurar backup JSON</button><input id="importFile" type="file" accept=".json,application/json" hidden></div>
+<p class="account-note" id="saveState" role="status">Verificando armazenamento…</p>
+</details>
 </main>
 </body>
 </html>
