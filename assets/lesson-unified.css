@@ -210,3 +210,23 @@
 @media(max-width:600px){
  .ce-lesson-page .ce-step-navigation a{flex:1 1 120px}
 }
+
+/* Engenharia no celular: ações em duas colunas e tabela 4.4 sem coluna oculta. */
+@media(max-width:620px){
+ .ce-lesson-page.ce-eng .masthead{align-items:stretch}
+ .ce-lesson-page.ce-eng .masthead .brand{width:100%}
+ .ce-lesson-page.ce-eng .masthead .header-actions{
+   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+   gap:8px;width:100%;justify-content:stretch;
+ }
+ .ce-lesson-page.ce-eng .masthead .header-actions :is(a,button){
+   display:flex;justify-content:center;align-items:center;width:100%;
+   white-space:nowrap;overflow-wrap:normal;word-break:normal;text-align:center;
+ }
+ .ce-lesson-page.ce-eng #etapa-4-4 + .table-scroll .data-table{
+   width:100%;min-width:0;table-layout:fixed;
+ }
+ .ce-lesson-page.ce-eng #etapa-4-4 + .table-scroll .data-table :is(th,td){
+   padding:9px 8px;overflow-wrap:break-word;word-break:normal;
+ }
+}
