@@ -7,6 +7,8 @@ on:
       - 'assets/**'
       - 'scripts/verificar-mobile.mjs'
       - 'scripts/verificar-sincronizacao.mjs'
+      - 'scripts/verificar-adaptacao.mjs'
+      - 'dados/concursos.json'
       - 'supabase/schema.sql'
       - 'conta.html'
       - '.github/workflows/validar-mobile.yml'
@@ -21,6 +23,8 @@ on:
       - 'assets/**'
       - 'scripts/verificar-mobile.mjs'
       - 'scripts/verificar-sincronizacao.mjs'
+      - 'scripts/verificar-adaptacao.mjs'
+      - 'dados/concursos.json'
       - 'supabase/schema.sql'
       - 'conta.html'
       - '.github/workflows/validar-mobile.yml'
@@ -42,8 +46,10 @@ jobs:
       - name: Instalar dependência de navegador de teste
         run: npm install --no-save --ignore-scripts playwright-core@1.55.1
       - name: Validar sintaxe da sincronização
-        run: node --check assets/sync.js && node --check scripts/verificar-sincronizacao.mjs
+        run: node --check assets/sync.js && node --check assets/adaptive.js && node --check scripts/verificar-sincronizacao.mjs && node --check scripts/verificar-adaptacao.mjs
       - name: Testar 320, 390 e 430 px
         run: node scripts/verificar-mobile.mjs
       - name: Testar sincronização simulada entre dois aparelhos
         run: node scripts/verificar-sincronizacao.mjs
+      - name: Testar recomendação adaptativa horária e plano em navegador
+        run: node scripts/verificar-adaptacao.mjs
