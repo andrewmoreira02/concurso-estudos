@@ -34,7 +34,7 @@ const realAocp=JSON.parse(await readFile('dados/fontes-aocp-joinville-2025.json'
 const bankKeys={FURB25:{74:'A',75:'D',76:'D',77:'B',79:'B'},FLORAM:{64:'A',65:'C'},BRUSQUE:{36:'B'}};
 let examples=0;
 for(const [slug,items] of Object.entries(cases.cases)){
- assert(items.length>=1&&items.length<=5,slug+' precisa de 1 a 5 exemplos');
+ assert(items.length>=1&&items.length<=(slug==='engenharia'?7:5),slug+' precisa de 1 a 7 questões pontuais, sem prova integral');
  for(const item of items){
    examples++;
    let real=null;
@@ -48,6 +48,6 @@ for(const [slug,items] of Object.entries(cases.cases)){
    assert(html.includes('id="'+item.section+'"'),'Exemplo sem âncora curricular: '+slug+' '+item.section);
  }
 }
-assert.equal(examples,37);
+assert.equal(examples,39);
 
 console.log('SUCESSO: 26 itens TI, 4 disciplinas gerais, 30 tópicos com links válidos, lacunas transparentes e três fontes históricas corrigidas.');
