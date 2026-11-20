@@ -327,7 +327,19 @@
         "subjects": {
           "casan": "Conhecimentos Específicos (TI)",
           "ima": "Tecnologia da Informação"
-        }
+        },
+        "module_titles": [
+          "Engenharia de requisitos",
+          "UML: o que cada diagrama mostra",
+          "Arquiteturas e estilos",
+          "Testes de software e qualidade",
+          "TDD × BDD",
+          "Git e controle de versão",
+          "CI/CD e práticas DevOps",
+          "Sistemas operacionais, Docker e nuvem",
+          "SOLID, GoF, Scrum e processo",
+          "Mapa mental de bolso"
+        ]
       },
       {
         "id": "portugues",
@@ -345,7 +357,15 @@
         "subjects": {
           "casan": "Português"
         },
-        "reuse_ima": "Material CASAN pode servir de revisão; não transfere avaliação ou domínio para o IMA."
+        "reuse_ima": "Material CASAN pode servir de revisão; não transfere avaliação ou domínio para o IMA.",
+        "module_titles": [
+          "Interpretação, inferências e estrutura textual",
+          "Relações de sentido e conectivos",
+          "Coesão, referência, coerência e reescrita",
+          "Sintaxe, funções de que/se, pontuação",
+          "Gramática aplicada à prova",
+          "Síntese integrada e estratégia de leitura"
+        ]
       },
       {
         "id": "rlm",
@@ -368,7 +388,20 @@
         "subjects": {
           "casan": "Raciocínio Lógico-Matemático",
           "ima": "Raciocínio Lógico-Matemático"
-        }
+        },
+        "module_titles": [
+          "Frações e partes de um todo",
+          "Porcentagens sem armadilhas",
+          "Razão, proporção e regra de três",
+          "Juros simples e compostos",
+          "Teoria dos conjuntos e diagramas de Venn",
+          "Análise combinatória: quando a ordem importa?",
+          "Probabilidade: contando possibilidades",
+          "Estatística: média, mediana, moda e dispersão",
+          "Progressões aritméticas e geométricas",
+          "Como interpretar gráficos e tabelas",
+          "Mapa de fórmulas e leitura de enunciados"
+        ]
       }
     ]
   }
