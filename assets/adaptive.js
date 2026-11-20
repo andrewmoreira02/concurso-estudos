@@ -12,7 +12,7 @@ const rlmKey='concursos_rlm_sections_read_v3';
 const engKey='concurso_eng_qualidade_steps_v1';
 const ptKey='concursos:casan2026:portugues:2026-11-19:subsections:v1';
 const logsKey='ce_question_logs_v1', reviewKey='ce_review_done_v1',planKey='ce_plan_done_v1',studyKey='ce_study_confirmed_v1';
-let config=null,panel=null,details=null,status=null,button=null,refreshing=false,nextRefresh=false,renderedSignature='';
+let config=null,questionSets=[],panel=null,details=null,status=null,button=null,refreshing=false,nextRefresh=false,renderedSignature='';
 const parse=(key,fallback)=>{try{const text=localStorage.getItem(key);const value=text===null?null:JSON.parse(text);return value===null?fallback:value;}catch{return fallback;}};
 const isRecord=x=>!!x&&typeof x==='object'&&!Array.isArray(x);
 const isoToday=()=>{const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const get=k=>parts.find(p=>p.type===k)?.value;return get('year')+'-'+get('month')+'-'+get('day');};
@@ -187,6 +187,9 @@ function model(){
  const today=isoToday();
  const windowRule=config.priority_windows.find(w=>w.from<=today&&today<=w.through)||config.after_last_window;
  const exam=windowRule?.exam&&config.exams?.[windowRule.exam]?windowRule.exam:null;
+ const deadline=config.exams?.[exam]?.deadline;
+ const daysRemaining=deadline?Math.round((Date.parse(deadline+'T12:00:00Z')-Date.parse(today+'T12:00:00Z'))/86400000):null;
+ const lastDays=exam==='casan'&&daysRemaining!==null&&daysRemaining>=0&&daysRemaining<=2;
  const lessons=(config.adaptive_study?.lessons||[]).map(l=>courseState(l,exam));
  const subjects=subjectEvidence(exam,lessons);
  const rank=new Map(subjects.map((x,i)=>[x.name,i]));
@@ -212,21 +215,16 @@ function model(){
  const picks=[];
  const assigned=config.calendar.special?.[today]||[];
  const scheduledQuiz=assigned.find(t=>t.id==='questions-reta-final'||t.id==='ima-questions-eve');
- if(scheduledQuiz&&exam===(scheduledQuiz.id==='questions-reta-final'?'casan':'ima')){
-  picks.push({type:'quiz',title:scheduledQuiz.title,href:scheduledQuiz.href,
-   description:scheduledQuiz.detail+' Resultados são registrados somente após envio das respostas.'});
- }
- if(due.length){
-  const d=due[0];
-  picks.push({type:'review',title:'Revisar: '+d.topic,href:'revisoes.html',
-   description:due.length+' revisão(ões) com prazo até hoje, gerada(s) por erros realmente registrados. '+d.errors+' erro(s) na sessão desta prioridade.'});
- }
+ const examDue=exam==='casan'&&daysRemaining===0;
+ // Em reta final, priorizar lacunas essenciais de teoria. Treinos são opções, não tarefas obrigatórias.
+ if(examDue)picks.push({type:'plan',title:'Hoje é a prova CASAN: apenas revisão leve e orientações oficiais',
+  href:'planejamento.html',description:'Não iniciar teoria extensa nem um simulado longo no dia da prova. A data não comprova comparecimento.'});
  // Primeiro uma aula por disciplina, na ordem do peso ainda sem estudo confirmado;
  // se restarem vagas, continuar outras aulas dos mesmos temas.
  const chosen=[],seenSubject=new Set();
  for(const l of sorted)if(!seenSubject.has(l.subject)){chosen.push(l);seenSubject.add(l.subject);}
  for(const l of sorted)if(!chosen.includes(l))chosen.push(l);
- for(const c of chosen.slice(0,due.length?2:3)){
+ for(const c of chosen.slice(0,examDue?0:lastDays?3:due.length?2:3)){
   const stats=subjects.find(x=>x.name===c.subject);
   const isRead=readSet(c.id).has(c.first.id);
   picks.push({type:'lesson',title:c.title+' · '+(c.module_titles?.[c.first.module-1]||'Módulo '+c.first.module)+' · etapa '+c.first.module+'.'+c.first.step,
@@ -238,6 +236,41 @@ function model(){
     (stats?.valid?' Questões enviadas na disciplina: '+stats.correct+'/'+stats.valid+' acertos.':' Sem avaliação registrada nesta disciplina.')+
     (isRead?' A etapa já tem Lido, mas o módulo não tem estudo confirmado.':' Priorizar a próxima etapa não lida.')+
     ' Leitura e acertos isolados não são domínio.'});
+ }
+ // Recomendar uma faixa exata somente após confirmação EXPLÍCITA de estudo em módulo.
+ // O link inclui os limites; o quiz não carrega outros itens do banco.
+ const attempted=new Set(getSessionLogs().filter(l=>l.exam===exam).flatMap(l=>Array.isArray(l.questionIds)?l.questionIds:[]));
+ const topicMap={'engenharia':'engenharia','banco-dados':'banco-dados','seguranca':'seguranca',
+  'algoritmos-oo':'algoritmos','portugues':'portugues','rlm':'rlm',
+  'legislacao-casan':'legislacao-atualidades'};
+ const eligible=lessons.filter(l=>l.weight>0&&l.studiedCount>0&&topicMap[l.id])
+  .sort((a,b)=>b.weight-a.weight||b.studiedCount-a.studiedCount);
+ let nextBlock=null;
+ for(const c of eligible){
+  const set=questionSets.find(x=>x.id===topicMap[c.id]);if(!set)continue;
+  const from=set.question_ids.findIndex(id=>!attempted.has(id));
+  if(from<0)continue;
+  const length=Math.min(lastDays?3:5,set.question_ids.length-from);
+  nextBlock={c,set,from:from+1,to:from+length};break;
+ }
+ if(nextBlock&&!examDue){
+  const {set,c,from,to}=nextBlock;
+  picks.push({type:'quiz',title:'Questões '+from+'–'+to+' · '+set.title+' (opcional após estudo confirmado)',
+   href:set.href+'?de='+from+'&ate='+to,
+   description:'Somente '+(to-from+1)+' questão(ões) do assunto, em página separada. '+
+    'Sugeridas porque há '+c.studiedCount+' módulo(s) com estudo confirmado; não é obrigatório interromper lacunas de teoria.'});
+ }
+ if(due.length){
+  const d=due[0];
+  picks.push({type:'review',title:'Revisão de erro: '+d.topic,
+   href:'revisoes.html',description:due.length+' revisão(ões) vencida(s)/devida(s), originada(s) exclusivamente de respostas enviadas. '+
+    (lastDays?'Fazer somente se houver tempo após os conteúdos essenciais.':'Corrigir lacunas antes de prosseguir.')});
+ }
+ if(scheduledQuiz&&exam===(scheduledQuiz.id==='questions-reta-final'?'casan':'ima')&&!examDue){
+  picks.push({type:'quiz',title:scheduledQuiz.title+' (opcional)',
+   href:scheduledQuiz.href,description:scheduledQuiz.detail+
+   (lastDays?' Na reta final, priorize primeiro os tópicos essenciais ainda pendentes.':'')+
+   ' Somente Enviar registra uma avaliação.'});
  }
  if(!picks.length){
   if(!exam)picks.push({type:'plan',title:'Revisar a prioridade do concurso',href:'planejamento.html',
@@ -254,7 +287,7 @@ function model(){
  }));
  const unreadEquivalents=relevant.reduce((sum,l)=>sum+(l.total-l.read)/l.total,0);
  const minEquivalents=Math.max(1,Math.min(10,config.adaptive_study?.minimum_unread_equivalents||5));
- return {today,exam,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
+ return {today,exam,daysRemaining,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
   unreadEquivalents,minEquivalents};
 }
 
@@ -360,7 +393,7 @@ function renderStudyPriority(data){
 }
 function render(data){
  const signature=JSON.stringify({
-   exam:data.exam,head:data.picks,lesson:data.active?.id,lessonNext:data.active?.first,
+   exam:data.exam,daysRemaining:data.daysRemaining,head:data.picks,lesson:data.active?.id,lessonNext:data.active?.first,
    evidence:data.lessons.map(l=>[l.id,l.read,l.total,l.studiedCount]),subjects:data.subjects.map(x=>[x.name,x.priority,x.valid,x.correct]),due:data.due.length,agenda:data.agenda,available:data.unreadEquivalents
  });
  orderCatalog(data);
@@ -385,6 +418,8 @@ function render(data){
      current.append(anchor(continueHref(namedLesson),namedLesson.first?'Abrir próxima subseção':'Ver revisões',true));
      details.append(current);
    }
+   if(data.exam==='casan'&&data.daysRemaining!==null&&data.daysRemaining>=0&&data.daysRemaining<=2)
+    details.append(el('p','ce-adaptive-urgency','Prazo CASAN: '+data.daysRemaining+' dia(s) até 22/11. Conteúdo prioritário primeiro; questões pontuais apenas se houver tempo ou após estudo confirmado.'));
    const recommendationList=el('div','ce-adaptive-list');
    for(const [i,rec] of data.picks.entries()){
      const item=el('article','ce-adaptive-item');
@@ -431,9 +466,14 @@ function statusText(now,message=''){
  return base;
 }
 async function getConfig(){
- const response=await fetch(localHref('dados/concursos.json'),{cache:'no-store'});
- if(!response.ok)throw Error('dados/concursos.json indisponível');
- const next=await response.json();
+ const [response,setsResponse]=await Promise.all([
+  fetch(localHref('dados/concursos.json'),{cache:'no-store'}),
+  fetch(localHref('dados/blocos-questoes-casan.json'),{cache:'no-store'})
+ ]);
+ if(!response.ok||!setsResponse.ok)throw Error('Dados do edital ou blocos de questões indisponíveis');
+ const next=await response.json(),sets=await setsResponse.json();
+ if(sets.schema_version!==1||!Array.isArray(sets.sets)||sets.sets.length<5)throw Error('Reserva de questões insuficiente');
+ questionSets=sets.sets;
  if(next.schema_version!==1||next.adaptive_study?.schema_version!==1||
  !Array.isArray(next.adaptive_study.lessons)||!next.exams||!next.priority_windows||!next.calendar)throw Error('Configuração adaptativa incompleta');
  for(const lesson of next.adaptive_study.lessons){
