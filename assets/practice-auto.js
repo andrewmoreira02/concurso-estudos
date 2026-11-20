@@ -1,11 +1,11 @@
-/* Questões de sábado e revisões automáticas a partir de quizzes enviados.
- * O banco público contém apenas questões AUTORAIS; resultados ficam locais/privados.
+/* Questões reais FURB (originais consultados no PDF, com gabarito final) antes das autorais.
+ * O banco de questões autorais é reserva para lacunas comprovadas; resultados ficam locais/privados.
  * Não presumir que ver a pergunta, clicar em Revisar ou abrir a página realizou a revisão.
  */
 (() => {
 'use strict';
 const root=location.pathname.includes('/aulas/')?'../':'';
-const BANK=root+'dados/questoes.json',CONFIG=root+'dados/concursos.json';
+const BANK=root+'dados/questoes.json',REAL=root+'dados/questoes-reais.json',CONFIG=root+'dados/concursos.json';
 const LOG_KEY='ce_question_logs_v1',DONE_KEY='ce_review_done_v1';
 const subjects={ti:'Conhecimentos Específicos (TI)',portugues:'Português',rlm:'Raciocínio Lógico-Matemático',legislacao:'Legislação',atualidades:'Atualidades',adm:'Administração Pública'};
 const addDays=(iso,n)=>{const date=new Date(iso+'T12:00:00Z');date.setUTCDate(date.getUTCDate()+n);return date.toISOString().slice(0,10);};
@@ -24,23 +24,48 @@ function validQuestion(q){
  ['a','b','c','d'].includes(q.correct)&&typeof q.prompt==='string'&&q.prompt.length>10&&
  typeof q.explanation==='string'&&q.explanation.length>10&&Array.isArray(q.exams);
 }
+function validReal(q){
+ return q&&q.kind==='real-original-pdf'&&/^[a-z0-9-]{3,60}$/.test(q.id||'')&&
+ ['ti','portugues','rlm','legislacao','atualidades','adm'].includes(q.subject)&&
+ /^[a-e]$/.test(q.correct||'')&&typeof q.prompt==='string'&&q.prompt.length>10&&
+ typeof q.explanation==='string'&&q.explanation.length>15&&Array.isArray(q.exams)&&
+ q.source&&q.source.bank==='FURB'&&q.source.year===2023&&
+ Number.isInteger(q.source.question_number)&&q.source.question_number>=1&&q.source.question_number<=40&&
+ Number.isInteger(q.source.printed_page)&&q.source.printed_page>=1&&
+ /^https:\/\/arquivos\.qconcursos\.com\/prova\//.test(q.source.paper_url||'')&&
+ /^https:\/\/anexos\.cdn\.selecao\.net\.br\//.test(q.source.answer_key_url||'');
+}
 async function load(){
- const [r1,r2]=await Promise.all([fetch(BANK,{cache:'no-store'}),fetch(CONFIG,{cache:'no-store'})]);
- if(!r1.ok||!r2.ok)throw Error('Banco de questões ou calendário indisponível.');
- const a=await r1.json(),b=await r2.json();
- if(a.schema_version!==1||!Array.isArray(a.questions)||!a.questions.every(validQuestion))throw Error('Banco de questões inválido.');
- bank=a;config=b;return a;
+ const [r1,r2,r3]=await Promise.all([fetch(BANK,{cache:'no-store'}),fetch(REAL,{cache:'no-store'}),fetch(CONFIG,{cache:'no-store'})]);
+ if(!r1.ok||!r2.ok||!r3.ok)throw Error('Banco de questões reais, reserva autoral ou calendário indisponível.');
+ const a=await r1.json(),original=await r2.json(),b=await r3.json();
+ if(a.schema_version!==1||!Array.isArray(a.questions)||!a.questions.every(validQuestion))throw Error('Banco de questões autorais inválido.');
+ if(original.schema_version!==1||!Array.isArray(original.questions)||!original.questions.every(validReal))throw Error('Banco de questões reais ou fontes inválido.');
+ const ids=[...original.questions,...a.questions].map(q=>q.id);
+ if(ids.length!==new Set(ids).size)throw Error('IDs repetidos no banco de questões.');
+ bank={...a,questions:[...original.questions,...a.questions]};config=b;return bank;
 }
 function questionElement(q,index){
  const f=el('fieldset');f.dataset.ceQuestion=q.id;f.dataset.correct=q.correct;f.dataset.ceSubject=q.subject;
+ const real=q.kind==='real-original-pdf';
  const legend=el('legend','Questão '+(index+1)+' · '+(subjects[q.subject]||q.subject)+' — '+q.prompt);f.append(legend);
- for(const k of ['a','b','c','d']){
+ if(real){
+   const source=el('div','','ce-original-source');
+   source.append(el('strong','Questão REAL de concurso · FURB '+q.source.year+' · Analista de Sistemas · nº '+q.source.question_number+' · página '+q.source.printed_page));
+   const link=el('a','Abrir enunciado e alternativas originais (PDF, página '+q.source.printed_page+')');
+   link.href=q.source.paper_url+'#page='+q.source.printed_page;link.target='_blank';link.rel='noopener noreferrer';
+   source.append(link,el('p','Abra o caderno, leia a questão nº '+q.source.question_number+' e marque abaixo a letra A–E da alternativa ORIGINAL. O enunciado não foi reescrito nem as opções substituídas.'));
+   f.append(source);
+ }else f.append(el('p','Questão AUTORAL: enunciado e alternativas elaborados para este treino.','',''));
+ for(const k of real?['a','b','c','d','e']:['a','b','c','d']){
    const label=el('label');
    const input=document.createElement('input');input.type='radio';input.name=q.id;input.value=k;input.required=true;
-   label.append(input,el('span',k.toUpperCase()+'. '+q.options[k]));f.append(label);
+   label.append(input,el('span',real?'Alternativa '+k.toUpperCase()+' do caderno original':k.toUpperCase()+'. '+q.options[k]));f.append(label);
  }
- const note=el('p',q.explanation);note.hidden=true;note.dataset.ceExplanation='';f.append(note);
- const wrong=el('p','Alternativas incorretas: '+q.whyWrong);wrong.hidden=true;wrong.dataset.ceDistractors='';f.append(wrong);
+ const note=el('p',(real?'Conferência pelo gabarito FINAL oficial da FURB: ':'')+q.explanation);
+ note.hidden=true;note.dataset.ceExplanation='';f.append(note);
+ const wrong=el('p',real?'Verifique as alternativas no PDF original; o gabarito oficial é a referência para correção.':'Alternativas incorretas: '+q.whyWrong);
+ wrong.hidden=true;wrong.dataset.ceDistractors='';f.append(wrong);
  return f;
 }
 function buildForm(items,exam,topic,source,reviewId=null){
@@ -63,18 +88,27 @@ async function renderPractice(){
  const type=stage.dataset.cePractice;
  let items=[],topic='',label='',exam='casan';
  if(type==='saturday'){
-   exam='casan';items=bank.questions.filter(q=>q.saturday===true&&q.exams.includes('casan'));
-   topic='Simulado CASAN 21/11';label='15 questões autorais para a véspera';
+   exam='casan';
+   // Apenas duas questões sem equivalente real disponível neste caderno: Legislação e Atualidades.
+   items=bank.questions.filter(q=>q.kind==='real-original-pdf'&&q.saturday===true&&q.exams.includes('casan'));
+   for(const subject of ['legislacao','atualidades']){
+     const reserve=bank.questions.find(q=>q.kind!=='real-original-pdf'&&q.saturday===true&&q.subject===subject&&q.exams.includes('casan'));
+     if(reserve)items.push(reserve);
+   }
+   topic='Simulado CASAN 21/11';
  }else if(type==='ima'){
    exam='ima';
    const quotas={ti:8,portugues:2,rlm:2};
    for(const [subject,count] of Object.entries(quotas))
-     items.push(...bank.questions.filter(q=>q.exams.includes('ima')&&q.subject===subject).slice(0,count));
-   topic='Treino IMA — conteúdos compartilhados';label='12 questões autorais de disciplinas compartilhadas';
+     items.push(...bank.questions.filter(q=>q.kind==='real-original-pdf'&&q.exams.includes('ima')&&q.subject===subject).slice(0,count));
+   topic='Treino IMA — conteúdos compartilhados';
  }else return;
  if(items.length<3)throw Error('Questões insuficientes para montar o treino.');
- stage.replaceChildren(el('p',label+'. Responda todas antes de enviar. O envio registra automaticamente resultados por disciplina e pode gerar revisões a partir de erros reais.'),
-   buildForm(items,exam,topic,'Questões autorais do site — '+topic));
+ const nReal=items.filter(q=>q.kind==='real-original-pdf').length;
+ const nAuthor=items.length-nReal;
+ label=items.length+' questões: '+nReal+' REAL(is) de FURB 2023 com gabarito oficial'+(nAuthor?' e '+nAuthor+' autoral(is) de reserva':'')+'.';
+ stage.replaceChildren(el('p',label+' Para as questões reais, abra o PDF no link da questão e marque a mesma alternativa A–E abaixo. O envio corrige e registra resultados reais por disciplina; os itens autorais estão identificados.'),
+   buildForm(items,exam,topic,'FURB 2023 Analista de Sistemas — prova e gabarito oficial; reserva autoral identificada.'));
  const count=document.getElementById('practiceCount');
  if(count)count.textContent=items.length+' questões';
 }
@@ -99,13 +133,20 @@ function getTasks(){
  return tasks.sort((a,b)=>a.finished-b.finished||a.date.localeCompare(b.date)||b.session.valid-b.session.correct);
 }
 function pickFor(task){
- const s=task.session;const all=bank.questions.filter(q=>q.exams.includes(s.exam)&&q.subject===s.subject);
+ const s=task.session;const all=bank.questions.filter(q=>q.exams.includes(s.exam)&&q.subject===s.subject)
+ .sort((a,b)=>(a.kind==='real-original-pdf'?0:1)-(b.kind==='real-original-pdf'?0:1));
  const topic=norm(s.topic);
  const tokens={engenharia:['engenharia','qualidade','requisitos','uml','ci/cd','teste'],seguranca:['seguranca','api','autenticacao','autorizacao','oauth','jwt','pkce'],algoritmos:['algoritmo','objeto','solid','estrutura','orientacao'], 'banco-dados':['banco','sql','join','normalizacao','acid'],portugues:['portugues','interpretacao','gramatica','coesao'],rlm:['raciocinio','rlm','combinatoria','pg','pa','probabilidade'],legislacao:['legislacao','etica','governanca'],atualidades:['atualidades','ambiente','sustentabilidade']};
  let tag='';
  for(const [k,list] of Object.entries(tokens)){if(list.some(w=>topic.includes(w))){tag=k;break;}}
  const byTag=all.filter(q=>q.tag===tag),wrong=Array.isArray(s.wrongQuestionIds)?s.wrongQuestionIds:[];
- const candidates=[...byTag.filter(q=>!wrong.includes(q.id)),...all.filter(q=>q.tag!==tag&&!wrong.includes(q.id)),...all.filter(q=>wrong.includes(q.id))];
+ const candidates=[
+ ...byTag.filter(q=>q.kind==='real-original-pdf'&&!wrong.includes(q.id)),
+ ...all.filter(q=>q.kind==='real-original-pdf'&&q.tag!==tag&&!wrong.includes(q.id)),
+ ...byTag.filter(q=>q.kind!=='real-original-pdf'&&!wrong.includes(q.id)),
+ ...all.filter(q=>q.kind!=='real-original-pdf'&&q.tag!==tag&&!wrong.includes(q.id)),
+ ...all.filter(q=>wrong.includes(q.id))
+ ];
  const unique=[];const used=new Set();
  for(const q of candidates){if(!used.has(q.id)){unique.push(q);used.add(q.id);}}
  return unique.slice(0,Math.min(4,unique.length));
@@ -165,7 +206,7 @@ function openReview(task){
    stage.append(el('p','Ainda não há questões cadastradas para este assunto. O registro permanece pendente; a tarefa editorial deve acrescentar questões compatíveis.'));return;
  }
  const h=el('h2','Revisão dirigida: '+task.session.topic);h.id='quiz-atual';stage.append(h);
- stage.append(el('p','Questões de recuperação ativa. Ao enviar respostas reais, a revisão será registrada como praticada; novos erros gerarão novas datas. As perguntas são autorais.'));
+ stage.append(el('p','Questões de recuperação ativa, prioritariamente de provas anteriores com gabarito oficial. Ao enviar suas respostas, a revisão será registrada como praticada; novos erros gerarão novas datas. Questões autorais de reserva são identificadas.'));
  const quiz=buildForm(selected,task.session.exam,'Revisão: '+task.session.topic,'Revisão automática — questões autorais',task.id);
  stage.append(quiz);
  stage.scrollIntoView({behavior:'smooth',block:'start'});
