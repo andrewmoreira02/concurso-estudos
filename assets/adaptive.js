@@ -1,5 +1,5 @@
-/* Atualização adaptativa do Concurso Estudos, v1.
- * A cada 60 minutos enquanto o site estiver aberto, e ao voltar/abrir a página:
+/* Recomendações locais (não é a tarefa editorial horária do ChatGPT).
+ * Ao abrir o site e após marcações/sincronização:
  * consulta os dados públicos do plano e o progresso privado já sincronizado.
  * Não gera aulas inexistentes; não atribui Estudado/Avaliado a partir de Lido.
  * Não envia progresso ao GitHub nem modifica planos oficiais ou arquivos privados.
@@ -8,12 +8,11 @@
 'use strict';
 const $ = id => document.getElementById(id);
 const prefix = location.pathname.includes('/aulas/') ? '../' : '';
-const hourMs = 60 * 60 * 1000;
 const rlmKey='concursos_rlm_sections_read_v3';
 const engKey='concurso_eng_qualidade_steps_v1';
 const ptKey='concursos:casan2026:portugues:2026-11-19:subsections:v1';
 const logsKey='ce_question_logs_v1', reviewKey='ce_review_done_v1',planKey='ce_plan_done_v1';
-let config=null,panel=null,details=null,status=null,button=null,refreshing=false,nextRefresh=false,updateTime=0,renderedSignature='';
+let config=null,panel=null,details=null,status=null,button=null,refreshing=false,nextRefresh=false,renderedSignature='';
 const parse=(key,fallback)=>{try{const text=localStorage.getItem(key);const value=text===null?null:JSON.parse(text);return value===null?fallback:value;}catch{return fallback;}};
 const isRecord=x=>!!x&&typeof x==='object'&&!Array.isArray(x);
 const isoToday=()=>{const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const get=k=>parts.find(p=>p.type===k)?.value;return get('year')+'-'+get('month')+'-'+get('day');};
@@ -160,7 +159,7 @@ function createPanel(){
  panel.setAttribute('aria-labelledby','adaptiveTitle');
  const head=el('div','ce-adaptive-head');
  const titleGroup=el('div','ce-adaptive-title');
- titleGroup.append(el('span','ce-adaptive-eyebrow','Atualização adaptativa · a cada 1 hora'));
+ titleGroup.append(el('span','ce-adaptive-eyebrow','Sugestões locais · manutenção editorial por tarefa do GPT'));
  const title=el('h2','','Próximos passos sugeridos');title.id='adaptiveTitle';titleGroup.append(title);
  head.append(titleGroup);
  button=el('button','ce-adaptive-refresh','Atualizar agora');
@@ -229,7 +228,7 @@ function render(data){
 function statusText(now,message=''){
  const sync= parse('ce_private_sync_pair_meta_v2',null);
  const pair=(()=>{try{return !!localStorage.getItem('ce_private_sync_pair_v1');}catch{return false;}})();
- let base='Sugestões recalculadas em '+formatTime(now)+' · revisão por hora, quando o site estiver aberto; ao reabrir, recalcula novamente.';
+ let base='Sugestões calculadas no navegador em '+formatTime(now)+'. A manutenção editorial de aulas e planos é feita separadamente pela tarefa agendada do ChatGPT.';
  if(pair&&sync?.last_sync){
    const when=new Date(sync.last_sync);
    base+=' Última sincronização remota confirmada: '+(Number.isFinite(when.valueOf())?formatTime(when):'não identificada')+'.';
@@ -268,7 +267,6 @@ async function refresh(forceSync=false){
    const calculated=model();
    render(calculated);
    window.dispatchEvent(new CustomEvent('concurso:adaptive-update',{detail:{today:calculated.today,exam:calculated.exam}}));
-   updateTime=Date.now();
    if(status)status.textContent=statusText(new Date(),message);
  }catch(e){
    if(status)status.textContent='Falha ao recalcular recomendações: '+(e?.message||'erro de leitura')+'. A leitura salva não foi alterada.';
@@ -280,9 +278,8 @@ async function refresh(forceSync=false){
 function init(){
  createPanel();
  void refresh();
- // A renovação do painel é horária; o envio das marcações continua imediato pelo sincronizador.
- setInterval(()=>{if(!document.hidden)void refresh(true);},hourMs);
- document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-updateTime>=hourMs)void refresh(true);});
+ // Atualização imediata local ao reabrir a aba; sem fingir manutenção editorial horária no navegador.
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)void refresh();});
  addEventListener('concurso:read-change',()=>{void refresh();});
  addEventListener('concurso:progress-change',()=>{void refresh();});
  addEventListener('storage',e=>{if(e.key&&/^(concursos_rlm_|concurso_rlm_|concurso_eng_|casan1811_|concursos:casan2026:portugues|ce_)/.test(e.key))void refresh();});
