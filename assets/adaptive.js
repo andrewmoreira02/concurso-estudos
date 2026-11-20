@@ -124,7 +124,13 @@ function model(){
  const windowRule=config.priority_windows.find(w=>w.from<=today&&today<=w.through)||config.after_last_window;
  const exam=windowRule?.exam&&config.exams?.[windowRule.exam]?windowRule.exam:null;
  const lessons=(config.adaptive_study?.lessons||[]).map(l=>courseState(l,exam));
- const sorted=lessons.filter(c=>c.first&&c.weight>0).sort((a,b)=>b.score-a.score||b.weight-a.weight);
+ // Continuidade explícita: entre matérias de igual peso, retomar a já iniciada.
+ // Revisões de erros enviados e simulados de véspera permanecem acima na fila.
+ const sorted=lessons.filter(c=>c.first&&c.weight>0).sort((a,b)=>{
+   if(a.weight!==b.weight)return b.weight-a.weight;
+   if(a.inProgress!==b.inProgress)return Number(b.inProgress)-Number(a.inProgress);
+   return b.score-a.score||a.title.localeCompare(b.title,'pt-BR');
+ });
  const due=nextDue(exam,today);
  const picks=[];
  // Os blocos práticos constam no calendário; não simulam uma prova já realizada.
@@ -142,7 +148,7 @@ function model(){
  for(const c of sorted.slice(0,due.length?2:3)){
    picks.push({type:'lesson',title:c.title+' · '+(c.module_titles?.[c.first.module-1]||'Módulo '+c.first.module)+' · etapa '+c.first.module+'.'+c.first.step,
      href:c.url+'#'+c.first.id,
-     description:c.subject+': '+c.weight+'/'+c.totalQuestions+' questões no edital '+config.exams[exam].name+'. '+c.read+'/'+c.total+' subseções marcadas como Lido. A etapa sugerida ainda não foi marcada.'});
+     description:(c.inProgress?'Retomar aula iniciada na subseção exata; não trocar só porque outra está zerada. ':'Aula ainda não iniciada. ')+c.subject+': '+c.weight+'/'+c.totalQuestions+' questões no edital '+config.exams[exam].name+'. '+c.read+'/'+c.total+' subseções marcadas como Lido. Leitura não comprova domínio; revisões vencidas e simulado agendado têm precedência.'});
  }
  if(!picks.length){
    if(!exam)picks.push({type:'plan',title:'Revisar a prioridade do concurso',href:'planejamento.html',
