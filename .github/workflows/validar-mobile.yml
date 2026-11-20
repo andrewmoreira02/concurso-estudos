@@ -13,6 +13,9 @@ on:
       - 'scripts/auditar-conteudo-aulas.mjs'
       - 'dados/concursos.json'
       - 'dados/questoes.json'
+      - 'dados/questoes-adaptadas.json'
+      - 'dados/questoes-reais.json'
+      - 'scripts/verificar-avanco-lido.mjs'
       - 'dados/questoes-reais.json'
       - 'scripts/verificar-pratica-automatica.mjs'
       - 'supabase/schema.sql'
@@ -35,6 +38,9 @@ on:
       - 'scripts/auditar-conteudo-aulas.mjs'
       - 'dados/concursos.json'
       - 'dados/questoes.json'
+      - 'dados/questoes-adaptadas.json'
+      - 'dados/questoes-reais.json'
+      - 'scripts/verificar-avanco-lido.mjs'
       - 'dados/questoes-reais.json'
       - 'scripts/verificar-pratica-automatica.mjs'
       - 'supabase/schema.sql'
@@ -58,7 +64,7 @@ jobs:
       - name: Instalar dependência de navegador de teste
         run: npm install --no-save --ignore-scripts playwright-core@1.55.1
       - name: Validar sintaxe da sincronização
-        run: node --check assets/sync.js && node --check assets/adaptive.js && node --check assets/quiz.js && node --check assets/practice-auto.js && node --check scripts/verificar-sincronizacao.mjs && node --check scripts/verificar-adaptacao.mjs && node --check scripts/verificar-pratica-automatica.mjs
+        run: node --check assets/sync.js && node --check assets/adaptive.js && node --check assets/quiz.js && node --check assets/practice-auto.js && node --check scripts/verificar-sincronizacao.mjs && node --check scripts/verificar-adaptacao.mjs && node --check scripts/verificar-pratica-automatica.mjs && node --check scripts/verificar-avanco-lido.mjs
       - name: Testar 320, 390 e 430 px
         run: node scripts/verificar-mobile.mjs
       - name: Verificar Lido ao final e fórmulas PA/PG em quadro
@@ -86,3 +92,5 @@ jobs:
         run: timeout 90s node scripts/verificar-adaptacao.mjs
       - name: Testar sábado e revisões automáticas sem registro manual
         run: timeout 100s node scripts/verificar-pratica-automatica.mjs
+      - name: Testar Próxima e marcação Lido nas seis aulas
+        run: timeout 100s node scripts/verificar-avanco-lido.mjs
