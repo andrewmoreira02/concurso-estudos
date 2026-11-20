@@ -50,6 +50,6 @@ jobs:
       - name: Testar 320, 390 e 430 px
         run: node scripts/verificar-mobile.mjs
       - name: Testar sincronização simulada entre dois aparelhos
-        run: node scripts/verificar-sincronizacao.mjs
+        run: timeout 90s node scripts/verificar-sincronizacao.mjs
       - name: Testar recomendação adaptativa horária e plano em navegador
-        run: node scripts/verificar-adaptacao.mjs
+        run: timeout 90s node scripts/verificar-adaptacao.mjs
