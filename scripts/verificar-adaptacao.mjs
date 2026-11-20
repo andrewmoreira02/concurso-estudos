@@ -50,7 +50,7 @@ await context.addInitScript(()=>{
 function assert(ok,msg){if(!ok)throw Error(msg);}
 async function loaded(expectPanel=false){
  if(expectPanel)await page.locator('#adaptiveRecommendations').waitFor({timeout:16000});
- await page.waitForFunction(()=>window.ConcursoAdaptive?.model()?.lessons?.length===6,{timeout:15000});
+ await page.waitForFunction(()=>window.ConcursoAdaptive?.model()?.lessons?.length===7,{timeout:15000});
 }
 try{
  await page.goto(base+'/index.html',{waitUntil:'domcontentloaded'});
@@ -59,6 +59,8 @@ try{
  assert(data.exam==='casan','A prioridade de CASAN 20/11 não foi aplicada');
  assert(Math.abs(data.unreadEquivalents-(6-41/71))<0.01,'Aulas equivalentes não lidas incorretas');
  assert(data.minEquivalents===5,'Meta de 5 aulas equivalentes ausente');
+ assert(data.lessons.find(l=>l.id==='administracao-publica-ima')?.total===9,'Sétima aula IMA não está no cálculo adaptativo');
+ assert(data.lessons.find(l=>l.id==='administracao-publica-ima')?.weight===0,'Administração IMA não deve competir na prioridade CASAN');
  assert(data.lessons.find(l=>l.id==='rlm').read===41,'Progresso 41/71 incorreto');
  assert(data.lessons.find(l=>l.id==='rlm').first.id==='m8-s1','Próxima seção de RLM deveria ser 8.1');
  assert(data.picks[0].title.startsWith('Engenharia'),'Edital TI 25/50 deveria priorizar Engenharia');
@@ -81,6 +83,38 @@ try{
  const planned=await page.evaluate(()=>localStorage.getItem('ce_plan_done_v1'));
  assert(planned===null,'Recomendação marcou atividade como executada');
  console.log('OK: planejamento adaptado, sem marcar atividades realizadas.');
+
+ // Regressão: começar Engenharia não deve trocar automaticamente para Banco de Dados zerado.
+ await page.evaluate(()=>{
+   localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify(['1.1','1.2']));
+   dispatchEvent(new CustomEvent('concurso:progress-change'));
+ });
+ await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.read===2 && document.getElementById('nextLessonLink')?.href.includes('#etapa-1-3'),{timeout:15000});
+ data=await page.evaluate(()=>window.ConcursoAdaptive.model());
+ assert(data.picks[0].href.includes('engenharia-qualidade.html#etapa-1-3'),'Engenharia parcialmente lida perdeu prioridade para aula zerada');
+ assert(data.lessons.find(l=>l.id==='engenharia').inProgress===true,'Aula iniciada não foi identificada');
+ assert(data.picks.find(p=>p.href.includes('banco-dados.html'))?.href !== data.picks[0].href,'Banco de Dados zerado não deve substituir Engenharia em curso');
+ await page.goto(base+'/aulas.html',{waitUntil:'domcontentloaded'});
+ await loaded();
+ assert((await page.locator('#lessonCatalog .catalog-card').first().getAttribute('data-lesson-id'))==='engenharia','Catálogo não preservou Engenharia como aula prioritária');
+ assert((await page.locator('#catalogEngContinue').getAttribute('href')).includes('#etapa-1-3'),'Link de retomada perdeu etapa 1.3');
+ // Aula integralmente lida sai da fila, sem alterar ou apagar o histórico de avaliações.
+ await page.evaluate(()=>{
+   const counts=[5,6,4,5,3,3,2,3,3,3],full=[];
+   counts.forEach((n,m)=>{for(let step=1;step<=n;step++)full.push((m+1)+'.'+step);});
+   localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify(full));
+   dispatchEvent(new CustomEvent('concurso:progress-change'));
+ });
+ await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.first===null,{timeout:15000});
+ data=await page.evaluate(()=>window.ConcursoAdaptive.model());
+ assert(!data.picks.some(p=>p.type==='lesson'&&p.href.includes('engenharia-qualidade.html')),'Aula 100% Lido deve sair da fila de leitura');
+ await page.evaluate(()=>{
+   localStorage.setItem('concurso_eng_qualidade_steps_v1',JSON.stringify(['1.1','1.2']));
+   dispatchEvent(new CustomEvent('concurso:progress-change'));
+ });
+ await page.waitForFunction(()=>window.ConcursoAdaptive.model()?.lessons.find(l=>l.id==='engenharia')?.read===2,{timeout:15000});
+ assert((await page.locator('#catalogEngContinue').getAttribute('href')).includes('#etapa-1-3'),'Retomada perdeu marcações existentes');
+ console.log('OK: Engenharia 2/37 continua recomendada; 37/37 sai da fila; retomada preservada no catálogo e plano.');
 
  // O conteúdo da aula não apresenta o painel de sugestões: ele pertence ao painel e ao plano.
  await page.goto(base+'/aulas/rlm.html',{waitUntil:'domcontentloaded'});
