@@ -9,6 +9,17 @@
 - **Editais, datas, distribuição de questões, calendário sugerido e janelas de prioridade exibidos no site:** `dados/concursos.json`. Alterações no JSON devem ser baseadas em edital/retificação verificados, com `updated_at` revisado.
 - **Progresso pessoal:** `localStorage` por navegador, com opção de sincronização privada por pareamento Supabase via `assets/sync.js` (GitHub Pages sozinho não sincroniza). O backup geral JSON **v5**, gerado no painel, reúne leitura de RLM, Engenharia/Qualidade e Português, a preferência de marcar ao avançar em Português, disponibilidade, planejamento, questões e revisões. A restauração geral aceita backups v1–v4; a aula de Português aceita backup específico v1/v2 e seu trecho em backups gerais v4/v5. Nenhum upload ocorre sem ação do usuário.
 
+## Priorização por peso, estudo confirmado e erros — 20/11/2026
+
+- A matriz de disciplinas/questões vem de dados/concursos.json, por concurso. CASAN: TI 25/50, Português 10/50, RLM 7/50, Legislação 5/50 e Atualidades 3/50. IMA usa sua própria matriz, sem transferência de estudo ou nota.
+- Para cada disciplina, o algoritmo usa peso × (1 − módulos explicitamente confirmados / módulos disponíveis), com acréscimo limitado por erros em questões realmente enviadas (máximo 25% do peso; atenuação para amostras pequenas). O resultado é critério de ordenação, não percentagem de domínio nem previsão de aprovação. Várias aulas da mesma disciplina não multiplicam o seu peso.
+- A lista exibe inicialmente uma aula por disciplina, priorizando a continuidade dentro do mesmo assunto. Revisões vencidas geradas por erros e simulados previstos na agenda podem ficar antes da teoria. Matéria sem aula cadastrada é mostrada na matriz, sem inventar material.
+- A chave privada local ce_study_confirmed_v1 registra por módulo, concurso e aula apenas declaração explícita e reversível de estudo. Exemplos de chave: casan:rlm:6 e ima:rlm:6. Lido, plano realizado, questões corrigidas, revisões e estudo confirmado permanecem evidências distintas. Abrir, rolar ou marcar Lido não declara Estudado.
+- Planejamento: tabela responsiva com peso, módulos estudados confirmados, leitura e avaliação; a seção recolhível permite marcar e desmarcar módulos. Mudanças recalculam foco e ordem de aulas no painel, no catálogo e no planejamento sem marcar tarefas da agenda como executadas.
+- Backup geral JSON v7 inclui estudo confirmado, com compatibilidade de restauração v1–v6. Sincronização privada por pareamento usa chaves study:casan e study:ima; a Edge Function concurso-pareamento do projeto Supabase Concurso Estudos recebeu apenas essa nova validação de chave, sem mudança no mecanismo de acesso. A sincronização entre dois aparelhos foi validada em testes simulados, não em aparelho físico.
+- Informação histórica presente apenas nos .md da Biblioteca privada não é copiada automaticamente para o site nem publicada no GitHub. O usuário pode confirmar o que já estudou no planejamento. Nunca inferir estudo novo de leitura, notas de outro edital ou calendário.
+- Testes: scripts/verificar-adaptacao.mjs cobre ordem por peso e confirmação, e scripts/verificar-sincronizacao.mjs cobre revogação e isolamento entre concursos.
+
 ## Automatização implementada — estado vigente em 20/11/2026
 
 1. `assets/planner.js` usa `dados/concursos.json` para edital, datas e planejamento público. Atividades sugeridas não são marcadas como executadas automaticamente.
