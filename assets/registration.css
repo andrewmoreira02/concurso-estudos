@@ -1,0 +1,13 @@
+.ce-registration{margin:13px 0 22px;padding:16px 18px;border:1px solid #d7ae68;border-left:5px solid #ddab5f;border-radius:11px;background:#352d27;color:#fff2e0}
+.ce-registration h2{margin:0 0 6px;font-size:clamp(1.04rem,2vw,1.22rem);line-height:1.35;color:#ffe9c5}
+.ce-registration p{margin:7px 0;font-size:.93rem;line-height:1.5;color:#ffedd5}
+.ce-registration a{color:#fff3d5;text-decoration:underline}
+.ce-registration .ce-reg-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.ce-registration button{min-height:44px;border:1px solid #f4d4a1;border-radius:9px;background:#66482d;padding:10px 14px;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+.ce-registration button:hover{background:#7d5735}
+.ce-registration.ce-registered{border-color:#78ae94;border-left-color:#5bbf8e;background:#20392f;color:#e8fff5}
+.ce-registration.ce-registered p{color:#cde9d8}
+.ce-registration.ce-registered h2{color:#d4ffea}
+.ce-registration.ce-registered button{background:#255743;border-color:#5bbf8e}
+.ce-registration button:focus-visible{outline:3px solid #c3f9ec;outline-offset:2px}
+@media(max-width:500px){.ce-registration{padding:13px}.ce-registration .ce-reg-actions{display:grid}.ce-registration .ce-reg-actions>*{width:100%;text-align:center}}
