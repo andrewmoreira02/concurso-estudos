@@ -499,6 +499,22 @@
           "ima": "Tecnologia da Informação"
         },
         "status": "disponivel"
+      },
+      {
+        "id": "administracao-publica-ima",
+        "title": "Administração Pública — IMA-SC",
+        "url": "aulas/administracao-publica-ima.html",
+        "section_prefix": "adm",
+        "sections_per_module": [3, 3, 3],
+        "module_titles": [
+          "Fundamentos e organização administrativa",
+          "Atos e garantias processuais",
+          "Agentes, contratações e controle"
+        ],
+        "subjects": {
+          "ima": "Administração Pública"
+        },
+        "status": "disponivel"
       }
     ],
     "minimum_unread_equivalents": 5,
