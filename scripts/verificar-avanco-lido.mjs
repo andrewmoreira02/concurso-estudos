@@ -85,6 +85,39 @@ async function one(path,kind){
    const countAfter=await page.evaluate(slug=>JSON.parse(localStorage.getItem('ce_lesson_read_v1:'+slug)||'{}').read?.length||0,kind);
    check(countAfter===countBefore,'Opção manual de desligar avanço foi ignorada');
   }
+
+  // Regressão: entre módulos, mostrar primeiro a introdução antes da primeira subseção.
+  const boundaries={
+   eng:{last:'etapa-1-5',first:'etapa-2-1',module:'sec2',native:'[data-next-step="etapa-1-5"]'},
+   rlm:{last:'m2-s7',first:'m3-s1',module:'m3',native:'[data-next-of="m2-s7"]'},
+   pt:{last:'pt19-2-4',first:'pt19-3-1',module:'m3',native:'#next-section'}
+  };
+  const b=boundaries[kind]||{
+   last:(kind==='legislacao-casan'?'leg':kind==='banco-dados'?'bd':kind==='seguranca'?'seg':kind==='algoritmos-oo'?'alg':kind==='administracao-publica-ima'?'adm':'la')+'-1-3',
+   first:(kind==='legislacao-casan'?'leg':kind==='banco-dados'?'bd':kind==='seguranca'?'seg':kind==='algoritmos-oo'?'alg':kind==='administracao-publica-ima'?'adm':'la')+'-2-1',
+   module:'cap-2',
+   native:''
+  };
+  if(!b.native)b.native='a.ce-step-next[data-ce-next="'+b.last+'"]';
+  await page.goto(url+'/'+path+'#'+b.last,{waitUntil:'domcontentloaded'});
+  await page.locator('.ce-reader-bottom').waitFor({timeout:15000});
+  await page.waitForFunction(id=>document.querySelector('.ce-reader-step')?.textContent.includes(document.getElementById(id)?.dataset.lessonStep||id.replace(/^.*-(\\d+)-(\\d+)$/,'$1.$2').replace(/^etapa-/,'').replace(/^pt19-/,''))
+    ||document.querySelector('.ce-reader-step')?.textContent.includes(id.match(/(\\d+)[-s](\\d+)$/)?.slice(1).join('.')||'???'),b.last,{timeout:12000}).catch(()=>{});
+  await page.locator(b.native).click({force:true});
+  await page.waitForFunction(module=>location.hash==='#'+module,b.module,{timeout:15000});
+  await page.waitForFunction(()=>document.querySelector('.ce-reader-step')?.textContent.includes('Apresentação'),{timeout:12000});
+  const viewport=await page.evaluate(({module,first})=>{
+   const h=document.getElementById(module)?.querySelector('h2'),f=document.getElementById(first);
+   return {header:h?.getBoundingClientRect().top,first:f?.getBoundingClientRect().top};
+  },b);
+  check(Number.isFinite(viewport.header)&&viewport.header<innerHeight,'Introdução do próximo módulo não está visível');
+  check(viewport.first>viewport.header,'Primeira subseção apareceu antes da apresentação');
+  await page.locator('.ce-reader-bottom a').last().click({force:true});
+  await page.waitForFunction(id=>location.hash==='#'+id,b.first,{timeout:12000});
+  await page.waitForFunction(()=>document.querySelector('.ce-reader-step')?.textContent.includes('Etapa'),{timeout:10000});
+  const sectionPosition=await page.evaluate(id=>document.getElementById(id).getBoundingClientRect().top,b.first);
+  check(Math.abs(sectionPosition)<window.innerHeight,'Segundo toque não abriu a primeira subseção');
+  console.log('OK '+path+' · Próxima exibe introdução '+b.module+' antes da primeira etapa '+b.first+'.');
   check(errors.length===0,'Erros JavaScript: '+errors.join(' | '));
   console.log('OK '+path+' · avança, marca origem e permite reversão.');
  }finally{await ctx.close();}
