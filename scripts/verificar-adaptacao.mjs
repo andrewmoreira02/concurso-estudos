@@ -80,18 +80,20 @@ try{
  assert(planned===null,'Recomendação marcou atividade como executada');
  console.log('OK: planejamento adaptado, sem marcar atividades realizadas.');
 
+ // O conteúdo da aula não apresenta o painel de sugestões: ele pertence ao painel e ao plano.
  await page.goto(base+'/aulas/rlm.html',{waitUntil:'domcontentloaded'});
- await loaded();
- const before=await page.locator('#adaptiveRecommendations').innerText();
- assert(before.includes('Nesta aula: continue na etapa 8.1'),'Aula não recomenda próxima seção RLM 8.1');
+ await page.waitForFunction(()=>!!document.querySelector('#ferramentas-da-aula'),{timeout:15000});
+ assert(await page.locator('#adaptiveRecommendations').count()===0,'Painel local indevido dentro da aula RLM');
  const mark=page.locator('[data-step-read="m8-s1"]');
  await mark.click({force:true});
- await page.waitForFunction(()=>window.ConcursoAdaptive.model().lessons.find(l=>l.id==='rlm').first.id==='m8-s2',{timeout:15000});
- assert((await page.locator('#adaptiveRecommendations').innerText()).includes('Nesta aula: continue na etapa 8.2'),'Aula não reagiu ao Lido imediatamente');
- assert((await page.evaluate(()=>JSON.parse(localStorage.getItem('concursos_rlm_sections_read_v3')).readSections.includes('m8-s1'))),'Marcação local se perdeu');
- console.log('OK: aula reage a novo Lido e recomenda 8.2.');
+ await page.waitForFunction(()=>JSON.parse(localStorage.getItem('concursos_rlm_sections_read_v3')||'{}').readSections?.includes('m8-s1'),{timeout:15000});
+ await page.goto(base+'/index.html',{waitUntil:'domcontentloaded'});
+ await loaded();
+ data=await page.evaluate(()=>window.ConcursoAdaptive.model());
+ assert(data.lessons.find(l=>l.id==='rlm').first.id==='m8-s2','Painel não atualizou próxima seção RLM para 8.2 após o Lido');
+ console.log('OK: RLM mantém foco só na aula; painel recalcula para 8.2.');
 
- // Revisão vencida para a CASAN deve prevalecer sem atribuir pontuação ao IMA.
+ // Revisão vencida para CASAN deve prevalecer sem atribuir pontuação ao IMA.
  await page.evaluate(()=>{
   localStorage.setItem('ce_question_logs_v1',JSON.stringify([{id:'session-123456-abc123',exam:'casan',subject:'ti',topic:'Revisar autenticação de APIs',date:'2026-11-18',valid:5,correct:3,annulled:0,kind:'nao-classificado',source:'autoral'}]));
   dispatchEvent(new CustomEvent('concurso:progress-change'));
@@ -102,14 +104,18 @@ try{
  assert(data.due.length===1,'A revisão +1 gerada deveria estar vencida em 20/11, não +3 e +7');
  console.log('OK: revisão vencida baseada em erro registrado.');
 
- await page.goto(base+'/aulas/engenharia-qualidade.html',{waitUntil:'domcontentloaded'});
+ for(const lesson of ['engenharia-qualidade.html','portugues-casan-19-11.html']){
+  await page.goto(base+'/aulas/'+lesson,{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>!!document.querySelector('#ferramentas-da-aula'),{timeout:15000});
+  assert(await page.locator('#adaptiveRecommendations').count()===0,lesson+' não deve exibir sugestões locais');
+ }
+ await page.goto(base+'/index.html',{waitUntil:'domcontentloaded'});
  await loaded();
- assert((await page.locator('#adaptiveRecommendations').innerText()).includes('Nesta aula: continue na etapa 1.1'),'Engenharia não recomenda próxima seção');
- await page.goto(base+'/aulas/portugues-casan-19-11.html',{waitUntil:'domcontentloaded'});
- await loaded();
- assert((await page.locator('#adaptiveRecommendations').innerText()).includes('Nesta aula: continue na etapa 1.1'),'Português não recomenda próxima seção');
+ data=await page.evaluate(()=>window.ConcursoAdaptive.model());
+ assert(data.lessons.find(l=>l.id==='engenharia').first.module===1,'Painel perdeu próxima seção de Engenharia');
+ assert(data.lessons.find(l=>l.id==='portugues').first.module===1,'Painel perdeu próxima seção de Português');
  assert(errors.length===0,'Erros JS: '+errors.join('; '));
- console.log('SUCESSO: motor de recomendações, três aulas, revisão, plano, hora e mobile, sem dados privados.');
+ console.log('SUCESSO: recomendações apenas no painel e plano, aulas sem banner, revisão e mobile, sem dados privados.');
 }catch(e){failed=true;console.error(e);}
 finally{await context.close();await browser.close();await new Promise(done=>server.close(done));}
 if(failed)process.exitCode=1;
