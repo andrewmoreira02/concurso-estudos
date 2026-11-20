@@ -101,8 +101,6 @@ async function one(path,kind){
   if(!b.native)b.native='a.ce-step-next[data-ce-next="'+b.last+'"]';
   await page.goto(url+'/'+path+'#'+b.last,{waitUntil:'domcontentloaded'});
   await page.locator('.ce-reader-bottom').waitFor({timeout:15000});
-  await page.waitForFunction(id=>document.querySelector('.ce-reader-step')?.textContent.includes(document.getElementById(id)?.dataset.lessonStep||id.replace(/^.*-(\\d+)-(\\d+)$/,'$1.$2').replace(/^etapa-/,'').replace(/^pt19-/,''))
-    ||document.querySelector('.ce-reader-step')?.textContent.includes(id.match(/(\\d+)[-s](\\d+)$/)?.slice(1).join('.')||'???'),b.last,{timeout:12000}).catch(()=>{});
   await page.locator(b.native).click({force:true});
   await page.waitForFunction(module=>location.hash==='#'+module,b.module,{timeout:15000});
   await page.waitForFunction(()=>document.querySelector('.ce-reader-step')?.textContent.includes('Apresentação'),{timeout:12000});
@@ -110,9 +108,10 @@ async function one(path,kind){
    const h=document.getElementById(module)?.querySelector('h2'),f=document.getElementById(first);
    return {header:h?.getBoundingClientRect().top,first:f?.getBoundingClientRect().top};
   },b);
-  check(Number.isFinite(viewport.header)&&viewport.header<780,'Introdução do próximo módulo não está visível');
+  check(Number.isFinite(viewport.header)&&viewport.header>=-60&&viewport.header<780,'Introdução do próximo módulo não está visível');
   check(viewport.first>viewport.header,'Primeira subseção apareceu antes da apresentação');
-  await page.locator('.ce-reader-bottom a').last().click({force:true});
+  if(kind==='pt')await page.locator('#next-section').click({force:true});
+  else await page.locator('.ce-reader-bottom a').last().click({force:true});
   await page.waitForFunction(id=>location.hash==='#'+id,b.first,{timeout:12000});
   await page.waitForFunction(()=>document.querySelector('.ce-reader-step')?.textContent.includes('Etapa'),{timeout:10000});
   const sectionPosition=await page.evaluate(id=>document.getElementById(id).getBoundingClientRect().top,b.first);
