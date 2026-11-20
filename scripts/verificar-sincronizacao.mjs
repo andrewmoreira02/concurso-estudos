@@ -94,6 +94,29 @@ try{
  assert(ptMerged['pt19-1-1']===true,'Português não foi propagado');
  const engMerged=await phone.evaluate(key=>JSON.parse(localStorage.getItem(key)),eng);
  assert(engMerged.includes('1.1'),'Engenharia não foi propagada');
+ // Módulos Estudados só entram na prioridade quando explicitamente confirmados.
+ await pc.goto(base+'/planejamento.html',{waitUntil:'domcontentloaded'});
+ await pc.locator('#cePrioritySubjects table').waitFor({timeout:12000});
+ await pc.locator('.ce-study-confirm > summary').click();
+ const studied=pc.locator('details[data-study-lesson="rlm"]');
+ await studied.locator('summary').click();
+ await studied.locator('input[type="checkbox"]').first().check();
+ for(let attempt=0;attempt<110&&remote.get('study:casan:rlm:1')!==true;attempt++)await new Promise(done=>setTimeout(done,100));
+ assert(remote.get('study:casan:rlm:1')===true,'Estudo confirmado não foi sincronizado');
+ assert(!remote.has('study:ima:rlm:1'),'Confirmação de CASAN foi transferida ao IMA');
+ await syncPage(phone);
+ await phone.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_study_confirmed_v1')||'{}').confirmed?.['casan:rlm:1']===true,null,{timeout:12000});
+ await phone.evaluate(()=>{
+   const key='ce_study_confirmed_v1',doc=JSON.parse(localStorage.getItem(key));
+   doc.confirmed['casan:rlm:1']=false;
+   localStorage.setItem(key,JSON.stringify(doc));
+ });
+ await syncPage(phone);
+ assert(remote.get('study:casan:rlm:1')===false,'Desmarcação de Estudado não foi sincronizada');
+ await syncPage(pc);
+ await pc.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_study_confirmed_v1')||'{}').confirmed?.['casan:rlm:1']===false,null,{timeout:12000});
+ console.log('OK: estudo confirmado reversível por módulo, sincronizado e isolado entre CASAN e IMA.');
+
  await phone.evaluate(key=>{
    const data=JSON.parse(localStorage.getItem(key));data.readSections=data.readSections.filter(x=>x!=='m4-s1');localStorage.setItem(key,JSON.stringify(data));
  },rlm);
