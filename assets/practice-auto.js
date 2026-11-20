@@ -39,7 +39,7 @@ function validAdapted(q){
  return q&&q.kind==='adaptada'&&/^[a-z0-9-]{3,60}$/.test(q.id||'')&&
  typeof q.origin_id==='string'&&/^[a-z0-9-]{3,60}$/.test(q.origin_id)&&
  /^[a-e]$/.test(q.correct||'')&&
- q.options&&['a','b','c','d','e'].every(k=>typeof q.options[k]==='string'&&q.options[k].length>=2)&&
+ q.options&&['a','b','c','d','e'].every(k=>typeof q.options[k]==='string'&&q.options[k].trim().length>=1)&&
  new Set(Object.values(q.options)).size===5&&
  typeof q.prompt==='string'&&q.prompt.length>=35&&typeof q.explanation==='string'&&q.explanation.length>15&&
  typeof q.whyWrong==='string'&&q.whyWrong.length>15;
