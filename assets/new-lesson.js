@@ -57,7 +57,7 @@ if(select&&form){
 // Navegação comum: o botão Próxima marca a seção QUE FOI LIDA, nunca a destino.
 // Preferência ativada por padrão e reversível nas configurações da aula.
 function installNextNavigation(){
- const sections=$('article.nl-section[data-ce-topic]');
+ const sections=[...document.querySelectorAll('article.nl-section[data-ce-topic]')];
  if(!sections.length)return;
  const preferenceKey='ce_next_read_v1:'+slug;
  let advanceReads=true;
