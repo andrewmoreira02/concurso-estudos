@@ -92,6 +92,12 @@ function init(){
  next.addEventListener('click',e=>{
   e.preventDefault();if(active>=sections.length-1)return;
   const original=originalNext(sections[active]);
+  if(slug==='portugues'){
+   // A navegação portuguesa usa índice interno; alinhar o índice à seção visível
+   // antes de delegar ao botão original, para marcar Lido da origem correta.
+   history.replaceState(null,'','#'+sections[active].id);
+   dispatchEvent(new Event('hashchange'));
+  }
   if(original){original.click();}
   else return; // nunca ignorar a preferência Lido usando navegação independente
   setTimeout(()=>focus(Math.min(active+1,sections.length-1)),120);
