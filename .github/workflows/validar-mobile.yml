@@ -18,6 +18,8 @@ on:
       - 'dados/questoes-reais.json'
       - 'dados/fontes-aocp-joinville-2025.json'
       - 'scripts/verificar-curadoria-aocp.mjs'
+      - 'scripts/verificar-cobertura-casan.mjs'
+      - 'dados/cobertura-casan.json'
       - 'scripts/verificar-cobrado-prova.mjs'
       - 'scripts/verificar-avanco-lido.mjs'
       - 'scripts/verificar-pratica-automatica.mjs'
@@ -46,6 +48,8 @@ on:
       - 'dados/questoes-reais.json'
       - 'dados/fontes-aocp-joinville-2025.json'
       - 'scripts/verificar-curadoria-aocp.mjs'
+      - 'scripts/verificar-cobertura-casan.mjs'
+      - 'dados/cobertura-casan.json'
       - 'scripts/verificar-cobrado-prova.mjs'
       - 'scripts/verificar-avanco-lido.mjs'
       - 'scripts/verificar-pratica-automatica.mjs'
@@ -106,6 +110,8 @@ jobs:
         run: npm install --no-save --ignore-scripts playwright-core@1.55.1
       - name: Validar sintaxe do motor adaptativo
         run: node --check assets/adaptive.js && node --check scripts/verificar-adaptacao.mjs
+      - name: Verificar cobertura oficial CASAN 404 e links para as aulas
+        run: node scripts/verificar-cobertura-casan.mjs
       - name: Verificar 50 questões AOCP e 25 subseções aprimoradas
         run: node scripts/verificar-curadoria-aocp.mjs
       - name: Testar recomendações e atualização por hora
