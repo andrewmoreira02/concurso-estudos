@@ -7,7 +7,6 @@ const $=(s,root=document)=>root.querySelector(s);
 const $$=(s,root=document)=>[...root.querySelectorAll(s)];
 const el=(tag,cls,txt)=>{const v=document.createElement(tag);if(cls)v.className=cls;if(txt!==undefined)v.textContent=String(txt);return v;};
 const dateBR=()=>{const p=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());return ['year','month','day'].map(x=>p.find(y=>y.type===x)?.value).join('-');};
-function link(parent,url,txt){if(!/^https:\/\//.test(url||''))return;const a=el('a','ce-cobranca-source',txt);a.href=url;a.target='_blank';a.rel='noopener noreferrer';parent.append(a);}
 function findPlace(slug,id){
  const anchor=document.getElementById(id);if(!anchor)return null;
  if(anchor.matches('article.nl-section,article.subsection')){
@@ -43,16 +42,17 @@ function findPlace(slug,id){
 }
 function makeCard(slug,item,source,index,total){
  const card=el('article','ce-cobranca-card');
- card.append(el('p','ce-cobranca-num','Exemplo '+(index+1)+' de '+total));
+ card.append(el('p','ce-cobranca-num','Questão '+(index+1)+' de '+total+' deste tópico'));
  card.append(el('h5','ce-cobranca-topic',item.originTopic||item.what));
  card.append(el('p','ce-cobranca-origin',source.bank+' · '+source.exam+' · '+source.year+' · questão '+item.n+' (prova anterior)'));
  card.append(el('p','ce-cobranca-asked','Como o tema foi cobrado: '+item.what));
+ const ref=el('p','ce-cobranca-provenance',
+  'Referência do tema: '+source.bank+' · '+source.year+' · '+source.exam+' · questão '+item.n+
+  '. O exercício completo com alternativas e correção está nesta página; não é necessário abrir o caderno da prova.');
+ card.append(ref);
  const links=el('div','ce-cobranca-links');
- const topicLink=el('a','ce-cobranca-topic-link','Rever explicação deste tópico');topicLink.href='#'+item.section;links.append(topicLink);
- link(links,source.pdf,'Prova completa '+source.bank+' '+source.year+' (opcional)');
- link(links,source.key,'Gabarito oficial da prova anterior');
- if(slug==='engenharia'&&source.bank==='FURB')link(links,'../cadernos/engenharia-furb-2023-4-questoes-selecionadas.pdf','PDF filtrado FURB: quatro questões e gabarito');
- if(slug==='engenharia'&&source.bank==='Instituto AOCP')link(links,'../cadernos/casan-404-13-questoes-selecionadas-aocp-2025.pdf','PDF filtrado AOCP: seleção CASAN e gabarito');
+ const topicLink=el('a','ce-cobranca-topic-link','Rever a teoria desta subseção');
+ topicLink.href='#'+item.section;links.append(topicLink);
  card.append(links);
  card.append(el('p','ce-cobranca-kind','ADAPTADA · enunciado e alternativas originais desta adaptação'));
  // A pergunta é respondida independentemente de revelar a solução.
@@ -120,7 +120,7 @@ function init(){
   panel.setAttribute('aria-label','Cobrado assim na prova, tópico '+id);
   panel.append(el('p','ce-cobranca-eyebrow','Questões da banca · exemplos adaptados'));
   panel.append(el('h4','ce-cobranca-title','Cobrado assim na prova'));
-  panel.append(el('p','ce-cobranca-lead','Referências de provas anteriores verificáveis. Os enunciados e os gabaritos abaixo são adaptações independentes; selecionar ou conferir não registra desempenho. Somente Enviar resultado registra a tentativa.'));
+  panel.append(el('p','ce-cobranca-lead','Questões pontuais dentro do assunto, com enunciado, alternativas e correção nesta página. Questões adaptadas de provas anteriores identificadas pela banca, ano e número. Apenas Enviar resultado registra a tentativa.'));
   const cards=el('div','ce-cobranca-grid');
   const sorted=items.slice().sort(priority).slice(0,5);
   sorted.forEach((item,i)=>{
