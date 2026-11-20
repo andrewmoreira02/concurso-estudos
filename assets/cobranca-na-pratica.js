@@ -112,7 +112,7 @@ function init(){
  let first=true;
  for(const [id,items] of grouped){
   const place=findPlace(slug,id);if(!place)continue;
-  const panel=el('aside','ce-cobranca ce-cobranca-inline');
+  const panel=el('section','ce-cobranca ce-cobranca-inline'); // evitar CSS global que reserva <aside> para o menu lateral
   if(first){panel.id='cobrado-assim-na-prova';first=false;}
   panel.dataset.forSection=id;
   panel.setAttribute('aria-label','Cobrado assim na prova, tópico '+id);
