@@ -114,8 +114,20 @@ async function one(path,kind){
   else await page.locator('.ce-reader-bottom a').last().click({force:true});
   await page.waitForFunction(id=>location.hash==='#'+id,b.first,{timeout:12000});
   await page.waitForFunction(()=>document.querySelector('.ce-reader-step')?.textContent.includes('Etapa'),{timeout:10000});
-  const sectionPosition=await page.evaluate(id=>document.getElementById(id).getBoundingClientRect().top,b.first);
-  check(Math.abs(sectionPosition)<780,'Segundo toque não abriu a primeira subseção');
+  try{
+   await page.waitForFunction(id=>{
+    const r=document.getElementById(id)?.getBoundingClientRect();
+    return !!r&&r.top>=-80&&r.top<innerHeight*.8;
+   },b.first,{timeout:7000});
+  }catch{
+   const debug=await page.evaluate(({first,module})=>({
+    hash:location.hash,bar:document.querySelector('.ce-reader-step')?.textContent,
+    firstTop:document.getElementById(first)?.getBoundingClientRect().top,
+    moduleTop:document.getElementById(module)?.getBoundingClientRect().top,
+    scrollY,bodyScroll:document.scrollingElement?.scrollTop
+   }),b);
+   throw Error(path+': Segundo toque não exibiu a primeira subseção: '+JSON.stringify(debug));
+  }
   console.log('OK '+path+' · Próxima exibe introdução '+b.module+' antes da primeira etapa '+b.first+'.');
   check(errors.length===0,'Erros JavaScript: '+errors.join(' | '));
   console.log('OK '+path+' · avança, marca origem e permite reversão.');
