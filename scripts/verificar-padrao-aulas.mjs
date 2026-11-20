@@ -1,4 +1,4 @@
-// Valida interface editorial única — seis aulas, sem dados privados.
+// Valida interface editorial única — sete aulas, sem dados privados.
 import {chromium} from 'playwright-core';
 import {existsSync} from 'node:fs';
 import {resolve} from 'node:path';
@@ -12,7 +12,8 @@ const lessons=[
  {p:'aulas/portugues-casan-19-11.html',n:21,type:'pt',backup:'export-json',read:'.mark-sub'},
  {p:'aulas/banco-dados.html',n:9,type:'new',backup:'nl-export',read:'input[data-ce-read]'},
  {p:'aulas/seguranca.html',n:9,type:'new',backup:'nl-export',read:'input[data-ce-read]'},
- {p:'aulas/algoritmos-oo.html',n:9,type:'new',backup:'nl-export',read:'input[data-ce-read]'}
+ {p:'aulas/algoritmos-oo.html',n:9,type:'new',backup:'nl-export',read:'input[data-ce-read]'},
+ {p:'aulas/administracao-publica-ima.html',n:9,type:'new',backup:'nl-export',read:'input[data-ce-read]'}
 ];
 let count=0;
 function check(ok,desc){count++;if(!ok)throw Error(desc);}
@@ -65,5 +66,5 @@ try{
   }
   await context.close();
  }
- console.log('SUCESSO '+count+' verificações do padrão único nas seis aulas');
+ console.log('SUCESSO '+count+' verificações do padrão único nas sete aulas');
 }finally{await browser.close();}
