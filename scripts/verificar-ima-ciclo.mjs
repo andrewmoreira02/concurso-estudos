@@ -75,7 +75,7 @@ try{
    return {n:q.length,subjects:q.reduce((x,y)=>(x[y.dataset.ceSubject]=(x[y.dataset.ceSubject]||0)+1,x),{}),
     opts:q.map(y=>y.querySelectorAll('input[type="radio"]').length),
     labels:q.map(y=>y.querySelector('legend')?.textContent?.length||0),
-    source:q.every(y=>y.querySelector('.ce-original-source a[href^="https://"]')),
+    source:q.every(y=>Boolean(y.querySelector('.ce-original-source a[href^="https://"]'))),
     beforeLogs:JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]').length,
     width:document.documentElement.scrollWidth};
   });
