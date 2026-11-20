@@ -176,3 +176,12 @@ Os rótulos do exemplo são **placeholder de desenvolvimento**, não uma questã
 - A pedido do usuário, a página inicial **não** apresenta mais a caixa automática `Sugestões locais`; mantém seu próprio card de próximo foco, atalho dinâmico, progresso e acesso ao planejamento.
 - `assets/adaptive.js`: `createPanel()` não injeta seção redundante em `index.html`, mas `render()` continua atualizando `dynamicFocus`, `dynamicFocusLink` e os atalhos de retomada mesmo sem criar a caixa. No planejamento, o nome visível passa a ser **Continuidade do plano de estudos**; a recomendação útil permanece.
 - `scripts/verificar-adaptacao.mjs` cobre ausência de caixa na home, atualização de foco dinâmico, painel no planejamento e ausência de sugestões intrusivas dentro das aulas. Isso não interfere na tarefa horária editorial do GPT nem na sincronização Supabase.
+
+## 19/11/2026 — Simplificação definitiva de interface: sem aba Progresso nem Sugestões locais
+
+- A pedido do proprietário, não exibir mais a caixa `Sugestões locais` **em nenhuma página**. `assets/adaptive.js` continua processando leituras, ordenando catálogo e atualizando os links de próximo foco no painel/planejamento, mas não injeta nova caixa de recomendações. A manutenção editorial horária continua sendo tarefa do GPT, não do navegador.
+- A área autônoma `Progresso` foi retirada dos menus de Início, Aulas, Planejamento, Revisões, Sincronização e das aulas novas/Português; o atalho em cartões do início e a caixa redundante `Salvamento automático` foram removidos. A URL antiga `progresso.html` redireciona para `aulas.html`, sem executar exclusão de dados.
+- Progresso privado continua persistido e sincronizado: **não apagar dados, chaves localStorage, tabela Supabase, registros de questões ou revisões**. Manter indicadores de leitura **dentro das aulas**, necessários para saber o que falta ler.
+- Backup geral JSON foi transferido para uma seção opcional recolhida na página `conta.html`, mantendo compatibilidade com o motor existente `assets/site.js`. Não exibir página isolada de progresso como pré-requisito para sincronização.
+- Atualizados query strings dos scripts para impedir cache do JavaScript antigo. Testes `scripts/verificar-adaptacao.mjs` validam ausência das caixas e da aba, redirecionamento antigo e backup preservado.
+- **Regra para manutenções futuras:** não reintroduzir os elementos removidos. Usar painel, planejamento e aulas como interface mínima de estudo; manter meta de 5 aulas equivalentes conforme progresso privado na tarefa agendada.
