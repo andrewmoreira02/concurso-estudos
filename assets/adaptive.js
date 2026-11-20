@@ -45,6 +45,10 @@ function readSet(id){
    const doc=parse(ptKey,{});
    if(isRecord(doc?.read))for(const [key,value] of Object.entries(doc.read))if(value===true)out.add(key);
  }
+ if(!['rlm','engenharia','portugues'].includes(id)){
+   const doc=parse('ce_lesson_read_v1:'+id,{});
+   if(Array.isArray(doc?.read))for(const key of doc.read)if(typeof key==='string')out.add(key);
+ }
  return out;
 }
 function courseState(lesson,exam){
@@ -138,7 +142,10 @@ function model(){
  }
  const path=location.pathname;
  const active=lessons.find(l=>path.endsWith('/'+l.url)||path.endsWith(l.url));
- return {today,exam,windowRule,lessons,picks,due,agenda:agenda(today),active};
+ const relevant=lessons.filter(l=>l.weight>0);
+ const unreadEquivalents=relevant.reduce((sum,l)=>sum+(l.total-l.read)/l.total,0);
+ const minEquivalents=Math.max(1,Math.min(10,config.adaptive_study?.minimum_unread_equivalents||5));
+ return {today,exam,windowRule,lessons,picks,due,agenda:agenda(today),active,unreadEquivalents,minEquivalents};
 }
 function el(tag,className,text){
  const node=document.createElement(tag);
@@ -204,7 +211,7 @@ function render(data){
  if(!details)return;
  const signature=JSON.stringify({
    exam:data.exam,head:data.picks,lesson:data.active?.id,lessonNext:data.active?.first,
-   evidence:data.lessons.map(l=>[l.id,l.read,l.total]),due:data.due.length,agenda:data.agenda
+   evidence:data.lessons.map(l=>[l.id,l.read,l.total]),due:data.due.length,agenda:data.agenda,available:data.unreadEquivalents
  });
  orderCatalog(data);
  if(signature!==renderedSignature){
@@ -212,6 +219,12 @@ function render(data){
    details.replaceChildren();
    const n=el('p','ce-adaptive-evidence',data.lessons.map(x=>x.title.split(':')[0]+': '+x.read+'/'+x.total+' Lido').join(' · '));
    details.append(n);
+   if(data.exam){
+     const quantity=data.unreadEquivalents.toFixed(2).replace('.',',');
+     const deficit=Math.max(0,Math.ceil((data.minEquivalents-data.unreadEquivalents)-1e-9));
+     const message='Fila de leitura: '+quantity+' aulas completas equivalentes ainda não lidas (meta: '+data.minEquivalents+'). '+(deficit>0?'Faltam '+deficit+' aula(s) integralmente não lida(s) para a reserva mínima; a tarefa editorial do GPT deverá produzi-las.':'Reserva mínima atendida com material já publicado.');
+     details.append(el('p','ce-adaptive-queue',message));
+   }
    const namedLesson=data.active;
    if(namedLesson){
      const current=el('div','ce-adaptive-current');
@@ -274,7 +287,7 @@ async function getConfig(){
  !Array.isArray(next.adaptive_study.lessons)||!next.exams||!next.priority_windows||!next.calendar)throw Error('Configuração adaptativa incompleta');
  for(const lesson of next.adaptive_study.lessons){
    if(!Array.isArray(lesson.sections_per_module)||lesson.sections_per_module.length>20||lesson.sections_per_module.some(n=>!Number.isInteger(n)||n<1||n>40)||
-      !/^aulas\/[a-z0-9-]+\.html$/.test(lesson.url)||!['rlm','portugues','engenharia'].includes(lesson.id))throw Error('Catálogo de aulas inválido');
+      !/^aulas\/[a-z0-9-]+\.html$/.test(lesson.url)||!/^[a-z][a-z0-9-]{2,40}$/.test(lesson.id))throw Error('Catálogo de aulas inválido');
  }
  config=next;
  return config;
