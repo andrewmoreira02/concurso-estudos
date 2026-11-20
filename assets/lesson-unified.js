@@ -129,7 +129,7 @@ function installExamExamples(){
   if(page==='portugues-casan-19-11.html'){
    if(id==='pt19-1-1')wanted.push('1');if(id==='pt19-3-1')wanted.push('3');if(id==='pt19-5-1')wanted.push('4');
   }else if(page==='rlm.html'){
-   if(id==='m3-s1')wanted.push('6','7','10');if(id==='m2-s1')wanted.push('8');if(id==='m3-s2')wanted.push('9');
+   if(id==='3.1')wanted.push('6','7','10');if(id==='2.1')wanted.push('8');if(id==='3.2')wanted.push('9');
   }else if(page==='banco-dados.html'){
    if(id==='bd-3-1')wanted.push('12');if(id==='bd-2-3')wanted.push('22');
   }else if(page==='algoritmos-oo.html'){
