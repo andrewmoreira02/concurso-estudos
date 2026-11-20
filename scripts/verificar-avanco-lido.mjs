@@ -110,13 +110,13 @@ async function one(path,kind){
    const h=document.getElementById(module)?.querySelector('h2'),f=document.getElementById(first);
    return {header:h?.getBoundingClientRect().top,first:f?.getBoundingClientRect().top};
   },b);
-  check(Number.isFinite(viewport.header)&&viewport.header<innerHeight,'Introdução do próximo módulo não está visível');
+  check(Number.isFinite(viewport.header)&&viewport.header<780,'Introdução do próximo módulo não está visível');
   check(viewport.first>viewport.header,'Primeira subseção apareceu antes da apresentação');
   await page.locator('.ce-reader-bottom a').last().click({force:true});
   await page.waitForFunction(id=>location.hash==='#'+id,b.first,{timeout:12000});
   await page.waitForFunction(()=>document.querySelector('.ce-reader-step')?.textContent.includes('Etapa'),{timeout:10000});
   const sectionPosition=await page.evaluate(id=>document.getElementById(id).getBoundingClientRect().top,b.first);
-  check(Math.abs(sectionPosition)<window.innerHeight,'Segundo toque não abriu a primeira subseção');
+  check(Math.abs(sectionPosition)<780,'Segundo toque não abriu a primeira subseção');
   console.log('OK '+path+' · Próxima exibe introdução '+b.module+' antes da primeira etapa '+b.first+'.');
   check(errors.length===0,'Erros JavaScript: '+errors.join(' | '));
   console.log('OK '+path+' · avança, marca origem e permite reversão.');
