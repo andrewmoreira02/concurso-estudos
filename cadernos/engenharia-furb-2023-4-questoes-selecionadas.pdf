@@ -1,0 +1,138 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R] /Count 3 >>
+endobj
+4 0 obj
+<< /Length 3499 >>
+stream
+BT /F2 17 Tf 0.07 0.31 0.47 rg 1 0 0 1 52 791.0 Tm (CADERNO FURB 2023 - QUESTÕES SELECIONADAS) Tj ET
+BT /F2 11 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 760.0 Tm (Engenharia de Software, orientação a objetos e arquitetura) Tj ET
+BT /F1 10 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 734.0 Tm (Quatro exercícios adaptados a partir de itens identificados no concurso FURB 2023 para) Tj ET
+BT /F1 10 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 719.0 Tm (Analista de Sistemas. Seleção temática: interfaces Java, UML, mensageria JMS e) Tj ET
+BT /F1 10 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 704.0 Tm (publicação/assinatura de eventos.) Tj ET
+BT /F1 9.5 Tf 0.45 0.27 0.20 rg 1 0 0 1 52 680.0 Tm (ATENÇÃO: este PDF contém enunciados e alternativas REESCRITOS. Não é transcrição literal da prova) Tj ET
+BT /F1 9.5 Tf 0.45 0.27 0.20 rg 1 0 0 1 52 666.0 Tm (histórica. As respostas abaixo são gabaritos das adaptações, não as letras oficiais do caderno de) Tj ET
+BT /F1 9.5 Tf 0.45 0.27 0.20 rg 1 0 0 1 52 652.0 Tm (origem.) Tj ET
+BT /F1 9.5 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 626.0 Tm (A banca FURB é especialmente pertinente ao IMA-SC. Para a CASAN, a prioridade na Engenharia) Tj ET
+BT /F1 9.5 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 612.0 Tm (permanece o Instituto AOCP. Questões 14 e 32 \(anuladas\) não foram usadas.) Tj ET
+0.65 0.73 0.79 RG 0.6 w 52 583.0 m 542 583.0 l S
+BT /F2 11 Tf 0.10 0.34 0.48 rg 1 0 0 1 52 574.0 Tm (QUESTÃO 1 - Interfaces em Java) Tj ET
+BT /F1 10.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 553.0 Tm (Em Java, considere interface Auditavel { void auditar\(\); }. Qual declaração implementa) Tj ET
+BT /F1 10.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 538.0 Tm (corretamente essa interface?) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 514.0 Tm (A\) class Registro implements Auditavel { public void auditar\(\) {} }) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 497.0 Tm (B\) class Registro extends Auditavel { public void auditar\(\) {} }) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 480.0 Tm (C\) interface Registro implements Auditavel {}) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 463.0 Tm (D\) class Registro implements Auditavel {}) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 446.0 Tm (E\) class Registro extends interface Auditavel {}) Tj ET
+BT /F1 8.5 Tf 0.37 0.43 0.50 rg 1 0 0 1 52 425.0 Tm (Referência: FURB/SC 2023 - Analista de Sistemas - Questão 11) Tj ET
+BT /F2 11 Tf 0.10 0.34 0.48 rg 1 0 0 1 52 398.0 Tm (QUESTÃO 2 - Diagramas UML de interação) Tj ET
+BT /F1 10.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 377.0 Tm (Uma equipe deseja representar a troca de mensagens entre objetos e, principalmente, sua) Tj ET
+BT /F1 10.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 362.0 Tm (organização espacial e vínculos, sem focar numa linha temporal vertical. Qual diagrama UML é) Tj ET
+BT /F1 10.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 347.0 Tm (indicado?) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 323.0 Tm (A\) Atividades) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 306.0 Tm (B\) Comunicação) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 289.0 Tm (C\) Casos de uso) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 272.0 Tm (D\) Implantação) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 255.0 Tm (E\) Pacotes) Tj ET
+BT /F1 8.5 Tf 0.37 0.43 0.50 rg 1 0 0 1 52 234.0 Tm (Referência: FURB/SC 2023 - Analista de Sistemas - Questão 16) Tj ET
+BT /F1 8 Tf 0.39 0.46 0.52 rg 1 0 0 1 52 38.0 Tm (Concurso Estudos - Caderno FURB 2023 | Seleção para Engenharia/OO) Tj ET
+BT /F1 8 Tf 0.39 0.46 0.52 rg 1 0 0 1 532 38.0 Tm (1) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 2333 >>
+stream
+BT /F2 10 Tf 0.15 0.32 0.43 rg 1 0 0 1 52 807.0 Tm (FURB 2023 | Questões selecionadas) Tj ET
+0.65 0.73 0.79 RG 0.6 w 52 797.0 m 542 797.0 l S
+BT /F2 11 Tf 0.10 0.34 0.48 rg 1 0 0 1 52 773.0 Tm (QUESTÃO 3 - Mensageria Java \(JMS\)) Tj ET
+BT /F1 10.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 752.0 Tm (Sobre mensageria JMS e aplicações Java, qual afirmação é correta?) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 728.0 Tm (A\) Mensagens JMS precisam obrigatoriamente ser documentos JSON.) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 711.0 Tm (B\) JMS é exclusivo de comunicação por HTTP.) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 694.0 Tm (C\) JMS permite diferentes formatos de mensagem e não exige JSON como formato único.) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 677.0 Tm (D\) Qualquer mensagem JMS realiza automaticamente um COMMIT em todas as bases.) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 660.0 Tm (E\) O uso de JMS dispensa tratamento de erro e confirmação.) Tj ET
+BT /F1 8.5 Tf 0.37 0.43 0.50 rg 1 0 0 1 52 639.0 Tm (Referência: FURB/SC 2023 - Analista de Sistemas - Questão 20) Tj ET
+BT /F2 11 Tf 0.10 0.34 0.48 rg 1 0 0 1 52 612.0 Tm (QUESTÃO 4 - Arquitetura de eventos / Publish-Subscribe) Tj ET
+BT /F1 10.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 591.0 Tm (Um sistema publica eventos em um tópico para que diferentes assinantes interessados recebam) Tj ET
+BT /F1 10.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 576.0 Tm (notificações. Qual padrão de entrega é mais apropriado?) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 552.0 Tm (A\) Pilha LIFO) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 535.0 Tm (B\) Consulta SQL com lock exclusivo) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 518.0 Tm (C\) Uma fila ponto a ponto compartilhada sem assinaturas) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 501.0 Tm (D\) Publicação/assinatura por tópico \(publish/subscribe\)) Tj ET
+BT /F1 9.8 Tf 0.15 0.21 0.29 rg 1 0 0 1 65 484.0 Tm (E\) Requisições síncronas obrigatórias para cada assinante) Tj ET
+BT /F1 8.5 Tf 0.37 0.43 0.50 rg 1 0 0 1 52 463.0 Tm (Referência: FURB/SC 2023 - Analista de Sistemas - Questão 31) Tj ET
+BT /F1 8 Tf 0.39 0.46 0.52 rg 1 0 0 1 52 38.0 Tm (Concurso Estudos - Caderno FURB 2023 | Seleção para Engenharia/OO) Tj ET
+BT /F1 8 Tf 0.39 0.46 0.52 rg 1 0 0 1 532 38.0 Tm (2) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 3289 >>
+stream
+BT /F2 17 Tf 0.07 0.31 0.47 rg 1 0 0 1 52 791.0 Tm (GABARITO E JUSTIFICATIVAS) Tj ET
+BT /F1 10 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 760.0 Tm (Resolva antes de consultar as respostas. O gabarito é específico das questões adaptadas desta) Tj ET
+BT /F1 10 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 745.0 Tm (seleção.) Tj ET
+BT /F2 11 Tf 0.10 0.42 0.34 rg 1 0 0 1 52 715.0 Tm (Questão 1: alternativa A | FURB Q11) Tj ET
+BT /F1 9.7 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 694.0 Tm (Uma classe declara que implementa uma interface usando implements e deve implementar seus métodos) Tj ET
+BT /F1 9.7 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 680.0 Tm (abstratos, salvo se for abstrata.) Tj ET
+BT /F1 9.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 659.0 Tm (Por que não as demais: extends em classe não substitui implements; a classe concreta da opção D omite o) Tj ET
+BT /F1 9.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 645.0 Tm (método exigido.) Tj ET
+BT /F2 11 Tf 0.10 0.42 0.34 rg 1 0 0 1 52 610.0 Tm (Questão 2: alternativa B | FURB Q16) Tj ET
+BT /F1 9.7 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 589.0 Tm (O diagrama de comunicação representa a interação com ênfase nas ligações entre participantes e) Tj ET
+BT /F1 9.7 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 575.0 Tm (mensagens numeradas.) Tj ET
+BT /F1 9.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 554.0 Tm (Por que não as demais: Atividades descrevem fluxo de ações; casos de uso descrevem funcionalidades;) Tj ET
+BT /F1 9.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 540.0 Tm (implantação e pacotes tratam outras estruturas.) Tj ET
+BT /F2 11 Tf 0.10 0.42 0.34 rg 1 0 0 1 52 505.0 Tm (Questão 3: alternativa C | FURB Q20) Tj ET
+BT /F1 9.7 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 484.0 Tm (JMS define uma API de mensageria com diferentes tipos de mensagem; JSON não é obrigatório.) Tj ET
+BT /F1 9.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 463.0 Tm (Por que não as demais: JMS não é limitado a HTTP e não elimina controle transacional, tratamento de) Tj ET
+BT /F1 9.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 449.0 Tm (erros ou confirmação.) Tj ET
+BT /F2 11 Tf 0.10 0.42 0.34 rg 1 0 0 1 52 414.0 Tm (Questão 4: alternativa D | FURB Q31) Tj ET
+BT /F1 9.7 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 393.0 Tm (O modelo publish/subscribe permite distribuir eventos para assinantes de um tópico conforme as) Tj ET
+BT /F1 9.7 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 379.0 Tm (regras de assinatura.) Tj ET
+BT /F1 9.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 358.0 Tm (Por que não as demais: Filas ponto a ponto são usadas em outro padrão de entrega; pilha, SQL e chamadas) Tj ET
+BT /F1 9.4 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 344.0 Tm (síncronas não representam o tópico pub/sub.) Tj ET
+0.65 0.73 0.79 RG 0.6 w 52 315.0 m 542 315.0 l S
+BT /F2 11 Tf 0.08 0.31 0.46 rg 1 0 0 1 52 296.0 Tm (PROCEDÊNCIA) Tj ET
+BT /F1 9.3 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 277.0 Tm (FURB/SC - Analista de Sistemas - 2023; itens históricos de referência 11, 16, 20 e 31. Prova e) Tj ET
+BT /F1 9.3 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 264.0 Tm (gabarito final separados estão vinculados na aula de Engenharia. Este PDF é um material didático) Tj ET
+BT /F1 9.3 Tf 0.15 0.21 0.29 rg 1 0 0 1 52 251.0 Tm (derivado, com gabaritos próprios.) Tj ET
+BT /F1 8 Tf 0.39 0.46 0.52 rg 1 0 0 1 52 38.0 Tm (Concurso Estudos - Caderno FURB 2023 | Seleção para Engenharia/OO) Tj ET
+BT /F1 8 Tf 0.39 0.46 0.52 rg 1 0 0 1 532 38.0 Tm (3) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000015 00000 n 
+0000000112 00000 n 
+0000000214 00000 n 
+0000000283 00000 n 
+0000003833 00000 n 
+0000003969 00000 n 
+0000006353 00000 n 
+0000006489 00000 n 
+0000009829 00000 n 
+0000009965 00000 n 
+trailer
+<< /Size 11 /Root 10 0 R >>
+startxref
+10015
+%%EOF
