@@ -26,8 +26,16 @@ function draw(){
  if(meter)meter.value=count;
  if(label)label.textContent=count+' de '+ids.length+' subseções marcadas como Lido';
  const box=$('#nl-global-status');if(box)box.textContent=count===ids.length?'Todas as subseções estão marcadas como Lido; revise por questões para verificar retenção.':'Ainda restam '+(ids.length-count)+' subseções para ler.';
+ for(const section of $('section.nl-chapter')){
+  const chapters=[...section.querySelectorAll('article.nl-section[id]')].map(x=>x.id).filter(x=>allowed.has(x));
+  const countEl=section.querySelector('[data-ce-module-count]');if(!chapters.length||!countEl)continue;
+  const done=chapters.filter(id=>list.has(id)).length;
+  countEl.textContent=done+' de '+chapters.length+' subseções marcadas como Lido';
+  const toggle=section.querySelector('[data-ce-module-toggle]');
+  if(toggle){toggle.textContent=done===chapters.length?'Desmarcar todas as subseções':'Marcar todas as subseções como Lido';toggle.setAttribute('aria-pressed',String(done===chapters.length));}
+ }
 }
-$$('input[data-ce-read]').forEach(x=>x.addEventListener('change',()=>{
+$('input[data-ce-read]').forEach(x=>x.addEventListener('change',()=>{
  const next=current();if(x.checked)next.add(x.dataset.ceRead);else next.delete(x.dataset.ceRead);
  if(save(next))status('Marcação atualizada neste aparelho. A sincronização privada tentará enviar as alterações.');
 }));
@@ -56,6 +64,22 @@ if(select&&form){
 }
 // Navegação comum: o botão Próxima marca a seção QUE FOI LIDA, nunca a destino.
 // Preferência ativada por padrão e reversível nas configurações da aula.
+function installModuleControls(){
+ for(const section of $('section.nl-chapter')){
+  const sectionIds=[...section.querySelectorAll('article.nl-section[id]')].map(x=>x.id).filter(id=>allowed.has(id));
+  const header=section.querySelector(':scope > header');if(!sectionIds.length||!header||section.querySelector('[data-ce-module-count]'))continue;
+  const box=document.createElement('div');box.className='ce-module-reading';
+  const progress=document.createElement('strong');progress.dataset.ceModuleCount='';progress.setAttribute('role','status');box.append(progress);
+  const button=document.createElement('button');button.type='button';button.dataset.ceModuleToggle='';button.setAttribute('aria-label','Marcar ou desmarcar todas as subseções do módulo');box.append(button);
+  button.addEventListener('click',()=>{
+   const value=current(),allRead=sectionIds.every(id=>value.has(id));
+   for(const id of sectionIds){if(allRead)value.delete(id);else value.add(id);}
+   if(save(value))status(allRead?'Subseções deste módulo desmarcadas.':'Subseções deste módulo marcadas por ação coletiva.');
+  });
+  header.append(box);
+ }
+ draw();
+}
 function installNextNavigation(){
  const sections=[...document.querySelectorAll('article.nl-section[data-ce-topic]')];
  if(!sections.length)return;
@@ -106,8 +130,8 @@ function installNextNavigation(){
    section.append(nav);
  }
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(installNextNavigation,0),{once:true});
-else setTimeout(installNextNavigation,0);
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installModuleControls();setTimeout(installNextNavigation,0);},{once:true});
+else {installModuleControls();setTimeout(installNextNavigation,0);}
 addEventListener('concurso:sync-status',e=>{if(e.detail?.message?.startsWith('Sincronizado')){draw();status('Leitura sincronizada com seu banco privado.');}});
 addEventListener('storage',e=>{if(e.key===KEY)draw();});
 draw();
