@@ -130,8 +130,8 @@
       "2026-11-21": [
         {
           "id": "questions-reta-final",
-          "title": "Questões de véspera CASAN — 15 itens autorais",
-          "detail": "Bloco leve de cerca de 35 min: TI (8), Português (3), RLM (2), Legislação (1) e Atualidades (1). Enviar respostas registra automaticamente acertos e erros por disciplina; não é prova anterior da AOCP.",
+          "title": "Questões de concursos — sábado CASAN: 13 reais + 2 autorais",
+          "detail": "15 questões: 13 questões ORIGINAIS da FURB 2023 (Analista de Sistemas), com gabarito final verificado; 2 autorais de reserva em Legislação/Atualidades. Priorizar AOCP assim que caderno+gabarito final forem verificados. Abrir PDF por questão e responder A-E registra resultado.",
           "href": "aulas/questoes-casan-21-11.html"
         },
         {
@@ -160,8 +160,8 @@
       "2027-02-13": [
         {
           "id": "ima-questions-eve",
-          "title": "Questões leves de véspera IMA — conteúdos compartilhados",
-          "detail": "Treino curto e opcional sobre TI, Português e RLM. Não é simulado integral da FURB; evitar assunto pesado novo.",
+          "title": "Questões de provas anteriores FURB — véspera IMA",
+          "detail": "Treino opcional com 12 questões reais de FURB 2023, banca e cargo de TI compatíveis, corrigidas pelo gabarito final; revisar lacunas sem presumir desempenho transferível.",
           "href": "aulas/questoes-ima.html"
         },
         {
@@ -236,8 +236,8 @@
             },
             {
               "id": "ima-questions",
-              "title": "Questões de TI, Português e RLM — treino IMA",
-              "detail": "≈20 min do núcleo de 2 h: questões autorais com correção e registro automáticos. Treino compartilhado, ainda não cobre Administração Pública e Legislação Ambiental.",
+              "title": "Questões reais FURB 2023 — treino IMA",
+              "detail": "12 questões ORIGINAIS FURB Analista de Sistemas, com caderno e gabarito final; TI 8, Português 2, RLM 2. Não cobre ainda Administração Pública e Legislação Ambiental.",
               "href": "aulas/questoes-ima.html"
             }
           ],
@@ -299,8 +299,8 @@
             },
             {
               "id": "ima-questions",
-              "title": "Questões de TI, Português e RLM — treino IMA",
-              "detail": "≈20 min do núcleo de 2 h: questões autorais com correção e registro automáticos. Treino compartilhado, ainda não cobre Administração Pública e Legislação Ambiental.",
+              "title": "Questões reais FURB 2023 — treino IMA",
+              "detail": "12 questões ORIGINAIS FURB Analista de Sistemas, com caderno e gabarito final; TI 8, Português 2, RLM 2. Não cobre ainda Administração Pública e Legislação Ambiental.",
               "href": "aulas/questoes-ima.html"
             }
           ],
@@ -333,7 +333,7 @@
       3,
       7
     ],
-    "label": "Revisões são criadas automaticamente a partir dos erros nos quizzes realmente enviados. O novo quiz de revisão, quando enviado, registra sua realização; não exige formulário manual nem presume domínio."
+    "label": "Primeiro questões de concurso verificadas por banca/cargo/caderno/gabarito final; depois adaptações identificadas; autorais somente para lacunas. Revisões são criadas automaticamente após respostas com erro; conclusão apenas após novo quiz enviado."
   },
   "adaptive_study": {
     "schema_version": 1,
