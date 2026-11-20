@@ -10,6 +10,7 @@ on:
       - 'scripts/verificar-adaptacao.mjs'
       - 'scripts/verificar-lido-final.mjs'
       - 'scripts/verificar-padrao-aulas.mjs'
+      - 'scripts/capturar-engenharia.mjs'
       - 'scripts/auditar-conteudo-aulas.mjs'
       - 'dados/concursos.json'
       - 'dados/questoes.json'
@@ -34,6 +35,7 @@ on:
       - 'scripts/verificar-adaptacao.mjs'
       - 'scripts/verificar-lido-final.mjs'
       - 'scripts/verificar-padrao-aulas.mjs'
+      - 'scripts/capturar-engenharia.mjs'
       - 'scripts/auditar-conteudo-aulas.mjs'
       - 'dados/concursos.json'
       - 'dados/questoes.json'
@@ -71,6 +73,16 @@ jobs:
         run: timeout 100s node scripts/verificar-padrao-aulas.mjs
       - name: Auditar subseções vazias nas três aulas
         run: timeout 75s node scripts/auditar-conteudo-aulas.mjs
+      - name: Capturar renderização de Engenharia em 320, 390 e 430 px
+        run: timeout 60s node scripts/capturar-engenharia.mjs
+      - name: Disponibilizar capturas de Engenharia para auditoria visual
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: engenharia-visual-mobile
+          path: artifacts/engenharia/*.png
+          if-no-files-found: warn
+          retention-days: 7
       - name: Testar sincronização simulada entre dois aparelhos
         run: timeout 90s node scripts/verificar-sincronizacao.mjs
 
