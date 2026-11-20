@@ -74,9 +74,8 @@ try{
    'Distribuição da reta final incorreta: '+JSON.stringify(distribution));
  const originalCount=await page.locator('.ce-original-source').count();
  assert(originalCount===13,'O simulado da CASAN deve ter 13 questões adaptadas de fontes reais e 2 autorais, encontrado '+originalCount);
- const urls=await page.locator('.ce-original-source a').evaluateAll(anchors=>anchors.map(a=>a.href));
- assert(urls.every(url=>url.includes('qconcursos.com/prova/arquivo_prova/149463/')&&/#page=\d+$/.test(url)),
-   'Questão adaptada sem URL opcional do caderno e página identificada');
+ assert(await page.locator('.ce-original-source a').count()===0,
+   'Questão do simulado deve aparecer no próprio site, sem link a caderno PDF');
  assert(await page.locator('.ce-original-source strong').evaluateAll(nodes=>nodes.every(n=>n.textContent.includes('Instituto AOCP')&&n.textContent.includes('2025'))),'Bloco CASAN contém referências que não são Instituto AOCP 2025');
  assert(await page.locator('input[type="radio"][value="e"]').count()===13,
    'Cada questão adaptada deve exibir cinco alternativas completas A–E');
@@ -86,9 +85,9 @@ try{
    const legend=item.querySelector('legend')?.textContent||'';
    return legend.length>70&&!/consulte o caderno.*alternativas/i.test(legend)&&
      labels.length===5&&labels.every(l=>l.textContent.trim().length>=3)&&
-     /Adaptaç[ãa]o|Adaptada/i.test(n.textContent)&&n.textContent.includes('opcional');
+     /Adaptaç[ãa]o|Adaptada/i.test(n.textContent)&&n.textContent.includes('questão');
  }));
- assert(inline,'Questão adaptada sem enunciado, alternativas completas ou consulta opcional à prova');
+ assert(inline,'Questão adaptada sem enunciado, alternativas completas e referência histórica visível');
  console.log('OK: sábado exibe 13 adaptações de itens Instituto AOCP 2025 e 2 autorais.');
 
  await page.locator('form[data-ce-quiz] button[type="submit"]').click();
