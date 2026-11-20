@@ -1,4 +1,4 @@
-// Teste de navegação: Próxima marca Lido por padrão em todas as 7 aulas.
+// Teste de navegação: Próxima marca Lido por padrão em todas as 8 aulas.
 // Reversão manual continua disponível. Dados sintéticos locais; sem Supabase real.
 import {chromium} from 'playwright-core';
 import {existsSync} from 'node:fs';
@@ -91,8 +91,8 @@ try{
  await one('aulas/engenharia-qualidade.html','eng');
  await one('aulas/rlm.html','rlm');
  await one('aulas/portugues-casan-19-11.html','pt');
- for(const slug of ['banco-dados','seguranca','algoritmos-oo','administracao-publica-ima'])await one('aulas/'+slug+'.html',slug);
- console.log('SUCESSO: sete aulas com Próxima => Lido e sem progresso presumido ao abrir.');
+ for(const slug of ['banco-dados','seguranca','algoritmos-oo','administracao-publica-ima','legislacao-ambiental-ima'])await one('aulas/'+slug+'.html',slug);
+ console.log('SUCESSO: oito aulas com Próxima => Lido e sem progresso presumido ao abrir.');
 }catch(e){failed=true;console.error(e);}
 finally{await browser.close();server.closeAllConnections?.();await new Promise(done=>server.close(done));}
 if(failed)process.exitCode=1;
