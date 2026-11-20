@@ -118,4 +118,4 @@ try{
  await pc.waitForFunction(()=>JSON.parse(localStorage.getItem('ce_question_logs_v1')||'[]').length===0,null,{timeout:15000});
  assert(calls>=12,'Fluxo de API não executado');
  console.log('OK: migração conservadora, 2 aparelhos, leitura, reversão, Engenharia, Português, sessões e exclusão; '+calls+' requisições simuladas');
-}finally{await a.close();await b.close();server.closeAllConnections?.();await new Promise(done=>server.close(done));}
+}finally{await a.close();await b.close();await browser.close();server.closeAllConnections?.();await new Promise(done=>server.close(done));}
