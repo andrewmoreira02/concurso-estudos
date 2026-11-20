@@ -182,9 +182,10 @@ try{
   localStorage.setItem('ce_question_logs_v1',JSON.stringify([{id:'session-123456-abc123',exam:'casan',subject:'ti',topic:'Revisar autenticação de APIs',date:'2026-11-18',valid:5,correct:3,annulled:0,kind:'nao-classificado',source:'autoral'}]));
   dispatchEvent(new CustomEvent('concurso:progress-change'));
  });
- await page.waitForFunction(()=>window.ConcursoAdaptive.model().picks[0].type==='review',{timeout:15000});
+ await page.waitForFunction(()=>window.ConcursoAdaptive.model().picks.some(p=>p.type==='review'),{timeout:15000});
  data=await page.evaluate(()=>window.ConcursoAdaptive.model());
- assert(data.picks[0].title.includes('autenticação de APIs'),'Revisão por erro não priorizada');
+ assert(data.picks[0].type==='lesson','Faltando dois dias, conteúdo essencial não estudado vem primeiro');
+ assert(data.picks.some(p=>p.type==='review'&&p.title.includes('autenticação de APIs')),'Revisão por erro permanece acessível após a teoria');
  assert(data.due.length===1,'A revisão +1 gerada deveria estar vencida em 20/11, não +3 e +7');
  console.log('OK: revisão vencida baseada em erro registrado.');
 
