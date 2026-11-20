@@ -106,8 +106,8 @@ function installNextNavigation(){
    section.append(nav);
  }
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',installNextNavigation,{once:true});
-else installNextNavigation();
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(installNextNavigation,0),{once:true});
+else setTimeout(installNextNavigation,0);
 addEventListener('concurso:sync-status',e=>{if(e.detail?.message?.startsWith('Sincronizado')){draw();status('Leitura sincronizada com seu banco privado.');}});
 addEventListener('storage',e=>{if(e.key===KEY)draw();});
 draw();
