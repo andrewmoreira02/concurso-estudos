@@ -159,6 +159,10 @@ function anchor(href,label,primary=false){
  return a;
 }
 function createPanel(){
+ // O painel inicial já apresenta o próximo foco e os atalhos.
+ // Evita uma caixa redundante de sugestões na página principal.
+ const page=location.pathname.split('/').pop()||'index.html';
+ if(page==='index.html')return;
  const main=document.querySelector('main');
  if(!main)return;
  panel=el('section','ce-adaptive');
@@ -166,7 +170,7 @@ function createPanel(){
  panel.setAttribute('aria-labelledby','adaptiveTitle');
  const head=el('div','ce-adaptive-head');
  const titleGroup=el('div','ce-adaptive-title');
- titleGroup.append(el('span','ce-adaptive-eyebrow','Sugestões locais · manutenção editorial por tarefa do GPT'));
+ titleGroup.append(el('span','ce-adaptive-eyebrow','Continuidade do plano de estudos'));
  const title=el('h2','','Próximos passos sugeridos');title.id='adaptiveTitle';titleGroup.append(title);
  head.append(titleGroup);
  button=el('button','ce-adaptive-refresh','Atualizar agora');
@@ -210,13 +214,12 @@ function orderCatalog(data){
  if(count)count.textContent=cards.filter(card=>!card.hidden).length+' aula(s) disponíveis no catálogo; ordenadas por prioridade e progresso de leitura.';
 }
 function render(data){
- if(!details)return;
  const signature=JSON.stringify({
    exam:data.exam,head:data.picks,lesson:data.active?.id,lessonNext:data.active?.first,
    evidence:data.lessons.map(l=>[l.id,l.read,l.total]),due:data.due.length,agenda:data.agenda,available:data.unreadEquivalents
  });
  orderCatalog(data);
- if(signature!==renderedSignature){
+ if(signature!==renderedSignature&&details){
    renderedSignature=signature;
    details.replaceChildren();
    const n=el('p','ce-adaptive-evidence',data.lessons.map(x=>x.title.split(':')[0]+': '+x.read+'/'+x.total+' Lido').join(' · '));
