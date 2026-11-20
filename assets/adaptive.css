@@ -26,3 +26,23 @@
 .ce-adaptive-agenda,.ce-adaptive-disclaimer{font-size:.87rem;color:var(--ce-muted);line-height:1.5;margin:3px 0 0!important}
 .ce-adaptive-disclaimer{border-top:1px solid #45596d;padding-top:9px}
 @media(max-width:620px){.ce-adaptive{padding:14px;margin:12px 0 20px}.ce-adaptive-head{align-items:stretch}.ce-adaptive-refresh{width:100%}.ce-adaptive-list{grid-template-columns:1fr}}
+
+/* Matriz de prioridades: evidências separadas, legível em celular. */
+.ce-study-priority{min-width:0}
+.ce-priority-table{border-collapse:collapse;width:100%;font-size:.9rem;color:var(--text,#e6f0fa)}
+.ce-priority-table caption{text-align:left;font-weight:700;padding:10px 0;color:var(--teal,#9bdbe3)}
+.ce-priority-table th,.ce-priority-table td{padding:10px;border-bottom:1px solid var(--line,#435466);text-align:left;vertical-align:top}
+.ce-priority-table th{font-weight:700}
+.ce-priority-table tbody tr:first-child{background:rgba(97,196,189,.08)}
+.ce-priority-table tbody td{font-variant-numeric:tabular-nums}
+.ce-study-confirm{margin-top:18px;padding:12px;border:1px solid #58778b;border-radius:10px;background:#172838}
+.ce-study-confirm>summary,.ce-study-lesson>summary{cursor:pointer;font-weight:750;line-height:1.6}
+.ce-study-confirm>summary{color:#b8ede7}
+.ce-study-lesson{margin-top:10px;padding:9px 12px;border:1px solid #3c6274;border-radius:9px}
+.ce-study-lesson>summary{color:#f2fbff}
+.ce-study-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,275px),1fr));gap:8px;margin-top:12px}
+.ce-study-check{display:flex;align-items:flex-start;gap:9px;padding:10px;border:1px solid #3f6174;border-radius:8px;color:#d9edf7;line-height:1.4;cursor:pointer}
+.ce-study-check:has(input:checked){background:#193e3f;border-color:#72bba5}
+.ce-study-check input{flex:none;margin-top:4px;min-width:18px;min-height:18px}
+.ce-study-check:focus-within{outline:2px solid #a3e3f3;outline-offset:2px}
+@media(max-width:680px){.ce-priority-table,.ce-priority-table tbody,.ce-priority-table tr,.ce-priority-table td,.ce-priority-table th{display:block;width:100%}.ce-priority-table thead{position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden}.ce-priority-table tr{border:1px solid #465f71;border-radius:9px;margin:9px 0;padding:7px 10px}.ce-priority-table td{padding:5px 0;border:0}.ce-priority-table td:nth-child(2)::before{content:'Peso: ';font-weight:700}.ce-priority-table td:nth-child(3)::before{content:'Estudo: ';font-weight:700}.ce-priority-table td:nth-child(4)::before{content:'Lido: ';font-weight:700}.ce-priority-table td:nth-child(5)::before{content:'Avaliação: ';font-weight:700}.ce-priority-table th{border:0;padding:7px 0;font-size:1rem}.ce-study-options{grid-template-columns:1fr}}
