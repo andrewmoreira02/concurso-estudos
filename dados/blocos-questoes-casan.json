@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-20",
+  "purpose": "Blocos de questões CASAN 404, independentes das aulas; cada página exibe somente as questões atribuídas ao seu assunto e faixa solicitada. Não registra estudo nem resposta antes do envio.",
+  "min_ready_pages": 5,
+  "exam": "casan",
+  "source_priority": [
+    "Instituto AOCP 2025 (adaptação com fonte verificável)",
+    "autoral (complementar)"
+  ],
+  "sets": [
+    {
+      "id": "engenharia",
+      "title": "Engenharia de Software e Qualidade",
+      "description": "Questões sobre requisitos, padrões, UML, CI e testes.",
+      "href": "aulas/questoes-engenharia-casan.html",
+      "lesson_href": "engenharia-qualidade.html#sec1",
+      "question_ids": [
+        "aocp2025-joinville-q32-ad-v1",
+        "aocp2025-joinville-q33-ad-v1",
+        "ti-req-01",
+        "ti-uml-02",
+        "ti-cicd-07",
+        "ti-test-13"
+      ],
+      "subject": "ti"
+    },
+    {
+      "id": "banco-dados",
+      "title": "Banco de Dados e SQL",
+      "description": "Entidade fraca, normalização, JOIN e transações.",
+      "href": "aulas/questoes-banco-dados-casan.html",
+      "lesson_href": "banco-dados.html#cap-1",
+      "question_ids": [
+        "aocp2025-joinville-q31-ad-v1",
+        "aocp2025-joinville-q40-ad-v1",
+        "ti-sql-03",
+        "ti-acid-04"
+      ],
+      "subject": "ti"
+    },
+    {
+      "id": "seguranca",
+      "title": "Segurança de Aplicações e APIs",
+      "description": "Phishing, assinatura digital, SQL Injection, autorização e OAuth.",
+      "href": "aulas/questoes-seguranca-casan.html",
+      "lesson_href": "seguranca.html#cap-1",
+      "question_ids": [
+        "aocp2025-joinville-q20-ad-v1",
+        "aocp2025-joinville-q48-ad-v1",
+        "ti-auth-05",
+        "ti-sqli-09",
+        "ti-pkce-10"
+      ],
+      "subject": "ti"
+    },
+    {
+      "id": "algoritmos",
+      "title": "Algoritmos e Orientação a Objetos",
+      "description": "Complexidade, pilhas, SOLID, Delphi, filas e boas práticas.",
+      "href": "aulas/questoes-algoritmos-casan.html",
+      "lesson_href": "algoritmos-oo.html#cap-1",
+      "question_ids": [
+        "aocp2025-joinville-q34-ad-v1",
+        "aocp2025-joinville-q42-ad-v1",
+        "ti-solid-06",
+        "ti-bigo-08",
+        "ti-delphi-11",
+        "ti-queue-12"
+      ],
+      "subject": "ti"
+    },
+    {
+      "id": "portugues",
+      "title": "Português",
+      "description": "Sintaxe, conectivos, reescrita e interpretação de texto.",
+      "href": "aulas/questoes-portugues-casan.html",
+      "lesson_href": "portugues-casan-19-11.html#m1",
+      "question_ids": [
+        "aocp2025-joinville-q2-ad-v1",
+        "aocp2025-joinville-q4-ad-v1",
+        "aocp2025-joinville-q3-ad-v1",
+        "pt-concessao-01",
+        "pt-referencia-02",
+        "pt-pontuacao-03",
+        "pt-condicao-04",
+        "pt-inferencia-05"
+      ],
+      "subject": "portugues"
+    },
+    {
+      "id": "rlm",
+      "title": "Raciocínio Lógico-Matemático",
+      "description": "Médias, combinatória, PA, PG e probabilidade.",
+      "href": "aulas/questoes-rlm-casan.html",
+      "lesson_href": "rlm.html#m6",
+      "question_ids": [
+        "aocp2025-joinville-q6-ad-v1",
+        "aocp2025-joinville-q8-ad-v1",
+        "rlm-pg-01",
+        "rlm-prob-02",
+        "rlm-pa-03",
+        "rlm-perc-04",
+        "rlm-media-05"
+      ],
+      "subject": "rlm"
+    },
+    {
+      "id": "legislacao-atualidades",
+      "title": "Legislação e Atualidades",
+      "description": "Integridade, normas internas, direitos, sustentabilidade e governança.",
+      "href": "aulas/questoes-legislacao-atualidades-casan.html",
+      "lesson_href": "legislacao-casan-20-11.html#cap-1",
+      "question_ids": [
+        "leg-integridade-01",
+        "leg-normas-02",
+        "leg-direito-03",
+        "atu-sustentabilidade-01",
+        "atu-desenvolvimento-02",
+        "atu-governanca-03"
+      ],
+      "subject": "mixed"
+    }
+  ]
+}
