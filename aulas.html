@@ -17,24 +17,42 @@
 <div class="section-head" style="margin-top:43px"><div><div class="eyebrow">Biblioteca de estudos</div><h1 style="font-size:clamp(29px,4vw,44px);margin:10px 0">Todas as <em>aulas disponíveis</em></h1><p class="lead">Abra qualquer matéria, navegue por seus capítulos e acompanhe a leitura das subseções. As aulas são editáveis no GitHub sem precisar baixar novos arquivos.</p></div></div>
 <div class="catalog-toolbar"><label for="lessonSearch" class="visually-hidden">Pesquisar aulas</label><input id="lessonSearch" type="search" placeholder="Pesquisar por matéria, conteúdo ou concurso…" autocomplete="off"><div class="catalog-filters" aria-label="Filtrar aulas"><button class="filter-chip" type="button" data-filter="todas" aria-pressed="true">Todas</button><button class="filter-chip" type="button" data-filter="rlm" aria-pressed="false">RLM</button><button class="filter-chip" type="button" data-filter="tecnologia" aria-pressed="false">Tecnologia</button><button class="filter-chip" type="button" data-filter="portugues" aria-pressed="false">Português</button></div></div>
 <div class="grid" id="lessonCatalog">
-<article class="card course catalog-card" data-category="rlm" data-search="raciocinio lógico matemático rlm frações porcentagem combinatória probabilidade estatística pa pg gráficos casan 17/11/2026 aula revisada">
+<article class="card course catalog-card" data-lesson-id="rlm" data-category="rlm" data-search="raciocinio lógico matemático rlm frações porcentagem combinatória probabilidade estatística pa pg gráficos casan 17/11/2026 aula revisada">
 <div class="course-head"><div><div class="eyebrow">CASAN · aula revisada em 17/11/2026 · reutilizável no IMA</div><h3><a href="aulas/rlm.html">RLM — Aula de 17/11 revisada</a></h3></div><span class="tag">11 módulos</span></div>
 <p class="muted">Raciocínio Lógico-Matemático: módulos 1–5 para consulta e revisão aprofundada dos módulos 6–11 (combinatória, probabilidade, estatística, PA/PG e gráficos), com 71 subseções e marcações independentes de leitura.</p><div class="metric"><span>Subseções lidas</span><strong id="catalogRlmRead">0 de 71</strong></div><div class="bar" role="progressbar" aria-label="Leitura de Raciocínio Lógico" aria-valuemax="71" aria-valuemin="0" aria-valuenow="0" id="catalogRlmBar"><div id="catalogRlmFill"></div></div>
 <div class="btnline"><a class="btn" href="aulas/rlm.html">Abrir aula</a><a id="catalogRlmContinue" class="btn alt" href="aulas/rlm.html">Retomar a próxima etapa</a></div>
 </article>
-<article class="card course catalog-card" data-category="portugues" data-search="portugues português língua portuguesa interpretação de texto coesão reescrita conectivos gramática sintaxe concordância regência crase casan 19/11/2026">
+<article class="card course catalog-card" data-lesson-id="portugues" data-category="portugues" data-search="portugues português língua portuguesa interpretação de texto coesão reescrita conectivos gramática sintaxe concordância regência crase casan 19/11/2026">
 <div class="course-head"><div><div class="eyebrow">CASAN 2026 · Aula de 19/11 · disponível</div><h3><a href="aulas/portugues-casan-19-11.html">Português — Interpretação, Coesão e Gramática</a></h3></div><span class="tag">6 módulos</span></div>
 <p class="muted">Interpretação, inferências, causa × consequência, concessão × condição, coesão, reescrita, sintaxe e gramática. 21 subseções com exemplos resolvidos e marcação de leitura independente. Material disponível; estudo não confirmado.</p><div class="metric"><span>Subseções lidas</span><strong id="catalogPtRead">0 de 21</strong></div><div class="bar" role="progressbar" aria-label="Leitura de Português CASAN" aria-valuemax="21" aria-valuemin="0" aria-valuenow="0" id="catalogPtBar"><div id="catalogPtFill"></div></div>
 <div class="btnline"><a class="btn" href="aulas/portugues-casan-19-11.html">Abrir aula</a><a id="catalogPtContinue" class="btn alt" href="aulas/portugues-casan-19-11.html">Retomar a próxima etapa</a></div>
 </article>
-<article class="card course catalog-card" data-category="tecnologia" data-search="engenharia software qualidade requisitos uml arquitetura testes tdd bdd git ci cd devops docker casan">
+<article class="card course catalog-card" data-lesson-id="engenharia" data-category="tecnologia" data-search="engenharia software qualidade requisitos uml arquitetura testes tdd bdd git ci cd devops docker casan">
 <div class="course-head"><div><div class="eyebrow">CASAN 2026 · Aula revisada e disponível</div><h3><a href="aulas/engenharia-qualidade.html">Engenharia de Software e Qualidade</a></h3></div><span class="tag">10 módulos</span></div>
 <p class="muted">Requisitos, UML, arquitetura, testes, TDD/BDD, Git, CI/CD, Docker e nuvem. Dez módulos, 37 subseções com leitura independente, exemplos e backup JSON. Material disponível; estudo não confirmado.</p><div class="metric"><span>Subseções lidas</span><strong id="catalogEngRead">0 de 37</strong></div><div class="bar" role="progressbar" aria-label="Leitura de Engenharia de Software" aria-valuemax="37" aria-valuemin="0" aria-valuenow="0" id="catalogEngBar"><div id="catalogEngFill"></div></div>
 <div class="btnline"><a class="btn" href="aulas/engenharia-qualidade.html">Abrir aula</a><a id="catalogEngContinue" class="btn alt" href="aulas/engenharia-qualidade.html">Retomar a próxima etapa</a></div>
 </article>
+<article class="card course catalog-card" data-category="tecnologia" data-lesson-id="banco-dados" data-search="modelagem sql banco dados normalizacao transacoes join consultas índices">
+<div class="course-head"><div><div class="eyebrow">TI · CASAN e IMA · Aula completa</div><h3><a href="aulas/banco-dados.html">Banco de Dados e SQL</a></h3></div><span class="tag">9 subseções</span></div>
+<p class="muted">DER, chaves, normalização, SQL, JOIN, EXISTS, transações, ACID, índices e consultas parametrizadas. Exemplos resolvidos, índice por tema, questões autorais corrigidas e leitura reversível ao fim de cada subseção.</p>
+<div class="metric"><span>Subseções marcadas como Lido</span><strong data-ce-course-count="banco-dados">0 de 9</strong></div>
+<div class="btnline"><a class="btn" href="aulas/banco-dados.html">Abrir aula</a><a data-ce-course-resume="banco-dados" class="btn alt" href="aulas/banco-dados.html">Retomar 1.1</a></div>
+</article>
+<article class="card course catalog-card" data-category="tecnologia" data-lesson-id="seguranca" data-search="segurança seguranca owasp api oauth2 jwt pkce xss csrf cors restful">
+<div class="course-head"><div><div class="eyebrow">TI · CASAN e IMA · Aula completa</div><h3><a href="aulas/seguranca.html">Segurança de Aplicações e APIs</a></h3></div><span class="tag">9 subseções</span></div>
+<p class="muted">Ameaças, SQL Injection, XSS, CSRF, autorização por objeto, OAuth 2.0, PKCE, JWT, REST, CORS e DevSecOps. Exemplos resolvidos, índice por tema, questões autorais corrigidas e leitura reversível ao fim de cada subseção.</p>
+<div class="metric"><span>Subseções marcadas como Lido</span><strong data-ce-course-count="seguranca">0 de 9</strong></div>
+<div class="btnline"><a class="btn" href="aulas/seguranca.html">Abrir aula</a><a data-ce-course-resume="seguranca" class="btn alt" href="aulas/seguranca.html">Retomar 1.1</a></div>
+</article>
+<article class="card course catalog-card" data-category="tecnologia" data-lesson-id="algoritmos-oo" data-search="algoritmos estruturas dados orientacao objetos heranca sobrecarga sobrescrita solid testes gof mvc">
+<div class="course-head"><div><div class="eyebrow">TI · CASAN e IMA · Aula completa</div><h3><a href="aulas/algoritmos-oo.html">Algoritmos e Orientação a Objetos</a></h3></div><span class="tag">9 subseções</span></div>
+<p class="muted">Busca binária, listas, conjuntos, recursão, composição, polimorfismo, SOLID, GoF, MVC e testes. Exemplos resolvidos, índice por tema, questões autorais corrigidas e leitura reversível ao fim de cada subseção.</p>
+<div class="metric"><span>Subseções marcadas como Lido</span><strong data-ce-course-count="algoritmos-oo">0 de 9</strong></div>
+<div class="btnline"><a class="btn" href="aulas/algoritmos-oo.html">Abrir aula</a><a data-ce-course-resume="algoritmos-oo" class="btn alt" href="aulas/algoritmos-oo.html">Retomar 1.1</a></div>
+</article>
 </div>
 <p id="emptyCatalog" class="catalog-nothing" hidden>Nenhuma aula corresponde à pesquisa. Tente outro termo ou o filtro “Todas”.</p>
-<p class="catalog-footer" id="catalogCount" aria-live="polite">3 aulas disponíveis</p>
+<p class="catalog-footer" id="catalogCount" aria-live="polite">6 aulas disponíveis</p>
 <div class="callout"><strong>Registro de leitura:</strong> marcar manualmente ou avançar pela navegação registra apenas o percurso. O site não comprova aprendizagem. O progresso sincroniza entre aparelhos vinculados por código privado, sem conta de e-mail. Recomendações não comprovam estudo ou domínio.</div>
 <footer class="foot"><a href="./">Voltar ao painel</a> · A Biblioteca receberá novos links à medida que as aulas forem publicadas.</footer>
 </main></body></html>
