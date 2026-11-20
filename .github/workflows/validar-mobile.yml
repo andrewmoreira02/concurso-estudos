@@ -8,6 +8,7 @@ on:
       - 'scripts/verificar-mobile.mjs'
       - 'scripts/verificar-sincronizacao.mjs'
       - 'scripts/verificar-adaptacao.mjs'
+      - 'scripts/verificar-lido-final.mjs'
       - 'dados/concursos.json'
       - 'supabase/schema.sql'
       - 'conta.html'
@@ -24,6 +25,7 @@ on:
       - 'scripts/verificar-mobile.mjs'
       - 'scripts/verificar-sincronizacao.mjs'
       - 'scripts/verificar-adaptacao.mjs'
+      - 'scripts/verificar-lido-final.mjs'
       - 'dados/concursos.json'
       - 'supabase/schema.sql'
       - 'conta.html'
@@ -49,6 +51,8 @@ jobs:
         run: node --check assets/sync.js && node --check assets/adaptive.js && node --check scripts/verificar-sincronizacao.mjs && node --check scripts/verificar-adaptacao.mjs
       - name: Testar 320, 390 e 430 px
         run: node scripts/verificar-mobile.mjs
+      - name: Verificar Lido ao final e fórmulas PA/PG em quadro
+        run: timeout 75s node scripts/verificar-lido-final.mjs
       - name: Testar sincronização simulada entre dois aparelhos
         run: timeout 90s node scripts/verificar-sincronizacao.mjs
 
