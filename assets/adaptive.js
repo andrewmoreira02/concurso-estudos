@@ -258,7 +258,9 @@ async function refresh(forceSync=false){
      try{await getConfig();}
      catch(e){if(!config)throw e;message+=' O edital não pôde ser atualizado agora; usando a configuração anterior.';}
    }
-   render(model());
+   const calculated=model();
+   render(calculated);
+   window.dispatchEvent(new CustomEvent('concurso:adaptive-update',{detail:{today:calculated.today,exam:calculated.exam}}));
    updateTime=Date.now();
    if(status)status.textContent=statusText(new Date(),message);
  }catch(e){
