@@ -1,0 +1,35 @@
+/* Questionários e revisões autoalimentados; acessíveis em dispositivos móveis. */
+.ce-practice-form{display:grid;gap:15px;max-width:100%;min-width:0}
+.ce-practice-form fieldset{
+ min-width:0;margin:0;border:1px solid #536e89;border-radius:13px;
+ background:#1b3145;color:#eff6ff;padding:18px 17px;
+}
+.ce-practice-form legend{font-size:1rem;font-weight:800;color:#eefaff;line-height:1.55;padding:0 8px}
+.ce-practice-form label{display:flex;align-items:flex-start;gap:11px;line-height:1.5;
+ cursor:pointer;padding:9px 10px;margin:7px 0;border-radius:8px;
+ border:1px solid #39566c;color:#e8f4ff;background:#1c3448}
+.ce-practice-form label:hover{background:#29495d}
+.ce-practice-form label:has(input:checked){background:#1b544b;border-color:#7fdab7;color:#f4fff8}
+.ce-practice-form label input{width:19px;height:19px;min-width:19px;accent-color:#70d5bc;margin-top:2px}
+.ce-practice-form button,.ce-auto-review-item button{
+ min-height:44px;font:inherit;font-weight:800;cursor:pointer;
+ background:#185e65;color:#faffff;border:1px solid #80d2cb;border-radius:9px;
+ padding:11px 16px
+}
+.ce-practice-form button:hover,.ce-auto-review-item button:hover{background:#257a7d}
+.ce-practice-form :is(input,button):focus-visible,.ce-auto-review-item button:focus-visible{outline:3px solid #bbf0f9;outline-offset:2px}
+.ce-practice-form [data-ce-feedback]{border:1px solid #518977;background:#183d35;border-radius:12px;padding:17px;color:#defae9;line-height:1.55}
+.ce-practice-form [data-ce-feedback]:empty{display:none}
+.ce-practice-form [data-ce-feedback].quiz-error{background:#442f29;border-color:#dd927e;color:#ffe5dc}
+.ce-quiz-feedback-list{margin:15px 0 0;padding-left:26px;display:grid;gap:11px}
+.ce-quiz-feedback-list li{padding:8px 6px;border-top:1px solid #43627a}
+.ce-auto-review-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px;margin:15px 0}
+.ce-auto-review-item{padding:15px 17px;border-radius:12px;background:#172a3c;border:1px solid #436078;display:grid;gap:11px;align-content:start}
+.ce-auto-review-item h3{font-size:1.01rem;line-height:1.4;color:#d6faff;margin:0;overflow-wrap:anywhere}
+.ce-auto-review-item p{color:#cbd9e9;margin:0;line-height:1.55}
+.ce-auto-review-item button{justify-self:start}
+.ce-review-practice{margin-top:22px;scroll-margin-top:100px}
+.ce-review-practice:empty{display:none}
+.ce-quiz-note{background:#193648;padding:14px 16px;border-left:4px solid #73cfde;border-radius:9px}
+.ce-quiz-note p{margin:5px 0}
+@media(max-width:570px){.ce-practice-form fieldset{padding:12px 10px}.ce-practice-form label{padding:10px 7px}.ce-auto-review-list{grid-template-columns:1fr}}
