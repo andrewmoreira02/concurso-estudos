@@ -24,7 +24,7 @@ function dayIndex(iso){return (utcDate(iso).getUTCDay()+6)%7;}
 function weekStart(iso){return isoAdd(iso,-dayIndex(iso));}
 function localDateLabel(iso,short=false){return new Intl.DateTimeFormat('pt-BR',{timeZone:'UTC',day:'2-digit',month:'2-digit',...(short?{}:{year:'numeric'})}).format(utcDate(iso));}
 function read(key,fallback){try{const value=JSON.parse(localStorage.getItem(key));return value===null?fallback:value;}catch{return fallback;}}
-function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true;}catch{return false;}}
+function write(key,value){try{const next=JSON.stringify(value),before=localStorage.getItem(key);localStorage.setItem(key,next);if(before!==next)window.dispatchEvent(new CustomEvent('concurso:progress-change'));return true;}catch{return false;}}
 function getPlanDone(){const v=read(KEY.done,{});return v&&typeof v==='object'&&!Array.isArray(v)?v:{};}
 function getAvailable(){const v=read(KEY.available,[]);return Array.isArray(v)?v.filter(n=>Number.isInteger(n)&&n>=0&&n<7):[];}
 function validLog(x){
