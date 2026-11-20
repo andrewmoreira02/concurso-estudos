@@ -123,15 +123,16 @@
       "2026-11-20": [
         {
           "id": "legis",
-          "title": "Legislação específica CASAN",
-          "detail": "Revisar os dispositivos do edital e conferir texto vigente."
+          "title": "Legislação CASAN — aula completa de 20/11",
+          "detail": "15 subseções: Lei 9.984/2000, Estatuto da Igualdade Racial, decretos, regimento e políticas CASAN. Leitura não comprova estudo. Quiz autoral ao final.",
+          "href": "aulas/legislacao-casan-20-11.html"
         }
       ],
       "2026-11-21": [
         {
           "id": "questions-reta-final",
-          "title": "Questões de concursos — sábado CASAN: 13 adaptadas + 2 autorais",
-          "detail": "15 questões: 13 questões ADAPTADAS de temas identificados na prova FURB 2023 (Analista de Sistemas), com enunciado e alternativas completos na página; 2 autorais de reserva em Legislação/Atualidades. O gabarito das adaptações é próprio; o PDF de origem é referência opcional. Priorizar AOCP após verificar caderno e gabarito final.",
+          "title": "Questões CASAN — 13 adaptações AOCP 2025 + 2 autorais",
+          "detail": "Treino com 13 adaptações de itens de mesma banca AOCP (Prefeitura de Joinville 2025, Analista de TI), enunciados/alternativas nesta página e fontes originais vinculadas; 2 autorais em Legislação/Atualidades. Gabaritos próprios das adaptações.",
           "href": "aulas/questoes-casan-21-11.html"
         },
         {
@@ -546,6 +547,30 @@
         ],
         "subjects": {
           "ima": "Legislação Ambiental"
+        },
+        "status": "disponivel"
+      },
+      {
+        "id": "legislacao-casan",
+        "title": "Legislação específica CASAN — revisão de 20/11",
+        "url": "aulas/legislacao-casan-20-11.html",
+        "section_prefix": "leg",
+        "sections_per_module": [
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "module_titles": [
+          "Marco legal e saneamento básico",
+          "Estatuto da Igualdade Racial",
+          "Constituição e decretos estaduais de Santa Catarina",
+          "CASAN: Regimento Interno e integridade",
+          "Revisão comparativa para a prova"
+        ],
+        "subjects": {
+          "casan": "Legislação"
         },
         "status": "disponivel"
       }
