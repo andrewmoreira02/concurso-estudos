@@ -6,7 +6,7 @@
 'use strict';
 const root=location.pathname.includes('/aulas/')?'../':'';
 const BANK=root+'dados/questoes.json',REAL=root+'dados/questoes-reais.json',ADAPTED=root+'dados/questoes-adaptadas.json',AOCP=root+'dados/questoes-casan-aocp.json',CONFIG=root+'dados/concursos.json';
-const TOPIC_SETS=root+'dados/blocos-questoes-casan.json';
+const TOPIC_SETS=root+'dados/blocos-questoes-casan.json',EXTRA=root+'dados/questoes-casan-extra.json';
 const LOG_KEY='ce_question_logs_v1',DONE_KEY='ce_review_done_v1';
 const subjects={ti:'Conhecimentos Específicos (TI)',portugues:'Português',rlm:'Raciocínio Lógico-Matemático',legislacao:'Legislação',atualidades:'Atualidades',adm:'Administração Pública'};
 const addDays=(iso,n)=>{const date=new Date(iso+'T12:00:00Z');date.setUTCDate(date.getUTCDate()+n);return date.toISOString().slice(0,10);};
@@ -53,24 +53,28 @@ function validAocp(q){
   typeof q.source.answer_key_url==='string'&&q.source.answer_key_url.startsWith('https://arquivos.qconcursos.com/prova/');
 }
 async function load(){
- const [r1,r2,r3,r4,r5,r6]=await Promise.all([
+ const [r1,r2,r3,r4,r5,r6,r7]=await Promise.all([
    fetch(BANK,{cache:'no-store'}),fetch(REAL,{cache:'no-store'}),
    fetch(ADAPTED,{cache:'no-store'}),fetch(CONFIG,{cache:'no-store'}),fetch(AOCP,{cache:'no-store'}),
-   fetch(TOPIC_SETS,{cache:'no-store'})
+   fetch(TOPIC_SETS,{cache:'no-store'}),fetch(EXTRA,{cache:'no-store'})
  ]);
- if(!r1.ok||!r2.ok||!r3.ok||!r4.ok||!r5.ok||!r6.ok)throw Error('Banco de questões, blocos prontos ou calendário indisponível.');
- const reserve=await r1.json(),original=await r2.json(),adapted=await r3.json(),calendar=await r4.json(),aocp=await r5.json(),sets=await r6.json();
+ if(!r1.ok||!r2.ok||!r3.ok||!r4.ok||!r5.ok||!r6.ok||!r7.ok)throw Error('Banco de questões, blocos prontos ou calendário indisponível.');
+ const reserve=await r1.json(),original=await r2.json(),adapted=await r3.json(),calendar=await r4.json(),aocp=await r5.json(),sets=await r6.json(),extra=await r7.json();
  if(reserve.schema_version!==1||!Array.isArray(reserve.questions)||!reserve.questions.every(validQuestion))throw Error('Banco de reserva inválido.');
  if(original.schema_version!==1||!Array.isArray(original.questions)||!original.questions.every(validReal))throw Error('Referências de provas reais inválidas.');
  if(adapted.schema_version!==1||!Array.isArray(adapted.questions)||!adapted.questions.every(validAdapted))throw Error('Questões adaptadas incompletas ou sem alternativas.');
  if(aocp.schema_version!==1||!Array.isArray(aocp.questions)||aocp.questions.length!==13||!aocp.questions.every(validAocp))throw Error('Questões AOCP incompletas ou sem alternativas/fontes.');
+ if(extra.schema_version!==1||!Array.isArray(extra.questions)||extra.questions.length!==25||
+   extra.questions.filter(q=>q.kind==='adaptada').length!==13||
+   !extra.questions.every(q=>q.kind==='adaptada'?validAocp(q):(q.kind==='autoral'&&validQuestion(q)&&q.exams.includes('casan'))))
+  throw Error('Reserva extra CASAN incompleta ou sem fontes/alternativas.');
  const origins=new Map(original.questions.map(q=>[q.id,q]));
  const adaptations=adapted.questions.map(q=>{
    const orig=origins.get(q.origin_id);
    if(!orig||orig.subject!==q.subject)throw Error('Questão adaptada sem fonte identificada: '+q.id);
    return {...q,source:orig.source,exams:orig.exams,saturday:orig.saturday};
  });
- const all=[...aocp.questions,...adaptations,...reserve.questions];
+ const all=[...aocp.questions,...adaptations,...reserve.questions,...extra.questions];
  const ids=all.map(q=>q.id);
  if(ids.length!==new Set(ids).size)throw Error('IDs repetidos nos exercícios.');
  if(sets.schema_version!==1||sets.exam!=='casan'||sets.min_ready_pages<5||
