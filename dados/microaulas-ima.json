@@ -16,7 +16,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-alg-1-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-alg-1-1",
-      "question_ids": []
+      "question_ids": [
+        "ti-bigo-08",
+        "ima-alg-1-1-q1",
+        "ima-alg-1-1-q2"
+      ]
     },
     {
       "id": "ima-alg-2-1",
@@ -30,7 +34,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-alg-2-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-alg-2-1",
-      "question_ids": []
+      "question_ids": [
+        "furb2023-as-q26-ad-v1",
+        "ima-alg-2-1-q1",
+        "ima-alg-2-1-q2"
+      ]
     },
     {
       "id": "ima-bd-1-1",
@@ -44,7 +52,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-bd-1-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-bd-1-1",
-      "question_ids": []
+      "question_ids": [
+        "ima-bd-1-1-q1",
+        "ima-bd-1-1-q2",
+        "ima-bd-1-1-q3"
+      ]
     },
     {
       "id": "ima-bd-2-1",
@@ -58,7 +70,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-bd-2-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-bd-2-1",
-      "question_ids": []
+      "question_ids": [
+        "ima-bd-2-1-q1",
+        "ima-bd-2-1-q2",
+        "ima-bd-2-1-q3"
+      ]
     },
     {
       "id": "ima-bd-3-1",
@@ -72,7 +88,12 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-bd-3-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-bd-3-1",
-      "question_ids": []
+      "question_ids": [
+        "furb2023-as-q12-ad-v1",
+        "ti-acid-04",
+        "ima-bd-3-1-q1",
+        "ima-bd-3-1-q2"
+      ]
     },
     {
       "id": "ima-seg-1-2",
@@ -86,7 +107,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-seg-1-2",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-seg-1-2",
-      "question_ids": []
+      "question_ids": [
+        "ti-sqli-09",
+        "ima-seg-1-2-q1",
+        "ima-seg-1-2-q2"
+      ]
     },
     {
       "id": "ima-seg-2-1",
@@ -100,7 +125,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-seg-2-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-seg-2-1",
-      "question_ids": []
+      "question_ids": [
+        "ti-auth-05",
+        "ima-seg-2-1-q1",
+        "ima-seg-2-1-q2"
+      ]
     },
     {
       "id": "ima-adm-1-1",
@@ -114,7 +143,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-adm-1-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-1-1",
-      "question_ids": []
+      "question_ids": [
+        "ima-adm-1-1-q1",
+        "ima-adm-1-1-q2",
+        "ima-adm-1-1-q3"
+      ]
     },
     {
       "id": "ima-adm-1-2",
@@ -128,7 +161,12 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-adm-1-2",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-1-2",
-      "question_ids": []
+      "question_ids": [
+        "ima-esp-furb25-74-adm",
+        "ima-esp-furb25-76-adm",
+        "ima-adm-1-2-q1",
+        "ima-adm-1-2-q2"
+      ]
     },
     {
       "id": "ima-adm-1-3",
@@ -142,7 +180,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-adm-1-3",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-1-3",
-      "question_ids": []
+      "question_ids": [
+        "ima-adm-1-3-q1",
+        "ima-adm-1-3-q2",
+        "ima-adm-1-3-q3"
+      ]
     },
     {
       "id": "ima-adm-2-1",
@@ -156,7 +198,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-adm-2-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-2-1",
-      "question_ids": []
+      "question_ids": [
+        "ima-adm-2-1-q1",
+        "ima-adm-2-1-q2",
+        "ima-adm-2-1-q3"
+      ]
     },
     {
       "id": "ima-adm-2-2",
@@ -170,7 +216,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-adm-2-2",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-2-2",
-      "question_ids": []
+      "question_ids": [
+        "ima-esp-furb25-75-adm",
+        "ima-adm-2-2-q1",
+        "ima-adm-2-2-q2"
+      ]
     },
     {
       "id": "ima-adm-2-3",
@@ -184,7 +234,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-adm-2-3",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-2-3",
-      "question_ids": []
+      "question_ids": [
+        "ima-adm-2-3-q1",
+        "ima-adm-2-3-q2",
+        "ima-adm-2-3-q3"
+      ]
     },
     {
       "id": "ima-adm-3-1",
@@ -198,7 +252,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-adm-3-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-3-1",
-      "question_ids": []
+      "question_ids": [
+        "ima-adm-3-1-q1",
+        "ima-adm-3-1-q2",
+        "ima-adm-3-1-q3"
+      ]
     },
     {
       "id": "ima-adm-3-2",
@@ -212,7 +270,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-adm-3-2",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-3-2",
-      "question_ids": []
+      "question_ids": [
+        "ima-esp-furb25-79-adm",
+        "ima-adm-3-2-q1",
+        "ima-adm-3-2-q2"
+      ]
     },
     {
       "id": "ima-adm-3-3",
@@ -226,7 +288,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-adm-3-3",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-3-3",
-      "question_ids": []
+      "question_ids": [
+        "ima-esp-furb25-77-adm",
+        "ima-adm-3-3-q1",
+        "ima-adm-3-3-q2"
+      ]
     },
     {
       "id": "ima-la-1-1",
@@ -240,7 +306,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-la-1-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-1-1",
-      "question_ids": []
+      "question_ids": [
+        "ima-la-1-1-q1",
+        "ima-la-1-1-q2",
+        "ima-la-1-1-q3"
+      ]
     },
     {
       "id": "ima-la-1-2",
@@ -254,7 +324,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-la-1-2",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-1-2",
-      "question_ids": []
+      "question_ids": [
+        "ima-la-1-2-q1",
+        "ima-la-1-2-q2",
+        "ima-la-1-2-q3"
+      ]
     },
     {
       "id": "ima-la-1-3",
@@ -268,7 +342,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-la-1-3",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-1-3",
-      "question_ids": []
+      "question_ids": [
+        "ima-la-1-3-q1",
+        "ima-la-1-3-q2",
+        "ima-la-1-3-q3"
+      ]
     },
     {
       "id": "ima-la-2-1",
@@ -282,7 +360,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-la-2-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-2-1",
-      "question_ids": []
+      "question_ids": [
+        "ima-la-2-1-q1",
+        "ima-la-2-1-q2",
+        "ima-la-2-1-q3"
+      ]
     },
     {
       "id": "ima-la-2-2",
@@ -296,7 +378,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-la-2-2",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-2-2",
-      "question_ids": []
+      "question_ids": [
+        "ima-la-2-2-q1",
+        "ima-la-2-2-q2",
+        "ima-la-2-2-q3"
+      ]
     },
     {
       "id": "ima-la-2-3",
@@ -310,7 +396,12 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-la-2-3",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-2-3",
-      "question_ids": []
+      "question_ids": [
+        "ima-esp-floram-64-legislacao",
+        "ima-esp-floram-65-legislacao",
+        "ima-la-2-3-q1",
+        "ima-la-2-3-q2"
+      ]
     },
     {
       "id": "ima-la-3-1",
@@ -324,7 +415,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-la-3-1",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-3-1",
-      "question_ids": []
+      "question_ids": [
+        "ima-la-3-1-q1",
+        "ima-la-3-1-q2",
+        "ima-la-3-1-q3"
+      ]
     },
     {
       "id": "ima-la-3-2",
@@ -338,7 +433,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-la-3-2",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-3-2",
-      "question_ids": []
+      "question_ids": [
+        "ima-esp-brusque-36-legislacao",
+        "ima-la-3-2-q1",
+        "ima-la-3-2-q2"
+      ]
     },
     {
       "id": "ima-la-3-3",
@@ -352,7 +451,11 @@
       },
       "lesson_href": "aulas/microaula-ima.html?u=ima-la-3-3",
       "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-3-3",
-      "question_ids": []
+      "question_ids": [
+        "ima-la-3-3-q1",
+        "ima-la-3-3-q2",
+        "ima-la-3-3-q3"
+      ]
     }
   ]
 }
