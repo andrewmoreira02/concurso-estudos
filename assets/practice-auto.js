@@ -75,6 +75,31 @@ async function load(){
    return {...q,source:orig.source,exams:orig.exams,saturday:orig.saturday};
  });
  const all=[...aocp.questions,...adaptations,...reserve.questions,...extra.questions];
+ let imaMicroUnits=[];
+ if(document.querySelector('[data-ce-practice="ima-micro"]')){
+   const [rUnits,rQuestions]=await Promise.all([
+     fetch(root+'dados/microaulas-ima.json',{cache:'no-store'}),
+     fetch(root+'dados/questoes-ima-micro.json',{cache:'no-store'})
+   ]);
+   if(!rUnits.ok||!rQuestions.ok)throw Error('Trilha IMA ou banco de microaulas indisponível');
+   const microCatalog=await rUnits.json(),microReserve=await rQuestions.json();
+   if(microCatalog.schema_version!==1||microCatalog.exam!=='ima'||!Array.isArray(microCatalog.units)||microCatalog.units.length!==25||
+      microReserve.schema_version!==1||microReserve.exam!=='ima'||!Array.isArray(microReserve.questions)||
+      microReserve.questions.length<50||!microReserve.questions.every(q=>q.kind==='autoral'&&validQuestion(q)&&q.exams.includes('ima')))
+     throw Error('Reserva IMA de 25 microaulas ou questões incompleta');
+   const specific=imaSpecificItems();
+   all.push(...specific,...microReserve.questions);
+   const byId=new Map(all.map(q=>[q.id,q]));
+   for(const u of microCatalog.units){
+     if(!/^ima-[a-z0-9-]+$/.test(u.id)||!Array.isArray(u.question_ids)||
+       u.question_ids.length<3||u.question_ids.length>5||
+       new Set(u.question_ids).size!==u.question_ids.length||
+       !u.question_ids.every(id=>byId.has(id)&&byId.get(id).exams.includes('ima')&&
+        (byId.get(id).subject===u.subject)))
+       throw Error('Conjunto de microaula IMA com questão inválida: '+u.id);
+   }
+   imaMicroUnits=microCatalog.units;
+ }
  const ids=all.map(q=>q.id);
  if(ids.length!==new Set(ids).size)throw Error('IDs repetidos nos exercícios.');
  if(sets.schema_version!==1||sets.exam!=='casan'||sets.min_ready_pages<5||
@@ -91,7 +116,7 @@ async function load(){
     throw Error('Questão do bloco CASAN sem origem AOCP ou conteúdo: '+id);
   }
  }
- bank={...reserve,questions:all,sets:sets.sets};
+ bank={...reserve,questions:all,sets:sets.sets,imaMicroUnits};
  config=calendar;return bank;
 }
 function questionElement(q,index){
@@ -200,6 +225,15 @@ async function renderPractice(){
    items=set.question_ids.map(id=>byId.get(id));
    if(items.some(q=>!q))throw Error('Bloco de questões incompleto: '+id);
    topic='CASAN · '+set.title;
+ }else if(type==='ima-micro'){
+   exam='ima';
+   const id=new URLSearchParams(location.search).get('u');
+   const unit=bank.imaMicroUnits?.find(x=>x.id===id);
+   if(!unit)throw Error('Microaula IMA não identificada. Escolha uma das 25 unidades no catálogo.');
+   const byId=new Map(bank.questions.map(q=>[q.id,q]));
+   items=unit.question_ids.map(qid=>byId.get(qid));
+   if(items.some(q=>!q))throw Error('Questões da microaula não disponíveis.');
+   topic='IMA · '+unit.title;
  }else if(type==='ima'){
    exam='ima';
    const quotas={ti:8,portugues:2,rlm:2};
@@ -228,9 +262,9 @@ async function renderPractice(){
  const nAuthor=items.length-nAdapted;
  label=exam==='casan'
   ?items.length+' questão(ões) CASAN: '+nAdapted+' adaptação(ões) de itens AOCP 2025 (Joinville, Analista de TI)'+(nAuthor?' e '+nAuthor+' autoral(is) complementar(es)':'')+'.'
-  :items.length+' questões: '+nAdapted+' adaptação(ões) com referência FURB '+(type==='ima-especificas'?'2023/2024/2025':'2023')+(nAuthor?' e '+nAuthor+' autoral(is) de reserva':'')+'.';
+  :items.length+' questões: '+nAdapted+' adaptação(ões) com referência FURB '+(['ima-especificas','ima-micro'].includes(type)?'2023/2024/2025':'2023')+(nAuthor?' e '+nAuthor+' autoral(is) de reserva':'')+'.';
  stage.replaceChildren(el('p',label+' Leia e responda todas as questões diretamente aqui. A banca, o ano e a questão histórica de referência aparecem em cada exercício; a correção utiliza o gabarito desta adaptação.'),
-   buildForm(items,exam,topic,exam==='casan'?'Questões CASAN, adaptações AOCP verificadas ou autorais complementares, gabaritos próprios':type==='ima-especificas'?'Exercícios adaptados de FURB 2023/2024/2025, gabaritos próprios, Administração/L. Ambiental/TI':'Adaptações de temas FURB 2023 com gabaritos próprios; reserva autoral identificada.'));
+   buildForm(items,exam,topic,exam==='casan'?'Questões CASAN, adaptações AOCP verificadas ou autorais complementares, gabaritos próprios':['ima-especificas','ima-micro'].includes(type)?'Exercícios FURB identificados e questões autorais da trilha IMA, com gabaritos próprios e correção automática':'Adaptações de temas FURB 2023 com gabaritos próprios; reserva autoral identificada.'));
  const count=document.getElementById('practiceCount');
  if(count)count.textContent=items.length+' questões';
 }
