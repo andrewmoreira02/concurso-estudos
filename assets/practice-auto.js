@@ -88,7 +88,11 @@ async function load(){
       microReserve.questions.length<50||!microReserve.questions.every(q=>q.kind==='autoral'&&validQuestion(q)&&q.exams.includes('ima')))
      throw Error('Reserva IMA de 25 microaulas ou questões incompleta');
    const specific=imaSpecificItems(all);
-   all.push(...specific,...microReserve.questions);
+   // O primeiro item FURB específico já pertence à lista original de adaptações.
+   // Somente acrescentar os demais itens novos, sem duplicar IDs nem perder a fonte.
+   const existingIds=new Set(all.map(q=>q.id));
+   for(const item of specific)if(!existingIds.has(item.id)){all.push(item);existingIds.add(item.id);}
+   all.push(...microReserve.questions);
    const byId=new Map(all.map(q=>[q.id,q]));
    for(const u of microCatalog.units){
      if(!/^ima-[a-z0-9-]+$/.test(u.id)||!Array.isArray(u.question_ids)||
