@@ -474,6 +474,10 @@ function render(data){
  });
  orderCatalog(data);
  renderStudyPriority(data);
+ for(const u of imaMicroUnits){
+   const badge=document.querySelector('[data-ce-micro-count="'+u.id+'"]');
+   if(badge)badge.textContent=readSet(u.source.lesson).has(u.source.section)?'1 de 1 seção Lido':'0 de 1 seção Lido';
+ }
  const microDetails=$('imaMicroDetails');
  if(microDetails&&data.exam==='ima')microDetails.open=true;
  const catalogFocus=$('catalogFocusNotice');
