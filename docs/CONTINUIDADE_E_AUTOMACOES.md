@@ -408,3 +408,10 @@ Fontes candidatas ainda sujeitas à validação individual: FURB Analista de Sis
 - O estilo dos cartões foi centralizado em `assets/lesson-unified.css`, com breakpoint de 430 px, e a aula usa URL versionada do CSS.
 - `assets/adaptive.js` exclui da seleção de aulas recomendadas aquelas cujas subseções estejam todas marcadas Lido. Isso **não** implica confirmação de estudo ou domínio; avaliações continuam separadas.
 - Não foi confirmada nesta passagem a renderização real em 320/390/430 px, a sincronização remota no navegador ou o deploy do Pages. Não considerar esses testes aprovados.
+
+## 21/11/2026 — Correção de recomendação e legibilidade
+- `assets/adaptive.js`: aula com todas as subseções marcadas Lido deixa de entrar na lista de leitura pendente, mesmo sem confirmação de Estudado; a distinção entre os estados permanece.
+- `index.html`, `planejamento.html` e `aulas.html`: versão do script de recomendações atualizada para evitar reaproveitar o código antigo do cache do navegador.
+- `aulas/engenharia-qualidade.html`: trecho Scrum/Kanban/XP/Cascata reorganizado em quatro blocos de conceitos, com contraste e hierarquia tipográfica, preservando os IDs e o controle Lido ao final.
+- O manifesto `dados/blocos-questoes-casan.json` mantém doze conjuntos catalogados; a existência no manifesto não comprova integridade funcional, publicação efetiva nem estoque de questões inéditas.
+- **Validação pendente:** testes automatizados de regressão, verificação visual 320/390/430 px e confirmação de implantação GitHub Pages. Não declarar entrega implantada antes da checagem pública.
