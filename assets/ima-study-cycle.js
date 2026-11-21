@@ -8,13 +8,13 @@ const el=(tag,cls,text)=>{const node=document.createElement(tag);if(cls)node.cla
 const get=(key,fallback)=>{try{const data=JSON.parse(localStorage.getItem(key)||'null');return data??fallback;}catch{return fallback;}};
 const isoToday=()=>{const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const g=k=>parts.find(x=>x.type===k).value;return g('year')+'-'+g('month')+'-'+g('day');};
 const weekdays=[
- {ti:'Banco de Dados e SQL',general:'Português',href:'aulas/banco-dados.html',other:'aulas/portugues-casan-19-11.html',quiz:'aulas/questoes-ima.html'},
- {ti:'Engenharia e BPMN',general:'Administração Pública',href:'aulas/engenharia-qualidade.html',other:'aulas/administracao-publica-ima.html',quiz:'aulas/questoes-ima-especificas.html'},
- {ti:'Redes e protocolos do edital',general:'Raciocínio Lógico',href:'planejamento.html#ce-cobertura-ima',other:'aulas/rlm.html',quiz:'aulas/questoes-ima.html'},
- {ti:'Segurança, IAM e OAuth2',general:'Legislação Ambiental ANA',href:'aulas/seguranca.html',other:'aulas/legislacao-ambiental-ima.html',quiz:'aulas/questoes-ima-especificas.html'},
- {ti:'Java, Python e arquitetura',general:'Português',href:'planejamento.html#ce-cobertura-ima',other:'aulas/portugues-casan-19-11.html',quiz:'aulas/questoes-ima.html'},
- {ti:'Governança ITIL e DevOps',general:'Administração Pública',href:'planejamento.html#ce-cobertura-ima',other:'aulas/administracao-publica-ima.html',quiz:'aulas/questoes-ima-especificas.html'},
- {ti:'Engenharia de Dados e IA',general:'Legislação Ambiental ANA',href:'planejamento.html#ce-cobertura-ima',other:'aulas/legislacao-ambiental-ima.html',quiz:'aulas/questoes-ima-especificas.html'}
+ {ti:"Busca binária, busca linear e Big-O",general:"Administração Pública · princípios",href:'aulas/microaula-ima.html?u=ima-alg-1-1',other:'aulas/microaula-ima.html?u=ima-adm-1-1',quiz:'aulas/questoes-micro-ima.html?u=ima-alg-1-1'},
+ {ti:"Orientação a Objetos · composição",general:"Legislação Ambiental · art. 225",href:'aulas/microaula-ima.html?u=ima-alg-2-1',other:'aulas/microaula-ima.html?u=ima-la-1-1',quiz:'aulas/questoes-micro-ima.html?u=ima-alg-2-1'},
+ {ti:"Modelagem relacional e cardinalidade",general:"Administração Pública · organização",href:'aulas/microaula-ima.html?u=ima-bd-1-1',other:'aulas/microaula-ima.html?u=ima-adm-1-2',quiz:'aulas/questoes-micro-ima.html?u=ima-bd-1-1'},
+ {ti:"SQL e agrupamentos",general:"Legislação Ambiental · LC 140",href:'aulas/microaula-ima.html?u=ima-bd-2-1',other:'aulas/microaula-ima.html?u=ima-la-1-3',quiz:'aulas/questoes-micro-ima.html?u=ima-bd-2-1'},
+ {ti:"Transações e ACID",general:"Administração Pública · atos",href:'aulas/microaula-ima.html?u=ima-bd-3-1',other:'aulas/microaula-ima.html?u=ima-adm-2-1',quiz:'aulas/questoes-micro-ima.html?u=ima-bd-3-1'},
+ {ti:"SQL Injection e XSS",general:"Legislação Ambiental · SISNAMA",href:'aulas/microaula-ima.html?u=ima-seg-1-2',other:'aulas/microaula-ima.html?u=ima-la-2-2',quiz:'aulas/questoes-micro-ima.html?u=ima-seg-1-2'},
+ {ti:"Autenticação e autorização por objeto",general:"Administração Pública · licitações",href:'aulas/microaula-ima.html?u=ima-seg-2-1',other:'aulas/microaula-ima.html?u=ima-adm-3-2',quiz:'aulas/questoes-micro-ima.html?u=ima-seg-2-1'}
 ];
 const topics={ti:'TI',portugues:'Português',rlm:'RLM',adm:'Administração Pública',legislacao:'Legislação Ambiental'};
 function sessionLogs(){
@@ -53,9 +53,9 @@ function cycle(){
  :'Este roteiro é uma sugestão para os dias em que você decidir estudar; os dias disponíveis ainda não foram informados. Não há tarefas automaticamente realizadas.'));
  const grid=el('div','ce-ima-cycle-grid');
  const core=el('article','ce-ima-cycle-card');core.append(el('h3','','Núcleo — 120 minutos'));
- const coreOl=el('ol');li(coreOl,'65 min · TI: '+plan.ti+' — teoria e exemplo resolvido de uma subseção ainda não lida.');
- li(coreOl,'30 min · '+plan.general+' — leitura breve e recuperação ativa.');
- li(coreOl,'25 min · questões FURB e revisão de erros efetivamente registrados para o IMA; envio de quiz para avaliação.');
+ const coreOl=el('ol');li(coreOl,'55 min · TI: '+plan.ti+' — uma microaula aprofundada e recuperação ativa.');
+ li(coreOl,'30 min · '+plan.general+' — microaula complementar.');
+ li(coreOl,'35 min · questões da microaula TI após Lido e correção dos erros realmente enviados.');
  core.append(coreOl);grid.append(core);
  const extra=el('article','ce-ima-cycle-card');extra.append(el('h3','','Extensão opcional — +120 minutos'));
  const extraOl=el('ol');li(extraOl,'45 min · aprofundar um tópico parcial/lacuna de TI da matriz do Anexo V.');
@@ -66,10 +66,10 @@ function cycle(){
  const actions=el('div','ce-ima-links');
  link(actions,plan.href,'Abrir foco de TI do dia');
  link(actions,plan.other,'Abrir matéria complementar');
- link(actions,plan.quiz,'Responder treino FURB do dia');
+ link(actions,plan.quiz,'Questões do tema TI (após Lido)');
  link(actions,'revisoes.html','Ver revisões devidas');
  host.append(actions);
- host.append(el('p','ce-ima-note','Distribuição diária flexível: 65+30+25=120 min; extensão 45+35+25+15=120 min. Rodízio de sete focos não determina que você estudará nos sete dias. O roteiro muda conforme a data, não marca atividades nem cria avaliações.'));
+ host.append(el('p','ce-ima-note','Distribuição diária flexível: 55+30+35=120 min; extensão 45+35+25+15=120 min. Rodízio de sete focos não determina que você estudará nos sete dias. Este rodízio por data é uma opção complementar; a prioridade adaptativa da página usa a leitura real e as questões enviadas. A abertura dos links não marca execução nem cria avaliação.'));
  const panel=el('section','ce-ima-diagnostic');panel.id='ce-ima-diagnostico';
  panel.append(el('h3','','Diagnóstico de retenção — somente IMA'));
  const logs=sessionLogs(),pending=due(logs,today);
