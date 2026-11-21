@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-20",
+  "updated_at": "2026-11-21",
   "purpose": "Blocos de questões CASAN 404, independentes das aulas; cada página exibe somente as questões atribuídas ao seu assunto e faixa solicitada. Não registra estudo nem resposta antes do envio.",
   "min_ready_pages": 5,
   "exam": "casan",
@@ -183,6 +183,91 @@
         "atu-governanca-03": 5
       },
       "selection_policy": "Após módulo Estudado confirmado, recomendar apenas questões cujo módulo está confirmado; manter a faixa exata e não recomendar conteúdo futuro."
+    },
+    {
+      "id": "extra-fundamentos",
+      "title": "Fundamentos de TI — AOCP",
+      "description": "NoSQL, Scrum, DNS, TCP/IP e agrupamento de dados.",
+      "href": "aulas/questoes-extra-fundamentos-casan.html",
+      "lesson_href": "../planejamento.html#ce-cobertura-casan",
+      "question_ids": [
+        "aocp2025-joinville-q35-extra-v1",
+        "aocp2025-joinville-q36-extra-v1",
+        "aocp2025-joinville-q37-extra-v1",
+        "aocp2025-joinville-q38-extra-v1",
+        "aocp2025-joinville-q39-extra-v1"
+      ],
+      "subject": "ti",
+      "module_by_question": {},
+      "selection_policy": "Reserva para depois que todos os módulos das aulas CASAN tiverem estudo explicitamente confirmado; não inferir por leitura, rolagem ou tempo."
+    },
+    {
+      "id": "extra-processos",
+      "title": "Gestão, BPMN e Git — AOCP",
+      "description": "Low-code, OLAP, ITIL 4, símbolos BPMN e Git.",
+      "href": "aulas/questoes-extra-processos-casan.html",
+      "lesson_href": "../planejamento.html#ce-cobertura-casan",
+      "question_ids": [
+        "aocp2025-joinville-q41-extra-v1",
+        "aocp2025-joinville-q43-extra-v1",
+        "aocp2025-joinville-q44-extra-v1",
+        "aocp2025-joinville-q45-extra-v1",
+        "aocp2025-joinville-q46-extra-v1"
+      ],
+      "subject": "ti",
+      "module_by_question": {},
+      "selection_policy": "Reserva para depois que todos os módulos das aulas CASAN tiverem estudo explicitamente confirmado; não inferir por leitura, rolagem ou tempo."
+    },
+    {
+      "id": "extra-web-legado",
+      "title": "Web, LGPD e Delphi",
+      "description": "HTML, segurança, bases legais LGPD e dois itens Delphi.",
+      "href": "aulas/questoes-extra-web-legado-casan.html",
+      "lesson_href": "../planejamento.html#ce-cobertura-casan",
+      "question_ids": [
+        "aocp2025-joinville-q47-extra-v1",
+        "aocp2025-joinville-q49-extra-v1",
+        "aocp2025-joinville-q50-extra-v1",
+        "casan-extra-delphi-eventos-v1",
+        "casan-extra-delphi-dataset-v1"
+      ],
+      "subject": "ti",
+      "module_by_question": {},
+      "selection_policy": "Reserva para depois que todos os módulos das aulas CASAN tiverem estudo explicitamente confirmado; não inferir por leitura, rolagem ou tempo."
+    },
+    {
+      "id": "extra-lacunas",
+      "title": "Lacunas essenciais do edital",
+      "description": "Pontos de função, sistemas operacionais, SOAP, GraphQL e PL/SQL.",
+      "href": "aulas/questoes-extra-lacunas-casan.html",
+      "lesson_href": "../planejamento.html#ce-cobertura-casan",
+      "question_ids": [
+        "casan-extra-apf-ali-aie-v1",
+        "casan-extra-so-paginacao-v1",
+        "casan-extra-soap-wsdl-v1",
+        "casan-extra-graphql-campos-v1",
+        "casan-extra-plsql-trigger-v1"
+      ],
+      "subject": "ti",
+      "module_by_question": {},
+      "selection_policy": "Reserva para depois que todos os módulos das aulas CASAN tiverem estudo explicitamente confirmado; não inferir por leitura, rolagem ou tempo."
+    },
+    {
+      "id": "extra-revisao",
+      "title": "Revisão final mista",
+      "description": "ORM, Kubernetes, análise combinatória, Português e Atualidades.",
+      "href": "aulas/questoes-extra-revisao-casan.html",
+      "lesson_href": "../planejamento.html#ce-cobertura-casan",
+      "question_ids": [
+        "casan-extra-orm-nmais1-v1",
+        "casan-extra-k8s-deployment-v1",
+        "casan-extra-rlm-arranjo-v1",
+        "casan-extra-pt-concessiva-v1",
+        "casan-extra-atu-clima-v1"
+      ],
+      "subject": "mixed",
+      "module_by_question": {},
+      "selection_policy": "Reserva para depois que todos os módulos das aulas CASAN tiverem estudo explicitamente confirmado; não inferir por leitura, rolagem ou tempo."
     }
   ]
 }
