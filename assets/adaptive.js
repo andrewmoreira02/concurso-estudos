@@ -192,6 +192,10 @@ function model(){
  const lastDays=exam==='casan'&&daysRemaining!==null&&daysRemaining>=0&&daysRemaining<=2;
  const lessons=(config.adaptive_study?.lessons||[]).map(l=>courseState(l,exam));
  const subjects=subjectEvidence(exam,lessons);
+ const casanCourses=lessons.filter(l=>l.subjects?.casan&&l.weight>0);
+ const allCourseModules=exam==='casan'&&casanCourses.length>0&&casanCourses.every(l=>l.studiedCount===l.sections_per_module.length);
+ // Além dos módulos publicados, o edital contém lacunas documentais: confirmação separada, explícita e reversível.
+ const extraReady=allCourseModules&&studyRecord()['casan:edital:pendencias']===true;
  const rank=new Map(subjects.map((x,i)=>[x.name,i]));
  const scoreBySubject=new Map(subjects.map(x=>[x.name,x.priority]));
  for(const lesson of lessons)lesson.score=(scoreBySubject.get(lesson.subject)||0)*(1-lesson.studyRatio);
@@ -275,6 +279,18 @@ function model(){
    href:'revisoes.html',description:due.length+' revisão(ões) vencida(s)/devida(s), originada(s) exclusivamente de respostas enviadas. '+
     (lastDays?'Fazer somente se houver tempo após os conteúdos essenciais.':'Corrigir lacunas antes de prosseguir.')});
  }
+ if(extraReady&&!examDue){
+  const extras=questionSets.filter(s=>s.id.startsWith('extra-'));
+  const set=extras.find(s=>s.question_ids.some(id=>!attempted.has(id)));
+  if(set){
+   const first=set.question_ids.findIndex(id=>!attempted.has(id));
+   let end=first;
+   while(end<set.question_ids.length&&end-first<5&&!attempted.has(set.question_ids[end]))end++;
+   picks.push({type:'quiz',title:'Bateria extra após o conteúdo · '+set.title+' · questões '+(first+1)+'–'+end,
+    href:set.href+'?de='+(first+1)+'&ate='+end,
+    description:'Reserva de 25 questões em cinco blocos, separada das aulas. Módulos CASAN e lacunas restantes foram confirmados explicitamente; isto não comprova domínio. Somente respostas enviadas registram avaliação.'});
+  }
+ }
  if(scheduledQuiz&&exam===(scheduledQuiz.id==='questions-reta-final'?'casan':'ima')&&!examDue){
   picks.push({type:'quiz',title:scheduledQuiz.title+' (opcional)',
    href:scheduledQuiz.href,description:scheduledQuiz.detail+
@@ -296,7 +312,7 @@ function model(){
  }));
  const unreadEquivalents=relevant.reduce((sum,l)=>sum+(l.total-l.read)/l.total,0);
  const minEquivalents=Math.max(1,Math.min(10,config.adaptive_study?.minimum_unread_equivalents||5));
- return {today,exam,daysRemaining,availableQuestionSets,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
+ return {today,exam,daysRemaining,availableQuestionSets,allCourseModules,extraReady,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
   unreadEquivalents,minEquivalents};
 }
 
@@ -399,11 +415,31 @@ function renderStudyPriority(data){
   }
   details.append(options);modulesHost.append(details);
  }
+ if(data.exam==='casan'){
+  const label=el('label','ce-study-check');
+  const check=document.createElement('input');check.type='checkbox';
+  check.checked=studyRecord()['casan:edital:pendencias']===true;
+  check.disabled=!data.allCourseModules;
+  check.setAttribute('aria-label','Confirmar estudo dos tópicos do edital CASAN sem aula catalogada');
+  check.addEventListener('change',()=>{
+    const before=parse(studyKey,{}),values={...(isRecord(before?.confirmed)?before.confirmed:{})};
+    values['casan:edital:pendencias']=check.checked;
+    try{
+     localStorage.setItem(studyKey,JSON.stringify({version:1,confirmed:values,updatedAt:new Date().toISOString()}));
+     dispatchEvent(new CustomEvent('concurso:progress-change'));
+    }catch{check.checked=!check.checked;const status=$('ceStudyStatus');if(status)status.textContent='Não foi possível salvar esta confirmação.';}
+  });
+  const note=data.allCourseModules?
+   'Confirmação final: estudei também os pontos ainda sem aula completa (por exemplo, Delphi, APF, governança, BPMN, sistemas operacionais, Atualidades e demais itens da matriz). Isso é declaração de estudo, não avaliação. Ao confirmar, serão sugeridas as 25 questões extras. Pode desmarcar.':
+   'As 25 questões extras serão sugeridas após confirmar todos os módulos CASAN disponíveis acima e, separadamente, os tópicos do edital ainda não cobertos integralmente. Não é preciso marcar algo que você não estudou.';
+  label.append(check,document.createTextNode(note));
+  modulesHost.append(label);
+ }
 }
 function render(data){
  const signature=JSON.stringify({
    exam:data.exam,daysRemaining:data.daysRemaining,readyQuestionSets:data.availableQuestionSets,head:data.picks,lesson:data.active?.id,lessonNext:data.active?.first,
-   evidence:data.lessons.map(l=>[l.id,l.read,l.total,l.studiedCount]),subjects:data.subjects.map(x=>[x.name,x.priority,x.valid,x.correct]),due:data.due.length,agenda:data.agenda,available:data.unreadEquivalents
+   evidence:data.lessons.map(l=>[l.id,l.read,l.total,l.studiedCount]),subjects:data.subjects.map(x=>[x.name,x.priority,x.valid,x.correct]),due:data.due.length,agenda:data.agenda,available:data.unreadEquivalents,extraReady:data.extraReady,allCourseModules:data.allCourseModules
  });
  orderCatalog(data);
  renderStudyPriority(data);
@@ -412,16 +448,20 @@ function render(data){
  if(practiceHint&&data.exam==='casan'){
   practiceHint.replaceChildren();
   const available=data.availableQuestionSets;
-  practiceHint.append(el('p','note-small','Conjuntos com ao menos uma questão não respondida: '+available+' de '+questionSets.length+'. '+
+  practiceHint.append(el('p','note-small','Conjuntos com ao menos uma questão não respondida: '+available+' de '+questionSets.length+' (7 por assunto e 5 extras pós-conteúdo). '+
     (available<5?'Reserva personalizada abaixo do mínimo de cinco; a manutenção recorrente deve procurar questões novas de fonte verificável, sem reutilizar respostas como inéditas.':'Reserva pessoal acima do mínimo de cinco.')));
   const specific=data.picks.find(x=>x.type==='quiz'&&/questoes-[a-z-]+-casan\.html\?de=\d+&ate=\d+/.test(x.href));
+  const extra=data.picks.find(x=>x.type==='quiz'&&/questoes-extra-[a-z-]+-casan\.html\?de=\d+&ate=\d+/.test(x.href));
   if(data.daysRemaining===0){
    practiceHint.append(el('p','note-small','Hoje é o dia da prova: não há bateria obrigatória de questões. Priorize orientações oficiais e revisão leve.'));
+  }else if(extra){
+   practiceHint.append(el('p','note-small','Conteúdo declarado concluído: '+extra.description));
+   practiceHint.append(anchor(extra.href,'Abrir '+extra.title,true));
   }else if(specific){
    practiceHint.append(el('p','note-small','Estudo de módulo confirmado: '+specific.description));
    practiceHint.append(anchor(specific.href,'Abrir apenas '+specific.title,true));
   }else{
-   practiceHint.append(el('p','note-small','Ainda não há bloco individual recomendado por estudo confirmado. A prioridade é avançar nos tópicos de maior retorno. Os sete conjuntos preparados permanecem disponíveis abaixo, de modo opcional.'));
+   practiceHint.append(el('p','note-small','Ainda não há bloco individual recomendado por estudo confirmado. A prioridade é avançar nos tópicos de maior retorno. Os sete conjuntos temáticos e os cinco blocos extras ficam disponíveis abaixo; a recomendação dos extras depende de conclusão declarada de todo o conteúdo.'));
   }
  }
  if(signature!==renderedSignature&&details){
