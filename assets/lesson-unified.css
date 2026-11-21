@@ -404,3 +404,73 @@
 .ce-lesson-page .ce-saneamento-eixos li{min-width:0;overflow-wrap:anywhere;padding:16px 14px;border:1px solid #91eadd;border-left:4px solid #91eadd;border-radius:10px;background:#1b4253;color:#f1f8ff;line-height:1.55}
 .ce-lesson-page .ce-roles-note{padding:12px 14px;border-left:4px solid #f4c579;background:#332d23;color:#fff0d4;border-radius:8px;overflow-wrap:anywhere}
 @media(max-width:650px){.ce-lesson-page .ce-saneamento-eixos{grid-template-columns:minmax(0,1fr)}}
+
+
+/* Auditoria de responsividade 21/11/2026: nenhuma informação didática deve
+ * exigir rolagem horizontal INTERNA. Ver scripts/verificar-mobile.mjs.
+ * A representação mobile das tabelas é produzida por lesson-unified.js. */
+.ce-lesson-page .ce-mobile-table-cards,
+.ce-lesson-page .ce-mobile-diagram-legend{display:none}
+@media screen and (max-width:700px){
+ .ce-lesson-page :is(main,.nl-main,.nl-section,.nl-chapter,.chapter,.section,
+ .diagram,.nl-layout,.nl-compare,.nl-example,.ce-visual-example,.ce-visual-vertical){
+   min-width:0!important;max-width:100%!important;
+ }
+ .ce-lesson-page :is(.ce-visual-example,.diagram,.table-scroll,.tablewrap,
+ .table-wrap,.nl-table-wrap,.flowline){
+   overflow-x:visible!important;max-width:100%!important;
+ }
+ .ce-lesson-page :is(.ce-visual-example svg,.diagram svg,svg.chart){
+   min-width:0!important;max-width:100%!important;width:100%!important;
+   height:auto!important;
+ }
+ .ce-lesson-page :is(pre,.code,.nl-section pre,.step-code){
+   min-width:0!important;max-width:100%!important;
+   white-space:pre-wrap!important;overflow-wrap:anywhere!important;
+   word-break:break-word;overflow-x:visible!important;
+ }
+ .ce-lesson-page :is(.formula,.ce-formula-equation,.formula-box,
+ .nl-formula,.code-chips){
+   min-width:0!important;max-width:100%!important;
+   overflow-x:visible!important;white-space:normal!important;overflow-wrap:anywhere!important;
+ }
+ .ce-lesson-page :is(.flowline,.steps-nav){flex-wrap:wrap!important}
+ .ce-lesson-page :is(.flowline .phase,.diagram,.tile,.grid2>*,.grid3>*){
+   min-width:0!important;
+ }
+ .ce-lesson-page table:not([data-ce-mobile-table]){
+   width:100%!important;min-width:0!important;table-layout:fixed;
+ }
+ .ce-lesson-page table:not([data-ce-mobile-table]) :is(td,th){
+   overflow-wrap:anywhere;word-break:normal;
+ }
+ .ce-lesson-page table[data-ce-mobile-table="ready"]{display:none!important}
+ .ce-lesson-page .ce-mobile-table-cards{display:grid;gap:12px;margin:12px 0 20px}
+ .ce-lesson-page .ce-mobile-table-card{
+   min-width:0;padding:13px;border:1px solid #4f738b;border-radius:12px;
+   background:#142c3d;color:#eef7fd;overflow-wrap:anywhere;
+ }
+ .ce-lesson-page .ce-mobile-table-card dl{display:grid;gap:8px;margin:0}
+ .ce-lesson-page .ce-mobile-table-card dt{
+   color:#9ee7e3;font-size:.82rem;line-height:1.35;font-weight:800
+ }
+ .ce-lesson-page .ce-mobile-table-card dd{
+   margin:-5px 0 7px;color:#f0f6ff;line-height:1.55;font-size:.95rem;
+   min-width:0;overflow-wrap:anywhere;
+ }
+ .ce-lesson-page .ce-mobile-table-card dd:last-child{margin-bottom:0}
+ .ce-lesson-page .ce-mobile-diagram-legend{
+   display:block;min-width:0;margin:12px 0;padding:12px;
+   background:#183849;border:1px solid #5b8991;border-radius:11px;color:#eff9ff;
+ }
+ .ce-lesson-page .ce-mobile-diagram-legend strong{color:#aff0e7}
+ .ce-lesson-page .ce-mobile-diagram-legend p{font-size:.91rem;line-height:1.5;margin:8px 0}
+ .ce-lesson-page .ce-mobile-diagram-legend ul{
+   display:grid;grid-template-columns:minmax(0,1fr);gap:7px;
+   margin:9px 0 0;padding:0;list-style:none
+ }
+ .ce-lesson-page .ce-mobile-diagram-legend li{
+   border:1px solid #4b6e80;border-radius:7px;padding:7px 10px;
+   background:#213e50;overflow-wrap:anywhere;font-size:.89rem;
+ }
+}
