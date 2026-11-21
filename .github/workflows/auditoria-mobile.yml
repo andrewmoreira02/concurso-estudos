@@ -1,0 +1,54 @@
+name: Auditoria mobile - conteudo completo sem rolagem lateral
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "*.html"
+      - "aulas/**"
+      - "assets/**"
+      - "dados/microaulas-ima.json"
+      - "scripts/verificar-mobile.mjs"
+      - ".github/workflows/auditoria-mobile.yml"
+  pull_request:
+    paths:
+      - "*.html"
+      - "aulas/**"
+      - "assets/**"
+      - "dados/microaulas-ima.json"
+      - "scripts/verificar-mobile.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Obter arquivos do site
+        uses: actions/checkout@v4
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Instalar ferramentas de navegador
+        run: |
+          npm install --no-save playwright-core playwright
+          npx playwright install --with-deps chromium
+      - name: Localizar navegador do Playwright
+        run: |
+          BROWSER="$(find "$HOME/.cache/ms-playwright" -type f -name chrome -print -quit)"
+          test -n "$BROWSER" || { echo "Navegador nao encontrado"; exit 1; }
+          echo "CHROME_BIN=$BROWSER" >> "$GITHUB_ENV"
+      - name: Auditar todos os HTMLs e variantes IMA em cinco larguras
+        run: node scripts/verificar-mobile.mjs
+      - name: Guardar relatorio e capturas para inspecao visual
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-mobile
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 14
