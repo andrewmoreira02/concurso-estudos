@@ -87,7 +87,20 @@ function installNextNavigation(){
  let advanceReads=true;
  try{advanceReads=localStorage.getItem(preferenceKey)!=='false';}catch{}
  const tools=$('#ferramentas-da-aula .ce-lesson-tools-content');
- if(tools&&!$('#ce-next-reading-preference')){
+ if(!tools){
+   // lesson-unified.js pode mover as ferramentas para o rodapé após este script.
+   // Aguardar esse elemento ANTES de criar Próxima para manter a preferência funcional
+   // ligada ao mesmo estado e evitar condição de corrida no carregamento mobile.
+   const observer=new MutationObserver(()=>{
+     if($('#ferramentas-da-aula .ce-lesson-tools-content')){
+       observer.disconnect();
+       installNextNavigation();
+     }
+   });
+   observer.observe(document.body,{childList:true,subtree:true});
+   return;
+ }
+ if(!$('#ce-next-reading-preference')){
    const label=document.createElement('label');
    label.id='ce-next-reading-preference';
    label.style.cssText='display:flex;gap:9px;align-items:center;flex-wrap:wrap';
