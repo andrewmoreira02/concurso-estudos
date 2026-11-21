@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-21",
+  "exam": "ima",
+  "note": "Primeiro lote de 25 microaulas com uma seção cada, reaproveitando o conteúdo completo dos HTMLs originais sem alterar IDs nem progresso. Não representa cobertura integral do edital. Questões em conjuntos independentes; o banco será validado.",
+  "units": [
+    {
+      "id": "ima-alg-1-1",
+      "subject": "ti",
+      "subject_label": "Tecnologia da Informação",
+      "title": "Busca linear, busca binária e Big-O",
+      "source": {
+        "href": "aulas/algoritmos-oo.html",
+        "lesson": "algoritmos-oo",
+        "section": "alg-1-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-alg-1-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-alg-1-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-alg-2-1",
+      "subject": "ti",
+      "subject_label": "Tecnologia da Informação",
+      "title": "Encapsulamento, herança e composição",
+      "source": {
+        "href": "aulas/algoritmos-oo.html",
+        "lesson": "algoritmos-oo",
+        "section": "alg-2-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-alg-2-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-alg-2-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-bd-1-1",
+      "subject": "ti",
+      "subject_label": "Tecnologia da Informação",
+      "title": "Entidades, relacionamentos e cardinalidade",
+      "source": {
+        "href": "aulas/banco-dados.html",
+        "lesson": "banco-dados",
+        "section": "bd-1-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-bd-1-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-bd-1-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-bd-2-1",
+      "subject": "ti",
+      "subject_label": "Tecnologia da Informação",
+      "title": "SELECT, WHERE, GROUP BY, HAVING e ordem lógica",
+      "source": {
+        "href": "aulas/banco-dados.html",
+        "lesson": "banco-dados",
+        "section": "bd-2-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-bd-2-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-bd-2-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-bd-3-1",
+      "subject": "ti",
+      "subject_label": "Tecnologia da Informação",
+      "title": "ACID, commit e rollback",
+      "source": {
+        "href": "aulas/banco-dados.html",
+        "lesson": "banco-dados",
+        "section": "bd-3-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-bd-3-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-bd-3-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-seg-1-2",
+      "subject": "ti",
+      "subject_label": "Tecnologia da Informação",
+      "title": "SQL Injection e XSS: canais de ataque diferentes",
+      "source": {
+        "href": "aulas/seguranca.html",
+        "lesson": "seguranca",
+        "section": "seg-1-2"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-seg-1-2",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-seg-1-2",
+      "question_ids": []
+    },
+    {
+      "id": "ima-seg-2-1",
+      "subject": "ti",
+      "subject_label": "Tecnologia da Informação",
+      "title": "Autenticação e autorização por objeto (BOLA/IDOR)",
+      "source": {
+        "href": "aulas/seguranca.html",
+        "lesson": "seguranca",
+        "section": "seg-2-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-seg-2-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-seg-2-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-adm-1-1",
+      "subject": "adm",
+      "subject_label": "Administração Pública",
+      "title": "Princípios constitucionais e alcance",
+      "source": {
+        "href": "aulas/administracao-publica-ima.html",
+        "lesson": "administracao-publica-ima",
+        "section": "adm-1-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-adm-1-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-1-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-adm-1-2",
+      "subject": "adm",
+      "subject_label": "Administração Pública",
+      "title": "Administração direta, indireta e descentralização",
+      "source": {
+        "href": "aulas/administracao-publica-ima.html",
+        "lesson": "administracao-publica-ima",
+        "section": "adm-1-2"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-adm-1-2",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-1-2",
+      "question_ids": []
+    },
+    {
+      "id": "ima-adm-1-3",
+      "subject": "adm",
+      "subject_label": "Administração Pública",
+      "title": "Poderes administrativos e abuso",
+      "source": {
+        "href": "aulas/administracao-publica-ima.html",
+        "lesson": "administracao-publica-ima",
+        "section": "adm-1-3"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-adm-1-3",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-1-3",
+      "question_ids": []
+    },
+    {
+      "id": "ima-adm-2-1",
+      "subject": "adm",
+      "subject_label": "Administração Pública",
+      "title": "Atos administrativos: elementos e atributos",
+      "source": {
+        "href": "aulas/administracao-publica-ima.html",
+        "lesson": "administracao-publica-ima",
+        "section": "adm-2-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-adm-2-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-2-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-adm-2-2",
+      "subject": "adm",
+      "subject_label": "Administração Pública",
+      "title": "Anulação, revogação e convalidação",
+      "source": {
+        "href": "aulas/administracao-publica-ima.html",
+        "lesson": "administracao-publica-ima",
+        "section": "adm-2-2"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-adm-2-2",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-2-2",
+      "question_ids": []
+    },
+    {
+      "id": "ima-adm-2-3",
+      "subject": "adm",
+      "subject_label": "Administração Pública",
+      "title": "Processo administrativo e garantias",
+      "source": {
+        "href": "aulas/administracao-publica-ima.html",
+        "lesson": "administracao-publica-ima",
+        "section": "adm-2-3"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-adm-2-3",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-2-3",
+      "question_ids": []
+    },
+    {
+      "id": "ima-adm-3-1",
+      "subject": "adm",
+      "subject_label": "Administração Pública",
+      "title": "Agentes públicos: provimento, deveres e responsabilidade",
+      "source": {
+        "href": "aulas/administracao-publica-ima.html",
+        "lesson": "administracao-publica-ima",
+        "section": "adm-3-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-adm-3-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-3-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-adm-3-2",
+      "subject": "adm",
+      "subject_label": "Administração Pública",
+      "title": "Licitações e contratos: lógica da Lei 14.133/2021",
+      "source": {
+        "href": "aulas/administracao-publica-ima.html",
+        "lesson": "administracao-publica-ima",
+        "section": "adm-3-2"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-adm-3-2",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-3-2",
+      "question_ids": []
+    },
+    {
+      "id": "ima-adm-3-3",
+      "subject": "adm",
+      "subject_label": "Administração Pública",
+      "title": "Controle da Administração e responsabilização",
+      "source": {
+        "href": "aulas/administracao-publica-ima.html",
+        "lesson": "administracao-publica-ima",
+        "section": "adm-3-3"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-adm-3-3",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-adm-3-3",
+      "question_ids": []
+    },
+    {
+      "id": "ima-la-1-1",
+      "subject": "legislacao",
+      "subject_label": "Legislação Ambiental",
+      "title": "O direito ao meio ambiente e os deveres de proteção",
+      "source": {
+        "href": "aulas/legislacao-ambiental-ima.html",
+        "lesson": "legislacao-ambiental-ima",
+        "section": "la-1-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-la-1-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-1-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-la-1-2",
+      "subject": "legislacao",
+      "subject_label": "Legislação Ambiental",
+      "title": "Competência comum e competência legislativa",
+      "source": {
+        "href": "aulas/legislacao-ambiental-ima.html",
+        "lesson": "legislacao-ambiental-ima",
+        "section": "la-1-2"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-la-1-2",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-1-2",
+      "question_ids": []
+    },
+    {
+      "id": "ima-la-1-3",
+      "subject": "legislacao",
+      "subject_label": "Legislação Ambiental",
+      "title": "LC 140/2011: quem licencia e quem coopera",
+      "source": {
+        "href": "aulas/legislacao-ambiental-ima.html",
+        "lesson": "legislacao-ambiental-ima",
+        "section": "la-1-3"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-la-1-3",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-1-3",
+      "question_ids": []
+    },
+    {
+      "id": "ima-la-2-1",
+      "subject": "legislacao",
+      "subject_label": "Legislação Ambiental",
+      "title": "Lei 6.938/1981: objetivos e lógica da política",
+      "source": {
+        "href": "aulas/legislacao-ambiental-ima.html",
+        "lesson": "legislacao-ambiental-ima",
+        "section": "la-2-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-la-2-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-2-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-la-2-2",
+      "subject": "legislacao",
+      "subject_label": "Legislação Ambiental",
+      "title": "SISNAMA e papéis dos órgãos",
+      "source": {
+        "href": "aulas/legislacao-ambiental-ima.html",
+        "lesson": "legislacao-ambiental-ima",
+        "section": "la-2-2"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-la-2-2",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-2-2",
+      "question_ids": []
+    },
+    {
+      "id": "ima-la-2-3",
+      "subject": "legislacao",
+      "subject_label": "Legislação Ambiental",
+      "title": "Instrumentos da PNMA e licenciamento",
+      "source": {
+        "href": "aulas/legislacao-ambiental-ima.html",
+        "lesson": "legislacao-ambiental-ima",
+        "section": "la-2-3"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-la-2-3",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-2-3",
+      "question_ids": []
+    },
+    {
+      "id": "ima-la-3-1",
+      "subject": "legislacao",
+      "subject_label": "Legislação Ambiental",
+      "title": "Código estadual: disposições gerais (Título I)",
+      "source": {
+        "href": "aulas/legislacao-ambiental-ima.html",
+        "lesson": "legislacao-ambiental-ima",
+        "section": "la-3-1"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-la-3-1",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-3-1",
+      "question_ids": []
+    },
+    {
+      "id": "ima-la-3-2",
+      "subject": "legislacao",
+      "subject_label": "Legislação Ambiental",
+      "title": "Política estadual: princípios, objetivos e instrumentos (Título II)",
+      "source": {
+        "href": "aulas/legislacao-ambiental-ima.html",
+        "lesson": "legislacao-ambiental-ima",
+        "section": "la-3-2"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-la-3-2",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-3-2",
+      "question_ids": []
+    },
+    {
+      "id": "ima-la-3-3",
+      "subject": "legislacao",
+      "subject_label": "Legislação Ambiental",
+      "title": "Lei 17.354/2017: criação, natureza e funções do IMA",
+      "source": {
+        "href": "aulas/legislacao-ambiental-ima.html",
+        "lesson": "legislacao-ambiental-ima",
+        "section": "la-3-3"
+      },
+      "lesson_href": "aulas/microaula-ima.html?u=ima-la-3-3",
+      "questions_href": "aulas/questoes-micro-ima.html?u=ima-la-3-3",
+      "question_ids": []
+    }
+  ]
+}
