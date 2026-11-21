@@ -401,3 +401,10 @@ Fontes candidatas ainda sujeitas à validação individual: FURB Analista de Sis
 - **Recomendações:** a homepage exibe “Questão sugerida” para o IMA a partir de 23/11 quando houver uma seção Lido com conjunto não totalmente respondido; caso contrário, sugere a próxima microaula. A presença de questões publicadas não comprova avaliação; somente Enviar gera registros específicos do IMA. Não misturar avaliações CASAN.
 - **Limite de cobertura:** primeiro lote extrai **7 unidades de TI**, **9 de Administração Pública** e **9 de Legislação Ambiental** de material já existente. São 25 unidades, 25 conjuntos, **78 posições de questão** (64 itens autorais novos + 14 referências preexistentes); não representam o Anexo V completo. Novas unidades de TI e Português/RLM devem ser acrescentadas com prioridade por peso, cobertura e desempenho, não pelo mero número de aulas.
 - **Validação:** testar sintaxe JavaScript, JSON, links e ID, carregamento do HTML original e controles Lido, retorno à trilha, correção e persistência de resultados, cache, celular e implantação. Se o GitHub Pages ou teste fim-a-fim não for verificável, declarar o limite em vez de afirmar publicação funcional.
+
+## Correção editorial e de recomendações — 21/11/2026
+
+- Engenharia, subseção 9.3: conceitos Scrum, Kanban, XP e Cascata/modelo V agora separados em quatro cartões com hierarquia visual; a estrutura de IDs e os controles Lido existentes foram preservados.
+- O estilo dos cartões foi centralizado em `assets/lesson-unified.css`, com breakpoint de 430 px, e a aula usa URL versionada do CSS.
+- `assets/adaptive.js` exclui da seleção de aulas recomendadas aquelas cujas subseções estejam todas marcadas Lido. Isso **não** implica confirmação de estudo ou domínio; avaliações continuam separadas.
+- Não foi confirmada nesta passagem a renderização real em 320/390/430 px, a sincronização remota no navegador ou o deploy do Pages. Não considerar esses testes aprovados.
