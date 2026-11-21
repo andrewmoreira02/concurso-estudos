@@ -52,9 +52,12 @@ try{
     reading:Object.keys(localStorage).filter(k=>/read|lido/.test(k)).sort()
    }));
    assert.deepEqual(after.reading,details.reading,s.id+' questões alteraram estado de leitura');
-   assert(after.logs.length===details.logs+1,s.id+' envio deveria gravar uma sessão');
-   assert(after.logs.at(-1).exam==='casan'&&after.logs.at(-1).valid===3&&after.logs.at(-1).correct===3,
-    s.id+' correção/registro incorretos');
+   const groupCount=await page.evaluate(()=>new Set([...document.querySelectorAll('[data-ce-practice="topic"] [data-ce-question]')].map(el=>el.dataset.ceSubject)).size);
+   const recent=after.logs.slice(-groupCount);
+   assert(after.logs.length===details.logs+groupCount,s.id+' envio deve gravar uma sessão por disciplina');
+   assert(recent.every(log=>log.exam==='casan')&&recent.reduce((n,x)=>n+x.valid,0)===3&&
+     recent.reduce((n,x)=>n+x.correct,0)===3,
+    s.id+' correção/registro por disciplina incorretos');
    count++;
    console.log('OK '+width+'px '+s.id+' · só 1–3 e correção após envio');
    await page.close();
