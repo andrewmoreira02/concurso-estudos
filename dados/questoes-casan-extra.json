@@ -1,0 +1,728 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-21",
+  "purpose": "25 questões adicionais para estudo pós-conteúdo CASAN 404: 13 adaptações didáticas de itens verificáveis AOCP 2025 Joinville e 12 autorais para lacunas do edital; gabaritos próprios das adaptações.",
+  "source_note": "Adaptadas não são transcrições literais. Fonte e número original são informados por item, gabarito da adaptação é independente. Autorais são rotuladas. Não adicionar resultados pessoais.",
+  "questions": [
+    {
+      "id": "aocp2025-joinville-q35-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q35",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Uma equipe precisa de um NoSQL de famílias de colunas para analisar grandes volumes distribuídos de dados. Qual tecnologia é apropriada?",
+      "options": {
+        "a": "Neo4j",
+        "b": "Redis",
+        "c": "Cassandra",
+        "d": "SQLite",
+        "e": "CouchDB"
+      },
+      "correct": "c",
+      "explanation": "Cassandra é um banco NoSQL distribuído, organizado pelo modelo de colunas largas (wide-column). É adequado a cargas distribuídas, com modelagem orientada às consultas.",
+      "whyWrong": "Neo4j usa grafos; Redis é chave-valor; SQLite é relacional embutido; CouchDB é orientado a documentos.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 35,
+        "printed_page": 10,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "E"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q36-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q36",
+      "subject": "ti",
+      "tag": "engenharia",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Em um projeto Scrum, qual alternativa contém somente dois eventos previstos no framework?",
+      "options": {
+        "a": "Product Backlog e Sprint Backlog",
+        "b": "Product Owner e Scrum Master",
+        "c": "Sprint Planning e Daily Scrum",
+        "d": "Incremento e Product Goal",
+        "e": "Developers e Sprint Review"
+      },
+      "correct": "c",
+      "explanation": "Sprint Planning e Daily Scrum são eventos do Scrum. Sprint, Sprint Review e Sprint Retrospective também são eventos.",
+      "whyWrong": "Backlogs, Incremento e Product Goal são artefatos/compromissos; Product Owner, Scrum Master e Developers representam responsabilidades.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 36,
+        "printed_page": 10,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "D"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q37-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q37",
+      "subject": "ti",
+      "tag": "infraestrutura",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Um navegador acessa servicos.exemplo.com e precisa descobrir o IP associado ao nome. Que serviço fornece essa resolução?",
+      "options": {
+        "a": "DHCP",
+        "b": "DNS",
+        "c": "NAT",
+        "d": "NTP",
+        "e": "SSH"
+      },
+      "correct": "b",
+      "explanation": "DNS associa nomes de domínio a informações de recursos, como endereços IPv4 e IPv6. Há também outros tipos de registros.",
+      "whyWrong": "DHCP distribui parâmetros de rede; NAT traduz endereços; NTP sincroniza relógios; SSH fornece conexão remota segura.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 37,
+        "printed_page": 11,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "E"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q38-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q38",
+      "subject": "ti",
+      "tag": "infraestrutura",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "No modelo TCP/IP, em qual camada estão protocolos de alto nível como HTTP e DNS?",
+      "options": {
+        "a": "Acesso à rede",
+        "b": "Internet",
+        "c": "Transporte",
+        "d": "Aplicação",
+        "e": "Física como camada separada"
+      },
+      "correct": "d",
+      "explanation": "No modelo TCP/IP de quatro camadas, HTTP e DNS são protocolos da camada de aplicação.",
+      "whyWrong": "Transporte inclui TCP/UDP; Internet inclui IP; acesso à rede trata o enlace. A camada física separada é característica de outros desdobramentos.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 38,
+        "printed_page": 11,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "A"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q39-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q39",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Para identificar regiões de alta concentração de ocorrências em coordenadas geográficas, inclusive grupos de formas irregulares e ruídos, qual algoritmo de agrupamento é mais adequado?",
+      "options": {
+        "a": "DBSCAN",
+        "b": "Apriori",
+        "c": "Random Forest",
+        "d": "Regressão linear",
+        "e": "Busca binária"
+      },
+      "correct": "a",
+      "explanation": "DBSCAN agrupa pontos pela densidade, identificando regiões densas e pontos classificados como ruído.",
+      "whyWrong": "Apriori descobre regras de associação; Random Forest é supervisionado; regressão estima relações; busca binária procura elementos ordenados.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 39,
+        "printed_page": 11,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "D"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q41-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q41",
+      "subject": "ti",
+      "tag": "processos",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Qual par apresenta plataformas típicas de desenvolvimento low-code utilizadas na automação de processos?",
+      "options": {
+        "a": "Kubernetes e Wireshark",
+        "b": "OutSystems e Mendix",
+        "c": "Nginx e Apache",
+        "d": "PostgreSQL e SQLite",
+        "e": "Git e Subversion"
+      },
+      "correct": "b",
+      "explanation": "OutSystems e Mendix são plataformas de desenvolvimento low-code que oferecem componentes e modelos visuais para criar aplicações.",
+      "whyWrong": "As demais opções combinam ferramentas de orquestração, diagnóstico, servidores, bancos ou controle de versão, não plataformas low-code do par pedido.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 41,
+        "printed_page": 12,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "A"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q43-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q43",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Em um cubo OLAP, selecionar apenas o ano de 2026 em uma dimensão, mantendo a análise das outras, é exemplo de:",
+      "options": {
+        "a": "Drill-down",
+        "b": "Slice",
+        "c": "Normalização",
+        "d": "Merge join",
+        "e": "Hashing"
+      },
+      "correct": "b",
+      "explanation": "Slice fixa uma dimensão do cubo em determinado valor e obtém uma fatia. Dice usa filtros em múltiplas dimensões.",
+      "whyWrong": "Drill-down aprofunda hierarquias; normalização organiza esquemas; join combina tabelas; hashing transforma chaves.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 43,
+        "printed_page": 12,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "A"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q44-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q44",
+      "subject": "ti",
+      "tag": "governanca",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "No ITIL 4, o modelo possui quantas dimensões de gerenciamento de serviços e quantos princípios orientadores?",
+      "options": {
+        "a": "4 dimensões e 7 princípios",
+        "b": "5 dimensões e 6 princípios",
+        "c": "7 dimensões e 4 princípios",
+        "d": "3 dimensões e 5 princípios",
+        "e": "6 dimensões e 8 princípios"
+      },
+      "correct": "a",
+      "explanation": "ITIL 4 define quatro dimensões do gerenciamento de serviços e sete princípios orientadores.",
+      "whyWrong": "Os demais pares não correspondem ao framework. Os quatro elementos ajudam a analisar pessoas, tecnologia, parceiros e fluxos de valor.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 44,
+        "printed_page": 12,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "B"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q45-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q45",
+      "subject": "ti",
+      "tag": "processos",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Em BPMN, que elemento delimita o participante de um processo, podendo conter raias para responsabilidades internas?",
+      "options": {
+        "a": "Gateway exclusivo",
+        "b": "Evento intermediário",
+        "c": "Pool",
+        "d": "Fluxo de sequência",
+        "e": "Atividade de usuário"
+      },
+      "correct": "c",
+      "explanation": "Pool representa um participante do processo; lanes subdividem responsabilidades dentro de um pool.",
+      "whyWrong": "Gateway decide rotas; evento representa ocorrências; fluxo de sequência liga elementos dentro de um processo; atividade executa trabalho.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 45,
+        "printed_page": 12,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "E"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q46-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q46",
+      "subject": "ti",
+      "tag": "engenharia",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Qual comando Git atualiza as referências remotas com commits disponíveis no servidor sem efetuar merge na branch de trabalho?",
+      "options": {
+        "a": "git push",
+        "b": "git merge",
+        "c": "git fetch",
+        "d": "git reset --hard",
+        "e": "git commit"
+      },
+      "correct": "c",
+      "explanation": "git fetch busca objetos e atualiza referências de rastreamento remoto sem integrar automaticamente a branch local.",
+      "whyWrong": "push envia alterações; merge integra branches; reset altera referências locais; commit registra alterações.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 46,
+        "printed_page": 12,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "A"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q47-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q47",
+      "subject": "ti",
+      "tag": "web",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Em HTML semântico, qual elemento define uma linha de uma tabela de dados?",
+      "options": {
+        "a": "<td>",
+        "b": "<thead>",
+        "c": "<table>",
+        "d": "<tr>",
+        "e": "<caption>"
+      },
+      "correct": "d",
+      "explanation": "<tr> define uma linha; dentro dela, <th> e <td> representam células de cabeçalho e de dados.",
+      "whyWrong": "<thead> agrupa o cabeçalho; <table> envolve a tabela; <caption> fornece sua legenda; <td> é uma célula, não a linha.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 47,
+        "printed_page": 13,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "C"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q49-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q49",
+      "subject": "ti",
+      "tag": "seguranca",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Uma ferramenta coleta e inspeciona pacotes que trafegam por uma interface de rede. Como é genericamente chamada?",
+      "options": {
+        "a": "Gerenciador de senhas",
+        "b": "Sniffer de rede",
+        "c": "Compilador",
+        "d": "Balanceador de carga",
+        "e": "Controlador de domínio"
+      },
+      "correct": "b",
+      "explanation": "Sniffer é a designação usual de ferramenta de captura e inspeção de tráfego. Seu uso deve respeitar autorização e privacidade.",
+      "whyWrong": "As demais ferramentas têm finalidades diferentes; capturar tráfego não significa necessariamente descriptografar conteúdo cifrado.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 49,
+        "printed_page": 13,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "E"
+      }
+    },
+    {
+      "id": "aocp2025-joinville-q50-extra-v1",
+      "kind": "adaptada",
+      "origin_id": "aocp2025-joinville-q50",
+      "subject": "ti",
+      "tag": "seguranca",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "A LGPD prevê hipóteses de tratamento de dados pessoais além do consentimento. Qual alternativa descreve uma dessas hipóteses, em termos gerais?",
+      "options": {
+        "a": "Qualquer uso comercial sem finalidade definida",
+        "b": "Publicação irrestrita de dados cadastrais",
+        "c": "Proteção da vida ou da incolumidade física do titular ou de terceiro",
+        "d": "Venda de senhas para terceiros",
+        "e": "Dispensa geral de transparência ao titular"
+      },
+      "correct": "c",
+      "explanation": "O art. 7º da LGPD contempla a proteção da vida ou da incolumidade física entre as bases legais para tratamento de dados pessoais.",
+      "whyWrong": "Usos sem finalidade ou base legal e divulgação irrestrita não são autorizados; transparência e demais princípios continuam relevantes.",
+      "source": {
+        "bank": "Instituto AOCP",
+        "organizer": "Instituto AOCP",
+        "agency": "Prefeitura de Joinville/SC",
+        "contest": "Edital 005/2025",
+        "role": "Analista de Tecnologia da Informação",
+        "year": 2025,
+        "question_number": 50,
+        "printed_page": 13,
+        "paper_url": "https://arquivos.qconcursos.com/prova/arquivo_prova/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-prova.pdf",
+        "answer_key_url": "https://arquivos.qconcursos.com/prova/arquivo_gabarito/149463/instituto-aocp-2025-prefeitura-de-joinville-sc-analista-de-tecnologia-da-informacao-gabarito.pdf",
+        "answer_key_status": "gabarito pós-recursos/definitivo",
+        "original_correct": "E"
+      }
+    },
+    {
+      "id": "casan-extra-delphi-eventos-v1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "delphi",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Em uma aplicação Delphi VCL, um botão chama um método quando o usuário clica nele. Qual propriedade de evento associa o botão a esse método?",
+      "options": {
+        "a": "OnClick",
+        "b": "DataSource",
+        "c": "Caption",
+        "d": "Parent"
+      },
+      "correct": "a",
+      "explanation": "OnClick é o evento usual de clique dos controles VCL. Seu handler frequentemente recebe um parâmetro Sender do tipo TObject.",
+      "whyWrong": "DataSource conecta controles a dados; Caption define texto; Parent indica o contêiner visual.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-delphi-dataset-v1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "delphi",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Em Delphi, um TDataSet está fechado. Qual operação torna seu conjunto de registros acessível, desde que sua fonte esteja corretamente configurada?",
+      "options": {
+        "a": "Free",
+        "b": "Open",
+        "c": "DisableControls",
+        "d": "Bookmark"
+      },
+      "correct": "b",
+      "explanation": "Open abre um dataset configurado. Antes disso, não há navegação válida dos registros; Close o fecha.",
+      "whyWrong": "Free libera objeto; DisableControls suspende atualizações de controles ligados; Bookmark é mecanismo de posicionamento.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-apf-ali-aie-v1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "engenharia",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Em Análise de Pontos de Função (IFPUG), um grupo lógico de dados mantido pela aplicação é classificado como:",
+      "options": {
+        "a": "Consulta externa (CE)",
+        "b": "Arquivo lógico interno (ALI)",
+        "c": "Arquivo de interface externa (AIE)",
+        "d": "Saída externa (SE)"
+      },
+      "correct": "b",
+      "explanation": "ALI é um grupo lógico de dados reconhecível pelo usuário, mantido dentro da fronteira da aplicação. AIE é referenciado mas mantido por outra aplicação.",
+      "whyWrong": "CE e SE são funções transacionais; AIE não é mantido pela aplicação contada.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-so-paginacao-v1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "infraestrutura",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Um processo tenta acessar uma página virtual não carregada na RAM, mas válida no seu espaço de endereçamento. O sistema operacional pode gerar:",
+      "options": {
+        "a": "Uma falha de página e buscar a página no armazenamento",
+        "b": "Necessariamente uma violação de permissão irreversível",
+        "c": "Uma execução direta de DNS",
+        "d": "Uma mudança automática de linguagem"
+      },
+      "correct": "a",
+      "explanation": "Uma page fault pode indicar página válida ausente de RAM; o sistema trata a falta e a carrega conforme sua política de memória.",
+      "whyWrong": "Falha de página não implica obrigatoriamente acesso inválido; DNS e linguagem não resolvem paginação.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-soap-wsdl-v1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "web",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Um serviço SOAP publica um contrato que descreve operações e mensagens aceitas. Qual tecnologia é associada a essa descrição?",
+      "options": {
+        "a": "CSS",
+        "b": "WSDL",
+        "c": "JWT",
+        "d": "CORS"
+      },
+      "correct": "b",
+      "explanation": "WSDL descreve a interface de serviços web, operações e formatos de mensagens, sendo tradicionalmente usado com SOAP.",
+      "whyWrong": "CSS estiliza páginas; JWT é formato de token; CORS define regras de acesso entre origens em navegadores.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-graphql-campos-v1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "web",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Um cliente precisa solicitar apenas nome e matrícula de cada usuário em uma API GraphQL. Qual característica permite especificar esses campos?",
+      "options": {
+        "a": "A seleção de campos dentro da consulta",
+        "b": "A obrigação de consumir todo o registro",
+        "c": "A remoção de autenticação do servidor",
+        "d": "A criação de uma tabela física no banco"
+      },
+      "correct": "a",
+      "explanation": "A consulta GraphQL declara o conjunto de campos desejados. O servidor valida o schema e as permissões antes de resolvê-los.",
+      "whyWrong": "GraphQL não obriga retornar todos os atributos nem dispensa autenticação, e consultar dados não cria automaticamente tabelas.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-plsql-trigger-v1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Uma regra deve registrar auditoria automaticamente após uma alteração em determinada tabela Oracle. Qual objeto de banco é mais diretamente associado à execução desse comportamento?",
+      "options": {
+        "a": "View simples",
+        "b": "Trigger",
+        "c": "Índice B-tree",
+        "d": "Constraint de chave primária"
+      },
+      "correct": "b",
+      "explanation": "Uma trigger pode executar lógica associada a eventos DML de uma tabela, como inserções e alterações, respeitando limitações de transação e mutating table.",
+      "whyWrong": "Views representam consultas; índices aceleram acessos; PK mantém unicidade e integridade, não dispara a auditoria personalizada.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-orm-nmais1-v1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "banco-dados",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Uma aplicação ORM executa uma consulta para listar 50 pedidos e mais uma consulta para buscar o cliente de cada pedido. Qual problema de desempenho é ilustrado?",
+      "options": {
+        "a": "Deadlock",
+        "b": "N+1 consultas",
+        "c": "Cross-site scripting",
+        "d": "Particionamento horizontal"
+      },
+      "correct": "b",
+      "explanation": "O problema N+1 ocorre quando uma consulta principal leva a várias consultas individuais adicionais; carregamento em lote ou joins apropriados podem reduzi-lo.",
+      "whyWrong": "Deadlock é bloqueio circular; XSS é falha de segurança web; particionamento horizontal é técnica de distribuição de dados.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-k8s-deployment-v1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "infraestrutura",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Em Kubernetes, qual recurso costuma declarar a quantidade desejada de réplicas de Pods e gerenciar atualizações contínuas de uma aplicação sem estado?",
+      "options": {
+        "a": "ConfigMap apenas",
+        "b": "Deployment",
+        "c": "Secret apenas",
+        "d": "Namespace"
+      },
+      "correct": "b",
+      "explanation": "Deployment gerencia ReplicaSets e Pods, replica uma carga declarativa e apoia rolling updates.",
+      "whyWrong": "ConfigMap fornece configuração; Secret armazena dados sensíveis; Namespace é escopo organizacional.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-rlm-arranjo-v1",
+      "kind": "autoral",
+      "subject": "rlm",
+      "tag": "combinatoria",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Uma senha de dois algarismos distintos é formada com os dígitos 1, 2, 3, 4 e 5. Quantas senhas diferentes são possíveis?",
+      "options": {
+        "a": "10",
+        "b": "15",
+        "c": "20",
+        "d": "25"
+      },
+      "correct": "c",
+      "explanation": "Há 5 opções para a primeira posição e 4 para a segunda, pois não pode repetir: 5 × 4 = 20.",
+      "whyWrong": "10 é combinação sem considerar ordem; 25 permite repetição; 15 não corresponde à regra.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-pt-concessiva-v1",
+      "kind": "autoral",
+      "subject": "portugues",
+      "tag": "coesao",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Em “Embora o sistema tivesse sido testado, apresentou falhas”, a oração iniciada por “Embora” expressa:",
+      "options": {
+        "a": "Causa",
+        "b": "Concessão",
+        "c": "Finalidade",
+        "d": "Condição necessária"
+      },
+      "correct": "b",
+      "explanation": "Embora introduz concessão: existe uma circunstância contrária à expectativa, mas o fato principal ocorre.",
+      "whyWrong": "Causa seria porquanto/porque; finalidade usa para que; condição pode ser introduzida por se.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    },
+    {
+      "id": "casan-extra-atu-clima-v1",
+      "kind": "autoral",
+      "subject": "atualidades",
+      "tag": "sustentabilidade",
+      "saturday": false,
+      "exams": [
+        "casan"
+      ],
+      "prompt": "Qual medida é exemplo de adaptação às mudanças climáticas, e não de mitigação de emissões?",
+      "options": {
+        "a": "Substituir combustível fóssil por renovável",
+        "b": "Melhorar eficiência energética para emitir menos CO₂",
+        "c": "Criar drenagem e sistemas de alerta para enchentes",
+        "d": "Reduzir vazamento de metano"
+      },
+      "correct": "c",
+      "explanation": "Adaptação busca reduzir vulnerabilidades e danos dos impactos climáticos, como enchentes; mitigação combate as causas das mudanças climáticas reduzindo emissões.",
+      "whyWrong": "Troca de energia, eficiência e controle de metano reduzem emissões e são principalmente medidas de mitigação.",
+      "source": "Questão autoral produzida para cobrir lacuna do edital CASAN 404, sem atribuição a banca"
+    }
+  ]
+}
