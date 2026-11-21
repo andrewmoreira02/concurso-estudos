@@ -103,6 +103,15 @@ function questionElement(q,index){
    const source=el('div','','ce-original-source');
    source.append(el('strong','Adaptação de tema de prova '+q.source.bank+' '+q.source.year+' · '+(q.source.role||'Analista de Sistemas')+' · questão '+q.source.question_number));
    source.append(el('p','Questão adaptada, com enunciado e todas as alternativas nesta página. O gabarito desta versão foi conferido separadamente e não é a letra obrigatoriamente igual à prova histórica.'));
+   // A fonte é opcional; ler o PDF original não é necessário para responder.
+   const refs=el('p','','ce-source-links');
+   for(const [label,url] of [['Caderno original',q.source?.paper_url],['Gabarito original',q.source?.answer_key_url]]){
+    if(typeof url==='string'&&/^https:\/\/(arquivos\.qconcursos\.com|anexos\.cdn\.selecao\.net\.br)\//.test(url)){
+     const link=el('a',label);link.href=url;link.target='_blank';link.rel='noopener noreferrer';
+     if(refs.childNodes.length)refs.append(document.createTextNode(' · '));refs.append(link);
+    }
+   }
+   if(refs.childNodes.length)source.append(refs);
    f.append(source);
  }else f.append(el('p','Questão autoral de reserva, com enunciado e alternativas completos.'));
  for(const k of adapted?['a','b','c','d','e']:['a','b','c','d']){
