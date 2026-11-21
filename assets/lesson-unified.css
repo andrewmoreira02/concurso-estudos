@@ -372,3 +372,19 @@
 .ce-lesson-page .ce-module-reading button{min-height:44px;padding:8px 12px;border:1px solid #72b9bd;background:#264d5b;border-radius:8px;color:#f1ffff;cursor:pointer;font-weight:700}
 .ce-lesson-page .ce-module-reading button:hover{background:#335e6d}
 @media(max-width:620px){.ce-lesson-page .ce-module-reading button{width:100%}}
+
+/* ce-visual-example-v1 — diagramas vetoriais explicados e acessíveis nas aulas. */
+.ce-lesson-page .ce-visual-example{margin:18px 0 22px;padding:14px;border:1px solid #51768a;border-radius:15px;background:#102536;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.ce-lesson-page .ce-visual-example>figcaption{font-size:.93rem;line-height:1.45;color:#d7f8f3;font-weight:750;margin:0 0 13px}
+.ce-lesson-page .ce-visual-example svg{display:block;min-width:510px;max-width:none;width:100%;height:auto;max-height:320px;margin:0 auto}
+.ce-lesson-page .ce-visual-example svg text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;fill:#f1f8ff;font-size:15px}
+.ce-lesson-page .ce-visual-example svg .ce-node{fill:#1b4253;stroke:#91eadd;stroke-width:2}
+.ce-lesson-page .ce-visual-example svg .ce-path{fill:none;stroke:#9ee5ee;stroke-width:2.5}
+.ce-lesson-page .ce-visual-example svg .ce-faint{fill:#c3d7e4;font-size:12px}
+.ce-lesson-page .ce-visual-example svg .ce-small{font-size:12px}
+.ce-lesson-page .ce-visual-example svg .ce-open{fill:#102536;stroke:#9ee5ee;stroke-width:2.5}
+.ce-lesson-page .ce-visual-example svg .ce-solid{fill:#9ee5ee;stroke:#9ee5ee;stroke-width:2}
+.ce-lesson-page .ce-visual-example .ce-diagram-notes{font-size:.89rem;color:#d1e3ef;line-height:1.55;margin:12px 0 0;max-width:75ch}
+.ce-lesson-page .ce-visual-example .ce-diagram-notes strong{color:#a6f1e6}
+@media(max-width:650px){.ce-lesson-page .ce-visual-example{margin-left:0;margin-right:0;padding:10px}.ce-lesson-page .ce-visual-example svg{min-width:540px}.ce-lesson-page .ce-visual-example>figcaption{font-size:.87rem}}
+@media print{.ce-lesson-page .ce-visual-example{background:white!important;color:#111!important;overflow:visible;break-inside:avoid}.ce-lesson-page .ce-visual-example svg{min-width:0}.ce-lesson-page .ce-visual-example svg text{fill:#101820!important}}
