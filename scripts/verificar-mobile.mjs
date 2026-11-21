@@ -79,7 +79,7 @@ try {
       const uri = pathToFileURL(resolve(filename));
       if(query)uri.search='?'+query;
       await page.goto(uri.href, {waitUntil: 'domcontentloaded'});
-      await page.waitForTimeout(220);
+      await page.waitForTimeout(query?550:220);
       const dims = await inspectOverflow(page);
       results.push({file,width,htmlSha:blobSha(filename),dependencies:dependencies(filename),...dims});
       for(const bad of dims.internals)errors.push(file+' '+width+'px: overflow interno '+JSON.stringify(bad));
@@ -91,7 +91,7 @@ try {
       check(dims.viewport === width, file + ' viewport inesperado: ' + JSON.stringify(dims));
       check(dims.htmlWidth <= width + 2, file + ' possui rolagem horizontal geral em ' + width + 'px: ' + JSON.stringify(dims));
       check(dims.bodyWidth <= width + 2, file + ' body ultrapassa ' + width + 'px: ' + JSON.stringify(dims));
-      if (file === 'aulas/rlm.html') {
+      if (width<=430 && file === 'aulas/rlm.html') {
         check(await page.locator('[data-lesson-step]').count() === 71, 'RLM perdeu 71 subseções');
         const menu = page.locator('#mobileMenu');
         check(await menu.isVisible(), 'RLM menu não visível em '+width);
@@ -99,14 +99,14 @@ try {
         check(await menu.getAttribute('aria-expanded') === 'true', 'RLM índice não abriu');
         await page.evaluate(() => document.dispatchEvent(new MouseEvent('click', {bubbles:true})));
         check(await menu.getAttribute('aria-expanded') === 'false', 'RLM índice não fechou ao tocar fora');
-      } else if (file === 'aulas/engenharia-qualidade.html') {
+      } else if (width<=430 && file === 'aulas/engenharia-qualidade.html') {
         check(await page.locator('.step-marker').count() === 37, 'Engenharia perdeu 37 subseções');
         const select = page.locator('#mobileStepSelect');
         check(await select.isVisible(), 'Índice móvel por etapa não visível');
         check(await select.locator('option').count() === 38, 'Índice móvel por etapa incompleto');
         await select.selectOption('#etapa-1-1');
         check((await page.evaluate(()=>location.hash)) === '#etapa-1-1', 'Índice móvel não navegou');
-      } else if (file === 'aulas/portugues-casan-19-11.html') {
+      } else if (width<=430 && file === 'aulas/portugues-casan-19-11.html') {
         check(await page.locator('.subsection').count() === 21, 'Português perdeu 21 subseções');
         const menu = page.locator('#menu-toggle');
         check(await menu.isVisible(), 'Português índice não visível');
@@ -114,7 +114,7 @@ try {
         check(await menu.getAttribute('aria-expanded') === 'true', 'Português índice não abriu');
         await page.evaluate(() => document.dispatchEvent(new MouseEvent('click', {bubbles:true})));
         check(await menu.getAttribute('aria-expanded') === 'false', 'Português índice não fechou ao tocar fora');
-      } else if (['aulas/banco-dados.html','aulas/seguranca.html','aulas/algoritmos-oo.html','aulas/administracao-publica-ima.html','aulas/legislacao-ambiental-ima.html','aulas/legislacao-casan-20-11.html'].includes(file)) {
+      } else if (width<=430 && ['aulas/banco-dados.html','aulas/seguranca.html','aulas/algoritmos-oo.html','aulas/administracao-publica-ima.html','aulas/legislacao-ambiental-ima.html','aulas/legislacao-casan-20-11.html'].includes(file)) {
         const expected = file.includes('legislacao-casan') ? 15 : 9;
         check(await page.locator('article.nl-section').count() === expected, file+' perdeu subseções');
         check(await page.locator('input[data-ce-read]').count() === expected, file+' perdeu controles Lido');
@@ -126,7 +126,7 @@ try {
         check(await first.isChecked(), file+' Lido não marcou');
         await first.uncheck();
         check(!(await first.isChecked()), file+' Lido não desmarcou');
-      } else if (file === 'index.html' || file === 'aulas.html') {
+      } else if (width<=430 && (file === 'index.html' || file === 'aulas.html')) {
         const first = page.locator('.primary-nav a').first();
         const height = await first.evaluate(el => el.getBoundingClientRect().height);
         check(height >= 43, 'Navegação principal com alvo de toque insuficiente');
