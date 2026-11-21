@@ -15,7 +15,7 @@
 - `assets/lesson-unified.js`: `3e10f55878f6ff624d0e9c02f6b10f119176e418`. Converte tabelas estáticas em cartões completos com rótulos no mobile, acrescenta leitura textual de SVGs amplos e observa HTML dinâmico.
 - `assets/site.css`: `8391acbf74fcc13a17a040cc79498054a1ef7509`. Menus e filtros deixam de exigir scroll horizontal.
 - `assets/new-lesson.css`: `80718b4594f74844907633c572158cf44b792bc3`; `assets/practice-auto.css`: `2aed520bac0604a1d0144c8ba0708306d1062dac`; `assets/lesson-enhancements.css`: `dd92ae1f47dc84b15aef70d930bdbc809add6fc1` (inspecionados, sem alteração nesta rodada).
-- `scripts/verificar-mobile.mjs`: `d18adb5f471fae220aba50bae99058d8140387ee`. Agora enumera automaticamente arquivos da raiz e de `aulas/`, além de 25 microaulas e 25 conjuntos de questões por URL; emite evidência por SHA para cinco larguras.
+- `scripts/verificar-mobile.mjs`: `5a779f7f2face62ccc48d71650e1b23c97835968`. Agora enumera automaticamente arquivos da raiz e de `aulas/`, além de 25 microaulas e 25 conjuntos de questões por URL; emite evidência por SHA para cinco larguras e capturas de todas as páginas, mais capturas de elementos didáticos em 320/390 px.
 
 ## Inventário com revisão estática de código
 
