@@ -28,6 +28,19 @@
 - Preservar IDs de subseções, controles Lido, links, estado local e backups. Melhorias gráficas não equivalem a estudo realizado.
 - **Aplicação inicial:** `aulas/engenharia-qualidade.html`, módulo 2: símbolos desenhados para seis relações UML, exemplos de casos de uso/atividades/componentes/implantação e máquina de estados em notação visual.
 
+### Auditoria e aplicação às aulas já publicadas — 20/11/2026
+
+- Módulo UML de `aulas/engenharia-qualidade.html`: seis símbolos de relações, quatro tipos de diagrama e máquina de estados em SVG, mantendo 37 controles de leitura.
+- `aulas/banco-dados.html`: dois esquemas SVG (DER/cardinalidade e INNER × LEFT JOIN).
+- `aulas/algoritmos-oo.html`: três esquemas SVG (pilha × fila, herança × composição × dependência e fluxo controlador/serviço/repositório).
+- `aulas/seguranca.html`: dois esquemas SVG (Authorization Code com PKCE e preflight CORS).
+- `aulas/legislacao-casan-20-11.html`: um quadro SVG dos quatro componentes do saneamento e distinção entre papéis.
+- `aulas/administracao-publica-ima.html`: dois esquemas SVG (desconcentração × descentralização; anulação/revogação, com limites).
+- `aulas/legislacao-ambiental-ima.html`: dois esquemas SVG (competências constitucionais e funções do SISNAMA).
+- `aulas/rlm.html`: contém diagramas SVG, incluindo Venn, e exemplos visuais existentes. `aulas/portugues-casan-19-11.html`: contém exemplos explicados e dois SVGs; não forçar símbolos não convencionais em temas de interpretação e gramática.
+- Para toda **nova aula** e revisão das existentes, decidir se símbolos, estruturas, fluxos, comparações ou etapas operacionais têm benefício visual; se sim, mostrar figura no ponto da explicação, não apenas texto. Preservar seção e IDs de leitura. Evitar desenhos inventados com aparência de notação oficial: quando o esquema não for uma notação padronizada, rotulá-lo como didático.
+- As seis aulas atualizadas usam CSS `assets/lesson-unified.css?v=20261120visual2`, com rolagem horizontal do SVG no celular; leitura e desempenho não são alterados. Commits verificados no GitHub. **GitHub Pages não pôde ser acessado pela ferramenta web nesta revisão; não afirmar implantação pública confirmada.**
+
 ## Automatização implementada — estado vigente em 20/11/2026
 
 1. `assets/planner.js` usa `dados/concursos.json` para edital, datas e planejamento público. Atividades sugeridas não são marcadas como executadas automaticamente.
