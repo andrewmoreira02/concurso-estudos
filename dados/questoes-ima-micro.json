@@ -1,0 +1,1288 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-21",
+  "exam": "ima",
+  "description": "Primeiro lote de exercícios do IMA em 25 conjuntos por microaula. Itens próprios são autorais; adaptações históricas FURB reaproveitadas do banco com referência identificada. Questões de outros concursos não contaminam resultados IMA.",
+  "questions": [
+    {
+      "id": "ima-alg-1-1-q1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-alg-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Em um vetor não ordenado com n elementos, uma busca linear pode examinar quantos elementos no pior caso?",
+      "options": {
+        "a": "log2(n)",
+        "b": "1",
+        "c": "n",
+        "d": "n²"
+      },
+      "correct": "c",
+      "explanation": "Sem índice ou ordenação, o alvo pode ser o último ou não estar presente: a varredura inspeciona até n posições.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-alg-1-1-q2",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-alg-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Em um vetor ordenado de 1.024 elementos, a busca binária divide a área candidata pela metade a cada comparação. Qual é a ordem de crescimento?",
+      "options": {
+        "a": "O(1)",
+        "b": "O(log n)",
+        "c": "O(n)",
+        "d": "O(n²)"
+      },
+      "correct": "b",
+      "explanation": "A cada passo, a busca binária elimina aproximadamente metade dos candidatos; sua complexidade é logarítmica.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-alg-2-1-q1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-alg-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Um objeto Pedido usa uma classe Pagamento como um atributo, sem ser um tipo de Pagamento. A relação mais apropriada é:",
+      "options": {
+        "a": "Herança",
+        "b": "Composição ou associação, conforme ciclo de vida",
+        "c": "Sobrescrita",
+        "d": "Generalização"
+      },
+      "correct": "b",
+      "explanation": "Pedido tem uma referência a Pagamento, não é um Pagamento. O vínculo é de uso ou composição, conforme posse do ciclo de vida.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-alg-2-1-q2",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-alg-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual decisão exemplifica encapsulamento adequado?",
+      "options": {
+        "a": "Expor livremente todos os campos internos",
+        "b": "Deixar o banco decidir as regras de domínio",
+        "c": "Proteger invariantes com operações públicas controladas",
+        "d": "Fazer todas as classes herdarem da mesma base"
+      },
+      "correct": "c",
+      "explanation": "Encapsular é controlar como o estado muda, preservando invariantes; não depende obrigatoriamente de herança.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-bd-1-1-q1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-bd-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Cada pedido pertence a exatamente um cliente, e cada cliente pode ter vários pedidos. Qual a cardinalidade?",
+      "options": {
+        "a": "Cliente 1:N Pedido",
+        "b": "Cliente N:N Pedido necessariamente",
+        "c": "Cliente 1:1 Pedido",
+        "d": "Cliente N:1 Pedido"
+      },
+      "correct": "a",
+      "explanation": "Um cliente relaciona-se a muitos pedidos, mas cada pedido referencia um cliente; a relação é 1:N.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-bd-1-1-q2",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-bd-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Um pedido pode conter diversos produtos e um produto pode figurar em vários pedidos. Qual modelagem relacional normalizada é apropriada?",
+      "options": {
+        "a": "Guardar nomes dos produtos separados por vírgula",
+        "b": "Criar tabela associativa ItemPedido com chaves para Pedido e Produto",
+        "c": "Duplicar a tabela Produto para cada pedido",
+        "d": "Uma coluna Produto1, Produto2 e Produto3"
+      },
+      "correct": "b",
+      "explanation": "Uma relação N:N costuma ser implementada por uma tabela associativa que referencia ambas as entidades.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-bd-1-1-q3",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-bd-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Em um DER, um losango representa tipicamente, na notação Chen:",
+      "options": {
+        "a": "Atributo",
+        "b": "Entidade",
+        "c": "Relacionamento",
+        "d": "Chave primária"
+      },
+      "correct": "c",
+      "explanation": "Na notação Chen, entidade é retângulo, atributo é oval e relacionamento é losango; outras notações, como pé de galinha, diferem.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-bd-2-1-q1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-bd-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual cláusula filtra grupos agregados com COUNT(*) maior que cinco?",
+      "options": {
+        "a": "WHERE COUNT(*) > 5",
+        "b": "ORDER BY COUNT(*) > 5",
+        "c": "HAVING COUNT(*) > 5",
+        "d": "JOIN COUNT(*) > 5"
+      },
+      "correct": "c",
+      "explanation": "HAVING filtra grupos depois da agregação; WHERE filtra linhas antes da formação dos grupos.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-bd-2-1-q2",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-bd-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Em SELECT departamento, COUNT(*) FROM Servidor GROUP BY departamento, qual é o resultado conceitual?",
+      "options": {
+        "a": "Uma linha por servidor, sem contagem",
+        "b": "Uma linha por departamento com quantidade de servidores",
+        "c": "Uma linha única de todos os servidores",
+        "d": "Uma linha apenas para departamentos sem servidores"
+      },
+      "correct": "b",
+      "explanation": "GROUP BY reúne as linhas por departamento e COUNT(*) calcula uma contagem em cada grupo.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-bd-2-1-q3",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-bd-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual ordem lógica simplificada é correta numa consulta SELECT com agrupamento?",
+      "options": {
+        "a": "SELECT, WHERE, FROM, GROUP BY",
+        "b": "FROM, WHERE, GROUP BY, HAVING, SELECT",
+        "c": "ORDER BY, FROM, WHERE, SELECT",
+        "d": "HAVING, SELECT, GROUP BY, FROM"
+      },
+      "correct": "b",
+      "explanation": "A ordem lógica relevante é FROM, WHERE, GROUP BY, HAVING e SELECT, seguida de ORDER BY quando presente.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-bd-3-1-q1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-bd-3-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Uma transferência deve registrar débito e crédito integralmente ou nenhum dos dois. Qual propriedade ACID é mais diretamente exigida?",
+      "options": {
+        "a": "Atomicidade",
+        "b": "Durabilidade",
+        "c": "Isolamento",
+        "d": "Consistência eventual"
+      },
+      "correct": "a",
+      "explanation": "Atomicidade exige que as alterações da transação sejam indivisíveis: tudo ou nada.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-bd-3-1-q2",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-bd-3-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "O que o comando ROLLBACK faz antes do COMMIT de uma transação comum?",
+      "options": {
+        "a": "Confirma gravações em definitivo",
+        "b": "Desfaz alterações ainda não confirmadas da transação",
+        "c": "Cria uma nova tabela",
+        "d": "Bloqueia para sempre todas as linhas"
+      },
+      "correct": "b",
+      "explanation": "ROLLBACK reverte modificações pendentes na transação, conforme o comportamento do SGBD e das instruções usadas.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-seg-1-2-q1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-seg-1-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual é a defesa principal contra SQL Injection ao receber filtro de pesquisa de um formulário?",
+      "options": {
+        "a": "Concatenar o filtro diretamente no SQL",
+        "b": "Codificar HTML na resposta",
+        "c": "Usar parâmetros vinculados em consultas preparadas",
+        "d": "Desativar os logs"
+      },
+      "correct": "c",
+      "explanation": "Consultas parametrizadas separam dados de código SQL, evitando que texto do usuário seja interpretado como parte da consulta.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-seg-1-2-q2",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-seg-1-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual é uma defesa de saída relevante contra XSS refletido ao inserir texto de usuário num elemento HTML?",
+      "options": {
+        "a": "Escapar o conteúdo conforme o contexto de saída",
+        "b": "Usar apenas SELECT no banco",
+        "c": "Adicionar índice no banco",
+        "d": "Trocar HTTP por FTP"
+      },
+      "correct": "a",
+      "explanation": "A codificação contextual de saída impede que texto seja interpretado como marcação ou script; CSP pode acrescentar proteção.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-seg-2-1-q1",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-seg-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Após login válido, um usuário altera o identificador do pedido na URL e recebe um pedido de outra pessoa. Qual falha ocorreu?",
+      "options": {
+        "a": "Autenticação forte",
+        "b": "Falta de autorização por objeto (BOLA/IDOR)",
+        "c": "Hash inseguro necessariamente",
+        "d": "Ataque de força bruta ao login"
+      },
+      "correct": "b",
+      "explanation": "A aplicação verificou a identidade, mas não a permissão do usuário sobre o pedido específico.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-seg-2-1-q2",
+      "kind": "autoral",
+      "subject": "ti",
+      "tag": "ima-micro-ima-seg-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Em uma API, o que deve ser validado no servidor antes de devolver /contas/123?",
+      "options": {
+        "a": "Apenas se a pessoa está conectada",
+        "b": "Se o cliente usa navegador moderno",
+        "c": "Se a identidade autenticada tem acesso à conta 123",
+        "d": "Se o identificador é um número positivo"
+      },
+      "correct": "c",
+      "explanation": "A autorização precisa conferir permissões sobre o recurso alvo, não só autenticação global ou formato da URL.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-1-1-q1",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Uma autarquia pretende ocultar critérios de seleção sem justificativa legal. Qual princípio pode ser especialmente afetado?",
+      "options": {
+        "a": "Publicidade",
+        "b": "Hierarquia militar",
+        "c": "Informalidade plena",
+        "d": "Efetividade privada"
+      },
+      "correct": "a",
+      "explanation": "A publicidade exige transparência dos atos administrativos, ressalvadas hipóteses legítimas de sigilo.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-1-1-q2",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Um gestor decide favorecer candidato por amizade, apesar dos critérios objetivos. Qual princípio é diretamente atingido?",
+      "options": {
+        "a": "Impessoalidade",
+        "b": "Continuidade do serviço",
+        "c": "Presunção de inocência",
+        "d": "Autotutela"
+      },
+      "correct": "a",
+      "explanation": "A impessoalidade veda tratamento favorecido por vínculos pessoais alheios à finalidade pública.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-1-1-q3",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual afirmação sobre eficiência administrativa é correta?",
+      "options": {
+        "a": "Permite ignorar lei em nome da rapidez",
+        "b": "Elimina motivação obrigatória",
+        "c": "Exige boa gestão dentro dos limites jurídicos",
+        "d": "Torna todo procedimento sigiloso"
+      },
+      "correct": "c",
+      "explanation": "Eficiência orienta resultados e boa gestão, mas deve conviver com legalidade e garantias constitucionais.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-1-2-q1",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-1-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Uma secretaria cria internamente duas coordenações. Isso caracteriza:",
+      "options": {
+        "a": "Desconcentração",
+        "b": "Descentralização para pessoa jurídica diversa",
+        "c": "Privatização de serviço",
+        "d": "Criação de autarquia"
+      },
+      "correct": "a",
+      "explanation": "Distribuir competências no interior da mesma pessoa jurídica caracteriza desconcentração.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-1-2-q2",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-1-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual entidade da administração indireta possui personalidade jurídica própria de direito público?",
+      "options": {
+        "a": "Órgão de gabinete",
+        "b": "Autarquia",
+        "c": "Departamento de secretaria",
+        "d": "Coordenadoria de autarquia"
+      },
+      "correct": "b",
+      "explanation": "Autarquias integram a administração indireta e possuem personalidade jurídica de direito público; órgãos internos não têm personalidade própria.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-1-3-q1",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-1-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Um fiscal competente usa sua atribuição para punir desafeto sem finalidade pública. Trata-se, em tese, de:",
+      "options": {
+        "a": "Desvio de finalidade",
+        "b": "Poder hierárquico regular",
+        "c": "Apenas delegação",
+        "d": "Vício de forma exclusivamente"
+      },
+      "correct": "a",
+      "explanation": "Desvio de finalidade ocorre quando a competência é utilizada para objetivo diverso do interesse público legalmente previsto.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-1-3-q2",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-1-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Um agente sem atribuição legal interdita estabelecimento. O vício central é:",
+      "options": {
+        "a": "Excesso de poder, por extrapolar competência",
+        "b": "Descentralização administrativa",
+        "c": "Poder regulamentar",
+        "d": "Revogação de ato válido"
+      },
+      "correct": "a",
+      "explanation": "A atuação além dos limites de competência caracteriza excesso de poder, sujeita a controle de legalidade.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-1-3-q3",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-1-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual poder administrativo fundamenta imposição de restrições legais a atividades particulares por razão de interesse coletivo?",
+      "options": {
+        "a": "Poder disciplinar apenas",
+        "b": "Poder de polícia",
+        "c": "Poder constituinte",
+        "d": "Poder jurisdicional"
+      },
+      "correct": "b",
+      "explanation": "Poder de polícia permite condicionar direitos dentro dos limites legais e com proporcionalidade; não é punição sem controle.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-2-1-q1",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual conjunto apresenta os elementos tradicionais do ato administrativo?",
+      "options": {
+        "a": "Competência, finalidade, forma, motivo e objeto",
+        "b": "Prazo, meta, custeio, parecer e edital",
+        "c": "Hierarquia, súmula, protocolo, pauta e órgão",
+        "d": "Apenas vontade e publicação"
+      },
+      "correct": "a",
+      "explanation": "A doutrina clássica trata competência, finalidade, forma, motivo e objeto como elementos do ato administrativo.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-2-1-q2",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "A presunção de legitimidade dos atos administrativos é:",
+      "options": {
+        "a": "Absoluta e insuscetível de controle",
+        "b": "Relativa, admitindo prova em contrário",
+        "c": "Restrita a contratos particulares",
+        "d": "Inexistente em autarquias"
+      },
+      "correct": "b",
+      "explanation": "A presunção é relativa: um ato pode ser questionado e invalidado após demonstração de ilegalidade.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-2-1-q3",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "É correto afirmar sobre a autoexecutoriedade?",
+      "options": {
+        "a": "Está em todo ato sem exceção",
+        "b": "Autoriza agir sem lei em qualquer situação",
+        "c": "Depende de fundamento legal ou hipótese urgente admitida",
+        "d": "Impede fiscalização judicial"
+      },
+      "correct": "c",
+      "explanation": "Nem todo ato é autoexecutório; sua incidência depende de previsão ou condições jurídicas específicas.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-2-2-q1",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-2-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual providência recai sobre ato ilegal quando não é possível sanar o vício?",
+      "options": {
+        "a": "Anulação",
+        "b": "Revogação por mérito",
+        "c": "Renovação automática",
+        "d": "Homologação obrigatória"
+      },
+      "correct": "a",
+      "explanation": "A anulação decorre de ilegalidade; revogação analisa conveniência e oportunidade de ato válido.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-2-2-q2",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-2-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual situação descreve revogação?",
+      "options": {
+        "a": "Desfazimento de ato inválido por falta de competência",
+        "b": "Retirada de ato válido por conveniência e oportunidade, quando cabível",
+        "c": "Convalidação de qualquer vício sem limites",
+        "d": "Transformação de autarquia em órgão"
+      },
+      "correct": "b",
+      "explanation": "Revogação é controle de mérito de ato válido; não pode atingir indistintamente atos vinculados ou direitos adquiridos.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-2-3-q1",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-2-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Em processo administrativo sancionador, qual garantia deve ser observada?",
+      "options": {
+        "a": "Defesa e contraditório",
+        "b": "Punição sem ciência do interessado",
+        "c": "Sigilo absoluto contra a própria parte",
+        "d": "Ausência de motivação"
+      },
+      "correct": "a",
+      "explanation": "O interessado deve ter possibilidade de conhecer a imputação e exercer contraditório e ampla defesa.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-2-3-q2",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-2-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "A motivação de uma decisão administrativa consiste essencialmente em:",
+      "options": {
+        "a": "Indicar fatos e fundamentos jurídicos pertinentes",
+        "b": "Enviar apenas o resultado por mensagem informal",
+        "c": "Delegar a justificativa ao recorrente",
+        "d": "Citar o nome do servidor decisor"
+      },
+      "correct": "a",
+      "explanation": "Motivação explicita razões de fato e de direito para permitir compreensão e controle do ato.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-2-3-q3",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-2-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Um agente que tenha interesse pessoal direto no resultado do processo deve:",
+      "options": {
+        "a": "Participar sem declarar vínculo",
+        "b": "Observar regras de impedimento, afastando-se quando cabível",
+        "c": "Decidir para aumentar eficiência",
+        "d": "Alterar os autos para ocultar o vínculo"
+      },
+      "correct": "b",
+      "explanation": "O impedimento protege a imparcialidade e a integridade do processo administrativo.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-3-1-q1",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-3-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Em regra, a investidura em cargo efetivo depende de:",
+      "options": {
+        "a": "Concurso público, ressalvadas exceções constitucionais",
+        "b": "Indicação informal de gestor",
+        "c": "Aprovação de fornecedor",
+        "d": "Contrato de prestação de serviços"
+      },
+      "correct": "a",
+      "explanation": "A Constituição prevê aprovação prévia em concurso de provas ou provas e títulos para cargo ou emprego público, com exceções expressas.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-3-1-q2",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-3-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual conduta tende a configurar dever funcional de agente público?",
+      "options": {
+        "a": "Usar informações sigilosas para vantagem própria",
+        "b": "Atuar com probidade e respeito às atribuições",
+        "c": "Receber vantagem indevida de licitante",
+        "d": "Ignorar ordem legal apenas por conveniência"
+      },
+      "correct": "b",
+      "explanation": "A atuação exige probidade, respeito às competências e observância de deveres legais.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-3-1-q3",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-3-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Um servidor causa dano a terceiro ao atuar nessa qualidade. Qual análise é adequada?",
+      "options": {
+        "a": "Responsabilidade do Estado pode existir, com direito de regresso em hipóteses legais",
+        "b": "O terceiro deve obrigatoriamente processar só o servidor",
+        "c": "Não há responsabilidade possível",
+        "d": "Todo dano gera automaticamente demissão"
+      },
+      "correct": "a",
+      "explanation": "O art. 37, §6º trata da responsabilidade objetiva do ente perante terceiros, com regresso contra agente nas condições legais.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-3-2-q1",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-3-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual das opções é critério de julgamento previsto na Lei 14.133/2021?",
+      "options": {
+        "a": "Menor preço",
+        "b": "Maior amizade com gestor",
+        "c": "Sorteio irrestrito como regra",
+        "d": "Preferência por fornecedor habitual"
+      },
+      "correct": "a",
+      "explanation": "Menor preço é critério legal de julgamento; preferências pessoais não são critérios legítimos.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-3-2-q2",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-3-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "A fase de planejamento de contratação pública busca principalmente:",
+      "options": {
+        "a": "Definir necessidade e solução com justificativas técnicas e estimativa",
+        "b": "Escolher fornecedor por afinidade antes do estudo",
+        "c": "Dispensar avaliação de riscos sempre",
+        "d": "Ocultar requisitos dos interessados"
+      },
+      "correct": "a",
+      "explanation": "Planejar significa entender necessidade, riscos e requisitos antes da seleção e execução contratual.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-3-3-q1",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-3-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "O controle externo contábil-financeiro no Brasil é exercido, em linhas gerais:",
+      "options": {
+        "a": "Pelo Legislativo, com auxílio dos tribunais de contas",
+        "b": "Somente pelo servidor fiscalizado",
+        "c": "Exclusivamente pelo Poder Judiciário",
+        "d": "Apenas por auditor independente privado"
+      },
+      "correct": "a",
+      "explanation": "A Constituição atribui controle externo ao Legislativo com auxílio dos tribunais de contas, conforme competências do ente.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-adm-3-3-q2",
+      "kind": "autoral",
+      "subject": "adm",
+      "tag": "ima-micro-ima-adm-3-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual mecanismo caracteriza controle interno da Administração?",
+      "options": {
+        "a": "Fiscalização e avaliação de conformidade dentro da própria estrutura",
+        "b": "Ausência de prestação de contas",
+        "c": "Substituição integral do controle externo",
+        "d": "Impossibilidade de responsabilização"
+      },
+      "correct": "a",
+      "explanation": "O controle interno acompanha legalidade e gestão dentro da Administração, complementando o controle externo.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-1-1-q1",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Pelo art. 225 da Constituição, o meio ambiente ecologicamente equilibrado é:",
+      "options": {
+        "a": "Bem de uso comum do povo e essencial à sadia qualidade de vida",
+        "b": "Bem exclusivo do proprietário do terreno",
+        "c": "Interesse facultativo sem dever estatal",
+        "d": "Direito somente das gerações presentes"
+      },
+      "correct": "a",
+      "explanation": "O art. 225 assegura o direito e impõe ao Poder Público e à coletividade o dever de defendê-lo para presentes e futuras gerações.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-1-1-q2",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual atitude é coerente com o dever constitucional de proteção ambiental?",
+      "options": {
+        "a": "Prevenção e controle de atividades potencialmente degradadoras",
+        "b": "Dispensa universal de fiscalização",
+        "c": "Supressão de participação da coletividade",
+        "d": "Transferência total de dever ao particular"
+      },
+      "correct": "a",
+      "explanation": "A proteção ambiental envolve prevenção, fiscalização e responsabilidade compartilhada entre Estado e sociedade.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-1-1-q3",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-1-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "A exigência de estudo prévio de impacto ambiental, nas condições constitucionais, relaciona-se à:",
+      "options": {
+        "a": "Publicidade e prevenção dos efeitos de obra potencialmente causadora de significativa degradação",
+        "b": "Dispensa de exame técnico",
+        "c": "Autorização automática por interesse econômico",
+        "d": "Regularização sem fundamentação"
+      },
+      "correct": "a",
+      "explanation": "A Constituição prevê estudo prévio de impacto para instalação de obra ou atividade potencialmente causadora de significativa degradação ambiental.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-1-2-q1",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-1-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "É competência comum dos entes federativos, segundo a Constituição:",
+      "options": {
+        "a": "Proteger o meio ambiente e combater a poluição",
+        "b": "Editar exclusivamente leis federais em todo tema",
+        "c": "Julgar em última instância todos os recursos",
+        "d": "Criar moeda estadual"
+      },
+      "correct": "a",
+      "explanation": "A proteção ambiental integra competências administrativas comuns da União, estados, DF e municípios.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-1-2-q2",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-1-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Competência legislativa concorrente sobre proteção ambiental significa, em linhas gerais:",
+      "options": {
+        "a": "Atuação normativa da União em normas gerais e suplementação estadual nos limites constitucionais",
+        "b": "Ausência de atuação dos estados",
+        "c": "Legislação exclusivamente municipal",
+        "d": "Delegação sempre obrigatória ao Judiciário"
+      },
+      "correct": "a",
+      "explanation": "Na competência concorrente, cabe à União estabelecer normas gerais e aos estados suplementá-las nos termos da CF.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-1-2-q3",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-1-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Municípios podem legislar sobre assuntos de interesse local e suplementar normas aplicáveis quando:",
+      "options": {
+        "a": "Houver fundamento constitucional e respeito às normas superiores",
+        "b": "Quiserem invalidar qualquer regra federal",
+        "c": "Não existir órgão ambiental",
+        "d": "Forem dispensados de controle"
+      },
+      "correct": "a",
+      "explanation": "Interesse local e suplementação normativa têm limites constitucionais e não autorizam desrespeito às normas gerais.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-1-3-q1",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-1-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "A LC 140/2011 trata principalmente de:",
+      "options": {
+        "a": "Cooperação entre entes no exercício de competências administrativas ambientais",
+        "b": "Apenas tipificação de crimes ambientais",
+        "c": "Sistema de impostos sobre combustíveis",
+        "d": "Regras de concursos públicos"
+      },
+      "correct": "a",
+      "explanation": "A LC 140/2011 disciplina a cooperação federativa em matéria ambiental no campo das competências comuns.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-1-3-q2",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-1-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Na regra geral de licenciamento da LC 140/2011, um empreendimento é licenciado:",
+      "options": {
+        "a": "Por um único ente federativo competente, ressalvadas regras aplicáveis",
+        "b": "Simultaneamente por todos os municípios do estado",
+        "c": "Apenas pelo órgão federal em qualquer caso",
+        "d": "Sem qualquer análise de competência"
+      },
+      "correct": "a",
+      "explanation": "O licenciamento ordinário por um ente competente evita sobreposição procedimental, preservadas manifestações nos limites legais.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-1-3-q3",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-1-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "A atuação supletiva de outro ente em matéria ambiental pode ocorrer:",
+      "options": {
+        "a": "Nas hipóteses e condições legais, sem escolha arbitrária",
+        "b": "Sempre que for politicamente conveniente",
+        "c": "Somente quando não houver empreendimento",
+        "d": "Como substituição automática do controle judicial"
+      },
+      "correct": "a",
+      "explanation": "A LC 140 prevê situações de atuação supletiva ou subsidiária específicas; não é transferência informal e irrestrita.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-2-1-q1",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "A Política Nacional do Meio Ambiente é instituída pela:",
+      "options": {
+        "a": "Lei 6.938/1981",
+        "b": "Lei 14.133/2021",
+        "c": "Lei 9.784/1999",
+        "d": "LC 101/2000"
+      },
+      "correct": "a",
+      "explanation": "A Lei 6.938/1981 estabelece objetivos, princípios e instrumentos da Política Nacional do Meio Ambiente.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-2-1-q2",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "O objetivo geral da PNMA inclui:",
+      "options": {
+        "a": "Preservar, melhorar e recuperar a qualidade ambiental propícia à vida",
+        "b": "EliminAR integralmente a atividade econômica",
+        "c": "Substituir todos os órgãos estaduais por empresas privadas",
+        "d": "Impedir qualquer controle ambiental"
+      },
+      "correct": "a",
+      "explanation": "A PNMA procura compatibilizar desenvolvimento socioeconômico e manutenção da qualidade ambiental, nos termos da lei.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-2-1-q3",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-2-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual das medidas guarda relação com os instrumentos da PNMA?",
+      "options": {
+        "a": "Avaliação de impactos ambientais",
+        "b": "Dispensa universal de estudos",
+        "c": "Sigilo automático de dados ambientais",
+        "d": "Eliminação de padrões ambientais"
+      },
+      "correct": "a",
+      "explanation": "Avaliação de impactos ambientais é instrumento previsto no sistema da política ambiental.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-2-2-q1",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-2-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "No SISNAMA, qual é o papel geral do CONAMA?",
+      "options": {
+        "a": "Órgão consultivo e deliberativo nos termos legais",
+        "b": "Órgão estadual de fiscalização policial",
+        "c": "Tribunal ambiental",
+        "d": "Autarquia municipal de saneamento"
+      },
+      "correct": "a",
+      "explanation": "O CONAMA atua como órgão consultivo e deliberativo do SISNAMA, nos limites das atribuições legais.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-2-2-q2",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-2-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "O IBAMA integra o SISNAMA como:",
+      "options": {
+        "a": "Órgão executor federal",
+        "b": "Tribunal de contas",
+        "c": "Secretaria municipal",
+        "d": "Empresa pública de mineração"
+      },
+      "correct": "a",
+      "explanation": "O IBAMA atua na execução de competências ambientais federais, juntamente com outros órgãos integrantes do sistema.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-2-2-q3",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-2-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Os órgãos ambientais estaduais e municipais no SISNAMA:",
+      "options": {
+        "a": "Exercem funções ambientais em seus âmbitos de competência",
+        "b": "Não têm nenhuma função executiva",
+        "c": "Sempre substituem o CONAMA",
+        "d": "Podem afastar toda norma federal"
+      },
+      "correct": "a",
+      "explanation": "O SISNAMA é federativo, com distribuição de funções conforme normas e competências.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-2-3-q1",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-2-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Qual instrumento de gestão ambiental busca examinar efeitos potenciais de projeto antes da decisão?",
+      "options": {
+        "a": "Avaliação de impacto ambiental",
+        "b": "Registro de férias",
+        "c": "Tributação exclusiva de folha",
+        "d": "Auditoria contábil substitutiva"
+      },
+      "correct": "a",
+      "explanation": "A avaliação de impacto é instrumento da PNMA e informa decisões preventivas.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-2-3-q2",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-2-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Uma licença ambiental já emitida impede toda fiscalização futura?",
+      "options": {
+        "a": "Sim, em qualquer circunstância",
+        "b": "Não; o cumprimento das condições e a fiscalização continuam cabíveis",
+        "c": "Sim, se houver contrato particular",
+        "d": "Somente se a atividade tiver menos de dez trabalhadores"
+      },
+      "correct": "b",
+      "explanation": "Licença não equivale a imunidade a controle, monitoramento ou obrigações ambientais.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-3-1-q1",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-3-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "A Lei catarinense 14.675/2009 é conhecida como:",
+      "options": {
+        "a": "Código Estadual do Meio Ambiente",
+        "b": "Lei Orgânica da Advocacia",
+        "c": "Código Tributário Nacional",
+        "d": "Estatuto dos Servidores Federais"
+      },
+      "correct": "a",
+      "explanation": "A Lei 14.675/2009 institui o Código Estadual do Meio Ambiente de Santa Catarina.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-3-1-q2",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-3-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Ao aplicar norma estadual ambiental, o intérprete deve:",
+      "options": {
+        "a": "Considerar a redação vigente e a compatibilidade com regras federais pertinentes",
+        "b": "Ignorar alterações legais posteriores",
+        "c": "Aplicar somente artigo revogado",
+        "d": "Substituir a lei por um resumo de apostila"
+      },
+      "correct": "a",
+      "explanation": "A legislação ambiental exige consulta à versão vigente e respeito à repartição de competências.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-3-1-q3",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-3-1",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Uma norma estadual pode disciplinar procedimentos ambientais de competência estadual:",
+      "options": {
+        "a": "Nos limites constitucionais e legais",
+        "b": "Sem atender qualquer norma geral federal",
+        "c": "Mesmo contrariando decisões judiciais definitivas",
+        "d": "Apenas por acordo verbal"
+      },
+      "correct": "a",
+      "explanation": "O estado pode regulamentar competências ambientais próprias sem afastar limites jurídicos superiores.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-3-2-q1",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-3-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Política ambiental estadual deve ser interpretada em harmonia com:",
+      "options": {
+        "a": "A Constituição e normas gerais nacionais aplicáveis",
+        "b": "A preferência pessoal do fiscal",
+        "c": "O lucro isolado do empreendimento",
+        "d": "Somente acordos privados"
+      },
+      "correct": "a",
+      "explanation": "A política estadual deve coexistir com os deveres constitucionais e com a legislação geral pertinente.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-3-2-q2",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-3-2",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Um instrumento de controle previsto em política ambiental estadual destina-se a:",
+      "options": {
+        "a": "Prevenir, mitigar ou monitorar impactos conforme sua disciplina legal",
+        "b": "Impedir toda participação técnica",
+        "c": "Substituir automaticamente todas as licenças",
+        "d": "Garantir autorização a qualquer custo"
+      },
+      "correct": "a",
+      "explanation": "Instrumentos de política ambiental operam conforme hipóteses e finalidades definidas na legislação estadual vigente.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-3-3-q1",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-3-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "A Lei catarinense 17.354/2017 está relacionada a:",
+      "options": {
+        "a": "Criação e organização institucional do IMA de Santa Catarina",
+        "b": "Regulamentação de criptomoedas",
+        "c": "Contratação exclusiva de professores",
+        "d": "Extinção da proteção ambiental estadual"
+      },
+      "correct": "a",
+      "explanation": "A Lei 17.354/2017 trata do Instituto do Meio Ambiente de Santa Catarina, conforme redação vigente.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-3-3-q2",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-3-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "Ao estudar atribuições do IMA, é correto:",
+      "options": {
+        "a": "Conferir as competências da lei de criação e normas posteriores aplicáveis",
+        "b": "Assumir que todo órgão ambiental licencia qualquer atividade no país",
+        "c": "Ignorar a LC 140/2011",
+        "d": "Tratar o IMA como tribunal federal"
+      },
+      "correct": "a",
+      "explanation": "As competências institucionais decorrem das normas que as atribuem, respeitando repartição federativa e alterações.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    },
+    {
+      "id": "ima-la-3-3-q3",
+      "kind": "autoral",
+      "subject": "legislacao",
+      "tag": "ima-micro-ima-la-3-3",
+      "exams": [
+        "ima"
+      ],
+      "prompt": "A natureza de entidade administrativa do IMA implica:",
+      "options": {
+        "a": "Atuação pública vinculada às competências legais e sujeita a controle",
+        "b": "Poder legislativo federal próprio",
+        "c": "Imunidade ao controle de contas",
+        "d": "Livre atuação sem base normativa"
+      },
+      "correct": "a",
+      "explanation": "A atuação institucional deve respeitar competências, finalidade pública, controles e legislação específica.",
+      "whyWrong": "As opções incorretas descrevem outra competência, procedimento ou conceito, ou contrariam as condições do enunciado. Compare-as com a justificativa e com o exemplo da microaula.",
+      "source": "Questão didática autoral, não atribuída à FURB"
+    }
+  ]
+}
