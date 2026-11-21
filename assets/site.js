@@ -390,6 +390,7 @@
         card.hidden=!show;
         if(show)visible++;
       });
+      const micro=$('ima-microtrilha');if(micro)micro.hidden=!(active==='ima'||active==='todas');
       const empty=$('emptyCatalog');if(empty)empty.hidden=visible!==0;
       const count=$('catalogCount');if(count)count.textContent=visible+' aula(s) encontrada(s)';
     }
