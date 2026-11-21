@@ -74,8 +74,11 @@ try{
    'Distribuição da reta final incorreta: '+JSON.stringify(distribution));
  const originalCount=await page.locator('.ce-original-source').count();
  assert(originalCount===13,'O simulado da CASAN deve ter 13 questões adaptadas de fontes reais e 2 autorais, encontrado '+originalCount);
- assert(await page.locator('.ce-original-source a').count()===0,
-   'Questão do simulado deve aparecer no próprio site, sem link a caderno PDF');
+ const originalLinks=await page.locator('.ce-original-source a').evaluateAll(anchors=>
+   anchors.map(a=>({href:a.href,text:a.textContent.trim()})));
+ assert(originalLinks.every(x=>/^https:\/\/(?:arquivos\.qconcursos\.com|anexos\.cdn\.selecao\.net\.br)\//.test(x.href)&&
+   /Caderno original|Gabarito original/.test(x.text)),
+   'Fontes externas devem ser apenas links opcionais e verificáveis; enunciados e alternativas permanecem no site');
  assert(await page.locator('.ce-original-source strong').evaluateAll(nodes=>nodes.every(n=>n.textContent.includes('Instituto AOCP')&&n.textContent.includes('2025'))),'Bloco CASAN contém referências que não são Instituto AOCP 2025');
  assert(await page.locator('input[type="radio"][value="e"]').count()===13,
    'Cada questão adaptada deve exibir cinco alternativas completas A–E');
