@@ -87,7 +87,7 @@ async function load(){
       microReserve.schema_version!==1||microReserve.exam!=='ima'||!Array.isArray(microReserve.questions)||
       microReserve.questions.length<50||!microReserve.questions.every(q=>q.kind==='autoral'&&validQuestion(q)&&q.exams.includes('ima')))
      throw Error('Reserva IMA de 25 microaulas ou questões incompleta');
-   const specific=imaSpecificItems();
+   const specific=imaSpecificItems(all);
    all.push(...specific,...microReserve.questions);
    const byId=new Map(all.map(q=>[q.id,q]));
    for(const u of microCatalog.units){
@@ -165,11 +165,11 @@ function buildForm(items,exam,topic,source,reviewId=null){
 }
 // Os itens específicos FURB ficam separados do simulado IMA compartilhado.
 // Preservam a procedência original e têm gabaritos PRÓPRIOS de adaptação.
-function imaSpecificItems(){
+function imaSpecificItems(availableQuestions=bank?.questions||[]){
  const raw=window.ConcursoCobrancaData;
  if(!raw||!raw.sources||!raw.cases)throw Error('Questões FURB específicas indisponíveis.');
  const items=[];
- const uniqueTi=bank.questions.find(q=>q.id==='furb2023-as-q31-ad-v1');
+ const uniqueTi=availableQuestions.find(q=>q.id==='furb2023-as-q31-ad-v1');
  if(!uniqueTi)throw Error('FURB 2023 questão 31 não catalogada.');
  items.push(uniqueTi);
  for(const [lesson,subject] of [['administracao-publica-ima','adm'],['legislacao-ambiental-ima','legislacao']]){
