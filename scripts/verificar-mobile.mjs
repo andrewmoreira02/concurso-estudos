@@ -82,6 +82,25 @@ try {
       await page.waitForTimeout(query?550:220);
       const dims = await inspectOverflow(page);
       results.push({file,width,htmlSha:blobSha(filename),dependencies:dependencies(filename),...dims});
+
+      // Capturas para conferência humana de conteúdo: cabeçalho em cinco larguras,
+      // tabelas/diagramas/código em 320 e 390 px. Não equivalem à inspeção feita.
+      const slug=file.replace(/[^a-z0-9-]+/gi,'_');
+      await page.screenshot({path:'artifacts/mobile/'+width+'-'+slug+'.png',animations:'disabled'});
+      if(width===320 || width===390){
+        const visual=page.locator('.ce-visual-example,.diagram,.table-scroll,.tablewrap,.table-wrap,pre,.formula');
+        const count=Math.min(await visual.count(),30);
+        for(let i=0;i<count;i++){
+          const el=visual.nth(i);
+          if(!(await el.isVisible()))continue;
+          try{
+            await el.screenshot({path:'artifacts/mobile/'+width+'-'+slug+'-conteudo-'+(i+1)+'.png',animations:'disabled'});
+          }catch(e){
+            errors.push(file+' '+width+'px: falha ao capturar elemento '+(i+1)+': '+String(e));
+          }
+        }
+      }
+
       for(const bad of dims.internals)errors.push(file+' '+width+'px: overflow interno '+JSON.stringify(bad));
       if(filename==='aulas/legislacao-casan-20-11.html' && (width===320||width===390)){
         await page.locator('#leg-1-1 .ce-visual-example').screenshot({
