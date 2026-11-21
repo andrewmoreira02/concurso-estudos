@@ -20,18 +20,26 @@ for(const name of [...casanLessons,...imaLessons]){
 const data=JSON.parse(read('dados/blocos-questoes-casan.json'));
 const ao=JSON.parse(read('dados/questoes-casan-aocp.json'));
 const au=JSON.parse(read('dados/questoes.json'));
-const bank=new Map([...ao.questions,...au.questions].map(q=>[q.id,q]));
+const extra=JSON.parse(read('dados/questoes-casan-extra.json'));
+const bank=new Map([...ao.questions,...au.questions,...extra.questions].map(q=>[q.id,q]));
 assert.equal(data.exam,'casan');
 assert(data.min_ready_pages>=5&&data.sets.length>=data.min_ready_pages,'Reserva mínima de cinco páginas indisponível');
 const used=new Set();
 for(const s of data.sets){
  assert(s.question_ids.length>=3&&s.href.startsWith('aulas/questoes-')&&s.href.endsWith('-casan.html'),'Conjunto de questões não íntegro: '+s.id);
- assert(Object.keys(s.module_by_question||{}).length===s.question_ids.length,
-  'Cada questão precisa indicar o módulo teórico correspondente: '+s.id);
- const modules=s.question_ids.map(id=>s.module_by_question[id]);
- assert(modules.every(n=>Number.isInteger(n)&&n>=1&&n<=11),'Módulo curricular inválido: '+s.id);
- assert(modules.every((n,i)=>i===0||n>=modules[i-1]),
-  'As questões devem respeitar a sequência do conteúdo em '+s.id);
+ if(s.id.startsWith('extra-')){
+  assert(Object.keys(s.module_by_question||{}).length===0,
+   'Baterias pós-conteúdo CASAN não devem ser liberadas por módulo isolado: '+s.id);
+  assert(/após|depois|pós/i.test(s.selection_policy||s.description||''),
+   'Bateria extra deve declarar política pós-conteúdo: '+s.id);
+ }else{
+  assert(Object.keys(s.module_by_question||{}).length===s.question_ids.length,
+   'Cada questão temática precisa indicar o módulo teórico correspondente: '+s.id);
+  const modules=s.question_ids.map(id=>s.module_by_question[id]);
+  assert(modules.every(n=>Number.isInteger(n)&&n>=1&&n<=11),'Módulo curricular inválido: '+s.id);
+  assert(modules.every((n,i)=>i===0||n>=modules[i-1]),
+   'As questões devem respeitar a sequência do conteúdo em '+s.id);
+ }
  assert(existsSync(s.href),'Página ainda não publicada no repositório: '+s.href);
  const html=read(s.href);
  assert(html.includes('data-ce-practice="topic"')&&html.includes('data-ce-topic-set="'+s.id+'"'),
