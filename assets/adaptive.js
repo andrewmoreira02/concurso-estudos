@@ -12,7 +12,7 @@ const rlmKey='concursos_rlm_sections_read_v3';
 const engKey='concurso_eng_qualidade_steps_v1';
 const ptKey='concursos:casan2026:portugues:2026-11-19:subsections:v1';
 const logsKey='ce_question_logs_v1', reviewKey='ce_review_done_v1',planKey='ce_plan_done_v1',studyKey='ce_study_confirmed_v1';
-let config=null,questionSets=[],panel=null,details=null,status=null,button=null,refreshing=false,nextRefresh=false,renderedSignature='';
+let config=null,questionSets=[],imaMicroUnits=[],panel=null,details=null,status=null,button=null,refreshing=false,nextRefresh=false,renderedSignature='';
 const parse=(key,fallback)=>{try{const text=localStorage.getItem(key);const value=text===null?null:JSON.parse(text);return value===null?fallback:value;}catch{return fallback;}};
 const isRecord=x=>!!x&&typeof x==='object'&&!Array.isArray(x);
 const isoToday=()=>{const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const get=k=>parts.find(p=>p.type===k)?.value;return get('year')+'-'+get('month')+'-'+get('day');};
@@ -297,6 +297,37 @@ function model(){
    (lastDays?' Na reta final, priorize primeiro os tópicos essenciais ainda pendentes.':'')+
    ' Somente Enviar registra uma avaliação.'});
  }
+ let imaSuggestedQuestion=null,imaSuggestedLesson=null;
+ if(exam==='ima'&&imaMicroUnits.length===25){
+   const submitted=attempted;
+   const states=imaMicroUnits.map(u=>({
+     unit:u,
+     read:readSet(u.source.lesson).has(u.source.section),
+     evaluated:u.question_ids.every(id=>submitted.has(id))
+   }));
+   // Recuperação imediata após a leitura; sem bloquear acesso voluntário às questões.
+   const pending=states.find(x=>x.read&&!x.evaluated);
+   const next=states.find(x=>!x.read);
+   picks.length=0;
+   if(pending){
+     imaSuggestedQuestion={type:'quiz',title:'Questão sugerida · '+pending.unit.title,
+       href:pending.unit.questions_href,
+       description:pending.unit.question_ids.length+' questões específicas desta seção, com correção e revisões somente após Enviar. A marcação Lido não equivale a estudo ou avaliação.'};
+     picks.push(imaSuggestedQuestion);
+   }
+   if(next){
+     imaSuggestedLesson={type:'lesson',title:'Microaula IMA · '+next.unit.title,
+       href:next.unit.lesson_href,
+       description:'Uma seção aprofundada, com exemplos, diagramas e leitura individual. Após Lido, sugerir somente as questões correspondentes. '+next.unit.subject_label+' · prova FURB.'};
+     picks.push(imaSuggestedLesson);
+   }
+   if(due.length){
+     const item=due[0];picks.push({type:'review',title:'Revisão pendente: '+item.topic,href:'revisoes.html',
+       description:due.length+' revisão(ões) vencida(s), gerada(s) a partir de erros enviados no edital IMA.'});
+   }
+   if(!pending&&!next)picks.push({type:'quiz',title:'Revisar retenção e questões de assuntos estudados',href:'aulas/questoes-ima.html',
+     description:'As 25 microaulas iniciais foram marcadas Lido e seus conjuntos avaliados; outras lacunas do edital permanecem na matriz IMA.'});
+ }
  if(!picks.length){
   if(!exam)picks.push({type:'plan',title:'Revisar a prioridade do concurso',href:'planejamento.html',
    description:'As janelas cadastradas terminaram; não seguir concursos antigos automaticamente.'});
@@ -312,7 +343,7 @@ function model(){
  }));
  const unreadEquivalents=relevant.reduce((sum,l)=>sum+(l.total-l.read)/l.total,0);
  const minEquivalents=Math.max(1,Math.min(10,config.adaptive_study?.minimum_unread_equivalents||5));
- return {today,exam,daysRemaining,availableQuestionSets,allCourseModules,extraReady,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
+ return {today,exam,daysRemaining,availableQuestionSets,allCourseModules,extraReady,imaSuggestedQuestion,imaSuggestedLesson,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
   unreadEquivalents,minEquivalents};
 }
 
@@ -439,10 +470,26 @@ function renderStudyPriority(data){
 function render(data){
  const signature=JSON.stringify({
    exam:data.exam,daysRemaining:data.daysRemaining,readyQuestionSets:data.availableQuestionSets,head:data.picks,lesson:data.active?.id,lessonNext:data.active?.first,
-   evidence:data.lessons.map(l=>[l.id,l.read,l.total,l.studiedCount]),subjects:data.subjects.map(x=>[x.name,x.priority,x.valid,x.correct]),due:data.due.length,agenda:data.agenda,available:data.unreadEquivalents,extraReady:data.extraReady,allCourseModules:data.allCourseModules
+   evidence:data.lessons.map(l=>[l.id,l.read,l.total,l.studiedCount]),subjects:data.subjects.map(x=>[x.name,x.priority,x.valid,x.correct]),due:data.due.length,agenda:data.agenda,available:data.unreadEquivalents,extraReady:data.extraReady,allCourseModules:data.allCourseModules,imaSuggestedQuestion:data.imaSuggestedQuestion,imaSuggestedLesson:data.imaSuggestedLesson
  });
  orderCatalog(data);
  renderStudyPriority(data);
+ const casanCard=$('casanFinalCard');
+ if(casanCard)casanCard.hidden=data.exam!=='casan';
+ const imaQuestionCard=$('imaQuestionSuggested');
+ if(imaQuestionCard){
+   imaQuestionCard.hidden=data.exam!=='ima';
+   const link=$('imaQuestionLink'),desc=$('imaQuestionDescription');
+   if(data.exam==='ima'){
+     const rec=data.imaSuggestedQuestion;
+     if(desc)desc.textContent=rec?rec.description:
+       'Assim que marcar uma microaula como Lido, aparecerá aqui seu conjunto de questões. Enquanto isso, a prioridade é ler o conteúdo recomendado.';
+     if(link){
+       link.href=localHref(rec?.href||data.imaSuggestedLesson?.href||'aulas.html#ima-microtrilha');
+       link.textContent=rec?'Responder às questões sugeridas':'Abrir próxima microaula';
+     }
+   }
+ }
  const practiceSection=$('ceQuestionInventory'),practiceHint=$('ceQuizRecommended');
  if(practiceSection)practiceSection.hidden=data.exam!=='casan';
  if(practiceHint&&data.exam==='casan'){
@@ -472,7 +519,9 @@ function render(data){
    if(data.exam){
      const quantity=data.unreadEquivalents.toFixed(2).replace('.',',');
      const deficit=Math.max(0,Math.ceil((data.minEquivalents-data.unreadEquivalents)-1e-9));
-     const message='Fila de leitura: '+quantity+' aulas completas equivalentes ainda não lidas (meta: '+data.minEquivalents+'). '+(deficit>0?'Faltam '+deficit+' aula(s) integralmente não lida(s) para a reserva mínima; a tarefa editorial do GPT deverá produzi-las.':'Reserva mínima atendida com material já publicado.');
+     const message=data.exam==='ima'
+       ?'Trilha inicial: 25 microaulas de uma seção cada e 25 conjuntos de questões (3–4 itens por assunto). Conjuntos sugeridos após Lido; não representam cobertura integral do edital. O diagnóstico de estudo e domínio permanece separado.'
+       :'Fila de leitura: '+quantity+' aulas completas equivalentes ainda não lidas (meta: '+data.minEquivalents+'). '+(deficit>0?'Faltam '+deficit+' aula(s) integralmente não lida(s) para a reserva mínima; a tarefa editorial do GPT deverá produzi-las.':'Reserva mínima atendida com material já publicado.');
      details.append(el('p','ce-adaptive-queue',message));
    }
    const namedLesson=data.active;
@@ -540,6 +589,15 @@ async function getConfig(){
  const next=await response.json(),sets=await setsResponse.json();
  if(sets.schema_version!==1||!Array.isArray(sets.sets)||sets.sets.length<5)throw Error('Reserva de questões insuficiente');
  questionSets=sets.sets;
+ // Manifesto editorial público: não inclui estado nem respostas pessoais.
+ try{
+   const response=await fetch(localHref('dados/microaulas-ima.json'),{cache:'no-store'});
+   if(!response.ok)throw Error('Microaulas IMA indisponíveis');
+   const manifest=await response.json();
+   if(manifest.schema_version!==1||manifest.exam!=='ima'||!Array.isArray(manifest.units)||manifest.units.length!==25||
+      new Set(manifest.units.map(u=>u.id)).size!==25)throw Error('Catálogo IMA inválido');
+   imaMicroUnits=manifest.units;
+ }catch{imaMicroUnits=[];}
  if(next.schema_version!==1||next.adaptive_study?.schema_version!==1||
  !Array.isArray(next.adaptive_study.lessons)||!next.exams||!next.priority_windows||!next.calendar)throw Error('Configuração adaptativa incompleta');
  for(const lesson of next.adaptive_study.lessons){
