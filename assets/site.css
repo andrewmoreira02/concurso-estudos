@@ -60,3 +60,15 @@
  .catalog-card .course-head h3{min-width:0;overflow-wrap:anywhere}
  .catalog-card .tag{max-width:100%;white-space:normal;overflow-wrap:break-word}
 }
+
+
+/* auditoria-mobile-nav-wrap: nenhuma aba ou filtro depende de deslizar para o lado. */
+@media(max-width:700px){
+ .primary-nav{display:flex;flex-wrap:wrap!important;overflow-x:visible!important;
+   scroll-snap-type:none!important;gap:5px}
+ .primary-nav a{white-space:normal;flex:0 1 auto;min-width:0;
+   overflow-wrap:anywhere;scroll-snap-align:none}
+ .catalog-filters{display:flex;flex-wrap:wrap!important;
+   overflow-x:visible!important;gap:7px}
+ .catalog-filters .filter-chip{max-width:100%;white-space:normal}
+}
