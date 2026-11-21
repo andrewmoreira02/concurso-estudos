@@ -85,9 +85,72 @@ function portugueseHeader(){
  header.append(brand,nav);
  document.body.insertBefore(header,document.body.querySelector('.layout'));
 }
+
+/* Compatibilidade mobile: tabelas extensas viram cartões completos e os rótulos
+ * de SVGs continuam legíveis. Não altera o HTML-fonte nem os IDs de leitura.
+ * Os elementos originais seguem disponíveis fora do breakpoint mobile. */
+function responsiveLessonContent(root){
+ for(const table of root.querySelectorAll('table:not([data-ce-mobile-table])')){
+   if(table.querySelector('input,select,button,textarea,[contenteditable]'))continue;
+   const headings=[...table.querySelectorAll('thead tr:last-child th')].map(el=>el.textContent.trim());
+   const trs=[...table.querySelectorAll('tbody tr')];
+   if(!trs.length || !headings.length)continue;
+   const cards=document.createElement('div');
+   cards.className='ce-mobile-table-cards';
+   const caption=table.querySelector('caption')?.textContent.trim() || table.getAttribute('aria-label') || 'Tabela comparativa';
+   cards.setAttribute('aria-label', 'Leitura vertical: '+caption);
+   for(const tr of trs){
+     const cells=[...tr.children].filter(el=>/^(TD|TH)$/.test(el.tagName));
+     if(!cells.length)continue;
+     const item=document.createElement('section'); item.className='ce-mobile-table-card';
+     const dl=document.createElement('dl');
+     cells.forEach((cell,i)=>{
+       const dt=document.createElement('dt');dt.textContent=headings[i] || 'Coluna '+(i+1);
+       const dd=document.createElement('dd');
+       for(const child of cell.childNodes)dd.appendChild(child.cloneNode(true));
+       dl.append(dt,dd);
+     });
+     item.append(dl);cards.append(item);
+   }
+   if(!cards.children.length)continue;
+   table.dataset.ceMobileTable='ready';
+   table.insertAdjacentElement('afterend',cards);
+ }
+ for(const svg of root.querySelectorAll('.ce-visual-example svg, .diagram svg')){
+   if(svg.dataset.ceMobileLegend)continue;
+   const vb=svg.viewBox?.baseVal;
+   if(!vb || vb.width<440)continue;
+   const labels=[...new Set([...svg.querySelectorAll('text')].map(el=>el.textContent.trim().replace(/\s+/g,' ')).filter(Boolean))];
+   const description=svg.getAttribute('aria-label')||'Diagrama vetorial';
+   if(!labels.length && !description)continue;
+   const legend=document.createElement('div');legend.className='ce-mobile-diagram-legend';
+   const title=document.createElement('strong');title.textContent='Leitura legível do diagrama';
+   const note=document.createElement('p');note.textContent=description;
+   legend.append(title,note);
+   if(labels.length){
+     const ul=document.createElement('ul');
+     labels.forEach(label=>{const li=document.createElement('li');li.textContent=label;ul.append(li)});
+     legend.append(ul);
+   }
+   svg.dataset.ceMobileLegend='ready';
+   svg.insertAdjacentElement('afterend',legend);
+ }
+}
+function initResponsiveContent(main){
+ responsiveLessonContent(main);
+ let queued=false;
+ const observer=new MutationObserver(()=>{
+   if(queued)return;
+   queued=true;
+   requestAnimationFrame(()=>{queued=false;responsiveLessonContent(main)});
+ });
+ observer.observe(main,{childList:true,subtree:true});
+}
+
 function init(){
  if(!isLesson())return;
  const main=document.querySelector('main');if(!main)return;
+ initResponsiveContent(main);
  if(main.querySelector('#ferramentas-da-aula'))return;
  const tools=createTools(main);
  const kind=document.body.classList;
