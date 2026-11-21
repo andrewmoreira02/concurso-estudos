@@ -20,7 +20,8 @@
         "ti-bigo-08",
         "ima-alg-1-1-q1",
         "ima-alg-1-1-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre busca linear, busca binária e big-o, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-alg-2-1",
@@ -38,7 +39,8 @@
         "furb2023-as-q26-ad-v1",
         "ima-alg-2-1-q1",
         "ima-alg-2-1-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre encapsulamento, herança e composição, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-bd-1-1",
@@ -56,7 +58,8 @@
         "ima-bd-1-1-q1",
         "ima-bd-1-1-q2",
         "ima-bd-1-1-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre entidades, relacionamentos e cardinalidade, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-bd-2-1",
@@ -74,7 +77,8 @@
         "ima-bd-2-1-q1",
         "ima-bd-2-1-q2",
         "ima-bd-2-1-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre select, where, group by, having e ordem lógica, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-bd-3-1",
@@ -93,7 +97,8 @@
         "ti-acid-04",
         "ima-bd-3-1-q1",
         "ima-bd-3-1-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre acid, commit e rollback, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-seg-1-2",
@@ -111,7 +116,8 @@
         "ti-sqli-09",
         "ima-seg-1-2-q1",
         "ima-seg-1-2-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre sql injection e xss: canais de ataque diferentes, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-seg-2-1",
@@ -129,7 +135,8 @@
         "ti-auth-05",
         "ima-seg-2-1-q1",
         "ima-seg-2-1-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre autenticação e autorização por objeto (bola/idor), com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-adm-1-1",
@@ -147,7 +154,8 @@
         "ima-adm-1-1-q1",
         "ima-adm-1-1-q2",
         "ima-adm-1-1-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre princípios constitucionais e alcance, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-adm-1-2",
@@ -166,7 +174,8 @@
         "ima-esp-furb25-76-adm",
         "ima-adm-1-2-q1",
         "ima-adm-1-2-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre administração direta, indireta e descentralização, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-adm-1-3",
@@ -184,7 +193,8 @@
         "ima-adm-1-3-q1",
         "ima-adm-1-3-q2",
         "ima-adm-1-3-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre poderes administrativos e abuso, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-adm-2-1",
@@ -202,7 +212,8 @@
         "ima-adm-2-1-q1",
         "ima-adm-2-1-q2",
         "ima-adm-2-1-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre atos administrativos: elementos e atributos, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-adm-2-2",
@@ -220,7 +231,8 @@
         "ima-esp-furb25-75-adm",
         "ima-adm-2-2-q1",
         "ima-adm-2-2-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre anulação, revogação e convalidação, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-adm-2-3",
@@ -238,7 +250,8 @@
         "ima-adm-2-3-q1",
         "ima-adm-2-3-q2",
         "ima-adm-2-3-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre processo administrativo e garantias, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-adm-3-1",
@@ -256,7 +269,8 @@
         "ima-adm-3-1-q1",
         "ima-adm-3-1-q2",
         "ima-adm-3-1-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre agentes públicos: provimento, deveres e responsabilidade, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-adm-3-2",
@@ -274,7 +288,8 @@
         "ima-esp-furb25-79-adm",
         "ima-adm-3-2-q1",
         "ima-adm-3-2-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre licitações e contratos: lógica da lei 14.133/2021, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-adm-3-3",
@@ -292,7 +307,8 @@
         "ima-esp-furb25-77-adm",
         "ima-adm-3-3-q1",
         "ima-adm-3-3-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre controle da administração e responsabilização, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-la-1-1",
@@ -310,7 +326,8 @@
         "ima-la-1-1-q1",
         "ima-la-1-1-q2",
         "ima-la-1-1-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre o direito ao meio ambiente e os deveres de proteção, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-la-1-2",
@@ -328,7 +345,8 @@
         "ima-la-1-2-q1",
         "ima-la-1-2-q2",
         "ima-la-1-2-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre competência comum e competência legislativa, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-la-1-3",
@@ -346,7 +364,8 @@
         "ima-la-1-3-q1",
         "ima-la-1-3-q2",
         "ima-la-1-3-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre lc 140/2011: quem licencia e quem coopera, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-la-2-1",
@@ -364,7 +383,8 @@
         "ima-la-2-1-q1",
         "ima-la-2-1-q2",
         "ima-la-2-1-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre lei 6.938/1981: objetivos e lógica da política, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-la-2-2",
@@ -382,7 +402,8 @@
         "ima-la-2-2-q1",
         "ima-la-2-2-q2",
         "ima-la-2-2-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre sisnama e papéis dos órgãos, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-la-2-3",
@@ -401,7 +422,8 @@
         "ima-esp-floram-65-legislacao",
         "ima-la-2-3-q1",
         "ima-la-2-3-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre instrumentos da pnma e licenciamento, com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-la-3-1",
@@ -419,7 +441,8 @@
         "ima-la-3-1-q1",
         "ima-la-3-1-q2",
         "ima-la-3-1-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre código estadual: disposições gerais (título i), com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-la-3-2",
@@ -437,7 +460,8 @@
         "ima-esp-brusque-36-legislacao",
         "ima-la-3-2-q1",
         "ima-la-3-2-q2"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre política estadual: princípios, objetivos e instrumentos (título ii), com controles de leitura e exercícios específicos."
     },
     {
       "id": "ima-la-3-3",
@@ -455,7 +479,8 @@
         "ima-la-3-3-q1",
         "ima-la-3-3-q2",
         "ima-la-3-3-q3"
-      ]
+      ],
+      "description": "Teoria e exemplo resolvido sobre lei 17.354/2017: criação, natureza e funções do ima, com controles de leitura e exercícios específicos."
     }
   ]
 }
