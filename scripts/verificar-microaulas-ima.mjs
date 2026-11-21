@@ -38,7 +38,12 @@ try{
  assert.equal(await page.locator('#microNext').isVisible(),false,'Lido não pode ser irreversível');
  await page.locator('#microMarkGo').click();
  await page.waitForURL(/questoes-micro-ima\.html\?u=ima-alg-1-1/,{timeout:15000});
- await page.waitForFunction(()=>document.querySelectorAll('[data-ce-practice="ima-micro"] fieldset[data-ce-question]').length===3,{timeout:15000});
+ try{await page.waitForFunction(()=>document.querySelectorAll('[data-ce-practice="ima-micro"] fieldset[data-ce-question]').length===3,undefined,{timeout:9000});}
+ catch(error){
+   const stage=await page.locator('[data-ce-practice="ima-micro"]').textContent().catch(()=>'(raiz ausente)');
+   console.error('DIAGNÓSTICO IMA: ',stage,'; erros JS:',errors);
+   throw error;
+ }
  assert.equal(await page.locator('[data-ce-practice="ima-micro"] form').getAttribute('data-exam'),'ima');
  const q=await page.locator('[data-ce-practice="ima-micro"] fieldset[data-ce-question]').count();
  assert.equal(q,3);
