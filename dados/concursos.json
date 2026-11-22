@@ -144,16 +144,16 @@
       ],
       "2026-11-22": [
         {
-          "id": "exam",
-          "title": "Data da prova CASAN",
-          "detail": "Data do calendário; não comprova presença ou resultado.",
-          "event": true
-        },
-        {
           "id": "ima-inicio",
           "title": "IMA-SC · primeira microaula de TI",
           "detail": "Nova prioridade: iniciar pela microaula de Algoritmos 1.1. A atividade é apenas sugerida; após marcar Lido, seguir para questões em página separada.",
           "href": "aulas/microaula-ima.html?u=ima-alg-1-1"
+        },
+        {
+          "id": "exam",
+          "title": "Data da prova CASAN",
+          "detail": "Data do calendário; não comprova presença ou resultado.",
+          "event": true
         }
       ],
       "2027-02-14": [
