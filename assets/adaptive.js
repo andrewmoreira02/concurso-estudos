@@ -345,12 +345,15 @@ function model(){
  }
  const path=location.pathname;
  const active=lessons.find(l=>path.endsWith('/'+l.url)||path.endsWith(l.url));
- const ongoing=Object.entries(config.exams||{}).filter(([key,details])=>details.deadline>=today).map(([key])=>key);
- const relevant=lessons.filter(l=>ongoing.some(key=>{
-  const subject=l.subjects?.[key],matrix=config.exams[key]?.subjects||[];
+ // O estoque F pertence exclusivamente ao concurso prioritário, mesmo no dia
+ // em que uma prova antiga ainda coincide com a data atual. Não misturar CASAN/IMA.
+ // Apenas aulas com estrutura de subseções conhecida e disciplina do edital ativo.
+ const relevant=lessons.filter(l=>{
+  if(!exam||!Array.isArray(l.sections_per_module)||!l.sections_per_module.length||l.total<=0)return false;
+  const subject=l.subjects?.[exam],matrix=config.exams[exam]?.subjects||[];
   return !!subject&&matrix.some(pair=>pair[0]===subject&&pair[1]>0);
- }));
- const unreadEquivalents=relevant.reduce((sum,l)=>sum+(l.total-l.read)/l.total,0);
+ });
+ const unreadEquivalents=relevant.reduce((sum,l)=>sum+Math.max(0,Math.min(1,(l.total-l.read)/l.total)),0);
  const minEquivalents=Math.max(1,Math.min(10,config.adaptive_study?.minimum_unread_equivalents||5));
  return {today,exam,daysRemaining,imaPhase,availableQuestionSets,allCourseModules,extraReady,imaSuggestedQuestion,imaSuggestedLesson,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
   unreadEquivalents,minEquivalents};
