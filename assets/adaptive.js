@@ -129,7 +129,7 @@ function courseState(lesson,exam){
  // Quando já há estudo confirmado, priorizar o primeiro módulo ainda sem confirmação,
  // inclusive se suas etapas foram marcadas como Lido. Sem confirmação, preservar a
  // primeira subseção não lida para não reiniciar conteúdo automaticamente.
- const first=read===count?null:studiedCount>0?(firstNotStudied?(
+ const first=read===count?firstNotStudied:studiedCount>0?(firstNotStudied?(
   (()=>{for(let step=1;step<=modules[firstNotStudied.module-1];step++){
    const id=sectionId(lesson,firstNotStudied.module,step);
    if(!seen.has(id))return {module:firstNotStudied.module,step,id};
@@ -202,7 +202,7 @@ function model(){
  // Uma única trilha inicial por disciplina impede que os 25 itens de TI
  // sejam contabilizados quatro vezes só porque há quatro aulas publicadas.
  const perSubject=new Map();
- const candidates=lessons.filter(c=>c.first&&c.read<c.total&&c.weight>0);
+ const candidates=lessons.filter(c=>c.first&&c.weight>0);
  for(const c of candidates){
   const group=perSubject.get(c.subject)||[];group.push(c);perSubject.set(c.subject,group);
  }
