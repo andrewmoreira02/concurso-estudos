@@ -481,7 +481,7 @@ function render(data){
  const microDetails=$('imaMicroDetails');
  if(microDetails&&data.exam==='ima')microDetails.open=true;
  const catalogFocus=$('catalogFocusNotice');
- if(catalogFocus&&data.exam==='ima')catalogFocus.textContent='Prioridade a partir de 23/11/2026: IMA-SC · FURB. Trilha inicial de 25 microaulas, com questões sugeridas após Lido. A CASAN permanece arquivada para consulta após a prova.';
+ if(catalogFocus&&data.exam==='ima')catalogFocus.textContent='Prioridade desde 22/11/2026: IMA-SC · FURB. Trilha inicial de 25 microaulas, com questões sugeridas após Lido. A CASAN permanece arquivada para consulta após a prova.';
  const casanCard=$('casanFinalCard');
  if(casanCard)casanCard.hidden=data.exam!=='casan';
  const imaQuestionCard=$('imaQuestionSuggested');
