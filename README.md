@@ -31,7 +31,7 @@ Mantenha identificadores de aula e subseção estáveis ao publicar versões nov
 
 ## Planejamento, progresso e revisões
 
-- [Planejamento semanal](https://andrewmoreira02.github.io/concurso-estudos/planejamento.html): agenda baseada nos planos registrados da CASAN até 22/11/2026 e do IMA a partir de 23/11/2026. Apresenta 2h-base e extensão opcional para o IMA. Os dias disponíveis **não** são presumidos: cada um deve ser marcado pelo usuário.
+- [Planejamento semanal](https://andrewmoreira02.github.io/concurso-estudos/planejamento.html): agenda baseada nos planos registrados da CASAN até 22/11/2026 e do IMA a partir de 22/11/2026. Apresenta 2h-base e extensão opcional para o IMA. Os dias disponíveis **não** são presumidos: cada um deve ser marcado pelo usuário.
 - [Progresso por assunto](https://andrewmoreira02.github.io/concurso-estudos/progresso.html): compara os pesos de questões dos editais com a leitura real registrada no navegador e o histórico pedagógico, sem inventar percentual global de domínio.
 - [Revisões dirigidas](https://andrewmoreira02.github.io/concurso-estudos/revisoes.html): registra sessões reais de questões por concurso, disciplina e tópico, acertos, válidas, anuladas e tipo de erro. Quando há erros, gera sugestões de recuperação após +1, +3 e +7 dias, reversíveis e sem notificações automáticas.
 
