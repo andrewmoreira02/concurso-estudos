@@ -1,5 +1,11 @@
 # Continuidade técnica e automação do site de concursos
 
+## Correção de escopo do estoque F — 22/11/2026
+
+- `assets/adaptive.js` passou a restringir o estoque de leitura ao **concurso da janela prioritária**, excluindo CASAN quando IMA é prioritário, mesmo no próprio dia 22/11. O cálculo ignora aulas sem total de subseções conhecido e limita cada contribuição ao intervalo [0, 1]. Commit `3ee1acb3cec08e443c608bbb22b84cc375f6a1c8`.
+- **Limite:** esse número no navegador é um indicador operacional baseado no catálogo e nos estados locais sincronizados; a auditoria independente de aulas completas/publicadas e a reconciliação com todas as chaves privadas do Supabase ainda não foram concluídas. Não publicar F individual neste repositório. Não alegar validação de GitHub Pages ou testes mobile nesta alteração.
+
+
 ## Ajuste de recomendações IMA — 22/11/2026
 
 - `assets/adaptive.js`: a fase IMA é calculada pelo número de dias até a data prevista (cobertura >45 dias, prática 16–45 dias, consolidação final 0–15 dias). Na fila de microaulas, questões dirigidas deixam de ser recomendadas somente por `Lido`: exigem confirmação explícita de estudo do módulo no IMA. A fase de cobertura favorece a próxima microaula; a fase de prática favorece questão elegível; a fase final favorece prática elegível sem bloquear o conteúdo quando não houver confirmação. A data ainda depende de confirmação oficial.
