@@ -1,5 +1,11 @@
 # Continuidade técnica e automação do site de concursos
 
+## Ajuste de recomendações IMA — 22/11/2026
+
+- `assets/adaptive.js`: a fase IMA é calculada pelo número de dias até a data prevista (cobertura >45 dias, prática 16–45 dias, consolidação final 0–15 dias). Na fila de microaulas, questões dirigidas deixam de ser recomendadas somente por `Lido`: exigem confirmação explícita de estudo do módulo no IMA. A fase de cobertura favorece a próxima microaula; a fase de prática favorece questão elegível; a fase final favorece prática elegível sem bloquear o conteúdo quando não houver confirmação. A data ainda depende de confirmação oficial.
+- Esta é uma mudança de ordenação, não uma validação de cobertura integral do edital ou de estoque F. Nenhum registro privado foi gravado no repositório. Testes locais de navegador e deploy Pages ainda não foram confirmados; não classificar como publicado até a verificação.
+
+
 > Este documento é público. **Não adicionar progresso individual, notas privadas, respostas pessoais, credenciais ou dados de inscrição a este repositório.** A Biblioteca privada do Projeto ChatGPT não é espelhada aqui.
 
 ## Transição de prioridade editorial — 22/11/2026
