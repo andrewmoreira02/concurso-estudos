@@ -190,6 +190,8 @@ function model(){
  const deadline=config.exams?.[exam]?.deadline;
  const daysRemaining=deadline?Math.round((Date.parse(deadline+'T12:00:00Z')-Date.parse(today+'T12:00:00Z'))/86400000):null;
  const lastDays=exam==='casan'&&daysRemaining!==null&&daysRemaining>=0&&daysRemaining<=2;
+ // Fases IMA calculadas diariamente pelo prazo do edital; a data é previsão até confirmação oficial.
+ const imaPhase=exam!=='ima'||daysRemaining===null?'coverage':daysRemaining<=15?'final':daysRemaining<=45?'practice':'coverage';
  const lessons=(config.adaptive_study?.lessons||[]).map(l=>courseState(l,exam));
  const subjects=subjectEvidence(exam,lessons);
  const casanCourses=lessons.filter(l=>l.subjects?.casan&&l.weight>0);
@@ -306,20 +308,27 @@ function model(){
      evaluated:u.question_ids.every(id=>submitted.has(id))
    }));
    // Recuperação imediata após a leitura; sem bloquear acesso voluntário às questões.
-   const pending=states.find(x=>x.read&&!x.evaluated);
+   // Lido não autoriza sugerir avaliação como próxima etapa obrigatória.
+   // Só uma confirmação explícita de estudo no edital IMA libera a recomendação dirigida.
+   const pending=states.find(x=>x.read&&!x.evaluated&&(()=>{
+     const lesson=lessons.find(l=>l.id===x.unit.source.lesson);
+     if(!lesson)return false;
+     const m=String(x.unit.source.section).match(/-(\d+)-(\d+)$/);
+     return !!m&&studiedModules('ima',lesson).has(Number(m[1]));
+   })());
    const next=states.find(x=>!x.read);
    picks.length=0;
    if(pending){
      imaSuggestedQuestion={type:'quiz',title:'Questão sugerida · '+pending.unit.title,
        href:pending.unit.questions_href,
        description:pending.unit.question_ids.length+' questões específicas desta seção, com correção e revisões somente após Enviar. A marcação Lido não equivale a estudo ou avaliação.'};
-     picks.push(imaSuggestedQuestion);
+     if(imaPhase!=='coverage'||!next)picks.push(imaSuggestedQuestion);
    }
    if(next){
      imaSuggestedLesson={type:'lesson',title:'Microaula IMA · '+next.unit.title,
        href:next.unit.lesson_href,
        description:'Uma seção aprofundada, com exemplos, diagramas e leitura individual. Após Lido, sugerir somente as questões correspondentes. '+next.unit.subject_label+' · prova FURB.'};
-     picks.push(imaSuggestedLesson);
+     if(imaPhase!=='final'||!pending)picks.push(imaSuggestedLesson);
    }
    if(due.length){
      const item=due[0];picks.push({type:'review',title:'Revisão pendente: '+item.topic,href:'revisoes.html',
@@ -343,7 +352,7 @@ function model(){
  }));
  const unreadEquivalents=relevant.reduce((sum,l)=>sum+(l.total-l.read)/l.total,0);
  const minEquivalents=Math.max(1,Math.min(10,config.adaptive_study?.minimum_unread_equivalents||5));
- return {today,exam,daysRemaining,availableQuestionSets,allCourseModules,extraReady,imaSuggestedQuestion,imaSuggestedLesson,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
+ return {today,exam,daysRemaining,imaPhase,availableQuestionSets,allCourseModules,extraReady,imaSuggestedQuestion,imaSuggestedLesson,windowRule,lessons,subjects,picks,due,agenda:agenda(today),active,
   unreadEquivalents,minEquivalents};
 }
 
