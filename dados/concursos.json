@@ -67,25 +67,25 @@
   "priority_windows": [
     {
       "from": "2026-01-01",
-      "through": "2026-11-21",
+      "through": "2026-11-22",
       "exam": "casan",
       "contest": "CASAN 2026 · AOCP",
-      "title": "Até 21/11: CASAN 404 / AOCP",
-      "desc": "Cobertura e revisão objetiva para a CASAN, conforme o planejamento registrado; confirme o próximo foco no estado do Projeto.",
-      "href": "aulas/rlm.html#m6-s1",
-      "link": "Abrir aula RLM 6.1",
+      "title": "Até 22/11: CASAN 404 / AOCP",
+      "desc": "Em 22/11, dia da prova CASAN: revisão leve e logística, sem nova matéria extensa. Não presumir comparecimento ou resultado.",
+      "href": "aulas.html",
+      "link": "Consultar materiais CASAN",
       "origin": "Plano CASAN registrado em 18/11/2026; status individual de estudo não é sincronizado com o site."
     },
     {
-      "from": "2026-11-22",
+      "from": "2026-11-23",
       "through": "2027-02-14",
       "exam": "ima",
       "contest": "IMA-SC 2027 · FURB",
-      "title": "Desde 22/11: IMA · Analista de Informática",
-      "desc": "Novo ciclo IMA: uma seção por microaula, depois um conjunto independente de 3–4 questões indicado após Lido. Começar por TI sem transferir domínio CASAN.",
+      "title": "Desde 23/11: IMA · Analista de Informática",
+      "desc": "Ciclo IMA a partir de 23/11: microaulas de TI e questões FURB em páginas separadas, sem transferir domínio CASAN.",
       "href": "aulas/microaula-ima.html?u=ima-alg-1-1",
       "link": "Abrir a primeira microaula IMA",
-      "origin": "Ciclo IMA ativado em 22/11/2026; a CASAN permanece no histórico, sem transferir desempenho. Disponibilidade semanal a confirmar."
+      "origin": "Ciclo IMA previsto para 23/11/2026 conforme índice privado; CASAN disponível no histórico."
     }
   ],
   "after_last_window": {
@@ -144,10 +144,10 @@
       ],
       "2026-11-22": [
         {
-          "id": "ima-inicio",
-          "title": "IMA-SC · primeira microaula de TI",
-          "detail": "Nova prioridade: iniciar pela microaula de Algoritmos 1.1. A atividade é apenas sugerida; após marcar Lido, seguir para questões em página separada.",
-          "href": "aulas/microaula-ima.html?u=ima-alg-1-1"
+          "id": "casan-prova",
+          "title": "CASAN — revisão leve e logística",
+          "detail": "Dia da prova: consultar horário, local, documentos e revisar apenas pontos essenciais; não iniciar conteúdo extenso.",
+          "href": "aulas.html"
         },
         {
           "id": "exam",
@@ -177,12 +177,20 @@
           "detail": "Revisar respostas efetivamente registradas, sem preencher planilha e sem presumir domínio.",
           "href": "revisoes.html"
         }
+      ],
+      "2026-11-23": [
+        {
+          "id": "ima-inicio",
+          "title": "IMA-SC · primeira microaula de TI",
+          "detail": "Início sugerido do ciclo IMA: Algoritmos 1.1. Lido não é Estudado; questões em página separada.",
+          "href": "aulas/microaula-ima.html?u=ima-alg-1-1"
+        }
       ]
     },
     "cycles": [
       {
         "exam": "ima",
-        "from": "2026-11-22",
+        "from": "2026-11-23",
         "through": "2027-02-13",
         "weekdays": {
           "0": [
