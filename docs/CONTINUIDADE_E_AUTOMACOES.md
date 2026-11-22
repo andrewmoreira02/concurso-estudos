@@ -4,9 +4,11 @@
 
 ## Transição de prioridade editorial — 22/11/2026
 
-- Desde 22/11/2026, o calendário público prioriza IMA-SC, com a primeira microaula de TI sugerida e sequência de questões própria. A CASAN segue disponível no histórico; prova e registros anteriores não são apagados.
+- Em 22/11/2026, a pedido explícito do proprietário, a CASAN deixou imediatamente de ser prioridade: a janela pública de prioridade, a agenda de 22/11 e o ciclo IMA foram atualizados em `dados/concursos.json`. O IMA passa a ser o único concurso na janela ativa; as páginas CASAN permanecem no histórico. A primeira microaula de TI é sugerida, com questões próprias separadas. A CASAN segue disponível no histórico; prova e registros anteriores não são apagados.
 - Registros individuais de questões continuam exclusivos do armazenamento privado do usuário (navegador ou sincronização Supabase autorizada). Não publicar acertos, erros, respostas nem identificadores pessoais aqui; não transferir avaliações CASAN para IMA.
 - A troca de prioridade no site não altera automaticamente os arquivos privados de estado/plano do Projeto.
+
+- Pendente: auditar o prazo até 14/02/2027 nas recomendações para modular cobertura, questões e revisão por fase; validar F e a reserva de cinco páginas IMA sem publicar progresso pessoal. Não registrar como testado o que não foi executado.
 
 ## Fontes e responsabilidades
 
