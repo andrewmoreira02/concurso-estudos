@@ -2,6 +2,12 @@
 
 > Este documento é público. **Não adicionar progresso individual, notas privadas, respostas pessoais, credenciais ou dados de inscrição a este repositório.** A Biblioteca privada do Projeto ChatGPT não é espelhada aqui.
 
+## Transição de prioridade editorial — 22/11/2026
+
+- Desde 22/11/2026, o calendário público prioriza IMA-SC, com a primeira microaula de TI sugerida e sequência de questões própria. A CASAN segue disponível no histórico; prova e registros anteriores não são apagados.
+- Registros individuais de questões continuam exclusivos do armazenamento privado do usuário (navegador ou sincronização Supabase autorizada). Não publicar acertos, erros, respostas nem identificadores pessoais aqui; não transferir avaliações CASAN para IMA.
+- A troca de prioridade no site não altera automaticamente os arquivos privados de estado/plano do Projeto.
+
 ## Fontes e responsabilidades
 
 - **Regras permanentes:** instruções do Projeto Concurso e `/Concursos/REGRAS_GERAIS_ESTUDO.md` na Biblioteca privada.
