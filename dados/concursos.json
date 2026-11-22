@@ -66,26 +66,15 @@
   },
   "priority_windows": [
     {
-      "from": "2026-01-01",
-      "through": "2026-11-22",
-      "exam": "casan",
-      "contest": "CASAN 2026 · AOCP",
-      "title": "Até 22/11: CASAN 404 / AOCP",
-      "desc": "Em 22/11, dia da prova CASAN: revisão leve e logística, sem nova matéria extensa. Não presumir comparecimento ou resultado.",
-      "href": "aulas.html",
-      "link": "Consultar materiais CASAN",
-      "origin": "Plano CASAN registrado em 18/11/2026; status individual de estudo não é sincronizado com o site."
-    },
-    {
-      "from": "2026-11-23",
+      "from": "2026-11-22",
       "through": "2027-02-14",
       "exam": "ima",
       "contest": "IMA-SC 2027 · FURB",
-      "title": "Desde 23/11: IMA · Analista de Informática",
-      "desc": "Ciclo IMA a partir de 23/11: microaulas de TI e questões FURB em páginas separadas, sem transferir domínio CASAN.",
+      "title": "IMA · Analista de Informática · FURB",
+      "desc": "Preparação IMA prioritária desde 22/11/2026; organizar teoria, questões FURB e revisões pelo prazo da prova, sem transferir avaliação CASAN.",
       "href": "aulas/microaula-ima.html?u=ima-alg-1-1",
       "link": "Abrir a primeira microaula IMA",
-      "origin": "Ciclo IMA previsto para 23/11/2026 conforme índice privado; CASAN disponível no histórico."
+      "origin": "Prioridade editorial IMA confirmada em 22/11/2026; CASAN permanece apenas no histórico."
     }
   ],
   "after_last_window": {
@@ -142,20 +131,6 @@
           "href": "revisoes.html"
         }
       ],
-      "2026-11-22": [
-        {
-          "id": "casan-prova",
-          "title": "CASAN — revisão leve e logística",
-          "detail": "Dia da prova: consultar horário, local, documentos e revisar apenas pontos essenciais; não iniciar conteúdo extenso.",
-          "href": "aulas.html"
-        },
-        {
-          "id": "exam",
-          "title": "Data da prova CASAN",
-          "detail": "Data do calendário; não comprova presença ou resultado.",
-          "event": true
-        }
-      ],
       "2027-02-14": [
         {
           "id": "ima-exam",
@@ -185,12 +160,20 @@
           "detail": "Início sugerido do ciclo IMA: Algoritmos 1.1. Lido não é Estudado; questões em página separada.",
           "href": "aulas/microaula-ima.html?u=ima-alg-1-1"
         }
+      ],
+      "2026-11-22": [
+        {
+          "id": "ima-foco",
+          "title": "IMA-SC · iniciar trilha de TI",
+          "detail": "Prioridade IMA já ativa; iniciar teoria por lacuna, com questões FURB separadas e revisão após respostas enviadas.",
+          "href": "aulas/microaula-ima.html?u=ima-alg-1-1"
+        }
       ]
     },
     "cycles": [
       {
         "exam": "ima",
-        "from": "2026-11-23",
+        "from": "2026-11-22",
         "through": "2027-02-13",
         "weekdays": {
           "0": [
