@@ -474,3 +474,15 @@
    background:#213e50;overflow-wrap:anywhere;font-size:.89rem;
  }
 }
+
+/* Glossário pedagógico: separa visualmente termo, definição e grupos, sem alterar IDs. */
+.ce-lesson-page .ce-concept-group{margin:17px 0 0;padding-top:13px;border-top:1px solid #3d5870}
+.ce-lesson-page .ce-concept-group h5{margin:0 0 11px;color:#a8e2ff;font-size:.96rem;line-height:1.4;letter-spacing:.015em}
+.ce-lesson-page .ce-definition-list{display:grid;gap:9px;margin:0}
+.ce-lesson-page .ce-definition-list>div{min-width:0;padding:10px 12px;border-left:3px solid #83d6e8;border-radius:0 8px 8px 0;background:#1c344a}
+.ce-lesson-page .ce-definition-list dt{color:#b1edff;font-weight:800;line-height:1.4;margin:0 0 3px}
+.ce-lesson-page .ce-definition-list dd{margin:0;color:#e9f3fb;line-height:1.6;overflow-wrap:anywhere}
+.ce-lesson-page .ce-definition-list dd strong{color:#bcebd0}
+.ce-lesson-page .ce-concept-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px;list-style:none;margin:0;padding:0}
+.ce-lesson-page .ce-concept-items li{min-width:0;padding:8px 10px;background:#203b50;border:1px solid #496b83;border-radius:8px;color:#e8f6ff;overflow-wrap:anywhere}
+@media(max-width:430px){.ce-lesson-page .ce-definition-list>div{padding:9px 10px}.ce-lesson-page .ce-concept-items{grid-template-columns:minmax(0,1fr)}}
