@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<meta name="description" content="Revisão temática da prova CASAN 2026 orientada exclusivamente ao edital IMA-SC 2027 Analista de Informática. JSON importado localmente.">
+<title>Revisão CASAN → IMA-SC — Concurso Estudos</title>
+<link rel="stylesheet" href="assets/site.css?v=20261121responsive1">
+<style>
+.review-wrap{max-width:1050px;margin:24px auto 64px;padding:0 15px}
+.review-head{margin:12px 0 22px}.review-head h1{line-height:1.2;font-size:clamp(1.5rem,4vw,2.4rem)}
+.review-panel{border:1px solid #34455b;border-radius:15px;padding:19px;margin:18px 0;background:#142133}
+.review-panel h2{margin:0 0 10px;font-size:1.24rem}
+.review-note{color:#b4c4d8;line-height:1.6}.review-note a{color:#92c2ff}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.review-stat{background:#223349;border-radius:12px;padding:12px}.review-stat b{display:block;font-size:1.65rem}.review-stat small{color:#b8c5d3}
+.review-btn{background:#326ee0;color:#fff;border:0;border-radius:9px;padding:11px 15px;font:inherit;font-weight:700;cursor:pointer;display:inline-block;text-decoration:none}
+.review-btn:hover{filter:brightness(1.16)}.review-btn.alt{background:#2b435d}
+.review-inline{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0}
+.review-file{max-width:100%;font:inherit}.review-pill{background:#253d58;border-radius:18px;padding:4px 10px;color:#dce9f8;font-size:.82rem}
+.review-item{border:1px solid #364b62;border-radius:12px;background:#18283b;margin:10px 0;overflow:hidden}
+.review-item summary{cursor:pointer;padding:14px 16px;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.review-item summary:focus-visible{outline:3px solid #86aaff;outline-offset:-3px}
+.review-item strong{font-size:1rem}.review-item .inner{padding:0 16px 17px;line-height:1.6}
+.review-item .inner p{margin:9px 0}.review-item .inner a{color:#94beff}
+.review-muted{color:#b4c4d8}.review-empty{border:1px dashed #7485a5;padding:13px;border-radius:9px}
+.review-filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.review-filters select{background:#263d57;color:#fff;border:1px solid #7890a9;padding:10px;border-radius:8px;max-width:100%}
+.review-warning{color:#ffdfa4}.review-status{font-weight:700}
+.review-a{color:#7de2aa}.review-e{color:#ff9999}.review-p{color:#ffcb80}
+@media(max-width:600px){.review-panel{padding:14px}.review-item summary{padding:12px}}
+</style></head>
+<body><header class="top"><div class="shell top-inner">
+<a class="brand" href="./"><span class="logo">CE</span><span>Concurso Estudos</span></a>
+<nav class="primary-nav" aria-label="Menu principal"><a href="./">Início</a><a href="aulas.html">Aulas</a><a href="planejamento.html">Planejamento</a><a class="active" href="revisoes.html">Revisões</a></nav>
+</div></header>
+<main class="review-wrap">
+<header class="review-head"><div class="eyebrow">Diagnóstico por questão real · apenas conteúdo do próximo edital</div>
+<h1>Revisão CASAN 2026 → <em>IMA-SC 2027</em></h1>
+<p class="review-note">Cargo: <strong>Analista de Informática</strong> · Banca: <strong>FURB</strong> · Prova: <strong>14/02/2027</strong>. Esta revisão preserva exclusivamente os conteúdos da prova CASAN que coincidem com o Anexo V do edital IMA. Ela não substitui os tópicos inéditos do edital IMA.</p></header>
+<section class="review-panel">
+<h2>Importe sua conferência de gabarito</h2>
+<p class="review-note">Selecione o arquivo <code>casan_2026_respostas.json</code> exportado pelo simulador. O cálculo é feito <strong>somente neste navegador</strong>. Seus dados individuais <strong>não são enviados</strong> ao GitHub nem publicados no site. Respostas “provavelmente” continuam incertas, não viram acertos confirmados.</p>
+<div class="review-inline"><label for="casanJsonFile">Arquivo JSON</label><input class="review-file" type="file" id="casanJsonFile" accept=".json,application/json"><button class="review-btn alt" id="clearJson" type="button">Limpar dados locais</button></div>
+<p id="importStatus" class="review-note" role="status" aria-live="polite">Nenhum diagnóstico importado. Você ainda pode consultar a revisão curricular abaixo.</p>
+<div id="summaryStats" class="review-grid" hidden></div>
+</section>
+<section class="review-panel" id="focusPanel"><h2>Principal foco de estudo — IMA</h2>
+<p id="focusIntro" class="review-note">Após importar o JSON, a prioridade será calculada com base em erros confirmados, dúvidas e marcações prováveis, somente nos temas presentes no edital IMA.</p>
+<div id="focusList" class="review-grid"></div>
+<p class="review-note">Critério: erro confirmado ou “não sei” = prioridade máxima; “provavelmente errei” = alta; “provavelmente acertei” = verificação breve; acerto confirmado = manutenção. A classificação descreve a marcação do simulador, não um diagnóstico infalível de domínio.</p></section>
+<section class="review-panel">
+<h2>Questões reaproveitáveis no edital IMA</h2>
+<p class="review-note">As questões 20 (República Juliana), 24 (Estatuto da Igualdade Racial), 25 (Constituição estadual, art. 181) e 31 (Bubble/Quick Sort) não entram nesta trilha: seus objetos específicos não estão expressamente previstos para o cargo. Raciocínio Lógico teve 7/7 marcações certas no arquivo de referência, mas continua no planejamento geral do IMA.</p>
+<div class="review-filters"><label for="filterArea">Área</label><select id="filterArea"><option value="">Todas as áreas</option></select>
+<label for="filterStatus">Marcação</label><select id="filterStatus"><option value="">Todas</option><option value="errada">Errada</option><option value="provavelmente_errada">Provavelmente errei</option><option value="nao_sei">Não sei</option><option value="provavelmente_certa">Provavelmente acertei</option><option value="certa">Certa</option><option value="nao_respondida">Sem marcação</option></select></div>
+<div id="reviewCount" class="review-note"></div><div id="reviews"></div></section>
+<section class="review-panel"><h2>Outras matérias do IMA continuam obrigatórias</h2>
+<p class="review-note">Este diagnóstico não cobre integralmente o próximo concurso. Continue também as aulas do edital sobre <strong>Administração Pública, Legislação Ambiental Aplicada, Raciocínio Lógico-Matemático</strong> e conteúdos de TI não avaliados na CASAN, como redes, Python, Java, PHP, IA aplicada, engenharia de dados e gestão do conhecimento.</p>
+<div class="review-inline"><a class="review-btn" href="aulas.html">Catálogo de aulas</a><a class="review-btn alt" href="planejamento.html">Planejamento IMA</a><a class="review-btn alt" href="revisoes.html">Revisões automáticas</a></div>
+<p class="review-note">Fontes: <a href="https://concursos.furb.br/concurso/584-instituto-do-meio-ambiente-de-santa-catarina-concurso" rel="noopener noreferrer" target="_blank">FURB — Edital 001/2026 e errata</a>, Anexo V pp. 58–60; caderno CASAN 2026 Analista de Sistemas, prova 03, questões 1–50.</p></section>
+</main>
+<script>
+"use strict";
+const topics=[{"n":3,"area":"Português","topic":"Regência verbal e crase","key":"C","areaIMA":"Regência verbal e nominal; crase","why":"O verbo chegar exige preposição a: chega a + a saúde pública = chega à saúde pública. Afetar, comprometer, prejudicar e ferir são transitivos diretos nesse contexto.","trap":"Não atribua crase a verbos que não exigem preposição.","practice":"Rever regência verbal e testar separadamente a exigência de preposição e a presença do artigo feminino.","lesson":"aulas/portugues-casan-19-11.html"},{"n":8,"area":"Português","topic":"Orações consecutivas","key":"C","areaIMA":"Relações sintático-semânticas; conectivos","why":"A construção tão ... que marca consequência: o déficit é tão amplo que afeta a saúde. Pois, porque e uma vez que apresentam causa.","trap":"Causa explica por que ocorre; consequência informa o resultado.","practice":"Comparar causa, consequência, concessão, condição e finalidade em 10 períodos.","lesson":"aulas/portugues-casan-19-11.html"},{"n":10,"area":"Português","topic":"Pontuação e siglas","key":"A","areaIMA":"Pontuação e seus efeitos","why":"Os parênteses em Instituto Trata Brasil (ITB) introduzem a sigla correspondente ao nome expandido. Aspas em fala literal indicam citação direta.","trap":"Vírgulas de intercalação não equivalem a enumeração; apóstrofo não é crase.","practice":"Identificar parênteses, aspas, vírgulas de deslocamento e apóstrofo em fragmentos.","lesson":"aulas/portugues-casan-19-11.html"},{"n":26,"area":"Engenharia e desenvolvimento","topic":"Git: rebase, cherry-pick, reset e stash","key":"A","areaIMA":"Git, Gitflow e Trunk-Based Development","why":"Rebase reaplica commits; cherry-pick seleciona um commit; reset --hard não envia mudanças automaticamente ao remoto; stash não cria commit permanente na branch.","trap":"Comandos locais não equivalem a push remoto.","practice":"Simular rebase, cherry-pick, reset, stash e push em um repositório de teste.","lesson":"aulas/engenharia-qualidade.html"},{"n":27,"area":"Desenvolvimento web","topic":"HTML5: elemento progress","key":"B","areaIMA":"HTML5","why":"\u003cprogress\u003e representa progresso de uma tarefa; \u003cmeter\u003e representa medida escalar dentro de um intervalo. O requisito descreve execução percentual.","trap":"Uma porcentagem isolada nem sempre é um indicador de progresso.","practice":"Distinguir progress, meter, output, summary e track com exemplos.","lesson":"aulas/engenharia-qualidade.html"},{"n":28,"area":"Segurança","topic":"OWASP Top 10","key":"E","areaIMA":"OWASP Top 10 e segurança de aplicações","why":"Network Configuration Failures não é uma categoria da lista OWASP Top 10:2025 citada pela questão; Broken Access Control, Security Misconfiguration, Injection e Cryptographic Failures pertencem à referência.","trap":"Não confundir uma expressão plausível com o nome oficial de categoria.","practice":"Revisar as dez categorias, riscos típicos e controles de prevenção.","lesson":"aulas/seguranca.html"},{"n":29,"area":"Engenharia e desenvolvimento","topic":"Sobrecarga versus interface","key":"C","areaIMA":"Orientação a objetos e polimorfismo","why":"Métodos com o mesmo nome e parâmetros de tipos ou quantidades diferentes caracterizam sobrecarga (overloading). A alternativa interface não descreve escolha por assinatura.","trap":"Sobrecarga altera assinatura; sobrescrita redefine implementação herdada.","practice":"Criar exemplos de overload, override, interface e composição.","lesson":"aulas/algoritmos-oo.html"},{"n":30,"area":"Engenharia e desenvolvimento","topic":"REST, SOAP, gRPC e microsserviços","key":"B","areaIMA":"APIs RESTful, gRPC e arquitetura de serviços","why":"A sequência é V–F–F–F: REST é estilo arquitetural; SOAP é protocolo de mensagens; gRPC é framework de RPC; Protobuf serializa mensagens; microsserviços buscam baixo acoplamento.","trap":"A questão inverte definições de API e Protobuf e troca SOAP por gRPC.","practice":"Montar tabela comparativa REST × SOAP × gRPC × Protobuf e monólito × microsserviços.","lesson":"aulas/seguranca.html"},{"n":32,"area":"Infraestrutura e nuvem","topic":"IaaS, PaaS e SaaS","key":"E","areaIMA":"Nuvem: IaaS, PaaS, SaaS, AWS, Azure e GCP","why":"Heroku é exemplo tradicional de PaaS. Gmail, Microsoft 365 e Dropbox são SaaS; Google Compute Engine fornece infraestrutura virtualizada (IaaS).","trap":"O nome do serviço importa menos que a responsabilidade do usuário pela infraestrutura.","practice":"Classificar serviços em SaaS/PaaS/IaaS e responsabilidades de cada modelo.","lesson":"aulas/engenharia-qualidade.html"},{"n":35,"area":"Desenvolvimento web","topic":"Regex em JavaScript","key":"B","areaIMA":"JavaScript e processamento de texto","why":"Em expressões regulares JavaScript, \\w corresponde a caracteres de palavra (letras ASCII, dígitos e _ em uso comum); \\d corresponde a dígitos, \\s a espaços, $ ao final e + à repetição.","trap":"\\w não é sinônimo de qualquer caractere Unicode nem de qualquer tipo de texto.","practice":"Testar \\w, \\d, \\s, quantificadores e âncoras usando RegExp.","lesson":"aulas/engenharia-qualidade.html"},{"n":36,"area":"Banco de dados","topic":"SQL: DML versus DCL","key":"A","areaIMA":"SQL: DDL, DML e DCL","why":"INSERT manipula dados (DML), e REVOKE revoga permissões (DCL). CREATE, ALTER e DROP são típicos comandos DDL.","trap":"DELETE remove linhas, mas DROP remove o objeto da estrutura.","practice":"Organizar comandos por DML, DDL, DCL e executar exemplos em PostgreSQL.","lesson":"aulas/banco-dados.html"},{"n":37,"area":"Segurança","topic":"Criptografia simétrica e assimétrica","key":"B","areaIMA":"AES, RSA, ECC, funções hash e certificados","why":"AES e ChaCha20 são algoritmos de criptografia simétrica. RSA, ECC e ElGamal são associados à criptografia assimétrica; hash não é criptografia reversível.","trap":"Misturar um algoritmo simétrico com outro assimétrico invalida a dupla.","practice":"Comparar chaves, casos de uso, AES × RSA/ECC, hash e assinatura digital.","lesson":"aulas/seguranca.html"},{"n":38,"area":"Banco de dados","topic":"Concorrência e deadlock","key":"C","areaIMA":"Transações ACID e concorrência","why":"As duas transações retêm recursos e aguardam recursos detidos pela outra: espera circular, característica de deadlock. Integridade referencial trata de relacionamentos consistentes entre tabelas.","trap":"Bloqueio comum não é automaticamente deadlock: precisa impedir progresso por dependência circular.","practice":"Entender locks, isolamento, detecção/prevenção de deadlock e transações.","lesson":"aulas/banco-dados.html"},{"n":39,"area":"Engenharia e desenvolvimento","topic":"Elicitação: etnografia","key":"D","areaIMA":"Elicitação, especificação e validação de requisitos","why":"Acompanhamento presencial e observação da rotina de trabalho, sem depender apenas de declarações dos usuários, caracterizam etnografia.","trap":"Entrevista pergunta; workshop reúne participantes; etnografia observa o trabalho real.","practice":"Distinguir entrevista, observação etnográfica, workshop, prototipação e questionário.","lesson":"aulas/engenharia-qualidade.html"},{"n":41,"area":"Infraestrutura e nuvem","topic":"Dockerfile: EXPOSE","key":"C","areaIMA":"Contêineres Docker e orquestração básica","why":"EXPOSE documenta a porta na qual o contêiner pretende ouvir. Não publica, sozinho, essa porta no host; o mapeamento pode ser feito com docker run -p.","trap":"EXPOSE ≠ liberar automaticamente a porta no host.","practice":"Revisar FROM, WORKDIR, RUN, COPY, CMD, ENTRYPOINT, EXPOSE e -p.","lesson":"aulas/engenharia-qualidade.html"},{"n":42,"area":"Legislação e privacidade","topic":"LGPD: conservação após término","key":"E","areaIMA":"LGPD e proteção de dados no setor público","why":"O art. 16 admite conservação para cumprimento de obrigação legal/regulatória, estudo por órgão de pesquisa com anonimização quando possível e transferência a terceiro conforme a lei. A hipótese IV da questão não integra esse rol.","trap":"Término do tratamento não significa apagamento irrestrito, mas as exceções são taxativas na lei.","practice":"Estudar art. 15 e 16, bases legais, finalidade, minimização e setor público.","lesson":"aulas/administracao-publica-ima.html"},{"n":43,"area":"Segurança","topic":"DevSecOps: Shift Left","key":"D","areaIMA":"DevSecOps, SAST, DAST e SCA","why":"Shift Left antecipa verificações de segurança e testes para as etapas iniciais do ciclo de desenvolvimento. Monitoramento contínuo complementa essa postura, mas não define o deslocamento à esquerda.","trap":"Blue-Green é estratégia de implantação, não detecção antecipada.","practice":"Diferenciar SAST, DAST, SCA, CI/CD, Shift Left e monitoramento.","lesson":"aulas/seguranca.html"},{"n":45,"area":"Engenharia e desenvolvimento","topic":"UML: diagrama de sequência","key":"D","areaIMA":"UML 2.x e modelagem","why":"O diagrama de sequência mostra interações entre objetos ao longo do tempo, com linhas de vida e mensagens. Casos de uso representam objetivos/atores; atividades mostram fluxos.","trap":"Troca de mensagens ordenadas temporalmente é pista de diagrama de sequência.","practice":"Comparar diagramas de sequência, atividade, estado, classe e casos de uso.","lesson":"aulas/engenharia-qualidade.html"},{"n":48,"area":"Engenharia e desenvolvimento","topic":"BPMN: gateway","key":"C","areaIMA":"BPMN 2.0","why":"O gateway (losango) controla divergência e convergência de caminhos do processo. Evento indica ocorrência; atividade representa trabalho; fluxo de sequência liga elementos.","trap":"Não confundir evento, tarefa, subprocesso e gateway.","practice":"Modelar um processo com gateway exclusivo, paralelo e inclusivo.","lesson":"aulas/engenharia-qualidade.html"}];
+const storageKey="ce_casan_ima_diagnostic_v1";
+const gabarito=["C","B","C","D","E","E","B","C","D","A","A","E","B","E","D","D","C","D","B","A","A","E","B","D","B","A","B","E","C","B","C","E","D","A","B","A","B","C","D","A","C","E","D","A","D","E","A","C","E","B"];
+let responses=null;
+const $=id=>document.getElementById(id);
+const weights={errada:4,nao_sei:4,provavelmente_errada:3,provavelmente_certa:1,certa:0,nao_respondida:2};
+const names={errada:"Errada",nao_sei:"Não sei",provavelmente_errada:"Provavelmente errei",provavelmente_certa:"Provavelmente acertei",certa:"Certa",nao_respondida:"Sem marcação"};
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]});}
+function validData(d){if(!d||d.tipo!=="03"||!Array.isArray(d.respostas)||d.respostas.length!==50)return false;
+const nums=new Set();
+for(const row of d.respostas){if(!Number.isInteger(row.questao)||row.questao<1||row.questao>50||nums.has(row.questao)||row.gabarito!==gabarito[row.questao-1])return false;
+nums.add(row.questao);if(row.status&&!Object.prototype.hasOwnProperty.call(weights,row.status))return false;}
+return nums.size===50;}
+function byNumber(){return new Map((responses&&responses.respostas||[]).map(x=>[x.questao,x]));}
+function statusOf(n){const item=byNumber().get(n);return item?(item.status||"nao_respondida"):"nao_respondida";}
+function summary(){const m=byNumber(),c={certa:0,errada:0,provavelmente_certa:0,provavelmente_errada:0,nao_sei:0,nao_respondida:0};for(let n=1;n<=50;n++){const status=(m.get(n)||{}).status||"nao_respondida";c[status]=(c[status]||0)+1;}return c;}
+function renderSummary(){if(!responses){$("summaryStats").hidden=true;$("importStatus").textContent="Nenhum diagnóstico importado. Selecione o JSON para personalizar o foco.";return;}
+let s=summary(), rows=[["Acertos confirmados",s.certa],["Erros confirmados",s.errada],["Provavelmente acertei",s.provavelmente_certa],["Provavelmente errei",s.provavelmente_errada],["Não sei",s.nao_sei],["Sem resposta",s.nao_respondida]];
+$("summaryStats").replaceChildren();for(let pair of rows){let item=document.createElement("div");item.className="review-stat";const b=document.createElement("b");b.textContent=pair[1];const small=document.createElement("small");small.textContent=pair[0];item.append(b,small);$("summaryStats").append(item);}
+$("summaryStats").hidden=false;$("importStatus").textContent="Diagnóstico importado localmente: 50 questões validadas. Nenhum dado foi publicado.";}
+function renderFocus(){
+const box=$("focusList");box.replaceChildren();
+if(!responses){$("focusIntro").textContent="Importe o JSON para classificar prioridades pessoais. Sem ele, não presumimos quais questões você errou.";box.innerHTML='<div class="review-empty">A prioridade individual aparecerá aqui após a importação.</div>';return;}
+$("focusIntro").textContent="Temas relacionados a marcações erradas ou incertas, ordenados para recuperar os pontos com maior necessidade de revisão.";
+const g=new Map();
+for(let t of topics){const st=statusOf(t.n);if(weights[st]===0)continue;let obj=g.get(t.area)||{name:t.area,p:0,q:[]};obj.p+=weights[st];obj.q.push(t.n);g.set(t.area,obj);}
+const sorted=Array.from(g.values()).sort((a,b)=>b.p-a.p||a.name.localeCompare(b.name,"pt-BR"));
+if(!sorted.length){box.innerHTML='<p>Todas as questões selecionadas estão marcadas como certas. Continue o edital completo no planejamento.</p>';return;}
+sorted.forEach((a,i)=>{let el=document.createElement("div");el.className="review-stat";let strong=document.createElement("strong");strong.textContent=(i+1)+". "+a.name;let detail=document.createElement("p");detail.className="review-note";detail.textContent="Questões: "+a.q.join(", ")+" · Pontuação de prioridade: "+a.p;el.append(strong,detail);box.append(el);});
+}
+function renderTopics(){
+let area=$("filterArea").value,st=$("filterStatus").value;
+let sorted=topics.filter(t=>(!area||t.area===area)&&(!st||st===statusOf(t.n)))
+.sort((a,b)=>responses?(weights[statusOf(b.n)]-weights[statusOf(a.n)]||a.n-b.n):a.n-b.n);
+let cont=$("reviews");cont.replaceChildren();
+$("reviewCount").textContent=sorted.length+" questão(ões) do edital IMA nesta seleção.";
+for(let t of sorted){
+let row=document.createElement("details");row.className="review-item";
+let s=statusOf(t.n),label=responses?names[s]:"Revisão curricular";
+let sum=document.createElement("summary");
+let title=document.createElement("strong");title.textContent="Questão "+t.n+" — "+t.topic;
+let badge=document.createElement("span");badge.className="review-pill";badge.textContent=label;
+sum.append(title,badge);row.append(sum);
+let inner=document.createElement("div");inner.className="inner";
+let p1=document.createElement("p");p1.innerHTML="<strong>Gabarito CASAN:</strong> "+escapeHtml(t.key)+" · <strong>Conteúdo IMA:</strong> "+escapeHtml(t.areaIMA);
+let p2=document.createElement("p");p2.innerHTML="<strong>Resolução:</strong> "+escapeHtml(t.why);
+let p3=document.createElement("p");p3.innerHTML="<strong>Armadilha:</strong> "+escapeHtml(t.trap);
+let p4=document.createElement("p");p4.innerHTML="<strong>Estudar agora:</strong> "+escapeHtml(t.practice);
+let link=document.createElement("a");link.href=t.lesson;link.textContent="Abrir material relacionado";
+inner.append(p1,p2,p3,p4,link);row.append(inner);cont.append(row);
+}
+}
+function update(){renderSummary();renderFocus();renderTopics();}
+const areas=[...new Set(topics.map(t=>t.area))];for(let a of areas){let o=document.createElement("option");o.value=a;o.textContent=a;$("filterArea").append(o);}
+$("filterArea").addEventListener("change",renderTopics);$("filterStatus").addEventListener("change",renderTopics);
+$("casanJsonFile").addEventListener("change",async function(e){
+const f=e.target.files&&e.target.files[0];if(!f)return;
+if(f.size>2*1024*1024){$("importStatus").textContent="Arquivo acima de 2 MB; selecione o JSON exportado pelo simulador.";return;}
+try{const d=JSON.parse(await f.text());if(!validData(d))throw new Error("JSON incompatível, gabarito ou questões não conferem com a prova 03.");
+responses={tipo:d.tipo,respostas:d.respostas.map(r=>({questao:r.questao,gabarito:r.gabarito,status:r.status,marcacao:r.marcacao}))};
+try{localStorage.setItem(storageKey,JSON.stringify(responses));}catch(_){}
+update();}catch(err){$("importStatus").textContent="Erro: "+err.message;}
+});
+$("clearJson").addEventListener("click",function(){responses=null;try{localStorage.removeItem(storageKey)}catch(_){}$("casanJsonFile").value="";update();});
+try{const d=JSON.parse(localStorage.getItem(storageKey)||"null");if(validData(d))responses=d;}catch(_){}
+update();
+</script>
+</body></html>
