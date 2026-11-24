@@ -8,3 +8,18 @@
 #ce-edital-pace ul{padding-inline-start:1.3em}
 #ce-edital-pace a{max-width:100%;white-space:normal;overflow-wrap:anywhere;margin:6px 0}
 @media(max-width:360px){#ce-edital-pace .ce-pace-metric{grid-template-columns:1fr}#ce-edital-pace progress{grid-column:1}}
+
+#ce-edital-pace .ce-pace-comparison{border:1px solid #334b66;border-radius:14px;padding:clamp(12px,3vw,20px);background:#111e30;color:#e7eef9}
+#ce-edital-pace .ce-pace-comparison h3{margin:0 0 6px}
+#ce-edital-pace .ce-pace-status.late{color:#fca5a5}
+#ce-edital-pace .ce-pace-status.ahead{color:#86efac}
+#ce-edital-pace .ce-pace-status.unknown{color:#fcd34d}
+#ce-edital-pace .ce-pace-metric progress{height:20px;appearance:none;border:0;border-radius:6px;overflow:hidden;background:#25374d;color:#22d3ee;accent-color:#22d3ee}
+#ce-edital-pace .ce-pace-metric progress::-webkit-progress-bar{background:#25374d;border-radius:6px}
+#ce-edital-pace .ce-pace-metric progress::-webkit-progress-value{background:#22d3ee;border-radius:6px}
+#ce-edital-pace .ce-pace-metric progress::-moz-progress-bar{background:#22d3ee;border-radius:6px}
+#ce-edital-pace .ce-pace-target progress{accent-color:#a78bfa;color:#a78bfa}
+#ce-edital-pace .ce-pace-target progress::-webkit-progress-value{background:#a78bfa}
+#ce-edital-pace .ce-pace-target progress::-moz-progress-bar{background:#a78bfa}
+#ce-edital-pace progress.ce-pace-unknown{opacity:.45}
+#ce-edital-pace .ce-pace-metric span{font-variant-numeric:tabular-nums;white-space:nowrap}
