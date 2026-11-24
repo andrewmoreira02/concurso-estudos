@@ -319,7 +319,7 @@ function menu(){
  const parent=location.pathname.includes('/aulas/')?'../':'';
  const href=parent+'conta.html';
  const nav=document.querySelector('.primary-nav');
- if(nav&&!nav.querySelector('a[href="conta.html"]')){
+ if(nav&&![...nav.querySelectorAll('a[href]')].some(a=>{try{return new URL(a.href,location.href).pathname.split('/').pop()==='conta.html';}catch{return false;}})){
    const a=document.createElement('a');a.href=href;a.textContent='Sincronização';if(filename==='conta.html')a.setAttribute('aria-current','page');nav.append(a);
  }else if(!nav){
    const area=document.querySelector('.topactions,.header-actions');
