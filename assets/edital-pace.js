@@ -30,7 +30,7 @@ const read=(k,f)=>{try{return JSON.parse(localStorage.getItem(k))??f;}catch{retu
 const today=()=>new Intl.DateTimeFormat("sv-SE",{timeZone:"America/Sao_Paulo",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 const label=d=>d?d.split("-").reverse().join("/"):"—";
 const el=(tag,txt,cls)=>{const e=document.createElement(tag);if(txt!==undefined)e.textContent=txt;if(cls)e.className=cls;return e;};
-function meter(labelText,n,total){const w=el("div",undefined,"ce-pace-metric");w.append(el("strong",labelText),el("span",n+" / "+total));const m=el("progress");m.max=Math.max(1,total);m.value=n;m.setAttribute("aria-label",labelText);w.append(m);return w;}
+function meter(labelText,n,total,kind="actual"){const w=el("div",undefined,"ce-pace-metric ce-pace-"+kind);const pct=total>0&&n!==null?Math.round(100*n/total):null;w.append(el("strong",labelText),el("span",pct===null?"—":pct+"% · "+n+"/"+total));const m=el("progress");m.max=Math.max(1,total);if(n!==null)m.value=n;else m.className="ce-pace-unknown";m.setAttribute("aria-label",labelText);w.append(m);return w;}
 function para(s){host.append(el("p",s));}
 function link(title,href){const a=el("a",title,"btn alt");a.href=href;return a;}
 let config,matrix;
@@ -43,9 +43,20 @@ function render(){
  const days=Array.isArray(availability)?[...new Set(availability.filter(x=>Number.isInteger(x)&&x>=0&&x<7))]:[];
  const daily=calcDaily(lessons,confirmed,exam,date),stats=groupStats(matrix,lessons,confirmed,exam);
  const policy=config.curriculum_pace?.[exam],start=policy?.start||rule.from,deadline=config.exams[exam].deadline,revisionDays=policy?.revision_days??14,target=dateAdd(deadline,-revisionDays-1);
- host.append(el("h3","Ritmo das aulas diárias"),el("strong",daily.total?daily.status:"Sem aulas agendadas","ce-pace-status"));
+ const totalDays=days.length?availableBetween(start,dateAdd(target,1),days):0;
+ const elapsed=totalDays?availableBetween(start,date<start?start:date>target?dateAdd(target,1):date,days):0;
+ const expected=totalDays?Math.floor(stats.total*Math.min(1,elapsed/totalDays)):null;
+ const diff=expected===null?null:stats.confirmed-expected;
+ const comparison=el("div",undefined,"ce-pace-comparison");
+ comparison.append(el("h3","Progresso do edital · IMA"),el("strong",diff===null?"Defina sua disponibilidade":diff>0?"Adiantado":diff<0?"Atrasado":"No ritmo","ce-pace-status "+(diff===null?"unknown":diff<0?"late":diff>0?"ahead":"onpace")));
+ comparison.append(meter("Planejado até hoje",expected,stats.total,"target"),meter("Estudo confirmado",stats.confirmed,stats.total,"actual"));
+ if(diff!==null)comparison.append(el("p","Diferença: "+(diff>0?"+":"")+Math.round(100*diff/Math.max(1,stats.total)*10)/10+" pontos percentuais · "+(diff>0?"+":"")+diff+" grupo(s)."));
+ else comparison.append(el("p","Selecione os dias disponíveis no planejamento para calcular a barra de meta."));
+ comparison.append(el("small","Matriz provisória de grupos do edital · meta de teoria "+label(target)+". Lido não equivale a estudo confirmado."));
+ host.append(comparison);
+ host.append(el("h3","Ritmo das aulas diárias"),el("strong",daily.total?daily.status:"Sem aulas agendadas","ce-pace-status "+(daily.delta<0?"late":daily.delta>0?"ahead":"onpace")));
  para("Módulos com estudo confirmado: "+daily.actual+" · previstos até ontem: "+daily.target+" · diferença: "+(daily.delta>0?"+":"")+daily.delta+". "+daily.late+" módulo(s) de datas anteriores ainda pendentes.");
- host.append(meter("Estudo confirmado das aulas agendadas",daily.actual,daily.total));
+ host.append(meter("Aulas diárias · planejado até ontem",daily.target,daily.total,"target"),meter("Aulas diárias · estudo confirmado",daily.actual,daily.total,"actual"));
  para("Compara apenas as aulas diárias cadastradas, não todo o edital. A aula de hoje ainda não conta como atraso; datas são sugestões.");
  if(daily.next)host.append(link("Próxima aula pendente",daily.next.url));
  host.append(el("h3","Cobertura editorial do edital — matriz preliminar"));
@@ -54,12 +65,11 @@ function render(){
  para("Meta de fechamento da teoria: "+label(target)+" · "+revisionDays+" dias reservados para revisão antes da prova de "+label(deadline)+".");
  if(stats.invalid)para("Atenção: "+stats.invalid+" grupo(s) com vínculo incompatível com o catálogo; revisar âncoras e conteúdo.");
  host.append(el("h3","Trajetória curricular provisória"));
- host.append(meter("Grupos desenvolvidos com todos os módulos vinculados confirmados",stats.confirmed,stats.total));
+
  para("Proxy conservador por grupos da matriz: confirmações IMA, não leitura nem domínio; vínculos ainda precisam de auditoria semântica e podem não refletir novas aulas.");
  if(!days.length){para("Defina os dias disponíveis no planejamento para calcular a meta acumulada e a previsão.");}
  else {
- const totalDays=availableBetween(start,dateAdd(target,1),days),elapsed=availableBetween(start,date<start?start:date>target?dateAdd(target,1):date,days);
- const expected=totalDays?Math.floor(stats.total*Math.min(1,elapsed/totalDays)):0;
+
  if(totalDays){const delta=stats.confirmed-expected;para("Meta acumulada provisória: "+expected+" de "+stats.total+" grupos · diferença "+(delta>0?"+":"")+delta+" · "+(delta>0?"Adiantado":delta<0?"Atrasado":"No ritmo")+". Grupos têm pesos iguais nesta aproximação; não representam horas equivalentes.");}
  else para("Não há dias de estudo disponíveis antes da meta.");
  const remaining=availableBetween(date,dateAdd(target,1),days);
