@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "questoes-modelo-demonstrativo",
+  "title": "Exemplo de estrutura — não publicar",
+  "exam": "ima",
+  "subject": "ti",
+  "topic": "Leitura de gráfico",
+  "questions": [
+    {
+      "id": "modelo-grafico-1",
+      "kind": "autoral",
+      "prompt": "Qual categoria possui o maior valor?",
+      "blocks": [
+        {
+          "type": "chart",
+          "kind": "bar",
+          "title": "Exemplo de barras",
+          "unit": "itens",
+          "points": [
+            {
+              "label": "A",
+              "value": 4
+            },
+            {
+              "label": "B",
+              "value": 8
+            }
+          ],
+          "explanation": [
+            "A tabela apresenta os mesmos dados do gráfico."
+          ]
+        }
+      ],
+      "options": {
+        "a": "A",
+        "b": "B",
+        "c": "Valores iguais",
+        "d": "Nenhuma"
+      },
+      "correct": "b",
+      "explanation": "B tem oito itens, contra quatro de A.",
+      "distractors": {
+        "a": "A possui quatro.",
+        "c": "Os valores diferem.",
+        "d": "Há duas categorias."
+      }
+    }
+  ]
+}

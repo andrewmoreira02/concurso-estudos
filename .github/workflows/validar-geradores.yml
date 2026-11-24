@@ -1,0 +1,17 @@
+name: Validar geradores didáticos
+on:
+  push:
+    paths: ['scripts/**','modelos/**','dados/aulas-diarias/**','dados/questionarios/**','aulas/**','assets/componentes-didaticos.css','.github/workflows/validar-geradores.yml']
+  pull_request:
+    paths: ['scripts/**','modelos/**','dados/aulas-diarias/**','dados/questionarios/**','aulas/**','assets/componentes-didaticos.css','.github/workflows/validar-geradores.yml']
+jobs:
+  generated:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/verificar-gerador-aulas.mjs
+      - run: node scripts/verificar-componentes-didaticos.mjs
+      - run: node scripts/regerar-materiais.mjs --check
