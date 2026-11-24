@@ -450,3 +450,7 @@ Fontes candidatas ainda sujeitas à validação individual: FURB Analista de Sis
 - Substituída somente a figura 1.1 por lista visual vertical de quatro componentes legais, preservando a distinção titularidade/prestação/regulação/fiscalização, o conteúdo adjacente e os IDs de leitura. CSS semântico responsivo incluído em `assets/lesson-unified.css`, com cache versionado na aula.
 - Iniciado `docs/AUDITORIA_MOBILE.md` com SHA e estado **corrigido, aguardando teste**; critérios adicionados a `docs/PADRAO_AULAS_E_ROTEIRO.md`.
 - Acesso do Pages por ferramenta de navegação retornou erro; não foi executada varredura em navegador de todos os HTMLs nem capturas 320/360/390/430 px. **Não declarar deploy ou aceite da issue #2.** Nenhum registro privado foi publicado.
+
+
+## 24/11/2026 — Novo padrão obrigatório de aula diária (substitui microaulas para novas publicações)
+Consultar [PADRAO_AULA_DIARIA.md](PADRAO_AULA_DIARIA.md). A tarefa editorial deve produzir somente o JSON de conteúdo, usar `scripts/gerar-aula.mjs` e publicar o HTML gerado no endereço estável. Não criar microaulas novas, não reescrever layout/JS por aula e não apagar IDs antigos. Ajustar os conteúdos da aula diária por progresso e tempo efetivamente informado, sem publicar progresso privado. A fila antiga de microaulas permanece por compatibilidade; integração de recomendações diárias e auditoria de navegador ainda pendentes. O gerador não altera automaticamente catálogo ou planejamento: atualizar ambos quando publicar aula real.

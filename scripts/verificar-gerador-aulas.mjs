@@ -1,0 +1,15 @@
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import {renderLesson} from "./gerar-aula.mjs";
+const d=JSON.parse(readFileSync(new URL("../modelos/aula-diaria.exemplo.json",import.meta.url),"utf8"));
+const html=renderLesson(d);
+assert.equal((html.match(/data-ce-read=/g)||[]).length,2);
+assert.equal((html.match(/data-ce-nav=/g)||[]).length,2);
+assert.match(html,/max="2"/);
+assert.match(html,/data-ce-lesson="modelo-aula-diaria"/);
+assert.ok(html.indexOf("Conclusão:")<html.indexOf('data-ce-read="controle-versao"'));
+assert.match(html,/git commit -m &quot;/);
+assert.throws(()=>renderLesson({...d,sources:[{label:"x",url:"javascript:alert(1)"}]}));
+const dup=structuredClone(d);dup.modules[0].sections[1].id=dup.modules[0].sections[0].id;assert.throws(()=>renderLesson(dup),/repetido/);
+const empty=structuredClone(d);empty.modules[0].sections[0].blocks=[];assert.throws(()=>renderLesson(empty),/vazia/);
+console.log("Validação estrutural do gerador aprovada; não substitui teste de navegador.");

@@ -116,3 +116,7 @@ Em aulas novas usar `assets/new-lesson.css`, `assets/new-lesson.js`, `assets/les
 - Para figuras com quatro ou mais elementos em colunas, preferir representação vertical semântica com texto integral e rótulos explícitos no celular. Não reduzir SVG de 660 unidades a texto microscópico; manter alternativa textual e relações entre conceitos.
 - Registrar em `docs/AUDITORIA_MOBILE.md` cada HTML com SHA do próprio arquivo e SHA de CSS/JS dependentes, resoluções realmente testadas e evidência. Qualquer alteração dessas dependências invalida o estado `verificado` até novo teste.
 - Não fechar a issue #2 sem varredura dinâmica de todas as aulas e páginas de questões e capturas inspecionadas. Uma correção pontual deve ser marcada `corrigido, aguardando teste`.
+
+
+## 24/11/2026 — Novo padrão obrigatório de aula diária (substitui microaulas para novas publicações)
+Consultar [PADRAO_AULA_DIARIA.md](PADRAO_AULA_DIARIA.md). A tarefa editorial deve produzir somente o JSON de conteúdo, usar `scripts/gerar-aula.mjs` e publicar o HTML gerado no endereço estável. Não criar microaulas novas, não reescrever layout/JS por aula e não apagar IDs antigos. Ajustar os conteúdos da aula diária por progresso e tempo efetivamente informado, sem publicar progresso privado. A fila antiga de microaulas permanece por compatibilidade; integração de recomendações diárias e auditoria de navegador ainda pendentes. O gerador não altera automaticamente catálogo ou planejamento: atualizar ambos quando publicar aula real.

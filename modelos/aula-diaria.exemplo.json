@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "id": "modelo-aula-diaria",
+  "date": "2026-11-24",
+  "title": "Exemplo técnico — controle de versão",
+  "contest": "Exemplo de concurso (não catalogar)",
+  "subject": "Tecnologia da Informação",
+  "description": "Modelo editorial demonstrativo; não integra a trilha nem representa estudo.",
+  "modules": [
+    {
+      "id": "mod-fundamentos",
+      "title": "Fundamentos",
+      "sections": [
+        {
+          "id": "controle-versao",
+          "title": "Commits e histórico",
+          "blocks": [
+            {
+              "type": "concept",
+              "title": "Ideia central",
+              "paragraphs": [
+                "Um commit Git registra um snapshot do projeto e sua relação com commits anteriores."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Uma equipe precisa registrar uma correção de documentação.",
+              "steps": [
+                "Altera o arquivo.",
+                "Adiciona a alteração à área de preparação.",
+                "Cria o commit com mensagem descritiva."
+              ],
+              "conclusion": "O commit registra o estado preparado; publicar em um servidor é uma operação distinta."
+            },
+            {
+              "type": "tip",
+              "text": "Commit registra; push envia."
+            },
+            {
+              "type": "warning",
+              "text": "Um commit local não significa que a alteração já está no repositório remoto."
+            },
+            {
+              "type": "table",
+              "title": "Comparação",
+              "headers": [
+                "Operação",
+                "Finalidade"
+              ],
+              "rows": [
+                [
+                  "commit",
+                  "Registrar snapshot"
+                ],
+                [
+                  "push",
+                  "Enviar referências e objetos"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "id": "estado-local",
+          "title": "Área de preparação",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "A área de preparação permite escolher o conteúdo do próximo commit."
+              ]
+            },
+            {
+              "type": "code",
+              "code": "git add README.md\ngit commit -m \"Atualiza documentação\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Git — documentação",
+      "url": "https://git-scm.com/docs"
+    }
+  ]
+}
