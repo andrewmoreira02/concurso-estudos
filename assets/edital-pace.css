@@ -1,0 +1,10 @@
+/* Indicador responsivo compartilhado no início e no planejamento. */
+#ce-edital-pace{margin:20px 0;padding:clamp(14px,3vw,24px);min-width:0;overflow-wrap:anywhere}
+#ce-edital-pace h2,#ce-edital-pace h3{margin:.8em 0 .4em}
+#ce-edital-pace p{margin:.55em 0;line-height:1.55}
+#ce-edital-pace .ce-pace-status{font-size:1.35rem;color:#5eead4}
+#ce-edital-pace .ce-pace-metric{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;margin:12px 0;align-items:center}
+#ce-edital-pace progress{grid-column:1/-1;width:100%;height:12px;accent-color:#22d3ee}
+#ce-edital-pace ul{padding-inline-start:1.3em}
+#ce-edital-pace a{max-width:100%;white-space:normal;overflow-wrap:anywhere;margin:6px 0}
+@media(max-width:360px){#ce-edital-pace .ce-pace-metric{grid-template-columns:1fr}#ce-edital-pace progress{grid-column:1}}
