@@ -30,14 +30,32 @@ const read=(k,f)=>{try{return JSON.parse(localStorage.getItem(k))??f;}catch{retu
 const today=()=>new Intl.DateTimeFormat("sv-SE",{timeZone:"America/Sao_Paulo",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 const label=d=>d?d.split("-").reverse().join("/"):"—";
 const el=(tag,txt,cls)=>{const e=document.createElement(tag);if(txt!==undefined)e.textContent=txt;if(cls)e.className=cls;return e;};
-function meter(labelText,n,total,kind="actual"){const w=el("div",undefined,"ce-pace-metric ce-pace-"+kind);const pct=total>0&&n!==null?Math.round(100*n/total):null;w.append(el("strong",labelText),el("span",pct===null?"—":pct+"% · "+n+"/"+total));const m=el("progress");m.max=Math.max(1,total);if(n!==null)m.value=n;else m.className="ce-pace-unknown";m.setAttribute("aria-label",labelText);w.append(m);return w;}
+function paceSegments(actual,expected,total){
+ const clamp=n=>Math.max(0,Math.min(100,100*n/Math.max(1,total)));
+ const a=clamp(actual),e=expected===null?null:clamp(expected);
+ if(e===null)return [{kind:"unplanned",width:a}];
+ return [{kind:"planned",width:Math.min(a,e)},{kind:a<e?"late":"ahead",width:Math.abs(a-e)}];
+}
+function pct(n,total){return n===null?"—":new Intl.NumberFormat("pt-BR",{maximumFractionDigits:1}).format(100*n/Math.max(1,total))+"%";}
+function paceBar(actual,expected,total){
+ const track=el("div",undefined,"ce-pace-track");
+ track.setAttribute("role","img");track.setAttribute("aria-label","Estudado: "+pct(actual,total)+"; meta: "+pct(expected,total)+(expected===null?" não calculada":actual<expected?"; atraso":actual>expected?"; adiantamento":"; no ritmo"));
+ for(const part of paceSegments(actual,expected,total)){
+  const segment=el("span",undefined,"ce-pace-segment "+part.kind);
+  segment.style.width=part.width+"%";track.append(segment);
+ }
+ if(expected!==null){
+  const marker=el("span",undefined,"ce-pace-marker");marker.style.left=Math.max(0,Math.min(100,100*expected/Math.max(1,total)))+"%";marker.title="Meta: "+pct(expected,total);track.append(marker);
+ }
+ return track;
+}
 function para(s){host.append(el("p",s));}
 function link(title,href){const a=el("a",title,"btn alt");a.href=href;return a;}
 let config,matrix;
 function render(){
  if(!config||!matrix)return;
  const date=today(),rule=config.priority_windows.find(x=>x.from<=date&&date<=x.through),exam=rule?.exam;
- host.replaceChildren(el("span","EDITAL • RITMO DE ESTUDO","eyebrow"),el("h2","Estou adiantado ou atrasado?"));
+ host.replaceChildren(el("h2","Progresso do edital · IMA"));
  if(exam!=="ima"){para("Sem indicador curricular configurado para o concurso prioritário. Consulte o planejamento.");return;}
  const lessons=config.adaptive_study.lessons,confirmed=read("ce_study_confirmed_v1",{})?.confirmed||{},availability=read("ce_available_days_v1",[]);
  const days=Array.isArray(availability)?[...new Set(availability.filter(x=>Number.isInteger(x)&&x>=0&&x<7))]:[];
@@ -48,33 +66,32 @@ function render(){
  const expected=totalDays?Math.floor(stats.total*Math.min(1,elapsed/totalDays)):null;
  const diff=expected===null?null:stats.confirmed-expected;
  const comparison=el("div",undefined,"ce-pace-comparison");
- comparison.append(el("h3","Progresso do edital · IMA"),el("strong",diff===null?"Defina sua disponibilidade":diff>0?"Adiantado":diff<0?"Atrasado":"No ritmo","ce-pace-status "+(diff===null?"unknown":diff<0?"late":diff>0?"ahead":"onpace")));
- comparison.append(meter("Planejado até hoje",expected,stats.total,"target"),meter("Estudo confirmado",stats.confirmed,stats.total,"actual"));
- if(diff!==null)comparison.append(el("p","Diferença: "+(diff>0?"+":"")+Math.round(100*diff/Math.max(1,stats.total)*10)/10+" pontos percentuais · "+(diff>0?"+":"")+diff+" grupo(s)."));
- else comparison.append(el("p","Selecione os dias disponíveis no planejamento para calcular a barra de meta."));
- comparison.append(el("small","Matriz provisória de grupos do edital · meta de teoria "+label(target)+". Lido não equivale a estudo confirmado."));
+ const head=el("div",undefined,"ce-pace-head");
+ head.append(el("strong",pct(stats.confirmed,stats.total)+" estudado","ce-pace-value"),el("strong",diff===null?"Meta não calculada":diff>0?"Adiantado":diff<0?"Atrasado":"No ritmo","ce-pace-status "+(diff===null?"unknown":diff<0?"late":diff>0?"ahead":"onpace")));
+ comparison.append(head,paceBar(stats.confirmed,expected,stats.total));
+ const caption=el("div",undefined,"ce-pace-caption");
+ caption.append(el("span","Meta até hoje: "+pct(expected,stats.total)),el("span",diff===null?"Selecione os dias disponíveis":(diff>0?"+":"")+new Intl.NumberFormat("pt-BR",{maximumFractionDigits:1}).format(100*diff/Math.max(1,stats.total))+" p.p."));
+ comparison.append(caption);
+ const legend=el("div",undefined,"ce-pace-legend");
+ for(const [kind,name] of [["planned","Dentro da meta"],["ahead","Adiantamento"],["late","Atraso"]]){
+  const item=el("span");item.append(el("i",undefined,kind),document.createTextNode(name));legend.append(item);
+ }
+ comparison.append(legend,el("small","Estimativa curricular provisória · meta de conclusão: "+label(target)+"."));
  host.append(comparison);
- host.append(el("h3","Ritmo das aulas diárias"),el("strong",daily.total?daily.status:"Sem aulas agendadas","ce-pace-status "+(daily.delta<0?"late":daily.delta>0?"ahead":"onpace")));
- para("Módulos com estudo confirmado: "+daily.actual+" · previstos até ontem: "+daily.target+" · diferença: "+(daily.delta>0?"+":"")+daily.delta+". "+daily.late+" módulo(s) de datas anteriores ainda pendentes.");
- host.append(meter("Aulas diárias · planejado até ontem",daily.target,daily.total,"target"),meter("Aulas diárias · estudo confirmado",daily.actual,daily.total,"actual"));
- para("Compara apenas as aulas diárias cadastradas, não todo o edital. A aula de hoje ainda não conta como atraso; datas são sugestões.");
- if(daily.next)host.append(link("Próxima aula pendente",daily.next.url));
- host.append(el("h3","Cobertura editorial do edital — matriz preliminar"));
- para(stats.total+" grupos registrados: "+stats.developed+" classificados como desenvolvidos, "+stats.partial+" parciais, "+stats.missing+" sem teoria mapeada. Não são subitens auditados integralmente.");
- host.append(meter("Grupos classificados como desenvolvidos",stats.developed,stats.total));
- para("Meta de fechamento da teoria: "+label(target)+" · "+revisionDays+" dias reservados para revisão antes da prova de "+label(deadline)+".");
- if(stats.invalid)para("Atenção: "+stats.invalid+" grupo(s) com vínculo incompatível com o catálogo; revisar âncoras e conteúdo.");
- host.append(el("h3","Trajetória curricular provisória"));
-
- para("Proxy conservador por grupos da matriz: confirmações IMA, não leitura nem domínio; vínculos ainda precisam de auditoria semântica e podem não refletir novas aulas.");
- if(!days.length){para("Defina os dias disponíveis no planejamento para calcular a meta acumulada e a previsão.");}
- else {
-
- if(totalDays){const delta=stats.confirmed-expected;para("Meta acumulada provisória: "+expected+" de "+stats.total+" grupos · diferença "+(delta>0?"+":"")+delta+" · "+(delta>0?"Adiantado":delta<0?"Atrasado":"No ritmo")+". Grupos têm pesos iguais nesta aproximação; não representam horas equivalentes.");}
- else para("Não há dias de estudo disponíveis antes da meta.");
+ if(expected===null)host.append(link("Configurar disponibilidade","planejamento.html#availabilityDays"));
+ const details=el("details",undefined,"ce-pace-details");
+ details.append(el("summary","Detalhes da previsão e da cobertura"));
+ host.append(details);
+ const detailPara=t=>details.append(el("p",t));
+ detailPara("O cálculo usa a matriz preliminar do edital: "+stats.total+" grupos de conteúdo, não questões nem aulas. "+stats.developed+" desenvolvidos, "+stats.partial+" parciais, "+stats.missing+" sem teoria mapeada. Grupos têm pesos iguais nesta estimativa; não equivale a domínio.");
+ detailPara("Aulas diárias: "+daily.status.toLowerCase()+". "+daily.late+" módulo(s) de datas anteriores pendentes. A aula de hoje ainda não conta como atraso.");
+ if(daily.next)details.append(link("Próxima aula pendente",daily.next.url));
+ if(stats.invalid)detailPara("Há "+stats.invalid+" vínculo(s) a revisar no catálogo.");
+ if(!totalDays)detailPara("Previsão indisponível até configurar dias de estudo.");
+ else{
  const remaining=availableBetween(date,dateAdd(target,1),days);
- if(remaining)para("Ritmo necessário: "+((stats.total-stats.confirmed)/remaining).toFixed(2).replace(".",",")+" grupos por dia disponível (aproximação).");
- else if(stats.confirmed<stats.total)para("Alerta: prazo teórico esgotado ou sem dias disponíveis; replanejar.");
+ if(remaining)detailPara("Ritmo necessário: "+((stats.total-stats.confirmed)/remaining).toFixed(2).replace(".",",")+" grupos por dia disponível (aproximação).");
+ else if(stats.confirmed<stats.total)detailPara("Prazo teórico esgotado ou sem dias disponíveis; replanejar.");
  const key="ce_curriculum_pace_observations_v1:"+exam;
  const signature=JSON.stringify([matrix.updated,stats.groups.map(t=>[t.id,t.depth,t.lessons]),days,start,target]);
  let history=read(key,{signature,observations:[]});
@@ -83,16 +100,16 @@ function render(){
  history.observations.push({date,count:stats.confirmed});
  try{localStorage.setItem(key,JSON.stringify(history));}catch{}
  const obs=history.observations,first=obs[0],span=availableBetween(first.date,date,days),calendarSpan=(Date.parse(date)-Date.parse(first.date))/86400000,velocity=span>0?(stats.confirmed-first.count)/span:0;
- if(stats.confirmed===stats.total&&stats.total>0)para("Todos os grupos desta matriz têm módulos vinculados confirmados; ainda é necessária auditoria integral do edital.");
+ if(stats.confirmed===stats.total&&stats.total>0)detailPara("Todos os grupos desta matriz têm módulos vinculados confirmados; ainda é necessária auditoria integral do edital.");
  else if(obs.length>=3&&calendarSpan>=7&&velocity>0){
  let need=Math.ceil((stats.total-stats.confirmed)/velocity),projected=date;for(let i=0;i<730&&need>0;i++){projected=dateAdd(projected,1);if(days.includes((new Date(projected+"T12:00:00Z").getUTCDay()+6)%7))need--;}
- para(need?"Projeção provisória excede dois anos no ritmo observado.":"Previsão provisória de fechamento: "+label(projected)+(projected>target?" — após a meta de teoria.":" — dentro da meta teórica."));
- }else para("Previsão de término: dados insuficientes ou sem avanço líquido. Exige pelo menos três registros em dias distintos, sete dias de observação e progresso positivo. Série local deste navegador.");
+ detailPara(need?"Projeção provisória excede dois anos no ritmo observado.":"Previsão provisória de fechamento: "+label(projected)+(projected>target?" — após a meta de teoria.":" — dentro da meta teórica."));
+ }else detailPara("Previsão de término: dados insuficientes ou sem avanço líquido. Exige pelo menos três registros em dias distintos, sete dias de observação e progresso positivo. Série local deste navegador.");
  }
  const gaps=stats.groups.filter(t=>t.depth!=="desenvolvido"||!t.valid).sort((a,b)=>(b.weight||0)-(a.weight||0)||Number(b.depth==="lacuna")-Number(a.depth==="lacuna")||a.id.localeCompare(b.id));
- if(gaps.length){host.append(el("h3","Lacunas para a próxima produção editorial"));const list=el("ul");for(const g of gaps.slice(0,5))list.append(el("li",g.id+" · "+g.title+" — "+(g.depth==="lacuna"?"sem teoria mapeada":g.valid?"parcial":"vínculo a revisar")));host.append(list);}
- host.append(link("Ver matriz e configurar disponibilidade","planejamento.html#ce-cobertura-ima"));
- para("O painel recalcula localmente; a publicação de novas aulas e a auditoria integral são tarefas editoriais. Não grava resultados pessoais no GitHub.");
+ if(gaps.length){details.append(el("h3","Lacunas para a próxima produção editorial"));const list=el("ul");for(const g of gaps.slice(0,5))list.append(el("li",g.id+" · "+g.title+" — "+(g.depth==="lacuna"?"sem teoria mapeada":g.valid?"parcial":"vínculo a revisar")));details.append(list);}
+ details.append(link("Ver matriz curricular","planejamento.html#ce-cobertura-ima"));
+ detailPara("O painel recalcula localmente; a publicação de novas aulas e a auditoria integral são tarefas editoriais. Não grava resultados pessoais no GitHub.");
 }
 function safeRender(){try{render();}catch(e){host.replaceChildren(el("h2","Ritmo de preparação"),el("p","Não foi possível calcular o indicador. Confira os dados do planejamento."));}}
 Promise.all(["dados/concursos.json","dados/cobertura-ima.json"].map(url=>fetch(url,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(r.status);return r.json();}))).then(([c,m])=>{config=c;matrix=m;safeRender();}).catch(()=>{host.replaceChildren(el("h2","Ritmo de preparação"),el("p","Dados curriculares indisponíveis."));});
