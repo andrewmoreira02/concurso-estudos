@@ -475,13 +475,16 @@ function render(data){
  if(imaQuestionCard){
    imaQuestionCard.hidden=data.exam!=='ima';
    const link=$('imaQuestionLink'),desc=$('imaQuestionDescription');
+   const title=$('imaQuestionSuggestedTitle'),eyebrow=imaQuestionCard.querySelector('.eyebrow');
    if(data.exam==='ima'){
-     const rec=data.imaSuggestedQuestion;
-     if(desc)desc.textContent=rec?rec.description:
-       'Após confirmar o estudo de uma aula diária, seu questionário pode ser sugerido. Lido não equivale a estudo; acesso voluntário permanece disponível.';
+     const rec=data.imaSuggestedQuestion||data.imaSuggestedLesson;
+     const quiz=rec?.type==='quiz';
+     if(title)title.textContent=quiz?'Questão sugerida':rec?'Aula sugerida':'Próxima atividade';
+     if(eyebrow)eyebrow.textContent=quiz?'IMA-SC · após estudo confirmado':rec?'IMA-SC · aula diária':'IMA-SC · continuidade';
+     if(desc)desc.textContent=rec?.description||'Consulte o catálogo e o planejamento para continuar a cobertura do edital.';
      if(link){
-       link.href=localHref(rec?.href||data.imaSuggestedLesson?.href||'aulas.html#lessonCatalog');
-       link.textContent=rec?'Responder às questões sugeridas':'Abrir próxima aula diária';
+       link.href=localHref(rec?.href||'aulas.html#lessonCatalog');
+       link.textContent=quiz?'Responder às questões sugeridas':rec?'Abrir próxima aula diária':'Ver as aulas diárias';
      }
    }
  }
