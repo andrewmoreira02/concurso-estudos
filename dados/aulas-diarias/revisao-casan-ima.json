@@ -1,0 +1,908 @@
+{
+  "schema_version": 1,
+  "id": "revisao-casan-ima",
+  "date": "2026-11-24",
+  "title": "Revisão dirigida CASAN → IMA — questões comentadas",
+  "contest": "CASAN 2026 · AOCP · Cargo 404 · Prova 03",
+  "subject": "Português e Tecnologia da Informação",
+  "description": "19 questões selecionadas na revisão anterior por relação com o edital IMA. Leia a questão reconstruída, a letra registrada, a teoria, o exemplo e as armadilhas. O caderno original e o gabarito oficial não puderam ser recuperados nesta edição; enunciados e explicações são reconstruções didáticas, não transcrições, e as letras são as da revisão anterior, ainda sujeitas à conferência e recursos. A leitura não registra avaliação.",
+  "modules": [
+    {
+      "id": "rev-mod-1",
+      "title": "Português",
+      "sections": [
+        {
+          "id": "casan-q-03",
+          "title": "Questão 3 — Regência verbal e crase",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual verbo admite a construção com crase antes de «saúde pública» no contexto de regência verbal?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: C — Chegar: chegar à saúde pública.",
+              "paragraphs": [
+                "A crase funde a preposição a com o artigo feminino a. O verbo chegar, no sentido de atingir um destino, rege a. Afetar, comprometer, prejudicar e ferir recebem objeto direto nesse contexto: afeta a saúde, sem acento grave."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Substitua saúde por serviço. Chega ao serviço → chega à saúde. Afeta o serviço → afeta a saúde."
+              ],
+              "conclusion": "O verbo chegar exige preposição a: chega a + a saúde pública = chega à saúde pública. Afetar, comprometer, prejudicar e ferir são transitivos diretos nesse contexto."
+            },
+            {
+              "type": "warning",
+              "text": "A presença de substantivo feminino não é suficiente: a regência deve exigir a preposição."
+            },
+            {
+              "type": "tip",
+              "text": "Rever regência verbal e testar separadamente a exigência de preposição e a presença do artigo feminino. Conexão curricular IMA: Regência verbal e nominal; crase"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-08",
+          "title": "Questão 8 — Orações consecutivas",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual relação semântica é expressa pela construção tão… que?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: C — Consequência.",
+              "paragraphs": [
+                "Uma oração consecutiva exprime o efeito de uma intensidade anterior. Em «o déficit é tão amplo que afeta a saúde», tão intensifica amplo; a oração iniciada por que apresenta a consequência."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Compare: «A saúde foi afetada porque há déficit» (causa) e «O déficit é tão amplo que afeta a saúde» (consequência)."
+              ],
+              "conclusion": "A construção tão ... que marca consequência: o déficit é tão amplo que afeta a saúde. Pois, porque e uma vez que apresentam causa."
+            },
+            {
+              "type": "warning",
+              "text": "Porque e uma vez que normalmente introduzem causa; embora introduz concessão, se indica condição."
+            },
+            {
+              "type": "tip",
+              "text": "Comparar causa, consequência, concessão, condição e finalidade em 10 períodos. Conexão curricular IMA: Relações sintático-semânticas; conectivos"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-10",
+          "title": "Questão 10 — Pontuação e siglas",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual é a função dos parênteses ao apresentar uma sigla depois do nome por extenso?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: A — Introduzir a sigla correspondente ao nome da instituição.",
+              "paragraphs": [
+                "O nome expandido identifica a organização; a sigla entre parênteses permite referências posteriores mais curtas. Aspas podem demarcar uma fala citada literalmente, não desempenham a mesma função nesse caso."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Instituto Trata Brasil (ITB): nas próximas menções, ITB remete ao instituto já identificado."
+              ],
+              "conclusion": "Os parênteses em Instituto Trata Brasil (ITB) introduzem a sigla correspondente ao nome expandido. Aspas em fala literal indicam citação direta."
+            },
+            {
+              "type": "warning",
+              "text": "Não confunda parênteses explicativos com aspas de citação ou vírgulas de enumeração."
+            },
+            {
+              "type": "tip",
+              "text": "Identificar parênteses, aspas, vírgulas de deslocamento e apóstrofo em fragmentos. Conexão curricular IMA: Pontuação e seus efeitos"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rev-mod-2",
+      "title": "Engenharia e desenvolvimento",
+      "sections": [
+        {
+          "id": "casan-q-26",
+          "title": "Questão 26 — Git: rebase, cherry-pick, reset e stash",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual descrição distingue corretamente rebase, cherry-pick, reset e stash no Git?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: A — A alternativa que caracteriza corretamente os comandos, conforme o gabarito registrado.",
+              "paragraphs": [
+                "Rebase reaplica commits sobre outra base e normalmente cria novos identificadores; cherry-pick aplica a alteração de um commit escolhido; reset --hard altera HEAD, índice e árvore de trabalho; stash guarda alterações temporariamente para retomada."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Você tem uma correção no commit X de outra branch. git cherry-pick X traz aquela alteração; git stash guarda trabalho local incompleto; git rebase main reaplica seus commits sobre main."
+              ],
+              "conclusion": "Rebase reaplica commits; cherry-pick seleciona um commit; reset --hard não envia mudanças automaticamente ao remoto; stash não cria commit permanente na branch."
+            },
+            {
+              "type": "flow",
+              "title": "Operações locais e publicação",
+              "steps": [
+                {
+                  "label": "Trabalho local",
+                  "detail": "stash guarda alterações; reset muda o estado local."
+                },
+                {
+                  "label": "Histórico",
+                  "detail": "rebase reaplica; cherry-pick aplica uma alteração escolhida."
+                },
+                {
+                  "label": "Remoto",
+                  "detail": "push publica referências, quando permitido."
+                }
+              ],
+              "explanation": [
+                "Os comandos não são equivalentes e não enviam alterações automaticamente."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Reset e rebase locais não publicam alterações por si sós. Stash não cria um commit normal no histórico da branch; reset --hard pode descartar trabalho local."
+            },
+            {
+              "type": "tip",
+              "text": "Simular rebase, cherry-pick, reset, stash e push em um repositório de teste. Conexão curricular IMA: Git, Gitflow e Trunk-Based Development"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-29",
+          "title": "Questão 29 — Sobrecarga versus interface",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual conceito de OO descreve métodos de mesmo nome com listas de parâmetros diferentes?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: C — Sobrecarga (overloading).",
+              "paragraphs": [
+                "Sobrecarga diferencia métodos pela assinatura conforme as regras da linguagem. Sobrescrita redefine um método herdado com assinatura compatível. Interface estabelece um contrato; composição constrói comportamento com objetos colaboradores."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Em Java, calcular(int x) e calcular(int x, int y) são sobrecargas. Uma subclasse que redefine executar() herdado está sobrescrevendo."
+              ],
+              "conclusion": "Métodos com o mesmo nome e parâmetros de tipos ou quantidades diferentes caracterizam sobrecarga (overloading). A alternativa interface não descreve escolha por assinatura."
+            },
+            {
+              "type": "warning",
+              "text": "Alterar apenas o tipo de retorno não é suficiente para sobrecarregar em Java. Interface não é sinônimo de sobrecarga."
+            },
+            {
+              "type": "tip",
+              "text": "Criar exemplos de overload, override, interface e composição. Conexão curricular IMA: Orientação a objetos e polimorfismo"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-30",
+          "title": "Questão 30 — REST, SOAP, gRPC e microsserviços",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Como classificar afirmações sobre REST, SOAP, gRPC, Protobuf e microsserviços?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: B — Sequência V–F–F–F, conforme o registro do caderno 03.",
+              "paragraphs": [
+                "REST é estilo arquitetural orientado a recursos e restrições, não protocolo. SOAP é protocolo de mensagens baseado em XML; gRPC é framework de chamadas remotas; Protocol Buffers é formato e mecanismo de serialização. Microsserviços buscam serviços independentes e baixo acoplamento."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Uma API REST pode expor GET /clientes/42; um serviço gRPC pode declarar rpc BuscarCliente; Protobuf define a mensagem Cliente, não a arquitetura do sistema."
+              ],
+              "conclusion": "A sequência é V–F–F–F: REST é estilo arquitetural; SOAP é protocolo de mensagens; gRPC é framework de RPC; Protobuf serializa mensagens; microsserviços buscam baixo acoplamento."
+            },
+            {
+              "type": "warning",
+              "text": "Não troque formato de serialização por protocolo ou estilo arquitetural. A sequência depende das afirmações originais, não recuperadas nesta consulta."
+            },
+            {
+              "type": "tip",
+              "text": "Montar tabela comparativa REST × SOAP × gRPC × Protobuf e monólito × microsserviços. Conexão curricular IMA: APIs RESTful, gRPC e arquitetura de serviços"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-39",
+          "title": "Questão 39 — Elicitação: etnografia",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual técnica de elicitação de requisitos envolve observar o trabalho real dos usuários em seu ambiente?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: D — Etnografia.",
+              "paragraphs": [
+                "A observação etnográfica busca compreender práticas, contexto, exceções e conhecimento tácito. Entrevistas coletam declarações; workshops promovem discussão coletiva; protótipos concretizam hipóteses de interface."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Acompanhar um atendente durante uma manhã pode revelar que ele mantém uma planilha paralela porque o sistema não permite determinada busca."
+              ],
+              "conclusion": "Acompanhamento presencial e observação da rotina de trabalho, sem depender apenas de declarações dos usuários, caracterizam etnografia."
+            },
+            {
+              "type": "warning",
+              "text": "Observar o trabalho real não equivale a apenas pedir ao usuário uma lista de requisitos."
+            },
+            {
+              "type": "tip",
+              "text": "Distinguir entrevista, observação etnográfica, workshop, prototipação e questionário. Conexão curricular IMA: Elicitação, especificação e validação de requisitos"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-45",
+          "title": "Questão 45 — UML: diagrama de sequência",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual diagrama UML representa a troca de mensagens entre participantes ao longo do tempo?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: D — Diagrama de sequência.",
+              "paragraphs": [
+                "Linhas de vida representam participantes e avançam temporalmente de cima para baixo. Setas mostram mensagens; retornos podem ser representados por linhas tracejadas. Diagrama de classes descreve estrutura; atividades descrevem fluxo; casos de uso descrevem objetivos de atores."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Cliente envia consultar(42) ao Serviço; Serviço envia buscar(42) ao Banco; o Banco retorna dados; o Serviço responde ao Cliente."
+              ],
+              "conclusion": "O diagrama de sequência mostra interações entre objetos ao longo do tempo, com linhas de vida e mensagens. Casos de uso representam objetivos/atores; atividades mostram fluxos."
+            },
+            {
+              "type": "diagram",
+              "file": "assets/diagramas/casan-revisao-sequencia.svg",
+              "caption": "UML — diagrama de sequência",
+              "alt": "Cliente, Serviço e Banco com linhas de vida verticais; mensagens horizontais consultar e buscar e retornos tracejados.",
+              "explanation": [
+                "O tempo avança para baixo. Cada seta representa uma interação entre participantes."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Uma sequência de mensagens não é simplesmente um diagrama de atividades, mesmo quando ambos descrevem comportamento."
+            },
+            {
+              "type": "tip",
+              "text": "Comparar diagramas de sequência, atividade, estado, classe e casos de uso. Conexão curricular IMA: UML 2.x e modelagem"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-48",
+          "title": "Questão 48 — BPMN: gateway",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual elemento BPMN controla a divergência e convergência de caminhos de um processo?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: C — Gateway.",
+              "paragraphs": [
+                "O gateway é representado por losango. O exclusivo (XOR) escolhe um caminho; o paralelo (AND) abre ou sincroniza caminhos paralelos; o inclusivo (OR) permite um ou mais caminhos conforme condições."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Após verificar um pedido, um gateway exclusivo encaminha para aprovar ou rejeitar. Um gateway paralelo pode iniciar faturamento e expedição em paralelo."
+              ],
+              "conclusion": "O gateway (losango) controla divergência e convergência de caminhos do processo. Evento indica ocorrência; atividade representa trabalho; fluxo de sequência liga elementos."
+            },
+            {
+              "type": "diagram",
+              "file": "assets/diagramas/casan-revisao-bpmn.svg",
+              "caption": "BPMN — gateway exclusivo",
+              "alt": "Evento inicial circular, tarefa Verificar, losango com X, duas saídas Aprovar e Rejeitar.",
+              "explanation": [
+                "O losango com X indica gateway exclusivo: apenas um dos caminhos condicionais é escolhido."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Evento é círculo; tarefa é retângulo de cantos arredondados; gateway é losango. Não confunda os três."
+            },
+            {
+              "type": "tip",
+              "text": "Modelar um processo com gateway exclusivo, paralelo e inclusivo. Conexão curricular IMA: BPMN 2.0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rev-mod-3",
+      "title": "Desenvolvimento web",
+      "sections": [
+        {
+          "id": "casan-q-27",
+          "title": "Questão 27 — HTML5: elemento progress",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual elemento HTML5 representa o progresso da execução de uma tarefa?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: B — <progress>.",
+              "paragraphs": [
+                "progress representa quanto de uma tarefa foi concluído. meter indica um valor escalar dentro de limites conhecidos; não é indicador de andamento. output apresenta o resultado de um cálculo, summary rotula details e track fornece faixas de texto para mídia."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "<progress value=\"60\" max=\"100\">60%</progress> indica uma tarefa 60% concluída. <meter value=\"60\" max=\"100\">60%</meter> pode indicar ocupação atual de um reservatório."
+              ],
+              "conclusion": "<progress> representa progresso de uma tarefa; <meter> representa medida escalar dentro de um intervalo. O requisito descreve execução percentual."
+            },
+            {
+              "type": "table",
+              "title": "Elementos semânticos HTML",
+              "headers": [
+                "Elemento",
+                "Uso"
+              ],
+              "rows": [
+                [
+                  "progress",
+                  "Andamento de tarefa"
+                ],
+                [
+                  "meter",
+                  "Medida em intervalo"
+                ],
+                [
+                  "output",
+                  "Resultado de cálculo"
+                ],
+                [
+                  "summary",
+                  "Título de details"
+                ],
+                [
+                  "track",
+                  "Faixas de mídia"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Porcentagem não implica progresso: a finalidade semântica do valor é decisiva."
+            },
+            {
+              "type": "tip",
+              "text": "Distinguir progress, meter, output, summary e track com exemplos. Conexão curricular IMA: HTML5"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-35",
+          "title": "Questão 35 — Regex em JavaScript",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual metacaractere de expressão regular JavaScript corresponde a caracteres de palavra?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: B — \\w.",
+              "paragraphs": [
+                "Em uso comum em JavaScript, \\w corresponde a A–Z, a–z, 0–9 e sublinhado. \\d corresponde a dígitos ASCII, \\s a espaços e outros caracteres de espaço em branco. + exige uma ou mais ocorrências; $ ancora o final."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "/\\w+/.test('abc_42') retorna true. /^\\d+$/.test('42a') retorna false. A regex ^\\w+$ exige que toda a string tenha caracteres de palavra."
+              ],
+              "conclusion": "Em expressões regulares JavaScript, \\w corresponde a caracteres de palavra (letras ASCII, dígitos e _ em uso comum); \\d corresponde a dígitos, \\s a espaços, $ ao final e + à repetição."
+            },
+            {
+              "type": "warning",
+              "text": "\\w não representa automaticamente todas as letras Unicode; letras acentuadas podem exigir propriedades Unicode, como \\p{L} com flag u."
+            },
+            {
+              "type": "tip",
+              "text": "Testar \\w, \\d, \\s, quantificadores e âncoras usando RegExp. Conexão curricular IMA: JavaScript e processamento de texto"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rev-mod-4",
+      "title": "Segurança",
+      "sections": [
+        {
+          "id": "casan-q-28",
+          "title": "Questão 28 — OWASP Top 10",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual denominação não pertence ao OWASP Top 10:2025 entre as categorias abordadas?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: E — Network Configuration Failures.",
+              "paragraphs": [
+                "A lista de riscos possui nomes oficiais. Broken Access Control trata de falhas na autorização; Security Misconfiguration, de configuração insegura; Injection, de entrada interpretada como comando; Cryptographic Failures, de falhas na proteção criptográfica."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Um usuário acessa dados de outro alterando um ID: Broken Access Control. Uma senha padrão mantida em produção: Security Misconfiguration."
+              ],
+              "conclusion": "Network Configuration Failures não é uma categoria da lista OWASP Top 10:2025 citada pela questão; Broken Access Control, Security Misconfiguration, Injection e Cryptographic Failures pertencem à referência."
+            },
+            {
+              "type": "warning",
+              "text": "Um nome tecnicamente plausível não é necessariamente categoria oficial. Observe a edição do Top 10 pedida."
+            },
+            {
+              "type": "tip",
+              "text": "Revisar as dez categorias, riscos típicos e controles de prevenção. Conexão curricular IMA: OWASP Top 10 e segurança de aplicações"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-37",
+          "title": "Questão 37 — Criptografia simétrica e assimétrica",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual dupla é formada exclusivamente por algoritmos de criptografia simétrica?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: B — AES e ChaCha20.",
+              "paragraphs": [
+                "Criptografia simétrica usa segredo compartilhado para cifrar e decifrar. AES é cifra de bloco; ChaCha20 é cifra de fluxo. RSA e esquemas baseados em ECC usam pares de chaves. Hash produz resumo e não é cifragem reversível."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Uma sessão pode usar troca de chaves baseada em ECC e depois cifrar tráfego com AES-GCM ou ChaCha20-Poly1305, combinando funções distintas."
+              ],
+              "conclusion": "AES e ChaCha20 são algoritmos de criptografia simétrica. RSA, ECC e ElGamal são associados à criptografia assimétrica; hash não é criptografia reversível."
+            },
+            {
+              "type": "table",
+              "title": "Comparação criptográfica",
+              "headers": [
+                "Categoria",
+                "Exemplos",
+                "Propriedade"
+              ],
+              "rows": [
+                [
+                  "Simétrica",
+                  "AES, ChaCha20",
+                  "Segredo compartilhado"
+                ],
+                [
+                  "Assimétrica",
+                  "RSA, ECC",
+                  "Par de chaves"
+                ],
+                [
+                  "Hash",
+                  "SHA-256",
+                  "Resumo não reversível"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Não confunda algoritmo de hash com criptografia assimétrica, nem assinatura digital com sigilo."
+            },
+            {
+              "type": "tip",
+              "text": "Comparar chaves, casos de uso, AES × RSA/ECC, hash e assinatura digital. Conexão curricular IMA: AES, RSA, ECC, funções hash e certificados"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-43",
+          "title": "Questão 43 — DevSecOps: Shift Left",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual estratégia de DevSecOps antecipa testes e verificações de segurança para fases iniciais do desenvolvimento?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: D — Shift Left.",
+              "paragraphs": [
+                "A ideia é detectar vulnerabilidades cedo, reduzindo retrabalho. SAST analisa código sem executar a aplicação; SCA examina componentes e dependências; DAST testa a aplicação em execução. Monitoramento de produção continua necessário."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Na revisão de um pull request, o pipeline executa SAST e SCA antes de permitir integração. Em homologação, executa DAST."
+              ],
+              "conclusion": "Shift Left antecipa verificações de segurança e testes para as etapas iniciais do ciclo de desenvolvimento. Monitoramento contínuo complementa essa postura, mas não define o deslocamento à esquerda."
+            },
+            {
+              "type": "warning",
+              "text": "Blue-Green é estratégia de implantação; Shift Left não significa abandonar testes e monitoramento posteriores."
+            },
+            {
+              "type": "tip",
+              "text": "Diferenciar SAST, DAST, SCA, CI/CD, Shift Left e monitoramento. Conexão curricular IMA: DevSecOps, SAST, DAST e SCA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rev-mod-5",
+      "title": "Infraestrutura e nuvem",
+      "sections": [
+        {
+          "id": "casan-q-32",
+          "title": "Questão 32 — IaaS, PaaS e SaaS",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual serviço exemplifica o modelo de nuvem PaaS?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: E — Heroku.",
+              "paragraphs": [
+                "IaaS fornece recursos como máquinas virtuais, deixando ao cliente a gestão do sistema operacional. PaaS oferece ambiente gerenciado para implantar código. SaaS disponibiliza aplicação pronta para consumo."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Google Compute Engine: VM (IaaS). Heroku: implantação gerenciada (PaaS). Gmail, Microsoft 365 e Dropbox: aplicações prontas (SaaS)."
+              ],
+              "conclusion": "Heroku é exemplo tradicional de PaaS. Gmail, Microsoft 365 e Dropbox são SaaS; Google Compute Engine fornece infraestrutura virtualizada (IaaS)."
+            },
+            {
+              "type": "table",
+              "title": "Responsabilidade do cliente",
+              "headers": [
+                "Modelo",
+                "Cliente gerencia",
+                "Exemplo"
+              ],
+              "rows": [
+                [
+                  "IaaS",
+                  "SO e aplicações",
+                  "Compute Engine"
+                ],
+                [
+                  "PaaS",
+                  "Aplicação e dados",
+                  "Heroku"
+                ],
+                [
+                  "SaaS",
+                  "Uso e configuração",
+                  "Gmail"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Classifique pela responsabilidade operacional, não pela marca ou pelo fato de tudo estar na internet."
+            },
+            {
+              "type": "tip",
+              "text": "Classificar serviços em SaaS/PaaS/IaaS e responsabilidades de cada modelo. Conexão curricular IMA: Nuvem: IaaS, PaaS, SaaS, AWS, Azure e GCP"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-41",
+          "title": "Questão 41 — Dockerfile: EXPOSE",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual instrução de Dockerfile documenta a porta em que um contêiner pretende escutar?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: C — EXPOSE.",
+              "paragraphs": [
+                "EXPOSE declara metadados da porta pretendida, sem criar publicação automática no host. RUN executa etapas de construção; CMD fornece comando padrão; ENTRYPOINT define o executável inicial; COPY copia arquivos."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "EXPOSE 8080 documenta a porta. docker run -p 8080:8080 minha-imagem mapeia a porta do host para a porta do contêiner, se o serviço estiver escutando."
+              ],
+              "conclusion": "EXPOSE documenta a porta na qual o contêiner pretende ouvir. Não publica, sozinho, essa porta no host; o mapeamento pode ser feito com docker run -p."
+            },
+            {
+              "type": "warning",
+              "text": "EXPOSE não é firewall nem substitui -p. A aplicação precisa efetivamente escutar a porta."
+            },
+            {
+              "type": "tip",
+              "text": "Revisar FROM, WORKDIR, RUN, COPY, CMD, ENTRYPOINT, EXPOSE e -p. Conexão curricular IMA: Contêineres Docker e orquestração básica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rev-mod-6",
+      "title": "Banco de dados",
+      "sections": [
+        {
+          "id": "casan-q-36",
+          "title": "Questão 36 — SQL: DML versus DCL",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Qual par de comandos pertence respectivamente a DML e DCL?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: A — INSERT e REVOKE.",
+              "paragraphs": [
+                "DML modifica dados: INSERT inclui linhas, UPDATE altera, DELETE remove. DCL controla privilégios: GRANT concede, REVOKE revoga. DDL define estruturas: CREATE, ALTER, DROP."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "INSERT INTO cliente(id) VALUES (1); inclui uma linha. REVOKE SELECT ON cliente FROM leitor; retira uma permissão previamente concedida."
+              ],
+              "conclusion": "INSERT manipula dados (DML), e REVOKE revoga permissões (DCL). CREATE, ALTER e DROP são típicos comandos DDL."
+            },
+            {
+              "type": "table",
+              "title": "Famílias SQL",
+              "headers": [
+                "Família",
+                "Comandos",
+                "Finalidade"
+              ],
+              "rows": [
+                [
+                  "DML",
+                  "INSERT, UPDATE, DELETE",
+                  "Dados"
+                ],
+                [
+                  "DCL",
+                  "GRANT, REVOKE",
+                  "Privilégios"
+                ],
+                [
+                  "DDL",
+                  "CREATE, ALTER, DROP",
+                  "Estrutura"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "DELETE remove registros, não a tabela; DROP TABLE remove a estrutura. SELECT pode ser classificado separadamente como DQL em algumas taxonomias."
+            },
+            {
+              "type": "tip",
+              "text": "Organizar comandos por DML, DDL, DCL e executar exemplos em PostgreSQL. Conexão curricular IMA: SQL: DDL, DML e DCL"
+            }
+          ]
+        },
+        {
+          "id": "casan-q-38",
+          "title": "Questão 38 — Concorrência e deadlock",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Como se chama a situação em que duas transações esperam indefinidamente pelos recursos bloqueados uma pela outra?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: C — Deadlock (impasse).",
+              "paragraphs": [
+                "T1 mantém o recurso A e espera B. T2 mantém B e espera A. A dependência circular impede o avanço. O SGBD pode detectar o ciclo e abortar uma transação para liberar recursos."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "T1 atualiza cliente 1; T2 atualiza cliente 2; T1 tenta cliente 2 e T2 tenta cliente 1. Se houver bloqueios incompatíveis, forma-se o ciclo."
+              ],
+              "conclusion": "As duas transações retêm recursos e aguardam recursos detidos pela outra: espera circular, característica de deadlock. Integridade referencial trata de relacionamentos consistentes entre tabelas."
+            },
+            {
+              "type": "flow",
+              "title": "Ciclo de espera",
+              "steps": [
+                {
+                  "label": "T1",
+                  "detail": "Detém A e espera B."
+                },
+                {
+                  "label": "T2",
+                  "detail": "Detém B e espera A."
+                },
+                {
+                  "label": "Ciclo",
+                  "detail": "Nenhuma pode prosseguir até romper o impasse."
+                }
+              ],
+              "explanation": [
+                "O SGBD pode escolher uma vítima e desfazer sua transação."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Um bloqueio simples pode ser resolvido quando a outra transação termina; o impasse exige dependência circular."
+            },
+            {
+              "type": "tip",
+              "text": "Entender locks, isolamento, detecção/prevenção de deadlock e transações. Conexão curricular IMA: Transações ACID e concorrência"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rev-mod-7",
+      "title": "Legislação e privacidade",
+      "sections": [
+        {
+          "id": "casan-q-42",
+          "title": "Questão 42 — LGPD: conservação após término",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Questão em formato de estudo (enunciado reconstruído, não transcrição literal): Quais hipóteses legais permitem conservar dados pessoais após o término do tratamento, segundo a LGPD?"
+              ]
+            },
+            {
+              "type": "concept",
+              "title": "Gabarito registrado: E — Letra E no gabarito registrado; a revisão anterior aponta I, II e III como hipóteses corretas.",
+              "paragraphs": [
+                "O art. 16 da LGPD permite conservação para obrigação legal ou regulatória; estudo por órgão de pesquisa, garantida sempre que possível a anonimização; transferência a terceiro conforme requisitos legais; e uso exclusivo do controlador, vedado acesso por terceiro, desde que anonimizados."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação do conceito",
+              "steps": [
+                "Uma obrigação legal de guarda pode impedir exclusão imediata. Já conservar dados identificados indefinidamente por mera conveniência não se enquadra automaticamente nas exceções."
+              ],
+              "conclusion": "O art. 16 admite conservação para cumprimento de obrigação legal/regulatória, estudo por órgão de pesquisa com anonimização quando possível e transferência a terceiro conforme a lei. A hipótese IV da questão não integra esse rol."
+            },
+            {
+              "type": "warning",
+              "text": "O inciso IV da lei existe. Não confunda com a assertiva IV da questão original, cujo texto não está disponível; a combinação de assertivas precisa ser conferida no caderno."
+            },
+            {
+              "type": "tip",
+              "text": "Estudar art. 15 e 16, bases legais, finalidade, minimização e setor público. Conexão curricular IMA: LGPD e proteção de dados no setor público"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "Instituto AOCP — portal do concurso CASAN; consultar caderno 03 e gabarito oficial",
+      "url": "https://www.institutoaocp.org.br/concursos/711"
+    },
+    {
+      "label": "Revisão dirigida anterior — diagnóstico e marcações locais",
+      "url": "https://andrewmoreira02.github.io/concurso-estudos/revisao-casan-ima.html"
+    },
+    {
+      "label": "FURB — edital IMA-SC",
+      "url": "https://concursos.furb.br/informacoes/584"
+    },
+    {
+      "label": "OWASP Top 10:2025",
+      "url": "https://owasp.org/Top10/2025/"
+    },
+    {
+      "label": "LGPD — Lei 13.709/2018, art. 16",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    }
+  ]
+}
