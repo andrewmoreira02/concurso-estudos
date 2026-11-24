@@ -5,18 +5,13 @@
 <meta name="theme-color" content="#0b1220">
 <title>Sincronização entre aparelhos — Concurso Estudos</title>
 <meta name="description" content="Sincronize leitura, planejamento e revisões entre celular e computador, sem cadastro e sem e-mail.">
-<link rel="stylesheet" href="assets/site.css?v=20261121responsive1">
+<link rel="stylesheet" href="assets/site.css?v=20261124layout1">
 <script src="assets/site.js?v=20261120study7" defer></script>
 <style>
-.account-page{max-width:800px;margin:34px auto 80px}
-.account-page h1{font-size:clamp(28px,5vw,43px)}
-.account-panel{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:clamp(17px,4vw,27px);margin:18px 0}
 .account-panel form{display:grid;gap:12px}
 .account-panel label{font-weight:700;display:grid;gap:5px}
-.account-panel input{min-height:48px;border-radius:10px;border:1px solid #647c91;padding:12px;background:#0b1626;color:var(--text);width:100%;font-size:16px}
-.account-panel button{border:1px solid #6dc6bd;background:#185e64;color:#fff;border-radius:9px;min-height:46px;padding:10px 15px;font:inherit;font-weight:750;cursor:pointer}
+.account-panel input{width:100%;font-size:16px}
 .account-panel button:disabled{opacity:.55;cursor:wait}
-.account-actions{display:flex;flex-wrap:wrap;gap:10px}
 .account-panel p{margin:10px 0}
 .account-note{color:var(--muted);font-size:14px}
 #syncMessage{min-height:1.6em;padding:8px 0;white-space:pre-line}
@@ -25,14 +20,14 @@
 @media(max-width:520px){.account-actions{display:grid}.account-actions button{width:100%}}
 </style>
 <script src="assets/sync-config.js" defer></script>
-<script src="assets/sync.js?v=20261120study7" defer></script>
+<script src="assets/sync.js?v=20261124layout1" defer></script>
 </head>
 <body>
-<header class="top"><div class="shell top-inner"><a class="brand" href="index.html?v=20261124nav1"><span class="logo">CE</span><span>Concurso Estudos</span></a><nav class="primary-nav" aria-label="Menu principal"><a href="index.html?v=20261124nav1">Início</a><a href="aulas.html?v=20261124nav1">Aulas</a><a href="planejamento.html?v=20261124nav1">Planejamento</a><a href="revisoes.html?v=20261124nav1">Revisões</a><a class="active" aria-current="page" href="conta.html?v=20261124nav1">Sincronização</a></nav></div></header>
-<main class="shell account-page">
-<div class="eyebrow">Seus dois dispositivos</div>
-<h1>Sincronizar sem criar conta</h1>
-<p class="lead">Uma vez em cada aparelho: abra o link privado de pareamento. Depois, as marcações de leitura, planejamento, questões e revisões serão sincronizadas automaticamente quando houver internet.</p>
+<header class="top"><div class="shell top-inner"><a class="brand" href="index.html?v=20261124layout1"><span class="logo">CE</span><span>Concurso Estudos</span></a><nav class="primary-nav" aria-label="Menu principal"><a href="index.html?v=20261124layout1">Início</a><a href="aulas.html?v=20261124layout1">Aulas</a><a href="planejamento.html?v=20261124layout1">Planejamento</a><a href="revisoes.html?v=20261124layout1">Revisões</a><a href="conta.html?v=20261124layout1" class="active" aria-current="page">Sincronização</a></nav></div></header>
+<main class="shell page-shell account-page">
+<header class="page-intro"><div class="eyebrow">Seus dois dispositivos</div>
+<h1>Sincronizar <em>sem criar conta</em></h1>
+<p class="lead">Uma vez em cada aparelho: abra o link privado de pareamento. Depois, as marcações de leitura, planejamento, questões e revisões serão sincronizadas automaticamente quando houver internet.</p></header>
 <section class="account-panel" id="syncUnconfigured" hidden>
 <h2>Sincronização indisponível</h2>
 <p>O banco privado ainda não foi configurado. Seus dados continuam salvos neste navegador. Confira as instruções de configuração no repositório.</p>
