@@ -957,5 +957,14 @@
     "minimum_question_sets": 5,
     "availability_note": "Núcleo de 120 min e até 120 min opcionais. Dias disponíveis não confirmados.",
     "legacy_manifest": "dados/microaulas-ima.json"
+  },
+  "curriculum_pace": {
+    "ima": {
+      "start": "2026-11-24",
+      "revision_days": 14,
+      "matrix": "dados/cobertura-ima.json",
+      "status": "provisorio_grupos",
+      "note": "Data inicial das aulas diárias. Margem de 14 dias configurável; matriz agregada não auditada por subitem. A previsão não mede domínio."
+    }
   }
 }
