@@ -383,7 +383,7 @@
       let visible=0;
       cards.forEach(card=>{
         const text=(card.dataset.search||'')+' '+card.textContent.toLocaleLowerCase('pt-BR');
-        const isIma=card.dataset.lessonId?.endsWith('-ima')===true;
+        const isIma=card.dataset.exam==='ima'||card.dataset.lessonId?.endsWith('-ima')===true;
         const matchExam=active==='casan'?!isIma:active==='ima'?isIma:active==='todas'?true:(priority==='casan'?!isIma:isIma);
         const matchSubject=['todas','casan','ima'].includes(active)||card.dataset.category===active;
         const show=matchExam&&matchSubject&&text.includes(q);

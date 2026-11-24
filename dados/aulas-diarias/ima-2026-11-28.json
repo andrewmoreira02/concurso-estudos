@@ -1,0 +1,435 @@
+{
+  "schema_version": 1,
+  "id": "ima-2026-11-28",
+  "date": "2026-11-28",
+  "title": "Aula 05 — Legislação Ambiental: Constituição, cooperação e PNMA",
+  "contest": "IMA-SC 2027 · Analista de Informática",
+  "subject": "Legislação Ambiental",
+  "description": "Núcleo sugerido de 120 minutos, com teoria, exemplos, recuperação ativa e questões separadas. Extensão opcional conforme disponibilidade e lacunas.",
+  "modules": [
+    {
+      "id": "cap-1",
+      "title": "Proteção constitucional e competências",
+      "sections": [
+        {
+          "id": "d28-1-1",
+          "title": "O direito ao meio ambiente e os deveres de proteção",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Núcleo sugerido: 55 minutos no primeiro módulo, 40 no segundo e 25 de recuperação e questões. Ajuste ao tempo disponível. Se já conhece um tópico, tente explicá-lo de memória antes de ler; concentre-se nas lacunas."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "O art. 225 da Constituição apresenta um direito de titularidade coletiva ao meio ambiente ecologicamente equilibrado. Ele também atribui ao poder público e à coletividade o dever de defendê-lo e preservá-lo para as presentes e futuras gerações. Não é uma regra que proíba toda atividade econômica: exige compatibilização com a proteção ambiental, medidas preventivas e reação a danos.",
+                "O § 1º estabelece deveres de proteção. Entre eles, preservar e restaurar processos ecológicos essenciais, proteger fauna e flora, controlar técnicas ou substâncias que causem riscos e exigir estudo prévio de impacto ambiental para obra ou atividade potencialmente causadora de significativa degradação, com publicidade. A exigência de estudo prévio de impacto não equivale a afirmar que todo pequeno empreendimento obrigatoriamente terá EIA/RIMA.",
+                "Uma conduta lesiva pode gerar responsabilidades em esferas distintas, inclusive obrigação de reparar o dano, além de consequências administrativas e penais nos termos aplicáveis. A análise exige identificar fato, agente, norma e consequência; não se presume culpa criminal apenas porque existe dever de reparar.",
+                "Base normativa: CF/1988, art. 225. Exemplos de fixação próprios, não questões históricas transcritas."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Caso passo a passo. Uma fábrica pretende ampliar sua área em região sensível. (1) Identifique potencial de degradação; (2) verifique se o impacto é significativo e qual estudo a norma exige; (3) submeta o pedido ao ente licenciador competente; (4) considere controle e publicidade. Conclusão: o argumento “gerará 80 empregos” não dispensa, por si só, a avaliação ambiental; por outro lado, não é correto exigir automaticamente o mesmo estudo de todos os empreendimentos."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Art. 225: direito coletivo + dever compartilhado + tutela presente e futura."
+            },
+            {
+              "type": "warning",
+              "text": "Confundir estudo prévio de impacto para significativa degradação com toda e qualquer avaliação ou autorização ambiental."
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Separe titularidade, dever compartilhado e prevenção. EIA para significativa degradação não é sinônimo de toda licença."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-1-1"
+          }
+        },
+        {
+          "id": "d28-1-2",
+          "title": "Competência comum e competência legislativa",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "A Constituição trabalha com dois planos que costumam aparecer misturados: competência administrativa (executar ações) e competência legislativa (produzir normas). O art. 23 trata de competências materiais comuns da União, estados, Distrito Federal e municípios, incluindo proteção ambiental e combate à poluição. O art. 24 disciplina legislação concorrente sobre temas ambientais; na sua lógica geral, a União estabelece normas gerais e os estados exercem competência suplementar.",
+                "Municípios também possuem competências constitucionais próprias, incluindo legislar sobre interesse local e suplementar legislação federal e estadual no que couber (art. 30). O município não se torna automaticamente incapaz de agir porque existe norma estadual; tampouco pode simplesmente afastar normas nacionais aplicáveis.",
+                "A LC 140/2011 é especialmente importante porque organiza a cooperação administrativa. Ela não substitui o texto constitucional nem significa que três entes devam conceder três licenças para o mesmo empreendimento. O exercício material cooperativo deve respeitar os critérios legais.",
+                "Base normativa: CF/1988, arts. 23, 24 e 30; LC 140/2011. Exemplos de fixação próprios, não questões históricas transcritas."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Caso resolvido. Um município quer controlar atividade poluidora local. (1) A proteção ambiental é dever administrativo comum; (2) avalie se o município possui atribuição licenciadora conforme a LC 140/2011 e a tipologia fixada pelo conselho ambiental estadual, observadas as regras legais; (3) se faltar estrutura ou competência, examine atuação estadual ou apoio subsidiário, conforme a situação. Resultado: nem toda ocorrência municipal implica licenciamento federal, nem toda competência comum implica licença tripla."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Como ler: o art. 23 envolve ações administrativas comuns; o art. 24 trata de legislação concorrente, na qual a União edita normas gerais e estados suplementam nos termos constitucionais. Municípios possuem competências legislativas próprias (art. 30). Não conclua que todos licenciam o mesmo empreendimento."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Art. 23 = agir; art. 24 = legislar; LC 140 = coordenar a execução."
+            },
+            {
+              "type": "warning",
+              "text": "Dizer que o art. 23 atribui competência exclusiva à União ou que competência concorrente elimina legislação estadual."
+            },
+            {
+              "type": "table",
+              "title": "Competências constitucionais",
+              "headers": [
+                "Dispositivo",
+                "Natureza",
+                "Papel"
+              ],
+              "rows": [
+                [
+                  "Art. 23",
+                  "Comum administrativa",
+                  "Todos os entes"
+                ],
+                [
+                  "Art. 24",
+                  "Concorrente legislativa",
+                  "União: normas gerais; estados/DF: suplementação"
+                ],
+                [
+                  "Art. 30",
+                  "Municipal",
+                  "Interesse local e suplementação cabível"
+                ]
+              ]
+            },
+            {
+              "type": "flow",
+              "title": "Qual competência?",
+              "steps": [
+                {
+                  "label": "Executar fiscalização",
+                  "detail": "Competência administrativa e LC 140."
+                },
+                {
+                  "label": "Editar norma",
+                  "detail": "Arts. 24 e 30 e demais regras constitucionais."
+                }
+              ],
+              "explanation": [
+                "Não confunda legislar com licenciar."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-1-2"
+          }
+        },
+        {
+          "id": "d28-1-3",
+          "title": "LC 140/2011: quem licencia e quem coopera",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "A LC 140/2011 organiza ações administrativas ambientais e usa critérios de competência conforme localização, impacto, tipologia e outras hipóteses da lei. De modo simplificado, empreendimentos de competência federal encontram-se nos casos previstos no art. 7º; os estados licenciam as demais atividades sob sua competência, ressalvadas as atribuições municipais; municípios licenciam impactos locais definidos conforme a lei e normas aplicáveis (arts. 8º e 9º).",
+                "A lei distingue atuação supletiva, quando um ente substitui outro em hipóteses legais, de atuação subsidiária, que consiste em apoio técnico, científico, administrativo ou financeiro, sem transferir automaticamente a atribuição. O critério não é “quem tem mais servidores” ou “quem arrecada a taxa”.",
+                "Uma regra orientadora é o licenciamento ambiental por um único ente federativo, observado o processo legal; órgãos de outros entes podem manifestar-se na forma prevista. Fiscalização e licenciamento também não são conceitos idênticos.",
+                "Base normativa: LC 140/2011, arts. 7º–17. Exemplos de fixação próprios, não questões históricas transcritas."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Caso com decisão. Um empreendimento com impacto estritamente local requer licença. Passo 1: identifique o tipo de atividade e o território. Passo 2: procure a norma que define impacto local e a competência municipal. Passo 3: determine o órgão licenciador e as manifestações cabíveis. Passo 4: registre condicionantes e fiscalização. Uma segunda opinião técnica estadual não cria automaticamente uma segunda licença. Conclusão: coordenação não equivale a multiplicação de autorizações."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Licenciar ≠ fiscalizar ≠ prestar apoio; supletivo substitui em hipóteses previstas, subsidiário auxilia."
+            },
+            {
+              "type": "warning",
+              "text": "Presumir licenciamento federal apenas porque há recurso ambiental envolvido; ignorar exceções e normas atualizadas."
+            },
+            {
+              "type": "example",
+              "situation": "Empreendimento requer licença.",
+              "steps": [
+                "Identificar localização, tipologia e critérios jurídicos.",
+                "Aplicar atribuições da LC 140 e normas pertinentes.",
+                "Distinguir licenciamento, cooperação e fiscalização."
+              ],
+              "conclusion": "Um ente licenciador não extingue competências comuns."
+            }
+          ],
+          "legacy_source": {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-1-3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cap-2",
+      "title": "Política Nacional do Meio Ambiente",
+      "sections": [
+        {
+          "id": "d28-2-1",
+          "title": "Lei 6.938/1981: objetivos e lógica da política",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "A Política Nacional do Meio Ambiente (PNMA), instituída pela Lei 6.938/1981, estrutura fins, diretrizes e instrumentos de proteção. O objetivo geral relaciona preservação, melhoria e recuperação da qualidade ambiental, considerando desenvolvimento socioeconômico e dignidade da vida humana. Política aqui não significa apenas uma campanha ou uma repartição pública: é um conjunto de objetivos, mecanismos e responsabilidades que orienta decisões administrativas.",
+                "Na leitura do art. 2º, destaque a racionalização do uso de recursos, planejamento e fiscalização, proteção de ecossistemas, controle de atividades poluidoras e recuperação de áreas degradadas. Em estudo de caso, diferencie a finalidade abstrata, o instrumento usado e o órgão responsável por executá-lo.",
+                "A PNMA trata do poluidor-pagador e da responsabilização, que não autorizam “pagar para poluir”. É dever prevenir, corrigir ou reparar nos termos aplicáveis. A lei se articula com a Constituição, a LC 140 e a legislação estadual; uma norma não deve ser lida isoladamente para atribuir competência.",
+                "Base normativa: Lei 6.938/1981, arts. 2º e 4º. Exemplos de fixação próprios, não questões históricas transcritas."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Exemplo resolvido com números. Uma empresa tem duas áreas degradadas: 1,2 hectare e 0,8 hectare. A área total sujeita a plano de recuperação é 1,2 + 0,8 = 2,0 hectares, mas esse cálculo não determina a sanção nem substitui estudo técnico. Etapas: identificar dano; dimensioná-lo com método técnico; definir recuperação e monitoramento; apurar responsabilidade e competência legal. Conferência: soma em hectares é dimensão, não valor da multa."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Objetivo = qualidade ambiental; instrumento = como agir; SISNAMA = organização de órgãos."
+            },
+            {
+              "type": "warning",
+              "text": "Tratar poluidor-pagador como licença para degradar mediante pagamento."
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "A PNMA distingue objetivos, princípios, estrutura e instrumentos. Objetivo é qualidade ambiental; licenciamento e avaliação de impactos são instrumentos."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-2-1"
+          }
+        },
+        {
+          "id": "d28-2-2",
+          "title": "SISNAMA e papéis dos órgãos",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "O Sistema Nacional do Meio Ambiente (SISNAMA) articula órgãos e entidades federais, estaduais e municipais encarregados da proteção ambiental (art. 6º da Lei 6.938/1981). A estrutura distingue funções superiores, consultivas/deliberativas, centrais, executoras e órgãos seccionais e locais. A composição detalhada pode sofrer atualizações legais: use o texto consolidado para memorizar nomes.",
+                "O CONAMA atua como colegiado consultivo e deliberativo nos limites da lei; IBAMA e ICMBio são referências federais executoras com atribuições próprias; os órgãos estaduais e municipais executam atividades nas respectivas competências. O IMA é uma autarquia estadual catarinense e não “uma filial do IBAMA”.",
+                "Em prova, procure o verbo do enunciado: propor diretrizes, deliberar normas, executar política, licenciar ou fiscalizar. O nome de um órgão não basta para inferir que ele realiza indistintamente todas essas funções.",
+                "Base normativa: Lei 6.938/1981, art. 6º; Lei estadual 17.354/2017. Exemplos de fixação próprios, não questões históricas transcritas."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Exemplo passo a passo. Um sistema de informática registra três eventos: (A) norma técnica geral aprovada por colegiado; (B) licença emitida por órgão estadual competente; (C) fiscalização realizada por unidade municipal competente. Pergunte: qual tipo de atuação ocorreu? A = colegiada normativa; B = licenciamento; C = fiscalização. São atos diferentes, todos compatíveis com uma rede cooperativa. O IMA pode figurar como órgão estadual executor, conforme competência legal, sem deslocar as atribuições dos demais."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Como ler: SISNAMA integra níveis e funções de proteção ambiental; CONAMA exerce função colegiada consultiva e deliberativa; IBAMA e ICMBio têm atribuições federais específicas; IMA atua no âmbito estadual; órgãos municipais, no âmbito local. Este quadro compara papéis e não é uma cadeia de comando nem lista exaustiva da estrutura legal."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "SISNAMA = sistema de órgãos em níveis distintos; CONAMA ≠ IBAMA ≠ IMA."
+            },
+            {
+              "type": "warning",
+              "text": "Confundir existência de órgão estadual com subordinação ao órgão executor federal."
+            },
+            {
+              "type": "table",
+              "title": "SISNAMA",
+              "headers": [
+                "Órgão/nível",
+                "Papel geral"
+              ],
+              "rows": [
+                [
+                  "CONAMA",
+                  "Consultivo e deliberativo"
+                ],
+                [
+                  "IBAMA e ICMBio",
+                  "Executores federais, conforme atribuições"
+                ],
+                [
+                  "Seccionais",
+                  "Atuação estadual"
+                ],
+                [
+                  "Locais",
+                  "Atuação municipal"
+                ]
+              ]
+            },
+            {
+              "type": "flow",
+              "title": "Identificar papéis",
+              "steps": [
+                {
+                  "label": "Política e normas",
+                  "detail": "Identificar órgãos formuladores, consultivos e deliberativos."
+                },
+                {
+                  "label": "Execução",
+                  "detail": "Identificar órgão e competência."
+                },
+                {
+                  "label": "Estado e município",
+                  "detail": "Identificar seccional e local."
+                }
+              ],
+              "explanation": [
+                "O desenho não representa hierarquia universal entre entes."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-2-2"
+          }
+        },
+        {
+          "id": "d28-2-3",
+          "title": "Instrumentos da PNMA e licenciamento",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "O art. 9º da Lei 6.938/1981 lista instrumentos da PNMA. Entre os mais reconhecíveis estão padrões de qualidade, zoneamento ambiental, avaliação de impactos, licenciamento e revisão de atividades potencialmente poluidoras, criação de espaços especialmente protegidos, sistemas de informações e cadastros. O texto consolidado tem mais instrumentos: estudar a função de cada um evita confundir exemplos.",
+                "Avaliação de impacto examina efeitos e alternativas; licença é ato administrativo que depende da competência e das normas aplicáveis; fiscalização verifica conformidade e cumprimento de obrigações. São mecanismos relacionados, mas uma avaliação não é licença e uma licença não elimina fiscalização posterior.",
+                "Quando o edital exige a PNMA, isso não autoriza importar sem filtro o conteúdo integral de outras leis ambientais não expressamente listadas para o cargo de informática. O estudo deve começar pela lista do edital e aprofundar relações necessárias.",
+                "Base normativa: Lei 6.938/1981, art. 9º; LC 140/2011. Exemplos de fixação próprios, não questões históricas transcritas."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Exemplo com verificação. Um município deseja comparar duas áreas de implantação. A área A fica a 200 m de zona sensível; a B fica a 800 m. A simples distância não resolve a autorização. Passos: consultar regras de zoneamento; realizar avaliação de efeitos pertinente; verificar órgão competente; instruir licenciamento, se aplicável; cumprir condições e acompanhar. Conferência: o maior afastamento pode ser indicativo, mas não prova regularidade automática."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Padrão mede, zoneamento organiza espaços, avaliação examina impactos, licença autoriza sob condições."
+            },
+            {
+              "type": "warning",
+              "text": "Concluir que a existência de licença exclui dano ou transfere a responsabilidade para o Estado."
+            },
+            {
+              "type": "table",
+              "title": "Instrumentos",
+              "headers": [
+                "Instrumento",
+                "Finalidade"
+              ],
+              "rows": [
+                [
+                  "Padrões",
+                  "Parâmetros de qualidade"
+                ],
+                [
+                  "Avaliação",
+                  "Efeitos ambientais"
+                ],
+                [
+                  "Licenciamento",
+                  "Controle de atividades sujeitas à licença"
+                ],
+                [
+                  "Zoneamento",
+                  "Organizar uso do território"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Fechamento: reconstrua os conceitos e os exemplos de memória, confira as lacunas e abra as questões separadas. Extensão opcional: aprofundar dificuldades, sem preencher tempo artificialmente."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-2-3"
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "FURB — edital e publicações",
+      "url": "https://concursos.furb.br/informacoes/584"
+    },
+    {
+      "label": "Acervo original — legislacao-ambiental-ima",
+      "url": "https://andrewmoreira02.github.io/concurso-estudos/aulas/legislacao-ambiental-ima.html"
+    },
+    {
+      "label": "Constituição Federal",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    },
+    {
+      "label": "LC 140/2011",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp140.htm"
+    },
+    {
+      "label": "Lei 6.938/1981",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l6938.htm"
+    }
+  ],
+  "questions": [
+    {
+      "label": "Questionário diário — 6 questões autorais",
+      "href": "questoes-ima-2026-11-28.html"
+    },
+    {
+      "label": "Prática complementar do acervo: O direito ao meio ambiente e os deveres de proteção",
+      "href": "questoes-micro-ima.html?u=ima-la-1-1"
+    },
+    {
+      "label": "Prática complementar do acervo: Competência comum e competência legislativa",
+      "href": "questoes-micro-ima.html?u=ima-la-1-2"
+    },
+    {
+      "label": "Prática complementar do acervo: LC 140/2011: quem licencia e quem coopera",
+      "href": "questoes-micro-ima.html?u=ima-la-1-3"
+    },
+    {
+      "label": "Prática complementar do acervo: Lei 6.938/1981: objetivos e lógica da política",
+      "href": "questoes-micro-ima.html?u=ima-la-2-1"
+    },
+    {
+      "label": "Prática complementar do acervo: SISNAMA e papéis dos órgãos",
+      "href": "questoes-micro-ima.html?u=ima-la-2-2"
+    },
+    {
+      "label": "Prática complementar do acervo: Instrumentos da PNMA e licenciamento",
+      "href": "questoes-micro-ima.html?u=ima-la-2-3"
+    }
+  ]
+}

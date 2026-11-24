@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "id": "questoes-ima-2026-11-27",
+  "title": "Questões · Aula 04 — Administração Pública: princípios, organização, poderes e atos",
+  "exam": "ima",
+  "subject": "adm",
+  "topic": "Administração Pública: princípios, organização, poderes e atos",
+  "questions": [
+    {
+      "id": "ima-adm-1-1-q1",
+      "kind": "autoral",
+      "prompt": "Uma autarquia pretende ocultar critérios de seleção sem justificativa legal. Qual princípio pode ser especialmente afetado?",
+      "options": {
+        "a": "Publicidade",
+        "b": "Hierarquia militar",
+        "c": "Informalidade plena",
+        "d": "Efetividade privada"
+      },
+      "correct": "a",
+      "explanation": "A publicidade exige transparência dos atos administrativos, ressalvadas hipóteses legítimas de sigilo.",
+      "distractors": {
+        "b": "Hierarquia militar não explica transparência.",
+        "c": "Não há informalidade plena.",
+        "d": "Efetividade privada não é o princípio do caso."
+      }
+    },
+    {
+      "id": "ima-adm-1-1-q2",
+      "kind": "autoral",
+      "prompt": "Um gestor decide favorecer candidato por amizade, apesar dos critérios objetivos. Qual princípio é diretamente atingido?",
+      "options": {
+        "a": "Autotutela",
+        "b": "Impessoalidade",
+        "c": "Continuidade do serviço",
+        "d": "Presunção de inocência"
+      },
+      "correct": "b",
+      "explanation": "A impessoalidade veda tratamento favorecido por vínculos pessoais alheios à finalidade pública.",
+      "distractors": {
+        "a": "Autotutela é controle dos próprios atos.",
+        "c": "Continuidade diz respeito à prestação do serviço.",
+        "d": "Presunção de inocência não é o núcleo do favoritismo."
+      }
+    },
+    {
+      "id": "ima-adm-1-2-q1",
+      "kind": "autoral",
+      "prompt": "Uma secretaria cria internamente duas coordenações. Isso caracteriza:",
+      "options": {
+        "a": "Descentralização para pessoa jurídica diversa",
+        "b": "Privatização de serviço",
+        "c": "Criação de autarquia",
+        "d": "Desconcentração"
+      },
+      "correct": "d",
+      "explanation": "Distribuir competências no interior da mesma pessoa jurídica caracteriza desconcentração.",
+      "distractors": {
+        "a": "Não foi criada outra pessoa jurídica.",
+        "b": "Não houve transferência a particular.",
+        "c": "Coordenações são órgãos."
+      }
+    },
+    {
+      "id": "ima-adm-1-2-q2",
+      "kind": "autoral",
+      "prompt": "Qual entidade da administração indireta possui personalidade jurídica própria de direito público?",
+      "options": {
+        "a": "Autarquia",
+        "b": "Departamento de secretaria",
+        "c": "Coordenadoria de autarquia",
+        "d": "Órgão de gabinete"
+      },
+      "correct": "a",
+      "explanation": "Autarquias integram a administração indireta e possuem personalidade jurídica de direito público; órgãos internos não têm personalidade própria.",
+      "distractors": {
+        "b": "Departamento é órgão.",
+        "c": "Coordenadoria é órgão interno.",
+        "d": "Gabinete não é pessoa jurídica distinta."
+      }
+    },
+    {
+      "id": "ima-adm-1-3-q1",
+      "kind": "autoral",
+      "prompt": "Um fiscal competente usa sua atribuição para punir desafeto sem finalidade pública. Trata-se, em tese, de:",
+      "options": {
+        "a": "Desvio de finalidade",
+        "b": "Poder hierárquico regular",
+        "c": "Apenas delegação",
+        "d": "Vício de forma exclusivamente"
+      },
+      "correct": "a",
+      "explanation": "Desvio de finalidade ocorre quando a competência é utilizada para objetivo diverso do interesse público legalmente previsto.",
+      "distractors": {
+        "b": "Poder regular exige finalidade pública.",
+        "c": "Delegação não legitima perseguição.",
+        "d": "O vício é de finalidade."
+      }
+    },
+    {
+      "id": "ima-adm-1-3-q2",
+      "kind": "autoral",
+      "prompt": "Um agente sem atribuição legal interdita estabelecimento. O vício central é:",
+      "options": {
+        "a": "Revogação de ato válido",
+        "b": "Excesso de poder, por extrapolar competência",
+        "c": "Descentralização administrativa",
+        "d": "Poder regulamentar"
+      },
+      "correct": "b",
+      "explanation": "A atuação além dos limites de competência caracteriza excesso de poder, sujeita a controle de legalidade.",
+      "distractors": {
+        "a": "Revogação retira ato válido por mérito.",
+        "c": "Não houve repartição entre entidades.",
+        "d": "Não se trata de edição de regulamento."
+      }
+    }
+  ]
+}

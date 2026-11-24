@@ -1,0 +1,391 @@
+{
+  "schema_version": 1,
+  "id": "ima-2026-11-26",
+  "date": "2026-11-26",
+  "title": "Aula 03 — Segurança de aplicações, APIs e identidade",
+  "contest": "IMA-SC 2027 · Analista de Informática",
+  "subject": "Tecnologia da Informação",
+  "description": "Núcleo sugerido de 120 minutos, com teoria, exemplos, recuperação ativa e questões separadas. Extensão opcional conforme disponibilidade e lacunas.",
+  "modules": [
+    {
+      "id": "cap-1",
+      "title": "Ameaças e defesas",
+      "sections": [
+        {
+          "id": "d26-1-1",
+          "title": "Modelar ameaças antes de implementar defesas",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Núcleo sugerido: 55 minutos no primeiro módulo, 40 no segundo e 25 de recuperação e questões. Ajuste ao tempo disponível. Se já conhece um tópico, tente explicá-lo de memória antes de ler; concentre-se nas lacunas."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Segurança começa pelo entendimento de ativos, fronteiras de confiança e possíveis ataques. Em um sistema de ordens de serviço, ativos incluem dados de clientes, credenciais e permissões de alterar uma ordem. A fronteira crítica costuma estar entre navegador, API e banco.",
+                "Defina quais dados precisam de confidencialidade, integridade e disponibilidade, quem pode acessá-los e onde a aplicação valida essa autorização. Análise de ameaça não é apenas instalar um firewall: é desenhar o fluxo e perguntar qual operação é sensível."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "Ativo: endereço do cliente e status da ordem.",
+                "Ator legítimo: técnico designado; outros usuários não devem modificar a ordem.",
+                "Ameaça: enviar PATCH /ordens/42 de outra conta.",
+                "Defesa: a API obtém a identidade autenticada, verifica o vínculo com a ordem 42, registra tentativa negada e responde 403 quando o usuário não possui autorização.",
+                "Teste: requisitar ID próprio e de outro usuário; ambos devem ter resultados diferentes conforme autorização."
+              ],
+              "conclusion": "A sequência aplica o conceito às condições do exemplo."
+            },
+            {
+              "type": "tip",
+              "text": "Pense no percurso dado → navegador → API → banco; cada mudança de confiança exige validação."
+            },
+            {
+              "type": "warning",
+              "text": "CORS, esconder um botão ou alterar cores na interface não substituem autorização no servidor."
+            },
+            {
+              "type": "flow",
+              "title": "Fronteiras de confiança",
+              "steps": [
+                {
+                  "label": "Cliente",
+                  "detail": "Entrada não confiável."
+                },
+                {
+                  "label": "API",
+                  "detail": "Valida formato, identidade e autorização."
+                },
+                {
+                  "label": "Banco",
+                  "detail": "Privilégio mínimo e consultas parametrizadas."
+                },
+                {
+                  "label": "Auditoria",
+                  "detail": "Eventos sem segredos."
+                }
+              ],
+              "explanation": [
+                "Cada camada precisa de controles próprios."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "seguranca",
+            "section": "seg-1-1"
+          }
+        },
+        {
+          "id": "d26-1-2",
+          "title": "SQL Injection e XSS: canais de ataque diferentes",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "SQL Injection manipula consultas quando texto externo vira sintaxe SQL. Use parâmetros preparados e permissões mínimas. XSS executa código no navegador quando HTML não confiável é inserido sem tratamento adequado. Para texto HTML, use saída codificada ou APIs seguras como textContent; evite colocar dados livres em innerHTML.",
+                "O contexto importa: texto HTML, atributos, URLs e scripts exigem defesas diferentes. CSP ajuda reduzir impacto de XSS, mas não substitui codificação contextual."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "Se nome contiver tags HTML, textContent as mostra como texto.",
+                "Na consulta SQL, $1 impede que conteúdo do nome seja executado como cláusula SQL.",
+                "O fluxo de defesa é distinto: navegador (XSS) versus servidor/banco (SQLi)."
+              ],
+              "conclusion": "A sequência aplica o conceito às condições do exemplo."
+            },
+            {
+              "type": "tip",
+              "text": "XSS: contexto de SAÍDA; SQLi: contexto da CONSULTA. Em ambos, preserve separação dado/código."
+            },
+            {
+              "type": "warning",
+              "text": "Um token JWT, HTTPS e um WAF não garantem que código vulnerável esteja livre de XSS ou SQL Injection."
+            },
+            {
+              "type": "table",
+              "title": "Ataques e defesas",
+              "headers": [
+                "Ataque",
+                "Local",
+                "Defesa"
+              ],
+              "rows": [
+                [
+                  "SQL Injection",
+                  "SGBD",
+                  "Parâmetros"
+                ],
+                [
+                  "XSS",
+                  "Navegador",
+                  "Escape contextual / sanitização"
+                ],
+                [
+                  "CSRF",
+                  "Sessão do navegador",
+                  "Token, SameSite e validação contextual"
+                ]
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "seguranca",
+            "section": "seg-1-2"
+          }
+        },
+        {
+          "id": "d26-1-3",
+          "title": "CSRF, cookies e proteção contextual",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "CSRF induz o navegador autenticado a enviar uma operação indesejada a um serviço que confia automaticamente em credenciais anexadas, como cookies de sessão. A proteção inclui tokens antifalsificação, verificação de origem em operações sensíveis e cookies com atributo SameSite apropriado.",
+                "Cookies HttpOnly reduzem acesso por JavaScript a seu valor; Secure limita envio a HTTPS. Uma requisição com bearer token colocado explicitamente no cabeçalho apresenta dinâmica diferente de um cookie enviado automaticamente."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "Uma aplicação usa cookie de sessão e possui POST /alterar-email.",
+                "Uma página de outro domínio tenta provocar o envio da requisição.",
+                "O servidor exige um token antifalsificação específico da sessão, além da autenticação, e rejeita chamadas sem esse token.",
+                "O cookie é configurado com SameSite adequado, Secure e HttpOnly, conforme o fluxo real de login."
+              ],
+              "conclusion": "Teste o endpoint diretamente, sem depender de o formulário estar escondido no frontend."
+            },
+            {
+              "type": "tip",
+              "text": "CSRF abusa da credencial que o navegador envia automaticamente; autenticação não autoriza a intenção do usuário."
+            },
+            {
+              "type": "warning",
+              "text": "CORS não é defesa suficiente contra CSRF; uma requisição pode ser enviada mesmo quando a resposta não pode ser lida por JavaScript."
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "CSRF explora credenciais enviadas automaticamente; XSS executa conteúdo na origem. SameSite reduz alguns casos de CSRF, mas não é defesa universal. GET não deve alterar estado."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "seguranca",
+            "section": "seg-1-3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cap-2",
+      "title": "Identidade e acesso",
+      "sections": [
+        {
+          "id": "d26-2-1",
+          "title": "Autenticação e autorização por objeto (BOLA/IDOR)",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Autenticação verifica quem é o usuário; autorização decide o que ele pode fazer. Em APIs, a checagem precisa ocorrer também no objeto específico solicitado: ter sessão válida não significa poder consultar qualquer cliente_id fornecido na URL.",
+                "BOLA (Broken Object Level Authorization) ocorre quando uma API não valida corretamente se um usuário pode acessar determinado objeto. Uma política RBAC ajuda a definir papéis, mas a regra fina de pertencimento ou responsabilidade continua necessária."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "O login identifica o usuário.",
+                "A API carrega a ordem 42 e verifica sua vinculação e seu papel.",
+                "Um usuário autorizado recebe 200; outro, sem permissão, é bloqueado."
+              ],
+              "conclusion": "É possível retornar 404 em cenários específicos para evitar exposição da existência de recursos; a estratégia deve ser consistente e intencional."
+            },
+            {
+              "type": "tip",
+              "text": "Identidade responde QUEM. Autorização responde O QUE e SOBRE QUAL OBJETO."
+            },
+            {
+              "type": "warning",
+              "text": "Não confunda 401 (não autenticado/credencial inadequada) com 403 (autenticado, mas sem permissão)."
+            },
+            {
+              "type": "example",
+              "situation": "Dois usuários têm o mesmo papel, mas recursos diferentes.",
+              "steps": [
+                "Autenticar solicitante.",
+                "Identificar recurso e política de acesso.",
+                "Negar quando a política não permitir."
+              ],
+              "conclusion": "Login válido não autoriza todo objeto."
+            }
+          ],
+          "legacy_source": {
+            "lesson": "seguranca",
+            "section": "seg-2-1"
+          }
+        },
+        {
+          "id": "d26-2-2",
+          "title": "OAuth 2.0, OpenID Connect e PKCE",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "OAuth 2.0 é um framework de autorização delegada; OpenID Connect (OIDC) acrescenta uma camada de identidade padronizada. No fluxo Authorization Code com PKCE, um cliente recebe um código de autorização e usa um code_verifier para provar posse quando troca o código por tokens.",
+                "O desafio code_challenge geralmente usa SHA-256 do verificador (método S256). Isso reduz ataques de interceptação do authorization code. Client Credentials é fluxo voltado a comunicação entre serviços e não representa login de usuário final."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "Aplicação web inicia login com code_challenge e redireciona ao servidor de autorização.",
+                "Após autenticação, recebe authorization_code pela URL de retorno.",
+                "Envia o código e o code_verifier ao endpoint de token.",
+                "O servidor calcula o desafio a partir do verificador e compara com o enviado inicialmente.",
+                "Se conferir, entrega os tokens conforme política de segurança."
+              ],
+              "conclusion": "A sequência aplica o conceito às condições do exemplo."
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "1. code_challenge2. authorization code3. code + code_verifier4. tokens, após validaçãoO código temporário NÃO é o access tokenComo ler: o cliente inicia a autorização com o desafio derivado do verificador; após o redirecionamento recebe código; troca código + verificador por tokens. O servidor compara o desafio antes da emissão. OIDC acrescenta autenticação/identidade; Client Credentials não envolve login de usuário final. Esquema simplificado que omite navegador, consentimento, estado e detalhes HTTP."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "OAuth delega acesso; OIDC informa identidade; PKCE protege a troca do código."
+            },
+            {
+              "type": "warning",
+              "text": "Refresh token não é token de acesso; ID Token não deve ser usado como autorização genérica para todas as APIs."
+            },
+            {
+              "type": "flow",
+              "title": "Authorization Code com PKCE",
+              "steps": [
+                {
+                  "label": "Cliente",
+                  "detail": "Cria verifier e challenge."
+                },
+                {
+                  "label": "Servidor de autorização",
+                  "detail": "Autentica e devolve código."
+                },
+                {
+                  "label": "Cliente",
+                  "detail": "Troca código e verifier por token."
+                },
+                {
+                  "label": "Servidor",
+                  "detail": "Verifica correspondência com challenge."
+                }
+              ],
+              "explanation": [
+                "PKCE vincula a troca a quem iniciou o fluxo; OAuth delega autorização, OIDC acrescenta identidade."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "seguranca",
+            "section": "seg-2-2"
+          }
+        },
+        {
+          "id": "d26-2-3",
+          "title": "JWT: assinatura, expiração e validação",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Um JWT típico tem três partes Base64URL: header, payload e assinatura. A assinatura permite detectar alteração e verificar o emissor quando a chave correta é usada; isso não significa criptografia do conteúdo. Um token legível não deve carregar segredos de negócio.",
+                "Uma API deve validar a assinatura, algoritmo permitido, emissor (iss), público-alvo (aud) e tempo (exp, quando presente), além de aplicar autorização no endpoint. A rotação de chaves e a revogação de sessões exigem desenho específico."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "API A aceita tokens emitidos por https://id.exemplo e destinados a api-casan.",
+                "Recebe um JWT válido em assinatura, mas com aud = outro-servico.",
+                "Mesmo que a assinatura seja válida, o token deve ser rejeitado por público incorreto.",
+                "Depois de validar o token, a API ainda verifica se o usuário pode consultar o cliente solicitado."
+              ],
+              "conclusion": "A sequência aplica o conceito às condições do exemplo."
+            },
+            {
+              "type": "tip",
+              "text": "Token assinado não é token secreto. Assinatura garante integridade/autenticidade da origem; não confidencialidade."
+            },
+            {
+              "type": "warning",
+              "text": "Nunca aceite o algoritmo declarado pelo próprio token sem uma lista de algoritmos permitidos pelo servidor."
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "JWT assinado não é necessariamente confidencial. Valide assinatura, algoritmo permitido, emissor, audiência e validade temporal conforme o protocolo."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Fechamento: reconstrua os conceitos e os exemplos de memória, confira as lacunas e abra as questões separadas. Extensão opcional: aprofundar dificuldades, sem preencher tempo artificialmente."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "seguranca",
+            "section": "seg-2-3"
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "FURB — edital e publicações",
+      "url": "https://concursos.furb.br/informacoes/584"
+    },
+    {
+      "label": "Acervo original — seguranca",
+      "url": "https://andrewmoreira02.github.io/concurso-estudos/aulas/seguranca.html"
+    },
+    {
+      "label": "OWASP Cheat Sheet Series",
+      "url": "https://cheatsheetseries.owasp.org/"
+    },
+    {
+      "label": "RFC 7636 — PKCE",
+      "url": "https://www.rfc-editor.org/rfc/rfc7636"
+    },
+    {
+      "label": "RFC 7519 — JWT",
+      "url": "https://www.rfc-editor.org/rfc/rfc7519"
+    }
+  ],
+  "questions": [
+    {
+      "label": "Questionário diário — 4 questões autorais",
+      "href": "questoes-ima-2026-11-26.html"
+    },
+    {
+      "label": "Prática complementar do acervo: SQL Injection e XSS: canais de ataque diferentes",
+      "href": "questoes-micro-ima.html?u=ima-seg-1-2"
+    },
+    {
+      "label": "Prática complementar do acervo: Autenticação e autorização por objeto (BOLA/IDOR)",
+      "href": "questoes-micro-ima.html?u=ima-seg-2-1"
+    }
+  ]
+}

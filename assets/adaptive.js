@@ -300,43 +300,17 @@ function model(){
    ' Somente Enviar registra uma avaliação.'});
  }
  let imaSuggestedQuestion=null,imaSuggestedLesson=null;
- if(exam==='ima'&&imaMicroUnits.length===25){
-   const submitted=attempted;
-   const states=imaMicroUnits.map(u=>({
-     unit:u,
-     read:readSet(u.source.lesson).has(u.source.section),
-     evaluated:u.question_ids.every(id=>submitted.has(id))
-   }));
-   // Recuperação imediata após a leitura; sem bloquear acesso voluntário às questões.
-   // Lido não autoriza sugerir avaliação como próxima etapa obrigatória.
-   // Só uma confirmação explícita de estudo no edital IMA libera a recomendação dirigida.
-   const pending=states.find(x=>x.read&&!x.evaluated&&(()=>{
-     const lesson=lessons.find(l=>l.id===x.unit.source.lesson);
-     if(!lesson)return false;
-     const m=String(x.unit.source.section).match(/-(\d+)-(\d+)$/);
-     return !!m&&studiedModules('ima',lesson).has(Number(m[1]));
-   })());
-   const next=states.find(x=>!x.read);
+ if(exam==='ima'&&lessons.some(l=>l.daily)){
+   const daily=lessons.filter(l=>l.daily).sort((a,b)=>a.date.localeCompare(b.date));
+   const pending=daily.find(l=>l.studiedCount===l.sections_per_module.length&&l.question_ids?.some(id=>!attempted.has(id)));
+   const next=daily.find(l=>l.studiedCount<l.sections_per_module.length);
    picks.length=0;
-   if(pending){
-     imaSuggestedQuestion={type:'quiz',title:'Questão sugerida · '+pending.unit.title,
-       href:pending.unit.questions_href,
-       description:pending.unit.question_ids.length+' questões específicas desta seção, com correção e revisões somente após Enviar. A marcação Lido não equivale a estudo ou avaliação.'};
-     if(imaPhase!=='coverage'||!next)picks.push(imaSuggestedQuestion);
-   }
-   if(next){
-     imaSuggestedLesson={type:'lesson',title:'Microaula IMA · '+next.unit.title,
-       href:next.unit.lesson_href,
-       description:'Uma seção aprofundada, com exemplos, diagramas e leitura individual. Após Lido, sugerir somente as questões correspondentes. '+next.unit.subject_label+' · prova FURB.'};
-     if(imaPhase!=='final'||!pending)picks.push(imaSuggestedLesson);
-   }
-   if(due.length){
-     const item=due[0];picks.push({type:'review',title:'Revisão pendente: '+item.topic,href:'revisoes.html',
-       description:due.length+' revisão(ões) vencida(s), gerada(s) a partir de erros enviados no edital IMA.'});
-   }
-   if(!pending&&!next)picks.push({type:'quiz',title:'Revisar retenção e questões de assuntos estudados',href:'aulas/questoes-ima.html',
-     description:'As 25 microaulas iniciais foram marcadas Lido e seus conjuntos avaliados; outras lacunas do edital permanecem na matriz IMA.'});
+   if(pending){imaSuggestedQuestion={type:'quiz',title:'Questão sugerida · '+pending.title,href:pending.question_href,description:'Questões da aula diária com estudo confirmado. Apenas respostas enviadas registram avaliação.'};if(imaPhase!=='coverage'||!next)picks.push(imaSuggestedQuestion);}
+   if(next){imaSuggestedLesson={type:'lesson',title:next.title,href:continueHref(next),description:'Aula diária: núcleo de 120 minutos, ajustável à disponibilidade. Lido não é Estudado.'};if(imaPhase!=='final'||!pending)picks.push(imaSuggestedLesson);}
+   if(due.length)picks.push({type:'review',title:'Revisão pendente: '+due[0].topic,href:'revisoes.html',description:'Revisão baseada exclusivamente em respostas enviadas.'});
+   if(!pending&&!next)picks.push({type:'plan',title:'Continuar cobertura do edital IMA',href:'planejamento.html',description:'Outros tópicos do edital permanecem pendentes.'});
  }
+
  if(!picks.length){
   if(!exam)picks.push({type:'plan',title:'Revisar a prioridade do concurso',href:'planejamento.html',
    description:'As janelas cadastradas terminaram; não seguir concursos antigos automaticamente.'});
@@ -349,6 +323,7 @@ function model(){
  // em que uma prova antiga ainda coincide com a data atual. Não misturar CASAN/IMA.
  // Apenas aulas com estrutura de subseções conhecida e disciplina do edital ativo.
  const relevant=lessons.filter(l=>{
+  if(exam==='ima'&&!l.daily)return false;
   if(!exam||!Array.isArray(l.sections_per_module)||!l.sections_per_module.length||l.total<=0)return false;
   const subject=l.subjects?.[exam],matrix=config.exams[exam]?.subjects||[];
   return !!subject&&matrix.some(pair=>pair[0]===subject&&pair[1]>0);
@@ -491,9 +466,9 @@ function render(data){
    if(badge)badge.textContent=readSet(u.source.lesson).has(u.source.section)?'1 de 1 seção Lido':'0 de 1 seção Lido';
  }
  const microDetails=$('imaMicroDetails');
- if(microDetails&&data.exam==='ima')microDetails.open=true;
+ // Acervo recolhido por padrão.
  const catalogFocus=$('catalogFocusNotice');
- if(catalogFocus&&data.exam==='ima')catalogFocus.textContent='Prioridade desde 22/11/2026: IMA-SC · FURB. Trilha inicial de 25 microaulas, com questões sugeridas após Lido. A CASAN permanece arquivada para consulta após a prova.';
+ if(catalogFocus&&data.exam==='ima')catalogFocus.textContent='Prioridade IMA-SC · FURB. Aulas diárias com questões separadas; acervo anterior para consulta.';
  const casanCard=$('casanFinalCard');
  if(casanCard)casanCard.hidden=data.exam!=='casan';
  const imaQuestionCard=$('imaQuestionSuggested');
@@ -503,10 +478,10 @@ function render(data){
    if(data.exam==='ima'){
      const rec=data.imaSuggestedQuestion;
      if(desc)desc.textContent=rec?rec.description:
-       'Assim que marcar uma microaula como Lido, aparecerá aqui seu conjunto de questões. Enquanto isso, a prioridade é ler o conteúdo recomendado.';
+       'Após confirmar o estudo de uma aula diária, seu questionário pode ser sugerido. Lido não equivale a estudo; acesso voluntário permanece disponível.';
      if(link){
-       link.href=localHref(rec?.href||data.imaSuggestedLesson?.href||'aulas.html#ima-microtrilha');
-       link.textContent=rec?'Responder às questões sugeridas':'Abrir próxima microaula';
+       link.href=localHref(rec?.href||data.imaSuggestedLesson?.href||'aulas.html#lessonCatalog');
+       link.textContent=rec?'Responder às questões sugeridas':'Abrir próxima aula diária';
      }
    }
  }
@@ -540,7 +515,7 @@ function render(data){
      const quantity=data.unreadEquivalents.toFixed(2).replace('.',',');
      const deficit=Math.max(0,Math.ceil((data.minEquivalents-data.unreadEquivalents)-1e-9));
      const message=data.exam==='ima'
-       ?'Trilha inicial: 25 microaulas de uma seção cada e 25 conjuntos de questões (3–4 itens por assunto). Conjuntos sugeridos após Lido; não representam cobertura integral do edital. O diagnóstico de estudo e domínio permanece separado.'
+       ?'Aulas diárias: '+quantity+' equivalentes ainda não lidas (meta: '+data.minEquivalents+'). Acervo não conta no estoque diário. Leitura, estudo e avaliação são evidências separadas.'
        :'Fila de leitura: '+quantity+' aulas completas equivalentes ainda não lidas (meta: '+data.minEquivalents+'). '+(deficit>0?'Faltam '+deficit+' aula(s) integralmente não lida(s) para a reserva mínima; a tarefa editorial do GPT deverá produzi-las.':'Reserva mínima atendida com material já publicado.');
      details.append(el('p','ce-adaptive-queue',message));
    }

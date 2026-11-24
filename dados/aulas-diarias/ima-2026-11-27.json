@@ -1,0 +1,405 @@
+{
+  "schema_version": 1,
+  "id": "ima-2026-11-27",
+  "date": "2026-11-27",
+  "title": "Aula 04 — Administração Pública: princípios, organização, poderes e atos",
+  "contest": "IMA-SC 2027 · Analista de Informática",
+  "subject": "Administração Pública",
+  "description": "Núcleo sugerido de 120 minutos, com teoria, exemplos, recuperação ativa e questões separadas. Extensão opcional conforme disponibilidade e lacunas.",
+  "modules": [
+    {
+      "id": "cap-1",
+      "title": "Fundamentos e organização",
+      "sections": [
+        {
+          "id": "d27-1-1",
+          "title": "Princípios constitucionais e alcance",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Núcleo sugerido: 55 minutos no primeiro módulo, 40 no segundo e 25 de recuperação e questões. Ajuste ao tempo disponível. Se já conhece um tópico, tente explicá-lo de memória antes de ler; concentre-se nas lacunas."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "A Administração Pública direta e indireta de qualquer dos Poderes e entes federativos observa legalidade, impessoalidade, moralidade, publicidade e eficiência (art. 37, caput, da Constituição). Legalidade administrativa não é liberdade irrestrita: o agente deve atuar dentro da competência e dos limites jurídicos. Publicidade é regra, mas dados pessoais e informações legalmente sigilosas exigem proteção."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Uma autarquia recebe três pedidos de acesso: edital de seleção, remuneração de cargo público e prontuário médico de servidor. O edital é publicável; a remuneração funcional está sujeita às regras de transparência e proteção de dados; o prontuário não pode ser divulgado indiscriminadamente. Logo, publicidade não elimina privacidade."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "LIMPE: Legalidade, Impessoalidade, Moralidade, Publicidade e Eficiência."
+            },
+            {
+              "type": "warning",
+              "text": "Eficiência não autoriza descumprir lei ou suprimir contraditório."
+            },
+            {
+              "type": "table",
+              "title": "LIMPE",
+              "headers": [
+                "Princípio",
+                "Aplicação"
+              ],
+              "rows": [
+                [
+                  "Legalidade",
+                  "Competência jurídica"
+                ],
+                [
+                  "Impessoalidade",
+                  "Finalidade pública"
+                ],
+                [
+                  "Moralidade",
+                  "Probidade"
+                ],
+                [
+                  "Publicidade",
+                  "Transparência com exceções legais"
+                ],
+                [
+                  "Eficiência",
+                  "Qualidade e recursos"
+                ]
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-1-1"
+          }
+        },
+        {
+          "id": "d27-1-2",
+          "title": "Administração direta, indireta e descentralização",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Administração direta é formada pelos órgãos integrantes das pessoas políticas (União, estados, DF e municípios). A indireta reúne entidades com personalidade jurídica própria: autarquias, fundações públicas, empresas públicas e sociedades de economia mista. Desconcentração distribui competências dentro da mesma pessoa jurídica; descentralização transfere execução ou titularidade nos termos da lei para outra pessoa."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Uma secretaria estadual cria três diretorias internas: ocorre desconcentração, pois continuam no mesmo ente. Quando lei cria uma autarquia estadual com personalidade própria, ocorre descentralização por serviços. A criação de uma diretoria não cria automaticamente pessoa jurídica."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Autarquia · pessoa jurídica própriadescentralizaçãomesma pessoaentidade distintaComo ler: criar diretorias dentro da estrutura estadual é desconcentração (mesma pessoa jurídica); criar ou organizar uma autarquia vinculada ao ente é descentralização por serviços (personalidade própria). As linhas indicam relações organizacionais simplificadas, não subordinação hierárquica da autarquia à secretaria."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Desconcentração = dentro; descentralização = pessoa distinta."
+            },
+            {
+              "type": "warning",
+              "text": "Empresa pública e sociedade de economia mista não são órgãos da administração direta."
+            },
+            {
+              "type": "flow",
+              "title": "Organização administrativa",
+              "steps": [
+                {
+                  "label": "Mesma pessoa jurídica",
+                  "detail": "Repartir órgãos: desconcentração."
+                },
+                {
+                  "label": "Outra pessoa jurídica",
+                  "detail": "Atribuir competências à entidade: descentralização."
+                },
+                {
+                  "label": "Controle",
+                  "detail": "Vinculação e controle finalístico nos limites legais."
+                }
+              ],
+              "explanation": [
+                "Vinculação não é hierarquia interna."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-1-2"
+          }
+        },
+        {
+          "id": "d27-1-3",
+          "title": "Poderes administrativos e abuso",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Poder hierárquico organiza e fiscaliza relações internas; disciplinar permite apurar infrações funcionais e de sujeitos em vínculo especial; regulamentar detalha a execução da lei nos limites constitucionais; poder de polícia condiciona direitos em benefício do interesse público. Abuso de poder pode ocorrer por excesso de poder (fora da competência) ou desvio de finalidade (competência usada para fim impróprio)."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Um fiscal competente interdita estabelecimento por risco sanitário comprovado: exercício de polícia, sujeito a motivação e proporcionalidade. Se o fiscal exige a interdição para favorecer concorrente, há desvio de finalidade. Se servidor sem atribuição legal pratica a interdição, pode haver excesso de poder."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Competência responde quem pode agir; finalidade responde para quê."
+            },
+            {
+              "type": "warning",
+              "text": "Poder de polícia não dispensa fundamento legal, motivação nem controle."
+            },
+            {
+              "type": "table",
+              "title": "Abuso de poder",
+              "headers": [
+                "Tipo",
+                "Vício"
+              ],
+              "rows": [
+                [
+                  "Excesso",
+                  "Competência extrapolada"
+                ],
+                [
+                  "Desvio",
+                  "Fim indevido"
+                ]
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-1-3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cap-2",
+      "title": "Atos e controle de legalidade",
+      "sections": [
+        {
+          "id": "d27-2-1",
+          "title": "Atos administrativos: elementos e atributos",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Elementos usualmente examinados: competência, finalidade, forma, motivo e objeto. Presunção de legitimidade é relativa; imperatividade não está presente em todos os atos; autoexecutoriedade depende de hipótese legal ou urgência juridicamente admitida. Motivação é a exposição das razões de fato e de direito quando exigida."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Uma licença é concedida por órgão competente a requerente que cumpriu todos os requisitos legais. O objeto é permitir atividade; o motivo é o atendimento dos requisitos; a finalidade é o interesse público. Um erro de competência não se corrige apenas com redação elegante da justificativa."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "CO-FI-FO-MO-OB: competência, finalidade, forma, motivo, objeto."
+            },
+            {
+              "type": "warning",
+              "text": "Nem todo ato tem imperatividade ou autoexecutoriedade."
+            },
+            {
+              "type": "table",
+              "title": "Elementos do ato",
+              "headers": [
+                "Elemento",
+                "Pergunta"
+              ],
+              "rows": [
+                [
+                  "Competência",
+                  "Quem?"
+                ],
+                [
+                  "Finalidade",
+                  "Para quê?"
+                ],
+                [
+                  "Forma",
+                  "Como se exterioriza?"
+                ],
+                [
+                  "Motivo",
+                  "Quais fatos e fundamentos?"
+                ],
+                [
+                  "Objeto",
+                  "Qual efeito jurídico?"
+                ]
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-2-1"
+          }
+        },
+        {
+          "id": "d27-2-2",
+          "title": "Anulação, revogação e convalidação",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Anulação retira ato ilegal, pela Administração ou pelo Judiciário nos limites da jurisdição. Revogação decorre de conveniência e oportunidade da Administração sobre ato válido, respeitando direitos adquiridos e limites legais. Convalidação pode sanar certos vícios, desde que a lei permita e não haja prejuízo ao interesse público ou a terceiros."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Um edital administrativo válido prevê horário de atendimento facultativo; a Administração decide substituí-lo por outro horário: possível revogação, observados limites. Já um ato praticado em violação à lei exige análise de anulação, não simples revogação para ocultar ilegalidade."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Ilegalidade?AnulaçãoRevogaçãosimnãomérito de ato válido: quando cabívelComo ler: ilegalidade exige examinar anulação; certos vícios podem admitir convalidação, se houver requisitos legais. Quando o ato é válido, o exame de conveniência e oportunidade pode levar à revogação, se juridicamente permitida. O fluxo não dispensa a análise dos limites legais de cada medida."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Ilegalidade → anulação; mérito administrativo de ato válido → revogação."
+            },
+            {
+              "type": "warning",
+              "text": "Atos vinculados não são revogados livremente por mero juízo de conveniência."
+            },
+            {
+              "type": "flow",
+              "title": "Controle dos atos",
+              "steps": [
+                {
+                  "label": "Ilegal",
+                  "detail": "Anulação, observados limites legais."
+                },
+                {
+                  "label": "Válido inconveniente",
+                  "detail": "Revogação quando cabível."
+                },
+                {
+                  "label": "Vício sanável",
+                  "detail": "Convalidação nos limites legais."
+                }
+              ],
+              "explanation": [
+                "Judiciário controla legalidade, não revoga ato de outro Poder por conveniência."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-2-2"
+          }
+        },
+        {
+          "id": "d27-2-3",
+          "title": "Processo administrativo e garantias",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Devido processo, contraditório, ampla defesa, motivação e razoável duração orientam processos administrativos, com disciplina específica conforme o ente e a matéria. A Lei federal 9.784/1999 rege o processo administrativo no âmbito da Administração Pública federal; não se deve presumir aplicação direta e integral ao estado sem conferir normas locais."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Um servidor recebe comunicação de possível penalidade. A autoridade deve permitir ciência da imputação, acesso aos elementos pertinentes e oportunidade de defesa conforme o rito aplicável. Se a decisão utiliza fato novo sem permitir manifestação quando necessária, há risco de violação do contraditório."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Processo justo: ciência, possibilidade de reação e decisão motivada."
+            },
+            {
+              "type": "warning",
+              "text": "Não confunda lei federal de processo com legislação estadual aplicável ao IMA."
+            },
+            {
+              "type": "example",
+              "situation": "Procedimento que pode resultar em sanção.",
+              "steps": [
+                "Identificar competência e rito.",
+                "Dar ciência e oportunidade de defesa quando exigidas.",
+                "Decidir com motivação e observar recursos."
+              ],
+              "conclusion": "Eficiência não elimina devido processo."
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Fechamento: reconstrua os conceitos e os exemplos de memória, confira as lacunas e abra as questões separadas. Extensão opcional: aprofundar dificuldades, sem preencher tempo artificialmente."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-2-3"
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "FURB — edital e publicações",
+      "url": "https://concursos.furb.br/informacoes/584"
+    },
+    {
+      "label": "Acervo original — administracao-publica-ima",
+      "url": "https://andrewmoreira02.github.io/concurso-estudos/aulas/administracao-publica-ima.html"
+    },
+    {
+      "label": "Constituição Federal — art. 37",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    },
+    {
+      "label": "STF — Súmulas",
+      "url": "https://portal.stf.jus.br/jurisprudencia/sumariosumulas.asp"
+    }
+  ],
+  "questions": [
+    {
+      "label": "Questionário diário — 6 questões autorais",
+      "href": "questoes-ima-2026-11-27.html"
+    },
+    {
+      "label": "Prática complementar do acervo: Princípios constitucionais e alcance",
+      "href": "questoes-micro-ima.html?u=ima-adm-1-1"
+    },
+    {
+      "label": "Prática complementar do acervo: Administração direta, indireta e descentralização",
+      "href": "questoes-micro-ima.html?u=ima-adm-1-2"
+    },
+    {
+      "label": "Prática complementar do acervo: Poderes administrativos e abuso",
+      "href": "questoes-micro-ima.html?u=ima-adm-1-3"
+    },
+    {
+      "label": "Prática complementar do acervo: Atos administrativos: elementos e atributos",
+      "href": "questoes-micro-ima.html?u=ima-adm-2-1"
+    },
+    {
+      "label": "Prática complementar do acervo: Anulação, revogação e convalidação",
+      "href": "questoes-micro-ima.html?u=ima-adm-2-2"
+    },
+    {
+      "label": "Prática complementar do acervo: Processo administrativo e garantias",
+      "href": "questoes-micro-ima.html?u=ima-adm-2-3"
+    }
+  ]
+}

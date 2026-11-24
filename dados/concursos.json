@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-22",
+  "updated_at": "2026-11-24",
   "timezone": "America/Sao_Paulo",
   "purpose": "Dados públicos do planejamento do site. Não contém registros pessoais de leitura, notas ou desempenho.",
   "disclaimer": "Informações de editais registradas em 13–18/11/2026; conferir retificações antes de tomar decisões. Agenda é sugestão, não comprova execução.",
@@ -156,17 +156,87 @@
       "2026-11-23": [
         {
           "id": "ima-inicio",
-          "title": "IMA-SC · primeira microaula de TI",
-          "detail": "Início sugerido do ciclo IMA: Algoritmos 1.1. Lido não é Estudado; questões em página separada.",
-          "href": "aulas/microaula-ima.html?u=ima-alg-1-1"
+          "title": "IMA-SC · início do ciclo",
+          "detail": "Histórico de planejamento, não execução confirmada.",
+          "href": "aulas.html#lessonCatalog"
         }
       ],
       "2026-11-22": [
         {
-          "id": "ima-foco",
-          "title": "IMA-SC · iniciar trilha de TI",
-          "detail": "Prioridade IMA já ativa; iniciar teoria por lacuna, com questões FURB separadas e revisão após respostas enviadas.",
-          "href": "aulas/microaula-ima.html?u=ima-alg-1-1"
+          "id": "ima-inicio",
+          "title": "IMA-SC · início do ciclo",
+          "detail": "Histórico de planejamento, não execução confirmada.",
+          "href": "aulas.html#lessonCatalog"
+        }
+      ],
+      "2026-11-24": [
+        {
+          "id": "ima-2026-11-24",
+          "title": "Aula 01 — Algoritmos, estruturas de dados e orientação a objetos",
+          "detail": "Núcleo sugerido de 120 minutos; ajustar ao tempo e evidência. Data não comprova execução.",
+          "href": "aulas/ima-2026-11-24.html"
+        },
+        {
+          "id": "questoes-ima-2026-11-24",
+          "title": "Questões da aula diária (opcionais)",
+          "detail": "Avaliação somente após envio.",
+          "href": "aulas/questoes-ima-2026-11-24.html"
+        }
+      ],
+      "2026-11-25": [
+        {
+          "id": "ima-2026-11-25",
+          "title": "Aula 02 — Modelagem relacional, SQL e transações",
+          "detail": "Núcleo sugerido de 120 minutos; ajustar ao tempo e evidência. Data não comprova execução.",
+          "href": "aulas/ima-2026-11-25.html"
+        },
+        {
+          "id": "questoes-ima-2026-11-25",
+          "title": "Questões da aula diária (opcionais)",
+          "detail": "Avaliação somente após envio.",
+          "href": "aulas/questoes-ima-2026-11-25.html"
+        }
+      ],
+      "2026-11-26": [
+        {
+          "id": "ima-2026-11-26",
+          "title": "Aula 03 — Segurança de aplicações, APIs e identidade",
+          "detail": "Núcleo sugerido de 120 minutos; ajustar ao tempo e evidência. Data não comprova execução.",
+          "href": "aulas/ima-2026-11-26.html"
+        },
+        {
+          "id": "questoes-ima-2026-11-26",
+          "title": "Questões da aula diária (opcionais)",
+          "detail": "Avaliação somente após envio.",
+          "href": "aulas/questoes-ima-2026-11-26.html"
+        }
+      ],
+      "2026-11-27": [
+        {
+          "id": "ima-2026-11-27",
+          "title": "Aula 04 — Administração Pública: princípios, organização, poderes e atos",
+          "detail": "Núcleo sugerido de 120 minutos; ajustar ao tempo e evidência. Data não comprova execução.",
+          "href": "aulas/ima-2026-11-27.html"
+        },
+        {
+          "id": "questoes-ima-2026-11-27",
+          "title": "Questões da aula diária (opcionais)",
+          "detail": "Avaliação somente após envio.",
+          "href": "aulas/questoes-ima-2026-11-27.html"
+        }
+      ],
+      "2026-11-28": [
+        {
+          "id": "ima-2026-11-28",
+          "title": "Aula 05 — Legislação Ambiental: Constituição, cooperação e PNMA",
+          "detail": "Núcleo sugerido de 120 minutos; ajustar ao tempo e evidência. Data não comprova execução.",
+          "href": "aulas/ima-2026-11-28.html"
+        },
+        {
+          "id": "questoes-ima-2026-11-28",
+          "title": "Questões da aula diária (opcionais)",
+          "detail": "Avaliação somente após envio.",
+          "href": "aulas/questoes-ima-2026-11-28.html"
         }
       ]
     },
@@ -570,6 +640,276 @@
           "casan": "Legislação"
         },
         "status": "disponivel"
+      },
+      {
+        "id": "ima-2026-11-24",
+        "title": "Aula 01 — Algoritmos, estruturas de dados e orientação a objetos",
+        "url": "aulas/ima-2026-11-24.html",
+        "section_prefix": "d24",
+        "sections_per_module": [
+          3,
+          3
+        ],
+        "module_titles": [
+          "Algoritmos e estruturas",
+          "Orientação a objetos"
+        ],
+        "subjects": {
+          "ima": "Tecnologia da Informação"
+        },
+        "status": "disponivel",
+        "daily": true,
+        "date": "2026-11-24",
+        "question_href": "aulas/questoes-ima-2026-11-24.html",
+        "question_ids": [
+          "ima-alg-1-1-q1",
+          "ima-alg-1-1-q2",
+          "ima-alg-2-1-q1",
+          "ima-alg-2-1-q2"
+        ],
+        "legacy_sections": [
+          {
+            "lesson": "algoritmos-oo",
+            "section": "alg-1-1"
+          },
+          {
+            "lesson": "algoritmos-oo",
+            "section": "alg-1-2"
+          },
+          {
+            "lesson": "algoritmos-oo",
+            "section": "alg-1-3"
+          },
+          {
+            "lesson": "algoritmos-oo",
+            "section": "alg-2-1"
+          },
+          {
+            "lesson": "algoritmos-oo",
+            "section": "alg-2-2"
+          },
+          {
+            "lesson": "algoritmos-oo",
+            "section": "alg-2-3"
+          }
+        ]
+      },
+      {
+        "id": "ima-2026-11-25",
+        "title": "Aula 02 — Modelagem relacional, SQL e transações",
+        "url": "aulas/ima-2026-11-25.html",
+        "section_prefix": "d25",
+        "sections_per_module": [
+          3,
+          3
+        ],
+        "module_titles": [
+          "Modelagem e integridade",
+          "Consultas e transações"
+        ],
+        "subjects": {
+          "ima": "Tecnologia da Informação"
+        },
+        "status": "disponivel",
+        "daily": true,
+        "date": "2026-11-25",
+        "question_href": "aulas/questoes-ima-2026-11-25.html",
+        "question_ids": [
+          "ima-bd-1-1-q1",
+          "ima-bd-1-1-q2",
+          "ima-bd-2-1-q1",
+          "ima-bd-3-1-q1",
+          "ima-bd-3-1-q2"
+        ],
+        "legacy_sections": [
+          {
+            "lesson": "banco-dados",
+            "section": "bd-1-1"
+          },
+          {
+            "lesson": "banco-dados",
+            "section": "bd-1-2"
+          },
+          {
+            "lesson": "banco-dados",
+            "section": "bd-1-3"
+          },
+          {
+            "lesson": "banco-dados",
+            "section": "bd-2-1"
+          },
+          {
+            "lesson": "banco-dados",
+            "section": "bd-2-2"
+          },
+          {
+            "lesson": "banco-dados",
+            "section": "bd-3-1"
+          }
+        ]
+      },
+      {
+        "id": "ima-2026-11-26",
+        "title": "Aula 03 — Segurança de aplicações, APIs e identidade",
+        "url": "aulas/ima-2026-11-26.html",
+        "section_prefix": "d26",
+        "sections_per_module": [
+          3,
+          3
+        ],
+        "module_titles": [
+          "Ameaças e defesas",
+          "Identidade e acesso"
+        ],
+        "subjects": {
+          "ima": "Tecnologia da Informação"
+        },
+        "status": "disponivel",
+        "daily": true,
+        "date": "2026-11-26",
+        "question_href": "aulas/questoes-ima-2026-11-26.html",
+        "question_ids": [
+          "ima-seg-1-2-q1",
+          "ima-seg-1-2-q2",
+          "ima-seg-2-1-q1",
+          "ima-seg-2-1-q2"
+        ],
+        "legacy_sections": [
+          {
+            "lesson": "seguranca",
+            "section": "seg-1-1"
+          },
+          {
+            "lesson": "seguranca",
+            "section": "seg-1-2"
+          },
+          {
+            "lesson": "seguranca",
+            "section": "seg-1-3"
+          },
+          {
+            "lesson": "seguranca",
+            "section": "seg-2-1"
+          },
+          {
+            "lesson": "seguranca",
+            "section": "seg-2-2"
+          },
+          {
+            "lesson": "seguranca",
+            "section": "seg-2-3"
+          }
+        ]
+      },
+      {
+        "id": "ima-2026-11-27",
+        "title": "Aula 04 — Administração Pública: princípios, organização, poderes e atos",
+        "url": "aulas/ima-2026-11-27.html",
+        "section_prefix": "d27",
+        "sections_per_module": [
+          3,
+          3
+        ],
+        "module_titles": [
+          "Fundamentos e organização",
+          "Atos e controle de legalidade"
+        ],
+        "subjects": {
+          "ima": "Administração Pública"
+        },
+        "status": "disponivel",
+        "daily": true,
+        "date": "2026-11-27",
+        "question_href": "aulas/questoes-ima-2026-11-27.html",
+        "question_ids": [
+          "ima-adm-1-1-q1",
+          "ima-adm-1-1-q2",
+          "ima-adm-1-2-q1",
+          "ima-adm-1-2-q2",
+          "ima-adm-1-3-q1",
+          "ima-adm-1-3-q2"
+        ],
+        "legacy_sections": [
+          {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-1-1"
+          },
+          {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-1-2"
+          },
+          {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-1-3"
+          },
+          {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-2-1"
+          },
+          {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-2-2"
+          },
+          {
+            "lesson": "administracao-publica-ima",
+            "section": "adm-2-3"
+          }
+        ]
+      },
+      {
+        "id": "ima-2026-11-28",
+        "title": "Aula 05 — Legislação Ambiental: Constituição, cooperação e PNMA",
+        "url": "aulas/ima-2026-11-28.html",
+        "section_prefix": "d28",
+        "sections_per_module": [
+          3,
+          3
+        ],
+        "module_titles": [
+          "Proteção constitucional e competências",
+          "Política Nacional do Meio Ambiente"
+        ],
+        "subjects": {
+          "ima": "Legislação Ambiental"
+        },
+        "status": "disponivel",
+        "daily": true,
+        "date": "2026-11-28",
+        "question_href": "aulas/questoes-ima-2026-11-28.html",
+        "question_ids": [
+          "ima-la-1-1-q1",
+          "ima-la-1-2-q1",
+          "ima-la-1-2-q2",
+          "ima-la-1-3-q1",
+          "ima-la-1-3-q2",
+          "ima-la-2-1-q1"
+        ],
+        "legacy_sections": [
+          {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-1-1"
+          },
+          {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-1-2"
+          },
+          {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-1-3"
+          },
+          {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-2-1"
+          },
+          {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-2-2"
+          },
+          {
+            "lesson": "legislacao-ambiental-ima",
+            "section": "la-2-3"
+          }
+        ]
       }
     ],
     "minimum_unread_equivalents": 5,
@@ -606,7 +946,16 @@
     "question_bank": "dados/questoes-ima-micro.json",
     "lesson_template": "aulas/microaula-ima.html",
     "quiz_template": "aulas/questoes-micro-ima.html",
-    "read_policy": "Recomendar questões após Lido da seção; Lido não gera estudo nem avaliação.",
-    "coverage_note": "Lote inicial de conteúdo já existente; novas lacunas do edital ainda exigem conteúdo aprofundado."
+    "read_policy": "Acervo anterior de consulta, fora da fila principal.",
+    "coverage_note": "Lote inicial de conteúdo já existente; novas lacunas do edital ainda exigem conteúdo aprofundado.",
+    "archived": true
+  },
+  "ima_daily_lesson_policy": {
+    "version": 1,
+    "updated": "2026-11-24",
+    "minimum_daily_lessons": 5,
+    "minimum_question_sets": 5,
+    "availability_note": "Núcleo de 120 min e até 120 min opcionais. Dias disponíveis não confirmados.",
+    "legacy_manifest": "dados/microaulas-ima.json"
   }
 }

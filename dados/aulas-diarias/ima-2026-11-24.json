@@ -1,0 +1,449 @@
+{
+  "schema_version": 1,
+  "id": "ima-2026-11-24",
+  "date": "2026-11-24",
+  "title": "Aula 01 — Algoritmos, estruturas de dados e orientação a objetos",
+  "contest": "IMA-SC 2027 · Analista de Informática",
+  "subject": "Tecnologia da Informação",
+  "description": "Núcleo sugerido de 120 minutos, com teoria, exemplos, recuperação ativa e questões separadas. Extensão opcional conforme disponibilidade e lacunas.",
+  "modules": [
+    {
+      "id": "cap-1",
+      "title": "Algoritmos e estruturas",
+      "sections": [
+        {
+          "id": "d24-1-1",
+          "title": "Busca linear, busca binária e Big-O",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Núcleo sugerido: 55 minutos no primeiro módulo, 40 no segundo e 25 de recuperação e questões. Ajuste ao tempo disponível. Se já conhece um tópico, tente explicá-lo de memória antes de ler; concentre-se nas lacunas."
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Complexidade temporal descreve como o custo de um algoritmo cresce com o tamanho n da entrada. Busca linear examina itens em sequência: no pior caso precisa de n comparações, representado por O(n). Busca binária reduz pela metade uma lista ordenada a cada passo, produzindo O(log n).",
+                "Big-O é limite assintótico de crescimento, não tempo exato em segundos. Para entradas pequenas, uma busca linear pode ser mais simples e até mais rápida pela constante envolvida. A ordenação prévia é requisito importante da busca binária."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "Lista ordenada: [3, 7, 11, 15, 19, 24, 28, 31]. Queremos encontrar 24.",
+                "Verifique o meio aproximado (índice 3, valor 15). Como 24 é maior, descarte a metade esquerda.",
+                "No intervalo [19, 24, 28, 31], examine 24 (conforme escolha do meio).",
+                "Foram necessárias poucas comparações, em vez de percorrer todos os oito elementos."
+              ],
+              "conclusion": "A sequência aplica o conceito às condições do exemplo."
+            },
+            {
+              "type": "tip",
+              "text": "Busca binária = dados ordenados + divisão sucessiva ao meio."
+            },
+            {
+              "type": "warning",
+              "text": "Aplicar busca binária diretamente a uma coleção não ordenada não garante resultado correto."
+            },
+            {
+              "type": "table",
+              "title": "Pior caso de comparações (busca clássica)",
+              "headers": [
+                "n",
+                "Linear",
+                "Binária"
+              ],
+              "rows": [
+                [
+                  "8",
+                  "8",
+                  "4"
+                ],
+                [
+                  "32",
+                  "32",
+                  "6"
+                ],
+                [
+                  "1024",
+                  "1024",
+                  "11"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Para a busca binária clássica, um limite no pior caso é piso(log₂ n)+1 comparações de elementos. É um limite, não o número de comparações em toda execução."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "algoritmos-oo",
+            "section": "alg-1-1"
+          }
+        },
+        {
+          "id": "d24-1-2",
+          "title": "Listas, pilhas, filas, conjuntos e mapas",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Uma lista mantém sequência e permite elementos repetidos; uma pilha segue LIFO (último a entrar, primeiro a sair); uma fila segue FIFO (primeiro a entrar, primeiro a sair). Um conjunto evita duplicidades segundo a regra de igualdade; um mapa/dicionário associa chaves a valores.",
+                "Tabelas hash oferecem busca média próxima de O(1) em condições adequadas, mas colisões e implementação alteram o custo; uma árvore balanceada costuma permitir operações O(log n). Essas garantias não são idênticas para todas as linguagens."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "Chamados recebidos na ordem A, B, C: uma fila FIFO atende A primeiro.",
+                "Histórico de desfazer uma edição: uma pilha LIFO reverte primeiro a alteração C, mais recente.",
+                "Conjunto de IDs visitados evita processar o mesmo chamado duas vezes.",
+                "Mapa {42: \"aberta\", 57: \"fechada\"} localiza o estado pela chave 42 sem percorrer uma lista inteira, em média se a implementação usar hash adequado."
+              ],
+              "conclusion": "A sequência aplica o conceito às condições do exemplo."
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Como ler: elementos A, B e C chegam nessa ordem. Na pilha, o topo é C, então C sai primeiro (LIFO). Na fila, A está na frente e sai primeiro (FIFO). O desenho não significa que uma fila precisa ser implementada como um vetor."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "LIFO = PILHA; FIFO = FILA. Conjunto = valores sem duplicação; mapa = chave → valor."
+            },
+            {
+              "type": "warning",
+              "text": "Não confunda posição em lista com chave de mapa. Uma operação O(1) média não significa tempo constante garantido em todas as situações."
+            },
+            {
+              "type": "table",
+              "title": "Estruturas e operações",
+              "headers": [
+                "Estrutura",
+                "Regra",
+                "Aplicação"
+              ],
+              "rows": [
+                [
+                  "Pilha",
+                  "LIFO",
+                  "Desfazer"
+                ],
+                [
+                  "Fila",
+                  "FIFO",
+                  "Atendimento"
+                ],
+                [
+                  "Conjunto",
+                  "Sem duplicatas",
+                  "IDs únicos"
+                ],
+                [
+                  "Mapa",
+                  "Chave → valor",
+                  "Cadastro"
+                ]
+              ]
+            },
+            {
+              "type": "flow",
+              "title": "Pilha versus fila",
+              "steps": [
+                {
+                  "label": "Inserir",
+                  "detail": "A, B e C, nessa ordem."
+                },
+                {
+                  "label": "Pilha",
+                  "detail": "Retirar C, B, A."
+                },
+                {
+                  "label": "Fila",
+                  "detail": "Retirar A, B, C."
+                }
+              ],
+              "explanation": [
+                "A ordem de remoção distingue as estruturas."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "algoritmos-oo",
+            "section": "alg-1-2"
+          }
+        },
+        {
+          "id": "d24-1-3",
+          "title": "Recursão, iteração e casos-base",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Recursão ocorre quando uma função resolve o problema chamando a si mesma para uma instância menor. Precisa de um caso-base que interrompa as chamadas e um passo que se aproxime dele. Uma solução iterativa usa laços e estado explícito.",
+                "Recursão pode simplificar árvores e divisão e conquista, mas usa a pilha de chamadas do programa; entradas profundas podem provocar estouro de pilha. O número de chamadas pode crescer mais rapidamente do que o necessário em uma implementação ingênua."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "somaAte(3) retorna 3 + somaAte(2).",
+                "somaAte(2) retorna 2 + somaAte(1).",
+                "somaAte(1) retorna 1 + somaAte(0).",
+                "somaAte(0) é 0. Resultado: 3+2+1+0 = 6."
+              ],
+              "conclusion": "Para n grande, considere uma solução iterativa ou a fórmula aritmética, observadas as condições do domínio."
+            },
+            {
+              "type": "tip",
+              "text": "Recursão saudável = caso-base + problema menor + progresso garantido para o caso-base."
+            },
+            {
+              "type": "warning",
+              "text": "Esquecer o caso-base ou não diminuir o problema pode provocar recursão infinita."
+            },
+            {
+              "type": "example",
+              "situation": "Calcular fatorial de 4.",
+              "steps": [
+                "f(0)=1.",
+                "f(4)=4×f(3); f(3)=3×f(2); f(2)=2×f(1); f(1)=1×f(0).",
+                "Na volta: 1, 1, 2, 6, 24."
+              ],
+              "conclusion": "O resultado é 24; cada chamada ocupa espaço na pilha."
+            }
+          ],
+          "legacy_source": {
+            "lesson": "algoritmos-oo",
+            "section": "alg-1-3"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cap-2",
+      "title": "Orientação a objetos",
+      "sections": [
+        {
+          "id": "d24-2-1",
+          "title": "Encapsulamento, herança e composição",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Encapsulamento protege invariantes por meio de uma interface de operações, em vez de permitir alteração arbitrária de estado. Herança estabelece relação de especialização quando há um 'é um'. Composição reúne objetos que colaboram quando há um 'tem um/usa um'.",
+                "Composição costuma reduzir acoplamento a hierarquias rígidas e favorecer substituição de comportamentos. Herança não é sempre proibida: é apropriada quando o subtipo realmente respeita o contrato esperado do tipo-base."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "Uma classe Ordem contém status e só permite mudar para 'fechada' após cumprir critérios.",
+                "Em vez de deixar qualquer código atribuir status, forneça método fechar() que verifica regras.",
+                "Para notificar cliente, Ordem usa um serviço Notificador recebido por composição.",
+                "Um NotificadorEmail ou NotificadorSMS pode substituir a implementação sem exigir herança de Ordem."
+              ],
+              "conclusion": "A sequência aplica o conceito às condições do exemplo."
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "herançaOrdemItemOrdemcomposiçãoNotificadordependênciaReconheça: triângulo vazio aponta para a superclasse; losango cheio fica no todo (Ordem contém itens); linha tracejada indica uso de serviço. Injetar um Notificador em uma classe não significa automaticamente composição UML com vínculo de ciclo de vida."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Herança: 'é um'; composição: 'tem/usa um'; encapsulamento: preserva regras de estado."
+            },
+            {
+              "type": "warning",
+              "text": "Criar herança apenas para reaproveitar código pode produzir subtipos que violam o comportamento esperado."
+            },
+            {
+              "type": "uml-relation",
+              "title": "Generalização",
+              "kind": "inheritance",
+              "from": "Analista",
+              "to": "Servidor",
+              "explanation": [
+                "Triângulo vazio aponta para o tipo geral; subtipo respeita o contrato."
+              ]
+            },
+            {
+              "type": "uml-relation",
+              "title": "Composição",
+              "kind": "composition",
+              "from": "ItemPedido",
+              "to": "Pedido",
+              "explanation": [
+                "Losango preenchido fica no todo; a parte integra sua composição."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "algoritmos-oo",
+            "section": "alg-2-1"
+          }
+        },
+        {
+          "id": "d24-2-2",
+          "title": "Sobrecarga × sobrescrita e polimorfismo",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Sobrecarga (overloading) é declarar métodos com mesmo nome e listas de parâmetros diferentes, em linguagens que oferecem esse mecanismo. A seleção normalmente considera os tipos estáticos dos argumentos em compilação. Sobrescrita (overriding) é redefinir em um subtipo um método herdado compatível, com despacho dinâmico quando o mecanismo é polimórfico.",
+                "O tipo da referência define quais operações podem ser chamadas estaticamente, enquanto o objeto real pode determinar a implementação executada. Essa distinção costuma aparecer em questões conceituais."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "O objeto real é Gato.",
+                "A implementação de emitir() sobrescrita é chamada.",
+                "Isso é sobrescrita com polimorfismo, não duas versões com parâmetros diferentes."
+              ],
+              "conclusion": "Em Java, por exemplo, sobrecarga seria calcular(int) e calcular(int,int)."
+            },
+            {
+              "type": "tip",
+              "text": "Carga = parâmetros diferentes. Escrita = implementação redefinida no subtipo."
+            },
+            {
+              "type": "warning",
+              "text": "Mudar apenas tipo de retorno não caracteriza uma sobrecarga válida em Java; o conjunto de parâmetros deve distinguir as assinaturas."
+            },
+            {
+              "type": "code",
+              "code": "class Animal { void falar() {} }\nclass Cao extends Animal {\n  @Override void falar() { System.out.println(\"au\"); }\n}\nAnimal a = new Cao();\na.falar(); // au"
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Sobrecarga é resolvida pelos tipos estáticos em Java; métodos de instância sobrescritos usam despacho dinâmico."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "algoritmos-oo",
+            "section": "alg-2-2"
+          }
+        },
+        {
+          "id": "d24-2-3",
+          "title": "SOLID aplicado ao projeto de software",
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "SOLID reúne cinco princípios: SRP uma razão para mudar; OCP aberto para extensão e fechado para alteração; LSP substituição segura de subtipos; ISP interfaces específicas; DIP depender de abstrações e não de implementações concretas.",
+                "São orientações de design, não regras mecânicas. Dividir tudo em uma classe por linha não garante SRP, e criar interfaces sem necessidade pode prejudicar legibilidade. O objetivo é reduzir acoplamento desnecessário e manter contratos coerentes."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Aplicação prática do conceito acima.",
+              "steps": [
+                "Um controlador calcula prioridade, envia e-mail e grava logs. Três motivos diferentes podem exigir mudança.",
+                "Separe políticas de prioridade, notificação e persistência conforme fronteiras reais de responsabilidade.",
+                "O controlador depende de uma interface de notificação, não diretamente de uma classe SMTP específica: DIP.",
+                "Nova implementação de notificação pode entrar sem alterar o fluxo central: OCP.",
+                "Se implementar um subtipo, ele deve cumprir pré e pós-condições esperadas: LSP."
+              ],
+              "conclusion": "A sequência aplica o conceito às condições do exemplo."
+            },
+            {
+              "type": "tip",
+              "text": "SRP mudança; OCP extensão; LSP substituição; ISP interfaces pequenas; DIP abstrações."
+            },
+            {
+              "type": "warning",
+              "text": "LSP não é só compatibilidade sintática; o subtipo não deve surpreender consumidores do contrato."
+            },
+            {
+              "type": "table",
+              "title": "SOLID: diagnosticar violações",
+              "headers": [
+                "Princípio",
+                "Pergunta"
+              ],
+              "rows": [
+                [
+                  "SRP",
+                  "Há motivos independentes para mudar?"
+                ],
+                [
+                  "OCP",
+                  "É necessário alterar o núcleo a cada extensão?"
+                ],
+                [
+                  "LSP",
+                  "Subtipo viola contrato?"
+                ],
+                [
+                  "ISP",
+                  "Interface obriga métodos irrelevantes?"
+                ],
+                [
+                  "DIP",
+                  "Política depende de detalhe concreto?"
+                ]
+              ]
+            },
+            {
+              "type": "text",
+              "paragraphs": [
+                "Fechamento: reconstrua os conceitos e os exemplos de memória, confira as lacunas e abra as questões separadas. Extensão opcional: aprofundar dificuldades, sem preencher tempo artificialmente."
+              ]
+            }
+          ],
+          "legacy_source": {
+            "lesson": "algoritmos-oo",
+            "section": "alg-2-3"
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "FURB — edital e publicações",
+      "url": "https://concursos.furb.br/informacoes/584"
+    },
+    {
+      "label": "Acervo original — algoritmos-oo",
+      "url": "https://andrewmoreira02.github.io/concurso-estudos/aulas/algoritmos-oo.html"
+    },
+    {
+      "label": "Java — classes e objetos",
+      "url": "https://docs.oracle.com/javase/tutorial/java/javaOO/"
+    },
+    {
+      "label": "NIST — algoritmos e estruturas",
+      "url": "https://www.nist.gov/dads/"
+    }
+  ],
+  "questions": [
+    {
+      "label": "Questionário diário — 4 questões autorais",
+      "href": "questoes-ima-2026-11-24.html"
+    },
+    {
+      "label": "Prática complementar do acervo: Busca linear, busca binária e Big-O",
+      "href": "questoes-micro-ima.html?u=ima-alg-1-1"
+    },
+    {
+      "label": "Prática complementar do acervo: Encapsulamento, herança e composição",
+      "href": "questoes-micro-ima.html?u=ima-alg-2-1"
+    }
+  ]
+}

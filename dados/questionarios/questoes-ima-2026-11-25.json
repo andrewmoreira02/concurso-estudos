@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "id": "questoes-ima-2026-11-25",
+  "title": "Questões · Aula 02 — Modelagem relacional, SQL e transações",
+  "exam": "ima",
+  "subject": "ti",
+  "topic": "Modelagem relacional, SQL e transações",
+  "questions": [
+    {
+      "id": "ima-bd-1-1-q1",
+      "kind": "autoral",
+      "prompt": "Cada pedido pertence a exatamente um cliente, e cada cliente pode ter vários pedidos. Qual a cardinalidade?",
+      "options": {
+        "a": "Cliente N:N Pedido necessariamente",
+        "b": "Cliente 1:1 Pedido",
+        "c": "Cliente N:1 Pedido",
+        "d": "Cliente 1:N Pedido"
+      },
+      "correct": "d",
+      "explanation": "Um cliente relaciona-se a muitos pedidos, mas cada pedido referencia um cliente; a relação é 1:N.",
+      "distractors": {
+        "a": "Pedido possui exatamente um cliente.",
+        "b": "Cliente pode ter vários pedidos.",
+        "c": "A orientação Cliente → Pedido é 1:N."
+      }
+    },
+    {
+      "id": "ima-bd-1-1-q2",
+      "kind": "autoral",
+      "prompt": "Um pedido pode conter diversos produtos e um produto pode figurar em vários pedidos. Qual modelagem relacional normalizada é apropriada?",
+      "options": {
+        "a": "Guardar nomes dos produtos separados por vírgula",
+        "b": "Criar tabela associativa ItemPedido com chaves para Pedido e Produto",
+        "c": "Duplicar a tabela Produto para cada pedido",
+        "d": "Uma coluna Produto1, Produto2 e Produto3"
+      },
+      "correct": "b",
+      "explanation": "Uma relação N:N costuma ser implementada por uma tabela associativa que referencia ambas as entidades.",
+      "distractors": {
+        "a": "Lista em uma célula prejudica integridade.",
+        "c": "Duplicar gera redundância.",
+        "d": "Colunas repetidas impõem limite artificial."
+      }
+    },
+    {
+      "id": "ima-bd-2-1-q1",
+      "kind": "autoral",
+      "prompt": "Qual cláusula filtra grupos agregados com COUNT(*) maior que cinco?",
+      "options": {
+        "a": "HAVING COUNT(*) > 5",
+        "b": "JOIN COUNT(*) > 5",
+        "c": "WHERE COUNT(*) > 5",
+        "d": "ORDER BY COUNT(*) > 5"
+      },
+      "correct": "a",
+      "explanation": "HAVING filtra grupos depois da agregação; WHERE filtra linhas antes da formação dos grupos.",
+      "distractors": {
+        "b": "JOIN relaciona tabelas.",
+        "c": "WHERE filtra antes da agregação.",
+        "d": "ORDER BY ordena."
+      }
+    },
+    {
+      "id": "ima-bd-3-1-q1",
+      "kind": "autoral",
+      "prompt": "Uma transferência deve registrar débito e crédito integralmente ou nenhum dos dois. Qual propriedade ACID é mais diretamente exigida?",
+      "options": {
+        "a": "Atomicidade",
+        "b": "Durabilidade",
+        "c": "Isolamento",
+        "d": "Consistência eventual"
+      },
+      "correct": "a",
+      "explanation": "Atomicidade exige que as alterações da transação sejam indivisíveis: tudo ou nada.",
+      "distractors": {
+        "b": "Durabilidade é persistência após confirmação.",
+        "c": "Isolamento limita interferência.",
+        "d": "Consistência eventual não significa tudo ou nada."
+      }
+    },
+    {
+      "id": "ima-bd-3-1-q2",
+      "kind": "autoral",
+      "prompt": "O que o comando ROLLBACK faz antes do COMMIT de uma transação comum?",
+      "options": {
+        "a": "Bloqueia para sempre todas as linhas",
+        "b": "Confirma gravações em definitivo",
+        "c": "Desfaz alterações ainda não confirmadas da transação",
+        "d": "Cria uma nova tabela"
+      },
+      "correct": "c",
+      "explanation": "ROLLBACK reverte modificações pendentes na transação, conforme o comportamento do SGBD e das instruções usadas.",
+      "distractors": {
+        "a": "Não cria bloqueio permanente.",
+        "b": "COMMIT confirma.",
+        "d": "Criação de tabela é DDL."
+      }
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "questoes-ima-2026-11-24",
+  "title": "Questões · Aula 01 — Algoritmos, estruturas de dados e orientação a objetos",
+  "exam": "ima",
+  "subject": "ti",
+  "topic": "Algoritmos, estruturas de dados e orientação a objetos",
+  "questions": [
+    {
+      "id": "ima-alg-1-1-q1",
+      "kind": "autoral",
+      "prompt": "Em um vetor não ordenado com n elementos, uma busca linear pode examinar quantos elementos no pior caso?",
+      "options": {
+        "a": "log2(n)",
+        "b": "1",
+        "c": "n",
+        "d": "n²"
+      },
+      "correct": "c",
+      "explanation": "Sem índice ou ordenação, o alvo pode ser o último ou não estar presente: a varredura inspeciona até n posições.",
+      "distractors": {
+        "a": "A ordem logarítmica exige redução sistemática dos candidatos.",
+        "b": "Uma comparação é melhor caso.",
+        "d": "Uma varredura não compara todos os pares."
+      }
+    },
+    {
+      "id": "ima-alg-1-1-q2",
+      "kind": "autoral",
+      "prompt": "Em um vetor ordenado de 1.024 elementos, a busca binária divide a área candidata pela metade a cada comparação. Qual é a ordem de crescimento?",
+      "options": {
+        "a": "O(n²)",
+        "b": "O(1)",
+        "c": "O(log n)",
+        "d": "O(n)"
+      },
+      "correct": "c",
+      "explanation": "A cada passo, a busca binária elimina aproximadamente metade dos candidatos; sua complexidade é logarítmica.",
+      "distractors": {
+        "a": "Não há comparação de todos os pares.",
+        "b": "O custo aumenta com n.",
+        "d": "O intervalo é dividido, não reduzido de um em um."
+      }
+    },
+    {
+      "id": "ima-alg-2-1-q1",
+      "kind": "autoral",
+      "prompt": "Um objeto Pedido usa uma classe Pagamento como um atributo, sem ser um tipo de Pagamento. A relação mais apropriada é:",
+      "options": {
+        "a": "Sobrescrita",
+        "b": "Generalização",
+        "c": "Herança",
+        "d": "Composição ou associação, conforme ciclo de vida"
+      },
+      "correct": "d",
+      "explanation": "Pedido tem uma referência a Pagamento, não é um Pagamento. O vínculo é de uso ou composição, conforme posse do ciclo de vida.",
+      "distractors": {
+        "a": "Sobrescrita é redefinição de método.",
+        "b": "Generalização é relação é-um.",
+        "c": "Pedido não é tipo de Pagamento."
+      }
+    },
+    {
+      "id": "ima-alg-2-1-q2",
+      "kind": "autoral",
+      "prompt": "Qual decisão exemplifica encapsulamento adequado?",
+      "options": {
+        "a": "Deixar o banco decidir as regras de domínio",
+        "b": "Proteger invariantes com operações públicas controladas",
+        "c": "Fazer todas as classes herdarem da mesma base",
+        "d": "Expor livremente todos os campos internos"
+      },
+      "correct": "b",
+      "explanation": "Encapsular é controlar como o estado muda, preservando invariantes; não depende obrigatoriamente de herança.",
+      "distractors": {
+        "a": "O banco não substitui invariantes do objeto.",
+        "c": "Herança não protege estado por si.",
+        "d": "Expor campos permite alteração indevida."
+      }
+    }
+  ]
+}

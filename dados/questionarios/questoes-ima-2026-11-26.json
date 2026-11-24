@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "questoes-ima-2026-11-26",
+  "title": "Questões · Aula 03 — Segurança de aplicações, APIs e identidade",
+  "exam": "ima",
+  "subject": "ti",
+  "topic": "Segurança de aplicações, APIs e identidade",
+  "questions": [
+    {
+      "id": "ima-seg-1-2-q1",
+      "kind": "autoral",
+      "prompt": "Qual é a defesa principal contra SQL Injection ao receber filtro de pesquisa de um formulário?",
+      "options": {
+        "a": "Desativar os logs",
+        "b": "Concatenar o filtro diretamente no SQL",
+        "c": "Codificar HTML na resposta",
+        "d": "Usar parâmetros vinculados em consultas preparadas"
+      },
+      "correct": "d",
+      "explanation": "Consultas parametrizadas separam dados de código SQL, evitando que texto do usuário seja interpretado como parte da consulta.",
+      "distractors": {
+        "a": "Logs não separam SQL e dados.",
+        "b": "Concatenação mistura entrada com código.",
+        "c": "Escape HTML não parametriza SQL."
+      }
+    },
+    {
+      "id": "ima-seg-1-2-q2",
+      "kind": "autoral",
+      "prompt": "Qual é uma defesa de saída relevante contra XSS refletido ao inserir texto de usuário num elemento HTML?",
+      "options": {
+        "a": "Adicionar índice no banco",
+        "b": "Trocar HTTP por FTP",
+        "c": "Escapar o conteúdo conforme o contexto de saída",
+        "d": "Usar apenas SELECT no banco"
+      },
+      "correct": "c",
+      "explanation": "A codificação contextual de saída impede que texto seja interpretado como marcação ou script; CSP pode acrescentar proteção.",
+      "distractors": {
+        "a": "Índices não codificam HTML.",
+        "b": "FTP não corrige interpretação de marcação.",
+        "d": "SELECT não impede scripts na saída."
+      }
+    },
+    {
+      "id": "ima-seg-2-1-q1",
+      "kind": "autoral",
+      "prompt": "Após login válido, um usuário altera o identificador do pedido na URL e recebe um pedido de outra pessoa. Qual falha ocorreu?",
+      "options": {
+        "a": "Falta de autorização por objeto (BOLA/IDOR)",
+        "b": "Hash inseguro necessariamente",
+        "c": "Ataque de força bruta ao login",
+        "d": "Autenticação forte"
+      },
+      "correct": "a",
+      "explanation": "A aplicação verificou a identidade, mas não a permissão do usuário sobre o pedido específico.",
+      "distractors": {
+        "b": "Não há evidência de falha de hash.",
+        "c": "O usuário já está autenticado.",
+        "d": "Identidade válida não concede acesso a qualquer objeto."
+      }
+    },
+    {
+      "id": "ima-seg-2-1-q2",
+      "kind": "autoral",
+      "prompt": "Em uma API, o que deve ser validado no servidor antes de devolver /contas/123?",
+      "options": {
+        "a": "Apenas se a pessoa está conectada",
+        "b": "Se o cliente usa navegador moderno",
+        "c": "Se a identidade autenticada tem acesso à conta 123",
+        "d": "Se o identificador é um número positivo"
+      },
+      "correct": "c",
+      "explanation": "A autorização precisa conferir permissões sobre o recurso alvo, não só autenticação global ou formato da URL.",
+      "distractors": {
+        "a": "Login não prova direito sobre objeto.",
+        "b": "Navegador não define autorização.",
+        "d": "ID válido pode pertencer a outra pessoa."
+      }
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "id": "questoes-ima-2026-11-28",
+  "title": "Questões · Aula 05 — Legislação Ambiental: Constituição, cooperação e PNMA",
+  "exam": "ima",
+  "subject": "legislacao",
+  "topic": "Legislação Ambiental: Constituição, cooperação e PNMA",
+  "questions": [
+    {
+      "id": "ima-la-1-1-q1",
+      "kind": "autoral",
+      "prompt": "Pelo art. 225 da Constituição, o meio ambiente ecologicamente equilibrado é:",
+      "options": {
+        "a": "Interesse facultativo sem dever estatal",
+        "b": "Direito somente das gerações presentes",
+        "c": "Bem de uso comum do povo e essencial à sadia qualidade de vida",
+        "d": "Bem exclusivo do proprietário do terreno"
+      },
+      "correct": "c",
+      "explanation": "O art. 225 assegura o direito e impõe ao Poder Público e à coletividade o dever de defendê-lo para presentes e futuras gerações.",
+      "distractors": {
+        "a": "Há dever constitucional explícito.",
+        "b": "O art. 225 inclui futuras gerações.",
+        "d": "É bem de uso comum do povo."
+      }
+    },
+    {
+      "id": "ima-la-1-2-q1",
+      "kind": "autoral",
+      "prompt": "É competência comum dos entes federativos, segundo a Constituição:",
+      "options": {
+        "a": "Proteger o meio ambiente e combater a poluição",
+        "b": "Editar exclusivamente leis federais em todo tema",
+        "c": "Julgar em última instância todos os recursos",
+        "d": "Criar moeda estadual"
+      },
+      "correct": "a",
+      "explanation": "A proteção ambiental integra competências administrativas comuns da União, estados, DF e municípios.",
+      "distractors": {
+        "b": "Competência comum é administrativa.",
+        "c": "Julgar recursos não é a atribuição citada.",
+        "d": "Moeda não é competência ambiental comum."
+      }
+    },
+    {
+      "id": "ima-la-1-2-q2",
+      "kind": "autoral",
+      "prompt": "Competência legislativa concorrente sobre proteção ambiental significa, em linhas gerais:",
+      "options": {
+        "a": "Delegação sempre obrigatória ao Judiciário",
+        "b": "Atuação normativa da União em normas gerais e suplementação estadual nos limites constitucionais",
+        "c": "Ausência de atuação dos estados",
+        "d": "Legislação exclusivamente municipal"
+      },
+      "correct": "b",
+      "explanation": "Na competência concorrente, cabe à União estabelecer normas gerais e aos estados suplementá-las nos termos da CF.",
+      "distractors": {
+        "a": "Não é delegação ao Judiciário.",
+        "c": "Estados suplementam normas gerais.",
+        "d": "Há competência concorrente federal e estadual."
+      }
+    },
+    {
+      "id": "ima-la-1-3-q1",
+      "kind": "autoral",
+      "prompt": "A LC 140/2011 trata principalmente de:",
+      "options": {
+        "a": "Sistema de impostos sobre combustíveis",
+        "b": "Regras de concursos públicos",
+        "c": "Cooperação entre entes no exercício de competências administrativas ambientais",
+        "d": "Apenas tipificação de crimes ambientais"
+      },
+      "correct": "c",
+      "explanation": "A LC 140/2011 disciplina a cooperação federativa em matéria ambiental no campo das competências comuns.",
+      "distractors": {
+        "a": "Não é norma tributária.",
+        "b": "Não regula concursos.",
+        "d": "Disciplina cooperação administrativa."
+      }
+    },
+    {
+      "id": "ima-la-1-3-q2",
+      "kind": "autoral",
+      "prompt": "Na regra geral de licenciamento da LC 140/2011, um empreendimento é licenciado:",
+      "options": {
+        "a": "Simultaneamente por todos os municípios do estado",
+        "b": "Apenas pelo órgão federal em qualquer caso",
+        "c": "Sem qualquer análise de competência",
+        "d": "Por um único ente federativo competente, ressalvadas regras aplicáveis"
+      },
+      "correct": "d",
+      "explanation": "O licenciamento ordinário por um ente competente evita sobreposição procedimental, preservadas manifestações nos limites legais.",
+      "distractors": {
+        "a": "A regra é um ente competente.",
+        "b": "Competência federal depende das hipóteses legais.",
+        "c": "Atribuição deve ser identificada."
+      }
+    },
+    {
+      "id": "ima-la-2-1-q1",
+      "kind": "autoral",
+      "prompt": "A Política Nacional do Meio Ambiente é instituída pela:",
+      "options": {
+        "a": "Lei 6.938/1981",
+        "b": "Lei 14.133/2021",
+        "c": "Lei 9.784/1999",
+        "d": "LC 101/2000"
+      },
+      "correct": "a",
+      "explanation": "A Lei 6.938/1981 estabelece objetivos, princípios e instrumentos da Política Nacional do Meio Ambiente.",
+      "distractors": {
+        "b": "Lei 14.133 trata de licitações.",
+        "c": "Lei 9.784 trata de processo federal.",
+        "d": "LC 101 trata de responsabilidade fiscal."
+      }
+    }
+  ]
+}
