@@ -1,25 +1,25 @@
-/* Indicador responsivo compartilhado no início e no planejamento. */
+/* Uma barra curricular: amarelo = dentro da meta; verde = excedente; vermelho = falta. */
 #ce-edital-pace{margin:20px 0;padding:clamp(14px,3vw,24px);min-width:0;overflow-wrap:anywhere}
-#ce-edital-pace h2,#ce-edital-pace h3{margin:.8em 0 .4em}
-#ce-edital-pace p{margin:.55em 0;line-height:1.55}
-#ce-edital-pace .ce-pace-status{font-size:1.35rem;color:#5eead4}
-#ce-edital-pace .ce-pace-metric{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;margin:12px 0;align-items:center}
-#ce-edital-pace progress{grid-column:1/-1;width:100%;height:12px;accent-color:#22d3ee}
+#ce-edital-pace h2{margin:0 0 12px}
+#ce-edital-pace p{margin:.55em 0;line-height:1.5}
+#ce-edital-pace .ce-pace-head,#ce-edital-pace .ce-pace-caption,#ce-edital-pace .ce-pace-legend{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px}
+#ce-edital-pace .ce-pace-value{font-size:1.4rem;font-variant-numeric:tabular-nums}
+#ce-edital-pace .ce-pace-status{color:#facc15}
+#ce-edital-pace .ce-pace-status.late{color:#f87171}
+#ce-edital-pace .ce-pace-status.ahead{color:#4ade80}
+#ce-edital-pace .ce-pace-status.unknown{color:inherit}
+#ce-edital-pace .ce-pace-track{height:24px;background:#344154;display:flex;position:relative;border-radius:6px;overflow:hidden;margin:12px 0 8px;min-width:0}
+#ce-edital-pace .ce-pace-segment{display:block;height:100%;flex:none}
+#ce-edital-pace .planned{background:#facc15}
+#ce-edital-pace .ahead{background:#22c55e}
+#ce-edital-pace .late{background:#ef4444}
+#ce-edital-pace .unplanned{background:#94a3b8}
+#ce-edital-pace .ce-pace-marker{position:absolute;top:0;bottom:0;width:2px;background:#fff;box-shadow:0 0 0 1px #111827;transform:translateX(-50%);pointer-events:none}
+#ce-edital-pace .ce-pace-caption{font-size:.9rem;font-variant-numeric:tabular-nums}
+#ce-edital-pace .ce-pace-legend{justify-content:flex-start;margin:10px 0;font-size:.78rem}
+#ce-edital-pace .ce-pace-legend span{display:inline-flex;align-items:center;gap:5px}
+#ce-edital-pace .ce-pace-legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+#ce-edital-pace .ce-pace-details{margin-top:12px;font-size:.9rem}
+#ce-edital-pace summary{cursor:pointer}
 #ce-edital-pace ul{padding-inline-start:1.3em}
 #ce-edital-pace a{max-width:100%;white-space:normal;overflow-wrap:anywhere;margin:6px 0}
-@media(max-width:360px){#ce-edital-pace .ce-pace-metric{grid-template-columns:1fr}#ce-edital-pace progress{grid-column:1}}
-
-#ce-edital-pace .ce-pace-comparison{border:1px solid #334b66;border-radius:14px;padding:clamp(12px,3vw,20px);background:#111e30;color:#e7eef9}
-#ce-edital-pace .ce-pace-comparison h3{margin:0 0 6px}
-#ce-edital-pace .ce-pace-status.late{color:#fca5a5}
-#ce-edital-pace .ce-pace-status.ahead{color:#86efac}
-#ce-edital-pace .ce-pace-status.unknown{color:#fcd34d}
-#ce-edital-pace .ce-pace-metric progress{height:20px;appearance:none;border:0;border-radius:6px;overflow:hidden;background:#25374d;color:#22d3ee;accent-color:#22d3ee}
-#ce-edital-pace .ce-pace-metric progress::-webkit-progress-bar{background:#25374d;border-radius:6px}
-#ce-edital-pace .ce-pace-metric progress::-webkit-progress-value{background:#22d3ee;border-radius:6px}
-#ce-edital-pace .ce-pace-metric progress::-moz-progress-bar{background:#22d3ee;border-radius:6px}
-#ce-edital-pace .ce-pace-target progress{accent-color:#a78bfa;color:#a78bfa}
-#ce-edital-pace .ce-pace-target progress::-webkit-progress-value{background:#a78bfa}
-#ce-edital-pace .ce-pace-target progress::-moz-progress-bar{background:#a78bfa}
-#ce-edital-pace progress.ce-pace-unknown{opacity:.45}
-#ce-edital-pace .ce-pace-metric span{font-variant-numeric:tabular-nums;white-space:nowrap}
