@@ -10,10 +10,10 @@
 #ce-edital-pace .ce-pace-status.unknown{color:inherit}
 #ce-edital-pace .ce-pace-track{height:24px;background:#344154;display:flex;position:relative;border-radius:6px;overflow:hidden;margin:12px 0 8px;min-width:0}
 #ce-edital-pace .ce-pace-segment{display:block;height:100%;flex:none}
-#ce-edital-pace .planned{background:#facc15}
-#ce-edital-pace .ahead{background:#22c55e}
-#ce-edital-pace .late{background:#ef4444}
-#ce-edital-pace .unplanned{background:#94a3b8}
+#ce-edital-pace .ce-pace-segment.planned,#ce-edital-pace .ce-pace-legend i.planned{background:#facc15}
+#ce-edital-pace .ce-pace-segment.ahead,#ce-edital-pace .ce-pace-legend i.ahead{background:#22c55e}
+#ce-edital-pace .ce-pace-segment.late,#ce-edital-pace .ce-pace-legend i.late{background:#ef4444}
+#ce-edital-pace .ce-pace-segment.unplanned,#ce-edital-pace .ce-pace-legend i.unplanned{background:#94a3b8}
 #ce-edital-pace .ce-pace-marker{position:absolute;top:0;bottom:0;width:2px;background:#fff;box-shadow:0 0 0 1px #111827;transform:translateX(-50%);pointer-events:none}
 #ce-edital-pace .ce-pace-caption{font-size:.9rem;font-variant-numeric:tabular-nums}
 #ce-edital-pace .ce-pace-legend{justify-content:flex-start;margin:10px 0;font-size:.78rem}
