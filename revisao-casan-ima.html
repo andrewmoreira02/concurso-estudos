@@ -37,6 +37,7 @@
 <header class="review-head"><div class="eyebrow">Diagnóstico por questão real · apenas conteúdo do próximo edital</div>
 <h1>Revisão CASAN 2026 → <em>IMA-SC 2027</em></h1>
 <p class="review-note">Cargo: <strong>Analista de Informática</strong> · Banca: <strong>FURB</strong> · Prova: <strong>14/02/2027</strong>. Esta revisão preserva exclusivamente os conteúdos da prova CASAN que coincidem com o Anexo V do edital IMA. Ela não substitui os tópicos inéditos do edital IMA.</p></header>
+<section class="review-panel"><h2>Estude a prova como uma aula</h2><p class="review-note">As 19 questões desta seleção agora têm enunciado reconstruído, letra registrada, teoria, exemplo resolvido, armadilhas e recursos visuais no novo padrão de aulas. O caderno e o gabarito oficial não foram recuperados nesta edição; confira as letras no portal AOCP. Não é necessário importar seu diagnóstico para estudar.</p><a class="review-btn" href="aulas/revisao-casan-ima.html">Abrir aula de questões comentadas</a></section>
 <section class="review-panel">
 <h2>Importe sua conferência de gabarito</h2>
 <p class="review-note">Selecione o arquivo <code>casan_2026_respostas.json</code> exportado pelo simulador. O cálculo é feito <strong>somente neste navegador</strong>. Seus dados individuais <strong>não são enviados</strong> ao GitHub nem publicados no site. Respostas “provavelmente” continuam incertas, não viram acertos confirmados.</p>
@@ -105,11 +106,11 @@ let title=document.createElement("strong");title.textContent="Questão "+t.n+" �
 let badge=document.createElement("span");badge.className="review-pill";badge.textContent=label;
 sum.append(title,badge);row.append(sum);
 let inner=document.createElement("div");inner.className="inner";
-let p1=document.createElement("p");p1.innerHTML="<strong>Gabarito CASAN:</strong> "+escapeHtml(t.key)+" · <strong>Conteúdo IMA:</strong> "+escapeHtml(t.areaIMA);
+let p1=document.createElement("p");p1.innerHTML="<strong>Gabarito registrado (conferir na AOCP):</strong> "+escapeHtml(t.key)+" · <strong>Conteúdo IMA:</strong> "+escapeHtml(t.areaIMA);
 let p2=document.createElement("p");p2.innerHTML="<strong>Resolução:</strong> "+escapeHtml(t.why);
 let p3=document.createElement("p");p3.innerHTML="<strong>Armadilha:</strong> "+escapeHtml(t.trap);
 let p4=document.createElement("p");p4.innerHTML="<strong>Estudar agora:</strong> "+escapeHtml(t.practice);
-let link=document.createElement("a");link.href=t.lesson;link.textContent="Abrir material relacionado";
+let link=document.createElement("a");link.href="aulas/revisao-casan-ima.html#casan-q-"+String(t.n).padStart(2,"0");link.textContent="Estudar esta questão na aula comentada";link.className="review-btn";
 inner.append(p1,p2,p3,p4,link);row.append(inner);cont.append(row);
 }
 }
