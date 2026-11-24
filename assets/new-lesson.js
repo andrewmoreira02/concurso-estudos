@@ -80,6 +80,25 @@ function installModuleControls(){
  }
  draw();
 }
+// Fila por aba: resultados continuam no motor de quiz e armazenamento privado.
+function questionLinks(){
+ return [...document.querySelectorAll('#questoes a[href]')].filter(a=>{
+  const u=new URL(a.href,location.href);
+  return u.origin===location.origin&&/^questoes-[a-z0-9-]+\.html$/.test(u.pathname.split('/').pop());
+ });
+}
+function openQuestionFlow(index){
+ const links=questionLinks();if(!links[index])return;
+ const list=links.map(a=>({href:a.href,label:a.textContent.trim()}));
+ try{sessionStorage.setItem('ce_question_flow_v1',JSON.stringify({version:1,lesson:location.href.split('#')[0],list,doneIds:[]}));}catch{}
+ const dest=new URL(list[index].href);dest.searchParams.set('ceFlow','1');location.assign(dest.href);
+}
+function installQuestionLinks(){
+ questionLinks().forEach((a,index)=>a.addEventListener('click',e=>{
+  if(e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
+  e.preventDefault();openQuestionFlow(index);
+ }));
+}
 function installNextNavigation(){
  const sections=[...document.querySelectorAll('article.nl-section[data-ce-topic]')];
  if(!sections.length)return;
@@ -127,12 +146,13 @@ function installNextNavigation(){
    }
    const next=lessonSteps[i+1];
    const questions=document.getElementById('questoes');
+   const firstQuiz=questionLinks()[0];
    const forward=document.createElement('a');
    forward.className='ce-step-next';
    const nextModule=next?.closest('section.nl-chapter[id]'),currentModule=section.closest('section.nl-chapter[id]');
    const moduleBoundary=!!nextModule&&!!currentModule&&nextModule!==currentModule;
    forward.textContent=next?(moduleBoundary?'Próximo módulo →':'Próxima →'):questions?'Concluir e ir às questões →':'Concluir e voltar às aulas →';
-   forward.href=next?'#'+(moduleBoundary?nextModule.id:next.id):questions?'#questoes':'../aulas.html';
+   forward.href=next?'#'+(moduleBoundary?nextModule.id:next.id):firstQuiz?firstQuiz.href:questions?'#questoes':'../aulas.html';
    forward.dataset.ceNext=section.id;
    forward.addEventListener('click',()=>{
      if(!advanceReads)return;
@@ -141,12 +161,16 @@ function installNextNavigation(){
      state.add(section.id);
      if(save(state))status('Etapa '+section.id+' marcada como Lido ao avançar. Para desmarcar, use o controle no fim da seção.');
    });
+   if(!next&&firstQuiz)forward.addEventListener('click',e=>{
+     if(e.button!==0||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;
+     e.preventDefault();openQuestionFlow(0);
+   });
    nav.append(forward);
    section.append(nav);
  }
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installModuleControls();setTimeout(installNextNavigation,0);},{once:true});
-else {installModuleControls();setTimeout(installNextNavigation,0);}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{installModuleControls();installQuestionLinks();setTimeout(installNextNavigation,0);},{once:true});
+else {installModuleControls();installQuestionLinks();setTimeout(installNextNavigation,0);}
 addEventListener('concurso:sync-status',e=>{if(e.detail?.message?.startsWith('Sincronizado')){draw();status('Leitura sincronizada com seu banco privado.');}});
 addEventListener('storage',e=>{if(e.key===KEY)draw();});
 draw();

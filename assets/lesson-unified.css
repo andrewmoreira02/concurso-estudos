@@ -486,3 +486,12 @@
 .ce-lesson-page .ce-concept-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px;list-style:none;margin:0;padding:0}
 .ce-lesson-page .ce-concept-items li{min-width:0;padding:8px 10px;background:#203b50;border:1px solid #496b83;border-radius:8px;color:#e8f6ff;overflow-wrap:anywhere}
 @media(max-width:430px){.ce-lesson-page .ce-definition-list>div{padding:9px 10px}.ce-lesson-page .ce-concept-items{grid-template-columns:minmax(0,1fr)}}
+
+/* Índice: subseções em linhas independentes, inclusive dentro de details. */
+.ce-lesson-page .nl-sidebar nav .ce-module-collapse{min-width:0;max-width:100%;margin:0 0 7px}
+.ce-lesson-page .nl-sidebar nav .ce-module-collapse > a[data-ce-nav]{display:block;box-sizing:border-box;width:100%;min-width:0;max-width:100%;margin:4px 0;padding:9px 10px 9px 14px;border-radius:7px;line-height:1.4;white-space:normal;overflow-wrap:anywhere}
+.ce-lesson-page .nl-sidebar nav .ce-module-collapse > a[data-read="true"]::after{content:" ✓";color:#a2e9c0}
+.ce-lesson-page .ce-quiz-block-status{font-weight:750;color:#a5e9e2;margin:0 0 14px}
+.ce-lesson-page .ce-quiz-block-actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;align-items:center}
+.ce-lesson-page .ce-quiz-block-actions a,.ce-lesson-page .ce-quiz-block-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 15px;border:1px solid #79c9cb;border-radius:9px;background:#21545d;color:#f3ffff;text-decoration:none;font-weight:750;white-space:normal;text-align:center;cursor:pointer}
+.ce-lesson-page .nl-quiz fieldset{min-width:0;overflow-wrap:anywhere}

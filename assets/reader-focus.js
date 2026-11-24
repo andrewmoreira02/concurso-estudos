@@ -62,7 +62,7 @@ function init(){
   prev.setAttribute('aria-disabled',index===0?'true':'false');
   next.classList.remove('ce-reader-inactive');next.setAttribute('aria-disabled','false');
   prev.href=index>0?'#'+sections[index-1].id:'#'+module.id;
-  next.href='#'+sections[index].id;
+  next.href='#'+sections[index].id;next.textContent='Próxima →';
   $$('.ce-index-current').forEach(a=>{a.classList.remove('ce-index-current');a.removeAttribute('aria-current');});
  }
  function focus(i){
@@ -72,8 +72,10 @@ function init(){
   const label=node.dataset.lessonStep||name?.replace(/^etapa-(\d+)-(\d+)$/,'$1.$2').replace(/^[a-z]+-(\d+)-(\d+)$/,'$1.$2');
   cur.textContent='Etapa '+label+' · '+(i+1)+'/'+sections.length;
   prev.classList.toggle('ce-reader-inactive',i===0);prev.setAttribute('aria-disabled',i===0?'true':'false');
-  next.classList.toggle('ce-reader-inactive',i===sections.length-1);next.setAttribute('aria-disabled',i===sections.length-1?'true':'false');
-  prev.href=i>0?'#'+sections[i-1].id:'#'+name;next.href=i<sections.length-1?'#'+sections[i+1].id:'#'+name;
+  const finalQuiz=i===sections.length-1&&!!document.querySelector('#questoes a[href*="questoes-"]');
+  next.textContent=finalQuiz?'Ir às questões →':'Próxima →';
+  next.classList.toggle('ce-reader-inactive',i===sections.length-1&&!finalQuiz);next.setAttribute('aria-disabled',i===sections.length-1&&!finalQuiz?'true':'false');
+  prev.href=i>0?'#'+sections[i-1].id:'#'+name;next.href=i<sections.length-1?'#'+sections[i+1].id:finalQuiz?document.querySelector('#questoes a[href*="questoes-"]').href:'#'+name;
   $$('.ce-index-current').forEach(a=>{a.classList.remove('ce-index-current');a.removeAttribute('aria-current');});
   const href='#'+name;
   const navLinks=$$('.nl-sidebar nav a,#sidebar nav a,.sidebar #sidenav a');
@@ -129,7 +131,7 @@ function init(){
    if(slug==='portugues')dispatchEvent(new Event('hashchange'));
    focus(i);return;
   }
-  if(active>=sections.length-1)return;
+  if(active>=sections.length-1){if(document.querySelector('#questoes a[href*="questoes-"]'))originalNext(sections[active])?.click();return;}
   const following=sections[active+1];
   const boundary=!!following&&moduleOf(following)!==moduleOf(sections[active]);
   const original=originalNext(sections[active]);

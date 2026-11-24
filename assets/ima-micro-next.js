@@ -3,6 +3,8 @@
 (()=>{'use strict';
 const node=document.getElementById('imaNextLesson');
 if(!node)return;
+// A fila diária é gerida pelo motor de quiz, não pela microtrilha.
+if(new URLSearchParams(location.search).get('ceFlow')==='1')return;
 const link=document.getElementById('imaNextLink'),status=document.getElementById('imaNextStatus');
 const unitId=new URLSearchParams(location.search).get('u');
 async function init(){

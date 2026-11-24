@@ -75,7 +75,10 @@ function score(form){
    grouped.set(subject,state);
    const reason=item.querySelector('[data-ce-explanation]')?.textContent?.trim()||'Consulte o fundamento e o exemplo da aula.';
    const wrong=item.querySelector('[data-ce-distractors]')?.textContent?.trim()||'';
-   const text=(idx+1)+'. '+(isAnnulled?'ANULADA':pass?'CORRETA':'INCORRETA — gabarito '+answer.toUpperCase())+'. '+reason+(wrong?' '+wrong:'');
+   const correctRadio=radios.find(r=>r.value===answer);
+   const answerText=correctRadio?.closest('label')?.textContent?.trim()||answer.toUpperCase();
+   const selectedText=selected.closest('label')?.textContent?.trim()||selected.value.toUpperCase();
+   const text=(idx+1)+'. '+(isAnnulled?'ANULADA':pass?'CORRETA':'INCORRETA')+'. Sua resposta: '+selectedText+(isAnnulled?'':'. Gabarito: '+answerText)+'. '+reason+(wrong?' '+wrong:'');
    feedback.push(text);
  }
  if(!valid){report(form,'Todas as questões foram anuladas; nenhuma sessão válida será criada.',true);return null;}
@@ -126,6 +129,7 @@ function recordQuiz(form){
      sessionIds:saved.sessions.map(s=>s.id),valid:assessment.valid,correct:assessment.correct
    }}));
    dispatchEvent(new CustomEvent('concurso:progress-change'));
+   afterBlock(form);
  }
  return saved.ok;
 }
@@ -138,5 +142,95 @@ document.addEventListener('submit',event=>{
 document.addEventListener('DOMContentLoaded',()=>{
  document.querySelectorAll('[data-ce-quiz] [data-ce-explanation],[data-ce-quiz] [data-ce-distractors]').forEach(el=>el.hidden=true);
 });
+
+// Blocos curtos e fila de práticas. IDs, gabaritos e esquema dos registros preservados.
+const FLOW_KEY='ce_question_flow_v1',blockStates=new WeakMap();
+const normalUrl=value=>{const u=new URL(value,location.href);u.searchParams.delete('ceFlow');u.hash='';return u.href;};
+function getFlow(){
+ if(new URLSearchParams(location.search).get('ceFlow')!=='1')return null;
+ try{
+  const f=JSON.parse(sessionStorage.getItem(FLOW_KEY)||'null');
+  if(f?.version!==1||!Array.isArray(f.list)||!Array.isArray(f.doneIds))return null;
+  const safe=v=>{const u=new URL(v,location.href);return u.origin===location.origin&&u.pathname.replace(/[^/]+$/,'')===location.pathname.replace(/[^/]+$/,'');};
+  if(!safe(f.lesson)||!f.list.every(x=>safe(x.href)&&/^questoes-[a-z0-9-]+\.html$/.test(new URL(x.href).pathname.split('/').pop())))return null;
+  const at=f.list.findIndex(x=>normalUrl(x.href)===normalUrl(location.href));
+  return at>=0?{f,at}:null;
+ }catch{return null;}
+}
+function saveFlow(flow){try{sessionStorage.setItem(FLOW_KEY,JSON.stringify(flow.f));return true;}catch{return false;}}
+function queueLink(flow,actions){
+ const a=document.createElement('a'),next=flow?.f.list[flow.at+1];
+ if(next){const u=new URL(next.href);u.searchParams.set('ceFlow','1');a.href=u.href;a.textContent='Próximo questionário → '+next.label;}
+ else if(flow){a.href=flow.f.lesson;a.textContent='Concluir questões · voltar à aula';}
+ else{a.href='../aulas.html';a.textContent='Concluir questões · voltar ao catálogo';}
+ actions.append(a);
+}
+function newActions(form){form.querySelector('.ce-quiz-block-actions')?.remove();const div=document.createElement('div');div.className='ce-quiz-block-actions';form.append(div);return div;}
+function showBlock(form,state){
+ for(const field of state.all)field.remove();
+ form.querySelector('.ce-quiz-block-actions')?.remove();
+ form.querySelector('[data-ce-feedback]')?.replaceChildren();
+ form.removeAttribute('data-ce-submitted');
+ const group=state.groups[state.index];
+ state.submit.hidden=!group;state.submit.disabled=!group;
+ if(!group){
+  state.status.textContent='Nenhuma questão inédita neste questionário: os IDs já foram respondidos nesta sequência.';
+  queueLink(state.flow,newActions(form));return;
+ }
+ for(const field of group){form.insertBefore(field,state.submit);field.querySelectorAll('input[type=radio]').forEach(x=>{x.disabled=false;x.checked=false;});}
+ const key=group[0].dataset.ceQuestion.replace(/-q\d+$/,'');
+ const label=state.titles?.get(key);
+ form.dataset.topic=(label||state.topic).slice(0,100);
+ state.status.textContent=(state.flow?'Questionário '+(state.flow.at+1)+' de '+state.flow.f.list.length+' · ':'')+'Bloco '+(state.index+1)+' de '+state.groups.length+' · '+(label?label+' · ':'')+group.length+' questão(ões)';
+ state.submit.textContent='Enviar respostas e conferir correção';
+}
+function afterBlock(form){
+ const state=blockStates.get(form);if(!state)return;
+ const group=state.groups[state.index];if(!group)return;
+ state.submit.disabled=true;
+ for(const field of group)field.querySelectorAll('input[type=radio]').forEach(x=>x.disabled=true);
+ if(state.flow){
+  state.flow.f.doneIds=[...new Set([...state.flow.f.doneIds,...group.map(x=>x.dataset.ceQuestion)])];
+  saveFlow(state.flow);
+ }
+ const actions=newActions(form);
+ if(state.index<state.groups.length-1){
+  const b=document.createElement('button');b.type='button';b.textContent='Próximo bloco de questões →';
+  b.addEventListener('click',()=>{state.index++;showBlock(form,state);state.status.scrollIntoView({block:'start',behavior:'smooth'});state.status.focus({preventScroll:true});});
+  actions.append(b);
+ }else queueLink(state.flow,actions);
+}
+function setupBlocks(form){
+ if(blockStates.has(form))return;
+ const flow=getFlow();
+ if(!form.matches('.ce-generated-quiz')&&!flow)return;
+ const all=[...form.querySelectorAll('fieldset[data-ce-question]')],submit=form.querySelector('button[type=submit]');
+ if(!all.length||!submit)return;
+ const prior=new Set(flow?.f.doneIds||[]),eligible=all.filter(x=>!prior.has(x.dataset.ceQuestion)),groups=[];
+ for(const field of eligible){
+  const key=field.dataset.ceQuestion.replace(/-q\d+$/,'');
+  const last=groups.at(-1),prev=last?.[0].dataset.ceQuestion.replace(/-q\d+$/,'');
+  if(!last||last.length>=3||(form.matches('.ce-generated-quiz')&&/-q\d+$/.test(field.dataset.ceQuestion)&&key!==prev))groups.push([field]);
+  else last.push(field);
+ }
+ const status=document.createElement('p');status.className='ce-quiz-block-status';status.tabIndex=-1;status.setAttribute('role','status');form.prepend(status);
+ const state={all,groups,index:0,submit,status,flow,topic:form.dataset.topic,titles:null};
+ blockStates.set(form,state);showBlock(form,state);
+ if(form.matches('.ce-generated-quiz')&&form.dataset.exam==='ima'){
+  fetch('../dados/microaulas-ima.json').then(r=>r.ok?r.json():null).then(d=>{
+   if(!d||!Array.isArray(d.units))return;
+   state.titles=new Map(d.units.map(x=>[x.id,x.title]));
+   const group=state.groups[state.index];if(!group||form.dataset.ceSubmitted==='true')return;
+   const label=state.titles.get(group[0].dataset.ceQuestion.replace(/-q\d+$/,''));
+   if(label){form.dataset.topic=label.slice(0,100);state.status.textContent=state.status.textContent.replace(' · '+group.length+' questão(ões)',' · '+label+' · '+group.length+' questão(ões)');}
+  }).catch(()=>{});
+ }
+}
+function initBlocks(){
+ const scan=()=>document.querySelectorAll('form[data-ce-quiz]').forEach(setupBlocks);
+ scan();if(getFlow())new MutationObserver(scan).observe(document.body,{childList:true,subtree:true});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initBlocks,{once:true});else initBlocks();
+
 window.ConcursoQuiz={submit:recordQuiz};
 })();
