@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "id": "ima-2026-11-29",
+  "date": "2026-11-29",
+  "title": "Aula 06 — PA, PG, gráficos, médias e compreensão textual",
+  "contest": "IMA-SC 2027 · Analista de Informática",
+  "subject": "Raciocínio Lógico-Matemático e Português",
+  "description": "Aula diária de 120 minutos, organizada em seis subseções com teoria, exemplos e fórmulas legíveis no celular. Questões avaliativas em página separada; leitura não comprova estudo.",
+  "curriculum_exam": "ima",
+  "modules": [
+    {
+      "id": "mod-progressao",
+      "title": "Sequências e progressões",
+      "sections": [
+        {
+          "id": "d29-1-1",
+          "title": "PA: regularidade aditiva, termo geral e soma",
+          "curriculum": {
+            "group": "RLM-08",
+            "id": "pa-termo-e-soma",
+            "minutes": 20
+          },
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Uma progressão aritmética (PA) apresenta diferença constante r entre termos consecutivos: 7, 10, 13, 16 tem razão 3. É a diferença, e não o quociente, que deve permanecer igual. Uma sequência como 1, 4, 9, 16 não é PA: suas diferenças são 3, 5 e 7.",
+                "Na fórmula do termo geral, existem n − 1 saltos desde a primeira posição. Na soma, emparelhe os extremos: primeiro com último, segundo com penúltimo. Cada par tem a mesma soma, permitindo usar a média entre extremos mesmo quando n é ímpar."
+              ]
+            },
+            {
+              "type": "formula",
+              "title": "PA — termo geral",
+              "expression": "aₙ = a₁ + (n − 1) × r",
+              "legend": [
+                {
+                  "symbol": "aₙ",
+                  "meaning": "termo na posição n"
+                },
+                {
+                  "symbol": "a₁",
+                  "meaning": "primeiro termo"
+                },
+                {
+                  "symbol": "n",
+                  "meaning": "posição, n ≥ 1"
+                },
+                {
+                  "symbol": "r",
+                  "meaning": "diferença entre termos consecutivos"
+                }
+              ],
+              "explanation": "Válida para razões positivas, negativas e nulas."
+            },
+            {
+              "type": "fraction-formula",
+              "title": "PA — soma dos primeiros n termos",
+              "left": "Sₙ =",
+              "numerator": "n × (a₁ + aₙ)",
+              "denominator": "2",
+              "aria": "Soma S índice n é igual a n vezes primeiro mais último dividido por dois.",
+              "legend": [
+                {
+                  "symbol": "Sₙ",
+                  "meaning": "soma dos n primeiros termos"
+                },
+                {
+                  "symbol": "n",
+                  "meaning": "número de parcelas"
+                },
+                {
+                  "symbol": "a₁",
+                  "meaning": "primeiro termo"
+                },
+                {
+                  "symbol": "aₙ",
+                  "meaning": "último termo"
+                },
+                {
+                  "symbol": "2",
+                  "meaning": "divisor associado à média dos extremos"
+                }
+              ],
+              "explanation": "Antes de somar, encontre aₙ e confira n ≥ 1."
+            },
+            {
+              "type": "example",
+              "situation": "PA de primeiro termo 7, razão 3 e 12 termos.",
+              "steps": [
+                "Termo 12: a₁₂ = 7 + (12 − 1) × 3 = 40.",
+                "Soma: S₁₂ = [12 × (7 + 40)] / 2.",
+                "Calcule 12 × 47 = 564; divida por 2 e obtenha 282.",
+                "Conferência: existem 6 pares de extremos com soma 47; 6 × 47 = 282."
+              ],
+              "conclusion": "O termo 12 vale 40, e a soma vale 282."
+            },
+            {
+              "type": "tip",
+              "text": "Termo geral primeiro; soma depois. Não troque a quantidade de termos n pelo valor do último termo aₙ."
+            },
+            {
+              "type": "warning",
+              "text": "É incorreto usar n saltos para obter aₙ: a primeira posição já é o primeiro termo."
+            }
+          ]
+        },
+        {
+          "id": "d29-1-2",
+          "title": "PG: regularidade multiplicativa, potências e soma",
+          "curriculum": {
+            "group": "RLM-08",
+            "id": "pg-termo-e-soma",
+            "minutes": 20
+          },
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Na progressão geométrica (PG), cada termo é obtido multiplicando o anterior pela razão q: 2, 6, 18, 54 tem q = 3; 80, 40, 20, 10 tem q = 1/2. Se q negativo, os sinais podem alternar. Não confunda q com a diferença fixa de uma PA.",
+                "O termo n depende de q elevado a n − 1. Para a soma finita com q diferente de 1, multiplique a soma por q e subtraia a expressão original: os termos intermediários se cancelam. Quando q = 1, todos os termos são iguais e a soma simplesmente vale n × a₁."
+              ]
+            },
+            {
+              "type": "formula",
+              "title": "PG — termo geral",
+              "expression": "aₙ = a₁ × q⁽ⁿ⁻¹⁾",
+              "legend": [
+                {
+                  "symbol": "aₙ",
+                  "meaning": "termo na posição n"
+                },
+                {
+                  "symbol": "a₁",
+                  "meaning": "primeiro termo"
+                },
+                {
+                  "symbol": "q",
+                  "meaning": "razão multiplicativa"
+                },
+                {
+                  "symbol": "n",
+                  "meaning": "posição inteira n ≥ 1"
+                }
+              ],
+              "explanation": "No primeiro termo, o expoente é zero; para q = 0 confira separadamente a convenção do caso inicial."
+            },
+            {
+              "type": "fraction-formula",
+              "title": "PG — soma finita para q ≠ 1",
+              "left": "Sₙ =",
+              "numerator": "a₁ × (qⁿ − 1)",
+              "denominator": "q − 1",
+              "aria": "Soma de PG é o primeiro termo multiplicado por q elevado a n menos um, tudo dividido por q menos um.",
+              "legend": [
+                {
+                  "symbol": "Sₙ",
+                  "meaning": "soma dos n termos"
+                },
+                {
+                  "symbol": "a₁",
+                  "meaning": "primeiro termo"
+                },
+                {
+                  "symbol": "q",
+                  "meaning": "razão, com q ≠ 1"
+                },
+                {
+                  "symbol": "n",
+                  "meaning": "quantidade de termos"
+                },
+                {
+                  "symbol": "qⁿ",
+                  "meaning": "potência de q elevada a n"
+                }
+              ],
+              "explanation": "É proibido aplicar essa fração a q = 1 porque o denominador seria zero."
+            },
+            {
+              "type": "example",
+              "situation": "PG com a₁ = 2, q = 3 e cinco termos.",
+              "steps": [
+                "Termo geral: a₅ = 2 × 3⁴ = 2 × 81 = 162.",
+                "Termos: 2, 6, 18, 54, 162.",
+                "Soma: S₅ = [2 × (3⁵ − 1)] / (3 − 1) = [2 × 242] / 2 = 242.",
+                "Conferência por adição: 2 + 6 + 18 + 54 + 162 = 242."
+              ],
+              "conclusion": "O quinto termo é 162, mas a soma acumulada é 242."
+            },
+            {
+              "type": "tip",
+              "text": "PA: diferença constante; PG: razão constante. Faça o teste nos termos antes de aplicar a fórmula."
+            },
+            {
+              "type": "warning",
+              "text": "Para q = 1, use Sₙ = n × a₁, nunca a fração com q − 1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mod-estatistica",
+      "title": "Gráficos, porcentagens e médias",
+      "sections": [
+        {
+          "id": "d29-2-1",
+          "title": "Gráficos: base de comparação e variação percentual",
+          "curriculum": {
+            "group": "RLM-07",
+            "id": "leitura-graficos",
+            "minutes": 20
+          },
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "A leitura de gráfico começa por título, escala, unidade, período e legenda. Crescimento absoluto = valor final − inicial; crescimento percentual divide a diferença pelo valor inicial. Uma base de 80 não equivale a uma base de 100.",
+                "Um eixo vertical que não começa em zero pode exagerar visualmente diferenças; o valor da tabela permanece a referência. Uma taxa negativa indica queda no intervalo observado. Não some taxas de períodos consecutivos para obter a variação acumulada."
+              ]
+            },
+            {
+              "type": "chart",
+              "kind": "bar",
+              "title": "Exemplo autoral: atendimentos por ano",
+              "unit": "atendimentos",
+              "points": [
+                {
+                  "label": "2023",
+                  "value": 80
+                },
+                {
+                  "label": "2024",
+                  "value": 100
+                },
+                {
+                  "label": "2025",
+                  "value": 90
+                }
+              ],
+              "explanation": [
+                "Os dados fictícios são repetidos em tabela para acessibilidade. Interpretar 80, 100 e 90 atendimentos."
+              ]
+            },
+            {
+              "type": "formula",
+              "title": "Variação percentual",
+              "expression": "Δ% = [(valor final − inicial) ÷ inicial] × 100",
+              "legend": [
+                {
+                  "symbol": "Δ%",
+                  "meaning": "mudança percentual"
+                },
+                {
+                  "symbol": "valor final",
+                  "meaning": "observação ao final"
+                },
+                {
+                  "symbol": "inicial",
+                  "meaning": "base de comparação"
+                },
+                {
+                  "symbol": "100",
+                  "meaning": "fator para converter em porcentagem"
+                }
+              ],
+              "explanation": "O valor inicial deve ser diferente de zero."
+            },
+            {
+              "type": "example",
+              "situation": "Comparar os três anos do gráfico.",
+              "steps": [
+                "2023 → 2024: aumento de 100 − 80 = 20.",
+                "Percentual: 20 ÷ 80 × 100 = +25%.",
+                "2024 → 2025: diferença de 90 − 100 = −10; taxa = −10 ÷ 100 × 100 = −10%.",
+                "De 2023 a 2025: aumento líquido de 10; 10 ÷ 80 × 100 = +12,5%."
+              ],
+              "conclusion": "A variação acumulada foi +12,5%, não a soma +25% − 10% = 15%."
+            },
+            {
+              "type": "tip",
+              "text": "Identifique o número da base antes de dividir; calcule a taxa por intervalo."
+            },
+            {
+              "type": "warning",
+              "text": "Uma queda de 20% seguida de alta de 20% não retorna à origem: 100 → 80 → 96."
+            }
+          ]
+        },
+        {
+          "id": "d29-2-2",
+          "title": "Média aritmética e ponderada",
+          "curriculum": {
+            "group": "RLM-07",
+            "id": "medias-ponderadas",
+            "minutes": 20
+          },
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "A média simples soma todas as observações e divide pelo número de observações; todas têm o mesmo peso. A média ponderada exige multiplicar cada valor pelo peso ou frequência correspondente antes de dividir pela soma dos pesos.",
+                "Se grupos têm tamanhos diferentes, a média simples das médias dos grupos costuma estar incorreta. Uma média ponderada com pesos não negativos e soma positiva deve ficar entre o menor e o maior valor observado."
+              ]
+            },
+            {
+              "type": "formula",
+              "title": "Média simples",
+              "expression": "M = (x₁ + x₂ + ... + xₙ) ÷ n",
+              "legend": [
+                {
+                  "symbol": "M",
+                  "meaning": "média simples"
+                },
+                {
+                  "symbol": "xᵢ",
+                  "meaning": "valor observado"
+                },
+                {
+                  "symbol": "n",
+                  "meaning": "número de observações"
+                }
+              ],
+              "explanation": "Use quando cada valor tiver peso idêntico."
+            },
+            {
+              "type": "fraction-formula",
+              "title": "Média ponderada",
+              "left": "Mₚ =",
+              "numerator": "Σ (pᵢ × xᵢ)",
+              "denominator": "Σ pᵢ",
+              "aria": "Média ponderada é a soma de peso vezes valor dividida pela soma dos pesos.",
+              "legend": [
+                {
+                  "symbol": "Mₚ",
+                  "meaning": "média ponderada"
+                },
+                {
+                  "symbol": "pᵢ",
+                  "meaning": "peso ou frequência do grupo i"
+                },
+                {
+                  "symbol": "xᵢ",
+                  "meaning": "valor ou média correspondente"
+                },
+                {
+                  "symbol": "Σ",
+                  "meaning": "somatório sobre todos os grupos"
+                }
+              ],
+              "explanation": "A soma dos pesos deve ser maior que zero."
+            },
+            {
+              "type": "example",
+              "situation": "Oito estudantes têm média 7; outros doze têm média 9.",
+              "steps": [
+                "Produtos: 8 × 7 = 56 e 12 × 9 = 108.",
+                "Soma ponderada = 56 + 108 = 164.",
+                "Total de estudantes = 8 + 12 = 20.",
+                "Média conjunta = 164 ÷ 20 = 8,2.",
+                "Conferência: 8,2 é maior que 8, pois o grupo maior tem média 9."
+              ],
+              "conclusion": "A média correta é 8,2, não a média simples (7 + 9) ÷ 2 = 8."
+            },
+            {
+              "type": "tip",
+              "text": "A frequência é o peso, não o valor. Confira se a média está entre os extremos."
+            },
+            {
+              "type": "warning",
+              "text": "Nunca tire média simples de médias de grupos de tamanhos diferentes sem ponderar."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mod-portugues",
+      "title": "Português: inferências e coesão",
+      "sections": [
+        {
+          "id": "d29-3-1",
+          "title": "Texto explícito, inferido e pressuposto",
+          "curriculum": {
+            "group": "PT-01",
+            "id": "inferencias-pressupostos",
+            "minutes": 20
+          },
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Informação explícita é declarada literalmente. Inferência é conclusão sustentada por pistas textuais. Pressuposto é informação tomada como anterior ou aceita pelo uso de palavras como 'voltou', 'deixou de' ou 'ainda'. Não confunda plausibilidade pessoal com evidência do texto.",
+                "Exemplo autoral: 'Embora o relatório tenha sido entregue no prazo, a equipe solicitou correções antes da publicação.' São explícitos a entrega pontual e o pedido de correções. Uma inferência justificada é que o prazo foi atendido, mas isso não bastou para a publicação imediata; não há dados sobre atraso de dias."
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Interpretar 'A comissão voltou a examinar os dados'.",
+              "steps": [
+                "O verbo 'voltou a' denota repetição da ação.",
+                "A frase afirma a ocorrência de novo exame.",
+                "Pressuposto: houve ao menos um exame anterior.",
+                "Não se infere que o primeiro exame estivesse errado, pois isso não está dito."
+              ],
+              "conclusion": "A revisão prévia é pressuposta; sua qualidade não foi informada."
+            },
+            {
+              "type": "tip",
+              "text": "Indique a passagem textual que sustenta cada inferência antes de escolher a resposta."
+            },
+            {
+              "type": "warning",
+              "text": "Evite generalizações 'sempre', 'nunca' e 'somente' não presentes no texto."
+            }
+          ]
+        },
+        {
+          "id": "d29-3-2",
+          "title": "Causa, consequência, condição e concessão",
+          "curriculum": {
+            "group": "PT-03",
+            "id": "conectivos-coesao",
+            "minutes": 20
+          },
+          "blocks": [
+            {
+              "type": "text",
+              "paragraphs": [
+                "Conectivos estabelecem nexos entre ideias: 'porque' pode introduzir causa; 'portanto', consequência ou conclusão; 'se', condição; 'embora', concessão. Concessão admite um obstáculo que não impediu o resultado principal.",
+                "Coesão é conexão linguística por pronomes, elipses e conjunções. Coerência é o encadeamento lógico dos fatos. Trocar conectivos pode preservar a correção gramatical e alterar a relação semântica, o que invalida reescritas."
+              ]
+            },
+            {
+              "type": "table",
+              "title": "Nexos entre orações",
+              "headers": [
+                "Relação",
+                "Exemplo",
+                "Sentido"
+              ],
+              "rows": [
+                [
+                  "Causa",
+                  "O serviço caiu porque faltou energia.",
+                  "Falta de energia explica a falha."
+                ],
+                [
+                  "Consequência",
+                  "Faltou energia; portanto, o serviço caiu.",
+                  "A falha decorreu da falta de energia."
+                ],
+                [
+                  "Condição",
+                  "Se faltar energia, o serviço cairá.",
+                  "Queda é hipótese, não fato afirmado."
+                ],
+                [
+                  "Concessão",
+                  "Embora faltasse energia, o serviço continuou.",
+                  "O obstáculo não impediu a continuidade."
+                ]
+              ]
+            },
+            {
+              "type": "example",
+              "situation": "Reescrever 'Embora chovesse, a atividade ocorreu'.",
+              "steps": [
+                "Há chuva e realização da atividade, simultaneamente.",
+                "O conectivo indica que a chuva não impediu a atividade.",
+                "Reescreva: 'Apesar de estar chovendo, a atividade ocorreu'.",
+                "Rejeite 'Como chovia, a atividade ocorreu', que mudaria a concessão para causa."
+              ],
+              "conclusion": "A reescrita mantém a relação concessiva."
+            },
+            {
+              "type": "tip",
+              "text": "Teste o conector perguntando: motivo? resultado? hipótese? obstáculo vencido?"
+            },
+            {
+              "type": "warning",
+              "text": "Substituir 'embora' por 'porque' altera o sentido, mesmo que a frase continue gramatical."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "label": "FURB — IMA-SC, edital e publicações",
+      "url": "https://concursos.furb.br/informacoes/584"
+    },
+    {
+      "label": "Portal da OBMEP — apoio para matemática",
+      "url": "https://portaldaobmep.impa.br/"
+    },
+    {
+      "label": "Aula compartilhada de RLM",
+      "url": "https://andrewmoreira02.github.io/concurso-estudos/aulas/rlm.html"
+    }
+  ],
+  "questions": [
+    {
+      "label": "Questões separadas 9–12: Português e RLM (adaptações FURB)",
+      "href": "questoes-ima.html?de=9&ate=12"
+    }
+  ]
+}
