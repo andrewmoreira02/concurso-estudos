@@ -25,7 +25,18 @@
               "type": "concept",
               "title": "Gabarito registrado: C — Chegar: chegar à saúde pública.",
               "paragraphs": [
-                "A crase funde a preposição a com o artigo feminino a. O verbo chegar, no sentido de atingir um destino, rege a. Afetar, comprometer, prejudicar e ferir recebem objeto direto nesse contexto: afeta a saúde, sem acento grave."
+                {
+                  "term": "Crase",
+                  "text": "Funde a preposição a com o artigo feminino a."
+                },
+                {
+                  "term": "Chegar",
+                  "text": "No sentido de atingir um destino, rege a preposição a."
+                },
+                {
+                  "term": "Afetar, comprometer, prejudicar e ferir",
+                  "text": "Recebem objeto direto nesse contexto: afeta a saúde, sem acento grave."
+                }
               ]
             },
             {
@@ -60,7 +71,18 @@
               "type": "concept",
               "title": "Gabarito registrado: C — Consequência.",
               "paragraphs": [
-                "Uma oração consecutiva exprime o efeito de uma intensidade anterior. Em «o déficit é tão amplo que afeta a saúde», tão intensifica amplo; a oração iniciada por que apresenta a consequência."
+                {
+                  "term": "Oração consecutiva",
+                  "text": "Exprime o efeito de uma intensidade anterior."
+                },
+                {
+                  "term": "Tão",
+                  "text": "Em «o déficit é tão amplo que afeta a saúde», intensifica amplo."
+                },
+                {
+                  "term": "Que",
+                  "text": "Introduz a oração que apresenta a consequência."
+                }
               ]
             },
             {
@@ -95,7 +117,18 @@
               "type": "concept",
               "title": "Gabarito registrado: A — Introduzir a sigla correspondente ao nome da instituição.",
               "paragraphs": [
-                "O nome expandido identifica a organização; a sigla entre parênteses permite referências posteriores mais curtas. Aspas podem demarcar uma fala citada literalmente, não desempenham a mesma função nesse caso."
+                {
+                  "term": "Nome expandido",
+                  "text": "Identifica a organização."
+                },
+                {
+                  "term": "Sigla entre parênteses",
+                  "text": "Permite referências posteriores mais curtas."
+                },
+                {
+                  "term": "Aspas",
+                  "text": "Podem demarcar uma fala citada literalmente; não desempenham a mesma função nesse caso."
+                }
               ]
             },
             {
@@ -136,7 +169,22 @@
               "type": "concept",
               "title": "Gabarito registrado: A — A alternativa que caracteriza corretamente os comandos, conforme o gabarito registrado.",
               "paragraphs": [
-                "Rebase reaplica commits sobre outra base e normalmente cria novos identificadores; cherry-pick aplica a alteração de um commit escolhido; reset --hard altera HEAD, índice e árvore de trabalho; stash guarda alterações temporariamente para retomada."
+                {
+                  "term": "Rebase",
+                  "text": "Reaplica commits sobre outra base e normalmente cria novos identificadores."
+                },
+                {
+                  "term": "Cherry-pick",
+                  "text": "Aplica a alteração de um commit escolhido."
+                },
+                {
+                  "term": "Reset --hard",
+                  "text": "Move a referência atual para o commit indicado e atualiza o índice e a árvore de trabalho, podendo descartar alterações locais rastreadas."
+                },
+                {
+                  "term": "Stash",
+                  "text": "Guarda alterações temporariamente para retomada."
+                }
               ]
             },
             {
@@ -192,7 +240,22 @@
               "type": "concept",
               "title": "Gabarito registrado: C — Sobrecarga (overloading).",
               "paragraphs": [
-                "Sobrecarga diferencia métodos pela assinatura conforme as regras da linguagem. Sobrescrita redefine um método herdado com assinatura compatível. Interface estabelece um contrato; composição constrói comportamento com objetos colaboradores."
+                {
+                  "term": "Sobrecarga",
+                  "text": "Diferencia métodos pela assinatura conforme as regras da linguagem."
+                },
+                {
+                  "term": "Sobrescrita",
+                  "text": "Redefine um método herdado com assinatura compatível."
+                },
+                {
+                  "term": "Interface",
+                  "text": "Estabelece um contrato."
+                },
+                {
+                  "term": "Composição",
+                  "text": "Constrói comportamento com objetos colaboradores."
+                }
               ]
             },
             {
@@ -227,7 +290,26 @@
               "type": "concept",
               "title": "Gabarito registrado: B — Sequência V–F–F–F, conforme o registro do caderno 03.",
               "paragraphs": [
-                "REST é estilo arquitetural orientado a recursos e restrições, não protocolo. SOAP é protocolo de mensagens baseado em XML; gRPC é framework de chamadas remotas; Protocol Buffers é formato e mecanismo de serialização. Microsserviços buscam serviços independentes e baixo acoplamento."
+                {
+                  "term": "REST",
+                  "text": "É estilo arquitetural orientado a recursos e restrições, não protocolo."
+                },
+                {
+                  "term": "SOAP",
+                  "text": "É protocolo de mensagens baseado em XML."
+                },
+                {
+                  "term": "gRPC",
+                  "text": "É framework de chamadas remotas."
+                },
+                {
+                  "term": "Protocol Buffers",
+                  "text": "É formato e mecanismo de serialização."
+                },
+                {
+                  "term": "Microsserviços",
+                  "text": "Buscam serviços independentes e baixo acoplamento."
+                }
               ]
             },
             {
@@ -262,7 +344,22 @@
               "type": "concept",
               "title": "Gabarito registrado: D — Etnografia.",
               "paragraphs": [
-                "A observação etnográfica busca compreender práticas, contexto, exceções e conhecimento tácito. Entrevistas coletam declarações; workshops promovem discussão coletiva; protótipos concretizam hipóteses de interface."
+                {
+                  "term": "Observação etnográfica",
+                  "text": "Busca compreender práticas, contexto, exceções e conhecimento tácito."
+                },
+                {
+                  "term": "Entrevistas",
+                  "text": "Coletam declarações."
+                },
+                {
+                  "term": "Workshops",
+                  "text": "Promovem discussão coletiva."
+                },
+                {
+                  "term": "Protótipos",
+                  "text": "Concretizam hipóteses de interface."
+                }
               ]
             },
             {
@@ -297,7 +394,30 @@
               "type": "concept",
               "title": "Gabarito registrado: D — Diagrama de sequência.",
               "paragraphs": [
-                "Linhas de vida representam participantes e avançam temporalmente de cima para baixo. Setas mostram mensagens; retornos podem ser representados por linhas tracejadas. Diagrama de classes descreve estrutura; atividades descrevem fluxo; casos de uso descrevem objetivos de atores."
+                {
+                  "term": "Linhas de vida",
+                  "text": "Representam participantes e avançam temporalmente de cima para baixo."
+                },
+                {
+                  "term": "Setas",
+                  "text": "Mostram mensagens."
+                },
+                {
+                  "term": "Retornos",
+                  "text": "Podem ser representados por linhas tracejadas."
+                },
+                {
+                  "term": "Diagrama de classes",
+                  "text": "Descreve estrutura."
+                },
+                {
+                  "term": "Diagrama de atividades",
+                  "text": "Descreve fluxo."
+                },
+                {
+                  "term": "Diagrama de casos de uso",
+                  "text": "Descreve objetivos de atores."
+                }
               ]
             },
             {
@@ -341,7 +461,22 @@
               "type": "concept",
               "title": "Gabarito registrado: C — Gateway.",
               "paragraphs": [
-                "O gateway é representado por losango. O exclusivo (XOR) escolhe um caminho; o paralelo (AND) abre ou sincroniza caminhos paralelos; o inclusivo (OR) permite um ou mais caminhos conforme condições."
+                {
+                  "term": "Gateway",
+                  "text": "É representado por losango."
+                },
+                {
+                  "term": "Exclusivo (XOR)",
+                  "text": "Escolhe um caminho."
+                },
+                {
+                  "term": "Paralelo (AND)",
+                  "text": "Abre ou sincroniza caminhos paralelos."
+                },
+                {
+                  "term": "Inclusivo (OR)",
+                  "text": "Permite um ou mais caminhos conforme condições."
+                }
               ]
             },
             {
@@ -391,7 +526,26 @@
               "type": "concept",
               "title": "Gabarito registrado: B — <progress>.",
               "paragraphs": [
-                "progress representa quanto de uma tarefa foi concluído. meter indica um valor escalar dentro de limites conhecidos; não é indicador de andamento. output apresenta o resultado de um cálculo, summary rotula details e track fornece faixas de texto para mídia."
+                {
+                  "term": "progress",
+                  "text": "Representa quanto de uma tarefa foi concluído."
+                },
+                {
+                  "term": "meter",
+                  "text": "Indica um valor escalar dentro de limites conhecidos; não é indicador de andamento."
+                },
+                {
+                  "term": "output",
+                  "text": "Apresenta o resultado de um cálculo."
+                },
+                {
+                  "term": "summary",
+                  "text": "Rotula details."
+                },
+                {
+                  "term": "track",
+                  "text": "Fornece faixas de texto para mídia."
+                }
               ]
             },
             {
@@ -456,7 +610,26 @@
               "type": "concept",
               "title": "Gabarito registrado: B — \\w.",
               "paragraphs": [
-                "Em uso comum em JavaScript, \\w corresponde a A–Z, a–z, 0–9 e sublinhado. \\d corresponde a dígitos ASCII, \\s a espaços e outros caracteres de espaço em branco. + exige uma ou mais ocorrências; $ ancora o final."
+                {
+                  "term": "\\w",
+                  "text": "Em uso comum em JavaScript, corresponde a A–Z, a–z, 0–9 e sublinhado."
+                },
+                {
+                  "term": "\\d",
+                  "text": "Corresponde a dígitos ASCII."
+                },
+                {
+                  "term": "\\s",
+                  "text": "Corresponde a espaços e outros caracteres de espaço em branco."
+                },
+                {
+                  "term": "+",
+                  "text": "Exige uma ou mais ocorrências."
+                },
+                {
+                  "term": "$",
+                  "text": "Ancora o final."
+                }
               ]
             },
             {
@@ -497,7 +670,22 @@
               "type": "concept",
               "title": "Gabarito registrado: E — Network Configuration Failures.",
               "paragraphs": [
-                "A lista de riscos possui nomes oficiais. Broken Access Control trata de falhas na autorização; Security Misconfiguration, de configuração insegura; Injection, de entrada interpretada como comando; Cryptographic Failures, de falhas na proteção criptográfica."
+                {
+                  "term": "Broken Access Control",
+                  "text": "Falhas na autorização."
+                },
+                {
+                  "term": "Security Misconfiguration",
+                  "text": "Configuração insegura."
+                },
+                {
+                  "term": "Injection",
+                  "text": "Entrada interpretada como comando."
+                },
+                {
+                  "term": "Cryptographic Failures",
+                  "text": "Falhas na proteção criptográfica."
+                }
               ]
             },
             {
@@ -532,7 +720,26 @@
               "type": "concept",
               "title": "Gabarito registrado: B — AES e ChaCha20.",
               "paragraphs": [
-                "Criptografia simétrica usa segredo compartilhado para cifrar e decifrar. AES é cifra de bloco; ChaCha20 é cifra de fluxo. RSA e esquemas baseados em ECC usam pares de chaves. Hash produz resumo e não é cifragem reversível."
+                {
+                  "term": "Criptografia simétrica",
+                  "text": "Usa segredo compartilhado para cifrar e decifrar."
+                },
+                {
+                  "term": "AES",
+                  "text": "É cifra de bloco."
+                },
+                {
+                  "term": "ChaCha20",
+                  "text": "É cifra de fluxo."
+                },
+                {
+                  "term": "RSA e ECC",
+                  "text": "RSA e esquemas baseados em ECC usam pares de chaves."
+                },
+                {
+                  "term": "Hash",
+                  "text": "Produz resumo e não é cifragem reversível."
+                }
               ]
             },
             {
@@ -593,7 +800,26 @@
               "type": "concept",
               "title": "Gabarito registrado: D — Shift Left.",
               "paragraphs": [
-                "A ideia é detectar vulnerabilidades cedo, reduzindo retrabalho. SAST analisa código sem executar a aplicação; SCA examina componentes e dependências; DAST testa a aplicação em execução. Monitoramento de produção continua necessário."
+                {
+                  "term": "Shift left",
+                  "text": "Busca detectar vulnerabilidades cedo, reduzindo retrabalho."
+                },
+                {
+                  "term": "SAST",
+                  "text": "Analisa código sem executar a aplicação."
+                },
+                {
+                  "term": "SCA",
+                  "text": "Examina componentes e dependências."
+                },
+                {
+                  "term": "DAST",
+                  "text": "Testa a aplicação em execução."
+                },
+                {
+                  "term": "Monitoramento de produção",
+                  "text": "Continua necessário."
+                }
               ]
             },
             {
@@ -634,7 +860,18 @@
               "type": "concept",
               "title": "Gabarito registrado: E — Heroku.",
               "paragraphs": [
-                "IaaS fornece recursos como máquinas virtuais, deixando ao cliente a gestão do sistema operacional. PaaS oferece ambiente gerenciado para implantar código. SaaS disponibiliza aplicação pronta para consumo."
+                {
+                  "term": "IaaS",
+                  "text": "Fornece recursos como máquinas virtuais, deixando ao cliente a gestão do sistema operacional."
+                },
+                {
+                  "term": "PaaS",
+                  "text": "Oferece ambiente gerenciado para implantar código."
+                },
+                {
+                  "term": "SaaS",
+                  "text": "Disponibiliza aplicação pronta para consumo."
+                }
               ]
             },
             {
@@ -695,7 +932,26 @@
               "type": "concept",
               "title": "Gabarito registrado: C — EXPOSE.",
               "paragraphs": [
-                "EXPOSE declara metadados da porta pretendida, sem criar publicação automática no host. RUN executa etapas de construção; CMD fornece comando padrão; ENTRYPOINT define o executável inicial; COPY copia arquivos."
+                {
+                  "term": "EXPOSE",
+                  "text": "Declara metadados da porta pretendida, sem criar publicação automática no host."
+                },
+                {
+                  "term": "RUN",
+                  "text": "Executa etapas de construção."
+                },
+                {
+                  "term": "CMD",
+                  "text": "Fornece comando padrão."
+                },
+                {
+                  "term": "ENTRYPOINT",
+                  "text": "Define o executável inicial."
+                },
+                {
+                  "term": "COPY",
+                  "text": "Copia arquivos."
+                }
               ]
             },
             {
@@ -736,7 +992,18 @@
               "type": "concept",
               "title": "Gabarito registrado: A — INSERT e REVOKE.",
               "paragraphs": [
-                "DML modifica dados: INSERT inclui linhas, UPDATE altera, DELETE remove. DCL controla privilégios: GRANT concede, REVOKE revoga. DDL define estruturas: CREATE, ALTER, DROP."
+                {
+                  "term": "DML",
+                  "text": "Modifica dados: INSERT inclui linhas, UPDATE altera e DELETE remove."
+                },
+                {
+                  "term": "DCL",
+                  "text": "Controla privilégios: GRANT concede e REVOKE revoga."
+                },
+                {
+                  "term": "DDL",
+                  "text": "Define estruturas: CREATE, ALTER e DROP."
+                }
               ]
             },
             {
@@ -797,7 +1064,22 @@
               "type": "concept",
               "title": "Gabarito registrado: C — Deadlock (impasse).",
               "paragraphs": [
-                "T1 mantém o recurso A e espera B. T2 mantém B e espera A. A dependência circular impede o avanço. O SGBD pode detectar o ciclo e abortar uma transação para liberar recursos."
+                {
+                  "term": "Transação T1",
+                  "text": "Mantém o recurso A e espera B."
+                },
+                {
+                  "term": "Transação T2",
+                  "text": "Mantém B e espera A."
+                },
+                {
+                  "term": "Dependência circular",
+                  "text": "Impede o avanço."
+                },
+                {
+                  "term": "Resolução",
+                  "text": "O SGBD pode detectar o ciclo e abortar uma transação para liberar recursos."
+                }
               ]
             },
             {
@@ -859,7 +1141,22 @@
               "type": "concept",
               "title": "Gabarito registrado: E — Letra E no gabarito registrado; a revisão anterior aponta I, II e III como hipóteses corretas.",
               "paragraphs": [
-                "O art. 16 da LGPD permite conservação para obrigação legal ou regulatória; estudo por órgão de pesquisa, garantida sempre que possível a anonimização; transferência a terceiro conforme requisitos legais; e uso exclusivo do controlador, vedado acesso por terceiro, desde que anonimizados."
+                {
+                  "term": "Obrigação legal ou regulatória",
+                  "text": "O art. 16 da LGPD permite conservação para seu cumprimento."
+                },
+                {
+                  "term": "Pesquisa",
+                  "text": "Estudo por órgão de pesquisa, garantida sempre que possível a anonimização."
+                },
+                {
+                  "term": "Transferência a terceiro",
+                  "text": "Permitida conforme requisitos legais."
+                },
+                {
+                  "term": "Uso exclusivo do controlador",
+                  "text": "Vedado acesso por terceiro, desde que os dados sejam anonimizados."
+                }
               ]
             },
             {

@@ -3,7 +3,7 @@ import {VISUAL_TYPES,renderVisual} from "./componentes-visuais.mjs";
  const fail=m=>{throw Error(m)};
  const str=(v,k)=>typeof v==="string"&&v.trim()?esc(v):fail("Campo obrigatório: "+k);
  const list=(v,k)=>Array.isArray(v)&&v.length?v:fail("Lista vazia: "+k);
- const paragraphs=v=>list(v,"parágrafos").map(x=>`<p>${str(x,"parágrafo")}</p>`).join("");
+ const paragraphs=v=>list(v,"parágrafos").map(x=>typeof x==="string"?`<p>${str(x,"parágrafo")}</p>`:x&&typeof x==="object"&&!Array.isArray(x)?`<p><strong>${str(x.term,"termo")}:</strong> ${str(x.text,"explicação")}</p>`:fail("Parágrafo inválido")).join("");
  const items=(v,ordered=false)=>`<${ordered?"ol":"ul"}>${list(v,"itens").map(x=>`<li>${str(x,"item")}</li>`).join("")}</${ordered?"ol":"ul"}>`;
 export function renderBlock(b,n=""){
  if(VISUAL_TYPES.has(b.type))return renderVisual(b);
