@@ -174,4 +174,37 @@ else {installModuleControls();installQuestionLinks();setTimeout(installNextNavig
 addEventListener('concurso:sync-status',e=>{if(e.detail?.message?.startsWith('Sincronizado')){draw();status('Leitura sincronizada com seu banco privado.');}});
 addEventListener('storage',e=>{if(e.key===KEY)draw();});
 draw();
+
+// Confirmação explícita por unidade curricular, separada de Lido e das questões.
+async function installCurriculumStudy(){
+ if(!/^ima-\d{4}-\d{2}-\d{2}$/.test(slug)||!window.CECurriculum)return;
+ const api=window.CECurriculum;
+ try{
+  const model=await api.load("../"),entries=model.byLesson.get(slug);
+  if(!entries?.length)throw Error("Aula sem mapeamento");
+  const controls=[],format=n=>new Intl.NumberFormat("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2}).format(100*n/model.total)+"%";
+  const unique=[...new Map(entries.map(u=>[u.id,u])).values()],total=unique.reduce((n,u)=>n+u.minutes,0),info=document.createElement("p");
+  info.className="nl-curriculum-info";info.setAttribute("role","status");
+  $(".nl-hero")?.append(info);
+  function redraw(){
+   const values=api.read().confirmed||{};
+   const done=unique.filter(u=>api.studied(u,values,model)).reduce((n,u)=>n+u.minutes,0);
+   for(const {u,input} of controls)input.checked=api.studied(u,values,model);
+   info.textContent="Estudo teórico confirmado nesta aula: "+format(done)+" de "+format(total)+" do esforço curricular estimado · "+done+"/"+total+" min de esforço. Questões avaliadas à parte.";
+  }
+  for(const u of entries){
+   const article=document.getElementById(u.section),box=article?.querySelector(".nl-end-read");
+   if(!box)throw Error("Subseção não encontrada: "+u.section);
+   const label=document.createElement("label");label.style.cssText="display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-top:8px";
+   const input=document.createElement("input");input.type="checkbox";input.dataset.ceStudied=u.id;
+   label.append(input,document.createTextNode("Estudei esta subseção · "+u.minutes+" min · "+format(u.minutes)+" do esforço estimado"));
+   box.append(label);controls.push({u,input});
+   input.addEventListener("change",()=>{try{api.write({[api.key(u.id)]:input.checked});redraw();}catch{redraw();status("Não foi possível salvar a confirmação de estudo.");}});
+  }
+  for(const event of ["storage","concurso:progress-change","concurso:sync-status","focus"])addEventListener(event,redraw);
+  redraw();
+ }catch(e){const p=document.createElement("p");p.textContent="Peso curricular indisponível: "+e.message+". A leitura permanece independente.";$(".nl-hero")?.append(p);}
+}
+void installCurriculumStudy();
+
 })();

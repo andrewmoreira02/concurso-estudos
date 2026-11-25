@@ -12,7 +12,7 @@ const rlmKey='concursos_rlm_sections_read_v3';
 const engKey='concurso_eng_qualidade_steps_v1';
 const ptKey='concursos:casan2026:portugues:2026-11-19:subsections:v1';
 const logsKey='ce_question_logs_v1', reviewKey='ce_review_done_v1',planKey='ce_plan_done_v1',studyKey='ce_study_confirmed_v1';
-let config=null,questionSets=[],imaMicroUnits=[],panel=null,details=null,status=null,button=null,refreshing=false,nextRefresh=false,renderedSignature='';
+let curriculum=null,config=null,questionSets=[],imaMicroUnits=[],panel=null,details=null,status=null,button=null,refreshing=false,nextRefresh=false,renderedSignature='';
 const parse=(key,fallback)=>{try{const text=localStorage.getItem(key);const value=text===null?null:JSON.parse(text);return value===null?fallback:value;}catch{return fallback;}};
 const isRecord=x=>!!x&&typeof x==='object'&&!Array.isArray(x);
 const isoToday=()=>{const parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const get=k=>parts.find(p=>p.type===k)?.value;return get('year')+'-'+get('month')+'-'+get('day');};
@@ -60,7 +60,8 @@ function studiedModules(exam,lesson){
  const entries=studyRecord(),out=new Set();
  if(!exam)return out;
  for(let i=1;i<=lesson.sections_per_module.length;i++){
-  if(entries[exam+':'+lesson.id+':'+i]===true)out.add(i);
+  const sections=exam==='ima'?curriculum?.byLesson.get(lesson.id)?.filter(u=>u.module===i):null;
+  if(sections?.length?sections.every(u=>window.CECurriculum.studied(u,entries,curriculum)):entries[exam+':'+lesson.id+':'+i]===true)out.add(i);
  }
  return out;
 }
@@ -68,6 +69,7 @@ function setStudyModule(exam,lesson,module,studied){
  if(!config?.exams?.[exam]||!lesson.subjects?.[exam]||!Number.isInteger(module)||module<1||module>lesson.sections_per_module.length)return false;
  const doc=parse(studyKey,{}),values={...(isRecord(doc?.confirmed)?doc.confirmed:{})};
  values[exam+':'+lesson.id+':'+module]=studied===true;
+ if(exam==='ima')for(const u of curriculum?.byLesson.get(lesson.id)?.filter(u=>u.module===module)||[])values[window.CECurriculum.key(u.id)]=studied===true;
  try{
   localStorage.setItem(studyKey,JSON.stringify({version:1,confirmed:values,updatedAt:new Date().toISOString()}));
   dispatchEvent(new CustomEvent('concurso:progress-change'));
@@ -602,6 +604,7 @@ async function getConfig(){
    if(!Array.isArray(lesson.sections_per_module)||lesson.sections_per_module.length>20||lesson.sections_per_module.some(n=>!Number.isInteger(n)||n<1||n>40)||
       !/^aulas\/[a-z0-9-]+\.html$/.test(lesson.url)||!/^[a-z][a-z0-9-]{2,40}$/.test(lesson.id))throw Error('Catálogo de aulas inválido');
  }
+ try{curriculum=window.CECurriculum?await window.CECurriculum.load(prefix,next):null;}catch{curriculum=null;}
  config=next;
  return config;
 }

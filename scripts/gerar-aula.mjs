@@ -20,11 +20,14 @@ export function renderLesson(d) {
  if(!/^\d{4}-\d{2}-\d{2}$/.test(d.date)||Number.isNaN(Date.parse(d.date))||new Date(d.date).toISOString().slice(0,10)!==d.date)fail("Data inválida");
  let total=0,nav="";
  const modules=list(d.modules,"modules");
+ const tracked=d.curriculum_exam==="ima";
+ if(/^ima-\d{4}-\d{2}-\d{2}$/.test(d.id)&&!tracked)fail("Aula diária IMA exige curriculum_exam e unidades ponderadas");
  const body=modules.map((m,i)=>{
  const mid=unique(m.id),mt=str(m.title,"título módulo");nav+=`<a href="#${mid}"><strong>${i+1}. ${mt}</strong></a>`;
  const subsections=list(m.sections,"sections").map((s,j)=>{
  const sid=unique(s.id),n=`${i+1}.${j+1}`,st=str(s.title,"título subseção");total++;
  nav+=`<a data-ce-nav="${sid}" href="#${sid}">${n} · ${st}</a>`;
+ if(tracked){const u=s.curriculum;if(!u||!/^[A-Z]+-[A-Z0-9]+$/.test(u.group||"")||!/^[a-z][a-z0-9-]{2,35}$/.test(u.id||"")||!Number.isInteger(u.minutes)||u.minutes<=0)fail("Unidade curricular inválida: "+sid);}
  const content=list(s.blocks,"blocks");
  if(!content.some(b=>b.type==="text"||b.type==="concept"))fail("Subseção sem teoria: "+sid);
  return `<article class="nl-section" id="${sid}" data-ce-topic><h3>${n} · ${st}</h3>${content.map(b=>renderBlock(b,n)).join("")}<div class="nl-end-read"><label><input type="checkbox" data-ce-read="${sid}" aria-label="Marcar ${n} como Lido"> Marcar ${n} como Lido</label></div></article>`;
@@ -37,7 +40,7 @@ export function renderLesson(d) {
 <!-- GERADO POR scripts/gerar-aula.mjs. Edite apenas o JSON de origem. -->
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#09121d"><meta name="description" content="${desc}"><title>${title} | Concurso Estudos</title>
 <link rel="stylesheet" href="../assets/new-lesson.css"><link rel="stylesheet" href="../assets/lesson-unified.css"><link rel="stylesheet" href="../assets/componentes-didaticos.css">
-<script src="../assets/new-lesson.js" defer></script><script src="../assets/lesson-unified.js" defer></script><script src="../assets/sync-config.js" defer></script><script src="../assets/sync.js" defer></script><script src="../assets/reader-focus.js" defer></script></head>
+<script src="../assets/curriculum-study.js?v=20261124effort1" defer></script><script src="../assets/new-lesson.js?v=20261124effort1" defer></script><script src="../assets/lesson-unified.js" defer></script><script src="../assets/sync-config.js" defer></script><script src="../assets/sync.js" defer></script><script src="../assets/reader-focus.js" defer></script></head>
 <body class="ce-lesson-page ce-new" data-ce-lesson="${slug}"><header class="nl-header"><a class="nl-brand" href="../index.html">CE · Concurso Estudos</a><nav aria-label="Navegação do site"><a href="../index.html">Painel</a><a href="../aulas.html">Aulas</a><a href="../planejamento.html">Plano</a><a href="../revisoes.html">Revisões</a><a href="../conta.html">Sincronização</a></nav></header>
 <div class="nl-layout"><aside class="nl-sidebar" aria-label="Índice da aula"><div class="nl-sticky"><span class="nl-side-head">Índice clicável</span><div class="nl-progress"><strong id="nl-count">0 de ${total} subseções</strong><meter id="nl-meter" min="0" max="${total}" value="0" aria-label="Subseções marcadas como Lido"></meter><small id="nl-global-status">Leitura não é avaliação.</small></div><nav>${nav}</nav></div></aside>
 <main class="nl-main"><section class="nl-hero"><span class="nl-eyebrow">${context} · ${subject} · ${esc(d.date.split("-").reverse().join("/"))}</span><h1>${title}</h1><p>${desc}</p></section>

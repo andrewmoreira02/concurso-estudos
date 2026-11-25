@@ -75,6 +75,11 @@
           "legacy_source": {
             "lesson": "administracao-publica-ima",
             "section": "adm-1-1"
+          },
+          "curriculum": {
+            "group": "ADM-01",
+            "id": "principios-adm",
+            "minutes": 17
           }
         },
         {
@@ -132,6 +137,11 @@
           "legacy_source": {
             "lesson": "administracao-publica-ima",
             "section": "adm-1-2"
+          },
+          "curriculum": {
+            "group": "ADM-03",
+            "id": "organizacao-adm",
+            "minutes": 20
           }
         },
         {
@@ -180,6 +190,11 @@
           "legacy_source": {
             "lesson": "administracao-publica-ima",
             "section": "adm-1-3"
+          },
+          "curriculum": {
+            "group": "ADM-02",
+            "id": "poderes-adm",
+            "minutes": 18
           }
         }
       ]
@@ -246,6 +261,11 @@
           "legacy_source": {
             "lesson": "administracao-publica-ima",
             "section": "adm-2-1"
+          },
+          "curriculum": {
+            "group": "ADM-04",
+            "id": "atos-elementos-atributos",
+            "minutes": 15
           }
         },
         {
@@ -303,6 +323,11 @@
           "legacy_source": {
             "lesson": "administracao-publica-ima",
             "section": "adm-2-2"
+          },
+          "curriculum": {
+            "group": "ADM-04",
+            "id": "atos-extincao",
+            "minutes": 13
           }
         },
         {
@@ -349,6 +374,11 @@
           "legacy_source": {
             "lesson": "administracao-publica-ima",
             "section": "adm-2-3"
+          },
+          "curriculum": {
+            "group": "ADM-05",
+            "id": "processo-garantias",
+            "minutes": 12
           }
         }
       ]
@@ -401,5 +431,6 @@
       "label": "Prática complementar do acervo: Processo administrativo e garantias",
       "href": "questoes-micro-ima.html?u=ima-adm-2-3"
     }
-  ]
+  ],
+  "curriculum_exam": "ima"
 }

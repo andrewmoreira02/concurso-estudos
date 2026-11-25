@@ -54,6 +54,11 @@
           "legacy_source": {
             "lesson": "legislacao-ambiental-ima",
             "section": "la-1-1"
+          },
+          "curriculum": {
+            "group": "AMB-01",
+            "id": "art225",
+            "minutes": 18
           }
         },
         {
@@ -136,6 +141,11 @@
           "legacy_source": {
             "lesson": "legislacao-ambiental-ima",
             "section": "la-1-2"
+          },
+          "curriculum": {
+            "group": "AMB-02",
+            "id": "competencias-ambientais",
+            "minutes": 17
           }
         },
         {
@@ -179,6 +189,11 @@
           "legacy_source": {
             "lesson": "legislacao-ambiental-ima",
             "section": "la-1-3"
+          },
+          "curriculum": {
+            "group": "AMB-02",
+            "id": "lc140",
+            "minutes": 20
           }
         }
       ]
@@ -224,6 +239,11 @@
           "legacy_source": {
             "lesson": "legislacao-ambiental-ima",
             "section": "la-2-1"
+          },
+          "curriculum": {
+            "group": "AMB-03",
+            "id": "pnma-objetivos",
+            "minutes": 12
           }
         },
         {
@@ -310,6 +330,11 @@
           "legacy_source": {
             "lesson": "legislacao-ambiental-ima",
             "section": "la-2-2"
+          },
+          "curriculum": {
+            "group": "AMB-03",
+            "id": "sisnama",
+            "minutes": 13
           }
         },
         {
@@ -375,6 +400,11 @@
           "legacy_source": {
             "lesson": "legislacao-ambiental-ima",
             "section": "la-2-3"
+          },
+          "curriculum": {
+            "group": "AMB-03",
+            "id": "pnma-instrumentos",
+            "minutes": 15
           }
         }
       ]
@@ -431,5 +461,6 @@
       "label": "Prática complementar do acervo: Instrumentos da PNMA e licenciamento",
       "href": "questoes-micro-ima.html?u=ima-la-2-3"
     }
-  ]
+  ],
+  "curriculum_exam": "ima"
 }

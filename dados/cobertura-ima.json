@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-20",
+  "updated": "2026-11-24",
   "exam": "IMA-SC 2027 — Analista de Informática",
   "date": "2027-02-14",
   "title": "Matriz por tópicos do Anexo V IMA/SC 001/2026 — Analista de Informática (ANA)",
@@ -32,7 +32,8 @@
             }
           ],
           "note": "Exemplo de SO disponível; gerenciamento de memória, arquivos e ferramentas Linux/Windows não cobertos integralmente.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 90
         },
         {
           "id": "TI-02",
@@ -49,7 +50,8 @@
             }
           ],
           "note": "A arquitetura é apresentada, mas requer contratos, falhas de rede e casos aplicados.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "TI-03",
@@ -62,7 +64,8 @@
             }
           ],
           "note": "Modelos básicos estudáveis; serviços específicos AWS/Azure/GCP não aprofundados.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 120
         },
         {
           "id": "TI-04",
@@ -75,7 +78,8 @@
             }
           ],
           "note": "Docker e VM explicados; diferenças práticas Hyper-V/KVM e orquestração pendentes.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "TI-05",
@@ -83,7 +87,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Sem aula completa sobre cálculo CIDR/sub-redes e funcionamento dos protocolos; conteúdo novo prioritário.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 160
         },
         {
           "id": "TI-06",
@@ -96,7 +101,8 @@
             }
           ],
           "note": "HTTPS/REST aparecem, porém HTTP/3, SFTP, SSH, NTP e comparação de versões carecem de estudo.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 110
         },
         {
           "id": "TI-07",
@@ -109,7 +115,8 @@
             }
           ],
           "note": "Conceitos de defesa presentes, mas configuração e diagnóstico não tratados de modo sistemático.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 140
         },
         {
           "id": "TI-08",
@@ -122,7 +129,8 @@
             }
           ],
           "note": "Exemplos de risco disponíveis; incluir escolha de controles e propriedades em questões FURB.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 60
         },
         {
           "id": "TI-09",
@@ -135,7 +143,8 @@
             }
           ],
           "note": "Diferenças cifra/hash/assinatura introduzidas; PKI, ECC e ICP-Brasil requerem aprofundamento.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 120
         },
         {
           "id": "TI-10",
@@ -152,7 +161,8 @@
             }
           ],
           "note": "Aula de OAuth/REST disponível; esquemas de autorização e OIDC ainda precisam ampliar.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "TI-11",
@@ -169,7 +179,8 @@
             }
           ],
           "note": "OWASP tratado; ferramentas SAST, DAST e SCA não aprofundadas.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 140
         },
         {
           "id": "TI-12",
@@ -182,7 +193,8 @@
             }
           ],
           "note": "Há base de ameaças, mas operações SOC, ferramentas e continuidade/DRP exigem aula própria.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 170
         },
         {
           "id": "TI-13",
@@ -190,7 +202,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Sem aula completa de ITIL 4, SVS e gestão de serviços; tópico específico da FURB prioritário.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 120
         },
         {
           "id": "TI-14",
@@ -207,7 +220,8 @@
             }
           ],
           "note": "Teoria e exemplos disponíveis; particularidades de PostgreSQL/MySQL requerem complemento.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 120
         },
         {
           "id": "TI-15",
@@ -228,7 +242,8 @@
             }
           ],
           "note": "JOIN e ACID desenvolvidos; DCL, triggers/stored procedures e controle de concorrência são lacunas.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 180
         },
         {
           "id": "TI-16",
@@ -236,7 +251,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Aula atual trata principalmente modelo relacional; falta comparação aprofundada Redis × MongoDB.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 90
         },
         {
           "id": "TI-17",
@@ -253,7 +269,8 @@
             }
           ],
           "note": "Material aprofundado já publicado; verificar retenção em questões específicas IMA.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 90
         },
         {
           "id": "TI-18",
@@ -274,7 +291,8 @@
             }
           ],
           "note": "UML e GoF desenvolvidos; BPMN ainda sem aula dedicada.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 140
         },
         {
           "id": "TI-19",
@@ -291,7 +309,8 @@
             }
           ],
           "note": "MVC, hexagonal e DDD necessitam demonstrações adicionais.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 110
         },
         {
           "id": "TI-20",
@@ -308,7 +327,8 @@
             }
           ],
           "note": "Foco anterior em REST; diferenças GraphQL/gRPC e garantias de mensageria pendentes.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "TI-21",
@@ -329,7 +349,8 @@
             }
           ],
           "note": "Conteúdo com casos; Gitflow e Trunk-Based requerem comparativos de prova.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 150
         },
         {
           "id": "TI-22",
@@ -337,7 +358,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Não existe aula HTML completa e catalogada especificamente sobre front-end/SPA e TypeScript.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 140
         },
         {
           "id": "TI-23",
@@ -354,7 +376,8 @@
             }
           ],
           "note": "Java OO parcialmente coberto; frameworks, testes e concorrência não aprofundados.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 240
         },
         {
           "id": "TI-24",
@@ -362,7 +385,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Conteúdo Python exigido pelo edital ainda sem aula pública específica com exemplos completos.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 200
         },
         {
           "id": "TI-25",
@@ -370,7 +394,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Sem aula completa de PHP/Laravel e ferramentas; iniciar por ciclo request, MVC e ORM.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 170
         },
         {
           "id": "TI-26",
@@ -378,7 +403,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Tópico novo do edital: requer conteúdo crítico de segurança, avaliação de respostas e privacidade.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 130
         },
         {
           "id": "TI-27",
@@ -391,7 +417,8 @@
             }
           ],
           "note": "CI/CD iniciado; IaC, strategies Blue-Green/Canary e GitLab precisam aula prática.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 160
         },
         {
           "id": "TI-28",
@@ -399,7 +426,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Ausência de aula sobre sinais de observabilidade e stack de monitoramento.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "TI-29",
@@ -407,7 +435,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Tópico extenso específico do IMA; sem aula estruturada, merece sequência própria.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 200
         },
         {
           "id": "TI-30",
@@ -415,7 +444,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Nenhum módulo específico publicado; exige exemplos de captura, compartilhamento e classificação.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 80
         },
         {
           "id": "TI-31",
@@ -428,7 +458,8 @@
             }
           ],
           "note": "Scrum desenvolvido; Kanban, métricas de fluxo e custos requerem aprofundamento.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 110
         },
         {
           "id": "TI-32",
@@ -436,7 +467,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Tema transversal do edital sem módulo específico de ética profissional de TI.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 45
         }
       ]
     },
@@ -456,7 +488,8 @@
             }
           ],
           "note": "Exposição disponível; treino FURB com novos textos ajuda a testar.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "PT-02",
@@ -464,7 +497,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Aula CASAN não desenvolve sistematicamente funções e figuras.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 60
         },
         {
           "id": "PT-03",
@@ -481,7 +515,8 @@
             }
           ],
           "note": "Teoria disponível, diagnóstico IMA requer questões FURB.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 80
         },
         {
           "id": "PT-04",
@@ -494,7 +529,8 @@
             }
           ],
           "note": "Aula não exaure regras de acentuação e porquês.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 80
         },
         {
           "id": "PT-05",
@@ -507,7 +543,8 @@
             }
           ],
           "note": "Morfologia parcial; reforçar conjugação e valores de sentido.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "PT-06",
@@ -524,7 +561,8 @@
             }
           ],
           "note": "Cobertura pontual; falta aprofundar colocação pronominal.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 150
         },
         {
           "id": "PT-07",
@@ -537,7 +575,8 @@
             }
           ],
           "note": "Há semântica contextual, não todos os processos lexicais.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 70
         },
         {
           "id": "PT-08",
@@ -550,7 +589,8 @@
             }
           ],
           "note": "Verificar equivalência com alternativas reais da banca.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 70
         },
         {
           "id": "PT-09",
@@ -558,7 +598,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Sem módulo exclusivo e aprofundado sobre adequação e variantes.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 50
         }
       ]
     },
@@ -578,7 +619,8 @@
             }
           ],
           "note": "Raciocínio dedutivo não totalmente coberto pela aula matemática.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 90
         },
         {
           "id": "RLM-02",
@@ -591,7 +633,8 @@
             }
           ],
           "note": "Material completo de frações e operações.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 80
         },
         {
           "id": "RLM-03",
@@ -608,7 +651,8 @@
             }
           ],
           "note": "Exemplos completos e retomada disponível.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 110
         },
         {
           "id": "RLM-04",
@@ -625,7 +669,8 @@
             }
           ],
           "note": "RLM aprofundado disponível; avaliação por questões é independente.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 120
         },
         {
           "id": "RLM-05",
@@ -638,7 +683,8 @@
             }
           ],
           "note": "Geometria e raciocínio espacial exigem complemento.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "RLM-06",
@@ -646,7 +692,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Conversões e geometria métrica sem aula específica.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 70
         },
         {
           "id": "RLM-07",
@@ -663,7 +710,8 @@
             }
           ],
           "note": "Aula completa em interpretação e cálculo.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 80
         },
         {
           "id": "RLM-08",
@@ -676,7 +724,8 @@
             }
           ],
           "note": "PA/PG abordadas, padrões não numéricos exigem exercícios.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 60
         },
         {
           "id": "RLM-09",
@@ -689,7 +738,8 @@
             }
           ],
           "note": "Proposições formais necessitam seção própria.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 120
         }
       ]
     },
@@ -709,7 +759,8 @@
             }
           ],
           "note": "Direitos fundamentais e direitos sociais demandam aprofundamento.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 90
         },
         {
           "id": "ADM-02",
@@ -722,7 +773,8 @@
             }
           ],
           "note": "Exemplos de princípios e interesse público disponíveis na aula; ampliar casos de supremacia e indisponibilidade na prova FURB.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 65
         },
         {
           "id": "ADM-03",
@@ -735,7 +787,8 @@
             }
           ],
           "note": "Revisar entes e personalidade.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "ADM-04",
@@ -748,7 +801,8 @@
             }
           ],
           "note": "Questões FURB adaptadas publicadas.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "ADM-05",
@@ -761,7 +815,8 @@
             }
           ],
           "note": "Lei 9.784/99 precisa leitura artigo a artigo em tópicos do edital.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "ADM-06",
@@ -774,7 +829,8 @@
             }
           ],
           "note": "Requer exercícios com sequência PPA→LDO→LOA e princípios orçamentários.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 90
         },
         {
           "id": "ADM-07",
@@ -787,7 +843,8 @@
             }
           ],
           "note": "Material introdutório; exceções e prazos da LAI pendentes.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 70
         },
         {
           "id": "ADM-08",
@@ -795,7 +852,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Sem estudo específico com casos do serviço público.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 60
         },
         {
           "id": "ADM-09",
@@ -803,7 +861,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Requer tipicidade, dolo e sanções conforme legislação vigente.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 90
         },
         {
           "id": "ADM-10",
@@ -811,7 +870,8 @@
           "depth": "lacuna",
           "lessons": [],
           "note": "Tema específico de 2026 ainda sem aula.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 60
         },
         {
           "id": "ADM-11",
@@ -828,7 +888,8 @@
             }
           ],
           "note": "Aspectos LGPD são reutilizáveis, mas poder público deve ser aprofundado.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 90
         }
       ]
     },
@@ -848,7 +909,8 @@
             }
           ],
           "note": "Conteúdo introdutório com exemplos.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 70
         },
         {
           "id": "AMB-02",
@@ -861,7 +923,8 @@
             }
           ],
           "note": "Questões úteis para diferenciar atribuições e fiscalização.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 100
         },
         {
           "id": "AMB-03",
@@ -874,7 +937,8 @@
             }
           ],
           "note": "Conceitos centrais publicados.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 120
         },
         {
           "id": "AMB-04",
@@ -887,7 +951,8 @@
             }
           ],
           "note": "A prova ANA deve seguir especificamente o recorte de títulos do edital, não todo o programa ANF.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 150
         },
         {
           "id": "AMB-05",
@@ -900,9 +965,22 @@
             }
           ],
           "note": "Há fundamento; conferir redação consolidada e atribuições.",
-          "practice": null
+          "practice": null,
+          "effort_minutes": 90
         }
       ]
     }
-  ]
+  ],
+  "effort_policy": {
+    "version": 1,
+    "status": "estimativa_provisoria",
+    "method": "Minutos de teoria estimados por extensão e complexidade; questões excluídas. Reserva para lacunas futuras. Não é auditoria atômica.",
+    "support": [
+      {
+        "id": "BASE-TI",
+        "title": "Fundamentos de algoritmos e estruturas (pré-requisito de programação; pertinência literal ao edital ainda a auditar)",
+        "effort_minutes": 55
+      }
+    ]
+  }
 }

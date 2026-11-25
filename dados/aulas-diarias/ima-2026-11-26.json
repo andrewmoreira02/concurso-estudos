@@ -77,6 +77,11 @@
           "legacy_source": {
             "lesson": "seguranca",
             "section": "seg-1-1"
+          },
+          "curriculum": {
+            "group": "TI-08",
+            "id": "ameacas-cid",
+            "minutes": 15
           }
         },
         {
@@ -138,6 +143,11 @@
           "legacy_source": {
             "lesson": "seguranca",
             "section": "seg-1-2"
+          },
+          "curriculum": {
+            "group": "TI-11",
+            "id": "sqli-xss",
+            "minutes": 22
           }
         },
         {
@@ -180,6 +190,11 @@
           "legacy_source": {
             "lesson": "seguranca",
             "section": "seg-1-3"
+          },
+          "curriculum": {
+            "group": "TI-11",
+            "id": "csrf-cookies",
+            "minutes": 18
           }
         }
       ]
@@ -231,6 +246,11 @@
           "legacy_source": {
             "lesson": "seguranca",
             "section": "seg-2-1"
+          },
+          "curriculum": {
+            "group": "TI-10",
+            "id": "auth-bola",
+            "minutes": 12
           }
         },
         {
@@ -299,6 +319,11 @@
           "legacy_source": {
             "lesson": "seguranca",
             "section": "seg-2-2"
+          },
+          "curriculum": {
+            "group": "TI-10",
+            "id": "oauth-oidc-pkce",
+            "minutes": 17
           }
         },
         {
@@ -347,6 +372,11 @@
           "legacy_source": {
             "lesson": "seguranca",
             "section": "seg-2-3"
+          },
+          "curriculum": {
+            "group": "TI-10",
+            "id": "jwt-validacao",
+            "minutes": 11
           }
         }
       ]
@@ -387,5 +417,6 @@
       "label": "Prática complementar do acervo: Autenticação e autorização por objeto (BOLA/IDOR)",
       "href": "questoes-micro-ima.html?u=ima-seg-2-1"
     }
-  ]
+  ],
+  "curriculum_exam": "ima"
 }

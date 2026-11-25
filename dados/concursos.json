@@ -963,8 +963,8 @@
       "start": "2026-11-24",
       "revision_days": 14,
       "matrix": "dados/cobertura-ima.json",
-      "status": "provisorio_grupos",
-      "note": "Data inicial das aulas diárias. Margem de 14 dias configurável; matriz agregada não auditada por subitem. A previsão não mede domínio."
+      "status": "provisorio_esforco",
+      "note": "Estimativa ponderada de esforço teórico, com reserva para lacunas. Questões e Lido separados."
     }
   }
 }

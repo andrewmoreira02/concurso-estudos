@@ -1,9 +1,9 @@
 name: Validar geradores didáticos
 on:
   push:
-    paths: ['scripts/**','modelos/**','dados/aulas-diarias/**','dados/questionarios/**','aulas/**','assets/componentes-didaticos.css','.github/workflows/validar-geradores.yml']
+    paths: ['scripts/**','modelos/**','dados/aulas-diarias/**','dados/questionarios/**','aulas/**','assets/componentes-didaticos.css','assets/curriculum-study.js','assets/edital-pace.js','dados/cobertura-ima.json','dados/concursos.json','.github/workflows/validar-geradores.yml']
   pull_request:
-    paths: ['scripts/**','modelos/**','dados/aulas-diarias/**','dados/questionarios/**','aulas/**','assets/componentes-didaticos.css','.github/workflows/validar-geradores.yml']
+    paths: ['scripts/**','modelos/**','dados/aulas-diarias/**','dados/questionarios/**','aulas/**','assets/componentes-didaticos.css','assets/curriculum-study.js','assets/edital-pace.js','dados/cobertura-ima.json','dados/concursos.json','.github/workflows/validar-geradores.yml']
 jobs:
   generated:
     runs-on: ubuntu-latest
@@ -15,3 +15,4 @@ jobs:
       - run: node scripts/verificar-gerador-aulas.mjs
       - run: node scripts/verificar-componentes-didaticos.mjs
       - run: node scripts/regerar-materiais.mjs --check
+      - run: node scripts/verificar-ritmo-curricular.mjs
