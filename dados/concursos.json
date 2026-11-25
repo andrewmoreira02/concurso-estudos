@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-24",
+  "updated_at": "2026-11-25",
   "timezone": "America/Sao_Paulo",
   "purpose": "Dados públicos do planejamento do site. Não contém registros pessoais de leitura, notas ou desempenho.",
   "disclaimer": "Informações de editais registradas em 13–18/11/2026; conferir retificações antes de tomar decisões. Agenda é sugestão, não comprova execução.",
@@ -71,9 +71,9 @@
       "exam": "ima",
       "contest": "IMA-SC 2027 · FURB",
       "title": "IMA · Analista de Informática · FURB",
-      "desc": "Preparação IMA prioritária desde 22/11/2026; organizar teoria, questões FURB e revisões pelo prazo da prova, sem transferir avaliação CASAN.",
-      "href": "aulas/microaula-ima.html?u=ima-alg-1-1",
-      "link": "Abrir a primeira microaula IMA",
+      "desc": "Prioridade IMA em aulas diárias completas, questões separadas e revisões baseadas em avaliação; não transportar notas CASAN.",
+      "href": "aulas.html#lessonCatalog",
+      "link": "Abrir aulas diárias IMA",
       "origin": "Prioridade editorial IMA confirmada em 22/11/2026; CASAN permanece apenas no histórico."
     }
   ],
@@ -237,6 +237,20 @@
           "title": "Questões da aula diária (opcionais)",
           "detail": "Avaliação somente após envio.",
           "href": "aulas/questoes-ima-2026-11-28.html"
+        }
+      ],
+      "2026-11-29": [
+        {
+          "id": "ima-2026-11-29",
+          "title": "Aula 06 — PA, PG, gráficos, médias e compreensão textual",
+          "detail": "Aula completa para núcleo sugerido de 120 minutos. Leitura não comprova estudo.",
+          "href": "aulas/ima-2026-11-29.html"
+        },
+        {
+          "id": "questoes-ima-2026-11-29-pratica",
+          "title": "Treino IMA — 4 questões adaptadas de Português e RLM",
+          "detail": "Questões 9–12 do banco FURB 2023; resultado só após envio.",
+          "href": "aulas/questoes-ima.html?de=9&ate=12"
         }
       ]
     },
@@ -910,6 +924,36 @@
             "section": "la-2-3"
           }
         ]
+      },
+      {
+        "id": "ima-2026-11-29",
+        "title": "Aula 06 — PA, PG, gráficos, médias e compreensão textual",
+        "url": "aulas/ima-2026-11-29.html",
+        "section_prefix": "d29",
+        "sections_per_module": [
+          2,
+          2,
+          2
+        ],
+        "module_titles": [
+          "Sequências e progressões",
+          "Gráficos, porcentagens e médias",
+          "Português: inferências e coesão"
+        ],
+        "subjects": {
+          "ima": "Raciocínio Lógico-Matemático e Português"
+        },
+        "status": "disponivel",
+        "daily": true,
+        "date": "2026-11-29",
+        "question_href": "aulas/questoes-ima.html?de=9&ate=12",
+        "question_ids": [
+          "furb2023-as-q1-ad-v1",
+          "furb2023-as-q3-ad-v1",
+          "furb2023-as-q6-ad-v1",
+          "furb2023-as-q7-ad-v1"
+        ],
+        "legacy_sections": []
       }
     ],
     "minimum_unread_equivalents": 5,

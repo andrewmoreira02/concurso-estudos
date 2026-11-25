@@ -251,7 +251,7 @@ async function renderPractice(){
  // Abrir ?de=1&ate=10 exibe SOMENTE os dez itens solicitados.
  // Não usar fallback para o banco inteiro quando a faixa for inválida.
  const query=new URLSearchParams(location.search);
- if(type==='topic'||type==='saturday'){
+ if(['topic','saturday','ima','ima-especificas','ima-micro'].includes(type)){
   const fromRaw=query.get('de'),toRaw=query.get('ate');
   if(fromRaw!==null||toRaw!==null){
    const from=fromRaw===null?1:Number(fromRaw);
